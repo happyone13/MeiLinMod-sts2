@@ -1,0 +1,16 @@
+{
+    "MEILINMOD-MEI_LIN_MOD.aromaPrinciple": "Lore",
+  "MEILINMOD-MEI_LIN_MOD.banter.alive.endTurnPing": "Co-op hurry up end turn ping message",
+  "MEILINMOD-MEI_LIN_MOD.banter.dead.endTurnPing": "...",
+  "MEILINMOD-MEI_LIN_MOD.cardsModifierDescription": "__ cards will now appear in rewards and shops.",
+  "MEILINMOD-MEI_LIN_MOD.cardsModifierTitle": "__ Cards",
+  "MEILINMOD-MEI_LIN_MOD.description": "Character Selection\nScreen Description",
+  "MEILINMOD-MEI_LIN_MOD.eventDeathPrevention": "Co-op survival line",
+  "MEILINMOD-MEI_LIN_MOD.goldMonologue": "Line spoken when obtaining a large amount of gold",
+  "MEILINMOD-MEI_LIN_MOD.possessiveAdjective": "his/her/its",
+  "MEILINMOD-MEI_LIN_MOD.pronounObject": "him/her/it",
+  "MEILINMOD-MEI_LIN_MOD.pronounPossessive": "his/hers/its",
+  "MEILINMOD-MEI_LIN_MOD.pronounSubject": "he/she/it",
+  "MEILINMOD-MEI_LIN_MOD.title": "The MeiLinMod",
+  "MEILINMOD-MEI_LIN_MOD.titleObject": "The MeiLinMod"
+}

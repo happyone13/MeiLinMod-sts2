@@ -1,0 +1,8 @@
+[gd_resource type="SpineSkeletonDataResource" format=3]
+
+[ext_resource type="SpineAtlasResource" path="res://.godot/imported/1027.atlas-992503164f1befc4118e80818ad3c6bf.spatlas" id="1_atlas"]
+[ext_resource type="SpineSkeletonFileResource" path="res://.godot/imported/1027.skel-ec18c9c82aac420d8d9e032c82eb9c1c.spskel" id="2_json"]
+
+[resource]
+atlas_res = ExtResource("1_atlas")
+skeleton_file_res = ExtResource("2_json")

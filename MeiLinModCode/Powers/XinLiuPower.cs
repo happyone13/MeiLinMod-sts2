@@ -1,0 +1,46 @@
+using MeiLinMod.MeiLinModCode.Cards;
+using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Entities.Powers;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Models;
+
+namespace MeiLinMod.MeiLinModCode.Powers;
+
+public class XinLiuPower : MeiLinModPower
+{
+    private const int TriggerCount = 4;
+    private int _progress;
+
+    public override PowerType Type => PowerType.Buff;
+    public override PowerStackType StackType => PowerStackType.Counter;
+    public override int DisplayAmount => TriggerCount - _progress;
+
+    public override Task AfterApplied(Creature? applier, CardModel? cardSource)
+    {
+        _progress = 0;
+        InvokeDisplayAmountChanged();
+        return Task.CompletedTask;
+    }
+
+    public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
+    {
+        if (cardPlay.Card.Owner.Creature != Owner || !BasicStrikeDefendHelper.IsBasicStrikeOrDefend(cardPlay.Card))
+            return;
+
+        _progress++;
+        if (_progress < TriggerCount)
+        {
+            InvokeDisplayAmountChanged();
+            return;
+        }
+
+        _progress -= TriggerCount;
+        InvokeDisplayAmountChanged();
+        if (Owner.Player != null)
+        {
+            await PlayerCmd.GainEnergy(1, Owner.Player);
+        }
+    }
+}

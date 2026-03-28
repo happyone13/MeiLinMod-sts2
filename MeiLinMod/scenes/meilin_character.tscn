@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4dnpxxd6ldei"]
+
+[ext_resource type="Script" uid="uid://cghtlla3sw0po" path="res://src/Core/Nodes/Combat/NCreatureVisuals.cs" id="1_creature_visuals"]
+[ext_resource type="SpineSkeletonDataResource" uid="uid://rbdy8jwyokxd" path="res://MeiLinMod/spine/q/q.tres" id="1_d5o3x"]
+
+[node name="TestCharacter" type="Node2D"]
+script = ExtResource("1_creature_visuals")
+metadata/_edit_group_ = true
+
+[node name="Visuals" type="SpineSprite" parent="."]
+skeleton_data_res = ExtResource("1_d5o3x")
+preview_skin = "default"
+preview_animation = "b_idle"
+preview_frame = false
+preview_time = 0.0
+unique_name_in_owner = true
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
+
+[node name="Bounds" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -82.0
+offset_top = -215.0
+offset_right = 72.0
+
+[node name="IntentPos" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -159)
+
+[node name="CenterPos" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -72)
+
+[node name="OrbPos" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -132)
+
+[node name="TalkPos" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -208)

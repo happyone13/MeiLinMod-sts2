@@ -1,0 +1,14 @@
+﻿{
+  "AWAKENING.title": "Awakening",
+  "AWAKENING.description": "Triggers if you have at least 3 Energy when this card is played.",
+  "EMBER.title": "Ember",
+  "EMBER.description": "Each stack makes the owner take +1 damage from attacks. Removed at end of owner's turn.",
+  "QI.title": "Qi",
+  "QI.description": "Each stack grants +1 Strength and +1 Dexterity.",
+  "XIANGZU_LEGACY.title": "Xiangzu Legacy",
+  "XIANGZU_LEGACY.description": "Whenever you attack or are attacked, [gold]Qi Gauge[/gold] +1. Gain 1 [gold]Qi[/gold] for every 5 [gold]Qi Gauge[/gold].",
+  "ATTACK_STANCE.title": "Attack Stance",
+  "ATTACK_STANCE.description": "Each [gold]Qi[/gold] gives +1 Strength and -1 Dexterity.",
+  "GUARD_STANCE.title": "Guard Stance",
+  "GUARD_STANCE.description": "Each [gold]Qi[/gold] gives +1 Dexterity and -1 Strength."
+}
