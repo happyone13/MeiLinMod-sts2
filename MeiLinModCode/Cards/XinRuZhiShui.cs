@@ -23,6 +23,7 @@ public class XinRuZhiShui() : MeiLinModCard(1, CardType.Power, CardRarity.Rare, 
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await PlayPowerCastAnim();
         await PowerCmd.Apply<XinRuZhiShuiPower>(Owner.Creature, 1m, Owner.Creature, this);
     }
 

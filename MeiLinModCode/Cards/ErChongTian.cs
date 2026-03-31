@@ -44,10 +44,10 @@ public class ErChongTian() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncomm
         var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
         var awakened = AwakeningHelper.IsAwakened(cardPlay);
 
-        if (Owner.Creature.HasPower<StanceGongPower>() || awakened)
+        if (XiangzuLegacyPower.IsInAttackStance(Owner.Creature) || awakened)
             await PowerCmd.Apply<EmberPower>(cardPlay.Target, DynamicVars[EmberKey].BaseValue, Owner.Creature, this);
 
-        if ((Owner.Creature.HasPower<StanceYuPower>() || awakened) && legacy != null)
+        if ((XiangzuLegacyPower.IsInGuardStance(Owner.Creature) || awakened) && legacy != null)
             await legacy.AddQiCounterProgress(DynamicVars[ProgressKey].IntValue);
     }
 

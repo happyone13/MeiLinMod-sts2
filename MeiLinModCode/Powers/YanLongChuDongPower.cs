@@ -24,7 +24,7 @@ public class YanLongChuDongPower : MeiLinModPower
         if (dealer != Owner)
             return;
 
-        if (!Owner.HasPower<StanceGongPower>())
+        if (!XiangzuLegacyPower.IsInAttackStance(Owner))
             return;
 
         if (!props.HasFlag(ValueProp.Move) || cardSource?.Type != CardType.Attack)

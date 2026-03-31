@@ -4,6 +4,7 @@ using System.Linq;
 using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
+using MeiLinMod.MeiLinModCode.Services;
 using MegaCrit.Sts2.Core.Combat.History.Entries;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -23,6 +24,9 @@ public class ShengLongJiao() : MeiLinModCard(1, CardType.Attack, CardRarity.Unco
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        MeiLinAudioService.SuppressNextDefaultAttackSfx();
+        MeiLinAudioService.TryPlayCustomCardClip("sheng_long_jiao");
+
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
 
         var hitCount = MegaCrit.Sts2.Core.Combat.CombatManager.Instance.History.CardPlaysFinished.Count(e =>

@@ -37,15 +37,7 @@ public class FireDragonTurn() : MeiLinModCard(0, CardType.Skill, CardRarity.Unco
         if (legacy == null)
             return;
 
-        // Default stance(Heng) first switch goes to Attack(Gong), then Gong<->Yu.
-        if (Owner.Creature.HasPower<StanceGongPower>())
-        {
-            await legacy.EnterGuardStance();
-        }
-        else
-        {
-            await legacy.EnterAttackStance();
-        }
+        await legacy.EnterOtherStance();
     }
 
     protected override void OnUpgrade()

@@ -16,7 +16,7 @@ public class CanYingPower : MeiLinModPower
         if (cardPlay.Card.Owner.Creature != Owner || !BasicStrikeDefendHelper.IsBasicStrikeOrDefend(cardPlay.Card))
             return;
 
-        if (Owner.HasPower<StanceGongPower>() && BasicStrikeDefendHelper.IsBasicStrike(cardPlay.Card) && cardPlay.Target != null)
+        if (XiangzuLegacyPower.IsInAttackStance(Owner) && BasicStrikeDefendHelper.IsBasicStrike(cardPlay.Card) && cardPlay.Target != null)
         {
             await DamageCmd.Attack(cardPlay.Card.DynamicVars.Damage.BaseValue)
                 .FromCard(cardPlay.Card)
@@ -25,7 +25,7 @@ public class CanYingPower : MeiLinModPower
                 .Execute(context);
         }
 
-        if (Owner.HasPower<StanceYuPower>() && BasicStrikeDefendHelper.IsBasicDefend(cardPlay.Card))
+        if (XiangzuLegacyPower.IsInGuardStance(Owner) && BasicStrikeDefendHelper.IsBasicDefend(cardPlay.Card))
             await CreatureCmd.GainBlock(Owner, cardPlay.Card.DynamicVars.Block, cardPlay);
     }
 }

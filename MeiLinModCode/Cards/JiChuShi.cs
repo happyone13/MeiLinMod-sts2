@@ -46,7 +46,7 @@ public class JiChuShi() : MeiLinModCard(1, CardType.Skill, CardRarity.Common, Ta
 
         var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
         if (legacy != null)
-            await legacy.EnterNeutralStance();
+            await legacy.EnterOtherStance();
     }
 
     protected override void OnUpgrade()

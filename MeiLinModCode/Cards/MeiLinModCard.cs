@@ -3,6 +3,7 @@ using BaseLib.Extensions;
 using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 
 namespace MeiLinMod.MeiLinModCode.Cards;
@@ -26,4 +27,12 @@ public abstract class MeiLinModCard(int cost, CardType type, CardRarity rarity, 
     //Uses card_portraits/card_name.png as image path. These should be smaller images.
     public override string PortraitPath => IdPortraitPath;
     public override string BetaPortraitPath => $"beta/{Id.Entry.ToLowerInvariant()}.png".CardImagePath();
+
+    protected Task PlayPowerCastAnim()
+    {
+        if (Type != CardType.Power || Owner?.Creature == null || Owner.Character == null)
+            return Task.CompletedTask;
+
+        return CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
+    }
 }

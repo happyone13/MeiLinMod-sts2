@@ -16,6 +16,7 @@ public class LongXi() : MeiLinModCard(3, CardType.Power, CardRarity.Rare, Target
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await PlayPowerCastAnim();
         await PowerCmd.Apply<LongXiPower>(Owner.Creature, 1m, Owner.Creature, this);
     }
 

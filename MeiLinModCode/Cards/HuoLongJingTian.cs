@@ -4,6 +4,7 @@ using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
 using MeiLinMod.MeiLinModCode.HoverTips;
+using MeiLinMod.MeiLinModCode.Services;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -31,6 +32,9 @@ public class HuoLongJingTian() : MeiLinModCard(1, CardType.Attack, CardRarity.Ra
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        MeiLinAudioService.SuppressNextDefaultAttackSfx();
+        MeiLinAudioService.TryPlayCustomCardClip("huo_long_jing_tian");
+
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .FromCard(this)

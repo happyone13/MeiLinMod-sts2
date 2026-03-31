@@ -20,12 +20,7 @@ public class XiangzuLegacyRelic : MeiLinModRelic
         MeiLinHoverTipFactory.AttackStance,
         MeiLinHoverTipFactory.GuardStance
     ];
-
-    // Reuse template icons for now.
-    public override string PackedIconPath => "relic.png".RelicImagePath();
-    protected override string PackedIconOutlinePath => "relic_outline.png".RelicImagePath();
-    protected override string BigIconPath => "relic.png".BigRelicImagePath();
-
+    
     public override async Task BeforeCombatStart()
     {
         Flash();

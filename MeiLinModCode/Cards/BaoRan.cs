@@ -25,7 +25,7 @@ public class BaoRan() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommon, T
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
         var damage = DynamicVars.Damage.BaseValue;
         var ember = (int)(cardPlay.Target.GetPower<EmberPower>()?.Amount ?? 0m);
-        if (ember >= 5)
+        if (ember >= 3)
             damage *= 2m;
 
         await DamageCmd.Attack(damage)

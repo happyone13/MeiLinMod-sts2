@@ -16,6 +16,7 @@ public class YunQi() : MeiLinModCard(1, CardType.Power, CardRarity.Rare, TargetT
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await PlayPowerCastAnim();
         await PowerCmd.Apply<YunQiPower>(Owner.Creature, 1m, Owner.Creature, this);
     }
 

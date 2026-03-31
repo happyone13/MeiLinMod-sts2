@@ -23,6 +23,7 @@ public class TanZhao() : MeiLinModCard(1, CardType.Power, CardRarity.Rare, Targe
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await PlayPowerCastAnim();
         await PowerCmd.Apply<TanZhaoPower>(Owner.Creature, 1m, Owner.Creature, this);
     }
 

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
+using MeiLinMod.MeiLinModCode.Services;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -23,6 +24,9 @@ public class ZuiZhongAoYiYanLongJiangLin() : MeiLinModCard(2, CardType.Skill, Ca
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        MeiLinAudioService.SuppressNextDefaultCastSfx();
+        MeiLinAudioService.TryPlayCustomCardClip("zui_zhong_ao_yi_yan_long_jiang_lin");
+
         for (var i = 0; i < 4; i++)
         {
             var strike = CombatState.CreateCard<StrikeMeilin>(Owner);

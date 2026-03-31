@@ -16,6 +16,7 @@ public class YanQiHuTi() : MeiLinModCard(1, CardType.Power, CardRarity.Uncommon,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await PlayPowerCastAnim();
         await PowerCmd.Apply<QiGainBlockPower>(Owner.Creature, IsUpgraded ? 7m : 5m, Owner.Creature, this);
     }
 

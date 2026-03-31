@@ -3,6 +3,7 @@ using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
 using MeiLinMod.MeiLinModCode.Powers;
+using MeiLinMod.MeiLinModCode.Services;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -20,6 +21,9 @@ public class FireDragonGem() : MeiLinModCard(0, CardType.Power, CardRarity.Basic
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        MeiLinAudioService.SuppressNextDefaultCastSfx();
+        MeiLinAudioService.TryPlayCustomCardClip("fire_dragon_gam");
+
         await CreatureCmd.TriggerAnim(
             Owner.Creature,
             "Cast",

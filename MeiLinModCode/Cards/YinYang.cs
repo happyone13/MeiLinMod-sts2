@@ -16,6 +16,7 @@ public class YinYang() : MeiLinModCard(2, CardType.Power, CardRarity.Rare, Targe
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await PlayPowerCastAnim();
         await PowerCmd.Apply<StanceSwitchEnergyPower>(Owner.Creature, 1m, Owner.Creature, this);
     }
 

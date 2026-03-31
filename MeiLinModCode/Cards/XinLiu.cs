@@ -9,19 +9,19 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 namespace MeiLinMod.MeiLinModCode.Cards;
 
 [Pool(typeof(MeiLinModCardPool))]
-public class XinLiu() : MeiLinModCard(2, CardType.Power, CardRarity.Rare, TargetType.Self)
+public class XinLiu() : MeiLinModCard(1, CardType.Power, CardRarity.Rare, TargetType.Self)
 {
     public override string PortraitPath => IdPortraitPath;
     public override string CustomPortraitPath => IdBigPortraitPath;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<XinLiuPower>(Owner.Creature, 1m, Owner.Creature, this);
+        await PlayPowerCastAnim();
+        await PowerCmd.Apply<XinLiuPower>(Owner.Creature, IsUpgraded ? 4m : 5m, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
-        EnergyCost.UpgradeBy(-1);
     }
 }
 

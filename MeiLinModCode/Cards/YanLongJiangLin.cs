@@ -7,6 +7,7 @@ using MeiLinMod.MeiLinModCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 
@@ -19,6 +20,13 @@ public class YanLongJiangLin() : MeiLinModCard(2, CardType.Attack, CardRarity.Ra
 
     public override string PortraitPath => IdPortraitPath;
     public override string CustomPortraitPath => IdBigPortraitPath;
+
+    protected override void AddExtraArgsToDescription(LocString description)
+    {
+        var enemy = CombatState?.HittableEnemies?.Count == 1 ? CombatState.HittableEnemies[0] : null;
+        var hits = Math.Max(0, (int)(enemy?.GetPower<EmberPower>()?.Amount ?? 0m));
+        description.Add("HitCount", hits);
+    }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

@@ -31,7 +31,7 @@ public class XieLi() : MeiLinModCard(0, CardType.Skill, CardRarity.Common, Targe
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
-        if (Owner.Creature.HasPower<StanceYuPower>())
+        if (XiangzuLegacyPower.IsInGuardStance(Owner.Creature))
         {
             ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
             await PowerCmd.Apply<WeakPower>(cardPlay.Target, DynamicVars[WeakKey].BaseValue, Owner.Creature, this);

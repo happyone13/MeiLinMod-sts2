@@ -68,5 +68,7 @@ public class WuDao() : MeiLinModCard(1, CardType.Skill, CardRarity.Rare, TargetT
 
     protected override void OnUpgrade()
     {
+        DynamicVars.Block.UpgradeValueBy(2m);
+        DynamicVars[VigorKey].UpgradeValueBy(1m);
     }
 }

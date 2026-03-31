@@ -16,6 +16,7 @@ public class LongZhiQiShi() : MeiLinModCard(2, CardType.Power, CardRarity.Common
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await PlayPowerCastAnim();
         await PowerCmd.Apply<LongZhiQiShiPower>(Owner.Creature, 1m, Owner.Creature, this);
     }
 

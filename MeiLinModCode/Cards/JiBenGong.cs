@@ -25,6 +25,7 @@ public class JiBenGong() : MeiLinModCard(1, CardType.Power, CardRarity.Uncommon,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await PlayPowerCastAnim();
         await PowerCmd.Apply<JiBenGongPower>(Owner.Creature, DynamicVars[BonusKey].BaseValue, Owner.Creature, this);
     }
 

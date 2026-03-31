@@ -16,6 +16,7 @@ public class HuXiao() : MeiLinModCard(1, CardType.Power, CardRarity.Uncommon, Ta
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await PlayPowerCastAnim();
         await PowerCmd.Apply<AttackStanceStartStrikePower>(Owner.Creature, 1m, Owner.Creature, this);
     }
 

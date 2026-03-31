@@ -1,11 +1,13 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
+using System.Linq;
 using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
-using MeiLinMod.MeiLinModCode.Powers;
+using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 
@@ -29,8 +31,19 @@ public class PanLong() : MeiLinModCard(1, CardType.Skill, CardRarity.Uncommon, T
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
-        await PowerCmd.Apply<PanLongPower>(Owner.Creature, DynamicVars[GrowKey].IntValue, Owner.Creature, this);
+        var usedCount = CombatManager.Instance.History.CardPlaysFinished.Count(e =>
+            e.CardPlay.Card.Owner == Owner &&
+            BasicStrikeDefendHelper.IsBasicStrikeOrDefend(e.CardPlay.Card));
+        var block = DynamicVars.Block.BaseValue + (usedCount * DynamicVars[GrowKey].BaseValue);
+        await CreatureCmd.GainBlock(Owner.Creature, block, ValueProp.Move | ValueProp.Unpowered, null, fast: true);
+    }
+
+    protected override void AddExtraArgsToDescription(LocString description)
+    {
+        var usedCount = CombatManager.Instance?.History?.CardPlaysFinished.Count(e =>
+            e.CardPlay.Card.Owner == Owner &&
+            BasicStrikeDefendHelper.IsBasicStrikeOrDefend(e.CardPlay.Card)) ?? 0;
+        description.Add("CurrentBonus", usedCount * DynamicVars[GrowKey].BaseValue);
     }
 
     protected override void OnUpgrade()
@@ -38,6 +51,3 @@ public class PanLong() : MeiLinModCard(1, CardType.Skill, CardRarity.Uncommon, T
         DynamicVars[GrowKey].UpgradeValueBy(1m);
     }
 }
-
-
-

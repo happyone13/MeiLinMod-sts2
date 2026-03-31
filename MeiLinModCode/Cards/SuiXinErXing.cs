@@ -15,13 +15,14 @@ public class SuiXinErXing() : MeiLinModCard(1, CardType.Power, CardRarity.Rare, 
 {
     private const string ProgressKey = "Progress";
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar(ProgressKey, 1m)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar(ProgressKey, 2m)];
 
     public override string PortraitPath => IdPortraitPath;
     public override string CustomPortraitPath => IdBigPortraitPath;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await PlayPowerCastAnim();
         await PowerCmd.Apply<StanceSwitchQiProgressPower>(Owner.Creature, DynamicVars[ProgressKey].BaseValue, Owner.Creature, this);
     }
 

@@ -22,6 +22,7 @@ public class YuJinLiaoYuan() : MeiLinModCard(1, CardType.Power, CardRarity.Uncom
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await PlayPowerCastAnim();
         await PowerCmd.Apply<YuJinLiaoYuanPower>(Owner.Creature, DynamicVars[EmberKey].BaseValue, Owner.Creature, this);
     }
 

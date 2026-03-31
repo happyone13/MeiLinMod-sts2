@@ -22,6 +22,7 @@ public class ShouShi() : MeiLinModCard(1, CardType.Power, CardRarity.Uncommon, T
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await PlayPowerCastAnim();
         await PowerCmd.Apply<GuardStanceTurnEndBlockPower>(Owner.Creature, DynamicVars[BlockKey].BaseValue, Owner.Creature, this);
     }
 

@@ -43,7 +43,7 @@ public class ZanJin() : MeiLinModCard(1, CardType.Attack, CardRarity.Common, Tar
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(3m);
-        DynamicVars[ProgressKey].UpgradeValueBy(1m);
+        DynamicVars[ProgressKey].UpgradeValueBy(2m);
     }
 }
 

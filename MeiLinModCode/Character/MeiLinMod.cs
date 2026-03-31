@@ -2,12 +2,14 @@ using BaseLib.Abstracts;
 using Godot;
 using MeiLinMod.MeiLinModCode.Cards;
 using MeiLinMod.MeiLinModCode.Extensions;
+using MeiLinMod.MeiLinModCode.Powers;
 using MegaCrit.Sts2.Core.Animation;
 using MegaCrit.Sts2.Core.Bindings.MegaSpine;
 using MegaCrit.Sts2.Core.Entities.Characters;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Relics;
+using MegaCrit.Sts2.Core.Nodes.Combat;
 using MeiLinMod.MeiLinModCode.Relics;
 
 namespace MeiLinMod.MeiLinModCode.Character;
@@ -59,21 +61,18 @@ public class MeiLinMod : PlaceholderCharacterModel
     public override string CustomCharacterSelectBg => "res://MeiLinMod/scenes/meilin_bg.tscn";
     public override string CharacterTransitionSfx => "event:/sfx/ui/wipe_ironclad";
     // 多人模式-手指。
-    public override string CustomArmPointingTexturePath => null;
-    // 多人模式剪刀石头布-石头。
-    // public override string CustomArmRockTexturePath => null;
+    public override string CustomArmPointingTexturePath => "multiplayer_hand_meilin_point.png".CharacterUiPath();
+    // 多人模式剪刀石头布-石头。 
+    public override string CustomArmRockTexturePath => "multiplayer_hand_meilin_rock.png".CharacterUiPath();
     // 多人模式剪刀石头布-布。
-    // public override string CustomArmPaperTexturePath => null;
+    public override string CustomArmPaperTexturePath => "multiplayer_hand_meilin_paper.png".CharacterUiPath();
     // 多人模式剪刀石头布-剪刀。
-    // public override string CustomArmScissorsTexturePath => null;
-    // 攻击音效
-    // public override string CustomAttackSfx => null;
-    // 施法音效
-    // public override string CustomCastSfx => null;
-    // 死亡音效
-    // public override string CustomDeathSfx => null;
-    // 角色选择音效
-    // public override string CharacterSelectSfx => null;
+    public override string CustomArmScissorsTexturePath => "multiplayer_hand_meilin_scissors.png".CharacterUiPath();
+    public override string CustomAttackSfx => "meilin_attack";
+    public override string CustomCastSfx => "meilin_cast";
+    public override string CustomDeathSfx => "meilin_die";
+    public override string CharacterSelectSfx => "meilin_select";
+
     public override List<string> GetArchitectAttackVfx() =>
     [
         "vfx/vfx_attack_blunt",
@@ -85,25 +84,56 @@ public class MeiLinMod : PlaceholderCharacterModel
 
     public override CreatureAnimator GenerateAnimator(MegaSprite controller)
     {
-        AnimState idle = new("b_idle", isLooping: true);
+        bool IsGuardStance() => ResolveGuardStance(controller);
+
+        AnimState idle = new("idle", isLooping: true);
+        AnimState guardIdle = new("b_idle", isLooping: true);
         AnimState attack = new("attack_play1");
+        AnimState guardAttack = new("attack_play1");
         AnimState cast = new("buff_play");
+        AnimState guardCast = new("buff_play");
         AnimState hit = new("hit");
+        AnimState guardHit = new("hit");
         AnimState dead = new("death");
         AnimState relaxed = new("camping", isLooping: true);
 
         attack.NextState = idle;
+        guardAttack.NextState = guardIdle;
         cast.NextState = idle;
+        guardCast.NextState = guardIdle;
         hit.NextState = idle;
+        guardHit.NextState = guardIdle;
 
         CreatureAnimator animator = new(idle, controller);
-        animator.AddAnyState("Idle", idle);
+        animator.AddAnyState("Idle", guardIdle, IsGuardStance);
+        animator.AddAnyState("Idle", idle, () => !IsGuardStance());
         animator.AddAnyState("Dead", dead);
-        animator.AddAnyState("Hit", hit);
-        animator.AddAnyState("Attack", attack);
-        animator.AddAnyState("Cast", cast);
+        animator.AddAnyState("Hit", guardHit, IsGuardStance);
+        animator.AddAnyState("Hit", hit, () => !IsGuardStance());
+        animator.AddAnyState("Attack", guardAttack, IsGuardStance);
+        animator.AddAnyState("Attack", attack, () => !IsGuardStance());
+        animator.AddAnyState("Cast", guardCast, IsGuardStance);
+        animator.AddAnyState("Cast", cast, () => !IsGuardStance());
         animator.AddAnyState("Relaxed", relaxed);
         animator.AddAnyState("Revive", idle);
         return animator;
     }
+
+    private static bool ResolveGuardStance(MegaSprite controller)
+    {
+        if (controller.BoundObject is not Node node)
+            return false;
+
+        Node? current = node;
+        while (current != null)
+        {
+            if (current is NCreature nCreature)
+                return nCreature.Entity.HasPower<StanceYuPower>();
+
+            current = current.GetParent();
+        }
+
+        return false;
+    }
+
 }

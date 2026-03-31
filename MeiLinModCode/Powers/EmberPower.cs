@@ -69,7 +69,8 @@ public class EmberPower : MeiLinModPower
 
     public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
     {
-        if (side != Owner.Side)
+        // Expire at round-end (after the opposing side finishes), so self-applied Ember can affect incoming attacks.
+        if (side == Owner.Side)
             return;
 
         if (Owner.HasPower<EmberNoExpireThisTurnPower>())

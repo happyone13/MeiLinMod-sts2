@@ -29,10 +29,7 @@ public class XiaoYao() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncommon, T
         if (legacy == null)
             return;
 
-        if (Owner.Creature.HasPower<StanceGongPower>())
-            await legacy.EnterGuardStance();
-        else
-            await legacy.EnterAttackStance();
+        await legacy.EnterOtherStance();
     }
 
     protected override void OnUpgrade()

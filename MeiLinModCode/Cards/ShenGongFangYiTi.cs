@@ -3,6 +3,7 @@ using System.Linq;
 using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
+using MeiLinMod.MeiLinModCode.Services;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -19,6 +20,9 @@ public class ShenGongFangYiTi() : MeiLinModCard(1, CardType.Skill, CardRarity.An
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        MeiLinAudioService.SuppressNextDefaultCastSfx();
+        MeiLinAudioService.TryPlayCustomCardClip("attack_defense_unity");
+
         var cardsToPlay = PileType.Hand.GetPile(Owner).Cards
             .Concat(PileType.Draw.GetPile(Owner).Cards)
             .Concat(PileType.Discard.GetPile(Owner).Cards)

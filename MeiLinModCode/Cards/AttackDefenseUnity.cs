@@ -3,6 +3,7 @@ using BaseLib.Extensions;
 using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
+using MeiLinMod.MeiLinModCode.Services;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Extensions;
@@ -21,6 +22,9 @@ public class AttackDefenseUnity() : MeiLinModCard(1, CardType.Skill, CardRarity.
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        MeiLinAudioService.SuppressNextDefaultCastSfx();
+        MeiLinAudioService.TryPlayCustomCardClip("attack_defense_unity");
+
         var candidates = PileType.Draw.GetPile(Owner).Cards
             .Concat(PileType.Discard.GetPile(Owner).Cards)
             .Where(BasicStrikeDefendHelper.IsBasicStrikeOrDefend)

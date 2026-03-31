@@ -4,11 +4,11 @@
   "EMBER.title": "余烬",
   "EMBER.description": "每层使持有者受到的攻击伤害+1。持有者回合结束时移除。",
   "QI.title": "气",
-  "QI.description": "每层提供力量+1，敏捷+1。",
+  "QI.description": "属性加成取决于姿态：攻击姿态加力量，防御姿态加敏捷。",
   "XIANGZU_LEGACY.title": "香族的传承",
   "XIANGZU_LEGACY.description": "每进行1次攻击或被攻击，[gold]气槽[/gold]+1。每满5点[gold]气槽[/gold]获得1层[gold]气[/gold]。",
   "ATTACK_STANCE.title": "攻姿态",
-  "ATTACK_STANCE.description": "每层[gold]气[/gold]提供力量+1，敏捷-1。",
+  "ATTACK_STANCE.description": "每层[gold]气[/gold]提供力量+1。",
   "GUARD_STANCE.title": "御姿态",
-  "GUARD_STANCE.description": "每层[gold]气[/gold]提供敏捷+1，力量-1。"
+  "GUARD_STANCE.description": "每层[gold]气[/gold]提供敏捷+1。"
 }

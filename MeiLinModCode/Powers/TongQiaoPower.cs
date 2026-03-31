@@ -1,6 +1,7 @@
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.Models;
+using System;
 
 namespace MeiLinMod.MeiLinModCode.Powers;
 
@@ -10,6 +11,7 @@ public class TongQiaoPower : MeiLinModPower
 
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;
+    public override int DisplayAmount => (int)Amount;
 
     public override Task AfterApplied(Creature? applier, CardModel? cardSource)
     {
@@ -17,7 +19,7 @@ public class TongQiaoPower : MeiLinModPower
         if (legacy == null)
             return Task.CompletedTask;
 
-        _applied = (int)Amount;
+        _applied = Math.Clamp((int)Amount, 1, 2);
         legacy.SetTriggerCount(legacy.TriggerCount - _applied);
         return Task.CompletedTask;
     }

@@ -13,7 +13,7 @@ public class GuardStanceTurnEndBlockPower : MeiLinModPower
 
     public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
     {
-        if (side != Owner.Side || !Owner.HasPower<StanceYuPower>())
+        if (side != Owner.Side || !XiangzuLegacyPower.IsInGuardStance(Owner))
             return;
 
         await CreatureCmd.GainBlock(Owner, Amount, ValueProp.Move | ValueProp.Unpowered, null, fast: true);

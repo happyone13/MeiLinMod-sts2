@@ -9,18 +9,22 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 namespace MeiLinMod.MeiLinModCode.Cards;
 
 [Pool(typeof(MeiLinModCardPool))]
-public class TiaoXi() : MeiLinModCard(1, CardType.Power, CardRarity.Rare, TargetType.Self)
+public class TiaoXi() : MeiLinModCard(3, CardType.Power, CardRarity.Rare, TargetType.Self)
 {
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Ethereal];
+
     public override string PortraitPath => IdPortraitPath;
     public override string CustomPortraitPath => IdBigPortraitPath;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await PlayPowerCastAnim();
         await PowerCmd.Apply<QiStartEnergyPower>(Owner.Creature, 1m, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
+        RemoveKeyword(CardKeyword.Ethereal);
     }
 }
 

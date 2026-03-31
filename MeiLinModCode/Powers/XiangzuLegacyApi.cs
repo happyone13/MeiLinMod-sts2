@@ -29,9 +29,6 @@ public static class XiangzuLegacyApi
         if (power == null)
             return;
 
-        if (player.Creature.HasPower<StanceGongPower>())
-            await power.EnterGuardStance();
-        else
-            await power.EnterAttackStance();
+        await power.EnterOtherStance();
     }
 }

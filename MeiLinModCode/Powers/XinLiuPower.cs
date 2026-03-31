@@ -1,3 +1,4 @@
+using System;
 using MeiLinMod.MeiLinModCode.Cards;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -10,12 +11,11 @@ namespace MeiLinMod.MeiLinModCode.Powers;
 
 public class XinLiuPower : MeiLinModPower
 {
-    private const int TriggerCount = 4;
     private int _progress;
 
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
-    public override int DisplayAmount => TriggerCount - _progress;
+    public override int DisplayAmount => GetTriggerCount() - _progress;
 
     public override Task AfterApplied(Creature? applier, CardModel? cardSource)
     {
@@ -29,18 +29,25 @@ public class XinLiuPower : MeiLinModPower
         if (cardPlay.Card.Owner.Creature != Owner || !BasicStrikeDefendHelper.IsBasicStrikeOrDefend(cardPlay.Card))
             return;
 
+        var triggerCount = GetTriggerCount();
         _progress++;
-        if (_progress < TriggerCount)
+        if (_progress < triggerCount)
         {
             InvokeDisplayAmountChanged();
             return;
         }
 
-        _progress -= TriggerCount;
+        _progress -= triggerCount;
         InvokeDisplayAmountChanged();
         if (Owner.Player != null)
         {
             await PlayerCmd.GainEnergy(1, Owner.Player);
         }
+    }
+
+    private int GetTriggerCount()
+    {
+        var count = (int)Amount;
+        return Math.Max(1, count);
     }
 }

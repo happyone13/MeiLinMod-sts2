@@ -21,6 +21,7 @@ public class YanQiChanShen() : MeiLinModCard(1, CardType.Power, CardRarity.Uncom
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await PlayPowerCastAnim();
         await PowerCmd.Apply<QiGainEmberPower>(Owner.Creature, DynamicVars[EmberKey].BaseValue, Owner.Creature, this);
     }
 

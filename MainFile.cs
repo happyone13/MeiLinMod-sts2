@@ -26,7 +26,6 @@ public partial class MainFile : Node
         LogPatchStatus(harmony, typeof(ArchaicTooth), nameof(ArchaicTooth.AfterObtained));
         LogPatchStatus(harmony, typeof(DustyTome), nameof(DustyTome.SetupForPlayer));
         LogPatchStatus(harmony, typeof(DustyTome), nameof(DustyTome.AfterObtained));
-        LogPatchStatus(harmony, typeof(SpineAnimationAccess), nameof(SpineAnimationAccess.SetAnimation), typeof(string), typeof(bool), typeof(int));
         LogPatchStatus(harmony, typeof(MegaAnimationState), nameof(MegaAnimationState.SetAnimation), typeof(string), typeof(bool), typeof(int));
     }
 

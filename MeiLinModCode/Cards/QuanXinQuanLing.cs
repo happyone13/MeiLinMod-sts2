@@ -23,6 +23,7 @@ public class QuanXinQuanLing() : MeiLinModCard(2, CardType.Power, CardRarity.Unc
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await PlayPowerCastAnim();
         await PowerCmd.Apply<QuanXinQuanLingPower>(Owner.Creature, 1m, Owner.Creature, this);
     }
 

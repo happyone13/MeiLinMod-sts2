@@ -12,6 +12,8 @@ namespace MeiLinMod.MeiLinModCode.Cards;
 [Pool(typeof(MeiLinModCardPool))]
 public class SiJiDaiFa() : MeiLinModCard(1, CardType.Skill, CardRarity.Common, TargetType.Self)
 {
+    protected override bool ShouldGlowGoldInternal => AwakeningHelper.CanAwakenNow(this);
+
     public override string PortraitPath => IdPortraitPath;
     public override string CustomPortraitPath => IdBigPortraitPath;
 

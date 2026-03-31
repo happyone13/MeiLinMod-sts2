@@ -10,12 +10,12 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
+using MeiLinMod.MeiLinModCode.Services;
 
 namespace MeiLinMod.MeiLinModCode.Powers;
 
 public enum XiangzuStance
 {
-    Neutral,
     Guard,
     Attack
 }
@@ -69,7 +69,6 @@ public class XiangzuLegacyPower : MeiLinModPower
             _appliedDexterity = 0;
         }
 
-        await PowerCmd.Remove<StanceHengPower>(oldOwner);
         await PowerCmd.Remove<StanceGongPower>(oldOwner);
         await PowerCmd.Remove<StanceYuPower>(oldOwner);
         await PowerCmd.Remove<QiPower>(oldOwner);
@@ -86,7 +85,6 @@ public class XiangzuLegacyPower : MeiLinModPower
         if (GetCurrentStance() == stance)
             return;
 
-        await PowerCmd.Remove<StanceHengPower>(Owner);
         await PowerCmd.Remove<StanceGongPower>(Owner);
         await PowerCmd.Remove<StanceYuPower>(Owner);
 
@@ -94,24 +92,41 @@ public class XiangzuLegacyPower : MeiLinModPower
         {
             case XiangzuStance.Guard:
                 await PowerCmd.Apply<StanceYuPower>(Owner, 1m, Owner, null, silent: true);
-                break;
-            case XiangzuStance.Attack:
-                await PowerCmd.Apply<StanceGongPower>(Owner, 1m, Owner, null, silent: true);
+                MeiLinAudioService.TryPlayGuardStanceSwitch();
                 break;
             default:
-                await PowerCmd.Apply<StanceHengPower>(Owner, 1m, Owner, null, silent: true);
+                await PowerCmd.Apply<StanceGongPower>(Owner, 1m, Owner, null, silent: true);
+                MeiLinAudioService.TryPlayAttackStanceSwitch();
                 break;
         }
 
         _stanceSwitchCount++;
         await TriggerStanceSwitchBonuses();
         await RecalculateStats();
+        if (!Owner.IsDead)
+            await CreatureCmd.TriggerAnim(Owner, "Idle", 0f);
     }
 
-    public async Task EnterNeutralStance() => await SetStance(XiangzuStance.Neutral);
     public async Task EnterGuardStance() => await SetStance(XiangzuStance.Guard);
     public async Task EnterAttackStance() => await SetStance(XiangzuStance.Attack);
+    public async Task EnterOtherStance()
+    {
+        if (Owner.HasPower<StanceGongPower>())
+            await EnterGuardStance();
+        else
+            await EnterAttackStance();
+    }
     public async Task AddQiCounterProgress(int value) => await AddProgress(Math.Max(0, value));
+
+    public static bool IsInAttackStance(Creature creature)
+    {
+        return creature.HasPower<StanceGongPower>() || creature.HasPower<GuiYiDualStancePower>();
+    }
+
+    public static bool IsInGuardStance(Creature creature)
+    {
+        return creature.HasPower<StanceYuPower>() || creature.HasPower<GuiYiDualStancePower>();
+    }
 
     public override async Task AfterAttack(AttackCommand command)
     {
@@ -193,21 +208,11 @@ public class XiangzuLegacyPower : MeiLinModPower
         var targetDexterity = 0;
         var qi = GetQiAmount();
 
-        switch (GetCurrentStance())
-        {
-            case XiangzuStance.Neutral:
-                targetStrength = qi;
-                targetDexterity = qi;
-                break;
-            case XiangzuStance.Guard:
-                targetStrength = 0;
-                targetDexterity = qi * 2;
-                break;
-            case XiangzuStance.Attack:
-                targetStrength = qi * 2;
-                targetDexterity = 0;
-                break;
-        }
+        if (IsInAttackStance(Owner))
+            targetStrength = qi;
+
+        if (IsInGuardStance(Owner))
+            targetDexterity = qi;
 
         var deltaStrength = targetStrength - _appliedStrength;
         var deltaDexterity = targetDexterity - _appliedDexterity;
@@ -239,16 +244,15 @@ public class XiangzuLegacyPower : MeiLinModPower
         if (Owner.HasPower<StanceYuPower>())
             return XiangzuStance.Guard;
 
-        return XiangzuStance.Neutral;
+        return XiangzuStance.Attack;
     }
 
     private async Task EnsureDefaultStance()
     {
-        if (!Owner.HasPower<StanceHengPower>() &&
-            !Owner.HasPower<StanceGongPower>() &&
+        if (!Owner.HasPower<StanceGongPower>() &&
             !Owner.HasPower<StanceYuPower>())
         {
-            await PowerCmd.Apply<StanceHengPower>(Owner, 1m, Owner, null, silent: true);
+            await PowerCmd.Apply<StanceGongPower>(Owner, 1m, Owner, null, silent: true);
         }
     }
 
