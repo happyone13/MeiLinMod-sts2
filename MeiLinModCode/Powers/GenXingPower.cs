@@ -32,12 +32,13 @@ public class GenXingPower : MeiLinModPower
         if (result.TotalDamage <= 0m && result.BlockedDamage <= 0m && result.UnblockedDamage <= 0m)
             return;
 
-        await PowerCmd.Apply<DelayedEmberNextTurnPower>(dealer, 1m, Owner, cardSource);
+        await PowerCmd.Apply<EmberPower>(dealer, 1m, Owner, cardSource);
     }
 
     public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, MegaCrit.Sts2.Core.Combat.CombatSide side)
     {
-        if (side != Owner.Side)
+        // Keep this effect active through the opponent's turn, then clear it.
+        if (side == Owner.Side)
             return;
 
         await PowerCmd.Remove(this);

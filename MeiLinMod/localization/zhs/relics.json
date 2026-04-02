@@ -1,5 +1,8 @@
 {
   "MEILINMOD-XIANGZU_LEGACY_RELIC.title": "香族的传承",
-  "MEILINMOD-XIANGZU_LEGACY_RELIC.description": "战斗开始时，获得[gold]香族的传承[/gold]并获得1层[gold]气[/gold]。",
-  "MEILINMOD-XIANGZU_LEGACY_RELIC.flavor": "香火未绝，气脉长存。"
+  "MEILINMOD-XIANGZU_LEGACY_RELIC.description": "战斗开始时，获得[gold]香族的传承[/gold]。",
+  "MEILINMOD-XIANGZU_LEGACY_RELIC.flavor": "香火未绝，气脉长存。",
+  "MEILINMOD-XIANGZU_SPIRIT_RELIC.title": "香族的精神",
+  "MEILINMOD-XIANGZU_SPIRIT_RELIC.description": "战斗开始时，获得[gold]香族的传承[/gold]，并使获得1层[gold]气[/gold]所需气槽-1。",
+  "MEILINMOD-XIANGZU_SPIRIT_RELIC.flavor": "纵无旧物在手，精神仍在。"
 }

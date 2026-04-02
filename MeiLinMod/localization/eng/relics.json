@@ -1,5 +1,8 @@
 {
   "MEILINMOD-XIANGZU_LEGACY_RELIC.title": "Legacy of Xiang Clan",
-  "MEILINMOD-XIANGZU_LEGACY_RELIC.description": "At the start of combat, gain [gold]Legacy of Xiang Clan[/gold] and gain 1 [gold]Qi[/gold].",
-  "MEILINMOD-XIANGZU_LEGACY_RELIC.flavor": "The incense line endures, and so does its Qi."
+  "MEILINMOD-XIANGZU_LEGACY_RELIC.description": "At the start of combat, gain [gold]Legacy of Xiang Clan[/gold].",
+  "MEILINMOD-XIANGZU_LEGACY_RELIC.flavor": "The incense line endures, and so does its Qi.",
+  "MEILINMOD-XIANGZU_SPIRIT_RELIC.title": "Xiang Clan Spirit",
+  "MEILINMOD-XIANGZU_SPIRIT_RELIC.description": "At the start of combat, gain [gold]Legacy of Xiang Clan[/gold], and reduce Qi counters needed to gain Qi by 1.",
+  "MEILINMOD-XIANGZU_SPIRIT_RELIC.flavor": "Even without the old relic, the spirit keeps breathing."
 }

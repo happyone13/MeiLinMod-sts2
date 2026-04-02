@@ -23,7 +23,7 @@ public class HuoLongJingTian() : MeiLinModCard(1, CardType.Attack, CardRarity.Ra
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(10m, ValueProp.Move),
-        new DynamicVar(BurstKey, 40m)
+        new DynamicVar(BurstKey, 30m)
     ];
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [MeiLinHoverTipFactory.Awakening];
 

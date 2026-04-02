@@ -23,7 +23,7 @@ public class QiPoBaFang() : MeiLinModCard(1, CardType.Skill, CardRarity.Uncommon
     [
         new DamageVar(8m, ValueProp.Move),
         new DynamicVar(ProgressKey, 3m),
-        new DynamicVar(BurstKey, 20m)
+        new DynamicVar(BurstKey, 10m)
     ];
 
     public override string PortraitPath => IdPortraitPath;

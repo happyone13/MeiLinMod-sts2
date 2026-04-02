@@ -17,12 +17,11 @@ public class YanLongChuDong() : MeiLinModCard(1, CardType.Power, CardRarity.Rare
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await PlayPowerCastAnim();
-        await PowerCmd.Apply<YanLongChuDongPower>(Owner.Creature, 2m, Owner.Creature, this);
+        await PowerCmd.Apply<YanLongChuDongPower>(Owner.Creature, IsUpgraded ? 2m : 1m, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
-        AddKeyword(CardKeyword.Innate);
     }
 }
 

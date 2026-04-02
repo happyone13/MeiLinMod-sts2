@@ -11,11 +11,13 @@ namespace MeiLinMod.MeiLinModCode.Powers;
 
 public class XinLiuPower : MeiLinModPower
 {
+    private const int TriggerCount = 5;
     private int _progress;
 
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
-    public override int DisplayAmount => GetTriggerCount() - _progress;
+    public override bool IsInstanced => true;
+    public override int DisplayAmount => TriggerCount - _progress;
 
     public override Task AfterApplied(Creature? applier, CardModel? cardSource)
     {
@@ -29,25 +31,19 @@ public class XinLiuPower : MeiLinModPower
         if (cardPlay.Card.Owner.Creature != Owner || !BasicStrikeDefendHelper.IsBasicStrikeOrDefend(cardPlay.Card))
             return;
 
-        var triggerCount = GetTriggerCount();
         _progress++;
-        if (_progress < triggerCount)
+        if (_progress < TriggerCount)
         {
             InvokeDisplayAmountChanged();
             return;
         }
 
-        _progress -= triggerCount;
+        _progress -= TriggerCount;
         InvokeDisplayAmountChanged();
         if (Owner.Player != null)
         {
-            await PlayerCmd.GainEnergy(1, Owner.Player);
+            var gain = Math.Max(1, (int)Amount);
+            await PlayerCmd.GainEnergy(gain, Owner.Player);
         }
-    }
-
-    private int GetTriggerCount()
-    {
-        var count = (int)Amount;
-        return Math.Max(1, count);
     }
 }

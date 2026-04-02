@@ -9,23 +9,33 @@ namespace MeiLinMod.MeiLinModCode.Powers;
 public class CanYingPower : MeiLinModPower
 {
     public override PowerType Type => PowerType.Buff;
-    public override PowerStackType StackType => PowerStackType.Single;
+    public override PowerStackType StackType => PowerStackType.Counter;
 
     public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
     {
         if (cardPlay.Card.Owner.Creature != Owner || !BasicStrikeDefendHelper.IsBasicStrikeOrDefend(cardPlay.Card))
             return;
 
+        var extraTriggers = (int)decimal.Floor(Amount);
+        if (extraTriggers <= 0)
+            return;
+
         if (XiangzuLegacyPower.IsInAttackStance(Owner) && BasicStrikeDefendHelper.IsBasicStrike(cardPlay.Card) && cardPlay.Target != null)
         {
-            await DamageCmd.Attack(cardPlay.Card.DynamicVars.Damage.BaseValue)
-                .FromCard(cardPlay.Card)
-                .Targeting(cardPlay.Target)
-                .WithHitFx("vfx/vfx_attack_slash")
-                .Execute(context);
+            for (var i = 0; i < extraTriggers; i++)
+            {
+                await DamageCmd.Attack(cardPlay.Card.DynamicVars.Damage.BaseValue)
+                    .FromCard(cardPlay.Card)
+                    .Targeting(cardPlay.Target)
+                    .WithHitFx("vfx/vfx_attack_slash")
+                    .Execute(context);
+            }
         }
 
         if (XiangzuLegacyPower.IsInGuardStance(Owner) && BasicStrikeDefendHelper.IsBasicDefend(cardPlay.Card))
-            await CreatureCmd.GainBlock(Owner, cardPlay.Card.DynamicVars.Block, cardPlay);
+        {
+            for (var i = 0; i < extraTriggers; i++)
+                await CreatureCmd.GainBlock(Owner, cardPlay.Card.DynamicVars.Block, cardPlay);
+        }
     }
 }

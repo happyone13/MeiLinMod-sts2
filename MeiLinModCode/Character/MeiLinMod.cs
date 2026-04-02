@@ -53,7 +53,7 @@ public class MeiLinMod : PlaceholderCharacterModel
     public override string CustomCharacterSelectIconPath => "char_select_char_meilin.png".CharacterUiPath();
     public override string CustomCharacterSelectLockedIconPath => "char_select_char_name_locked.png".CharacterUiPath();
     public override string CustomMapMarkerPath => "map_marker_meilin_name.png".CharacterUiPath();
-    public override Color EnergyLabelOutlineColor => Color.Color8(255, 192, 203);
+    public override Color EnergyLabelOutlineColor => Color.Color8(255, 100, 100);
     public override string CustomIconPath => "res://MeiLinMod/scenes/meilin_icon.tscn";
     public override string CustomVisualPath => "res://MeiLinMod/scenes/meilin_character.tscn";
     public override string CustomRestSiteAnimPath => "res://MeiLinMod/scenes/meilin_character_camp.tscn";

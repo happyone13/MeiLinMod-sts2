@@ -47,13 +47,10 @@ public class XuLi() : MeiLinModCard(0, CardType.Skill, CardRarity.Common, Target
         if (target == null)
             return;
 
-        if (!IsUpgraded)
-        {
-            var currentCost = target.EnergyCost.GetWithModifiers(CostModifiers.All);
-            target.EnergyCost.SetThisTurnOrUntilPlayed((int)currentCost + 1);
-        }
-
-        target.BaseReplayCount += 2;
+        var currentCost = target.EnergyCost.GetWithModifiers(CostModifiers.All);
+        target.EnergyCost.SetThisTurnOrUntilPlayed((int)currentCost + 1);
+        target.BaseReplayCount += IsUpgraded ? 2 : 1;
+        CardCmd.ApplyKeyword(target, CardKeyword.Exhaust);
         CardCmd.Preview(target);
 
         if (!AwakeningHelper.IsAwakened(cardPlay))

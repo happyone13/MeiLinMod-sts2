@@ -26,6 +26,8 @@ public partial class MainFile : Node
         LogPatchStatus(harmony, typeof(ArchaicTooth), nameof(ArchaicTooth.AfterObtained));
         LogPatchStatus(harmony, typeof(DustyTome), nameof(DustyTome.SetupForPlayer));
         LogPatchStatus(harmony, typeof(DustyTome), nameof(DustyTome.AfterObtained));
+        LogPatchStatus(harmony, typeof(TouchOfOrobas), nameof(TouchOfOrobas.SetupForPlayer));
+        LogPatchStatus(harmony, typeof(TouchOfOrobas), nameof(TouchOfOrobas.AfterObtained));
         LogPatchStatus(harmony, typeof(MegaAnimationState), nameof(MegaAnimationState.SetAnimation), typeof(string), typeof(bool), typeof(int));
     }
 

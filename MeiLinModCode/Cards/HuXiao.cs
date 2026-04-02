@@ -1,4 +1,5 @@
-﻿using BaseLib.Utils;
+using System.Collections.Generic;
+using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
 using MeiLinMod.MeiLinModCode.Powers;
@@ -9,8 +10,14 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 namespace MeiLinMod.MeiLinModCode.Cards;
 
 [Pool(typeof(MeiLinModCardPool))]
-public class HuXiao() : MeiLinModCard(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
+public class HuXiao : MeiLinModCard
 {
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Innate];
+
+    public HuXiao() : base(2, CardType.Power, CardRarity.Uncommon, TargetType.Self)
+    {
+    }
+
     public override string PortraitPath => IdPortraitPath;
     public override string CustomPortraitPath => IdBigPortraitPath;
 
@@ -22,8 +29,6 @@ public class HuXiao() : MeiLinModCard(1, CardType.Power, CardRarity.Uncommon, Ta
 
     protected override void OnUpgrade()
     {
+        EnergyCost.UpgradeBy(-1);
     }
 }
-
-
-

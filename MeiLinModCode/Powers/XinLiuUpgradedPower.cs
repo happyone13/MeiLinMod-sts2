@@ -1,15 +1,15 @@
+using System;
 using MeiLinMod.MeiLinModCode.Cards;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
-using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 
 namespace MeiLinMod.MeiLinModCode.Powers;
 
-public class LiuShuiXingYunPower : MeiLinModPower
+public class XinLiuUpgradedPower : MeiLinModPower
 {
     private const int TriggerCount = 4;
     private int _progress;
@@ -42,8 +42,8 @@ public class LiuShuiXingYunPower : MeiLinModPower
         InvokeDisplayAmountChanged();
         if (Owner.Player != null)
         {
-            var drawCount = Math.Max(1, (int)Amount);
-            await CardPileCmd.Draw(context, drawCount, Owner.Player);
+            var gain = Math.Max(1, (int)Amount);
+            await PlayerCmd.GainEnergy(gain, Owner.Player);
         }
     }
 }

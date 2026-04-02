@@ -14,11 +14,11 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace MeiLinMod.MeiLinModCode.Cards;
 
 [Pool(typeof(MeiLinModCardPool))]
-public class LianYun() : MeiLinModCard(-1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
+public class LianYun() : MeiLinModCard(-1, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
 {
     protected override bool HasEnergyCostX => true;
     protected override bool ShouldGlowGoldInternal => AwakeningHelper.CanAwakenNow(this);
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(7m, ValueProp.Move)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(5m, ValueProp.Move)];
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [MeiLinHoverTipFactory.Awakening];
 
     public override string PortraitPath => IdPortraitPath;

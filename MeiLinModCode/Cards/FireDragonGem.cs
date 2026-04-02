@@ -11,7 +11,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 namespace MeiLinMod.MeiLinModCode.Cards;
 
 [Pool(typeof(MeiLinModCardPool))]
-public class FireDragonGem() : MeiLinModCard(0, CardType.Power, CardRarity.Basic, TargetType.Self)
+public class FireDragonGem() : MeiLinModCard(1, CardType.Power, CardRarity.Basic, TargetType.Self)
 {
     public override string PortraitPath =>
         $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();

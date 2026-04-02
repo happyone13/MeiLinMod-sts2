@@ -30,6 +30,5 @@ public class XiangzuLegacyRelic : MeiLinModRelic
             Owner.Creature,
             null
         );
-        await PowerCmd.Apply<QiPower>(Owner.Creature, 1m, Owner.Creature, null, silent: true);
     }
 }
