@@ -32,7 +32,7 @@ public class LingGuangZhaXian() : MeiLinModCard(0, CardType.Skill, CardRarity.Un
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Cards.UpgradeValueBy(1m);
+        DynamicVars.Cards.UpgradeValueBy(2m);
     }
 }
 

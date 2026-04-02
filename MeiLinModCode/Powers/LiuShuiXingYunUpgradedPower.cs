@@ -1,3 +1,4 @@
+using System;
 using MeiLinMod.MeiLinModCode.Cards;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -9,9 +10,9 @@ using MegaCrit.Sts2.Core.Models;
 
 namespace MeiLinMod.MeiLinModCode.Powers;
 
-public class LiuShuiXingYunPower : MeiLinModPower
+public class LiuShuiXingYunUpgradedPower : MeiLinModPower
 {
-    private const int TriggerCount = 4;
+    private const int TriggerCount = 3;
     private int _progress;
 
     public override PowerType Type => PowerType.Buff;

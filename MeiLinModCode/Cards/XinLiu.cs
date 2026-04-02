@@ -17,7 +17,10 @@ public class XinLiu() : MeiLinModCard(1, CardType.Power, CardRarity.Rare, Target
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await PlayPowerCastAnim();
-        await PowerCmd.Apply<XinLiuPower>(Owner.Creature, IsUpgraded ? 4m : 5m, Owner.Creature, this);
+        if (IsUpgraded)
+            await PowerCmd.Apply<XinLiuUpgradedPower>(Owner.Creature, 1m, Owner.Creature, this);
+        else
+            await PowerCmd.Apply<XinLiuPower>(Owner.Creature, 1m, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

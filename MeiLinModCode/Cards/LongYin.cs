@@ -9,8 +9,12 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 namespace MeiLinMod.MeiLinModCode.Cards;
 
 [Pool(typeof(MeiLinModCardPool))]
-public class LongYin() : MeiLinModCard(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
+public class LongYin : MeiLinModCard
 {
+    public LongYin() : base(2, CardType.Power, CardRarity.Uncommon, TargetType.Self)
+    {
+    }
+
     public override string PortraitPath => IdPortraitPath;
     public override string CustomPortraitPath => IdBigPortraitPath;
 
@@ -22,5 +26,6 @@ public class LongYin() : MeiLinModCard(1, CardType.Power, CardRarity.Uncommon, T
 
     protected override void OnUpgrade()
     {
+        AddKeyword(CardKeyword.Innate);
     }
 }

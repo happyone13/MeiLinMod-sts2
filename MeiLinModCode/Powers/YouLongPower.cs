@@ -20,7 +20,7 @@ public class YouLongPower : MeiLinModPower
 
         if (BasicStrikeDefendHelper.IsBasicStrike(cardPlay.Card))
         {
-            await CreatureCmd.GainBlock(Owner, Amount, ValueProp.Unpowered | ValueProp.Move, null, fast: true);
+            await CreatureCmd.GainBlock(Owner, Amount, ValueProp.Unpowered, null, fast: true);
             return;
         }
 
@@ -39,6 +39,6 @@ public class YouLongPower : MeiLinModPower
         if (target == null)
             return;
 
-        await CreatureCmd.Damage(context, target, Amount, ValueProp.Unpowered | ValueProp.Move, Owner, null);
+        await CreatureCmd.Damage(context, target, Amount, ValueProp.Unpowered, Owner, null);
     }
 }

@@ -26,7 +26,10 @@ public class LiuShuiXingYun() : MeiLinModCard(1, CardType.Power, CardRarity.Unco
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await PlayPowerCastAnim();
-        await PowerCmd.Apply<LiuShuiXingYunPower>(Owner.Creature, DynamicVars[CountKey].BaseValue, Owner.Creature, this);
+        if (IsUpgraded)
+            await PowerCmd.Apply<LiuShuiXingYunUpgradedPower>(Owner.Creature, 1m, Owner.Creature, this);
+        else
+            await PowerCmd.Apply<LiuShuiXingYunPower>(Owner.Creature, 1m, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

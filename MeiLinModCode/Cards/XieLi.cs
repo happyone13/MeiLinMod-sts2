@@ -22,7 +22,7 @@ public class XieLi() : MeiLinModCard(0, CardType.Skill, CardRarity.Common, Targe
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new BlockVar(4m, ValueProp.Move),
-        new DynamicVar(WeakKey, 2m)
+        new DynamicVar(WeakKey, 1m)
     ];
 
     public override string PortraitPath => IdPortraitPath;
@@ -40,9 +40,8 @@ public class XieLi() : MeiLinModCard(0, CardType.Skill, CardRarity.Common, Targe
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Block.UpgradeValueBy(1m);
+        DynamicVars.Block.UpgradeValueBy(2m);
     }
 }
-
 
 

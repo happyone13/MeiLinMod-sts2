@@ -23,6 +23,12 @@ public class YanLongJiangLin() : MeiLinModCard(2, CardType.Attack, CardRarity.Ra
 
     protected override void AddExtraArgsToDescription(LocString description)
     {
+        if (!IsMutable)
+        {
+            description.Add("HitCount", 0);
+            return;
+        }
+
         var enemy = CombatState?.HittableEnemies?.Count == 1 ? CombatState.HittableEnemies[0] : null;
         var hits = Math.Max(0, (int)(enemy?.GetPower<EmberPower>()?.Amount ?? 0m));
         description.Add("HitCount", hits);

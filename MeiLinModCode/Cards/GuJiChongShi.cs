@@ -4,6 +4,8 @@ using BaseLib.Utils;
 using MeiLinMod;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
+using MeiLinMod.MeiLinModCode.HoverTips;
+using MeiLinMod.MeiLinModCode.Powers;
 using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -17,10 +19,12 @@ namespace MeiLinMod.MeiLinModCode.Cards;
 public class GuJiChongShi() : MeiLinModCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {
     protected override bool IsPlayable => PileType.Hand.GetPile(Owner).Cards.Any(BasicStrikeDefendHelper.IsBasicStrikeOrDefend);
+    protected override bool ShouldGlowGoldInternal => AwakeningHelper.CanAwakenNow(this);
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.Static(StaticHoverTip.ReplayStatic)
+        HoverTipFactory.Static(StaticHoverTip.ReplayStatic),
+        MeiLinHoverTipFactory.Awakening
     ];
 
     public override string PortraitPath => IdPortraitPath;
@@ -45,6 +49,13 @@ public class GuJiChongShi() : MeiLinModCard(1, CardType.Skill, CardRarity.Uncomm
 
         target.BaseReplayCount += 1;
         CardCmd.Preview(target);
+
+        if (!AwakeningHelper.IsAwakened(cardPlay))
+            return;
+
+        var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
+        if (legacy != null)
+            await legacy.EnterOtherStance();
     }
 
     protected override void OnUpgrade()

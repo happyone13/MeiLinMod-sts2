@@ -17,20 +17,12 @@ public class QiGuanChangHong() : MeiLinModCard(1, CardType.Power, CardRarity.Rar
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await PlayPowerCastAnim();
-        await PowerCmd.Apply<StrikeDefendQiProgressPower>(Owner.Creature, 1m, Owner.Creature, this);
-
-        if (!IsUpgraded)
-            return;
-
-        var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
-        if (legacy != null)
-            await legacy.AddQiCounterProgress(2);
+        await PowerCmd.Apply<StrikeDefendQiProgressPower>(Owner.Creature, IsUpgraded ? 2m : 1m, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
     }
 }
-
 
 

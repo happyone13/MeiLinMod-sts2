@@ -9,7 +9,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 namespace MeiLinMod.MeiLinModCode.Cards;
 
 [Pool(typeof(MeiLinModCardPool))]
-public class CanYing() : MeiLinModCard(2, CardType.Power, CardRarity.Rare, TargetType.Self)
+public class CanYing() : MeiLinModCard(3, CardType.Power, CardRarity.Rare, TargetType.Self)
 {
     public override string PortraitPath => IdPortraitPath;
     public override string CustomPortraitPath => IdBigPortraitPath;

@@ -16,13 +16,13 @@ using MegaCrit.Sts2.Core.Models.Powers;
 namespace MeiLinMod.MeiLinModCode.Cards;
 
 [Pool(typeof(MeiLinModCardPool))]
-public class TiShen() : MeiLinModCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+public class TiShen() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {
     private const string VigorKey = "Vigor";
 
     protected override bool IsPlayable => PileType.Hand.GetPile(Owner).Cards.Any(c => c != this);
     protected override bool ShouldGlowGoldInternal => AwakeningHelper.CanAwakenNow(this);
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar(VigorKey, 5m)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar(VigorKey, 3m)];
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [MeiLinHoverTipFactory.Awakening, HoverTipFactory.FromPower<VigorPower>()];
 
     public override string PortraitPath => IdPortraitPath;

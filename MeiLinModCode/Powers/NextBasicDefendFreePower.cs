@@ -10,7 +10,7 @@ namespace MeiLinMod.MeiLinModCode.Powers;
 public class NextBasicDefendFreePower : MeiLinModPower
 {
     public override PowerType Type => PowerType.Buff;
-    public override PowerStackType StackType => PowerStackType.Single;
+    public override PowerStackType StackType => PowerStackType.Counter;
 
     public override bool TryModifyEnergyCostInCombat(CardModel card, decimal originalCost, out decimal modifiedCost)
     {
@@ -29,6 +29,12 @@ public class NextBasicDefendFreePower : MeiLinModPower
         if (cardPlay.Card.Owner.Creature != Owner || !BasicStrikeDefendHelper.IsBasicDefend(cardPlay.Card))
             return;
 
-        await PowerCmd.Remove(this);
+        if (Amount <= 1m)
+        {
+            await PowerCmd.Remove(this);
+            return;
+        }
+
+        await PowerCmd.Apply<NextBasicDefendFreePower>(Owner, -1m, Owner, cardPlay.Card, silent: true);
     }
 }

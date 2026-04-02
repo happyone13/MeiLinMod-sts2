@@ -40,6 +40,12 @@ public class PanLong() : MeiLinModCard(1, CardType.Skill, CardRarity.Uncommon, T
 
     protected override void AddExtraArgsToDescription(LocString description)
     {
+        if (!IsMutable)
+        {
+            description.Add("CurrentBonus", 0m);
+            return;
+        }
+
         var usedCount = CombatManager.Instance?.History?.CardPlaysFinished.Count(e =>
             e.CardPlay.Card.Owner == Owner &&
             BasicStrikeDefendHelper.IsBasicStrikeOrDefend(e.CardPlay.Card)) ?? 0;

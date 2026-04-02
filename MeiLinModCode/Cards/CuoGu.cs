@@ -21,7 +21,7 @@ public class CuoGu() : MeiLinModCard(0, CardType.Attack, CardRarity.Common, Targ
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(4m, ValueProp.Move),
-        new DynamicVar(VulnerableKey, 2m)
+        new DynamicVar(VulnerableKey, 1m)
     ];
 
     public override string PortraitPath => IdPortraitPath;
@@ -45,6 +45,5 @@ public class CuoGu() : MeiLinModCard(0, CardType.Attack, CardRarity.Common, Targ
         DynamicVars.Damage.UpgradeValueBy(3m);
     }
 }
-
 
 

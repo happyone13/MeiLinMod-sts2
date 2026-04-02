@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
-using MeiLinMod.MeiLinModCode.Extensions;
 using MeiLinMod.MeiLinModCode.HoverTips;
 using MeiLinMod.MeiLinModCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
@@ -16,13 +15,11 @@ namespace MeiLinMod.MeiLinModCode.Cards;
 [Pool(typeof(MeiLinModCardPool))]
 public class XiaoLi() : MeiLinModCard(1, CardType.Skill, CardRarity.Common, TargetType.AllEnemies)
 {
-    private const string ProgressKey = "Progress";
-
     protected override bool ShouldGlowGoldInternal => AwakeningHelper.CanAwakenNow(this);
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DynamicVar("Weak", 2m),
-        new DynamicVar(ProgressKey, 2m)
+        new DynamicVar("Weak", 1m),
+        new CardsVar(2)
     ];
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [MeiLinHoverTipFactory.Awakening];
 
@@ -34,23 +31,18 @@ public class XiaoLi() : MeiLinModCard(1, CardType.Skill, CardRarity.Common, Targ
         foreach (var enemy in CombatState.HittableEnemies)
             await PowerCmd.Apply<WeakPower>(enemy, DynamicVars["Weak"].BaseValue, Owner.Creature, this);
 
-        var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
-        if (legacy != null)
-            await legacy.AddQiCounterProgress(DynamicVars[ProgressKey].IntValue);
+        await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner);
 
         if (!AwakeningHelper.IsAwakened(cardPlay))
             return;
 
-        await CardPileCmd.Draw(choiceContext, 1m, Owner);
+        var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
         if (legacy != null)
             await legacy.EnterGuardStance();
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars[ProgressKey].UpgradeValueBy(1m);
+        DynamicVars.Cards.UpgradeValueBy(1m);
     }
 }
-
-
-

@@ -1,7 +1,7 @@
-﻿{
-    "MEILINMOD-ATTACK_DEFENSE_UNITY.title":  "Attack-Defense Unity",
+{
+    "MEILINMOD-ATTACK_DEFENSE_UNITY.title":  "Attack and Defense as One",
     "MEILINMOD-ATTACK_DEFENSE_UNITY.description":  "Randomly draw 2 basic Strike or basic Defend cards from your draw pile and discard pile. They cost 0 this turn.",
-    "MEILINMOD-SHEN_GONG_FANG_YI_TI.title":  "God: Unity of Attack and Defense",
+    "MEILINMOD-SHEN_GONG_FANG_YI_TI.title":  "Divine: Attack and Defense as One",
     "MEILINMOD-SHEN_GONG_FANG_YI_TI.description":  "Play all basic [gold]Strike[/gold] and basic [gold]Defend[/gold] from your hand, draw pile, and discard pile.",
     "MEILINMOD-ZUI_ZHONG_AO_YI_YAN_LONG_JIANG_LIN.title":  "Final Secret: Flame Dragon Descends",
     "MEILINMOD-ZUI_ZHONG_AO_YI_YAN_LONG_JIANG_LIN.description":  "Add 4 0-cost {IfUpgraded:show:[gold]Strike+[/gold]|[gold]Strike[/gold]} to your hand. They gain [gold]Replay[/gold] 1 and [gold]Exhaust[/gold].",
@@ -53,7 +53,7 @@
     "MEILINMOD-HU_XI.description":  "Your next basic [gold]Strike[/gold] or basic [gold]Defend[/gold] costs 0.\nChoose up to {Retain:diff()} cards in your hand to [gold]Retain[/gold] this turn.\n[gold]Awakening[/gold]: Enter Guard Stance.",
     "MEILINMOD-HU_XI.selectionScreenPrompt":  "Choose cards to retain (up to {Amount:diff()})",
     "MEILINMOD-XU_LI.title":  "Charge Up",
-    "MEILINMOD-XU_LI.description":  "Choose 1 basic [gold]Strike[/gold] or basic [gold]Defend[/gold] in your hand. {IfUpgraded:show:It gains [gold]Replay[/gold] 2|It costs +1 this turn and gains [gold]Replay[/gold] 2}. [gold]Awakening[/gold]: Enter Attack Stance.",
+    "MEILINMOD-XU_LI.description":  "Choose 1 basic [gold]Strike[/gold] or basic [gold]Defend[/gold] in your hand. It costs +1 this turn and gains [gold]Replay[/gold] {IfUpgraded:show:2|1} and [gold]Exhaust[/gold]. [gold]Awakening[/gold]: Enter Attack Stance.",
     "MEILINMOD-XU_LI.selectionScreenPrompt":  "Choose a basic Strike or Defend",
     "MEILINMOD-ZUO_YOU_QUAN.title":  "Left Right",
     "MEILINMOD-ZUO_YOU_QUAN.description":  "Create 2 basic {IfUpgraded:show:[gold]Strike+[/gold]|[gold]Strike[/gold]} in your hand.\nThey cost 0 this turn.\n[gold]Awakening[/gold]: Enter Attack Stance.",
@@ -64,19 +64,19 @@
     "MEILINMOD-SHENG_LONG_JIAO.title":  "Rising Dragon Kick",
     "MEILINMOD-SHENG_LONG_JIAO.description":  "For each basic [gold]Strike[/gold] or basic [gold]Defend[/gold] played this turn, deal {Damage:diff()} damage to the target once.",
     "MEILINMOD-FA_JIN.title":  "Explosive Force",
-    "MEILINMOD-FA_JIN.description":  "Deal {Damage:diff()} damage.\nThis combat, this card gains +{Bonus:diff()} damage for each basic [gold]Strike[/gold] or basic [gold]Defend[/gold] played.",
+    "MEILINMOD-FA_JIN.description":  "Deal {Damage:diff()} damage.\nThis combat, this card gains +{Bonus:diff()} damage for each basic [gold]Strike[/gold] or basic [gold]Defend[/gold] played (currently +{CurrentBonus}).",
     "MEILINMOD-YIN_SHE_CHU_DONG.title":  "Bait the Snake",
     "MEILINMOD-YIN_SHE_CHU_DONG.description":  "Deal {Damage:diff()} damage.\nYour next basic [gold]Defend[/gold] is played twice.\n[gold]Awakening[/gold]: Enter Guard Stance.",
     "MEILINMOD-LONG_XI.title":  "Dragon Breath",
     "MEILINMOD-LONG_XI.description":  "Each [gold]Qi[/gold] makes your Ember application gain +1 stack.",
     "MEILINMOD-YAN_LONG_CHU_DONG.title":  "Blazing Dragon Emerges",
-    "MEILINMOD-YAN_LONG_CHU_DONG.description":  "While in Attack Stance, your attack hits apply 2 extra [gold]Ember[/gold].",
+    "MEILINMOD-YAN_LONG_CHU_DONG.description":  "While in Attack Stance, your attack hits apply {IfUpgraded:show:2|1} extra [gold]Ember[/gold].",
     "MEILINMOD-YU_JIN_LIAO_YUAN.title":  "Embers Run Wild",
     "MEILINMOD-YU_JIN_LIAO_YUAN.description":  "At the start of your turn, all enemies gain {Ember:diff()} [gold]Ember[/gold].",
     "MEILINMOD-XIN_HUO_XIANG_CHUAN.title":  "Pass the Torch",
     "MEILINMOD-XIN_HUO_XIANG_CHUAN.description":  "The next 3 times you play a basic [gold]Strike[/gold] or basic [gold]Defend[/gold], draw 1 card.",
     "MEILINMOD-GEN_XING.title":  "Grit",
-    "MEILINMOD-GEN_XING.description":  "Gain {Block:diff()} Block. This turn, when you are attacked, attackers gain Ember next turn.",
+"MEILINMOD-GEN_XING.description":  "Gain {Block:diff()} Block. This turn, when you are attacked, attackers gain Ember.",
     "MEILINMOD-HUO_LONG_TU_XI.title":  "Fire Dragon Breath",
     "MEILINMOD-HUO_LONG_TU_XI.description":  "All enemies gain {Ember:diff()} [gold]Ember[/gold]. [gold]Awakening[/gold]: Qi counter +1.",
     "MEILINMOD-YAN_DUN_FAN_JI.title":  "Flame Shield Counter",
@@ -135,7 +135,7 @@
     "MEILINMOD-LONG_ZHI_NU.title":  "Dragon Wrath",
     "MEILINMOD-CUO_GU.title":  "Bone Grind",
     "MEILINMOD-LIAN_YUN.title":  "Cloud Chain",
-    "MEILINMOD-RAN_MU.description":  "An enemy gains {Ember:diff()} [gold]Ember[/gold].\n[gold]Awakening[/gold]: draw {Cards:diff()}.",
+    "MEILINMOD-RAN_MU.description":  "An enemy gains 3 [gold]Ember[/gold].\nDraw {Cards:diff()} cards.\n[gold]Awakening[/gold]: Enter Attack Stance.",
     "MEILINMOD-SUI_XIN_ER_XING.title":  "Follow the Flow",
     "MEILINMOD-CAN_YING.title":  "Afterimage",
     "MEILINMOD-JIN_ZHONG_ZHAO.title":  "Golden Bell",
@@ -183,7 +183,7 @@
     "MEILINMOD-LONG_ZHI_QI_SHI.description":  "At the start of your turn, gain 1 Energy.",
     "MEILINMOD-TI_SHEN.title":  "Refresh",
     "MEILINMOD-YI_LI_YU_JIAN_TA_ZHI_SHANG.description":  "This turn, your HP cannot be reduced below 1.",
-    "MEILINMOD-HUO_LONG_JING_TIAN.title":  "Heavenly Dragon Descends",
+    "MEILINMOD-HUO_LONG_JING_TIAN.title":  "Heaven-Shaking Fire Dragon",
     "MEILINMOD-HU_XIAO.title":  "Tiger Roar",
     "MEILINMOD-CUN_JIN.description":  "Deal {Damage:diff()} damage.\n[gold]Awakening[/gold]: apply {Ember:diff()} [gold]Ember[/gold].",
     "MEILINMOD-JIN_ZHONG_ZHAO.description":  "Gain {Block:diff()} Block.\nNext turn draw {Cards:diff()}.\n[gold]Awakening[/gold]: draw 1 extra.",
@@ -199,6 +199,5 @@
     "MEILINMOD-GUI_YI.description":  "Become treated as both Attack Stance and Guard Stance.\n{IfUpgraded:show:Gain 3 Qi counters.|}",
     "MEILINMOD-YIN_YANG.description":  "Whenever you switch stance, gain 1 Energy."
 }
-
 
 

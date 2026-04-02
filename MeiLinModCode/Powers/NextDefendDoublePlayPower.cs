@@ -11,7 +11,7 @@ public class NextDefendDoublePlayPower : MeiLinModPower
     private bool _processing;
 
     public override PowerType Type => PowerType.Buff;
-    public override PowerStackType StackType => PowerStackType.Single;
+    public override PowerStackType StackType => PowerStackType.Counter;
 
     public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
     {
@@ -25,7 +25,13 @@ public class NextDefendDoublePlayPower : MeiLinModPower
         try
         {
             await CardCmd.AutoPlay(context, cardPlay.Card.CreateDupe(), null);
-            await PowerCmd.Remove(this);
+            if (Amount <= 1m)
+            {
+                await PowerCmd.Remove(this);
+                return;
+            }
+
+            await PowerCmd.Apply<NextDefendDoublePlayPower>(Owner, -1m, Owner, cardPlay.Card, silent: true);
         }
         finally
         {
@@ -33,4 +39,3 @@ public class NextDefendDoublePlayPower : MeiLinModPower
         }
     }
 }
-
