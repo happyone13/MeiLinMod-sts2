@@ -9,9 +9,9 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 namespace MeiLinMod.MeiLinModCode.Cards;
 
 [Pool(typeof(MeiLinModCardPool))]
-public class YiLiYuJianTaZhiShang() : MeiLinModCard(1, CardType.Power, CardRarity.Rare, TargetType.Self)
+public class YiLiYuJianTaZhiShang() : MeiLinModCard(1, CardType.Skill, CardRarity.Rare, TargetType.Self)
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Retain];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Innate];
 
     public override string PortraitPath => IdPortraitPath;
     public override string CustomPortraitPath => IdBigPortraitPath;
@@ -20,13 +20,13 @@ public class YiLiYuJianTaZhiShang() : MeiLinModCard(1, CardType.Power, CardRarit
     {
         await PlayPowerCastAnim();
         await PowerCmd.Apply<LastStandThisTurnPower>(Owner.Creature, 1m, Owner.Creature, this);
+        EnergyCost.AddThisCombat(1);
     }
 
     protected override void OnUpgrade()
     {
-        EnergyCost.UpgradeBy(-1);
+        AddKeyword(CardKeyword.Retain);
     }
 }
-
 
 

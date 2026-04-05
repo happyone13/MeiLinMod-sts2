@@ -21,8 +21,8 @@ public class RanMu() : MeiLinModCard(1, CardType.Skill, CardRarity.Common, Targe
     protected override bool ShouldGlowGoldInternal => AwakeningHelper.CanAwakenNow(this);
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new CardsVar(1),
-        new DynamicVar(EmberKey, 3m)
+        new CardsVar(2),
+        new DynamicVar(EmberKey, 2m)
     ];
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [MeiLinHoverTipFactory.Awakening, MeiLinHoverTipFactory.Ember];
 

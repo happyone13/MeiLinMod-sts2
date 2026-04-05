@@ -1,16 +1,21 @@
 using BaseLib.Utils;
+using System.Collections.Generic;
 using MeiLinMod.MeiLinModCode.Character;
-using MeiLinMod.MeiLinModCode.Extensions;
+using MeiLinMod.MeiLinModCode.HoverTips;
 using MeiLinMod.MeiLinModCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace MeiLinMod.MeiLinModCode.Cards;
 
 [Pool(typeof(MeiLinModCardPool))]
 public class LongYin : MeiLinModCard
 {
+    protected override bool ShouldGlowGoldInternal => AwakeningHelper.CanAwakenNow(this);
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [MeiLinHoverTipFactory.Awakening];
+
     public LongYin() : base(2, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
     }
@@ -22,10 +27,13 @@ public class LongYin : MeiLinModCard
     {
         await PlayPowerCastAnim();
         await PowerCmd.Apply<LongYinPower>(Owner.Creature, 1m, Owner.Creature, this);
+
+        if (AwakeningHelper.IsAwakened(cardPlay))
+            await PlayerCmd.GainEnergy(1, Owner);
     }
 
     protected override void OnUpgrade()
     {
-        AddKeyword(CardKeyword.Innate);
+        AddKeyword(CardKeyword.Retain);
     }
 }

@@ -13,7 +13,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 namespace MeiLinMod.MeiLinModCode.Cards;
 
 [Pool(typeof(MeiLinModCardPool))]
-public class JieLiDaLi() : MeiLinModCard(1, CardType.Skill, CardRarity.Common, TargetType.Self)
+public class JieLiDaLi() : MeiLinModCard(0, CardType.Skill, CardRarity.Common, TargetType.Self)
 {
     protected override bool ShouldGlowGoldInternal => AwakeningHelper.CanAwakenNow(this);
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [MeiLinHoverTipFactory.Awakening];
@@ -25,29 +25,30 @@ public class JieLiDaLi() : MeiLinModCard(1, CardType.Skill, CardRarity.Common, T
     {
         await PowerCmd.Apply<BorrowForceShieldPower>(Owner.Creature, 1m, Owner.Creature, this);
 
-        if (!AwakeningHelper.IsAwakened(cardPlay))
+        if (AwakeningHelper.IsAwakened(cardPlay))
+        {
+            var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
+            if (legacy != null)
+                await legacy.EnterAttackStance();
+        }
+
+        if (!IsUpgraded)
             return;
 
         var candidates = PileType.Draw.GetPile(Owner).Cards
             .Concat(PileType.Discard.GetPile(Owner).Cards)
-            .Where(BasicStrikeDefendHelper.IsBasicStrikeOrDefend)
-            .Distinct()
+            .Where(BasicStrikeDefendHelper.IsBasicStrike)
             .ToList();
         if (candidates.Count == 0)
             return;
 
-        var selected = (await CardSelectCmd.FromSimpleGrid(
-                choiceContext,
-                candidates,
-                Owner,
-                new CardSelectorPrefs(SelectionScreenPrompt, 1)))
-            .FirstOrDefault();
-        if (selected != null)
-            await CardPileCmd.Add(selected, PileType.Hand);
+        var selected = Owner.RunState.Rng.CombatTargets.NextItem(candidates);
+        if (selected == null)
+            return;
+        await CardPileCmd.Add(selected, PileType.Hand);
     }
 
     protected override void OnUpgrade()
     {
-        EnergyCost.UpgradeBy(-1);
     }
 }

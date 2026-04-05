@@ -7,22 +7,18 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.ValueProps;
 
 namespace MeiLinMod.MeiLinModCode.Cards;
 
 [Pool(typeof(MeiLinModCardPool))]
-public class QiPoBaFang() : MeiLinModCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.AllEnemies)
+public class QiPoBaFang() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommon, TargetType.AllEnemies)
 {
-    private const string ProgressKey = "Progress";
     private const string BurstKey = "Burst";
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Retain];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(8m, ValueProp.Move),
-        new DynamicVar(ProgressKey, 3m),
         new DynamicVar(BurstKey, 10m)
     ];
 
@@ -31,15 +27,6 @@ public class QiPoBaFang() : MeiLinModCard(1, CardType.Skill, CardRarity.Uncommon
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this)
-            .TargetingAllOpponents(CombatState)
-            .Execute(choiceContext);
-
-        var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
-        if (legacy != null)
-            await legacy.AddQiCounterProgress(DynamicVars[ProgressKey].IntValue);
-
         var qi = (int)(Owner.Creature.GetPower<QiPower>()?.Amount ?? 0m);
         if (qi <= 0)
             return;
@@ -54,10 +41,6 @@ public class QiPoBaFang() : MeiLinModCard(1, CardType.Skill, CardRarity.Uncommon
 
     protected override void OnUpgrade()
     {
-        DynamicVars[ProgressKey].UpgradeValueBy(2m);
         DynamicVars[BurstKey].UpgradeValueBy(5m);
     }
 }
-
-
-

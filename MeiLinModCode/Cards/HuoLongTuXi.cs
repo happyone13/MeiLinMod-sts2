@@ -17,10 +17,13 @@ namespace MeiLinMod.MeiLinModCode.Cards;
 public class HuoLongTuXi() : MeiLinModCard(0, CardType.Skill, CardRarity.Common, TargetType.Self)
 {
     private const string EmberKey = "Ember";
+    private const string ProgressKey = "Progress";
 
-    protected override bool ShouldGlowGoldInternal => AwakeningHelper.CanAwakenNow(this);
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar(EmberKey, 2m)];
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [MeiLinHoverTipFactory.Awakening];
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
+        new DynamicVar(EmberKey, 2m),
+        new DynamicVar(ProgressKey, 2m)
+    ];
 
     public override string PortraitPath => IdPortraitPath;
     public override string CustomPortraitPath => IdBigPortraitPath;
@@ -30,12 +33,9 @@ public class HuoLongTuXi() : MeiLinModCard(0, CardType.Skill, CardRarity.Common,
         foreach (var enemy in CombatState.HittableEnemies)
             await PowerCmd.Apply<EmberPower>(enemy, DynamicVars[EmberKey].BaseValue, Owner.Creature, this);
 
-        if (!AwakeningHelper.IsAwakened(cardPlay))
-            return;
-
         var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
         if (legacy != null)
-            await legacy.AddQiCounterProgress(1);
+            await legacy.AddQiCounterProgress(DynamicVars[ProgressKey].IntValue);
     }
 
     protected override void OnUpgrade()

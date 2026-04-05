@@ -11,7 +11,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 namespace MeiLinMod.MeiLinModCode.Cards;
 
 [Pool(typeof(MeiLinModCardPool))]
-public class SuiXinErXing() : MeiLinModCard(1, CardType.Power, CardRarity.Rare, TargetType.Self)
+public class SuiXinErXing() : MeiLinModCard(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
 {
     private const string ProgressKey = "Progress";
 
@@ -23,7 +23,7 @@ public class SuiXinErXing() : MeiLinModCard(1, CardType.Power, CardRarity.Rare, 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await PlayPowerCastAnim();
-        await PowerCmd.Apply<StanceSwitchQiProgressPower>(Owner.Creature, DynamicVars[ProgressKey].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<QiStartProgressPower>(Owner.Creature, DynamicVars[ProgressKey].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
@@ -31,5 +31,3 @@ public class SuiXinErXing() : MeiLinModCard(1, CardType.Power, CardRarity.Rare, 
         DynamicVars[ProgressKey].UpgradeValueBy(1m);
     }
 }
-
-

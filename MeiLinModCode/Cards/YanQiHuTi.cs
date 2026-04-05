@@ -18,7 +18,7 @@ public class YanQiHuTi() : MeiLinModCard(0, CardType.Skill, CardRarity.Common, T
     private const string ProgressKey = "Progress";
 
     public override bool GainsBlock => true;
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Innate];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Innate, CardKeyword.Exhaust];
     protected override bool ShouldGlowGoldInternal => AwakeningHelper.CanAwakenNow(this);
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [MeiLinHoverTipFactory.Awakening];
     protected override IEnumerable<DynamicVar> CanonicalVars =>

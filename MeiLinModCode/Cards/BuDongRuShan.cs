@@ -12,7 +12,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 namespace MeiLinMod.MeiLinModCode.Cards;
 
 [Pool(typeof(MeiLinModCardPool))]
-public class BuDongRuShan() : MeiLinModCard(1, CardType.Skill, CardRarity.Common, TargetType.Self)
+public class BuDongRuShan() : MeiLinModCard(0, CardType.Skill, CardRarity.Common, TargetType.Self)
 {
     protected override bool ShouldGlowGoldInternal => AwakeningHelper.CanAwakenNow(this);
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [MeiLinHoverTipFactory.Awakening];
@@ -22,13 +22,16 @@ public class BuDongRuShan() : MeiLinModCard(1, CardType.Skill, CardRarity.Common
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
-        if (legacy != null)
-            await legacy.EnterGuardStance();
-
         await PowerCmd.Apply<NextBasicDefendFreePower>(Owner.Creature, 1m, Owner.Creature, this);
 
-        if (!AwakeningHelper.IsAwakened(cardPlay))
+        if (AwakeningHelper.IsAwakened(cardPlay))
+        {
+            var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
+            if (legacy != null)
+                await legacy.EnterGuardStance();
+        }
+
+        if (!IsUpgraded)
             return;
 
         var candidates = PileType.Draw.GetPile(Owner).Cards
@@ -46,6 +49,5 @@ public class BuDongRuShan() : MeiLinModCard(1, CardType.Skill, CardRarity.Common
 
     protected override void OnUpgrade()
     {
-        EnergyCost.UpgradeBy(-1);
     }
 }

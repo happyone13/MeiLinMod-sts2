@@ -11,16 +11,14 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 namespace MeiLinMod.MeiLinModCode.Cards;
 
 [Pool(typeof(MeiLinModCardPool))]
-public class RanQiHuaYan() : MeiLinModCard(0, CardType.Skill, CardRarity.Common, TargetType.AllEnemies)
+public class RanQiHuaYan() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncommon, TargetType.AllEnemies)
 {
-    private const string ProgressKey = "Progress";
     private const string EmberKey = "Ember";
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Retain];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DynamicVar(ProgressKey, 2m),
         new DynamicVar(EmberKey, 3m)
     ];
 
@@ -29,10 +27,6 @@ public class RanQiHuaYan() : MeiLinModCard(0, CardType.Skill, CardRarity.Common,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
-        if (legacy != null)
-            await legacy.AddQiCounterProgress(DynamicVars[ProgressKey].IntValue);
-
         var qi = (int)(Owner.Creature.GetPower<QiPower>()?.Amount ?? 0m);
         if (qi <= 0)
             return;

@@ -10,7 +10,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 namespace MeiLinMod.MeiLinModCode.Cards;
 
 [Pool(typeof(MeiLinModCardPool))]
-public class SiJiDaiFa() : MeiLinModCard(1, CardType.Skill, CardRarity.Common, TargetType.Self)
+public class SiJiDaiFa() : MeiLinModCard(0, CardType.Skill, CardRarity.Common, TargetType.Self)
 {
     protected override bool ShouldGlowGoldInternal => AwakeningHelper.CanAwakenNow(this);
 
@@ -19,13 +19,16 @@ public class SiJiDaiFa() : MeiLinModCard(1, CardType.Skill, CardRarity.Common, T
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
-        if (legacy != null)
-            await legacy.EnterAttackStance();
-
         await PowerCmd.Apply<NextBasicStrikeFreePower>(Owner.Creature, 1m, Owner.Creature, this);
 
-        if (!AwakeningHelper.IsAwakened(cardPlay))
+        if (AwakeningHelper.IsAwakened(cardPlay))
+        {
+            var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
+            if (legacy != null)
+                await legacy.EnterAttackStance();
+        }
+
+        if (!IsUpgraded)
             return;
 
         var candidates = PileType.Draw.GetPile(Owner).Cards
@@ -43,6 +46,5 @@ public class SiJiDaiFa() : MeiLinModCard(1, CardType.Skill, CardRarity.Common, T
 
     protected override void OnUpgrade()
     {
-        EnergyCost.UpgradeBy(-1);
     }
 }

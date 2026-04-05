@@ -16,16 +16,15 @@ namespace MeiLinMod.MeiLinModCode.Cards;
 [Pool(typeof(MeiLinModCardPool))]
 public class ZhenLongJueXing() : MeiLinModCard(0, CardType.Skill, CardRarity.Rare, TargetType.Self)
 {
-    private const string EnergyKey = "Energy";
     private const string DrawKey = "Draw";
     private const string EmberKey = "Ember";
     private const string ProgressKey = "Progress";
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
     protected override bool ShouldGlowGoldInternal => AwakeningHelper.CanAwakenNow(this);
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DynamicVar(EnergyKey, 1m),
         new DynamicVar(DrawKey, 3m),
         new DynamicVar(EmberKey, 3m),
         new DynamicVar(ProgressKey, 3m)
@@ -33,7 +32,6 @@ public class ZhenLongJueXing() : MeiLinModCard(0, CardType.Skill, CardRarity.Rar
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        EnergyHoverTip,
         HoverTipFactory.FromPower<EnergyNextTurnPower>(),
         HoverTipFactory.FromPower<DrawCardsNextTurnPower>(),
         MeiLinHoverTipFactory.Awakening,
@@ -45,7 +43,7 @@ public class ZhenLongJueXing() : MeiLinModCard(0, CardType.Skill, CardRarity.Rar
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PlayerCmd.GainEnergy(DynamicVars[EnergyKey].IntValue, Owner);
+        await PowerCmd.Apply<NextPowerCardCostDownPower>(Owner.Creature, 99m, Owner.Creature, this);
         if (!AwakeningHelper.IsAwakened(cardPlay))
             return;
 
@@ -64,6 +62,3 @@ public class ZhenLongJueXing() : MeiLinModCard(0, CardType.Skill, CardRarity.Rar
         DynamicVars[ProgressKey].UpgradeValueBy(1m);
     }
 }
-
-
-

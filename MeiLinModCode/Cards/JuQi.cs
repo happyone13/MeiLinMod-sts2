@@ -25,10 +25,11 @@ public class JuQi() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncommon, Targ
         await PowerCmd.Apply<NextPowerCardCostDownPower>(Owner.Creature, 1m, Owner.Creature, this);
 
         if (AwakeningHelper.IsAwakened(cardPlay))
-            await CardPileCmd.Draw(choiceContext, IsUpgraded ? 2m : 1m, Owner);
+            await CardPileCmd.Draw(choiceContext, 1m, Owner);
     }
 
     protected override void OnUpgrade()
     {
+        AddKeyword(CardKeyword.Innate);
     }
 }
