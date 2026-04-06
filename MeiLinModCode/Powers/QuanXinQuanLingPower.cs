@@ -19,7 +19,7 @@ public class QuanXinQuanLingPower : MeiLinModPower
 
     public override bool TryModifyEnergyCostInCombat(CardModel card, decimal originalCost, out decimal modifiedCost)
     {
-        if (card.Owner.Creature != Owner || !BasicStrikeDefendHelper.IsBasicStrikeOrDefend(card))
+        if (card.Owner?.Creature != Owner || !BasicStrikeDefendHelper.IsBasicStrikeOrDefend(card))
         {
             modifiedCost = originalCost;
             return false;
@@ -36,7 +36,7 @@ public class QuanXinQuanLingPower : MeiLinModPower
         PileType pileType,
         CardPilePosition position)
     {
-        if (card.Owner.Creature != Owner || !BasicStrikeDefendHelper.IsBasicStrikeOrDefend(card))
+        if (card.Owner?.Creature != Owner || !BasicStrikeDefendHelper.IsBasicStrikeOrDefend(card))
             return (pileType, position);
 
         return (PileType.Exhaust, position);

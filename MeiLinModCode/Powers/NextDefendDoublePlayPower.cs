@@ -18,7 +18,7 @@ public class NextDefendDoublePlayPower : MeiLinModPower
         if (_processing)
             return;
 
-        if (cardPlay.Card.Owner.Creature != Owner || !BasicStrikeDefendHelper.IsBasicDefend(cardPlay.Card))
+        if (cardPlay.Card.Owner?.Creature != Owner || !BasicStrikeDefendHelper.IsBasicDefend(cardPlay.Card))
             return;
 
         _processing = true;

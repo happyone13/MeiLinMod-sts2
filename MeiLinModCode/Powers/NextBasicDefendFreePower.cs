@@ -14,7 +14,7 @@ public class NextBasicDefendFreePower : MeiLinModPower
 
     public override bool TryModifyEnergyCostInCombat(CardModel card, decimal originalCost, out decimal modifiedCost)
     {
-        if (card.Owner.Creature != Owner || !BasicStrikeDefendHelper.IsBasicDefend(card))
+        if (card.Owner?.Creature != Owner || !BasicStrikeDefendHelper.IsBasicDefend(card))
         {
             modifiedCost = originalCost;
             return false;
@@ -26,7 +26,7 @@ public class NextBasicDefendFreePower : MeiLinModPower
 
     public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
     {
-        if (cardPlay.Card.Owner.Creature != Owner || !BasicStrikeDefendHelper.IsBasicDefend(cardPlay.Card))
+        if (cardPlay.Card.Owner?.Creature != Owner || !BasicStrikeDefendHelper.IsBasicDefend(cardPlay.Card))
             return;
 
         if (Amount <= 1m)

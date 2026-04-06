@@ -43,7 +43,7 @@ public class JiBenGongPower : MeiLinModPower
 
     private void ApplyBonusesToCard(CardModel card)
     {
-        if (card.Owner.Creature != Owner)
+        if (card.Owner?.Creature != Owner)
             return;
 
         if (BasicStrikeDefendHelper.IsBasicStrike(card))

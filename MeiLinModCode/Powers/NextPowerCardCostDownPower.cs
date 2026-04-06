@@ -13,7 +13,7 @@ public class NextPowerCardCostDownPower : MeiLinModPower
 
     public override bool TryModifyEnergyCostInCombat(CardModel card, decimal originalCost, out decimal modifiedCost)
     {
-        if (card.Owner.Creature != Owner || card.Type != CardType.Power)
+        if (card.Owner?.Creature != Owner || card.Type != CardType.Power)
         {
             modifiedCost = originalCost;
             return false;
@@ -25,7 +25,7 @@ public class NextPowerCardCostDownPower : MeiLinModPower
 
     public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
     {
-        if (cardPlay.Card.Owner.Creature != Owner || cardPlay.Card.Type != CardType.Power)
+        if (cardPlay.Card.Owner?.Creature != Owner || cardPlay.Card.Type != CardType.Power)
             return;
 
         await PowerCmd.Remove(this);

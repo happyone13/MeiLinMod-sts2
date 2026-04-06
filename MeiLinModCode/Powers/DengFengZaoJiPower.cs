@@ -16,7 +16,7 @@ public class DengFengZaoJiPower : MeiLinModPower
 
     public override Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
     {
-        if (cardPlay.Card.Owner.Creature != Owner)
+        if (cardPlay.Card.Owner?.Creature != Owner)
             return Task.CompletedTask;
 
         if (cardPlay.Card.Tags.Contains(CardTag.Strike))
@@ -35,7 +35,7 @@ public class DengFengZaoJiPower : MeiLinModPower
 
     public override Task AfterCardEnteredCombat(CardModel card)
     {
-        if (card.Owner.Creature != Owner)
+        if (card.Owner?.Creature != Owner)
             return Task.CompletedTask;
 
         if (_strikeBonus > 0m && card.Tags.Contains(CardTag.Strike))

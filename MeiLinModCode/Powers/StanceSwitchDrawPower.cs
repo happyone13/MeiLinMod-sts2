@@ -22,7 +22,7 @@ public class StanceSwitchDrawPower : MeiLinModPower
 
     public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
     {
-        if (cardPlay.Card.Owner.Creature != Owner || Owner.Player == null)
+        if (cardPlay.Card.Owner?.Creature != Owner || Owner.Player == null)
             return;
 
         var legacy = Owner.GetPower<XiangzuLegacyPower>();

@@ -12,7 +12,7 @@ public class StrikeDefendQiProgressPower : MeiLinModPower
 
     public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
     {
-        if (cardPlay.Card.Owner.Creature != Owner)
+        if (cardPlay.Card.Owner?.Creature != Owner)
             return;
 
         if (!BasicStrikeDefendHelper.IsBasicStrikeOrDefend(cardPlay.Card))
