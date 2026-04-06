@@ -44,7 +44,10 @@ public class WenQuan() : MeiLinModCard(0, CardType.Skill, CardRarity.Rare, Targe
         }
 
         if (AwakeningHelper.IsAwakened(cardPlay))
+        {
+            await PlayerCmd.LoseEnergy(3, Owner);
             await PowerCmd.Apply<BasicStrikeDefendFreeThisTurnPower>(Owner.Creature, 1m, Owner.Creature, this);
+        }
     }
 
     protected override void OnUpgrade()
