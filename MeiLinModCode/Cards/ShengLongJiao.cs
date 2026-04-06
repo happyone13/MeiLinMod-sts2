@@ -9,6 +9,7 @@ using MegaCrit.Sts2.Core.Combat.History.Entries;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 
@@ -22,6 +23,11 @@ public class ShengLongJiao() : MeiLinModCard(1, CardType.Attack, CardRarity.Unco
     public override string PortraitPath => IdPortraitPath;
     public override string CustomPortraitPath => IdBigPortraitPath;
 
+    protected override void AddExtraArgsToDescription(LocString description)
+    {
+        description.Add("CurrentHitCount", GetHitCountThisTurn() + 1);
+    }
+
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         MeiLinAudioService.SuppressNextDefaultAttackSfx();
@@ -29,10 +35,7 @@ public class ShengLongJiao() : MeiLinModCard(1, CardType.Attack, CardRarity.Unco
 
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
 
-        var hitCount = MegaCrit.Sts2.Core.Combat.CombatManager.Instance.History.CardPlaysFinished.Count(e =>
-            e.HappenedThisTurn(CombatState) &&
-            e.CardPlay.Card.Owner == Owner &&
-            BasicStrikeDefendHelper.IsBasicStrikeOrDefend(e.CardPlay.Card));
+        var hitCount = GetHitCountThisTurn() + 1;
 
         if (hitCount <= 0)
             return;
@@ -47,9 +50,21 @@ public class ShengLongJiao() : MeiLinModCard(1, CardType.Attack, CardRarity.Unco
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(2m);
+    }
+
+    private int GetHitCountThisTurn()
+    {
+        if (!IsMutable)
+            return 0;
+
+        var history = MegaCrit.Sts2.Core.Combat.CombatManager.Instance?.History?.CardPlaysFinished;
+        if (history == null || CombatState == null)
+            return 0;
+
+        return history.Count(e =>
+            e.HappenedThisTurn(CombatState) &&
+            e.CardPlay.Card.Owner == Owner &&
+            (IsUpgraded || BasicStrikeDefendHelper.IsBasicStrikeOrDefend(e.CardPlay.Card)));
     }
 }
-
-
 

@@ -140,6 +140,12 @@ public static class MeiLinAudioService
 
     private static bool TryResolvePath(string key, out string path)
     {
+        if (!key.Contains("meilin", StringComparison.Ordinal))
+        {
+            path = string.Empty;
+            return false;
+        }
+
         if (key.Contains("attack", StringComparison.Ordinal))
         {
             path = PickRandom(AttackPool);

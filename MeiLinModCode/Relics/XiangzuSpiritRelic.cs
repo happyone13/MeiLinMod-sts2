@@ -12,7 +12,7 @@ namespace MeiLinMod.MeiLinModCode.Relics;
 [Pool(typeof(MeiLinModRelicPool))]
 public class XiangzuSpiritRelic : MeiLinModRelic
 {
-    public override RelicRarity Rarity => RelicRarity.Common;
+    public override RelicRarity Rarity => RelicRarity.Starter;
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         MeiLinHoverTipFactory.XiangzuLegacy,

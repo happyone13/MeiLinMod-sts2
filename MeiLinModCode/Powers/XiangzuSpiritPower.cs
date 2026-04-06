@@ -36,11 +36,14 @@ public class XiangzuSpiritPower : MeiLinModPower
         Creature? applier,
         CardModel? cardSource)
     {
+        if (power != this || power.Owner != Owner)
+            return Task.CompletedTask;
+
         var legacy = Owner.GetPower<XiangzuLegacyPower>();
         if (legacy == null)
             return Task.CompletedTask;
 
-        var targetApplied = Math.Max(1, (int)power.Amount);
+        var targetApplied = Math.Max(1, (int)Amount);
         var delta = targetApplied - _applied;
         if (delta != 0)
         {

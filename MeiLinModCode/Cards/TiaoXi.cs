@@ -11,8 +11,6 @@ namespace MeiLinMod.MeiLinModCode.Cards;
 [Pool(typeof(MeiLinModCardPool))]
 public class TiaoXi() : MeiLinModCard(3, CardType.Power, CardRarity.Rare, TargetType.Self)
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Ethereal];
-
     public override string PortraitPath => IdPortraitPath;
     public override string CustomPortraitPath => IdBigPortraitPath;
 
@@ -24,9 +22,8 @@ public class TiaoXi() : MeiLinModCard(3, CardType.Power, CardRarity.Rare, Target
 
     protected override void OnUpgrade()
     {
-        RemoveKeyword(CardKeyword.Ethereal);
+        AddKeyword(CardKeyword.Retain);
     }
 }
-
 
 

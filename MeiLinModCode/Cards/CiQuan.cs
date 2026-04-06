@@ -47,7 +47,7 @@ public class CiQuan() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommon, T
 
         var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
         if (legacy != null)
-            await legacy.EnterGuardStance();
+            await legacy.EnterOtherStance();
 
         if (AwakeningHelper.IsAwakened(cardPlay))
         {

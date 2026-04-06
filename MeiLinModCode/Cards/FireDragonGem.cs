@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using BaseLib.Extensions;
 using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
@@ -13,6 +14,8 @@ namespace MeiLinMod.MeiLinModCode.Cards;
 [Pool(typeof(MeiLinModCardPool))]
 public class FireDragonGem() : MeiLinModCard(1, CardType.Power, CardRarity.Basic, TargetType.Self)
 {
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Innate];
+
     public override string PortraitPath =>
         $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
 
@@ -40,6 +43,6 @@ public class FireDragonGem() : MeiLinModCard(1, CardType.Power, CardRarity.Basic
 
     protected override void OnUpgrade()
     {
-        AddKeyword(CardKeyword.Innate);
+        EnergyCost.UpgradeBy(-1);
     }
 }

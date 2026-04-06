@@ -1,5 +1,5 @@
-﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
@@ -9,42 +9,48 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.ValueProps;
+using MegaCrit.Sts2.Core.Models;
 
 namespace MeiLinMod.MeiLinModCode.Cards;
 
 [Pool(typeof(MeiLinModCardPool))]
-public class WenQuan() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
+public class WenQuan() : MeiLinModCard(0, CardType.Skill, CardRarity.Rare, TargetType.Self)
 {
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
     protected override bool ShouldGlowGoldInternal => AwakeningHelper.CanAwakenNow(this);
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(8m, ValueProp.Move), new EnergyVar(1)];
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [EnergyHoverTip, MeiLinHoverTipFactory.Awakening];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [MeiLinHoverTipFactory.Awakening];
 
     public override string PortraitPath => IdPortraitPath;
     public override string CustomPortraitPath => IdBigPortraitPath;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this)
-            .Targeting(cardPlay.Target)
-            .WithHitFx("vfx/vfx_attack_slash")
-            .Execute(choiceContext);
+        var toExhaust = PileType.Hand.GetPile(Owner).Cards.Where(c => c != this).ToList();
+        if (toExhaust.Count > 0)
+        {
+            foreach (var card in toExhaust)
+                await CardPileCmd.Add(card, PileType.Exhaust);
 
-        var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
-        if (legacy != null)
-            await legacy.EnterAttackStance();
+            for (var i = 0; i < toExhaust.Count; i++)
+            {
+                CardModel generated = Owner.RunState.Rng.CombatCardSelection.NextBool()
+                    ? CombatState.CreateCard<StrikeMeilin>(Owner)
+                    : CombatState.CreateCard<DefendMeilin>(Owner);
+                if (IsUpgraded)
+                    CardCmd.Upgrade(generated);
+                CardCmd.ApplyKeyword(generated, CardKeyword.Exhaust);
+                await CardPileCmd.AddGeneratedCardToCombat(generated, PileType.Hand, addedByPlayer: true);
+            }
+        }
 
         if (AwakeningHelper.IsAwakened(cardPlay))
-            await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, Owner);
+        {
+            await PlayerCmd.LoseEnergy(3, Owner);
+            await PowerCmd.Apply<BasicStrikeDefendFreeThisTurnPower>(Owner.Creature, 1m, Owner.Creature, this);
+        }
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(3m);
     }
 }
-
-

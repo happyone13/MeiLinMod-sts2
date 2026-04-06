@@ -1,4 +1,5 @@
 using BaseLib.Utils;
+using System.Linq;
 using MeiLinMod.MeiLinModCode.Extensions;
 using MeiLinMod.MeiLinModCode.HoverTips;
 using MegaCrit.Sts2.Core.Commands;
@@ -136,8 +137,9 @@ public class XiangzuLegacyPower : MeiLinModPower
         if (!command.DamageProps.HasFlag(ValueProp.Move))
             return;
 
-        // Attack event happened, count once.
-        await AddProgress(1);
+        // Count by actual hit results so multi-hit attacks grant multiple progress.
+        var hitCount = command.Results.Count();
+        await AddProgress(Math.Max(1, hitCount));
     }
 
     public override async Task AfterDamageReceived(
