@@ -5,6 +5,7 @@ using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Localization;
 
 namespace MeiLinMod.MeiLinModCode.Cards;
 
@@ -34,5 +35,11 @@ public abstract class MeiLinModCard(int cost, CardType type, CardRarity rarity, 
             return Task.CompletedTask;
 
         return CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
+    }
+
+    protected override void AddExtraArgsToDescription(LocString description)
+    {
+        // Keep DynamicVar objects in the LocString so built-in :diff() highlighting works.
+        DynamicVars.AddTo(description);
     }
 }

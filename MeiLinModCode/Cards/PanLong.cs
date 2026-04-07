@@ -40,6 +40,7 @@ public class PanLong() : MeiLinModCard(1, CardType.Skill, CardRarity.Uncommon, T
 
     protected override void AddExtraArgsToDescription(LocString description)
     {
+        base.AddExtraArgsToDescription(description);
         if (!IsMutable)
         {
             description.Add("CurrentBonus", 0m);

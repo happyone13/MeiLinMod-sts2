@@ -29,6 +29,7 @@ public class FaJin() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommon, Ta
 
     protected override void AddExtraArgsToDescription(LocString description)
     {
+        base.AddExtraArgsToDescription(description);
         var usedCount = GetPlayedBasicStrikeDefendCount();
         description.Add("CurrentBonus", usedCount * DynamicVars[BonusKey].BaseValue);
     }
@@ -67,6 +68,5 @@ public class FaJin() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommon, Ta
             BasicStrikeDefendHelper.IsBasicStrikeOrDefend(e.CardPlay.Card));
     }
 }
-
 
 

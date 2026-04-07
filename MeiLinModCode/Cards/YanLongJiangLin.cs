@@ -23,6 +23,7 @@ public class YanLongJiangLin() : MeiLinModCard(2, CardType.Attack, CardRarity.Ra
 
     protected override void AddExtraArgsToDescription(LocString description)
     {
+        base.AddExtraArgsToDescription(description);
         if (!IsMutable)
         {
             description.Add("HitCount", 0);
@@ -54,7 +55,6 @@ public class YanLongJiangLin() : MeiLinModCard(2, CardType.Attack, CardRarity.Ra
         DynamicVars.Damage.UpgradeValueBy(1m);
     }
 }
-
 
 
 

@@ -25,6 +25,7 @@ public class ShengLongJiao() : MeiLinModCard(1, CardType.Attack, CardRarity.Unco
 
     protected override void AddExtraArgsToDescription(LocString description)
     {
+        base.AddExtraArgsToDescription(description);
         description.Add("CurrentHitCount", GetHitCountThisTurn() + 1);
     }
 
@@ -67,4 +68,3 @@ public class ShengLongJiao() : MeiLinModCard(1, CardType.Attack, CardRarity.Unco
             (IsUpgraded || BasicStrikeDefendHelper.IsBasicStrikeOrDefend(e.CardPlay.Card)));
     }
 }
-
