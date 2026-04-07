@@ -13,7 +13,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace MeiLinMod.MeiLinModCode.Cards;
 
-[Pool(typeof(MeiLinModCardPool))]
+[Pool(typeof(NoneCardPool))]
 public class HuYou() : MeiLinModCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {
     protected override bool ShouldGlowGoldInternal => AwakeningHelper.CanAwakenNow(this);

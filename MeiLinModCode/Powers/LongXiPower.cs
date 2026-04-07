@@ -25,14 +25,10 @@ public class LongXiPower : MeiLinModPower
         if (applier != Owner || power is not EmberPower || power.Owner == Owner)
             return;
 
-        var qi = (int)(Owner.GetPower<QiPower>()?.Amount ?? 0m);
-        if (qi <= 0)
-            return;
-
         _adjusting = true;
         try
         {
-            await PowerCmd.Apply<EmberPower>(power.Owner, qi, Owner, cardSource, silent: true);
+            await PowerCmd.Apply<EmberPower>(power.Owner, Amount, Owner, cardSource, silent: true);
         }
         finally
         {

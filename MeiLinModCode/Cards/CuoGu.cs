@@ -14,14 +14,16 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace MeiLinMod.MeiLinModCode.Cards;
 
 [Pool(typeof(MeiLinModCardPool))]
-public class CuoGu() : MeiLinModCard(0, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
+public class CuoGu() : MeiLinModCard(0, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
 {
     private const string VulnerableKey = "Vulnerable";
+    private const string WeakKey = "Weak";
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(4m, ValueProp.Move),
-        new DynamicVar(VulnerableKey, 1m)
+        new DamageVar(3m, ValueProp.Move),
+        new DynamicVar(VulnerableKey, 1m),
+        new DynamicVar(WeakKey, 1m)
     ];
 
     public override string PortraitPath => IdPortraitPath;
@@ -38,12 +40,14 @@ public class CuoGu() : MeiLinModCard(0, CardType.Attack, CardRarity.Common, Targ
 
         if (XiangzuLegacyPower.IsInAttackStance(Owner.Creature))
             await PowerCmd.Apply<VulnerablePower>(cardPlay.Target, DynamicVars[VulnerableKey].BaseValue, Owner.Creature, this);
+
+        if (XiangzuLegacyPower.IsInGuardStance(Owner.Creature))
+            await PowerCmd.Apply<WeakPower>(cardPlay.Target, DynamicVars[WeakKey].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(3m);
+        DynamicVars[VulnerableKey].UpgradeValueBy(1m);
+        DynamicVars[WeakKey].UpgradeValueBy(1m);
     }
 }
-
-

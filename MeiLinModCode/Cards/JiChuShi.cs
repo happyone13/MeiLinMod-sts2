@@ -23,8 +23,8 @@ public class JiChuShi() : MeiLinModCard(1, CardType.Skill, CardRarity.Common, Ta
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var strike = CombatState.CreateCard<StrikeMeilin>(Owner);
-        var defend = CombatState.CreateCard<DefendMeilin>(Owner);
+        var strike = BasicStrikeDefendHelper.CreateBasicStrikeForPlayer(Owner, CombatState);
+        var defend = BasicStrikeDefendHelper.CreateBasicDefendForPlayer(Owner, CombatState);
         if (strike == null || defend == null)
             return;
 
@@ -53,5 +53,4 @@ public class JiChuShi() : MeiLinModCard(1, CardType.Skill, CardRarity.Common, Ta
     {
     }
 }
-
 

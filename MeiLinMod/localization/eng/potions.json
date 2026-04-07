@@ -1,0 +1,5 @@
+{
+  "MEILINMOD-YU_JIN_POTION.title": "Ember Potion",
+  "MEILINMOD-YU_JIN_POTION.description": "Apply {Ember:diff()} [gold]Ember[/gold] to an enemy.",
+  "MEILINMOD-YU_JIN_POTION.selectionScreenPrompt": "Choose an enemy"
+}

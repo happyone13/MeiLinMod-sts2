@@ -11,9 +11,11 @@ using MegaCrit.Sts2.Core.HoverTips;
 namespace MeiLinMod.MeiLinModCode.Cards;
 
 [Pool(typeof(MeiLinModCardPool))]
-public class HuoLongXinZang() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+public class HuoLongXinZang() : MeiLinModCard(0, CardType.Power, CardRarity.Uncommon, TargetType.Self)
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => IsUpgraded
+        ? [CardKeyword.Innate]
+        : [];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
@@ -25,20 +27,13 @@ public class HuoLongXinZang() : MeiLinModCard(0, CardType.Skill, CardRarity.Unco
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var qi = (int)(Owner.Creature.GetPower<QiPower>()?.Amount ?? 0m);
-        if (qi <= 0)
-            return;
-
-        await PowerCmd.Apply<QiPower>(Owner.Creature, -qi, Owner.Creature, this);
-        await PlayerCmd.GainEnergy(qi, Owner);
-        await CardPileCmd.Draw(choiceContext, qi, Owner);
+        await PlayPowerCastAnim();
+        await PowerCmd.Apply<HuoLongXinZangPower>(Owner.Creature, 1m, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
-        RemoveKeyword(CardKeyword.Exhaust);
     }
 }
-
 
 

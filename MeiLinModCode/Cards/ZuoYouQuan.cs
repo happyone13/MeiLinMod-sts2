@@ -25,7 +25,7 @@ public class ZuoYouQuan() : MeiLinModCard(1, CardType.Skill, CardRarity.Common, 
     {
         for (var i = 0; i < 2; i++)
         {
-            var strike = CombatState.CreateCard<StrikeMeilin>(Owner);
+            var strike = BasicStrikeDefendHelper.CreateBasicStrikeForPlayer(Owner, CombatState);
             if (strike == null)
                 continue;
 

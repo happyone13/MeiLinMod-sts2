@@ -16,5 +16,7 @@ public class LongZhiQiShiPower : MeiLinModPower
             return;
 
         await PlayerCmd.GainEnergy(Amount, player);
+
+        await PowerCmd.Apply<EmberPower>(Owner, Amount, Owner, null);
     }
 }

@@ -32,14 +32,14 @@ public class GuJiChongShi() : MeiLinModCard(1, CardType.Skill, CardRarity.Uncomm
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var candidates = PileType.Hand.GetPile(Owner).Cards.Count(IsMeiLinBasicCard);
+        var candidates = PileType.Hand.GetPile(Owner).Cards.Count(BasicStrikeDefendHelper.IsBasicStrikeOrDefend);
         MainFile.Logger.Info($"[GuJiChongShi] candidates={candidates}");
 
         var target = (await CardSelectCmd.FromHand(
                 context: choiceContext,
                 player: Owner,
                 prefs: new CardSelectorPrefs(SelectionScreenPrompt, 1),
-                filter: IsMeiLinBasicCard,
+                filter: BasicStrikeDefendHelper.IsBasicStrikeOrDefend,
                 source: this))
             .FirstOrDefault();
         MainFile.Logger.Info($"[GuJiChongShi] selected={(target?.Id.Entry ?? "null")}");
@@ -62,12 +62,5 @@ public class GuJiChongShi() : MeiLinModCard(1, CardType.Skill, CardRarity.Uncomm
     {
         EnergyCost.UpgradeBy(-1);
     }
-
-    private static bool IsMeiLinBasicCard(CardModel card)
-    {
-        return card is StrikeMeilin or DefendMeilin ||
-               card.Id.Entry is "MEILINMOD-STRIKE_MEILIN" or "MEILINMOD-DEFEND_MEILIN";
-    }
 }
-
 

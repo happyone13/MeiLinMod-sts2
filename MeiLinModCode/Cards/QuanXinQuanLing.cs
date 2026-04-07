@@ -11,7 +11,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 namespace MeiLinMod.MeiLinModCode.Cards;
 
 [Pool(typeof(MeiLinModCardPool))]
-public class QuanXinQuanLing() : MeiLinModCard(2, CardType.Power, CardRarity.Uncommon, TargetType.Self)
+public class QuanXinQuanLing() : MeiLinModCard(2, CardType.Power, CardRarity.Rare, TargetType.Self)
 {
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
@@ -32,5 +32,4 @@ public class QuanXinQuanLing() : MeiLinModCard(2, CardType.Power, CardRarity.Unc
         EnergyCost.UpgradeBy(-1);
     }
 }
-
 

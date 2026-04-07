@@ -13,7 +13,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace MeiLinMod.MeiLinModCode.Cards;
 
-[Pool(typeof(MeiLinModCardPool))]
+[Pool(typeof(NoneCardPool))]
 public class XieLi() : MeiLinModCard(0, CardType.Skill, CardRarity.Common, TargetType.AnyEnemy)
 {
     private const string WeakKey = "Weak";
@@ -43,5 +43,4 @@ public class XieLi() : MeiLinModCard(0, CardType.Skill, CardRarity.Common, Targe
         DynamicVars.Block.UpgradeValueBy(2m);
     }
 }
-
 

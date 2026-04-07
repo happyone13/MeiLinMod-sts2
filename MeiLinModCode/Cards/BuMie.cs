@@ -15,7 +15,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace MeiLinMod.MeiLinModCode.Cards;
 
 [Pool(typeof(MeiLinModCardPool))]
-public class BuMie() : MeiLinModCard(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
+public class BuMie() : MeiLinModCard(2, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
 {
     private const string EmberKey = "Ember";
 

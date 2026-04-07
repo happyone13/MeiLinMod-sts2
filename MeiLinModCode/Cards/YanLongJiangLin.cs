@@ -16,7 +16,7 @@ namespace MeiLinMod.MeiLinModCode.Cards;
 [Pool(typeof(MeiLinModCardPool))]
 public class YanLongJiangLin() : MeiLinModCard(2, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(3m, ValueProp.Move)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(5m, ValueProp.Move)];
 
     public override string PortraitPath => IdPortraitPath;
     public override string CustomPortraitPath => IdBigPortraitPath;
@@ -55,6 +55,4 @@ public class YanLongJiangLin() : MeiLinModCard(2, CardType.Attack, CardRarity.Ra
         DynamicVars.Damage.UpgradeValueBy(1m);
     }
 }
-
-
 

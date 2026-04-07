@@ -10,15 +10,17 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 namespace MeiLinMod.MeiLinModCode.Cards;
 
 [Pool(typeof(MeiLinModCardPool))]
-public class TuNa() : MeiLinModCard(0, CardType.Skill, CardRarity.Common, TargetType.Self)
+public class TuNa() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {
     private const string ProgressKey = "Progress";
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Innate, CardKeyword.Exhaust];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => IsUpgraded
+        ? [CardKeyword.Innate, CardKeyword.Exhaust]
+        : [CardKeyword.Exhaust];
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DynamicVar(ProgressKey, 2m),
-        new CardsVar(1)
+        new CardsVar(2)
     ];
 
     public override string PortraitPath => IdPortraitPath;
@@ -35,6 +37,5 @@ public class TuNa() : MeiLinModCard(0, CardType.Skill, CardRarity.Common, Target
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Cards.UpgradeValueBy(1m);
     }
 }

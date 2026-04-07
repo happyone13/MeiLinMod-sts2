@@ -13,7 +13,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 namespace MeiLinMod.MeiLinModCode.Cards;
 
 [Pool(typeof(MeiLinModCardPool))]
-public class ChongZhenQiGu() : MeiLinModCard(1, CardType.Skill, CardRarity.Common, TargetType.Self)
+public class ChongZhenQiGu() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("Progress", 2m)];
@@ -44,7 +44,7 @@ public class ChongZhenQiGu() : MeiLinModCard(1, CardType.Skill, CardRarity.Commo
 
     protected override void OnUpgrade()
     {
-        EnergyCost.UpgradeBy(-1);
+        DynamicVars["Progress"].UpgradeValueBy(3m);
     }
 }
 

@@ -16,5 +16,7 @@ public class LongZhiQiShiDrawPower : MeiLinModPower
             return;
 
         await CardPileCmd.Draw(choiceContext, Amount, player);
+
+        await PowerCmd.Apply<EmberPower>(Owner, Amount, Owner, null);
     }
 }

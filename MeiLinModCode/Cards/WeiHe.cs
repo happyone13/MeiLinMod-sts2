@@ -13,7 +13,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 namespace MeiLinMod.MeiLinModCode.Cards;
 
 [Pool(typeof(MeiLinModCardPool))]
-public class WeiHe() : MeiLinModCard(1, CardType.Skill, CardRarity.Common, TargetType.AllEnemies)
+public class WeiHe() : MeiLinModCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.AllEnemies)
 {
     private const string WeakKey = "Weak";
     private const string VulnerableKey = "Vulnerable";

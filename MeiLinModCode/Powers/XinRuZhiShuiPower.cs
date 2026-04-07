@@ -38,7 +38,9 @@ public class XinRuZhiShuiPower : MeiLinModPower
         if (player.Creature != Owner)
             return;
 
-        var defend = CombatState.CreateCard<DefendMeilin>(player);
+        var defend = BasicStrikeDefendHelper.CreateBasicDefendForPlayer(player, CombatState);
+        if (defend == null)
+            return;
         defend.SetToFreeThisCombat();
         if (_createUpgradedDefend)
             CardCmd.Upgrade(defend);

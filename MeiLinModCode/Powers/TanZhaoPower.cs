@@ -38,7 +38,9 @@ public class TanZhaoPower : MeiLinModPower
         if (player.Creature != Owner)
             return;
 
-        var strike = CombatState.CreateCard<StrikeMeilin>(player);
+        var strike = BasicStrikeDefendHelper.CreateBasicStrikeForPlayer(player, CombatState);
+        if (strike == null)
+            return;
         strike.SetToFreeThisCombat();
         if (_createUpgradedStrike)
             CardCmd.Upgrade(strike);

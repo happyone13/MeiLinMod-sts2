@@ -16,7 +16,6 @@ namespace MeiLinMod.MeiLinModCode.Cards;
 [Pool(typeof(MeiLinModCardPool))]
 public class WenQuan() : MeiLinModCard(0, CardType.Skill, CardRarity.Rare, TargetType.Self)
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
     protected override bool ShouldGlowGoldInternal => AwakeningHelper.CanAwakenNow(this);
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [MeiLinHoverTipFactory.Awakening];
 
@@ -33,9 +32,11 @@ public class WenQuan() : MeiLinModCard(0, CardType.Skill, CardRarity.Rare, Targe
 
             for (var i = 0; i < toExhaust.Count; i++)
             {
-                CardModel generated = Owner.RunState.Rng.CombatCardSelection.NextBool()
-                    ? CombatState.CreateCard<StrikeMeilin>(Owner)
-                    : CombatState.CreateCard<DefendMeilin>(Owner);
+                CardModel? generated = Owner.RunState.Rng.CombatCardSelection.NextBool()
+                    ? BasicStrikeDefendHelper.CreateBasicStrikeForPlayer(Owner, CombatState)
+                    : BasicStrikeDefendHelper.CreateBasicDefendForPlayer(Owner, CombatState);
+                if (generated == null)
+                    continue;
                 if (IsUpgraded)
                     CardCmd.Upgrade(generated);
                 CardCmd.ApplyKeyword(generated, CardKeyword.Exhaust);

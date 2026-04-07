@@ -32,14 +32,14 @@ public class XuLi() : MeiLinModCard(0, CardType.Skill, CardRarity.Common, Target
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var candidates = PileType.Hand.GetPile(Owner).Cards.Count(IsMeiLinBasicCard);
+        var candidates = PileType.Hand.GetPile(Owner).Cards.Count(BasicStrikeDefendHelper.IsBasicStrikeOrDefend);
         MainFile.Logger.Info($"[XuLi] candidates={candidates}");
 
         var target = (await CardSelectCmd.FromHand(
                 context: choiceContext,
                 player: Owner,
                 prefs: new CardSelectorPrefs(SelectionScreenPrompt, 1),
-                filter: IsMeiLinBasicCard,
+                filter: BasicStrikeDefendHelper.IsBasicStrikeOrDefend,
                 source: this))
             .FirstOrDefault();
         MainFile.Logger.Info($"[XuLi] selected={(target?.Id.Entry ?? "null")}");
@@ -49,7 +49,7 @@ public class XuLi() : MeiLinModCard(0, CardType.Skill, CardRarity.Common, Target
 
         var currentCost = target.EnergyCost.GetWithModifiers(CostModifiers.All);
         target.EnergyCost.SetThisTurnOrUntilPlayed((int)currentCost + 1);
-        target.BaseReplayCount += IsUpgraded ? 2 : 1;
+        target.BaseReplayCount += IsUpgraded ? 3 : 2;
         CardCmd.ApplyKeyword(target, CardKeyword.Exhaust);
         CardCmd.Preview(target);
 
@@ -64,12 +64,4 @@ public class XuLi() : MeiLinModCard(0, CardType.Skill, CardRarity.Common, Target
     protected override void OnUpgrade()
     {
     }
-
-    private static bool IsMeiLinBasicCard(CardModel card)
-    {
-        return card is StrikeMeilin or DefendMeilin ||
-               card.Id.Entry is "MEILINMOD-STRIKE_MEILIN" or "MEILINMOD-DEFEND_MEILIN";
-    }
 }
-
-

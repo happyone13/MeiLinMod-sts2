@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+using System;
+using System.Collections.Generic;
 using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
@@ -12,31 +13,28 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace MeiLinMod.MeiLinModCode.Cards;
 
 [Pool(typeof(MeiLinModCardPool))]
-public class ShouJin() : MeiLinModCard(1, CardType.Skill, CardRarity.Common, TargetType.Self)
+public class ShouJin() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
 {
-    private const string BonusKey = "Bonus";
-
-    public override bool GainsBlock => true;
-    protected override IEnumerable<DynamicVar> CanonicalVars =>
-    [
-        new BlockVar(7m, ValueProp.Move),
-        new DynamicVar(BonusKey, 3m)
-    ];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(5m, ValueProp.Move)];
 
     public override string PortraitPath => IdPortraitPath;
     public override string CustomPortraitPath => IdBigPortraitPath;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var qi = (int)(Owner.Creature.GetPower<QiPower>()?.Amount ?? 0m);
-        var block = DynamicVars.Block.BaseValue + (qi * DynamicVars[BonusKey].BaseValue);
-        await CreatureCmd.GainBlock(Owner.Creature, block, ValueProp.Move | ValueProp.Unpowered, null, fast: true);
+        ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
+
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
+            .FromCard(this)
+            .Targeting(cardPlay.Target)
+            .WithHitFx("vfx/vfx_attack_slash")
+            .Execute(choiceContext);
+
+        await PowerCmd.Apply<QiProgressDoubleThisTurnPower>(Owner.Creature, 1m, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars[BonusKey].UpgradeValueBy(2m);
+        DynamicVars.Damage.UpgradeValueBy(3m);
     }
 }
-
-

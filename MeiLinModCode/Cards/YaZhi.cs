@@ -20,7 +20,7 @@ public class YaZhi() : MeiLinModCard(-1, CardType.Skill, CardRarity.Uncommon, Ta
         var count = ResolveEnergyXValue();
         for (var i = 0; i < count; i++)
         {
-            var strike = CombatState.CreateCard<StrikeMeilin>(Owner);
+            var strike = BasicStrikeDefendHelper.CreateBasicStrikeForPlayer(Owner, CombatState);
             if (strike == null)
                 continue;
 

@@ -29,7 +29,7 @@ public class ZuiZhongAoYiYanLongJiangLin() : MeiLinModCard(2, CardType.Skill, Ca
 
         for (var i = 0; i < 4; i++)
         {
-            var strike = CombatState.CreateCard<StrikeMeilin>(Owner);
+            var strike = BasicStrikeDefendHelper.CreateBasicStrikeForPlayer(Owner, CombatState);
             if (strike == null)
                 continue;
 

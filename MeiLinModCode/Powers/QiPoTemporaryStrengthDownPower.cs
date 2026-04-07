@@ -42,6 +42,11 @@ public class QiPoTemporaryStrengthDownPower : MeiLinModPower, ICustomModel
         if (power != this || amount == 0m)
             return;
 
+        // Initial application may trigger both AfterApplied and AfterPowerAmountChanged.
+        // Skip this duplicate delta so base values stay at -2 / -3 as intended.
+        if (_appliedAmount == Amount && amount == Amount)
+            return;
+
         await PowerCmd.Apply<StrengthPower>(Owner, -amount, Owner, cardSource, silent: true);
         _appliedAmount += amount;
     }

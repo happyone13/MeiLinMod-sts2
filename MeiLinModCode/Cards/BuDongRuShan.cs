@@ -11,7 +11,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace MeiLinMod.MeiLinModCode.Cards;
 
-[Pool(typeof(MeiLinModCardPool))]
+[Pool(typeof(NoneCardPool))]
 public class BuDongRuShan() : MeiLinModCard(0, CardType.Skill, CardRarity.Common, TargetType.Self)
 {
     protected override bool ShouldGlowGoldInternal => AwakeningHelper.CanAwakenNow(this);

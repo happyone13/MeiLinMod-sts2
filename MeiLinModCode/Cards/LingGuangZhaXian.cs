@@ -26,6 +26,9 @@ public class LingGuangZhaXian() : MeiLinModCard(0, CardType.Skill, CardRarity.Un
             .Where(c => !BasicStrikeDefendHelper.IsBasicStrikeOrDefend(c))
             .ToList();
 
+        foreach (var card in drawnCards.Except(discardTargets))
+            card.EnergyCost.SetThisTurn(0);
+
         if (discardTargets.Count > 0)
             await CardCmd.Discard(choiceContext, discardTargets);
     }
@@ -35,5 +38,4 @@ public class LingGuangZhaXian() : MeiLinModCard(0, CardType.Skill, CardRarity.Un
         DynamicVars.Cards.UpgradeValueBy(2m);
     }
 }
-
 

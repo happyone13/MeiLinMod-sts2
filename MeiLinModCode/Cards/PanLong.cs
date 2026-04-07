@@ -14,7 +14,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace MeiLinMod.MeiLinModCode.Cards;
 
 [Pool(typeof(MeiLinModCardPool))]
-public class PanLong() : MeiLinModCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+public class PanLong() : MeiLinModCard(1, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
 {
     private const string GrowKey = "Grow";
 
@@ -22,7 +22,8 @@ public class PanLong() : MeiLinModCard(1, CardType.Skill, CardRarity.Uncommon, T
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(5m, ValueProp.Move),
+        new DamageVar(3m, ValueProp.Move),
+        new BlockVar(3m, ValueProp.Move),
         new DynamicVar(GrowKey, 1m)
     ];
 
@@ -34,7 +35,19 @@ public class PanLong() : MeiLinModCard(1, CardType.Skill, CardRarity.Uncommon, T
         var usedCount = CombatManager.Instance.History.CardPlaysFinished.Count(e =>
             e.CardPlay.Card.Owner == Owner &&
             BasicStrikeDefendHelper.IsBasicStrikeOrDefend(e.CardPlay.Card));
-        var block = DynamicVars.Block.BaseValue + (usedCount * DynamicVars[GrowKey].BaseValue);
+        var bonus = usedCount * DynamicVars[GrowKey].BaseValue;
+        var damage = DynamicVars.Damage.BaseValue + bonus;
+        var block = DynamicVars.Block.BaseValue + bonus;
+
+        if (cardPlay.Target != null)
+        {
+            await DamageCmd.Attack(damage)
+                .FromCard(this)
+                .Targeting(cardPlay.Target)
+                .WithHitFx("vfx/vfx_attack_slash")
+                .Execute(choiceContext);
+        }
+
         await CreatureCmd.GainBlock(Owner.Creature, block, ValueProp.Move | ValueProp.Unpowered, null, fast: true);
     }
 
@@ -55,6 +68,7 @@ public class PanLong() : MeiLinModCard(1, CardType.Skill, CardRarity.Uncommon, T
 
     protected override void OnUpgrade()
     {
-        DynamicVars[GrowKey].UpgradeValueBy(1m);
+        DynamicVars.Damage.UpgradeValueBy(2m);
+        DynamicVars.Block.UpgradeValueBy(2m);
     }
 }

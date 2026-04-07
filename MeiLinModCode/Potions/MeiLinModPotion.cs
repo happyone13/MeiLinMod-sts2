@@ -1,8 +1,14 @@
-﻿using BaseLib.Abstracts;
+using BaseLib.Abstracts;
+using BaseLib.Extensions;
 using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
+using MeiLinMod.MeiLinModCode.Extensions;
 
 namespace MeiLinMod.MeiLinModCode.Potions;
 
 [Pool(typeof(MeiLinModPotionPool))]
-public abstract class MeiLinModPotion : CustomPotionModel;
+public abstract class MeiLinModPotion : CustomPotionModel
+{
+    public override string PackedImagePath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".PotionImagePath();
+    public override string PackedOutlinePath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}_outline.png".PotionImagePath();
+}

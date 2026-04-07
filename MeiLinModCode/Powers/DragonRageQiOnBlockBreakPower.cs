@@ -40,7 +40,7 @@ public class DragonRageQiOnBlockBreakPower : MeiLinModPower
 
     public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
     {
-        if (side != Owner.Side)
+        if (side == Owner.Side)
             return;
 
         await PowerCmd.Remove(this);

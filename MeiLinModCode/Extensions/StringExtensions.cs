@@ -57,6 +57,11 @@ public static class StringExtensions
         return ResourceExists(targetPath) ? targetPath : "power.png".BigPowerImagePath();
     }
 
+    public static string PotionImagePath(this string path)
+    {
+        return $"{MainFile.ModId}/images/potions/{path}";
+    }
+
     public static string RelicImagePath(this string path)
     {
         return $"{MainFile.ModId}/images/relics/{path}";
