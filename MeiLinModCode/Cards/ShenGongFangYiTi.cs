@@ -20,8 +20,8 @@ public class ShenGongFangYiTi() : MeiLinModCard(1, CardType.Skill, CardRarity.An
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        MeiLinAudioService.SuppressNextDefaultCastSfx();
-        MeiLinAudioService.TryPlayCustomCardClip("attack_defense_unity");
+        MeiLinAudioService.SuppressNextDefaultCastSfx(Owner);
+        MeiLinAudioService.TryPlayCustomCardClip("attack_defense_unity", Owner);
 
         var cardsToPlay = PileType.Hand.GetPile(Owner).Cards
             .Concat(PileType.Draw.GetPile(Owner).Cards)

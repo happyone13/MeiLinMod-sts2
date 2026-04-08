@@ -32,8 +32,8 @@ public class HuoLongJingTian() : MeiLinModCard(1, CardType.Attack, CardRarity.Ra
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        MeiLinAudioService.SuppressNextDefaultAttackSfx();
-        MeiLinAudioService.TryPlayCustomCardClip("huo_long_jing_tian");
+        MeiLinAudioService.SuppressNextDefaultAttackSfx(Owner);
+        MeiLinAudioService.TryPlayCustomCardClip("huo_long_jing_tian", Owner);
 
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
@@ -57,6 +57,5 @@ public class HuoLongJingTian() : MeiLinModCard(1, CardType.Attack, CardRarity.Ra
         DynamicVars[BurstKey].UpgradeValueBy(10m);
     }
 }
-
 
 

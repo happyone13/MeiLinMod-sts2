@@ -31,8 +31,8 @@ public class ShengLongJiao() : MeiLinModCard(1, CardType.Attack, CardRarity.Rare
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        MeiLinAudioService.SuppressNextDefaultAttackSfx();
-        MeiLinAudioService.TryPlayCustomCardClip("sheng_long_jiao");
+        MeiLinAudioService.SuppressNextDefaultAttackSfx(Owner);
+        MeiLinAudioService.TryPlayCustomCardClip("sheng_long_jiao", Owner);
 
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
 

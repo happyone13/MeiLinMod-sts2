@@ -24,8 +24,8 @@ public class ZuiZhongAoYiYanLongJiangLin() : MeiLinModCard(2, CardType.Skill, Ca
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        MeiLinAudioService.SuppressNextDefaultCastSfx();
-        MeiLinAudioService.TryPlayCustomCardClip("zui_zhong_ao_yi_yan_long_jiang_lin");
+        MeiLinAudioService.SuppressNextDefaultCastSfx(Owner);
+        MeiLinAudioService.TryPlayCustomCardClip("zui_zhong_ao_yi_yan_long_jiang_lin", Owner);
 
         for (var i = 0; i < 4; i++)
         {

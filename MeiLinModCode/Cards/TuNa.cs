@@ -37,5 +37,6 @@ public class TuNa() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncommon, Targ
 
     protected override void OnUpgrade()
     {
+        AddKeyword(CardKeyword.Innate);
     }
 }

@@ -22,8 +22,8 @@ public class AttackDefenseUnity() : MeiLinModCard(1, CardType.Skill, CardRarity.
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        MeiLinAudioService.SuppressNextDefaultCastSfx();
-        MeiLinAudioService.TryPlayCustomCardClip("attack_defense_unity");
+        MeiLinAudioService.SuppressNextDefaultCastSfx(Owner);
+        MeiLinAudioService.TryPlayCustomCardClip("attack_defense_unity", Owner);
 
         var candidates = PileType.Draw.GetPile(Owner).Cards
             .Concat(PileType.Discard.GetPile(Owner).Cards)

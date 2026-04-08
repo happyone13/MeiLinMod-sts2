@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace MeiLinMod.MeiLinModCode.Cards;
 
@@ -13,6 +14,7 @@ namespace MeiLinMod.MeiLinModCode.Cards;
 public class QunLongZhiLi() : MeiLinModCard(3, CardType.Power, CardRarity.Rare, TargetType.AllAllies)
 {
     public override CardMultiplayerConstraint MultiplayerConstraint => CardMultiplayerConstraint.MultiplayerOnly;
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<FireDragonGemPower>()];
 
     public override string PortraitPath => IdPortraitPath;
     public override string CustomPortraitPath => IdBigPortraitPath;

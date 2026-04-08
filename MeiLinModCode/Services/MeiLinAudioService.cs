@@ -79,41 +79,52 @@ public static class MeiLinAudioService
 
     public static bool TryPlayDeath(Player? player, float linearVolume = 1f)
     {
-        if (player?.Character == null)
-            return false;
-
-        var id = player.Character.Id.Entry ?? string.Empty;
-        if (!id.Contains("MEILIN", StringComparison.OrdinalIgnoreCase))
+        if (!IsMeiLinPlayer(player))
             return false;
 
         return TryPlay(DiePath, linearVolume);
     }
 
-    public static bool TryPlayAttackStanceSwitch(float linearVolume = 1f)
+    public static bool TryPlayAttackStanceSwitch(Player? player = null, float linearVolume = 1f)
     {
+        if (!IsMeiLinPlayer(player))
+            return false;
+
         return TryPlay(PickRandom(GongPool), linearVolume);
     }
 
-    public static bool TryPlayGuardStanceSwitch(float linearVolume = 1f)
+    public static bool TryPlayGuardStanceSwitch(Player? player = null, float linearVolume = 1f)
     {
+        if (!IsMeiLinPlayer(player))
+            return false;
+
         return TryPlay(PickRandom(YuPool), linearVolume);
     }
 
-    public static bool TryPlayCustomCardClip(string clipKey, float linearVolume = 1f)
+    public static bool TryPlayCustomCardClip(string clipKey, Player? player = null, float linearVolume = 1f)
     {
+        if (!IsMeiLinPlayer(player))
+            return false;
+
         if (!CustomCardClipMap.TryGetValue(clipKey, out var path))
             return false;
 
         return TryPlay(path, linearVolume);
     }
 
-    public static void SuppressNextDefaultAttackSfx()
+    public static void SuppressNextDefaultAttackSfx(Player? player = null)
     {
+        if (!IsMeiLinPlayer(player))
+            return;
+
         _suppressNextAttackSfxCount++;
     }
 
-    public static void SuppressNextDefaultCastSfx()
+    public static void SuppressNextDefaultCastSfx(Player? player = null)
     {
+        if (!IsMeiLinPlayer(player))
+            return;
+
         _suppressNextCastSfxCount++;
     }
 
@@ -233,5 +244,14 @@ public static class MeiLinAudioService
             return -80f;
 
         return Mathf.LinearToDb(Mathf.Max(linearVolume, 0.0001f));
+    }
+
+    private static bool IsMeiLinPlayer(Player? player)
+    {
+        if (player?.Character == null)
+            return false;
+
+        var id = player.Character.Id.Entry ?? string.Empty;
+        return id.Contains("MEILIN", StringComparison.OrdinalIgnoreCase);
     }
 }

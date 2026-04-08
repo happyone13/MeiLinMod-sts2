@@ -1,83 +1,81 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using HarmonyLib;
 using MeiLinMod.MeiLinModCode.Character;
-using MeiLinCharacter = MeiLinMod.MeiLinModCode.Character.MeiLinMod;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Events;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Events;
-using MegaCrit.Sts2.Core.Rewards;
-using MegaCrit.Sts2.Core.Runs;
 
 namespace MeiLinMod.MeiLinModCode.Patches;
 
-[HarmonyPatch(typeof(ColorfulPhilosophers), "OfferRewards")]
+[HarmonyPatch(typeof(ColorfulPhilosophers), "GenerateInitialOptions")]
 public static class ColorfulPhilosophersMeiLinPatch
 {
-    private static readonly System.Reflection.MethodInfo? SetEventFinishedMethod =
-        AccessTools.Method(typeof(EventModel), "SetEventFinished");
+    private static readonly MethodInfo? OfferRewardsMethod =
+        AccessTools.Method(typeof(ColorfulPhilosophers), "OfferRewards");
 
     [HarmonyPrefix]
-    public static bool OfferRewardsPrefix(ColorfulPhilosophers __instance, CardPoolModel pool, ref Task __result)
+    public static bool GenerateInitialOptionsPrefix(ColorfulPhilosophers __instance, ref IReadOnlyList<EventOption> __result)
     {
         var owner = __instance.Owner;
-        if (owner == null)
+        if (owner == null || OfferRewardsMethod == null)
             return true;
 
-        if (!IsMeiLinAvailable(owner))
-            return true;
+        var meiLinPool = ModelDb.CardPool<MeiLinModCardPool>();
+        var character = owner.Character;
+        var unlockedPools = owner.UnlockState.CharacterCardPools.ToList();
 
-        __result = OfferRewardsWithMeiLin(__instance, owner, pool);
+        var optionPools = new List<CardPoolModel>
+        {
+            ModelDb.CardPool<NecrobinderCardPool>(),
+            ModelDb.CardPool<IroncladCardPool>(),
+            ModelDb.CardPool<RegentCardPool>(),
+            ModelDb.CardPool<SilentCardPool>(),
+            ModelDb.CardPool<DefectCardPool>(),
+            meiLinPool
+        };
+
+        var options = new List<EventOption>();
+        foreach (var pool in optionPools)
+        {
+            if (character.CardPool.Id == pool.Id || unlockedPools.All(p => p.Id != pool.Id))
+                continue;
+
+            if (pool.Id == meiLinPool.Id)
+            {
+                const string meiLinKeyBase = "COLORFUL_PHILOSOPHERS.pages.INITIAL.options.MEILIN";
+                options.Add(new EventOption(
+                    __instance,
+                    () => InvokeOfferRewards(__instance, pool),
+                    new LocString("events", $"{meiLinKeyBase}.title"),
+                    new LocString("events", $"{meiLinKeyBase}.description"),
+                    meiLinKeyBase,
+                    []));
+            }
+            else
+            {
+                options.Add(new EventOption(
+                    __instance,
+                    () => InvokeOfferRewards(__instance, pool),
+                    $"COLORFUL_PHILOSOPHERS.pages.INITIAL.options.{pool.EnergyColorName.ToUpperInvariant()}"));
+            }
+        }
+
+        var maxOptions = System.Math.Min(3, options.Count);
+        while (options.Count > maxOptions)
+            options.RemoveAt(__instance.Rng.NextInt(options.Count));
+
+        __result = options;
         return false;
     }
 
-    private static async Task OfferRewardsWithMeiLin(ColorfulPhilosophers eventModel, Player owner, CardPoolModel selectedPool)
+    private static Task InvokeOfferRewards(ColorfulPhilosophers eventModel, CardPoolModel pool)
     {
-        var pools = new List<CardPoolModel> { selectedPool };
-        var meiLinPool = ModelDb.CardPool<MeiLinModCardPool>();
-        if (pools.All(p => p.Id != meiLinPool.Id))
-            pools.Add(meiLinPool);
-
-        CardCreationOptions commonOptions = new CardCreationOptions(
-                pools,
-                CardCreationSource.Other,
-                CardRarityOddsType.Uniform,
-                (CardModel c) => c.Rarity == CardRarity.Common)
-            .WithFlags(CardCreationFlags.NoRarityModification);
-        CardCreationOptions uncommonOptions = new CardCreationOptions(
-                pools,
-                CardCreationSource.Other,
-                CardRarityOddsType.Uniform,
-                (CardModel c) => c.Rarity == CardRarity.Uncommon)
-            .WithFlags(CardCreationFlags.NoRarityModification);
-        CardCreationOptions rareOptions = new CardCreationOptions(
-                pools,
-                CardCreationSource.Other,
-                CardRarityOddsType.Uniform,
-                (CardModel c) => c.Rarity == CardRarity.Rare)
-            .WithFlags(CardCreationFlags.NoRarityModification);
-
-        await RewardsCmd.OfferCustom(owner, new List<Reward>(3)
-        {
-            new CardReward(commonOptions, eventModel.DynamicVars.Cards.IntValue, owner),
-            new CardReward(uncommonOptions, eventModel.DynamicVars.Cards.IntValue, owner),
-            new CardReward(rareOptions, eventModel.DynamicVars.Cards.IntValue, owner)
-        });
-
-        SetEventFinishedMethod?.Invoke(eventModel, [new LocString("events", "COLORFUL_PHILOSOPHERS.pages.DONE.description")]);
-    }
-
-    private static bool IsMeiLinAvailable(Player player)
-    {
-        var meiLinId = ModelDb.Character<MeiLinCharacter>().Id;
-        if (player.Character.Id == meiLinId)
-            return true;
-
-        return player.UnlockState.Characters.Any(c => c.Id == meiLinId);
+        var task = OfferRewardsMethod?.Invoke(eventModel, [pool]) as Task;
+        return task ?? Task.CompletedTask;
     }
 }

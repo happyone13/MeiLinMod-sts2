@@ -93,11 +93,11 @@ public class XiangzuLegacyPower : MeiLinModPower
         {
             case XiangzuStance.Guard:
                 await PowerCmd.Apply<StanceYuPower>(Owner, 1m, Owner, null, silent: true);
-                MeiLinAudioService.TryPlayGuardStanceSwitch();
+                MeiLinAudioService.TryPlayGuardStanceSwitch(Owner.Player);
                 break;
             default:
                 await PowerCmd.Apply<StanceGongPower>(Owner, 1m, Owner, null, silent: true);
-                MeiLinAudioService.TryPlayAttackStanceSwitch();
+                MeiLinAudioService.TryPlayAttackStanceSwitch(Owner.Player);
                 break;
         }
 

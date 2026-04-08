@@ -13,7 +13,7 @@ public class NextPowerCardCostDownPower : MeiLinModPower
 
     public override bool TryModifyEnergyCostInCombat(CardModel card, decimal originalCost, out decimal modifiedCost)
     {
-        if (card.Owner?.Creature != Owner || card.Type != CardType.Power)
+        if (!ShouldAffectCard(card, originalCost))
         {
             modifiedCost = originalCost;
             return false;
@@ -23,11 +23,23 @@ public class NextPowerCardCostDownPower : MeiLinModPower
         return true;
     }
 
-    public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
+    public override async Task BeforeCardPlayed(CardPlay cardPlay)
     {
-        if (cardPlay.Card.Owner?.Creature != Owner || cardPlay.Card.Type != CardType.Power)
+        var originalCostWithoutGlobalHooks = cardPlay.Card.EnergyCost.GetWithModifiers(CostModifiers.Local);
+        if (!ShouldAffectCard(cardPlay.Card, originalCostWithoutGlobalHooks))
             return;
 
         await PowerCmd.Remove(this);
+    }
+
+    private bool ShouldAffectCard(CardModel card, decimal originalCost)
+    {
+        if (card.Owner?.Creature != Owner || card.Type != CardType.Power)
+            return false;
+
+        if (originalCost <= 0m)
+            return false;
+
+        return card.Pile?.Type is PileType.Hand or PileType.Play;
     }
 }

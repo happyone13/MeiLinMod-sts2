@@ -24,8 +24,8 @@ public class FireDragonGem() : MeiLinModCard(1, CardType.Power, CardRarity.Basic
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        MeiLinAudioService.SuppressNextDefaultCastSfx();
-        MeiLinAudioService.TryPlayCustomCardClip("fire_dragon_gam");
+        MeiLinAudioService.SuppressNextDefaultCastSfx(Owner);
+        MeiLinAudioService.TryPlayCustomCardClip("fire_dragon_gam", Owner);
 
         await CreatureCmd.TriggerAnim(
             Owner.Creature,

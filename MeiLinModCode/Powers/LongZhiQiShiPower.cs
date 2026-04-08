@@ -12,10 +12,10 @@ public class LongZhiQiShiPower : MeiLinModPower
 
     public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
     {
-        if (player.Creature != Owner)
+        if (player.Creature != Owner || player != Owner.Player)
             return;
 
-        await PlayerCmd.GainEnergy(Amount, player);
+        await CardPileCmd.Draw(choiceContext, Amount, player);
 
         await PowerCmd.Apply<EmberPower>(Owner, Amount, Owner, null);
     }
