@@ -106,7 +106,7 @@
     "MEILINMOD-YAN_QI_HU_TI.title":  "Flame Qi Guard",
     "MEILINMOD-YAN_QI_HU_TI.description":  "Gain {Block:diff()} Block and gain {Progress:diff()} Qi Counter.\n[gold]Awakening[/gold]: Enter Guard Stance.",
     "MEILINMOD-YAN_QI_CHAN_SHEN.title":  "Flame Qi Entangle",
-    "MEILINMOD-YAN_QI_CHAN_SHEN.description":  "Whenever you gain 1 [gold]Qi[/gold], all enemies gain {Ember:diff()} [gold]Ember[/gold].",
+    "MEILINMOD-YAN_QI_CHAN_SHEN.description":  "Gain {Block:diff()} Block and draw {Cards:diff()} cards. \n[gold]Awakening[/gold]: Enter Guard Stance.",
     "MEILINMOD-YUN_QI.title":  "Fortune Flow",
     "MEILINMOD-YUN_QI.description":  "Whenever you play [gold]Strike[/gold] or [gold]Defend[/gold], gain 1 temporary Strength and 1 temporary Dexterity.",
     "MEILINMOD-QI_PO_BA_FANG.title":  "Qi Shatters Eight Directions",
