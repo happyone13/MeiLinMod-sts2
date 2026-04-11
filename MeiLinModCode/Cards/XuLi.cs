@@ -18,7 +18,6 @@ namespace MeiLinMod.MeiLinModCode.Cards;
 [Pool(typeof(MeiLinModCardPool))]
 public class XuLi() : MeiLinModCard(0, CardType.Skill, CardRarity.Common, TargetType.Self)
 {
-    protected override bool IsPlayable => PileType.Hand.GetPile(Owner).Cards.Any(BasicStrikeDefendHelper.IsBasicStrikeOrDefend);
     protected override bool ShouldGlowGoldInternal => AwakeningHelper.CanAwakenNow(this);
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
@@ -44,21 +43,21 @@ public class XuLi() : MeiLinModCard(0, CardType.Skill, CardRarity.Common, Target
             .FirstOrDefault();
         MainFile.Logger.Info($"[XuLi] selected={(target?.Id.Entry ?? "null")}");
 
-        if (target == null)
-            return;
-
-        var currentCost = target.EnergyCost.GetWithModifiers(CostModifiers.All);
-        target.EnergyCost.SetThisTurnOrUntilPlayed((int)currentCost + 1);
-        target.BaseReplayCount += IsUpgraded ? 3 : 2;
-        CardCmd.ApplyKeyword(target, CardKeyword.Exhaust);
-        CardCmd.Preview(target);
+        if (target != null)
+        {
+            var currentCost = target.EnergyCost.GetWithModifiers(CostModifiers.All);
+            target.EnergyCost.SetThisTurnOrUntilPlayed((int)currentCost + 1);
+            target.BaseReplayCount += IsUpgraded ? 3 : 2;
+            CardCmd.ApplyKeyword(target, CardKeyword.Exhaust);
+            CardCmd.Preview(target);
+        }
 
         if (!AwakeningHelper.IsAwakened(cardPlay))
             return;
 
         var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
         if (legacy != null)
-            await legacy.EnterAttackStance();
+            await legacy.EnterOtherStance();
     }
 
     protected override void OnUpgrade()

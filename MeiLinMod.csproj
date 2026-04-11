@@ -77,17 +77,21 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Alchyr.Sts2.BaseLib" Version="[0.2.0,)" GeneratePathProperty="true" PrivateAssets="All"/>
+        <PackageReference Include="Alchyr.Sts2.BaseLib" Version="[0.3.0,)" GeneratePathProperty="true" PrivateAssets="All"/>
         <PackageReference Include="Alchyr.Sts2.ModAnalyzers" Version="*"/>
         <AdditionalFiles Include="MeiLinMod/localization/**/*.json"/>
     </ItemGroup>
 
     <ItemGroup>
         <Compile Remove="MeiLinMod/**"/>
+        <Compile Remove=".godot/**"/>
+        <Compile Remove="tools/**"/>
         <Compile Remove="materials/**"/>
         <Compile Remove="shaders/**"/>
         <Compile Remove="images/**"/>
         <EmbeddedResource Remove="MeiLinMod/**"/>
+        <EmbeddedResource Remove=".godot/**"/>
+        <EmbeddedResource Remove="tools/**"/>
         <EmbeddedResource Remove="materials/**"/>
         <EmbeddedResource Remove="shaders/**"/>
         <EmbeddedResource Remove="images/**"/>

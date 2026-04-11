@@ -14,7 +14,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 namespace MeiLinMod.MeiLinModCode.Cards;
 
 [Pool(typeof(MeiLinModCardPool))]
-public class HuXi() : MeiLinModCard(1, CardType.Skill, CardRarity.Common, TargetType.Self)
+public class HuXi() : MeiLinModCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {
     protected override bool ShouldGlowGoldInternal => AwakeningHelper.CanAwakenNow(this);
     protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(3)];
@@ -47,7 +47,7 @@ public class HuXi() : MeiLinModCard(1, CardType.Skill, CardRarity.Common, Target
 
         var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
         if (legacy != null)
-            await legacy.EnterGuardStance();
+            await legacy.EnterOtherStance();
     }
 
     protected override void OnUpgrade()

@@ -17,14 +17,16 @@ namespace MeiLinMod.MeiLinModCode.Cards;
 public class ZaiHuXi() : MeiLinModCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {
     private const string VigorKey = "Vigor";
+    private const string EmberKey = "Ember";
 
     protected override bool ShouldGlowGoldInternal => AwakeningHelper.CanAwakenNow(this);
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new CardsVar(3),
-        new DynamicVar(VigorKey, 3m)
+        new DynamicVar(VigorKey, 3m),
+        new DynamicVar(EmberKey, 1m)
     ];
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [MeiLinHoverTipFactory.Awakening, HoverTipFactory.FromPower<VigorPower>()];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [MeiLinHoverTipFactory.Awakening, HoverTipFactory.FromPower<VigorPower>(), MeiLinHoverTipFactory.Ember];
 
     public override string PortraitPath => IdPortraitPath;
     public override string CustomPortraitPath => IdBigPortraitPath;
@@ -37,9 +39,8 @@ public class ZaiHuXi() : MeiLinModCard(1, CardType.Skill, CardRarity.Uncommon, T
         if (!AwakeningHelper.IsAwakened(cardPlay))
             return;
 
-        var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
-        if (legacy != null)
-            await legacy.EnterAttackStance();
+        await PowerCmd.Apply<EmberPower>(Owner.Creature, DynamicVars[EmberKey].BaseValue, Owner.Creature, this);
+        await CardPileCmd.Draw(choiceContext, 1m, Owner);
     }
 
     protected override void OnUpgrade()

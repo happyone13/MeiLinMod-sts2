@@ -37,7 +37,7 @@ public class YanQiChanShen() : MeiLinModCard(1, CardType.Skill, CardRarity.Commo
 
         var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
         if (legacy != null)
-            await legacy.EnterGuardStance();
+            await legacy.EnterOtherStance();
     }
 
     protected override void OnUpgrade()

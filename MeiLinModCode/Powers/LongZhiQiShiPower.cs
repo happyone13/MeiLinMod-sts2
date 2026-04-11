@@ -15,8 +15,6 @@ public class LongZhiQiShiPower : MeiLinModPower
         if (player.Creature != Owner || player != Owner.Player)
             return;
 
-        await CardPileCmd.Draw(choiceContext, Amount, player);
-
-        await PowerCmd.Apply<EmberPower>(Owner, Amount, Owner, null);
+        await PlayerCmd.GainEnergy(Amount, player);
     }
 }

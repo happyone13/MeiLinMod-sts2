@@ -9,6 +9,6 @@ namespace MeiLinMod.MeiLinModCode.Potions;
 [Pool(typeof(MeiLinModPotionPool))]
 public abstract class MeiLinModPotion : CustomPotionModel
 {
-    public override string PackedImagePath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".PotionImagePath();
-    public override string PackedOutlinePath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}_outline.png".PotionImagePath();
+    public override string CustomPackedImagePath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".PotionImagePath();
+    public override string CustomPackedOutlinePath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}_outline.png".PotionImagePath();
 }

@@ -3,6 +3,7 @@ using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
 using MeiLinMod.MeiLinModCode.HoverTips;
+using MeiLinMod.MeiLinModCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -17,15 +18,17 @@ public class WeiHe() : MeiLinModCard(1, CardType.Skill, CardRarity.Uncommon, Tar
 {
     private const string WeakKey = "Weak";
     private const string VulnerableKey = "Vulnerable";
+    private const string EmberKey = "Ember";
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
     protected override bool ShouldGlowGoldInternal => AwakeningHelper.CanAwakenNow(this);
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DynamicVar(WeakKey, 2m),
-        new DynamicVar(VulnerableKey, 1m)
+        new DynamicVar(VulnerableKey, 1m),
+        new DynamicVar(EmberKey, 1m)
     ];
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [MeiLinHoverTipFactory.Awakening];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [MeiLinHoverTipFactory.Awakening, MeiLinHoverTipFactory.Ember];
 
     public override string PortraitPath => IdPortraitPath;
     public override string CustomPortraitPath => IdBigPortraitPath;
@@ -38,6 +41,7 @@ public class WeiHe() : MeiLinModCard(1, CardType.Skill, CardRarity.Uncommon, Tar
         if (!AwakeningHelper.IsAwakened(cardPlay))
             return;
 
+        await PowerCmd.Apply<EmberPower>(Owner.Creature, DynamicVars[EmberKey].BaseValue, Owner.Creature, this);
         foreach (var enemy in CombatState.HittableEnemies)
             await PowerCmd.Apply<VulnerablePower>(enemy, DynamicVars[VulnerableKey].BaseValue, Owner.Creature, this);
     }

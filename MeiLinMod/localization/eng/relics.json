@@ -24,6 +24,6 @@
   "MEILINMOD-LONG_XIN_RELIC.description": "If combat ends while you are in Guard Stance, heal 5 HP.",
   "MEILINMOD-LONG_XIN_RELIC.flavor": "As long as the heart burns, life returns.",
   "MEILINMOD-LONG_YAN_RELIC.title": "Dragon Eye",
-  "MEILINMOD-LONG_YAN_RELIC.description": "In each combat, your first [gold]Power[/gold] card that costs more than 0 costs 1 less.",
+  "MEILINMOD-LONG_YAN_RELIC.description": "Every 3 turns, your next [gold]Power[/gold] card costs 1 less.",
   "MEILINMOD-LONG_YAN_RELIC.flavor": "One glance sees the opening."
 }

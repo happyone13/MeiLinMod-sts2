@@ -15,7 +15,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace MeiLinMod.MeiLinModCode.Cards;
 
 [Pool(typeof(MeiLinModCardPool))]
-public class ErChongTian() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
+public class ErChongTian() : MeiLinModCard(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
 {
     private const string EmberKey = "Ember";
     private const string ProgressKey = "Progress";
@@ -58,7 +58,6 @@ public class ErChongTian() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncomm
         DynamicVars[ProgressKey].UpgradeValueBy(2m);
     }
 }
-
 
 
 

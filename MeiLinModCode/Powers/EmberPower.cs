@@ -69,12 +69,25 @@ public class EmberPower : MeiLinModPower
 
     public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
     {
-        // Expire when the owner's side finishes its turn.
-        if (side != Owner.Side)
+        var shouldExpireThisTurnEnd = Owner.IsPlayer
+            ? side != Owner.Side
+            : side == Owner.Side;
+        if (!shouldExpireThisTurnEnd)
             return;
 
         if (Owner.HasPower<EmberNoExpireThisTurnPower>())
             return;
+
+        if (Owner.IsMonster && Owner.HasPower<EnemyEmberHalfDecayPower>())
+        {
+            var retain = (int)decimal.Ceiling(Amount / 2m);
+            var remove = (int)Amount - retain;
+            if (remove > 0)
+                await PowerCmd.Apply<EmberPower>(Owner, -remove, Applier ?? Owner, null, silent: true);
+
+            if (retain > 0)
+                return;
+        }
 
         await PowerCmd.Remove(this);
     }

@@ -12,7 +12,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace MeiLinMod.MeiLinModCode.Cards;
 
 [Pool(typeof(MeiLinModCardPool))]
-public class GenXing() : MeiLinModCard(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+public class GenXing() : MeiLinModCard(2, CardType.Skill, CardRarity.Common, TargetType.Self)
 {
     public override bool GainsBlock => true;
 

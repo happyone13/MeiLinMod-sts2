@@ -18,12 +18,10 @@ namespace MeiLinMod.MeiLinModCode.Cards;
 public class CiQuan() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
 {
     protected override bool ShouldGlowGoldInternal => AwakeningHelper.CanAwakenNow(this);
-    public override bool GainsBlock => true;
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(3m, ValueProp.Move),
-        new BlockVar(3m, ValueProp.Move),
+        new DamageVar(7m, ValueProp.Move),
         new EnergyVar(1)
     ];
 
@@ -40,14 +38,16 @@ public class CiQuan() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommon, T
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
+        if (legacy != null)
+            await legacy.EnterAttackStance();
+
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
 
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .FromCard(this)
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);
-
-        await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
 
         if (AwakeningHelper.IsAwakened(cardPlay))
         {
@@ -57,7 +57,6 @@ public class CiQuan() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommon, T
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(2m);
-        DynamicVars.Block.UpgradeValueBy(2m);
+        DynamicVars.Damage.UpgradeValueBy(3m);
     }
 }

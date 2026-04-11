@@ -1,5 +1,5 @@
 {
   "MEILINMOD-YU_JIN_POTION.title": "余烬药水",
-  "MEILINMOD-YU_JIN_POTION.description": "给予1个敌人{Ember:diff()}层[gold]余烬[/gold]。",
+  "MEILINMOD-YU_JIN_POTION.description": "使1个敌人获得{Ember:diff()}层[gold]余烬[/gold]。",
   "MEILINMOD-YU_JIN_POTION.selectionScreenPrompt": "选择1个敌人"
 }

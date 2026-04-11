@@ -28,14 +28,12 @@ public class JianJiXingShi() : MeiLinModCard(0, CardType.Skill, CardRarity.Commo
     {
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
 
-        var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
-        if (legacy == null)
+        if (!AwakeningHelper.IsAwakened(cardPlay))
             return;
 
-        if (AwakeningHelper.IsAwakened(cardPlay))
-            await legacy.EnterAttackStance();
-        else
-            await legacy.EnterGuardStance();
+        var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
+        if (legacy != null)
+            await legacy.EnterOtherStance();
     }
 
     protected override void OnUpgrade()

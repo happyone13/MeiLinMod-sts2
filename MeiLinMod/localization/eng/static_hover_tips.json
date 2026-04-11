@@ -1,4 +1,16 @@
 {
+  "AWAKENING.title": "Awakening",
+  "AWAKENING.description": "Triggers if you have at least 3 Energy when this card is played.",
   "EMBER.title": "Ember",
-  "EMBER.description": "Each stack makes the owner take +1 damage from attacks. Removed at end of owner's turn."
+  "EMBER.description": "Each stack makes the owner take +1 damage from attacks. Every 5 stacks, take damage equal to the crossed stack tier. Removed at end of owner's turn.",
+  "QI.title": "Qi",
+  "QI.description": "Its stat bonus depends on stance: Attack grants Strength, Guard grants Dexterity.",
+  "QI_GAUGE.title": "Qi Gauge",
+  "QI_GAUGE.description": "Gain 1 Qi for every 5 Qi Gauge.",
+  "XIANGZU_LEGACY.title": "Legacy of the Aroma Clan",
+  "XIANGZU_LEGACY.description": "Whenever you attack or are attacked, Qi Gauge +1. Gain 1 Qi for every 5 Qi Gauge.",
+  "ATTACK_STANCE.title": "Attack Stance",
+  "ATTACK_STANCE.description": "Each Qi gives +1 Strength.",
+  "GUARD_STANCE.title": "Guard Stance",
+  "GUARD_STANCE.description": "Each Qi gives +1 Dexterity."
 }

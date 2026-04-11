@@ -14,14 +14,11 @@ namespace MeiLinMod.MeiLinModCode.Cards;
 public class HuoLongTuXi() : MeiLinModCard(0, CardType.Skill, CardRarity.Common, TargetType.Self)
 {
     private const string EmberKey = "Ember";
-    private const string ProgressKey = "Progress";
-
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DynamicVar(EmberKey, 2m),
-        new DynamicVar(ProgressKey, 2m)
+        new CardsVar(2)
     ];
 
     public override string PortraitPath => IdPortraitPath;
@@ -29,16 +26,12 @@ public class HuoLongTuXi() : MeiLinModCard(0, CardType.Skill, CardRarity.Common,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        foreach (var enemy in CombatState.HittableEnemies)
-            await PowerCmd.Apply<EmberPower>(enemy, DynamicVars[EmberKey].BaseValue, Owner.Creature, this);
-
-        var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
-        if (legacy != null)
-            await legacy.AddQiCounterProgress(DynamicVars[ProgressKey].IntValue);
+        await PowerCmd.Apply<EmberPower>(Owner.Creature, DynamicVars[EmberKey].BaseValue, Owner.Creature, this);
+        await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars[EmberKey].UpgradeValueBy(1m);
+        DynamicVars.Cards.UpgradeValueBy(1m);
     }
 }

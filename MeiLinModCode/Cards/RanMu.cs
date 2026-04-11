@@ -46,7 +46,7 @@ public class RanMu() : MeiLinModCard(1, CardType.Skill, CardRarity.Common, Targe
 
         var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
         if (legacy != null)
-            await legacy.EnterAttackStance();
+            await legacy.EnterOtherStance();
     }
 
     protected override void OnUpgrade()

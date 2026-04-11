@@ -16,7 +16,12 @@ namespace MeiLinMod.MeiLinModCode.Cards;
 public class YiTuiWeiJin() : MeiLinModCard(0, CardType.Skill, CardRarity.Common, TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new EnergyVar(1)];
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [EnergyHoverTip, HoverTipFactory.FromPower<EnergyNextTurnPower>()];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        EnergyHoverTip,
+        HoverTipFactory.FromPower<YiTuiWeiJinNextTurnPower>(),
+        HoverTipFactory.FromPower<DrawCardsNextTurnPower>()
+    ];
 
     public override string PortraitPath => IdPortraitPath;
     public override string CustomPortraitPath => IdBigPortraitPath;
@@ -27,12 +32,12 @@ public class YiTuiWeiJin() : MeiLinModCard(0, CardType.Skill, CardRarity.Common,
         if (legacy != null)
             await legacy.EnterGuardStance();
 
-        await PowerCmd.Apply<EnergyNextTurnPower>(Owner.Creature, DynamicVars.Energy.IntValue, Owner.Creature, this);
+        await PowerCmd.Apply<YiTuiWeiJinNextTurnPower>(Owner.Creature, 1m, Owner.Creature, this);
+        if (IsUpgraded)
+            await PowerCmd.Apply<DrawCardsNextTurnPower>(Owner.Creature, 1m, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Energy.UpgradeValueBy(1m);
     }
 }
-

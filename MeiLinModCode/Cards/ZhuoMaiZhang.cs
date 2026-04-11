@@ -16,19 +16,21 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace MeiLinMod.MeiLinModCode.Cards;
 
 [Pool(typeof(MeiLinModCardPool))]
-public class ZhuoMaiZhang() : MeiLinModCard(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
+public class ZhuoMaiZhang() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
 {
-    private const string EmberKey = "Ember";
     private const string VulnerableKey = "Vulnerable";
+    private const string SelfEmberKey = "SelfEmber";
+    private const string EnemyEmberKey = "EnemyEmber";
 
     protected override bool ShouldGlowGoldInternal => AwakeningHelper.CanAwakenNow(this);
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(6m, ValueProp.Move),
-        new DynamicVar(EmberKey, 2m),
-        new DynamicVar(VulnerableKey, 1m)
+        new DynamicVar(VulnerableKey, 1m),
+        new DynamicVar(SelfEmberKey, 1m),
+        new DynamicVar(EnemyEmberKey, 2m)
     ];
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [MeiLinHoverTipFactory.Awakening];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [MeiLinHoverTipFactory.Awakening, MeiLinHoverTipFactory.Ember];
 
     public override string PortraitPath => IdPortraitPath;
     public override string CustomPortraitPath => IdBigPortraitPath;
@@ -41,17 +43,19 @@ public class ZhuoMaiZhang() : MeiLinModCard(1, CardType.Attack, CardRarity.Commo
             .Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
+        await PowerCmd.Apply<VulnerablePower>(cardPlay.Target, DynamicVars[VulnerableKey].BaseValue, Owner.Creature, this);
 
-        await PowerCmd.Apply<EmberPower>(cardPlay.Target, DynamicVars[EmberKey].BaseValue, Owner.Creature, this);
+        if (!AwakeningHelper.IsAwakened(cardPlay))
+            return;
 
-        if (AwakeningHelper.IsAwakened(cardPlay))
-            await PowerCmd.Apply<VulnerablePower>(cardPlay.Target, DynamicVars[VulnerableKey].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<EmberPower>(Owner.Creature, DynamicVars[SelfEmberKey].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<EmberPower>(cardPlay.Target, DynamicVars[EnemyEmberKey].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(2m);
-        DynamicVars[EmberKey].UpgradeValueBy(1m);
+        DynamicVars.Damage.UpgradeValueBy(3m);
+        DynamicVars[EnemyEmberKey].UpgradeValueBy(1m);
     }
 }
 
