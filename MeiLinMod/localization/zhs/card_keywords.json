@@ -2,7 +2,7 @@
   "AWAKENING.title": "觉醒",
   "AWAKENING.description": "当打出这张牌时你拥有至少3点能量，触发其觉醒效果。",
   "EMBER.title": "余烬",
-  "EMBER.description": "每层使持有者受到的攻击伤害+1。持有者回合结束时移除。",
+  "EMBER.description": "每层使持有者受到的攻击伤害+1。每5层会额外受到对应层数的伤害。持有者回合结束时移除。",
   "QI.title": "气",
   "QI.description": "属性加成取决于姿态：攻击姿态加力量，防御姿态加敏捷。",
   "XIANGZU_LEGACY.title": "香族的传承",

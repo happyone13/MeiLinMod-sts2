@@ -51,7 +51,7 @@ public class YinSheChuDong() : MeiLinModCard(1, CardType.Attack, CardRarity.Comm
 
         var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
         if (legacy != null)
-            await legacy.EnterGuardStance();
+            await legacy.EnterOtherStance();
     }
 
     protected override void OnUpgrade()
@@ -59,6 +59,5 @@ public class YinSheChuDong() : MeiLinModCard(1, CardType.Attack, CardRarity.Comm
         DynamicVars.Energy.UpgradeValueBy(1m);
     }
 }
-
 
 

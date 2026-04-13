@@ -33,7 +33,7 @@ public class HuoLongXinZang() : MeiLinModCard(0, CardType.Power, CardRarity.Unco
 
     protected override void OnUpgrade()
     {
+        AddKeyword(CardKeyword.Innate);
     }
 }
-
 

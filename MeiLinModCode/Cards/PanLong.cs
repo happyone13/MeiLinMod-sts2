@@ -70,5 +70,6 @@ public class PanLong() : MeiLinModCard(1, CardType.Attack, CardRarity.Rare, Targ
     {
         DynamicVars.Damage.UpgradeValueBy(2m);
         DynamicVars.Block.UpgradeValueBy(2m);
+        DynamicVars[GrowKey].UpgradeValueBy(1m);
     }
 }

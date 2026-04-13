@@ -12,10 +12,10 @@ using MegaCrit.Sts2.Core.HoverTips;
 namespace MeiLinMod.MeiLinModCode.Cards;
 
 [Pool(typeof(MeiLinModCardPool))]
-public class LongZhiQiShi() : MeiLinModCard(1, CardType.Power, CardRarity.Rare, TargetType.Self)
+public class LongZhiQiShi() : MeiLinModCard(2, CardType.Power, CardRarity.Rare, TargetType.Self)
 {
     protected override bool ShouldGlowGoldInternal => AwakeningHelper.CanAwakenNow(this);
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [EnergyHoverTip, MeiLinHoverTipFactory.Awakening];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [EnergyHoverTip, MeiLinHoverTipFactory.Awakening, MeiLinHoverTipFactory.Ember];
 
     public override string PortraitPath => IdPortraitPath;
     public override string CustomPortraitPath => IdBigPortraitPath;
@@ -23,10 +23,13 @@ public class LongZhiQiShi() : MeiLinModCard(1, CardType.Power, CardRarity.Rare, 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await PlayPowerCastAnim();
-        if (AwakeningHelper.IsAwakened(cardPlay))
-            await PowerCmd.Apply<LongZhiQiShiDrawPower>(Owner.Creature, 1m, Owner.Creature, this);
-        else
-            await PowerCmd.Apply<LongZhiQiShiPower>(Owner.Creature, 1m, Owner.Creature, this);
+        await PowerCmd.Apply<LongZhiQiShiPower>(Owner.Creature, 1m, Owner.Creature, this);
+
+        if (!AwakeningHelper.IsAwakened(cardPlay))
+            return;
+
+        await PlayerCmd.GainEnergy(2m, Owner);
+        await PowerCmd.Apply<LongZhiQiShiDrawPower>(Owner.Creature, 1m, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

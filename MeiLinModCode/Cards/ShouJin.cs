@@ -15,7 +15,7 @@ namespace MeiLinMod.MeiLinModCode.Cards;
 [Pool(typeof(MeiLinModCardPool))]
 public class ShouJin() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(5m, ValueProp.Move)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(7m, ValueProp.Move)];
 
     public override string PortraitPath => IdPortraitPath;
     public override string CustomPortraitPath => IdBigPortraitPath;
@@ -30,7 +30,12 @@ public class ShouJin() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommon, 
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
 
-        await PowerCmd.Apply<QiProgressDoubleThisTurnPower>(Owner.Creature, 1m, Owner.Creature, this);
+        var selfEmber = Owner.Creature.GetPower<EmberPower>()?.Amount ?? 0m;
+        if (selfEmber > 0m)
+        {
+            await PowerCmd.Apply<EmberPower>(Owner.Creature, -selfEmber, Owner.Creature, this);
+            await PowerCmd.Apply<EmberPower>(cardPlay.Target, selfEmber, Owner.Creature, this);
+        }
     }
 
     protected override void OnUpgrade()

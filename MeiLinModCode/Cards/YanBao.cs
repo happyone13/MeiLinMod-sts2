@@ -15,7 +15,13 @@ namespace MeiLinMod.MeiLinModCode.Cards;
 [Pool(typeof(MeiLinModCardPool))]
 public class YanBao() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(8m, ValueProp.Move)];
+    private const string BonusDamageKey = "BonusDamage";
+
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
+        new DamageVar(5m, ValueProp.Move),
+        new DynamicVar(BonusDamageKey, 3m)
+    ];
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
     public override string PortraitPath => IdPortraitPath;
@@ -24,20 +30,21 @@ public class YanBao() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommon, T
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
+        var ember = cardPlay.Target.GetPower<EmberPower>()?.Amount ?? 0m;
+        if (ember > 0)
+            await PowerCmd.Apply<EmberPower>(cardPlay.Target, -ember, Owner.Creature, this);
+
+        var totalDamage = DynamicVars.Damage.BaseValue + (ember * DynamicVars[BonusDamageKey].BaseValue);
+        await DamageCmd.Attack(totalDamage)
             .FromCard(this)
-            .Targeting(cardPlay.Target)
+            .TargetingAllOpponents(CombatState)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
-
-        var ember = (int)(cardPlay.Target.GetPower<EmberPower>()?.Amount ?? 0m);
-        if (ember > 0)
-            await PowerCmd.Apply<EmberPower>(cardPlay.Target, ember, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(3m);
+        DynamicVars[BonusDamageKey].UpgradeValueBy(1m);
     }
 }
 

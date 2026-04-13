@@ -12,7 +12,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace MeiLinMod.MeiLinModCode.Cards;
 
 [Pool(typeof(MeiLinModCardPool))]
-public class LongZhiNu() : MeiLinModCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+public class LongZhiNu() : MeiLinModCard(1, CardType.Skill, CardRarity.Common, TargetType.Self)
 {
     private const string ProgressKey = "Progress";
 

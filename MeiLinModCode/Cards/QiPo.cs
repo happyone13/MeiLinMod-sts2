@@ -14,11 +14,12 @@ using MegaCrit.Sts2.Core.Models.Powers;
 namespace MeiLinMod.MeiLinModCode.Cards;
 
 [Pool(typeof(MeiLinModCardPool))]
-public class QiPo() : MeiLinModCard(1, CardType.Skill, CardRarity.Common, TargetType.AllEnemies)
+public class QiPo() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncommon, TargetType.AllEnemies)
 {
     private const string EmberKey = "Ember";
     private const string ProgressKey = "Progress";
     private const string StrengthLossKey = "StrengthLoss";
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
@@ -50,7 +51,3 @@ public class QiPo() : MeiLinModCard(1, CardType.Skill, CardRarity.Common, Target
         DynamicVars[StrengthLossKey].UpgradeValueBy(1m);
     }
 }
-
-
-
-

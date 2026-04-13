@@ -12,10 +12,12 @@ public class EmberNoExpireThisTurnPower : MeiLinModPower
 
     public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
     {
-        if (side != Owner.Side)
+        var shouldRemoveThisTurnEnd = Owner.IsPlayer
+            ? side != Owner.Side
+            : side == Owner.Side;
+        if (!shouldRemoveThisTurnEnd)
             return;
 
         await PowerCmd.Remove(this);
     }
 }
-

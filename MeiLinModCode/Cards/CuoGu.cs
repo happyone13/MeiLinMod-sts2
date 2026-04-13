@@ -14,14 +14,14 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace MeiLinMod.MeiLinModCode.Cards;
 
 [Pool(typeof(MeiLinModCardPool))]
-public class CuoGu() : MeiLinModCard(0, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
+public class CuoGu() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
 {
     private const string VulnerableKey = "Vulnerable";
     private const string WeakKey = "Weak";
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(3m, ValueProp.Move),
+        new DamageVar(6m, ValueProp.Move),
         new DynamicVar(VulnerableKey, 1m),
         new DynamicVar(WeakKey, 1m)
     ];

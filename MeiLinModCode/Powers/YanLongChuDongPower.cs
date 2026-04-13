@@ -24,15 +24,20 @@ public class YanLongChuDongPower : MeiLinModPower
         if (dealer != Owner)
             return;
 
-        if (!XiangzuLegacyPower.IsInAttackStance(Owner))
-            return;
-
         if (!props.HasFlag(ValueProp.Move) || cardSource?.Type != CardType.Attack)
             return;
 
         if (result.TotalDamage <= 0m && result.BlockedDamage <= 0m && result.UnblockedDamage <= 0m)
             return;
 
-        await PowerCmd.Apply<EmberPower>(target, Amount, Owner, cardSource);
+        if (XiangzuLegacyPower.IsInAttackStance(Owner))
+            await PowerCmd.Apply<EmberPower>(target, Amount, Owner, cardSource);
+
+        if (!XiangzuLegacyPower.IsInGuardStance(Owner))
+            return;
+
+        var legacy = Owner.GetPower<XiangzuLegacyPower>();
+        if (legacy != null)
+            await legacy.AddQiCounterProgress((int)Amount);
     }
 }

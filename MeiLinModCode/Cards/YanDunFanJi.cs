@@ -44,7 +44,7 @@ public class YanDunFanJi() : MeiLinModCard(1, CardType.Skill, CardRarity.Common,
 
         var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
         if (legacy != null)
-            await legacy.EnterAttackStance();
+            await legacy.EnterOtherStance();
     }
 
     protected override void OnUpgrade()
@@ -52,7 +52,6 @@ public class YanDunFanJi() : MeiLinModCard(1, CardType.Skill, CardRarity.Common,
         DynamicVars.Block.UpgradeValueBy(3m);
     }
 }
-
 
 
 

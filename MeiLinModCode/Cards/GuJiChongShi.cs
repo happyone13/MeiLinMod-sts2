@@ -18,7 +18,6 @@ namespace MeiLinMod.MeiLinModCode.Cards;
 [Pool(typeof(MeiLinModCardPool))]
 public class GuJiChongShi() : MeiLinModCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {
-    protected override bool IsPlayable => PileType.Hand.GetPile(Owner).Cards.Any(BasicStrikeDefendHelper.IsBasicStrikeOrDefend);
     protected override bool ShouldGlowGoldInternal => AwakeningHelper.CanAwakenNow(this);
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
@@ -44,11 +43,11 @@ public class GuJiChongShi() : MeiLinModCard(1, CardType.Skill, CardRarity.Uncomm
             .FirstOrDefault();
         MainFile.Logger.Info($"[GuJiChongShi] selected={(target?.Id.Entry ?? "null")}");
 
-        if (target == null)
-            return;
-
-        target.BaseReplayCount += 1;
-        CardCmd.Preview(target);
+        if (target != null)
+        {
+            target.BaseReplayCount += 1;
+            CardCmd.Preview(target);
+        }
 
         if (!AwakeningHelper.IsAwakened(cardPlay))
             return;
@@ -63,4 +62,3 @@ public class GuJiChongShi() : MeiLinModCard(1, CardType.Skill, CardRarity.Uncomm
         EnergyCost.UpgradeBy(-1);
     }
 }
-
