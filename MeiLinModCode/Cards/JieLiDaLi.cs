@@ -18,9 +18,7 @@ public class JieLiDaLi() : MeiLinModCard(0, CardType.Skill, CardRarity.Common, T
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
-        if (legacy != null)
-            await legacy.EnterAttackStance();
+        await XiangzuLegacyApi.SetStance(Owner, XiangzuStance.Attack);
 
         await PowerCmd.Apply<BorrowForceShieldPower>(Owner.Creature, 1m, Owner.Creature, this);
 

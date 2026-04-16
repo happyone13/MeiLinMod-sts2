@@ -16,6 +16,12 @@ public static class MeiLinHoverTipFactory
     private static readonly IHoverTip QiHoverTip = new HoverTip(
         new LocString("card_keywords", "QI.title"),
         new LocString("card_keywords", "QI.description"));
+    private static readonly IHoverTip QiGaugeHoverTip = new HoverTip(
+        new LocString("card_keywords", "QI_GAUGE.title"),
+        new LocString("card_keywords", "QI_GAUGE.description"));
+    private static readonly IHoverTip QiConsumeHoverTip = new HoverTip(
+        new LocString("card_keywords", "QI_CONSUME.title"),
+        new LocString("card_keywords", "QI_CONSUME.description"));
     private static readonly IHoverTip XiangzuLegacyHoverTip = new HoverTip(
         new LocString("card_keywords", "XIANGZU_LEGACY.title"),
         new LocString("card_keywords", "XIANGZU_LEGACY.description"));
@@ -31,6 +37,8 @@ public static class MeiLinHoverTipFactory
     public static IHoverTip Ember => EmberHoverTip;
 
     public static IHoverTip Qi => QiHoverTip;
+    public static IHoverTip QiGauge => QiGaugeHoverTip;
+    public static IHoverTip QiConsume => QiConsumeHoverTip;
 
     public static IHoverTip XiangzuLegacy => XiangzuLegacyHoverTip;
 

@@ -35,16 +35,13 @@ public class BaoQi() : MeiLinModCard(0, CardType.Skill, CardRarity.Rare, TargetT
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
-        if (legacy != null)
-            await legacy.AddQiCounterProgress(DynamicVars[ProgressKey].IntValue);
+        await QiCounterPower.AddProgress(Owner.Creature, DynamicVars[ProgressKey].IntValue, Owner.Creature, this);
 
         if (!AwakeningHelper.IsAwakened(cardPlay))
             return;
 
         await PowerCmd.Apply<EmberPower>(Owner.Creature, DynamicVars[EmberKey].BaseValue, Owner.Creature, this);
-        if (legacy != null)
-            await legacy.AddQiCounterProgress(DynamicVars[ProgressKey].IntValue);
+        await QiCounterPower.AddProgress(Owner.Creature, DynamicVars[ProgressKey].IntValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

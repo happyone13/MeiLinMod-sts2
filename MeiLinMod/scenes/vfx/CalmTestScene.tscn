@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://MeiLinMod/scenes/meilin_character.tscn" id="1_char"]
+[ext_resource type="PackedScene" path="res://MeiLinMod/scenes/vfx/calm_aura.tscn" id="2_aura"]
+
+[node name="TestScene" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -120)
+zoom = Vector2(1.65, 1.65)
+
+[node name="MeiLin" parent="." instance=ExtResource("1_char")]
+
+[node name="CalmAura" parent="." instance=ExtResource("2_aura")]

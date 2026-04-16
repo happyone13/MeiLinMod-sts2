@@ -17,18 +17,14 @@ public class XiangzuLegacyRelic : MeiLinModRelic
     [
         MeiLinHoverTipFactory.XiangzuLegacy,
         MeiLinHoverTipFactory.Qi,
-        MeiLinHoverTipFactory.AttackStance,
-        MeiLinHoverTipFactory.GuardStance
+        MeiLinHoverTipFactory.QiGauge
     ];
     
     public override async Task BeforeCombatStart()
     {
         Flash();
-        await PowerCmd.Apply<XiangzuLegacyPower>(
-            Owner.Creature,
-            1m,
-            Owner.Creature,
-            null
-        );
+        await PowerCmd.Apply<XiangzuLegacyPower>(Owner.Creature, 1m, Owner.Creature, null);
+        await PowerCmd.Remove<StanceYuPower>(Owner.Creature);
+        await PowerCmd.Apply<StanceGongPower>(Owner.Creature, 1m, Owner.Creature, null, silent: true);
     }
 }

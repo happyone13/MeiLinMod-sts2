@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
+using System.Reflection;
 
 namespace MeiLinMod.MeiLinModCode.Powers;
 
@@ -50,9 +51,16 @@ public class EmberPower : MeiLinModPower
         if (newTier <= prevTier)
             return;
 
-        decimal burstDamage = 0m;
-        for (var tier = prevTier + 1; tier <= newTier; tier++)
-            burstDamage += tier * TriggerStack;
+        var triggerCount = newTier - prevTier;
+        if (triggerCount <= 0)
+            return;
+
+        var maxHealth = TryGetMaxHealth(Owner);
+        if (maxHealth <= 0m)
+            return;
+
+        var perTriggerDamage = Math.Max(1m, Math.Ceiling(maxHealth * 0.05m));
+        var burstDamage = perTriggerDamage * triggerCount;
 
         if (burstDamage <= 0m)
             return;
@@ -69,26 +77,73 @@ public class EmberPower : MeiLinModPower
 
     public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
     {
-        var shouldExpireThisTurnEnd = Owner.IsPlayer
+        var shouldDecayThisTurnEnd = Owner.IsPlayer
             ? side != Owner.Side
             : side == Owner.Side;
-        if (!shouldExpireThisTurnEnd)
+        if (!shouldDecayThisTurnEnd)
+            return;
+
+        if (!Owner.IsPlayer && Owner.HasPower<EnemyEmberHalfDecayPower>())
             return;
 
         if (Owner.HasPower<EmberNoExpireThisTurnPower>())
-            return;
-
-        if (Owner.IsMonster && Owner.HasPower<EnemyEmberHalfDecayPower>())
         {
-            var retain = (int)decimal.Ceiling(Amount / 2m);
-            var remove = (int)Amount - retain;
-            if (remove > 0)
-                await PowerCmd.Apply<EmberPower>(Owner, -remove, Applier ?? Owner, null, silent: true);
-
-            if (retain > 0)
-                return;
+            await PowerCmd.Remove<EmberNoExpireThisTurnPower>(Owner);
+            return;
         }
 
-        await PowerCmd.Remove(this);
+        var retain = (int)decimal.Floor(Amount / 2m);
+        var remove = (int)Amount - retain;
+
+        if (remove > 0)
+            await PowerCmd.Apply<EmberPower>(Owner, -remove, Applier ?? Owner, null, silent: true);
+
+        if (retain <= 0)
+            await PowerCmd.Remove(this);
+    }
+
+    private static decimal TryGetMaxHealth(Creature creature)
+    {
+        var type = creature.GetType();
+        const BindingFlags flags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
+        string[] candidateNames = ["MaxHealth", "MaxHp", "MaxHP", "MaxHitPoints", "HealthMax"];
+
+        foreach (var name in candidateNames)
+        {
+            var prop = type.GetProperty(name, flags);
+            if (prop?.GetValue(creature) is { } value && TryConvertToDecimal(value, out var result))
+                return result;
+
+            var field = type.GetField(name, flags);
+            if (field?.GetValue(creature) is { } fieldValue && TryConvertToDecimal(fieldValue, out result))
+                return result;
+        }
+
+        return 0m;
+    }
+
+    private static bool TryConvertToDecimal(object value, out decimal result)
+    {
+        switch (value)
+        {
+            case decimal d:
+                result = d;
+                return true;
+            case int i:
+                result = i;
+                return true;
+            case long l:
+                result = l;
+                return true;
+            case float f:
+                result = (decimal)f;
+                return true;
+            case double db:
+                result = (decimal)db;
+                return true;
+            default:
+                result = 0m;
+                return false;
+        }
     }
 }

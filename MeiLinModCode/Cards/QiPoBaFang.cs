@@ -27,6 +27,11 @@ public class QiPoBaFang() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommo
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await DamageCmd.Attack(5m)
+            .FromCard(this)
+            .TargetingAllOpponents(CombatState)
+            .Execute(choiceContext);
+
         var qi = (int)(Owner.Creature.GetPower<QiPower>()?.Amount ?? 0m);
         if (qi <= 0)
             return;

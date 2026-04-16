@@ -13,7 +13,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace MeiLinMod.MeiLinModCode.Cards;
 
-[Pool(typeof(MeiLinModCardPool))]
+[Pool(typeof(NoneCardPool))]
 public class BingQiNingShen() : MeiLinModCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {
     protected override bool ShouldGlowGoldInternal => AwakeningHelper.CanAwakenNow(this);

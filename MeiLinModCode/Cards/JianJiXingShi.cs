@@ -31,9 +31,7 @@ public class JianJiXingShi() : MeiLinModCard(0, CardType.Skill, CardRarity.Commo
         if (!AwakeningHelper.IsAwakened(cardPlay))
             return;
 
-        var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
-        if (legacy != null)
-            await legacy.EnterOtherStance();
+            await XiangzuLegacyApi.ToggleAttackGuard(Owner);
     }
 
     protected override void OnUpgrade()

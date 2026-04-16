@@ -1,6 +1,6 @@
-﻿using BaseLib.Utils;
+using System.Collections.Generic;
+using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
-using MeiLinMod.MeiLinModCode.Extensions;
 using MeiLinMod.MeiLinModCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -9,9 +9,11 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 namespace MeiLinMod.MeiLinModCode.Cards;
 
 [Pool(typeof(MeiLinModCardPool))]
-public class YiLiYuJianTaZhiShang() : MeiLinModCard(1, CardType.Skill, CardRarity.Rare, TargetType.Self)
+public class YiLiYuJianTaZhiShang() : MeiLinModCard(1, CardType.Power, CardRarity.Rare, TargetType.Self)
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Innate];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => IsUpgraded
+        ? [CardKeyword.Innate]
+        : [];
 
     public override string PortraitPath => IdPortraitPath;
     public override string CustomPortraitPath => IdBigPortraitPath;
@@ -19,14 +21,11 @@ public class YiLiYuJianTaZhiShang() : MeiLinModCard(1, CardType.Skill, CardRarit
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await PlayPowerCastAnim();
-        await PowerCmd.Apply<LastStandThisTurnPower>(Owner.Creature, 1m, Owner.Creature, this);
-        EnergyCost.AddThisCombat(1);
+        await PowerCmd.Apply<YiLiYuJianTaZhiShangPower>(Owner.Creature, 1m, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
-        AddKeyword(CardKeyword.Retain);
+        AddKeyword(CardKeyword.Innate);
     }
 }
-
-

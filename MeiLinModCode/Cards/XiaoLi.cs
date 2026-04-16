@@ -10,7 +10,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace MeiLinMod.MeiLinModCode.Cards;
 
-[Pool(typeof(MeiLinModCardPool))]
+[Pool(typeof(NoneCardPool))]
 public class XiaoLi() : MeiLinModCard(1, CardType.Skill, CardRarity.Common, TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
@@ -24,9 +24,7 @@ public class XiaoLi() : MeiLinModCard(1, CardType.Skill, CardRarity.Common, Targ
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
-        if (legacy != null)
-            await legacy.EnterGuardStance();
+        await XiangzuLegacyApi.SetStance(Owner, XiangzuStance.Guard);
 
         if (cardPlay.Target == null)
             return;

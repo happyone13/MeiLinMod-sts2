@@ -41,14 +41,13 @@ public class ErChongTian() : MeiLinModCard(1, CardType.Attack, CardRarity.Common
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
 
-        var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
         var awakened = AwakeningHelper.IsAwakened(cardPlay);
 
         if (XiangzuLegacyPower.IsInAttackStance(Owner.Creature) || awakened)
             await PowerCmd.Apply<EmberPower>(cardPlay.Target, DynamicVars[EmberKey].BaseValue, Owner.Creature, this);
 
-        if ((XiangzuLegacyPower.IsInGuardStance(Owner.Creature) || awakened) && legacy != null)
-            await legacy.AddQiCounterProgress(DynamicVars[ProgressKey].IntValue);
+        if (XiangzuLegacyPower.IsInGuardStance(Owner.Creature) || awakened)
+            await QiCounterPower.AddProgress(Owner.Creature, DynamicVars[ProgressKey].IntValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
@@ -58,6 +57,5 @@ public class ErChongTian() : MeiLinModCard(1, CardType.Attack, CardRarity.Common
         DynamicVars[ProgressKey].UpgradeValueBy(2m);
     }
 }
-
 
 

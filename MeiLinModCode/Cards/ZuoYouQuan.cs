@@ -17,9 +17,7 @@ public class ZuoYouQuan() : MeiLinModCard(1, CardType.Skill, CardRarity.Common, 
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
-        if (legacy != null)
-            await legacy.EnterAttackStance();
+        await XiangzuLegacyApi.SetStance(Owner, XiangzuStance.Attack);
 
         for (var i = 0; i < 2; i++)
         {

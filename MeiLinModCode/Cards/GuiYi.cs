@@ -18,18 +18,19 @@ public class GuiYi() : MeiLinModCard(1, CardType.Power, CardRarity.Rare, TargetT
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await PlayPowerCastAnim();
-        var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
-        if (legacy != null && IsUpgraded)
-            await legacy.AddQiCounterProgress(3);
+        if (IsUpgraded)
+            await QiCounterPower.AddProgress(Owner.Creature, 3, Owner.Creature, this);
 
         await PowerCmd.Apply<GuiYiDualStancePower>(Owner.Creature, 1m, Owner.Creature, this);
+        var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
         if (legacy != null)
+        {
+            await legacy.TriggerVirtualStanceSwitch();
             await legacy.RefreshFromStance();
+        }
     }
 
     protected override void OnUpgrade()
     {
     }
 }
-
-

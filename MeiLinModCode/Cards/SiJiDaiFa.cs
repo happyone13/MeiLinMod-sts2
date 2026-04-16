@@ -24,9 +24,7 @@ public class SiJiDaiFa() : MeiLinModCard(0, CardType.Skill, CardRarity.Common, T
 
         if (AwakeningHelper.IsAwakened(cardPlay))
         {
-            var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
-            if (legacy != null)
-                await legacy.EnterOtherStance();
+            await XiangzuLegacyApi.ToggleAttackGuard(Owner);
         }
 
         if (!IsUpgraded)

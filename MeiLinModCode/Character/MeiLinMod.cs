@@ -32,8 +32,6 @@ public class MeiLinMod : PlaceholderCharacterModel
         ModelDb.Card<StrikeMeilin>(),
         ModelDb.Card<StrikeMeilin>(),
         ModelDb.Card<StrikeMeilin>(),
-        ModelDb.Card<StrikeMeilin>(),
-        ModelDb.Card<DefendMeilin>(),
         ModelDb.Card<DefendMeilin>(),
         ModelDb.Card<DefendMeilin>(),
         ModelDb.Card<DefendMeilin>(),
@@ -43,6 +41,16 @@ public class MeiLinMod : PlaceholderCharacterModel
     public override IReadOnlyList<RelicModel> StartingRelics =>
     [
         ModelDb.Relic<XiangzuLegacyRelic>()
+    ];
+
+    protected override IEnumerable<string> ExtraAssetPaths =>
+    [
+        "res://MeiLinMod/scenes/vfx/calm_aura.tscn",
+        "res://MeiLinMod/scenes/vfx/wrath_aura.tscn",
+        "res://MeiLinMod/images/vfx/frost_streak.png",
+        "res://MeiLinMod/images/vfx/big_blur.png",
+        "res://MeiLinMod/images/vfx/strike_line.png",
+        "res://MeiLinMod/images/vfx/glow_spark.png"
     ];
 
     public override CardPoolModel CardPool => ModelDb.CardPool<MeiLinModCardPool>();
@@ -128,7 +136,7 @@ public class MeiLinMod : PlaceholderCharacterModel
         while (current != null)
         {
             if (current is NCreature nCreature)
-                return nCreature.Entity.HasPower<StanceYuPower>();
+                return XiangzuLegacyPower.IsInGuardStance(nCreature.Entity);
 
             current = current.GetParent();
         }

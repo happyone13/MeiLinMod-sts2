@@ -18,9 +18,6 @@ public class StrikeDefendQiProgressPower : MeiLinModPower
         if (!BasicStrikeDefendHelper.IsBasicStrikeOrDefend(cardPlay.Card))
             return;
 
-        var legacy = Owner.GetPower<XiangzuLegacyPower>();
-        if (legacy != null)
-            await legacy.AddQiCounterProgress((int)Amount);
+        await QiCounterPower.AddProgress(Owner, (int)Amount, Owner, cardPlay.Card);
     }
 }
-

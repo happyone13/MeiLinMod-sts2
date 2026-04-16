@@ -28,9 +28,7 @@ public class YiTuiWeiJin() : MeiLinModCard(0, CardType.Skill, CardRarity.Common,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
-        if (legacy != null)
-            await legacy.EnterGuardStance();
+        await XiangzuLegacyApi.SetStance(Owner, XiangzuStance.Guard);
 
         await PowerCmd.Apply<YiTuiWeiJinNextTurnPower>(Owner.Creature, 1m, Owner.Creature, this);
         if (IsUpgraded)

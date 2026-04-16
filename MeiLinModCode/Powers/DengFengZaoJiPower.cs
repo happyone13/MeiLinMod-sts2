@@ -21,13 +21,13 @@ public class DengFengZaoJiPower : MeiLinModPower
 
         if (cardPlay.Card.Tags.Contains(CardTag.Strike))
         {
-            _strikeBonus += Amount;
-            BuffAllStrikeCards(Amount);
+            _strikeBonus += 1m;
+            BuffAllStrikeCards(1m);
         }
-        else if (cardPlay.Card.Tags.Contains(CardTag.Defend))
+        else if (Amount >= 2m && cardPlay.Card.Tags.Contains(CardTag.Defend))
         {
-            _defendBonus += Amount;
-            BuffAllDefendCards(Amount);
+            _defendBonus += 1m;
+            BuffAllDefendCards(1m);
         }
 
         return Task.CompletedTask;

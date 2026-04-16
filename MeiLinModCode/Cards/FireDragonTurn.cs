@@ -13,7 +13,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 namespace MeiLinMod.MeiLinModCode.Cards;
 
 [Pool(typeof(MeiLinModCardPool))]
-public class FireDragonTurn() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncommon, TargetType.AnyEnemy)
+public class FireDragonTurn() : MeiLinModCard(0, CardType.Skill, CardRarity.Common, TargetType.AnyEnemy)
 {
     private const string EmberKey = "Ember";
 
@@ -33,11 +33,7 @@ public class FireDragonTurn() : MeiLinModCard(0, CardType.Skill, CardRarity.Unco
             Owner.Creature,
             this);
 
-        XiangzuLegacyPower? legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
-        if (legacy == null)
-            return;
-
-        await legacy.EnterOtherStance();
+        await XiangzuLegacyApi.ToggleAttackGuard(Owner);
     }
 
     protected override void OnUpgrade()

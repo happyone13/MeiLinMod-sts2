@@ -15,9 +15,7 @@ public class ZanJinQiProgressPower : MeiLinModPower
         if (player.Creature != Owner || player != Owner.Player)
             return;
 
-        var legacy = Owner.GetPower<XiangzuLegacyPower>();
-        if (legacy != null)
-            await legacy.AddQiCounterProgress(3);
+        await PowerCmd.Apply<QiPower>(Owner, 2m, Owner, null);
 
         var remainingTurns = Amount - 1m;
         await PowerCmd.Apply<ZanJinQiProgressPower>(Owner, -1m, Owner, null, silent: true);

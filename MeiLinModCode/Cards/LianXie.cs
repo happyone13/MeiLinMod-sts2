@@ -1,0 +1,82 @@
+using System;
+using System.Collections.Generic;
+using BaseLib.Utils;
+using MeiLinMod.MeiLinModCode.Character;
+using MeiLinMod.MeiLinModCode.HoverTips;
+using MeiLinMod.MeiLinModCode.Powers;
+using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.ValueProps;
+
+namespace MeiLinMod.MeiLinModCode.Cards;
+
+[Pool(typeof(MeiLinModCardPool))]
+public class LianXie() : MeiLinModCard(0, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
+{
+    private int _seenSwitchCount;
+
+    public override bool GainsBlock => true;
+
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
+        new DamageVar(3m, ValueProp.Move),
+        new BlockVar(2m, ValueProp.Move)
+    ];
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        MeiLinHoverTipFactory.QiGauge
+    ];
+
+    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    {
+        ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
+        await DamageCmd.Attack(1m)
+            .FromCard(this)
+            .Targeting(cardPlay.Target)
+            .Execute(choiceContext);
+
+        if (XiangzuLegacyPower.IsInAttackStance(Owner.Creature))
+        {
+            await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
+                .FromCard(this)
+                .Targeting(cardPlay.Target)
+                .Execute(choiceContext);
+        }
+
+        if (XiangzuLegacyPower.IsInGuardStance(Owner.Creature))
+            await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block.BaseValue, ValueProp.Move | ValueProp.Unpowered, null, fast: true);
+    }
+
+    public override async Task AfterCardPlayedLate(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    {
+        if (cardPlay.Card.Owner != Owner)
+            return;
+
+        var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
+        if (legacy == null)
+            return;
+
+        var current = legacy.StanceSwitchCount;
+        if (Pile?.Type != PileType.Discard)
+        {
+            _seenSwitchCount = current;
+            return;
+        }
+
+        if (current <= _seenSwitchCount)
+            return;
+
+        _seenSwitchCount = current;
+        await CardPileCmd.Add(this, PileType.Hand);
+    }
+
+    protected override void OnUpgrade()
+    {
+        DynamicVars.Damage.UpgradeValueBy(1m);
+        DynamicVars.Block.UpgradeValueBy(1m);
+    }
+}

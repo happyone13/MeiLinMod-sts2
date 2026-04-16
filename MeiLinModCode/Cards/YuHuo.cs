@@ -19,7 +19,7 @@ public class YuHuo() : MeiLinModCard(0, CardType.Skill, CardRarity.Common, Targe
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new EnergyVar(2),
-        new DynamicVar(EmberKey, 3m)
+        new DynamicVar(EmberKey, 2m)
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [EnergyHoverTip];
@@ -35,7 +35,7 @@ public class YuHuo() : MeiLinModCard(0, CardType.Skill, CardRarity.Common, Targe
 
     protected override void OnUpgrade()
     {
-        DynamicVars[EmberKey].UpgradeValueBy(-1m);
+        DynamicVars.Energy.UpgradeValueBy(1m);
     }
 }
 

@@ -14,9 +14,6 @@ public class LongYaRelic : MeiLinModRelic
     public override async Task BeforeCombatStart()
     {
         Flash();
-
-        var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
-        if (legacy != null)
-            await legacy.AddQiCounterProgress(2);
+        await QiCounterPower.AddProgress(Owner.Creature, 2, Owner.Creature, null);
     }
 }

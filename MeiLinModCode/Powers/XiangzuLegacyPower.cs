@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using System.Linq;
 using MeiLinMod.MeiLinModCode.Extensions;
 using MeiLinMod.MeiLinModCode.HoverTips;
@@ -12,6 +12,7 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using MeiLinMod.MeiLinModCode.Services;
+using MeiLinMod.MeiLinModCode.StanceVfx;
 
 namespace MeiLinMod.MeiLinModCode.Powers;
 
@@ -23,67 +24,58 @@ public enum XiangzuStance
 
 public class XiangzuLegacyPower : MeiLinModPower
 {
-    private int _progress;
-    private int _triggerCount = 5;
-    private int _appliedStrength;
-    private int _appliedDexterity;
     private int _stanceSwitchCount;
+    private readonly MeiLinStanceVfxController _stanceVfx = new();
 
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
     // Show hit/been-hit progress on the power counter.
-    public override int DisplayAmount => _progress;
+    public override int DisplayAmount => (int)(Owner.GetPower<QiCounterPower>()?.Amount ?? 0m);
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         MeiLinHoverTipFactory.Qi,
-        MeiLinHoverTipFactory.AttackStance,
-        MeiLinHoverTipFactory.GuardStance
+        MeiLinHoverTipFactory.QiGauge
     ];
     
     public int Qi => GetQiAmount();
-    public int TriggerCount => _triggerCount;
     public XiangzuStance Stance => GetCurrentStance();
     public int StanceSwitchCount => _stanceSwitchCount;
 
     public override async Task AfterApplied(Creature? applier, CardModel? cardSource)
     {
-        _progress = 0;
-        _appliedStrength = 0;
-        _appliedDexterity = 0;
         _stanceSwitchCount = 0;
-        await EnsureDefaultStance();
+        await RefreshStanceVfx();
         InvokeDisplayAmountChanged();
-        await RecalculateStats();
     }
 
     public override async Task AfterRemoved(Creature oldOwner)
     {
-        if (_appliedStrength != 0)
-        {
-            await PowerCmd.Apply<StrengthPower>(oldOwner, -_appliedStrength, oldOwner, null, silent: true);
-            _appliedStrength = 0;
-        }
-
-        if (_appliedDexterity != 0)
-        {
-            await PowerCmd.Apply<DexterityPower>(oldOwner, -_appliedDexterity, oldOwner, null, silent: true);
-            _appliedDexterity = 0;
-        }
-
+        await _stanceVfx.ClearAura();
         await PowerCmd.Remove<StanceGongPower>(oldOwner);
         await PowerCmd.Remove<StanceYuPower>(oldOwner);
-        await PowerCmd.Remove<QiPower>(oldOwner);
     }
 
-    // External interface for cards/powers to change the "5 hits" threshold.
+    public override async Task BeforeCombatStart()
+    {
+        await RefreshStanceVfx();
+    }
+
+    public override async Task AfterCombatEnd(MegaCrit.Sts2.Core.Rooms.CombatRoom room)
+    {
+        await _stanceVfx.ClearAura();
+    }
+
     public void SetTriggerCount(int count)
     {
-        _triggerCount = Math.Max(1, count);
+        // Deprecated: Qi gain threshold is now managed by QiCounterPower.
     }
 
     public async Task SetStance(XiangzuStance stance)
     {
-        if (GetCurrentStance() == stance)
+        var hasAttack = Owner.HasPower<StanceGongPower>();
+        var hasGuard = Owner.HasPower<StanceYuPower>();
+        if ((stance == XiangzuStance.Attack && hasAttack && !hasGuard) ||
+            (stance == XiangzuStance.Guard && hasGuard && !hasAttack))
             return;
 
         await PowerCmd.Remove<StanceGongPower>(Owner);
@@ -102,8 +94,8 @@ public class XiangzuLegacyPower : MeiLinModPower
         }
 
         _stanceSwitchCount++;
+        await RefreshStanceVfx();
         await TriggerStanceSwitchBonuses();
-        await RecalculateStats();
         if (!Owner.IsDead)
             await CreatureCmd.TriggerAnim(Owner, "Idle", 0f);
     }
@@ -117,7 +109,8 @@ public class XiangzuLegacyPower : MeiLinModPower
         else
             await EnterAttackStance();
     }
-    public async Task AddQiCounterProgress(int value) => await AddProgress(Math.Max(0, value));
+    public async Task AddQiCounterProgress(int value) =>
+        await QiCounterPower.AddProgress(Owner, Math.Max(0, value), Owner, null);
 
     public static bool IsInAttackStance(Creature creature)
     {
@@ -129,113 +122,24 @@ public class XiangzuLegacyPower : MeiLinModPower
         return creature.HasPower<StanceYuPower>() || creature.HasPower<GuiYiDualStancePower>();
     }
 
-    public override async Task AfterAttack(AttackCommand command)
-    {
-        if (command.Attacker != Owner)
-            return;
-
-        if (!command.DamageProps.HasFlag(ValueProp.Move))
-            return;
-
-        // Count by actual hit results so multi-hit attacks grant multiple progress.
-        var hitCount = command.Results.Count();
-        await AddProgress(Math.Max(1, hitCount));
-    }
-
-    public override async Task AfterDamageReceived(
-        PlayerChoiceContext choiceContext,
-        Creature target,
-        DamageResult result,
-        ValueProp props,
-        Creature? dealer,
-        CardModel? cardSource)
-    {
-        if (target != Owner)
-            return;
-
-        if (!props.HasFlag(ValueProp.Move))
-            return;
-
-        if (dealer == null || dealer == Owner)
-            return;
-
-        // Being attacked event happened, count once.
-        if (result.TotalDamage > 0 || result.UnblockedDamage > 0 || result.BlockedDamage > 0)
-        {
-            await AddProgress(1);
-        }
-    }
-
     public override async Task AfterPowerAmountChanged(
         PowerModel power,
         decimal amount,
         Creature? applier,
         CardModel? cardSource)
     {
-        if (power.Owner != Owner || power is not QiPower)
-            return;
-
-        await RecalculateStats();
-    }
-
-    private async Task AddProgress(int value)
-    {
-        if (Owner.HasPower<QiProgressDoubleThisTurnPower>())
-            value *= 2;
-
-        _progress += value;
-
-        var gainedQi = 0;
-        while (_progress >= _triggerCount)
-        {
-            _progress -= _triggerCount;
-            gainedQi++;
-        }
-
-        if (gainedQi <= 0)
-        {
-            InvokeDisplayAmountChanged();
-            return;
-        }
-
-        await PowerCmd.Apply<QiPower>(Owner, gainedQi, Owner, null, silent: true);
-        Flash();
-        InvokeDisplayAmountChanged();
-        await RecalculateStats();
-    }
-
-    private async Task RecalculateStats()
-    {
-        var targetStrength = 0;
-        var targetDexterity = 0;
-        var qi = GetQiAmount();
-
-        if (IsInAttackStance(Owner))
-            targetStrength = qi;
-
-        if (IsInGuardStance(Owner))
-            targetDexterity = qi;
-
-        var deltaStrength = targetStrength - _appliedStrength;
-        var deltaDexterity = targetDexterity - _appliedDexterity;
-
-        if (deltaStrength != 0)
-        {
-            await PowerCmd.Apply<StrengthPower>(Owner, deltaStrength, Owner, null, silent: true);
-            _appliedStrength = targetStrength;
-        }
-
-        if (deltaDexterity != 0)
-        {
-            await PowerCmd.Apply<DexterityPower>(Owner, deltaDexterity, Owner, null, silent: true);
-            _appliedDexterity = targetDexterity;
-        }
+        await Task.CompletedTask;
     }
 
     public async Task RefreshFromStance()
     {
-        await EnsureDefaultStance();
-        await RecalculateStats();
+        await RefreshStanceVfx();
+    }
+
+    public async Task TriggerVirtualStanceSwitch()
+    {
+        _stanceSwitchCount++;
+        await TriggerStanceSwitchBonuses();
     }
 
     private XiangzuStance GetCurrentStance()
@@ -249,25 +153,39 @@ public class XiangzuLegacyPower : MeiLinModPower
         return XiangzuStance.Attack;
     }
 
-    private async Task EnsureDefaultStance()
+    private int GetQiAmount() => (int)(Owner.GetPower<QiPower>()?.Amount ?? 0m);
+
+    public override async Task AfterAttack(AttackCommand command)
     {
-        if (!Owner.HasPower<StanceGongPower>() &&
-            !Owner.HasPower<StanceYuPower>())
-        {
-            await PowerCmd.Apply<StanceGongPower>(Owner, 1m, Owner, null, silent: true);
-        }
+        if (command.Attacker != Owner || !command.DamageProps.HasFlag(ValueProp.Move))
+            return;
+
+        var hitCount = Math.Max(1, command.Results.Count());
+        await QiCounterPower.AddProgress(Owner, hitCount, Owner, null);
     }
 
-    private int GetQiAmount()
+    public override async Task AfterDamageReceived(
+        PlayerChoiceContext choiceContext,
+        Creature target,
+        DamageResult result,
+        ValueProp props,
+        Creature? dealer,
+        CardModel? cardSource)
     {
-        return (int)(Owner.GetPower<QiPower>()?.Amount ?? 0m);
+        if (target != Owner || dealer == null || dealer == Owner || !props.HasFlag(ValueProp.Move))
+            return;
+
+        if (result.TotalDamage <= 0m && result.UnblockedDamage <= 0m && result.BlockedDamage <= 0m)
+            return;
+
+        await QiCounterPower.AddProgress(Owner, 1, Owner, cardSource);
     }
 
     private async Task TriggerStanceSwitchBonuses()
     {
         var qiProgress = (int)(Owner.GetPower<StanceSwitchQiProgressPower>()?.Amount ?? 0m);
         if (qiProgress > 0)
-            await AddProgress(qiProgress);
+            await QiCounterPower.AddProgress(Owner, qiProgress, Owner, null);
 
         var energy = (int)(Owner.GetPower<StanceSwitchEnergyPower>()?.Amount ?? 0m);
         if (energy > 0 && Owner.Player != null)
@@ -279,5 +197,16 @@ public class XiangzuLegacyPower : MeiLinModPower
             foreach (var enemy in CombatState.HittableEnemies)
                 await PowerCmd.Apply<EmberPower>(enemy, ember, Owner, null);
         }
+    }
+
+    private Task RefreshStanceVfx()
+    {
+        var auraPath = GetCurrentStance() switch
+        {
+            XiangzuStance.Guard => MeiLinStanceVfxController.GuardAuraScenePath,
+            _ => MeiLinStanceVfxController.AttackAuraScenePath
+        };
+
+        return _stanceVfx.SetAura(Owner, auraPath);
     }
 }

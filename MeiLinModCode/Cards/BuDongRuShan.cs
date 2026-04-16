@@ -26,9 +26,7 @@ public class BuDongRuShan() : MeiLinModCard(0, CardType.Skill, CardRarity.Common
 
         if (AwakeningHelper.IsAwakened(cardPlay))
         {
-            var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
-            if (legacy != null)
-                await legacy.EnterGuardStance();
+            await XiangzuLegacyApi.SetStance(Owner, XiangzuStance.Guard);
         }
 
         if (!IsUpgraded)

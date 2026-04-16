@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
-using MeiLinMod.MeiLinModCode.Extensions;
 using MeiLinMod.MeiLinModCode.HoverTips;
+using MeiLinMod.MeiLinModCode.Powers;
 using MeiLinMod.MeiLinModCode.Services;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -15,17 +15,17 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace MeiLinMod.MeiLinModCode.Cards;
 
 [Pool(typeof(MeiLinModCardPool))]
-public class HuoLongJingTian() : MeiLinModCard(1, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
+public class HuoLongJingTian() : MeiLinModCard(2, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
 {
-    private const string BurstKey = "Burst";
+    private const string EmberKey = "Ember";
 
-    protected override bool ShouldGlowGoldInternal => AwakeningHelper.CanAwakenNow(this);
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(10m, ValueProp.Move),
-        new DynamicVar(BurstKey, 30m)
+        new DamageVar(15m, ValueProp.Move),
+        new DynamicVar(EmberKey, 2m)
     ];
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [MeiLinHoverTipFactory.Awakening];
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [MeiLinHoverTipFactory.Ember];
 
     public override string PortraitPath => IdPortraitPath;
     public override string CustomPortraitPath => IdBigPortraitPath;
@@ -42,20 +42,13 @@ public class HuoLongJingTian() : MeiLinModCard(1, CardType.Attack, CardRarity.Ra
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
 
-        if (!AwakeningHelper.IsAwakened(cardPlay))
-            return;
-
-        await PlayerCmd.LoseEnergy(2, Owner);
-        await DamageCmd.Attack(DynamicVars[BurstKey].BaseValue)
-            .FromCard(this)
-            .TargetingAllOpponents(CombatState)
-            .Execute(choiceContext);
+        await PowerCmd.Apply<EmberPower>(cardPlay.Target, DynamicVars[EmberKey].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<EmberNoExpireThisTurnPower>(cardPlay.Target, 1m, Owner.Creature, this, silent: true);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars[BurstKey].UpgradeValueBy(10m);
+        DynamicVars.Damage.UpgradeValueBy(5m);
+        DynamicVars[EmberKey].UpgradeValueBy(1m);
     }
 }
-
-

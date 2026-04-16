@@ -12,7 +12,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 namespace MeiLinMod.MeiLinModCode.Cards;
 
 [Pool(typeof(MeiLinModCardPool))]
-public class LongZhiQiShi() : MeiLinModCard(2, CardType.Power, CardRarity.Rare, TargetType.Self)
+public class LongZhiQiShi() : MeiLinModCard(2, CardType.Power, CardRarity.Uncommon, TargetType.Self)
 {
     protected override bool ShouldGlowGoldInternal => AwakeningHelper.CanAwakenNow(this);
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [EnergyHoverTip, MeiLinHoverTipFactory.Awakening, MeiLinHoverTipFactory.Ember];

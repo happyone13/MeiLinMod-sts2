@@ -15,7 +15,7 @@ public class YuJinLiaoYuan() : MeiLinModCard(1, CardType.Power, CardRarity.Uncom
 {
     private const string EmberKey = "Ember";
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar(EmberKey, 2m)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar(EmberKey, 1m)];
 
     public override string PortraitPath => IdPortraitPath;
     public override string CustomPortraitPath => IdBigPortraitPath;
@@ -31,6 +31,5 @@ public class YuJinLiaoYuan() : MeiLinModCard(1, CardType.Power, CardRarity.Uncom
         DynamicVars[EmberKey].UpgradeValueBy(1m);
     }
 }
-
 
 

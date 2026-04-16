@@ -28,9 +28,7 @@ public class FaJin() : MeiLinModCard(1, CardType.Attack, CardRarity.Common, Targ
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
-        if (legacy != null)
-            await legacy.EnterAttackStance();
+        await XiangzuLegacyApi.SetStance(Owner, XiangzuStance.Attack);
 
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)

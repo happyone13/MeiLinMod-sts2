@@ -1,11 +1,9 @@
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
-using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.ValueProps;
 using MeiLinMod.MeiLinModCode.HoverTips;
 
 namespace MeiLinMod.MeiLinModCode.Powers;
@@ -18,33 +16,21 @@ public class FireDragonGemPower : MeiLinModPower
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         [MeiLinHoverTipFactory.Ember];
 
-    public override async Task AfterDamageGiven(
-        PlayerChoiceContext choiceContext,
-        Creature? dealer,
-        DamageResult result,
-        ValueProp props,
-        Creature target,
-        CardModel? cardSource)
+    public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
     {
-        if (dealer != Owner)
+        if (cardPlay.Card.Owner?.Creature != Owner)
             return;
 
-        if (!props.HasFlag(ValueProp.Move))
+        if (cardPlay.Card.Type != CardType.Attack)
             return;
 
-        // "Attack hit" only: card-based attacks count, skill/power damage does not.
-        if (cardSource?.Type != CardType.Attack)
+        if (cardPlay.Target != null)
+        {
+            await PowerCmd.Apply<EmberPower>(cardPlay.Target, Amount, Owner, cardPlay.Card);
             return;
+        }
 
-        // A blocked hit still counts as a hit.
-        if (result.TotalDamage <= 0m && result.BlockedDamage <= 0m && result.UnblockedDamage <= 0m)
-            return;
-
-        await PowerCmd.Apply<EmberPower>(
-            target,
-            Amount,
-            Owner,
-            cardSource
-        );
+        foreach (var enemy in CombatState.HittableEnemies)
+            await PowerCmd.Apply<EmberPower>(enemy, Amount, Owner, cardPlay.Card);
     }
 }

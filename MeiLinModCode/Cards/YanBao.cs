@@ -44,7 +44,7 @@ public class YanBao() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommon, T
 
     protected override void OnUpgrade()
     {
-        DynamicVars[BonusDamageKey].UpgradeValueBy(1m);
+        DynamicVars.Damage.UpgradeValueBy(5m);
     }
 }
 

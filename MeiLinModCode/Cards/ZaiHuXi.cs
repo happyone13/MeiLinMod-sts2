@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
-using MeiLinMod.MeiLinModCode.Extensions;
 using MeiLinMod.MeiLinModCode.HoverTips;
 using MeiLinMod.MeiLinModCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
@@ -14,19 +13,25 @@ using MegaCrit.Sts2.Core.Models.Powers;
 namespace MeiLinMod.MeiLinModCode.Cards;
 
 [Pool(typeof(MeiLinModCardPool))]
-public class ZaiHuXi() : MeiLinModCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+public class ZaiHuXi() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {
     private const string VigorKey = "Vigor";
-    private const string EmberKey = "Ember";
+    private const string BurstDrawKey = "BurstDraw";
 
     protected override bool ShouldGlowGoldInternal => AwakeningHelper.CanAwakenNow(this);
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new CardsVar(3),
+        new CardsVar(1),
         new DynamicVar(VigorKey, 3m),
-        new DynamicVar(EmberKey, 1m)
+        new DynamicVar(BurstDrawKey, 3m)
     ];
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [MeiLinHoverTipFactory.Awakening, HoverTipFactory.FromPower<VigorPower>(), MeiLinHoverTipFactory.Ember];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        MeiLinHoverTipFactory.Awakening,
+        HoverTipFactory.FromPower<VigorPower>(),
+        MeiLinHoverTipFactory.Qi,
+        MeiLinHoverTipFactory.QiConsume
+    ];
 
     public override string PortraitPath => IdPortraitPath;
     public override string CustomPortraitPath => IdBigPortraitPath;
@@ -39,12 +44,16 @@ public class ZaiHuXi() : MeiLinModCard(1, CardType.Skill, CardRarity.Uncommon, T
         if (!AwakeningHelper.IsAwakened(cardPlay))
             return;
 
-        await PowerCmd.Apply<EmberPower>(Owner.Creature, DynamicVars[EmberKey].BaseValue, Owner.Creature, this);
-        await CardPileCmd.Draw(choiceContext, 1m, Owner);
+        if ((Owner.Creature.GetPower<QiPower>()?.Amount ?? 0m) < 1m)
+            return;
+
+        await PowerCmd.Apply<QiPower>(Owner.Creature, -1m, Owner.Creature, this);
+        await CardPileCmd.Draw(choiceContext, DynamicVars[BurstDrawKey].BaseValue, Owner);
     }
 
     protected override void OnUpgrade()
     {
         DynamicVars[VigorKey].UpgradeValueBy(2m);
+        DynamicVars[BurstDrawKey].UpgradeValueBy(1m);
     }
 }

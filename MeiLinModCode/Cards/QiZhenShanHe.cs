@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
-using MeiLinMod.MeiLinModCode.Extensions;
+using MeiLinMod.MeiLinModCode.HoverTips;
 using MeiLinMod.MeiLinModCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -17,10 +18,19 @@ public class QiZhenShanHe() : MeiLinModCard(2, CardType.Attack, CardRarity.Commo
 {
     private const string VulnerableKey = "Vulnerable";
 
+    protected override bool ShouldGlowGoldInternal => AwakeningHelper.CanAwakenNow(this);
+
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(11m, ValueProp.Move),
         new DynamicVar(VulnerableKey, 1m)
+    ];
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        MeiLinHoverTipFactory.Awakening,
+        MeiLinHoverTipFactory.Qi,
+        MeiLinHoverTipFactory.QiConsume
     ];
 
     public override string PortraitPath => IdPortraitPath;
@@ -33,10 +43,15 @@ public class QiZhenShanHe() : MeiLinModCard(2, CardType.Attack, CardRarity.Commo
             .TargetingAllOpponents(CombatState)
             .Execute(choiceContext);
 
-        var qi = (int)(Owner.Creature.GetPower<QiPower>()?.Amount ?? 0m);
-        var vulnerableAmount = DynamicVars[VulnerableKey].BaseValue + qi;
+        var vulnerable = DynamicVars[VulnerableKey].BaseValue;
+        if (AwakeningHelper.IsAwakened(cardPlay) && (Owner.Creature.GetPower<QiPower>()?.Amount ?? 0m) >= 1m)
+        {
+            await PowerCmd.Apply<QiPower>(Owner.Creature, -1m, Owner.Creature, this);
+            vulnerable += 2m;
+        }
+
         foreach (var enemy in CombatState.HittableEnemies)
-            await PowerCmd.Apply<VulnerablePower>(enemy, vulnerableAmount, Owner.Creature, this);
+            await PowerCmd.Apply<VulnerablePower>(enemy, vulnerable, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
@@ -44,5 +59,3 @@ public class QiZhenShanHe() : MeiLinModCard(2, CardType.Attack, CardRarity.Commo
         DynamicVars.Damage.UpgradeValueBy(4m);
     }
 }
-
-

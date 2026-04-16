@@ -26,7 +26,7 @@
         <AutoSteamPath>$(registry:HKEY_CURRENT_USER\Software\Valve\Steam@SteamPath)\steamapps</AutoSteamPath>
         <SteamLibraryPath Condition="Exists('$(AutoSteamPath)/common/Slay the Spire 2')">$(AutoSteamPath)</SteamLibraryPath>
 
-        <GodotPath>E:/SOFT/godot/Godot_v4.5.1-stable_mono_win64/Godot_v4.5.1-stable_mono_win64_console.exe</GodotPath>
+        <GodotPath>E:/SOFT/godot/megadot-4.5.1-m.9-windows-x86_64-llvm-editor-csharp/MegaDot_v4.5.1-stable_mono_win64.exe</GodotPath>
         <!-- If on Windows and Slay the Spire 2 is not installed in your default steam library, adjust the following.-->
         <SteamLibraryPath Condition="'$(SteamLibraryPath)' == ''">C:/Program Files (x86)/Steam/steamapps</SteamLibraryPath>
 
@@ -65,7 +65,18 @@
         <NoWarn>$(NoWarn);MSB3270</NoWarn>
     </PropertyGroup>
 
-    <ItemGroup Condition="Exists('$(Sts2DataDir)')">
+    <ItemGroup Condition="Exists('$(Sts2DataDir)') and '$(Configuration)' == 'Debug'">
+        <Reference Include="0Harmony">
+            <HintPath>$(Sts2DataDir)/0Harmony.dll</HintPath>
+            <Private>true</Private>
+        </Reference>
+        <Reference Include="sts2">
+            <HintPath>$(Sts2DataDir)/sts2.dll</HintPath>
+            <Private>true</Private>
+        </Reference>
+    </ItemGroup>
+
+    <ItemGroup Condition="Exists('$(Sts2DataDir)') and '$(Configuration)' != 'Debug'">
         <Reference Include="0Harmony">
             <HintPath>$(Sts2DataDir)/0Harmony.dll</HintPath>
             <Private>false</Private>
@@ -105,9 +116,11 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="MeiLinMod\images\card_portraits\big\"/>
-        <Folder Include="MeiLinMod\images\powers\big\"/>
         <Folder Include="MeiLinMod\images\relics\big\"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include=".godot\mono\temp\obj\Debug\MeiLinMod.csproj.Up2Date" />
     </ItemGroup>
 
     <Target Name="CheckDependencyPaths">

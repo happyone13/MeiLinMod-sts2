@@ -23,9 +23,7 @@ public class TieBuShan() : MeiLinModCard(1, CardType.Skill, CardRarity.Common, T
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
-        if (legacy != null)
-            await legacy.EnterGuardStance();
+        await XiangzuLegacyApi.SetStance(Owner, XiangzuStance.Guard);
 
         var selected = (await CardSelectCmd.FromHand(
                 context: choiceContext,

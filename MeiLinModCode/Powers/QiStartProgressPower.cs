@@ -14,10 +14,6 @@ public class QiStartProgressPower : MeiLinModPower
         if (player.Creature != Owner)
             return;
 
-        var legacy = Owner.GetPower<XiangzuLegacyPower>();
-        if (legacy == null)
-            return;
-
-        await legacy.AddQiCounterProgress((int)Amount);
+        await QiCounterPower.AddProgress(Owner, (int)Amount, Owner, null);
     }
 }

@@ -30,9 +30,7 @@ public class DragonRageQiOnBlockBreakPower : MeiLinModPower
         if (result.BlockedDamage <= 0 || target.Block > 0)
             return;
 
-        var legacy = Owner.GetPower<XiangzuLegacyPower>();
-        if (legacy != null)
-            await legacy.AddQiCounterProgress((int)Amount);
+        await QiCounterPower.AddProgress(Owner, (int)Amount, Owner, cardSource);
 
         _triggered = true;
         await PowerCmd.Remove(this);

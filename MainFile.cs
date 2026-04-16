@@ -1,9 +1,10 @@
 using Godot;
+using Godot.Bridge;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Models.Relics;
 using MegaCrit.Sts2.Core.Modding;
 using MegaCrit.Sts2.Core.Bindings.MegaSpine;
-using System;
+using MeiLinMod.MeiLinModCode.StanceVfx;
 using System.Linq;
 
 namespace MeiLinMod;
@@ -18,6 +19,8 @@ public partial class MainFile : Node
 
     public static void Initialize()
     {
+        ScriptManagerBridge.LookupScriptsInAssembly(typeof(MainFile).Assembly);
+
         Harmony harmony = new(ModId);
 
         harmony.PatchAll();
@@ -61,4 +64,5 @@ public partial class MainFile : Node
 
         Logger.Info($"[Harmony] {type.Name}.{methodName}: patchedByMe={mine}");
     }
+
 }

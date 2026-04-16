@@ -1,20 +1,27 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
-using MeiLinMod.MeiLinModCode.Extensions;
+using MeiLinMod.MeiLinModCode.HoverTips;
 using MeiLinMod.MeiLinModCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
 namespace MeiLinMod.MeiLinModCode.Cards;
 
 [Pool(typeof(MeiLinModCardPool))]
 public class YanZhen() : MeiLinModCard(1, CardType.Power, CardRarity.Rare, TargetType.Self)
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords => IsUpgraded
-        ? [CardKeyword.Innate]
-        : [];
+    private const string EmberKey = "Ember";
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [MeiLinHoverTipFactory.Ember];
+
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
+        new DynamicVar(EmberKey, 2m)
+    ];
 
     public override string PortraitPath => IdPortraitPath;
     public override string CustomPortraitPath => IdBigPortraitPath;
@@ -22,12 +29,11 @@ public class YanZhen() : MeiLinModCard(1, CardType.Power, CardRarity.Rare, Targe
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await PlayPowerCastAnim();
-        await PowerCmd.Apply<YanZhenPower>(Owner.Creature, 1m, Owner.Creature, this);
+        await PowerCmd.Apply<StanceSwitchAllEnemiesEmberPower>(Owner.Creature, DynamicVars[EmberKey].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
-        AddKeyword(CardKeyword.Innate);
+        DynamicVars[EmberKey].UpgradeValueBy(1m);
     }
 }
-

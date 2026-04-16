@@ -45,9 +45,7 @@ public class HuXi() : MeiLinModCard(1, CardType.Skill, CardRarity.Uncommon, Targ
         if (!AwakeningHelper.IsAwakened(cardPlay))
             return;
 
-        var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
-        if (legacy != null)
-            await legacy.EnterOtherStance();
+            await XiangzuLegacyApi.ToggleAttackGuard(Owner);
     }
 
     protected override void OnUpgrade()

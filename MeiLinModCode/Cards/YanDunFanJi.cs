@@ -24,8 +24,8 @@ public class YanDunFanJi() : MeiLinModCard(1, CardType.Skill, CardRarity.Common,
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(5m, ValueProp.Move),
-        new DynamicVar(EmberKey, 2m)
+        new BlockVar(8m, ValueProp.Move),
+        new DynamicVar(EmberKey, 3m)
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [MeiLinHoverTipFactory.Awakening];
@@ -37,14 +37,12 @@ public class YanDunFanJi() : MeiLinModCard(1, CardType.Skill, CardRarity.Common,
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
-        await PowerCmd.Apply<EmberPower>(cardPlay.Target, DynamicVars[EmberKey].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<DelayedEmberNextTurnPower>(cardPlay.Target, DynamicVars[EmberKey].BaseValue, Owner.Creature, this);
 
         if (!AwakeningHelper.IsAwakened(cardPlay))
             return;
 
-        var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
-        if (legacy != null)
-            await legacy.EnterOtherStance();
+            await XiangzuLegacyApi.ToggleAttackGuard(Owner);
     }
 
     protected override void OnUpgrade()
@@ -52,6 +50,4 @@ public class YanDunFanJi() : MeiLinModCard(1, CardType.Skill, CardRarity.Common,
         DynamicVars.Block.UpgradeValueBy(3m);
     }
 }
-
-
 

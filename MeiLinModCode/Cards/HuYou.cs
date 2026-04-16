@@ -27,9 +27,7 @@ public class HuYou() : MeiLinModCard(1, CardType.Skill, CardRarity.Uncommon, Tar
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
-        var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
-        if (legacy != null)
-            await legacy.EnterGuardStance();
+        await XiangzuLegacyApi.SetStance(Owner, XiangzuStance.Guard);
 
         if (AwakeningHelper.IsAwakened(cardPlay))
             await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, Owner);

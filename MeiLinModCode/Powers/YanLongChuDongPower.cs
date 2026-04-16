@@ -36,8 +36,6 @@ public class YanLongChuDongPower : MeiLinModPower
         if (!XiangzuLegacyPower.IsInGuardStance(Owner))
             return;
 
-        var legacy = Owner.GetPower<XiangzuLegacyPower>();
-        if (legacy != null)
-            await legacy.AddQiCounterProgress((int)Amount);
+        await QiCounterPower.AddProgress(Owner, (int)Amount, Owner, cardSource);
     }
 }

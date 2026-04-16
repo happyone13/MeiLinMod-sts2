@@ -27,6 +27,8 @@ public class XiangzuSpiritRelic : MeiLinModRelic
     {
         Flash();
         await PowerCmd.Apply<XiangzuLegacyPower>(Owner.Creature, 1m, Owner.Creature, null);
+        await PowerCmd.Remove<StanceYuPower>(Owner.Creature);
+        await PowerCmd.Apply<StanceGongPower>(Owner.Creature, 1m, Owner.Creature, null, silent: true);
         await PowerCmd.Apply<XiangzuSpiritPower>(Owner.Creature, 1m, Owner.Creature, null, silent: true);
     }
 }

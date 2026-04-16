@@ -25,11 +25,7 @@ public class XiaoYao() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncommon, T
     {
         await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner);
 
-        var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
-        if (legacy == null)
-            return;
-
-        await legacy.EnterOtherStance();
+        await XiangzuLegacyApi.ToggleAttackGuard(Owner);
     }
 
     protected override void OnUpgrade()
@@ -37,5 +33,4 @@ public class XiaoYao() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncommon, T
         RemoveKeyword(CardKeyword.Exhaust);
     }
 }
-
 

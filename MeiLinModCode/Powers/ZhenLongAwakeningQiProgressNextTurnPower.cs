@@ -15,9 +15,7 @@ public class ZhenLongAwakeningQiProgressNextTurnPower : MeiLinModPower
         if (player.Creature != Owner)
             return;
 
-        var legacy = Owner.GetPower<XiangzuLegacyPower>();
-        if (legacy != null)
-            await legacy.AddQiCounterProgress((int)Amount);
+        await QiCounterPower.AddProgress(Owner, (int)Amount, Owner, null);
 
         await PowerCmd.Remove(this);
     }

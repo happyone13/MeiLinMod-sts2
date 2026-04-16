@@ -29,17 +29,14 @@ public class ZanJin() : MeiLinModCard(1, CardType.Skill, CardRarity.Common, Targ
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
-        if (legacy != null)
-            await legacy.EnterGuardStance();
+        await XiangzuLegacyApi.SetStance(Owner, XiangzuStance.Guard);
 
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
-        await PowerCmd.Apply<ZanJinQiProgressPower>(Owner.Creature, DynamicVars[TurnsKey].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<ZanJinQiProgressPower>(Owner.Creature, 2m, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
         DynamicVars.Block.UpgradeValueBy(3m);
-        DynamicVars[TurnsKey].UpgradeValueBy(1m);
     }
 }
