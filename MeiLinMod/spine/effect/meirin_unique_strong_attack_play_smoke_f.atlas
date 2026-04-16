@@ -1,0 +1,76 @@
+
+meirin_unique_strong_attack_play_smoke_f.png
+size: 1296,188
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+m_smoke1_color
+  rotate: false
+  xy: 1105, 106
+  size: 137, 78
+  orig: 137, 78
+  offset: 0, 0
+  index: -1
+m_smoke1_line
+  rotate: false
+  xy: 1105, 26
+  size: 137, 78
+  orig: 137, 78
+  offset: 0, 0
+  index: -1
+m_smoke2_color
+  rotate: true
+  xy: 537, 10
+  size: 174, 162
+  orig: 174, 162
+  offset: 0, 0
+  index: -1
+m_smoke2_line
+  rotate: true
+  xy: 701, 10
+  size: 174, 162
+  orig: 174, 162
+  offset: 0, 0
+  index: -1
+m_smoke5_color
+  rotate: true
+  xy: 865, 34
+  size: 150, 118
+  orig: 150, 118
+  offset: 0, 0
+  index: -1
+m_smoke5_line
+  rotate: true
+  xy: 985, 34
+  size: 150, 118
+  orig: 150, 118
+  offset: 0, 0
+  index: -1
+m_smoke6_line
+  rotate: false
+  xy: 1244, 56
+  size: 50, 128
+  orig: 50, 128
+  offset: 0, 0
+  index: -1
+smoke_1
+  rotate: true
+  xy: 2, 2
+  size: 182, 181
+  orig: 182, 181
+  offset: 0, 0
+  index: -1
+smoke_2
+  rotate: true
+  xy: 185, 2
+  size: 182, 181
+  orig: 182, 181
+  offset: 0, 0
+  index: -1
+smoke_5
+  rotate: true
+  xy: 368, 5
+  size: 179, 167
+  orig: 179, 167
+  offset: 0, 0
+  index: -1

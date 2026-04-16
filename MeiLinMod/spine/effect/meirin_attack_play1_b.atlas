@@ -1,0 +1,153 @@
+
+meirin_attack_play1_b.png
+size: 620,976
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+att1_light1_1
+  rotate: true
+  xy: 512, 640
+  size: 200, 100
+  orig: 200, 100
+  offset: 0, 0
+  index: -1
+att1_light1_2
+  rotate: true
+  xy: 512, 438
+  size: 200, 100
+  orig: 200, 100
+  offset: 0, 0
+  index: -1
+att1_light2_1
+  rotate: false
+  xy: 2, 258
+  size: 200, 100
+  orig: 200, 100
+  offset: 0, 0
+  index: -1
+att1_light2_2
+  rotate: false
+  xy: 204, 159
+  size: 200, 100
+  orig: 200, 100
+  offset: 0, 0
+  index: -1
+att1_light3_1
+  rotate: false
+  xy: 2, 156
+  size: 200, 100
+  orig: 200, 100
+  offset: 0, 0
+  index: -1
+att1_light3_2
+  rotate: false
+  xy: 406, 134
+  size: 200, 100
+  orig: 200, 100
+  offset: 0, 0
+  index: -1
+att1_light4_1
+  rotate: false
+  xy: 204, 57
+  size: 200, 100
+  orig: 200, 100
+  offset: 0, 0
+  index: -1
+att1_light4_2
+  rotate: false
+  xy: 2, 54
+  size: 200, 100
+  orig: 200, 100
+  offset: 0, 0
+  index: -1
+att1_obake1_1
+  rotate: false
+  xy: 2, 842
+  size: 300, 130
+  orig: 300, 130
+  offset: 0, 0
+  index: -1
+att1_obake1_2
+  rotate: false
+  xy: 304, 842
+  size: 300, 130
+  orig: 300, 130
+  offset: 0, 0
+  index: -1
+att1_obake2_1
+  rotate: false
+  xy: 260, 485
+  size: 250, 111
+  orig: 250, 111
+  offset: 0, 0
+  index: -1
+att1_obake2_2
+  rotate: false
+  xy: 2, 471
+  size: 250, 111
+  orig: 250, 111
+  offset: 0, 0
+  index: -1
+att1_obake3_1
+  rotate: false
+  xy: 254, 374
+  size: 250, 109
+  orig: 250, 109
+  offset: 0, 0
+  index: -1
+att1_obake3_2
+  rotate: false
+  xy: 2, 360
+  size: 250, 109
+  orig: 250, 109
+  offset: 0, 0
+  index: -1
+att1_obake4_1
+  rotate: false
+  xy: 260, 720
+  size: 250, 120
+  orig: 250, 120
+  offset: 0, 0
+  index: -1
+att1_obake4_2
+  rotate: false
+  xy: 260, 598
+  size: 250, 120
+  orig: 250, 120
+  offset: 0, 0
+  index: -1
+att1_obake5_1
+  rotate: true
+  xy: 506, 236
+  size: 200, 111
+  orig: 200, 111
+  offset: 0, 0
+  index: -1
+att1_obake5_2
+  rotate: false
+  xy: 254, 261
+  size: 200, 111
+  orig: 200, 111
+  offset: 0, 0
+  index: -1
+att1_obake6_1
+  rotate: false
+  xy: 406, 68
+  size: 200, 64
+  orig: 200, 64
+  offset: 0, 0
+  index: -1
+att1_obake6_2
+  rotate: false
+  xy: 406, 2
+  size: 200, 64
+  orig: 200, 64
+  offset: 0, 0
+  index: -1
+flash
+  rotate: false
+  xy: 2, 584
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,258 @@
+
+meirin_unique_strong_attack_play_bot_f.png
+size: 1704,1088
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+fire_r1_1
+  rotate: false
+  xy: 1172, 209
+  size: 150, 124
+  orig: 150, 124
+  offset: 0, 0
+  index: -1
+fire_r1_2
+  rotate: false
+  xy: 1172, 83
+  size: 150, 124
+  orig: 150, 124
+  offset: 0, 0
+  index: -1
+fire_r1_3
+  rotate: true
+  xy: 1324, 183
+  size: 150, 124
+  orig: 150, 124
+  offset: 0, 0
+  index: -1
+fire_r1_4
+  rotate: false
+  xy: 1324, 57
+  size: 150, 124
+  orig: 150, 124
+  offset: 0, 0
+  index: -1
+fire_r1_5
+  rotate: true
+  xy: 1412, 434
+  size: 150, 124
+  orig: 150, 124
+  offset: 0, 0
+  index: -1
+fire_r1_6
+  rotate: false
+  xy: 1538, 462
+  size: 150, 124
+  orig: 150, 124
+  offset: 0, 0
+  index: -1
+fire_r1_7
+  rotate: false
+  xy: 1538, 336
+  size: 150, 124
+  orig: 150, 124
+  offset: 0, 0
+  index: -1
+fire_r1_8
+  rotate: false
+  xy: 1450, 210
+  size: 150, 124
+  orig: 150, 124
+  offset: 0, 0
+  index: -1
+fire_r1_9
+  rotate: true
+  xy: 1476, 58
+  size: 150, 124
+  orig: 150, 124
+  offset: 0, 0
+  index: -1
+flame4_1
+  rotate: true
+  xy: 1473, 963
+  size: 123, 229
+  orig: 123, 229
+  offset: 0, 0
+  index: -1
+flame4_2
+  rotate: true
+  xy: 1473, 838
+  size: 123, 229
+  orig: 123, 229
+  offset: 0, 0
+  index: -1
+flame4_3
+  rotate: true
+  xy: 1473, 713
+  size: 123, 229
+  orig: 123, 229
+  offset: 0, 0
+  index: -1
+flame4_4
+  rotate: true
+  xy: 1473, 588
+  size: 123, 229
+  orig: 123, 229
+  offset: 0, 0
+  index: -1
+flame5_1
+  rotate: false
+  xy: 2, 812
+  size: 363, 274
+  orig: 363, 274
+  offset: 0, 0
+  index: -1
+flame5_2
+  rotate: false
+  xy: 2, 536
+  size: 363, 274
+  orig: 363, 274
+  offset: 0, 0
+  index: -1
+flame5_3
+  rotate: false
+  xy: 367, 812
+  size: 363, 274
+  orig: 363, 274
+  offset: 0, 0
+  index: -1
+flame5_4
+  rotate: false
+  xy: 2, 260
+  size: 363, 274
+  orig: 363, 274
+  offset: 0, 0
+  index: -1
+flame5_5
+  rotate: false
+  xy: 367, 536
+  size: 363, 274
+  orig: 363, 274
+  offset: 0, 0
+  index: -1
+flame7r_1
+  rotate: false
+  xy: 732, 837
+  size: 245, 249
+  orig: 245, 249
+  offset: 0, 0
+  index: -1
+flame7r_2
+  rotate: false
+  xy: 367, 285
+  size: 245, 249
+  orig: 245, 249
+  offset: 0, 0
+  index: -1
+flame7r_3
+  rotate: false
+  xy: 732, 586
+  size: 245, 249
+  orig: 245, 249
+  offset: 0, 0
+  index: -1
+flame7r_4
+  rotate: false
+  xy: 979, 837
+  size: 245, 249
+  orig: 245, 249
+  offset: 0, 0
+  index: -1
+flame7r_5
+  rotate: false
+  xy: 979, 586
+  size: 245, 249
+  orig: 245, 249
+  offset: 0, 0
+  index: -1
+flame7r_6
+  rotate: false
+  xy: 1226, 837
+  size: 245, 249
+  orig: 245, 249
+  offset: 0, 0
+  index: -1
+flame7r_7
+  rotate: false
+  xy: 1226, 586
+  size: 245, 249
+  orig: 245, 249
+  offset: 0, 0
+  index: -1
+flame7r_8
+  rotate: false
+  xy: 614, 285
+  size: 245, 249
+  orig: 245, 249
+  offset: 0, 0
+  index: -1
+flame7r_9
+  rotate: false
+  xy: 861, 335
+  size: 245, 249
+  orig: 245, 249
+  offset: 0, 0
+  index: -1
+flame8r_1
+  rotate: false
+  xy: 1108, 335
+  size: 150, 249
+  orig: 150, 249
+  offset: 0, 0
+  index: -1
+flame8r_2
+  rotate: false
+  xy: 1260, 335
+  size: 150, 249
+  orig: 150, 249
+  offset: 0, 0
+  index: -1
+flame8r_3
+  rotate: false
+  xy: 260, 9
+  size: 150, 249
+  orig: 150, 249
+  offset: 0, 0
+  index: -1
+flame8r_4
+  rotate: false
+  xy: 412, 34
+  size: 150, 249
+  orig: 150, 249
+  offset: 0, 0
+  index: -1
+flame8r_5
+  rotate: false
+  xy: 564, 34
+  size: 150, 249
+  orig: 150, 249
+  offset: 0, 0
+  index: -1
+flame8r_6
+  rotate: false
+  xy: 716, 34
+  size: 150, 249
+  orig: 150, 249
+  offset: 0, 0
+  index: -1
+flame8r_7
+  rotate: false
+  xy: 868, 84
+  size: 150, 249
+  orig: 150, 249
+  offset: 0, 0
+  index: -1
+flame8r_8
+  rotate: false
+  xy: 1020, 84
+  size: 150, 249
+  orig: 150, 249
+  offset: 0, 0
+  index: -1
+flash
+  rotate: false
+  xy: 2, 2
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1

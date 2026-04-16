@@ -1,0 +1,69 @@
+
+meirin_1027_u3_eff_f2_c.png
+size: 208,848
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+dust_soft_1
+  rotate: true
+  xy: 2, 72
+  size: 212, 110
+  orig: 212, 110
+  offset: 0, 0
+  index: -1
+dust_soft_2
+  rotate: true
+  xy: 2, 286
+  size: 206, 114
+  orig: 206, 114
+  offset: 0, 0
+  index: -1
+dust_soft_3
+  rotate: true
+  xy: 118, 270
+  size: 222, 83
+  orig: 222, 83
+  offset: 0, 0
+  index: -1
+meirin_u3_smk_f111
+  rotate: false
+  xy: 2, 15
+  size: 80, 55
+  orig: 80, 55
+  offset: 0, 0
+  index: -1
+meirin_u3_smk_f121
+  rotate: false
+  xy: 84, 2
+  size: 50, 36
+  orig: 50, 36
+  offset: 0, 0
+  index: -1
+meirin_u3_smk_f211
+  rotate: true
+  xy: 114, 40
+  size: 118, 63
+  orig: 118, 63
+  offset: 0, 0
+  index: -1
+meirin_u3_smk_f221
+  rotate: true
+  xy: 114, 160
+  size: 108, 70
+  orig: 108, 70
+  offset: 0, 0
+  index: -1
+smoke_1
+  rotate: false
+  xy: 2, 663
+  size: 182, 181
+  orig: 182, 181
+  offset: 0, 0
+  index: -1
+smoke_5
+  rotate: false
+  xy: 2, 494
+  size: 179, 167
+  orig: 179, 167
+  offset: 0, 0
+  index: -1

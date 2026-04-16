@@ -1,0 +1,83 @@
+
+meirin_strong_attack_play_round_f.png
+size: 412,976
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+flash
+  rotate: false
+  xy: 2, 442
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+satt_circle_f
+  rotate: false
+  xy: 285, 674
+  size: 120, 300
+  orig: 120, 300
+  offset: 0, 0
+  index: -1
+satt_circle_f2
+  rotate: false
+  xy: 260, 372
+  size: 120, 300
+  orig: 120, 300
+  offset: 0, 0
+  index: -1
+satt_circle_fg
+  rotate: false
+  xy: 2, 140
+  size: 120, 300
+  orig: 120, 300
+  offset: 0, 0
+  index: -1
+satt_circle_fg2
+  rotate: false
+  xy: 124, 140
+  size: 120, 300
+  orig: 120, 300
+  offset: 0, 0
+  index: -1
+selfling_1
+  rotate: false
+  xy: 246, 133
+  size: 129, 129
+  orig: 129, 129
+  offset: 0, 0
+  index: -1
+selfling_2
+  rotate: false
+  xy: 2, 9
+  size: 129, 129
+  orig: 129, 129
+  offset: 0, 0
+  index: -1
+selfling_3
+  rotate: false
+  xy: 133, 2
+  size: 129, 129
+  orig: 129, 129
+  offset: 0, 0
+  index: -1
+selfling_4
+  rotate: false
+  xy: 264, 2
+  size: 129, 129
+  orig: 129, 129
+  offset: 0, 0
+  index: -1
+shockwave_3_4
+  rotate: false
+  xy: 246, 264
+  size: 163, 106
+  orig: 163, 106
+  offset: 0, 0
+  index: -1
+shot_impact
+  rotate: true
+  xy: 2, 700
+  size: 274, 281
+  orig: 274, 281
+  offset: 0, 0
+  index: -1

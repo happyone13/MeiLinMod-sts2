@@ -1,0 +1,62 @@
+
+meirin_1027_u4_eff_ready_f5.png
+size: 1368,176
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+u4_gold_cha11
+  rotate: false
+  xy: 2, 2
+  size: 168, 170
+  orig: 168, 170
+  offset: 0, 0
+  index: -1
+u4_gold_cha12
+  rotate: false
+  xy: 172, 2
+  size: 168, 170
+  orig: 168, 170
+  offset: 0, 0
+  index: -1
+u4_gold_cha13
+  rotate: false
+  xy: 342, 2
+  size: 168, 170
+  orig: 168, 170
+  offset: 0, 0
+  index: -1
+u4_gold_cha14
+  rotate: false
+  xy: 512, 2
+  size: 168, 170
+  orig: 168, 170
+  offset: 0, 0
+  index: -1
+u4_gold_cha15
+  rotate: false
+  xy: 682, 2
+  size: 168, 170
+  orig: 168, 170
+  offset: 0, 0
+  index: -1
+u4_gold_cha16
+  rotate: false
+  xy: 852, 2
+  size: 168, 170
+  orig: 168, 170
+  offset: 0, 0
+  index: -1
+u4_gold_cha17
+  rotate: false
+  xy: 1022, 2
+  size: 168, 170
+  orig: 168, 170
+  offset: 0, 0
+  index: -1
+u4_gold_cha18
+  rotate: false
+  xy: 1192, 2
+  size: 168, 170
+  orig: 168, 170
+  offset: 0, 0
+  index: -1

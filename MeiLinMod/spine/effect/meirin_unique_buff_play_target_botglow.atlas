@@ -1,0 +1,20 @@
+
+meirin_unique_buff_play_target_botglow.png
+size: 308,260
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+fire_bot_flash
+  rotate: true
+  xy: 260, 58
+  size: 200, 46
+  orig: 200, 46
+  offset: 0, 0
+  index: -1
+flash
+  rotate: false
+  xy: 2, 2
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1

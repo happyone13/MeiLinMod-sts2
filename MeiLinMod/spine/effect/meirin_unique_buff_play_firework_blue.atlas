@@ -1,0 +1,20 @@
+
+meirin_unique_buff_play_firework_blue.png
+size: 364,260
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+firework
+  rotate: false
+  xy: 260, 138
+  size: 100, 120
+  orig: 100, 120
+  offset: 0, 0
+  index: -1
+flash
+  rotate: false
+  xy: 2, 2
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1

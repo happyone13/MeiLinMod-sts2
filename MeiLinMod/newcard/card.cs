@@ -1,0 +1,1 @@
+public override string? CustomSpinePortraitScenePath => "res://Theresa/animations/cards/unique.tscn";

@@ -1,0 +1,76 @@
+
+1027_skill_x_part_1.png
+size: 2048,1544
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+1part_body_01_mb
+  rotate: false
+  xy: 711, 642
+  size: 829, 898
+  orig: 829, 898
+  offset: 0, 0
+  index: -1
+1part_body_02_mb
+  rotate: 270
+  xy: 1294, 3
+  size: 858, 752
+  orig: 858, 752
+  offset: 0, 0
+  index: -1
+1part_body_05
+  rotate: false
+  xy: 2, 576
+  size: 707, 964
+  orig: 707, 964
+  offset: 0, 0
+  index: -1
+1part_head
+  rotate: false
+  xy: 2, 77
+  size: 707, 497
+  orig: 707, 497
+  offset: 0, 0
+  index: -1
+1part_head_02
+  rotate: false
+  xy: 1260, 1133
+  size: 707, 407
+  orig: 707, 407
+  offset: 0, 0
+  index: -1
+1part_head_ac_01
+  rotate: true
+  xy: 1582, 867
+  size: 387, 463
+  orig: 387, 463
+  offset: 0, 0
+  index: -1
+1part_head_ac_02
+  rotate: false
+  xy: 1558, 1455
+  size: 235, 85
+  orig: 235, 85
+  offset: 0, 0
+  index: -1
+1part_head_ac_03
+  rotate: false
+  xy: 494, 107
+  size: 677, 365
+  orig: 677, 365
+  offset: 0, 0
+  index: -1
+1part_head_ac_04
+  rotate: false
+  xy: 658, 392
+  size: 793, 279
+  orig: 793, 279
+  offset: 0, 0
+  index: -1
+1part_head_ac_05
+  rotate: false
+  xy: 1102, 20
+  size: 200, 336
+  orig: 200, 336
+  offset: 0, 0
+  index: -1

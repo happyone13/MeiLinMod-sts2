@@ -1,0 +1,97 @@
+
+meirin_unique_technical_attack_play_cha2.png
+size: 1164,372
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+u_t_att_blur4
+  rotate: true
+  xy: 1012, 17
+  size: 150, 149
+  orig: 150, 149
+  offset: 0, 0
+  index: -1
+u_t_att_blur5
+  rotate: true
+  xy: 1004, 169
+  size: 200, 152
+  orig: 200, 152
+  offset: 0, 0
+  index: -1
+u_t_att_dark1
+  rotate: true
+  xy: 2, 169
+  size: 200, 165
+  orig: 200, 165
+  offset: 0, 0
+  index: -1
+u_t_att_dark10
+  rotate: false
+  xy: 810, 2
+  size: 200, 165
+  orig: 200, 165
+  offset: 0, 0
+  index: -1
+u_t_att_dark11
+  rotate: true
+  xy: 837, 169
+  size: 200, 165
+  orig: 200, 165
+  offset: 0, 0
+  index: -1
+u_t_att_dark2
+  rotate: false
+  xy: 2, 2
+  size: 200, 165
+  orig: 200, 165
+  offset: 0, 0
+  index: -1
+u_t_att_dark3
+  rotate: true
+  xy: 169, 169
+  size: 200, 165
+  orig: 200, 165
+  offset: 0, 0
+  index: -1
+u_t_att_dark4
+  rotate: false
+  xy: 204, 2
+  size: 200, 165
+  orig: 200, 165
+  offset: 0, 0
+  index: -1
+u_t_att_dark5
+  rotate: true
+  xy: 336, 169
+  size: 200, 165
+  orig: 200, 165
+  offset: 0, 0
+  index: -1
+u_t_att_dark6
+  rotate: false
+  xy: 406, 2
+  size: 200, 165
+  orig: 200, 165
+  offset: 0, 0
+  index: -1
+u_t_att_dark7
+  rotate: true
+  xy: 503, 169
+  size: 200, 165
+  orig: 200, 165
+  offset: 0, 0
+  index: -1
+u_t_att_dark8
+  rotate: false
+  xy: 608, 2
+  size: 200, 165
+  orig: 200, 165
+  offset: 0, 0
+  index: -1
+u_t_att_dark9
+  rotate: true
+  xy: 670, 169
+  size: 200, 165
+  orig: 200, 165
+  offset: 0, 0
+  index: -1

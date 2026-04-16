@@ -1,0 +1,48 @@
+
+meirin_1027_u4_eff_ready_f1_c.png
+size: 712,520
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+circle3
+  rotate: false
+  xy: 2, 2
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+energy_absorb7_5
+  rotate: false
+  xy: 595, 353
+  size: 111, 161
+  orig: 111, 161
+  offset: 0, 0
+  index: -1
+energy_absorb7_6
+  rotate: false
+  xy: 595, 265
+  size: 106, 86
+  orig: 106, 86
+  offset: 0, 0
+  index: -1
+energy_absorb9_5
+  rotate: false
+  xy: 516, 221
+  size: 77, 293
+  orig: 77, 293
+  offset: 0, 0
+  index: -1
+energy_absorb9_6
+  rotate: true
+  xy: 516, 4
+  size: 44, 155
+  orig: 44, 155
+  offset: 0, 0
+  index: -1
+glow01
+  rotate: false
+  xy: 516, 50
+  size: 169, 169
+  orig: 169, 169
+  offset: 0, 0
+  index: -1

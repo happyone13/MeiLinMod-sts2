@@ -1,0 +1,265 @@
+
+meirin_1027_self_out_sparkle_eff.png
+size: 1624,376
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+ember1_1
+  rotate: true
+  xy: 1274, 26
+  size: 103, 130
+  orig: 103, 130
+  offset: 0, 0
+  index: -1
+ember1_2
+  rotate: true
+  xy: 1360, 137
+  size: 103, 130
+  orig: 103, 130
+  offset: 0, 0
+  index: -1
+ember1_3
+  rotate: false
+  xy: 1445, 243
+  size: 103, 130
+  orig: 103, 130
+  offset: 0, 0
+  index: -1
+ember1_4
+  rotate: false
+  xy: 1406, 5
+  size: 103, 130
+  orig: 103, 130
+  offset: 0, 0
+  index: -1
+ember1_5
+  rotate: true
+  xy: 1492, 138
+  size: 103, 130
+  orig: 103, 130
+  offset: 0, 0
+  index: -1
+ember1_6
+  rotate: false
+  xy: 1511, 6
+  size: 103, 130
+  orig: 103, 130
+  offset: 0, 0
+  index: -1
+fire02_0000
+  rotate: true
+  xy: 620, 4
+  size: 124, 91
+  orig: 124, 91
+  offset: 0, 0
+  index: -1
+fire02_0001
+  rotate: true
+  xy: 713, 4
+  size: 124, 91
+  orig: 124, 91
+  offset: 0, 0
+  index: -1
+fire02_0002
+  rotate: true
+  xy: 806, 4
+  size: 124, 91
+  orig: 124, 91
+  offset: 0, 0
+  index: -1
+fire02_0003
+  rotate: true
+  xy: 899, 4
+  size: 124, 91
+  orig: 124, 91
+  offset: 0, 0
+  index: -1
+fire02_0004
+  rotate: true
+  xy: 992, 4
+  size: 124, 91
+  orig: 124, 91
+  offset: 0, 0
+  index: -1
+fire02_0005
+  rotate: true
+  xy: 1085, 4
+  size: 124, 91
+  orig: 124, 91
+  offset: 0, 0
+  index: -1
+fire03_0000
+  rotate: false
+  xy: 521, 242
+  size: 130, 131
+  orig: 130, 131
+  offset: 0, 0
+  index: -1
+fire03_0001
+  rotate: false
+  xy: 653, 242
+  size: 130, 131
+  orig: 130, 131
+  offset: 0, 0
+  index: -1
+fire03_0002
+  rotate: false
+  xy: 785, 242
+  size: 130, 131
+  orig: 130, 131
+  offset: 0, 0
+  index: -1
+fire03_0003
+  rotate: false
+  xy: 917, 242
+  size: 130, 131
+  orig: 130, 131
+  offset: 0, 0
+  index: -1
+fire03_0004
+  rotate: false
+  xy: 1049, 242
+  size: 130, 131
+  orig: 130, 131
+  offset: 0, 0
+  index: -1
+fire03_0005
+  rotate: false
+  xy: 1181, 242
+  size: 130, 131
+  orig: 130, 131
+  offset: 0, 0
+  index: -1
+fire03_0006
+  rotate: false
+  xy: 1313, 242
+  size: 130, 131
+  orig: 130, 131
+  offset: 0, 0
+  index: -1
+fire04_0000
+  rotate: false
+  xy: 1168, 131
+  size: 94, 109
+  orig: 94, 109
+  offset: 0, 0
+  index: -1
+fire04_0001
+  rotate: false
+  xy: 1178, 20
+  size: 94, 109
+  orig: 94, 109
+  offset: 0, 0
+  index: -1
+fire04_0002
+  rotate: false
+  xy: 1264, 131
+  size: 94, 109
+  orig: 94, 109
+  offset: 0, 0
+  index: -1
+fire05_0000
+  rotate: true
+  xy: 350, 126
+  size: 76, 64
+  orig: 76, 64
+  offset: 0, 0
+  index: -1
+fire05_0001
+  rotate: true
+  xy: 416, 126
+  size: 76, 64
+  orig: 76, 64
+  offset: 0, 0
+  index: -1
+fire05_0002
+  rotate: true
+  xy: 482, 126
+  size: 76, 64
+  orig: 76, 64
+  offset: 0, 0
+  index: -1
+fire06_0000
+  rotate: false
+  xy: 508, 2
+  size: 110, 122
+  orig: 110, 122
+  offset: 0, 0
+  index: -1
+fire06_0001
+  rotate: true
+  xy: 548, 130
+  size: 110, 122
+  orig: 110, 122
+  offset: 0, 0
+  index: -1
+fire06_0002
+  rotate: true
+  xy: 672, 130
+  size: 110, 122
+  orig: 110, 122
+  offset: 0, 0
+  index: -1
+fire06_0003
+  rotate: true
+  xy: 796, 130
+  size: 110, 122
+  orig: 110, 122
+  offset: 0, 0
+  index: -1
+fire06_0004
+  rotate: true
+  xy: 920, 130
+  size: 110, 122
+  orig: 110, 122
+  offset: 0, 0
+  index: -1
+fire06_0005
+  rotate: true
+  xy: 1044, 130
+  size: 110, 122
+  orig: 110, 122
+  offset: 0, 0
+  index: -1
+fire13_1
+  rotate: true
+  xy: 2, 122
+  size: 251, 114
+  orig: 251, 114
+  offset: 0, 0
+  index: -1
+fire13_2
+  rotate: false
+  xy: 2, 6
+  size: 251, 114
+  orig: 251, 114
+  offset: 0, 0
+  index: -1
+fire13_3
+  rotate: true
+  xy: 118, 122
+  size: 251, 114
+  orig: 251, 114
+  offset: 0, 0
+  index: -1
+fire13_4
+  rotate: true
+  xy: 234, 122
+  size: 251, 114
+  orig: 251, 114
+  offset: 0, 0
+  index: -1
+fire13_5
+  rotate: false
+  xy: 255, 6
+  size: 251, 114
+  orig: 251, 114
+  offset: 0, 0
+  index: -1
+glow01
+  rotate: false
+  xy: 350, 204
+  size: 169, 169
+  orig: 169, 169
+  offset: 0, 0
+  index: -1

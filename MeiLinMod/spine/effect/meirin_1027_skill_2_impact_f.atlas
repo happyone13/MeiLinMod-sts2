@@ -1,0 +1,146 @@
+
+meirin_1027_skill_2_impact_f.png
+size: 1696,520
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+ember1_0001
+  rotate: false
+  xy: 1495, 158
+  size: 159, 138
+  orig: 159, 138
+  offset: 0, 0
+  index: -1
+ember1_0002
+  rotate: false
+  xy: 407, 2
+  size: 159, 138
+  orig: 159, 138
+  offset: 0, 0
+  index: -1
+ember1_0003
+  rotate: false
+  xy: 568, 2
+  size: 159, 138
+  orig: 159, 138
+  offset: 0, 0
+  index: -1
+ember1_0004
+  rotate: false
+  xy: 729, 2
+  size: 159, 138
+  orig: 159, 138
+  offset: 0, 0
+  index: -1
+ember2_0001
+  rotate: false
+  xy: 1205, 20
+  size: 111, 120
+  orig: 111, 120
+  offset: 0, 0
+  index: -1
+ember2_0002
+  rotate: false
+  xy: 1318, 20
+  size: 111, 120
+  orig: 111, 120
+  offset: 0, 0
+  index: -1
+ember2_0003
+  rotate: false
+  xy: 1431, 20
+  size: 111, 120
+  orig: 111, 120
+  offset: 0, 0
+  index: -1
+ember2_0004
+  rotate: false
+  xy: 1544, 36
+  size: 111, 120
+  orig: 111, 120
+  offset: 0, 0
+  index: -1
+ember5_1
+  rotate: true
+  xy: 2, 2
+  size: 103, 130
+  orig: 103, 130
+  offset: 0, 0
+  index: -1
+ember5_2
+  rotate: true
+  xy: 134, 2
+  size: 103, 130
+  orig: 103, 130
+  offset: 0, 0
+  index: -1
+ember5_3
+  rotate: true
+  xy: 266, 2
+  size: 103, 130
+  orig: 103, 130
+  offset: 0, 0
+  index: -1
+ember5_4
+  rotate: false
+  xy: 890, 10
+  size: 103, 130
+  orig: 103, 130
+  offset: 0, 0
+  index: -1
+ember5_5
+  rotate: false
+  xy: 995, 10
+  size: 103, 130
+  orig: 103, 130
+  offset: 0, 0
+  index: -1
+ember5_6
+  rotate: false
+  xy: 1100, 10
+  size: 103, 130
+  orig: 103, 130
+  offset: 0, 0
+  index: -1
+fire6_0001
+  rotate: false
+  xy: 407, 142
+  size: 270, 372
+  orig: 270, 372
+  offset: 0, 0
+  index: -1
+fire6_0002
+  rotate: false
+  xy: 679, 142
+  size: 270, 372
+  orig: 270, 372
+  offset: 0, 0
+  index: -1
+fire6_0003
+  rotate: false
+  xy: 951, 142
+  size: 270, 372
+  orig: 270, 372
+  offset: 0, 0
+  index: -1
+fire6_0004
+  rotate: false
+  xy: 1223, 142
+  size: 270, 372
+  orig: 270, 372
+  offset: 0, 0
+  index: -1
+flame5
+  rotate: true
+  xy: 1495, 298
+  size: 216, 192
+  orig: 216, 192
+  offset: 0, 0
+  index: -1
+glow1
+  rotate: false
+  xy: 2, 107
+  size: 403, 407
+  orig: 403, 407
+  offset: 0, 0
+  index: -1

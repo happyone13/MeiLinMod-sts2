@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://rbft0a8w0ugq"]
+[gd_scene load_steps=3 format=3 uid="uid://rbft0a8w0ugq"]
 
 [ext_resource type="Texture2D" uid="uid://b4xxdrnhk4xll" path="res://MeiLinMod/images/charui/154056.png" id="1_271ek"]
+[ext_resource type="SpineSkeletonDataResource" uid="uid://cp67ocggdvb3j" path="res://MeiLinMod/spine/idle/idle.tres" id="2_3dk15"]
 
 [node name="TestBg" type="Control"]
 layout_mode = 3
@@ -32,10 +33,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 994.0
-offset_top = 548.0
-offset_right = -446.0
-offset_bottom = -500.0
+offset_left = 984.0
+offset_top = 540.0
+offset_right = -456.0
+offset_bottom = -508.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_271ek")
@@ -87,3 +88,12 @@ angle_max = 90.0
 scale_amount_min = 10.0
 scale_amount_max = 10.0
 color = Color(1, 0.63529414, 0.22352941, 1)
+
+[node name="SpineSprite" type="SpineSprite" parent="."]
+skeleton_data_res = ExtResource("2_3dk15")
+preview_skin = "normal"
+preview_animation = "idle"
+preview_frame = false
+preview_time = 0.0
+visible = false
+position = Vector2(2064, 1057)

@@ -1,0 +1,48 @@
+
+meirin_strong_attack_play_round2.png
+size: 960,272
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+flash
+  rotate: false
+  xy: 2, 12
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+satt_circle_b
+  rotate: true
+  xy: 260, 136
+  size: 132, 300
+  orig: 132, 300
+  offset: 0, 0
+  index: -1
+satt_circle_b2
+  rotate: true
+  xy: 562, 136
+  size: 132, 300
+  orig: 132, 300
+  offset: 0, 0
+  index: -1
+satt_circle_bg
+  rotate: true
+  xy: 260, 2
+  size: 132, 300
+  orig: 132, 300
+  offset: 0, 0
+  index: -1
+satt_circle_bg2
+  rotate: true
+  xy: 562, 2
+  size: 132, 300
+  orig: 132, 300
+  offset: 0, 0
+  index: -1
+shockwave_3_3
+  rotate: true
+  xy: 864, 130
+  size: 138, 92
+  orig: 138, 92
+  offset: 0, 0
+  index: -1

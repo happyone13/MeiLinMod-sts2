@@ -1,8 +1,8 @@
-[gd_resource type="SpineSkeletonDataResource" format=3]
+[gd_resource type="SpineSkeletonDataResource" load_steps=3 format=3 uid="uid://bgr573mlp8grk"]
 
-[ext_resource type="SpineAtlasResource" path="res://.godot/imported/1027.atlas-992503164f1befc4118e80818ad3c6bf.spatlas" id="1_atlas"]
-[ext_resource type="SpineSkeletonFileResource" path="res://.godot/imported/1027.skel-ec18c9c82aac420d8d9e032c82eb9c1c.spskel" id="2_json"]
+[ext_resource type="SpineAtlasResource" uid="uid://cgnlkb8qavmch" path="res://MeiLinMod/spine/q/1027.atlas" id="1_oh7ic"]
+[ext_resource type="SpineSkeletonFileResource" uid="uid://hr0bp3qn6qod" path="res://MeiLinMod/spine/q/1027.skel" id="2_kjs11"]
 
 [resource]
-atlas_res = ExtResource("1_atlas")
-skeleton_file_res = ExtResource("2_json")
+atlas_res = ExtResource("1_oh7ic")
+skeleton_file_res = ExtResource("2_kjs11")
