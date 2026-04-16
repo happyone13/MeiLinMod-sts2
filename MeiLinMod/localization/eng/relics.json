@@ -1,9 +1,9 @@
 {
   "MEILINMOD-XIANGZU_LEGACY_RELIC.title": "Legacy of the Aroma Clan",
-  "MEILINMOD-XIANGZU_LEGACY_RELIC.description": "At the start of combat, gain [gold]Legacy of the Aroma Clan[/gold].",
+  "MEILINMOD-XIANGZU_LEGACY_RELIC.description": "At the start of combat, enter [gold]Attack Stance[/gold]. Gain [gold]Legacy of the Aroma Clan[/gold]: when your attack hits or you are hit, gain 1 [gold]Qi Gauge[/gold].",
   "MEILINMOD-XIANGZU_LEGACY_RELIC.flavor": "The incense line endures, and so does its Qi.",
   "MEILINMOD-XIANGZU_SPIRIT_RELIC.title": "Spirit of the Aroma Clan",
-  "MEILINMOD-XIANGZU_SPIRIT_RELIC.description": "At the start of combat, gain [gold]Legacy of the Aroma Clan[/gold], and reduce Qi counters needed to gain Qi by 1.",
+  "MEILINMOD-XIANGZU_SPIRIT_RELIC.description": "At the start of combat, gain [gold]Legacy of the Aroma Clan[/gold] and [gold]Spirit of the Aroma Clan[/gold]. Spirit reduces required Qi Gauge to gain Qi by 1.",
   "MEILINMOD-XIANGZU_SPIRIT_RELIC.flavor": "Even without the old relic, the spirit keeps breathing.",
   "MEILINMOD-LONG_YA_RELIC.title": "Dragon Fang",
   "MEILINMOD-LONG_YA_RELIC.description": "At the start of combat, gain 2 Qi counters.",
@@ -25,5 +25,6 @@
   "MEILINMOD-LONG_XIN_RELIC.flavor": "As long as the heart burns, life returns.",
   "MEILINMOD-LONG_YAN_RELIC.title": "Dragon Eye",
   "MEILINMOD-LONG_YAN_RELIC.description": "Every 3 turns, your next [gold]Power[/gold] card costs 1 less.",
-  "MEILINMOD-LONG_YAN_RELIC.flavor": "One glance sees the opening."
+  "MEILINMOD-LONG_YAN_RELIC.flavor": "One glance sees the opening.",
+  "relics.SEA_GLASS.MEILINMOD-MEI_LIN_MOD.title": "Aroma Clan Glass"
 }
