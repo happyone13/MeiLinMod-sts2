@@ -45,6 +45,7 @@ public class XiangzuLegacyPower : MeiLinModPower
     {
         _stanceSwitchCount = 0;
         await RefreshStanceVfx();
+        await RefreshStanceDependentPowers(cardSource);
         InvokeDisplayAmountChanged();
     }
 
@@ -95,6 +96,7 @@ public class XiangzuLegacyPower : MeiLinModPower
 
         _stanceSwitchCount++;
         await RefreshStanceVfx();
+        await RefreshStanceDependentPowers(null);
         await TriggerStanceSwitchBonuses();
         if (!Owner.IsDead)
             await CreatureCmd.TriggerAnim(Owner, "Idle", 0f);
@@ -134,6 +136,7 @@ public class XiangzuLegacyPower : MeiLinModPower
     public async Task RefreshFromStance()
     {
         await RefreshStanceVfx();
+        await RefreshStanceDependentPowers(null);
     }
 
     public async Task TriggerVirtualStanceSwitch()
@@ -208,5 +211,12 @@ public class XiangzuLegacyPower : MeiLinModPower
         };
 
         return _stanceVfx.SetAura(Owner, auraPath);
+    }
+
+    private async Task RefreshStanceDependentPowers(CardModel? cardSource)
+    {
+        var dragonTail = Owner.GetPower<DragonTailStanceStatPower>();
+        if (dragonTail != null)
+            await dragonTail.RefreshFromState(cardSource);
     }
 }

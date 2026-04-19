@@ -20,7 +20,7 @@ public class DragonTailStanceStatPower : MeiLinModPower
 
     public override async Task AfterApplied(Creature? applier, CardModel? cardSource)
     {
-        await Refresh(cardSource);
+        await RefreshFromState(cardSource);
     }
 
     public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
@@ -28,7 +28,7 @@ public class DragonTailStanceStatPower : MeiLinModPower
         if (cardPlay.Card.Owner?.Creature != Owner)
             return;
 
-        await Refresh(cardPlay.Card);
+        await RefreshFromState(cardPlay.Card);
     }
 
     public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
@@ -36,7 +36,28 @@ public class DragonTailStanceStatPower : MeiLinModPower
         if (player.Creature != Owner)
             return;
 
-        await Refresh(null);
+        await RefreshFromState(null);
+    }
+
+    public override async Task AfterPowerAmountChanged(
+        PowerModel power,
+        decimal amount,
+        Creature? applier,
+        CardModel? cardSource)
+    {
+        if (power.Owner != Owner)
+            return;
+
+        if (power is not QiPower &&
+            power is not StanceGongPower &&
+            power is not StanceYuPower &&
+            power is not GuiYiDualStancePower &&
+            power != this)
+        {
+            return;
+        }
+
+        await RefreshFromState(cardSource);
     }
 
     public override async Task AfterRemoved(Creature oldOwner)
@@ -51,10 +72,11 @@ public class DragonTailStanceStatPower : MeiLinModPower
         _appliedDexterity = 0m;
     }
 
-    private async Task Refresh(CardModel? cardSource)
+    public async Task RefreshFromState(CardModel? cardSource)
     {
-        var targetStrength = XiangzuLegacyPower.IsInGuardStance(Owner) ? Amount : 0m;
-        var targetDexterity = XiangzuLegacyPower.IsInAttackStance(Owner) ? Amount : 0m;
+        var qiAmount = Owner.GetPower<QiPower>()?.Amount ?? 0m;
+        var targetStrength = XiangzuLegacyPower.IsInAttackStance(Owner) ? qiAmount : 0m;
+        var targetDexterity = XiangzuLegacyPower.IsInGuardStance(Owner) ? qiAmount : 0m;
 
         var deltaStrength = targetStrength - _appliedStrength;
         if (deltaStrength != 0m)

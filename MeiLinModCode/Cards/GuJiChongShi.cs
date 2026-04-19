@@ -31,16 +31,23 @@ public class GuJiChongShi() : MeiLinModCard(1, CardType.Skill, CardRarity.Uncomm
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var candidates = PileType.Hand.GetPile(Owner).Cards.Count(BasicStrikeDefendHelper.IsBasicStrikeOrDefend);
+        var hand = PileType.Hand.GetPile(Owner).Cards;
+        var candidateCards = hand.Where(BasicStrikeDefendHelper.IsBasicStrikeOrDefend).ToList();
+        var candidates = candidateCards.Count;
         MainFile.Logger.Info($"[GuJiChongShi] candidates={candidates}");
 
-        var target = (await CardSelectCmd.FromHand(
-                context: choiceContext,
-                player: Owner,
-                prefs: new CardSelectorPrefs(SelectionScreenPrompt, 1),
-                filter: BasicStrikeDefendHelper.IsBasicStrikeOrDefend,
-                source: this))
-            .FirstOrDefault();
+        CardModel? target = null;
+        if (candidates > 0)
+        {
+            target = (await CardSelectCmd.FromHand(
+                    context: choiceContext,
+                    player: Owner,
+                    prefs: new CardSelectorPrefs(SelectionScreenPrompt, 1),
+                    filter: BasicStrikeDefendHelper.IsBasicStrikeOrDefend,
+                    source: this))
+                .FirstOrDefault();
+        }
+
         MainFile.Logger.Info($"[GuJiChongShi] selected={(target?.Id.Entry ?? "null")}");
 
         if (target != null)

@@ -65,7 +65,6 @@ public class ShengLongJiao() : MeiLinModCard(2, CardType.Attack, CardRarity.Unco
 
         return history.Count(e =>
             e.HappenedThisTurn(CombatState) &&
-            e.CardPlay.Card.Owner == Owner &&
-            (IsUpgraded || BasicStrikeDefendHelper.IsBasicStrikeOrDefend(e.CardPlay.Card)));
+            e.CardPlay.Card.Owner == Owner);
     }
 }
