@@ -15,17 +15,21 @@ namespace MeiLinMod.MeiLinModCode.Cards;
 public class XiaoYao() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(1)];
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromKeyword(CardKeyword.Exhaust)];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => IsUpgraded
+        ? []
+        : [CardKeyword.Exhaust];
 
     public override string PortraitPath => IdPortraitPath;
     public override string CustomPortraitPath => IdBigPortraitPath;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner);
-
-        await XiangzuLegacyApi.ToggleAttackGuard(Owner);
+        var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
+        if (legacy != null)
+        {
+            await legacy.EnterOtherStance();
+        }
+        await CardPileCmd.Draw(choiceContext, 1m, Owner);
     }
 
     protected override void OnUpgrade()
@@ -33,4 +37,3 @@ public class XiaoYao() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncommon, T
         RemoveKeyword(CardKeyword.Exhaust);
     }
 }
-

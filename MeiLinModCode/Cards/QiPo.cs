@@ -15,22 +15,19 @@ namespace MeiLinMod.MeiLinModCode.Cards;
 public class QiPo() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncommon, TargetType.AllEnemies)
 {
     private const string EmberKey = "Ember";
-    private const string ProgressKey = "Progress";
     private const string StrengthLossKey = "StrengthLoss";
+    protected override bool IsPlayable => (Owner.Creature.GetPower<QiPower>()?.Amount ?? 0m) >= 1m;
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Retain];
-    protected override bool ShouldGlowGoldInternal => AwakeningHelper.CanAwakenNow(this);
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DynamicVar(ProgressKey, 2m),
         new DynamicVar(StrengthLossKey, 6m),
         new DynamicVar(EmberKey, 2m)
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        MeiLinHoverTipFactory.Awakening,
         MeiLinHoverTipFactory.Qi,
         MeiLinHoverTipFactory.QiConsume,
         MeiLinHoverTipFactory.Ember
@@ -41,11 +38,6 @@ public class QiPo() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncommon, Targ
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await QiCounterPower.AddProgress(Owner.Creature, DynamicVars[ProgressKey].IntValue, Owner.Creature, this);
-
-        if (!AwakeningHelper.IsAwakened(cardPlay))
-            return;
-
         if ((Owner.Creature.GetPower<QiPower>()?.Amount ?? 0m) < 1m)
             return;
 
@@ -59,7 +51,6 @@ public class QiPo() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncommon, Targ
 
     protected override void OnUpgrade()
     {
-        DynamicVars[ProgressKey].UpgradeValueBy(1m);
         DynamicVars[StrengthLossKey].UpgradeValueBy(2m);
         DynamicVars[EmberKey].UpgradeValueBy(1m);
     }

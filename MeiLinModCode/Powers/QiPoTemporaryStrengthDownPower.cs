@@ -29,8 +29,8 @@ public class QiPoTemporaryStrengthDownPower : MeiLinModPower, ICustomModel
         if (_appliedAmount != 0m || Amount == 0m)
             return;
 
-        await PowerCmd.Apply<StrengthPower>(Owner, -Amount, Owner, cardSource, silent: true);
         _appliedAmount = Amount;
+        await PowerCmd.Apply<StrengthPower>(Owner, -_appliedAmount, applier, cardSource, silent: true);
     }
 
     public override async Task AfterPowerAmountChanged(
@@ -42,12 +42,12 @@ public class QiPoTemporaryStrengthDownPower : MeiLinModPower, ICustomModel
         if (power != this || amount == 0m)
             return;
 
-        // Initial application may trigger both AfterApplied and AfterPowerAmountChanged.
-        // Skip this duplicate delta so base values stay at -2 / -3 as intended.
-        if (_appliedAmount == Amount && amount == Amount)
+        // Skip the initial amount-changed callback if the opening stack was already
+        // applied in AfterApplied; later stack changes still pass through here.
+        if (amount > 0m && _appliedAmount == Amount)
             return;
 
-        await PowerCmd.Apply<StrengthPower>(Owner, -amount, Owner, cardSource, silent: true);
+        await PowerCmd.Apply<StrengthPower>(Owner, -amount, applier, cardSource, silent: true);
         _appliedAmount += amount;
     }
 

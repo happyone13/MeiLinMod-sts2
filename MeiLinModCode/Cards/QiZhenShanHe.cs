@@ -22,7 +22,7 @@ public class QiZhenShanHe() : MeiLinModCard(2, CardType.Attack, CardRarity.Commo
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(11m, ValueProp.Move),
+        new DamageVar(14m, ValueProp.Move),
         new DynamicVar(VulnerableKey, 1m)
     ];
 

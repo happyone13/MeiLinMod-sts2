@@ -49,10 +49,14 @@ public class RuTao() : MeiLinModCard(1, CardType.Attack, CardRarity.Common, Targ
             return;
 
         var awakened = AwakeningHelper.IsAwakened(cardPlay);
-        MainFile.Logger.Info($"[RuTao] AfterCardPlayedLate id={cardPlay.Card.Id.Entry} awakened={awakened} pile={cardPlay.Card.Pile?.Type}");
         if (!awakened)
             return;
 
+        var current = EnergyCost.GetWithModifiers(CostModifiers.All);
+        if (current != 1m)
+        {
+            EnergyCost.AddThisCombat((int)(1m - current));
+        }
         await CardPileCmd.Add(cardPlay.Card, PileType.Hand);
     }
 

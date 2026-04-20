@@ -16,8 +16,8 @@ namespace MeiLinMod.MeiLinModCode.Cards;
 public class WanXiang() : MeiLinModCard(0, CardType.Skill, CardRarity.Rare, TargetType.Self)
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => IsUpgraded
-        ? [CardKeyword.Innate]
-        : [];
+        ? [CardKeyword.Innate, CardKeyword.Exhaust]
+        : [CardKeyword.Exhaust];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [

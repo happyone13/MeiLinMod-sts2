@@ -26,6 +26,7 @@ public class YiQiHeCheng() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncomm
 
         var qi = (int)(Owner.Creature.GetPower<QiPower>()?.Amount ?? 0m);
         var hitCount = Math.Max(1, qi + 1);
+        PrepareAttackAnimation(hitCount);
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .FromCard(this)
             .WithHitCount(hitCount)

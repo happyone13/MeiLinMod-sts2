@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.ValueProps;
 
 namespace MeiLinMod.MeiLinModCode.Cards;
 
@@ -19,7 +20,8 @@ public class QiPoBaFang() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommo
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DynamicVar(BurstKey, 10m)
+        new DamageVar(5m, ValueProp.Move),
+        new DynamicVar(BurstKey, 6m)
     ];
 
     public override string PortraitPath => IdPortraitPath;
@@ -27,25 +29,21 @@ public class QiPoBaFang() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommo
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await DamageCmd.Attack(5m)
-            .FromCard(this)
-            .TargetingAllOpponents(CombatState)
-            .Execute(choiceContext);
-
         var qi = (int)(Owner.Creature.GetPower<QiPower>()?.Amount ?? 0m);
-        if (qi <= 0)
-            return;
-
-        await PowerCmd.Apply<QiPower>(Owner.Creature, -qi, Owner.Creature, this);
-        await DamageCmd.Attack(DynamicVars[BurstKey].BaseValue)
+        
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue + DynamicVars[BurstKey].BaseValue * qi)
             .FromCard(this)
-            .WithHitCount(qi)
             .TargetingAllOpponents(CombatState)
             .Execute(choiceContext);
+
+        if (qi > 0)
+        {
+            await PowerCmd.Apply<QiPower>(Owner.Creature, -qi, Owner.Creature, this);
+        }
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars[BurstKey].UpgradeValueBy(5m);
+        DynamicVars[BurstKey].UpgradeValueBy(2m);
     }
 }

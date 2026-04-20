@@ -37,6 +37,11 @@ public abstract class MeiLinModCard(int cost, CardType type, CardRarity rarity, 
         return CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
     }
 
+    protected void PrepareAttackAnimation(int hitCount = 1)
+    {
+        MeiLinBattleAnimationService.PrepareNextAttackHits(hitCount);
+    }
+
     protected override void AddExtraArgsToDescription(LocString description)
     {
         // Keep DynamicVar objects in the LocString so built-in :diff() highlighting works.

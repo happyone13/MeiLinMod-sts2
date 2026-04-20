@@ -25,6 +25,7 @@ public class ShuangLongChuHai() : MeiLinModCard(1, CardType.Attack, CardRarity.C
         await XiangzuLegacyApi.SetStance(Owner, XiangzuStance.Attack);
 
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
+        PrepareAttackAnimation(2);
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .FromCard(this)
             .WithHitCount(2)

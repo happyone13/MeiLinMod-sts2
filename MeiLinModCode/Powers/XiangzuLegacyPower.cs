@@ -190,9 +190,19 @@ public class XiangzuLegacyPower : MeiLinModPower
         if (qiProgress > 0)
             await QiCounterPower.AddProgress(Owner, qiProgress, Owner, null);
 
-        var energy = (int)(Owner.GetPower<StanceSwitchEnergyPower>()?.Amount ?? 0m);
-        if (energy > 0 && Owner.Player != null)
-            await PlayerCmd.GainEnergy(energy, Owner.Player);
+        if (GetCurrentStance() == XiangzuStance.Guard)
+        {
+            var energy = (int)(Owner.GetPower<StanceSwitchEnergyPower>()?.Amount ?? 0m);
+            if (energy > 0 && Owner.Player != null)
+                await PlayerCmd.GainEnergy(energy, Owner.Player);
+        }
+
+        if (GetCurrentStance() == XiangzuStance.Attack)
+        {
+            var drawCount = (int)(Owner.GetPower<StanceSwitchDrawPower>()?.Amount ?? 0m);
+            if (drawCount > 0 && Owner.Player != null)
+                await CardPileCmd.Draw(null, drawCount, Owner.Player);
+        }
 
         var ember = Owner.GetPower<StanceSwitchAllEnemiesEmberPower>()?.Amount ?? 0m;
         if (ember > 0)
@@ -218,5 +228,9 @@ public class XiangzuLegacyPower : MeiLinModPower
         var dragonTail = Owner.GetPower<DragonTailStanceStatPower>();
         if (dragonTail != null)
             await dragonTail.RefreshFromState(cardSource);
+
+        var qiPower = Owner.GetPower<QiPower>();
+        if (qiPower != null)
+            await qiPower.RefreshFromState(cardSource);
     }
 }

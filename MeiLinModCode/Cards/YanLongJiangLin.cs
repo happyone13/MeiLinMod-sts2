@@ -27,6 +27,7 @@ public class YanLongJiangLin() : MeiLinModCard(2, CardType.Attack, CardRarity.Ra
         if (hits <= 0)
             return;
 
+        PrepareAttackAnimation(hits);
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .FromCard(this)
             .WithHitCount(hits)

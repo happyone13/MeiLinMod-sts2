@@ -36,7 +36,6 @@ public class HuoLongXinZang() : MeiLinModCard(0, CardType.Skill, CardRarity.Rare
 
         await PowerCmd.Apply<QiPower>(Owner.Creature, -1m, Owner.Creature, this);
         await PlayerCmd.GainEnergy(1m, Owner);
-        await CardPileCmd.Draw(choiceContext, 1m, Owner);
     }
 
     protected override PileType GetResultPileType()

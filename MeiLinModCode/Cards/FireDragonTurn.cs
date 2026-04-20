@@ -20,8 +20,10 @@ public class FireDragonTurn() : MeiLinModCard(0, CardType.Skill, CardRarity.Comm
     protected override IEnumerable<DynamicVar> CanonicalVars =>
         [new DynamicVar(EmberKey, 2m)];
 
+    protected override bool ShouldGlowGoldInternal => AwakeningHelper.CanAwakenNow(this);
+
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-        [MeiLinHoverTipFactory.Ember];
+        [MeiLinHoverTipFactory.Ember, MeiLinHoverTipFactory.Awakening];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
@@ -33,7 +35,8 @@ public class FireDragonTurn() : MeiLinModCard(0, CardType.Skill, CardRarity.Comm
             Owner.Creature,
             this);
 
-        await XiangzuLegacyApi.ToggleAttackGuard(Owner);
+        if (AwakeningHelper.IsAwakened(cardPlay))
+            await XiangzuLegacyApi.ToggleAttackGuard(Owner);
     }
 
     protected override void OnUpgrade()

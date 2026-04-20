@@ -32,6 +32,7 @@ public class LianYun() : MeiLinModCard(-1, CardType.Attack, CardRarity.Rare, Tar
         if (hits <= 0)
             return;
 
+        PrepareAttackAnimation(hits);
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .FromCard(this)
             .WithHitCount(hits)
@@ -45,6 +46,5 @@ public class LianYun() : MeiLinModCard(-1, CardType.Attack, CardRarity.Rare, Tar
         DynamicVars.Damage.UpgradeValueBy(2m);
     }
 }
-
 
 

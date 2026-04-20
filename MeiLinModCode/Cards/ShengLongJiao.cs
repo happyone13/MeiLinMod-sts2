@@ -41,6 +41,7 @@ public class ShengLongJiao() : MeiLinModCard(2, CardType.Attack, CardRarity.Unco
         if (hitCount <= 0)
             return;
 
+        PrepareAttackAnimation(hitCount);
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .FromCard(this)
             .WithHitCount(hitCount)
@@ -51,7 +52,7 @@ public class ShengLongJiao() : MeiLinModCard(2, CardType.Attack, CardRarity.Unco
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(2m);
+        DynamicVars.Damage.UpgradeValueBy(4m);
     }
 
     private int GetHitCountThisTurn()

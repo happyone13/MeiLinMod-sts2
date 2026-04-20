@@ -21,9 +21,12 @@ public class KaiTian() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommon, 
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(20m, ValueProp.Move),
-        new BlockVar(15m, ValueProp.Move)
+        new DamageVar(1m, ValueProp.Move),
+        new DynamicVar("AttackBonus", 15m),
+        new DynamicVar("GuardBonus", 10m)
     ];
+
+    protected override bool ShouldGlowGoldInternal => (Owner.Creature.GetPower<QiPower>()?.Amount ?? 0m) >= 1m;
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
@@ -38,37 +41,41 @@ public class KaiTian() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommon, 
             return;
 
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
-        await DamageCmd.Attack(1m)
+        
+        var bonus = 0m;
+        if (XiangzuLegacyPower.IsInAttackStance(Owner.Creature))
+        {
+            bonus = DynamicVars["AttackBonus"].BaseValue;
+        }
+        else if (XiangzuLegacyPower.IsInGuardStance(Owner.Creature))
+        {
+            bonus = DynamicVars["GuardBonus"].BaseValue;
+        }
+
+        await DamageCmd.Attack(1m + bonus)
             .FromCard(this)
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);
 
         await PowerCmd.Apply<QiPower>(Owner.Creature, -1m, Owner.Creature, this);
-
-        if (XiangzuLegacyPower.IsInAttackStance(Owner.Creature))
-        {
-            await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-                .FromCard(this)
-                .Targeting(cardPlay.Target)
-                .Execute(choiceContext);
-        }
-
-        if (XiangzuLegacyPower.IsInGuardStance(Owner.Creature))
-            await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block.BaseValue, ValueProp.Move | ValueProp.Unpowered, null, fast: true);
     }
 
-    protected override PileType GetResultPileType()
+    public override async Task AfterCardPlayedLate(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var result = base.GetResultPileType();
-        if (result == PileType.Discard)
-            return PileType.Hand;
+        if (cardPlay.Card.Id != Id)
+            return;
 
-        return result;
+        var current = EnergyCost.GetWithModifiers(CostModifiers.All);
+        if (current != 1m)
+        {
+            EnergyCost.AddThisCombat((int)(1m - current));
+        }
+        await CardPileCmd.Add(cardPlay.Card, PileType.Hand);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(10m);
-        DynamicVars.Block.UpgradeValueBy(5m);
+        DynamicVars["AttackBonus"].UpgradeValueBy(5m);
+        DynamicVars["GuardBonus"].UpgradeValueBy(5m);
     }
 }

@@ -22,8 +22,7 @@ public class LianXie() : MeiLinModCard(0, CardType.Attack, CardRarity.Uncommon, 
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(3m, ValueProp.Move),
-        new BlockVar(2m, ValueProp.Move)
+        new DamageVar(1m, ValueProp.Move)
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
@@ -34,21 +33,10 @@ public class LianXie() : MeiLinModCard(0, CardType.Attack, CardRarity.Uncommon, 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
-        await DamageCmd.Attack(1m)
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .FromCard(this)
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);
-
-        if (XiangzuLegacyPower.IsInAttackStance(Owner.Creature))
-        {
-            await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-                .FromCard(this)
-                .Targeting(cardPlay.Target)
-                .Execute(choiceContext);
-        }
-
-        if (XiangzuLegacyPower.IsInGuardStance(Owner.Creature))
-            await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block.BaseValue, ValueProp.Move | ValueProp.Unpowered, null, fast: true);
     }
 
     public override async Task AfterCardPlayedLate(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -76,7 +64,6 @@ public class LianXie() : MeiLinModCard(0, CardType.Attack, CardRarity.Uncommon, 
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(1m);
-        DynamicVars.Block.UpgradeValueBy(1m);
+        DynamicVars.Damage.UpgradeValueBy(2m);
     }
 }

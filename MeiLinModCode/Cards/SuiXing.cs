@@ -17,6 +17,7 @@ public class SuiXing() : MeiLinModCard(1, CardType.Power, CardRarity.Uncommon, T
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await PlayPowerCastAnim();
+        // 随性：进入攻击姿态时抽1张牌。
         await PowerCmd.Apply<StanceSwitchDrawPower>(Owner.Creature, 1m, Owner.Creature, this);
     }
 

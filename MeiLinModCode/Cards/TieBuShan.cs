@@ -36,8 +36,9 @@ public class TieBuShan() : MeiLinModCard(1, CardType.Skill, CardRarity.Common, T
         if (selected != null)
         {
             await CardPileCmd.Add(selected, PileType.Exhaust);
-            await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
         }
+
+        await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
     }
 
     protected override void OnUpgrade()

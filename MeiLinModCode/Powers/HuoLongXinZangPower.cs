@@ -20,6 +20,5 @@ public class HuoLongXinZangPower : MeiLinModPower
 
         await PowerCmd.Apply<QiPower>(Owner, -1m, Owner, null);
         await PlayerCmd.GainEnergy(1m, player);
-        await CardPileCmd.Draw(choiceContext, 1m, player);
     }
 }

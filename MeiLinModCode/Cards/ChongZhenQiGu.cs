@@ -17,25 +17,13 @@ namespace MeiLinMod.MeiLinModCode.Cards;
 public class ChongZhenQiGu() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {
     private const string ProgressKey = "Progress";
-    protected override bool IsPlayable => (Owner.Creature.GetPower<QiPower>()?.Amount ?? 0m) >= 1m;
-
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar(ProgressKey, 2m)];
-
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-    [
-        MeiLinHoverTipFactory.Qi,
-        MeiLinHoverTipFactory.QiConsume
-    ];
-
     public override string PortraitPath => IdPortraitPath;
     public override string CustomPortraitPath => IdBigPortraitPath;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        if ((Owner.Creature.GetPower<QiPower>()?.Amount ?? 0m) < 1m)
+        if (Owner.Creature.GetPower<QiPower>()?.Amount < 1m)
             return;
-
-        await PowerCmd.Apply<QiPower>(Owner.Creature, -1m, Owner.Creature, this);
 
         var discard = PileType.Discard.GetPile(Owner).Cards.ToList();
         if (discard.Count == 0)
@@ -50,12 +38,13 @@ public class ChongZhenQiGu() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncom
 
         if (selected != null)
         {
-            selected.EnergyCost.AddThisCombat(-1);
+            await PowerCmd.Apply<QiPower>(Owner.Creature, -1m, Owner.Creature, this);
+            if (IsUpgraded)
+            {
+                selected.EnergyCost.AddThisCombat(-1);
+            }
             await CardPileCmd.Add(selected, PileType.Hand);
         }
-
-        if (IsUpgraded)
-            await QiCounterPower.AddProgress(Owner.Creature, DynamicVars[ProgressKey].IntValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
