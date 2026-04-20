@@ -22,7 +22,7 @@ public class QiPo() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncommon, Targ
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DynamicVar(StrengthLossKey, 6m),
+        new DynamicVar(StrengthLossKey, 4m),
         new DynamicVar(EmberKey, 2m)
     ];
 

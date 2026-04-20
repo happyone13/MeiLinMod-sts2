@@ -11,19 +11,6 @@ public static class BasicStrikeDefendHelper
 {
     private const string StrikeId = "MEILINMOD-STRIKE_MEILIN";
     private const string DefendId = "MEILINMOD-DEFEND_MEILIN";
-    private static readonly HashSet<string> StrikeIds =
-    [
-        "ULTIMATE_STRIKE",
-        "ASHEN_STRIKE",
-        "PERFECTED_STRIKE",
-        "POMMEL_STRIKE",
-        "SETUP_STRIKE",
-        "TWIN_STRIKE"
-    ];
-    private static readonly HashSet<string> DefendIds =
-    [
-        "ULTIMATE_DEFEND"
-    ];
 
     public static bool IsBasicStrikeOrDefend(CardModel? card)
     {
@@ -37,12 +24,6 @@ public static class BasicStrikeDefendHelper
         if (id == StrikeId || id == DefendId)
             return true;
 
-        if (card.Tags.Contains(CardTag.Strike) || card.Tags.Contains(CardTag.Defend))
-            return true;
-
-        if (StrikeIds.Contains(id) || DefendIds.Contains(id))
-            return true;
-
         return card.IsBasicStrikeOrDefend;
     }
 
@@ -53,8 +34,7 @@ public static class BasicStrikeDefendHelper
 
         return card is StrikeMeilin ||
                card.Id.Entry == StrikeId ||
-               StrikeIds.Contains(card.Id.Entry) ||
-               (IsBasicStrikeOrDefend(card) && card.Tags.Contains(CardTag.Strike));
+               (card.IsBasicStrikeOrDefend && card.Tags.Contains(CardTag.Strike));
     }
 
     public static bool IsBasicDefend(CardModel? card)
@@ -64,8 +44,7 @@ public static class BasicStrikeDefendHelper
 
         return card is DefendMeilin ||
                card.Id.Entry == DefendId ||
-               DefendIds.Contains(card.Id.Entry) ||
-               (IsBasicStrikeOrDefend(card) && card.Tags.Contains(CardTag.Defend));
+               (card.IsBasicStrikeOrDefend && card.Tags.Contains(CardTag.Defend));
     }
 
     public static CardModel? CreateBasicStrikeForPlayer(Player player, CombatState? combatState)

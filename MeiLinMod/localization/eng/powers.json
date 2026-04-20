@@ -226,5 +226,8 @@
     "MEILINMOD-QI_REQUIREMENT_INCREASE_POWER.smartDescription":  "Increase required [gold]Qi Gauge[/gold] for the next [gold]Qi[/gold] by {Amount}.",
     "MEILINMOD-YI_LI_YU_JIAN_TA_ZHI_SHANG_POWER.title":  "Stand Atop the Spire",
     "MEILINMOD-YI_LI_YU_JIAN_TA_ZHI_SHANG_POWER.description":  "When taking lethal damage, if you have enough [gold]Qi[/gold], consume the currently required amount (starts at 1), and your HP cannot drop below 1 this turn. After each trigger, the [gold]Qi[/gold] required for this protection increases by 1.",
-    "MEILINMOD-YI_LI_YU_JIAN_TA_ZHI_SHANG_POWER.smartDescription":  "When taking lethal damage, if you have enough [gold]Qi[/gold], consume the currently required amount (starts at 1), and your HP cannot drop below 1 this turn. After each trigger, the [gold]Qi[/gold] required for this protection increases by 1."
+    "MEILINMOD-YI_LI_YU_JIAN_TA_ZHI_SHANG_POWER.smartDescription":  "When taking lethal damage, if you have enough [gold]Qi[/gold], consume the currently required amount (starts at 1), and your HP cannot drop below 1 this turn. After each trigger, the [gold]Qi[/gold] required for this protection increases by 1.",
+    "MEILINMOD-HUI_GUI_JI_BEN_GONG_POWER.title":  "Back to Basics",
+    "MEILINMOD-HUI_GUI_JI_BEN_GONG_POWER.description":  "At the start of your turn, gain 2 Energy and draw 2 cards.",
+    "MEILINMOD-HUI_GUI_JI_BEN_GONG_POWER.smartDescription":  "At the start of your turn, gain 2 Energy and draw 2 cards."
 }

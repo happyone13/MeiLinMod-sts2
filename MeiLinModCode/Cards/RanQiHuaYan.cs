@@ -11,7 +11,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
 namespace MeiLinMod.MeiLinModCode.Cards;
 
-[Pool(typeof(MeiLinModCardPool))]
+[Pool(typeof(NoneCardPool))]
 public class RanQiHuaYan() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncommon, TargetType.AllEnemies)
 {
     private const string EmberKey = "Ember";

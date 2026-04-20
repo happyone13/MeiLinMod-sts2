@@ -226,5 +226,8 @@
     "MEILINMOD-QI_REQUIREMENT_INCREASE_POWER.smartDescription":  "使获得下一层[gold]气[/gold]所需[gold]气槽[/gold]额外+{Amount}。",
     "MEILINMOD-YI_LI_YU_JIAN_TA_ZHI_SHANG_POWER.title":  "屹立于尖塔之上",
     "MEILINMOD-YI_LI_YU_JIAN_TA_ZHI_SHANG_POWER.description":  "受到致命伤害时，若你有足够的[gold]气[/gold]，消耗当前所需层数（初始为1），本回合生命不会降到1以下。每次触发后，下次触发所需[gold]气[/gold]+1。",
-    "MEILINMOD-YI_LI_YU_JIAN_TA_ZHI_SHANG_POWER.smartDescription":  "受到致命伤害时，若你有足够的[gold]气[/gold]，消耗当前所需层数（初始为1），本回合生命不会降到1以下。每次触发后，下次触发所需[gold]气[/gold]+1。"
+    "MEILINMOD-YI_LI_YU_JIAN_TA_ZHI_SHANG_POWER.smartDescription":  "受到致命伤害时，若你有足够的[gold]气[/gold]，消耗当前所需层数（初始为1），本回合生命不会降到1以下。每次触发后，下次触发所需[gold]气[/gold]+1。",
+    "MEILINMOD-HUI_GUI_JI_BEN_GONG_POWER.title":  "回归基本功",
+    "MEILINMOD-HUI_GUI_JI_BEN_GONG_POWER.description":  "回合开始时，获得2点能量并抽2张牌。",
+    "MEILINMOD-HUI_GUI_JI_BEN_GONG_POWER.smartDescription":  "回合开始时，获得2点能量并抽2张牌。"
 }
