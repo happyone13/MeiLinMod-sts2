@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Commands.Builders;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
+using MegaCrit.Sts2.Core.GameActions;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
@@ -190,18 +191,18 @@ public class XiangzuLegacyPower : MeiLinModPower
         if (qiProgress > 0)
             await QiCounterPower.AddProgress(Owner, qiProgress, Owner, null);
 
-        if (GetCurrentStance() == XiangzuStance.Guard)
+        if (GetCurrentStance() == XiangzuStance.Attack)
         {
             var energy = (int)(Owner.GetPower<StanceSwitchEnergyPower>()?.Amount ?? 0m);
             if (energy > 0 && Owner.Player != null)
                 await PlayerCmd.GainEnergy(energy, Owner.Player);
         }
 
-        if (GetCurrentStance() == XiangzuStance.Attack)
+        if (GetCurrentStance() == XiangzuStance.Guard)
         {
             var drawCount = (int)(Owner.GetPower<StanceSwitchDrawPower>()?.Amount ?? 0m);
             if (drawCount > 0 && Owner.Player != null)
-                await CardPileCmd.Draw(null, drawCount, Owner.Player);
+                await CardPileCmd.Draw(new BlockingPlayerChoiceContext(), drawCount, Owner.Player);
         }
 
         var ember = Owner.GetPower<StanceSwitchAllEnemiesEmberPower>()?.Amount ?? 0m;

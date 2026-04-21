@@ -22,8 +22,8 @@ public class KaiTian() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommon, 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(1m, ValueProp.Move),
-        new DynamicVar("AttackBonus", 15m),
-        new DynamicVar("GuardBonus", 10m)
+        new DynamicVar("AttackBonus", 12m),
+        new DynamicVar("GuardBonus", 9m)
     ];
 
     protected override bool ShouldGlowGoldInternal => (Owner.Creature.GetPower<QiPower>()?.Amount ?? 0m) >= 1m;
@@ -41,23 +41,23 @@ public class KaiTian() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommon, 
             return;
 
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
-        
-        var bonus = 0m;
-        if (XiangzuLegacyPower.IsInAttackStance(Owner.Creature))
-        {
-            bonus = DynamicVars["AttackBonus"].BaseValue;
-        }
-        else if (XiangzuLegacyPower.IsInGuardStance(Owner.Creature))
-        {
-            bonus = DynamicVars["GuardBonus"].BaseValue;
-        }
-
-        await DamageCmd.Attack(1m + bonus)
+        await DamageCmd.Attack(1m)
             .FromCard(this)
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);
 
         await PowerCmd.Apply<QiPower>(Owner.Creature, -1m, Owner.Creature, this);
+
+        if (XiangzuLegacyPower.IsInAttackStance(Owner.Creature))
+        {
+            await DamageCmd.Attack(DynamicVars["AttackBonus"].BaseValue)
+                .FromCard(this)
+                .Targeting(cardPlay.Target)
+                .Execute(choiceContext);
+        }
+
+        if (XiangzuLegacyPower.IsInGuardStance(Owner.Creature))
+            await CreatureCmd.GainBlock(Owner.Creature, DynamicVars["GuardBonus"].BaseValue, ValueProp.Move | ValueProp.Unpowered, null, fast: true);
     }
 
     public override async Task AfterCardPlayedLate(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -75,7 +75,7 @@ public class KaiTian() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommon, 
 
     protected override void OnUpgrade()
     {
-        DynamicVars["AttackBonus"].UpgradeValueBy(5m);
-        DynamicVars["GuardBonus"].UpgradeValueBy(5m);
+        DynamicVars["AttackBonus"].UpgradeValueBy(3m);
+        DynamicVars["GuardBonus"].UpgradeValueBy(3m);
     }
 }

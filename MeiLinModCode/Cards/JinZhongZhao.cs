@@ -3,6 +3,7 @@ using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
 using MeiLinMod.MeiLinModCode.HoverTips;
+using MeiLinMod.MeiLinModCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -22,8 +23,7 @@ public class JinZhongZhao() : MeiLinModCard(2, CardType.Skill, CardRarity.Common
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         MeiLinHoverTipFactory.Awakening,
-        HoverTipFactory.FromPower<DrawCardsNextTurnPower>(),
-        HoverTipFactory.FromPower<EnergyNextTurnPower>()
+        HoverTipFactory.FromPower<DrawCardsNextTurnPower>()
     ];
 
     public override string PortraitPath => IdPortraitPath;
@@ -31,11 +31,11 @@ public class JinZhongZhao() : MeiLinModCard(2, CardType.Skill, CardRarity.Common
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await XiangzuLegacyApi.SetStance(Owner, XiangzuStance.Guard);
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
-        await PowerCmd.Apply<DrawCardsNextTurnPower>(Owner.Creature, DynamicVars.Cards.BaseValue, Owner.Creature, this);
 
         if (AwakeningHelper.IsAwakened(cardPlay))
-            await PowerCmd.Apply<EnergyNextTurnPower>(Owner.Creature, 1m, Owner.Creature, this);
+            await PowerCmd.Apply<DrawCardsNextTurnPower>(Owner.Creature, DynamicVars.Cards.BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

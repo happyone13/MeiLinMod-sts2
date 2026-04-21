@@ -22,7 +22,7 @@ public class ShanHe() : MeiLinModCard(1, CardType.Attack, CardRarity.Common, Tar
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(8m, ValueProp.Move),
-        new DynamicVar("ExtraDamage", 10m)
+        new DynamicVar(BurstKey, 10m)
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [MeiLinHoverTipFactory.Awakening];
@@ -35,19 +35,19 @@ public class ShanHe() : MeiLinModCard(1, CardType.Attack, CardRarity.Common, Tar
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);
 
-        if (Owner.Creature.Player != null)
-        {
-            await PlayerCmd.GainEnergy(-1, Owner.Creature.Player);
-            await DamageCmd.Attack(DynamicVars["ExtraDamage"].BaseValue)
-                .FromCard(this)
-                .Targeting(cardPlay.Target)
-                .Execute(choiceContext);
-        }
+        if (!AwakeningHelper.IsAwakened(cardPlay))
+            return;
+
+        await PlayerCmd.LoseEnergy(1, Owner);
+        await DamageCmd.Attack(DynamicVars[BurstKey].BaseValue)
+            .FromCard(this)
+            .TargetingAllOpponents(CombatState)
+            .Execute(choiceContext);
     }
 
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(2m);
-        DynamicVars["ExtraDamage"].UpgradeValueBy(5m);
+        DynamicVars[BurstKey].UpgradeValueBy(5m);
     }
 }

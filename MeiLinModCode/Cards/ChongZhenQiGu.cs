@@ -2,21 +2,19 @@ using System.Collections.Generic;
 using System.Linq;
 using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
-using MeiLinMod.MeiLinModCode.HoverTips;
 using MeiLinMod.MeiLinModCode.Powers;
 using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
 namespace MeiLinMod.MeiLinModCode.Cards;
 
 [Pool(typeof(MeiLinModCardPool))]
 public class ChongZhenQiGu() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {
-    private const string ProgressKey = "Progress";
+    protected override bool IsPlayable => (Owner.Creature.GetPower<QiPower>()?.Amount ?? 0m) >= 1m;
+
     public override string PortraitPath => IdPortraitPath;
     public override string CustomPortraitPath => IdBigPortraitPath;
 
@@ -40,9 +38,7 @@ public class ChongZhenQiGu() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncom
         {
             await PowerCmd.Apply<QiPower>(Owner.Creature, -1m, Owner.Creature, this);
             if (IsUpgraded)
-            {
-                selected.EnergyCost.AddThisCombat(-1);
-            }
+                await PowerCmd.Apply<CardNextUseCostDownPower>(Owner.Creature, 1m, Owner.Creature, selected);
             await CardPileCmd.Add(selected, PileType.Hand);
         }
     }

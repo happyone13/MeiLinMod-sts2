@@ -1,41 +1,34 @@
 using MeiLinMod.MeiLinModCode.Cards;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Models;
 
 namespace MeiLinMod.MeiLinModCode.Powers;
 
 public class NextDefendDoublePlayPower : MeiLinModPower
 {
-    private bool _processing;
-
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
+    public override int ModifyCardPlayCount(CardModel card, Creature? target, int playCount)
     {
-        if (_processing)
+        if (card.Owner?.Creature != Owner || !BasicStrikeDefendHelper.IsBasicDefend(card))
+            return playCount;
+
+        var extraPlays = (int)decimal.Floor(Amount);
+        if (extraPlays <= 0)
+            return playCount;
+
+        return playCount + extraPlays;
+    }
+
+    public override async Task AfterModifyingCardPlayCount(CardModel card)
+    {
+        if (card.Owner?.Creature != Owner || !BasicStrikeDefendHelper.IsBasicDefend(card))
             return;
 
-        if (cardPlay.Card.Owner?.Creature != Owner || !BasicStrikeDefendHelper.IsBasicDefend(cardPlay.Card))
-            return;
-
-        _processing = true;
-        try
-        {
-            await CardCmd.AutoPlay(context, cardPlay.Card.CreateDupe(), null);
-            if (Amount <= 1m)
-            {
-                await PowerCmd.Remove(this);
-                return;
-            }
-
-            await PowerCmd.Apply<NextDefendDoublePlayPower>(Owner, -1m, Owner, cardPlay.Card, silent: true);
-        }
-        finally
-        {
-            _processing = false;
-        }
+        await PowerCmd.Decrement(this);
     }
 }

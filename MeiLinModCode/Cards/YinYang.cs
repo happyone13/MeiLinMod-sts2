@@ -25,6 +25,3 @@ public class YinYang() : MeiLinModCard(2, CardType.Power, CardRarity.Rare, Targe
         EnergyCost.UpgradeBy(-1);
     }
 }
-
-
-

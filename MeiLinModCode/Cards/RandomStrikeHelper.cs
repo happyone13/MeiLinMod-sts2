@@ -13,6 +13,11 @@ public static class RandomStrikeHelper
 {
     public static CardModel? CreateRandomNonBasicStrike(Player player, CombatState? combatState, bool upgraded, CardModel? original = null)
     {
+        return CreateRandomNonBasicStrike(player, combatState, upgraded, false, original);
+    }
+
+    public static CardModel? CreateRandomNonBasicStrike(Player player, CombatState? combatState, bool upgraded, bool forceOneCost, CardModel? original = null)
+    {
         if (combatState == null)
             return null;
 
@@ -23,16 +28,23 @@ public static class RandomStrikeHelper
         var created = combatState.CreateCard(canonical, player);
         if (upgraded)
             CardCmd.Upgrade(created, CardPreviewStyle.None);
+        if (forceOneCost)
+            created.EnergyCost.SetThisTurn(1);
         return created;
     }
 
     public static async Task TransformAllStrikes(Player player, bool upgraded)
     {
+        await TransformAllStrikes(player, upgraded, false);
+    }
+
+    public static async Task TransformAllStrikes(Player player, bool upgraded, bool forceOneCost)
+    {
         if (player.PlayerCombatState == null)
             return;
 
         var strikeCards = player.PlayerCombatState.AllCards
-            .Where(card => card.Owner == player && card.Tags.Contains(CardTag.Strike))
+            .Where(card => card.Owner == player && BasicStrikeDefendHelper.IsStrikeCard(card))
             .ToList();
         if (strikeCards.Count == 0)
             return;
@@ -40,7 +52,7 @@ public static class RandomStrikeHelper
         var transformations = new List<CardTransformation>();
         foreach (var strikeCard in strikeCards)
         {
-            var replacement = CreateRandomNonBasicStrike(player, strikeCard.CombatState, upgraded, strikeCard);
+            var replacement = CreateRandomNonBasicStrike(player, strikeCard.CombatState, upgraded, forceOneCost, strikeCard);
             if (replacement == null)
                 continue;
 
@@ -71,8 +83,7 @@ public static class RandomStrikeHelper
 
     private static IEnumerable<CardModel> GetCanonicalNonBasicStrikes(Player player)
     {
-        return player.UnlockState.CharacterCardPools
-            .Append(player.Character.CardPool)
+        return player.UnlockState.CardPools
             .Distinct()
             .SelectMany(pool => pool.GetUnlockedCards(player.UnlockState, player.RunState.CardMultiplayerConstraint))
             .Where(IsNonBasicStrike)
@@ -82,8 +93,8 @@ public static class RandomStrikeHelper
     private static bool IsNonBasicStrike(CardModel? card)
     {
         return card != null &&
-               card.Tags.Contains(CardTag.Strike) &&
-               !BasicStrikeDefendHelper.IsBasicStrike(card) &&
+               BasicStrikeDefendHelper.IsStrikeCard(card) &&
+               !BasicStrikeDefendHelper.IsStarterStrike(card) &&
                card.Type is not CardType.Status and not CardType.Curse and not CardType.Quest;
     }
 }

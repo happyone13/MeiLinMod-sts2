@@ -9,13 +9,15 @@ namespace MeiLinMod.MeiLinModCode.Cards;
 [Pool(typeof(MeiLinModCardPool))]
 public class ShiBaBanWuYi() : MeiLinModCard(1, CardType.Power, CardRarity.Rare, TargetType.Self)
 {
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Innate];
+
     public override string PortraitPath => IdPortraitPath;
     public override string CustomPortraitPath => IdBigPortraitPath;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await PlayPowerCastAnim();
-        await RandomStrikeHelper.TransformAllStrikes(Owner, IsUpgraded);
+        await RandomStrikeHelper.TransformAllStrikes(Owner, IsUpgraded, true);
     }
 
     protected override void OnUpgrade()

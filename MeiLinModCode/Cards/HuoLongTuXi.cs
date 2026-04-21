@@ -20,7 +20,7 @@ public class HuoLongTuXi() : MeiLinModCard(1, CardType.Skill, CardRarity.Common,
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new CardsVar(3),
+        new CardsVar(2),
         new DynamicVar(EmberKey, 2m),
         new EnergyVar(1)
     ];

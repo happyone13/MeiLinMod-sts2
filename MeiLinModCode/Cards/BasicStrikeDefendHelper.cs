@@ -2,7 +2,6 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Combat;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace MeiLinMod.MeiLinModCode.Cards;
@@ -12,22 +11,39 @@ public static class BasicStrikeDefendHelper
     private const string StrikeId = "MEILINMOD-STRIKE_MEILIN";
     private const string DefendId = "MEILINMOD-DEFEND_MEILIN";
 
+    public static bool IsStrikeCard(CardModel? card)
+    {
+        return card != null && card.Tags.Contains(CardTag.Strike);
+    }
+
+    public static bool IsDefendCard(CardModel? card)
+    {
+        return card != null && card.Tags.Contains(CardTag.Defend);
+    }
+
     public static bool IsBasicStrikeOrDefend(CardModel? card)
     {
         if (card == null)
             return false;
 
-        if (card is StrikeMeilin || card is DefendMeilin)
-            return true;
-
-        var id = card.Id.Entry;
-        if (id == StrikeId || id == DefendId)
-            return true;
-
-        return card.IsBasicStrikeOrDefend;
+        return IsStrikeCard(card) ||
+               IsDefendCard(card) ||
+               IsStarterStrike(card) ||
+               IsStarterDefend(card) ||
+               card.IsBasicStrikeOrDefend;
     }
 
     public static bool IsBasicStrike(CardModel? card)
+    {
+        return IsStrikeCard(card) || IsStarterStrike(card);
+    }
+
+    public static bool IsBasicDefend(CardModel? card)
+    {
+        return IsDefendCard(card) || IsStarterDefend(card);
+    }
+
+    public static bool IsStarterStrike(CardModel? card)
     {
         if (card == null)
             return false;
@@ -37,7 +53,7 @@ public static class BasicStrikeDefendHelper
                (card.IsBasicStrikeOrDefend && card.Tags.Contains(CardTag.Strike));
     }
 
-    public static bool IsBasicDefend(CardModel? card)
+    public static bool IsStarterDefend(CardModel? card)
     {
         if (card == null)
             return false;
