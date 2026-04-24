@@ -8,19 +8,15 @@ namespace MeiLinMod.MeiLinModCode.Powers;
 
 public class JiBenGongPower : MeiLinModPower
 {
-    private int _strikeBonus;
-    private int _defendBonus;
+    private decimal _appliedBonus;
 
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
-    public override int DisplayAmount => _strikeBonus;
+    public override int DisplayAmount => (int)_appliedBonus;
 
     public override Task AfterApplied(Creature? applier, CardModel? cardSource)
     {
-        var bonus = (int)Amount;
-        _strikeBonus += bonus;
-        _defendBonus += bonus;
-        ApplyBonusesToAllCards();
+        SyncBonusesToCurrentAmount();
         InvokeDisplayAmountChanged();
         return Task.CompletedTask;
     }
@@ -37,8 +33,11 @@ public class JiBenGongPower : MeiLinModPower
         if (player?.PlayerCombatState == null)
             return;
 
+        var bonusDelta = Amount - _appliedBonus;
         foreach (var card in player.PlayerCombatState.AllCards)
-            ApplyBonusesToCard(card);
+            ApplyBonusToCard(card, bonusDelta, Owner);
+
+        _appliedBonus = Amount;
     }
 
     private void ApplyBonusesToCard(CardModel card)
@@ -47,9 +46,27 @@ public class JiBenGongPower : MeiLinModPower
             return;
 
         if (BasicStrikeDefendHelper.IsBasicStrike(card))
-            card.DynamicVars.Damage.BaseValue += _strikeBonus;
+            card.DynamicVars.Damage.BaseValue += _appliedBonus;
         else if (BasicStrikeDefendHelper.IsBasicDefend(card))
-            card.DynamicVars.Block.BaseValue += _defendBonus;
+            card.DynamicVars.Block.BaseValue += _appliedBonus;
+    }
+
+    private void SyncBonusesToCurrentAmount()
+    {
+        if (_appliedBonus == Amount)
+            return;
+
+        ApplyBonusesToAllCards();
+    }
+
+    private static void ApplyBonusToCard(CardModel card, decimal bonus, Creature owner)
+    {
+        if (bonus == 0m || card.Owner?.Creature != owner)
+            return;
+
+        if (BasicStrikeDefendHelper.IsBasicStrike(card))
+            card.DynamicVars.Damage.BaseValue += bonus;
+        else if (BasicStrikeDefendHelper.IsBasicDefend(card))
+            card.DynamicVars.Block.BaseValue += bonus;
     }
 }
-
