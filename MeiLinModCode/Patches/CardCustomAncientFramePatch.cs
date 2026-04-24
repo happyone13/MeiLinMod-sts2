@@ -50,6 +50,20 @@ public static class CardCustomAncientFramePatch
         var ancientBanner = Get<Control>(AncientBannerField, cardNode!);
         var ancientHighlight = Get<TextureRect>(AncientHighlightField, cardNode!);
 
+        if (!CardSpinePortraitPatch.HasActiveSpineOverlay(ancientPortrait))
+        {
+            frame?.Show();
+            portrait?.Show();
+            portraitBorder?.Show();
+            banner?.Show();
+            ancientPortrait?.Hide();
+            ancientBorder?.Hide();
+            ancientTextBg?.Hide();
+            ancientBanner?.Hide();
+            ancientHighlight?.Hide();
+            return;
+        }
+
         frame?.Hide();
         portrait?.Hide();
         portraitBorder?.Hide();

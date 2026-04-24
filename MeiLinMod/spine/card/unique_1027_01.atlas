@@ -4,7 +4,7 @@ size: 2040,836
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-pma: true
+pma: false
 b_coat_1
   rotate: false
   xy: 450, 238

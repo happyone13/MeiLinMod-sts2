@@ -1,5 +1,6 @@
 {
+  "MEILINMOD.mod_title": "梅铃 Mod",
   "MEILINMOD-CARD_VISUALS.title": "卡牌显示",
-  "MEILINMOD-USE_CHAOS_CARD_DYNAMIC_PORTRAITS.title": "启用卡厄斯卡牌动态卡图",
+  "MEILINMOD-USE_CHAOS_CARD_DYNAMIC_PORTRAITS.title": "启用混沌卡动态卡图",
   "MEILINMOD-USE_CHAOS_CARD_DYNAMIC_PORTRAITS.hover.desc": "开启后，有动态卡图资源的卡牌会优先尝试使用 Spine 动态卡图。关闭时保留原版静态卡图。"
 }

@@ -200,6 +200,7 @@ public partial class SpineAutoPlayer : Node
         if (!obj.HasMethod(methodName))
             return false;
 
+        args ??= [];
         obj.Callv(methodName, new Godot.Collections.Array(args));
         return true;
     }
@@ -210,6 +211,7 @@ public partial class SpineAutoPlayer : Node
         if (!obj.HasMethod(methodName))
             return false;
 
+        args ??= [];
         result = obj.Callv(methodName, new Godot.Collections.Array(args));
         return true;
     }

@@ -36,4 +36,3 @@ scale = Vector2(1.4399995, 1.4399995)
 script = ExtResource("2_player")
 AnimationName = "animation"
 Loop = true
-SlotFixProfile = "attack_defense_unity"

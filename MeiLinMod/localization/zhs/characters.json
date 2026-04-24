@@ -1,17 +1,17 @@
 {
   "MEILINMOD-MEI_LIN_MOD.aromaPrinciple": "[sine][blue]这里弥漫着不祥的气息……就让我来打头阵吧！[/blue][/sine]",
-  "MEILINMOD-MEI_LIN_MOD.banter.alive.endTurnPing": "香族的大家还在等着小女子。",
+  "MEILINMOD-MEI_LIN_MOD.banter.alive.endTurnPing": "小女子会等着。",
   "MEILINMOD-MEI_LIN_MOD.banter.dead.endTurnPing": "小女子还需要更多历练。",
-  "MEILINMOD-MEI_LIN_MOD.cardsModifierDescription": "梅琳卡牌将出现在奖励与商店中。",
-  "MEILINMOD-MEI_LIN_MOD.cardsModifierTitle": "梅琳卡牌",
-  "MEILINMOD-MEI_LIN_MOD.description": "香族的最后一位修行者：[gold]梅琳[/gold]\n为了践行香族教义中的「爱众人」，她仍在前行。",
+  "MEILINMOD-MEI_LIN_MOD.cardsModifierDescription": "梅铃卡牌将出现在奖励与商店中。",
+  "MEILINMOD-MEI_LIN_MOD.cardsModifierTitle": "梅铃卡牌",
+  "MEILINMOD-MEI_LIN_MOD.description": "香族的最后一位修行者：[gold]梅铃[/gold]\n为了践行香族教义中的「爱众人」，她仍在前行。",
   "MEILINMOD-MEI_LIN_MOD.eventDeathPrevention": "咳、咳咳……\n俗话说「失败是成功之母」！\n我下次一定要……",
   "MEILINMOD-MEI_LIN_MOD.goldMonologue": "[sine]这些钱对小女子没什么用。[/sine]",
   "MEILINMOD-MEI_LIN_MOD.possessiveAdjective": "她的",
   "MEILINMOD-MEI_LIN_MOD.pronounObject": "她",
   "MEILINMOD-MEI_LIN_MOD.pronounPossessive": "她的",
   "MEILINMOD-MEI_LIN_MOD.pronounSubject": "她",
-  "MEILINMOD-MEI_LIN_MOD.title": "梅琳",
-  "MEILINMOD-MEI_LIN_MOD.titleObject": "梅琳",
+  "MEILINMOD-MEI_LIN_MOD.title": "梅铃",
+  "MEILINMOD-MEI_LIN_MOD.titleObject": "梅铃",
   "MEILINMOD-MEI_LIN_MOD.unlockText": "用[pink]{Prerequisite}[/pink]进行一局游戏来解锁这个角色。"
 }

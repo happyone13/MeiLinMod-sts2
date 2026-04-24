@@ -2394,8 +2394,7 @@
         },
         {
             "name": "b_hair_shadow_1",
-            "bone": "b_hair_shadow_1",
-            "attachment": "b_hair_shadow_1"
+            "bone": "b_hair_shadow_1"
         },
         {
             "name": "head_1",
@@ -2432,8 +2431,7 @@
         },
         {
             "name": "face_shadow_1",
-            "bone": "face_shadow_1",
-            "attachment": "face_shadow_1"
+            "bone": "face_shadow_1"
         },
         {
             "name": "brew_l_2",
@@ -2467,8 +2465,7 @@
         },
         {
             "name": "face_shadow_2",
-            "bone": "face_shadow_5",
-            "attachment": "face_shadow_2"
+            "bone": "face_shadow_5"
         },
         {
             "name": "mouth_1",
