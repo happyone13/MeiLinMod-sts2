@@ -29,7 +29,7 @@ public static class PowerCmdCompat
         CardModel? cardSource,
         bool silent = false)
         where T : PowerModel =>
-        Apply(CreateDefaultContext(), targets, amount, applier, cardSource, silent);
+        Apply<T>(CreateDefaultContext(), targets, amount, applier, cardSource, silent);
 
     public static Task<T> Apply<T>(
         Creature target,
@@ -38,7 +38,7 @@ public static class PowerCmdCompat
         CardModel? cardSource,
         bool silent = false)
         where T : PowerModel =>
-        Apply(CreateDefaultContext(), target, amount, applier, cardSource, silent);
+        Apply<T>(CreateDefaultContext(), target, amount, applier, cardSource, silent);
 
     public static Task Apply(
         PowerModel power,

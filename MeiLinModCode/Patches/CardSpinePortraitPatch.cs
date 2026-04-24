@@ -15,6 +15,10 @@ public static class CardSpinePortraitPatch
 {
     public const string SpineOverlayNodeName = "MeiLinSpinePortraitOverlay";
     private const string SpineViewportTextureNodeName = "ViewportTexture";
+    private const float AncientOverlayInsetLeft = 7.0f;
+    private const float AncientOverlayInsetTop = 7.0f;
+    private const float AncientOverlayInsetRight = 7.0f;
+    private const float AncientOverlayInsetBottom = 10.0f;
 
     public static readonly FieldInfo? PortraitField =
         typeof(NCard).GetField("_portrait", BindingFlags.Instance | BindingFlags.NonPublic);
@@ -117,7 +121,7 @@ public static class CardSpinePortraitPatch
             MouseFilter = Control.MouseFilterEnum.Ignore,
             AnchorRight = 1.0f,
             AnchorBottom = 1.0f,
-            StretchMode = TextureRect.StretchModeEnum.KeepAspectCovered
+            StretchMode = TextureRect.StretchModeEnum.Scale
         };
 
         container.AddChild(subViewport);
@@ -127,7 +131,7 @@ public static class CardSpinePortraitPatch
 
         portrait.Texture = null;
         subViewport.RenderTargetUpdateMode = SubViewport.UpdateMode.Always;
-        SyncOverlayLayout(portrait, container, subViewport);
+        SyncOverlayLayout(cardNode, portrait, container, subViewport);
 
         var updater = new SpinePortraitUpdater();
         updater.Initialize(cardNode, container, subViewport);
@@ -165,7 +169,7 @@ public static class CardSpinePortraitPatch
 
         var parentPortrait = container.GetParent() as TextureRect;
         if (parentPortrait != null)
-            SyncOverlayLayout(parentPortrait, container, subViewport);
+            SyncOverlayLayout(cardNode, parentPortrait, container, subViewport);
 
         SetStaticPortraitFallback(cardNode, parentPortrait, container, enabled: false);
         SetSpinePlaybackPaused(subViewport, paused: false);
@@ -193,7 +197,7 @@ public static class CardSpinePortraitPatch
             portrait.Texture = null;
     }
 
-    private static void SyncOverlayLayout(TextureRect portrait, Control container, SubViewport subViewport)
+    private static void SyncOverlayLayout(NCard cardNode, TextureRect portrait, Control container, SubViewport subViewport)
     {
         if (!GodotObject.IsInstanceValid(portrait) ||
             !GodotObject.IsInstanceValid(container) ||
@@ -202,8 +206,18 @@ public static class CardSpinePortraitPatch
             return;
         }
 
-        container.Position = Vector2.Zero;
-        container.Size = portrait.Size;
+        bool isAncientPortrait = ReferenceEquals(AncientPortraitField?.GetValue(cardNode), portrait);
+        var insetPosition = isAncientPortrait
+            ? new Vector2(AncientOverlayInsetLeft, AncientOverlayInsetTop)
+            : Vector2.Zero;
+        var insetSize = isAncientPortrait
+            ? new Vector2(
+                Mathf.Max(0.0f, portrait.Size.X - AncientOverlayInsetLeft - AncientOverlayInsetRight),
+                Mathf.Max(0.0f, portrait.Size.Y - AncientOverlayInsetTop - AncientOverlayInsetBottom))
+            : portrait.Size;
+
+        container.Position = insetPosition;
+        container.Size = insetSize;
 
         if (container.GetNodeOrNull<TextureRect>(SpineViewportTextureNodeName) is { } viewportTexture)
         {
