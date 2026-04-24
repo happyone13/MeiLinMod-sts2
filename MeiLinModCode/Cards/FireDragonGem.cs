@@ -1,8 +1,6 @@
 using System.Collections.Generic;
-using BaseLib.Extensions;
 using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
-using MeiLinMod.MeiLinModCode.Extensions;
 using MeiLinMod.MeiLinModCode.Powers;
 using MeiLinMod.MeiLinModCode.Services;
 using MegaCrit.Sts2.Core.Commands;
@@ -15,12 +13,12 @@ namespace MeiLinMod.MeiLinModCode.Cards;
 public class FireDragonGem() : MeiLinModCard(1, CardType.Power, CardRarity.Basic, TargetType.Self)
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Innate];
-
-    public override string PortraitPath =>
-        $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
-
-    public override string CustomPortraitPath =>
-        $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".BigCardImagePath();
+    public override string? CustomSpinePortraitScenePath =>
+        "res://MeiLinMod/scenes/cards/fire_dragon_gem_dynamic.tscn";
+    public override SpinePortraitSlot CustomSpinePortraitSlot => SpinePortraitSlot.Ancient;
+    public override bool UseCustomAncientFrame => true;
+    public override string? CustomAncientFrameMaterialPath => ChaosAncientFrameMaterialPath;
+    public override string? CustomAncientBannerMaterialPath => ChaosAncientBannerMaterialPath;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

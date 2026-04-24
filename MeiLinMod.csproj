@@ -88,7 +88,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Alchyr.Sts2.BaseLib" Version="[0.3.0,)" GeneratePathProperty="true" PrivateAssets="All"/>
+        <PackageReference Include="Alchyr.Sts2.BaseLib" Version="3.0.8" GeneratePathProperty="true" PrivateAssets="All"/>
         <PackageReference Include="Alchyr.Sts2.ModAnalyzers" Version="*"/>
         <AdditionalFiles Include="MeiLinMod/localization/**/*.json"/>
     </ItemGroup>
@@ -138,7 +138,9 @@
         <Copy SourceFiles="MeiLinMod.json" DestinationFolder="$(ModsPath)$(MSBuildProjectName)/"/>
     </Target>
 
-    <Target Name="GodotPackOnBuild" AfterTargets="Build" Condition="'$(GodotPath)' != '' and Exists('$(GodotPath)') and '$(IsInnerGodotExport)' != 'true'">
+    <Target Name="GodotPackOnBuild"
+            AfterTargets="Build"
+            Condition="'$(GodotPath)' != '' and Exists('$(GodotPath)') and '$(IsInnerGodotExport)' != 'true' and '$(PublishDir)' == ''">
         <Message Text="Exporting Godot .pck to mods folder on Build" Importance="high"/>
         <Exec Command="&quot;$(GodotPath)&quot; --headless --export-pack &quot;BasicExport&quot; &quot;$(ModsPath)$(MSBuildProjectName)/$(MSBuildProjectName).pck&quot;"
               EnvironmentVariables="IsInnerGodotExport=true;MSBUILDDISABLENODEREUSE=1"

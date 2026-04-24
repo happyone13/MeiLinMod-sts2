@@ -28,12 +28,9 @@ public class BianHuaMoCe() : MeiLinModCard(1, CardType.Skill, CardRarity.Uncommo
 
         await PowerCmd.Apply<VulnerablePower>(cardPlay.Target, DynamicVars[VulnerableKey].BaseValue, Owner.Creature, this);
 
-        var strike = RandomStrikeHelper.CreateRandomNonBasicStrike(Owner, CombatState, IsUpgraded);
+        var strike = RandomStrikeHelper.CreateRandomNonBasicStrike(Owner, CombatState, IsUpgraded, true);
         if (strike != null)
-        {
-            strike.EnergyCost.SetThisTurn(1);
-            await CardPileCmd.AddGeneratedCardToCombat(strike, PileType.Hand, addedByPlayer: true);
-        }
+            await CardPileCmd.AddGeneratedCardToCombat(strike, PileType.Hand, Owner);
     }
 
     protected override void OnUpgrade()

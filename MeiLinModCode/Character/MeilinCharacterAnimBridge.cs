@@ -114,18 +114,18 @@ public partial class MeilinCharacterAnimBridge : Node2D
             return;
         }
 
-        if (!TryCall(animationState, "set_animation", 0, mapping.SpineAnimation, mapping.Loop))
+        if (!TryCall(animationState, "set_animation", mapping.SpineAnimation, mapping.Loop, 0))
         {
-            TryCall(animationState, "SetAnimation", 0, mapping.SpineAnimation, mapping.Loop);
+            TryCall(animationState, "SetAnimation", mapping.SpineAnimation, mapping.Loop, 0);
         }
 
         // Match base-game CreatureAnimator behavior: one-shots return to idle.
         if (!spec.Loop && spec.CanonicalState != DeadState)
         {
             string idleSpine = CampMode ? CanonicalStateToSpine[CampingState].SpineAnimation : CanonicalStateToSpine[IdleState].SpineAnimation;
-            if (!TryCall(animationState, "add_animation", 0, idleSpine, true, 0f))
+            if (!TryCall(animationState, "add_animation", idleSpine, 0f, true, 0))
             {
-                TryCall(animationState, "AddAnimation", 0, idleSpine, 0f, true);
+                TryCall(animationState, "AddAnimation", idleSpine, 0f, true, 0);
             }
         }
     }

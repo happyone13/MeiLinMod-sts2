@@ -1,3 +1,8 @@
-[gd_resource type="SpineSkeletonDataResource" format=3 uid="uid://d0ohajv5r1hf4"]
+[gd_resource type="SpineSkeletonDataResource" load_steps=3 format=3 uid="uid://d0ohajv5r1hf4"]
+
+[ext_resource type="SpineAtlasResource" uid="uid://dn3e28msbhqoi" path="res://MeiLinMod/spine/card/unique_1027_01.atlas" id="1_atlas"]
+[ext_resource type="SpineSkeletonFileResource" uid="uid://35lm6yfqnpp0" path="res://MeiLinMod/spine/card/unique_1027_01.skel" id="2_skel"]
 
 [resource]
+atlas_res = ExtResource("1_atlas")
+skeleton_file_res = ExtResource("2_skel")

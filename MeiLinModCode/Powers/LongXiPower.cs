@@ -14,6 +14,7 @@ public class LongXiPower : MeiLinModPower
     public override PowerStackType StackType => PowerStackType.Single;
 
     public override async Task AfterPowerAmountChanged(
+        PlayerChoiceContext choiceContext,
         PowerModel power,
         decimal amount,
         Creature? applier,

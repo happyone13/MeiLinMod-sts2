@@ -14,34 +14,19 @@ public class CanYingPower : MeiLinModPower
 
     public override int ModifyCardPlayCount(CardModel card, Creature? target, int playCount)
     {
-        if (card.Owner?.Creature != Owner || !BasicStrikeDefendHelper.IsBasicStrikeOrDefend(card))
+        if (card.Owner?.Creature != Owner)
             return playCount;
 
         var extraTriggers = (int)decimal.Floor(Amount);
         if (extraTriggers <= 0)
             return playCount;
 
-        if (XiangzuLegacyPower.IsInAttackStance(Owner) && BasicStrikeDefendHelper.IsBasicStrike(card))
+        if (XiangzuLegacyPower.IsInAttackStance(Owner) && BasicStrikeDefendHelper.IsStrikeCard(card))
             return playCount + extraTriggers;
 
-        if (XiangzuLegacyPower.IsInGuardStance(Owner) && BasicStrikeDefendHelper.IsBasicDefend(card))
+        if (XiangzuLegacyPower.IsInGuardStance(Owner) && BasicStrikeDefendHelper.IsDefendCard(card))
             return playCount + extraTriggers;
 
         return playCount;
-    }
-
-    public override async Task AfterModifyingCardPlayCount(CardModel card)
-    {
-        if (card.Owner?.Creature != Owner || !BasicStrikeDefendHelper.IsBasicStrikeOrDefend(card))
-            return;
-
-        var extraTriggers = (int)decimal.Floor(Amount);
-        if (extraTriggers <= 0)
-            return;
-
-        if (!XiangzuLegacyPower.IsInAttackStance(Owner) && !XiangzuLegacyPower.IsInGuardStance(Owner))
-            return;
-
-        await PowerCmd.Decrement(this);
     }
 }

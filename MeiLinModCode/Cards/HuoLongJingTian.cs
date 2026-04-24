@@ -29,6 +29,12 @@ public class HuoLongJingTian() : MeiLinModCard(2, CardType.Attack, CardRarity.Ra
 
     public override string PortraitPath => IdPortraitPath;
     public override string CustomPortraitPath => IdBigPortraitPath;
+    public override string? CustomSpinePortraitScenePath =>
+        "res://MeiLinMod/scenes/cards/huo_long_jing_tian_dynamic.tscn";
+    public override SpinePortraitSlot CustomSpinePortraitSlot => SpinePortraitSlot.Ancient;
+    public override bool UseCustomAncientFrame => true;
+    public override string? CustomAncientFrameMaterialPath => ChaosAncientFrameMaterialPath;
+    public override string? CustomAncientBannerMaterialPath => ChaosAncientBannerMaterialPath;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

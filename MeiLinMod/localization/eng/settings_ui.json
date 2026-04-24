@@ -1,0 +1,5 @@
+{
+  "MEILINMOD-CARD_VISUALS.title": "Card Visuals",
+  "MEILINMOD-USE_CHAOS_CARD_DYNAMIC_PORTRAITS.title": "Enable Chaos Card Dynamic Portraits",
+  "MEILINMOD-USE_CHAOS_CARD_DYNAMIC_PORTRAITS.hover.desc": "When enabled, cards with dynamic portrait resources will try to use Spine animated portraits. When disabled, cards keep their original static portraits."
+}

@@ -22,6 +22,7 @@ public class XinRuZhiShuiPower : MeiLinModPower
     }
 
     public override Task AfterPowerAmountChanged(
+        PlayerChoiceContext choiceContext,
         PowerModel power,
         decimal amount,
         MegaCrit.Sts2.Core.Entities.Creatures.Creature? applier,
@@ -45,6 +46,6 @@ public class XinRuZhiShuiPower : MeiLinModPower
         if (_createUpgradedDefend)
             CardCmd.Upgrade(defend);
         CardCmd.ApplyKeyword(defend, CardKeyword.Ethereal);
-        await CardPileCmd.AddGeneratedCardToCombat(defend, PileType.Hand, addedByPlayer: true);
+        await CardPileCmd.AddGeneratedCardToCombat(defend, PileType.Hand, player);
     }
 }

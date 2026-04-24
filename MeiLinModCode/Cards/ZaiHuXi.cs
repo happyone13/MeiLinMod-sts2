@@ -23,7 +23,7 @@ public class ZaiHuXi() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncommon, T
     [
         new CardsVar(1),
         new DynamicVar(VigorKey, 3m),
-        new DynamicVar(BurstDrawKey, 3m)
+        new DynamicVar(BurstDrawKey, 2m)
     ];
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [

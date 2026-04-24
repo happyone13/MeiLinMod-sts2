@@ -39,7 +39,7 @@ public class ZuiZhongAoYiYanLongJiangLin() : MeiLinModCard(2, CardType.Skill, Ca
             strike.SetToFreeThisCombat();
             CardCmd.ApplyKeyword(strike, CardKeyword.Exhaust);
             strike.BaseReplayCount += 1;
-            await CardPileCmd.AddGeneratedCardToCombat(strike, PileType.Hand, addedByPlayer: true);
+            await CardPileCmd.AddGeneratedCardToCombat(strike, PileType.Hand, Owner);
         }
     }
 

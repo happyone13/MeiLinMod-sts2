@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="SpineSkeletonDataResource" path="res://MeiLinMod/spine/card/unique_1027_01.tres" id="1_spine"]
+[ext_resource type="Script" path="res://MeiLinModCode/Nodes/SpineAutoPlayer.cs" id="2_player"]
+
+[node name="AttackDefenseUnityDynamicPortrait" type="Node2D"]
+metadata/_edit_vertical_guides_ = [597.0]
+metadata/_edit_horizontal_guides_ = [675.0, 835.0]
+
+[node name="SubViewport" type="SubViewport" parent="."]
+handle_input_locally = false
+size = Vector2i(598, 844)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="SubViewport"]
+custom_minimum_size = Vector2(600, 600)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_right = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="SpineSprite" type="SpineSprite" parent="SubViewport"]
+skeleton_data_res = ExtResource("1_spine")
+preview_skin = "default"
+preview_animation = "animation"
+preview_frame = false
+preview_time = 0.0
+position = Vector2(279, 398)
+scale = Vector2(1.4399995, 1.4399995)
+
+[node name="SpineAutoPlayer" type="Node" parent="SubViewport/SpineSprite"]
+script = ExtResource("2_player")
+AnimationName = "animation"
+Loop = true
+SlotFixProfile = "attack_defense_unity"

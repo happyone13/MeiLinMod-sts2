@@ -29,7 +29,7 @@ public class ZuoYouQuan() : MeiLinModCard(1, CardType.Skill, CardRarity.Common, 
                 CardCmd.Upgrade(strike);
 
             strike.SetToFreeThisTurn();
-            await CardPileCmd.AddGeneratedCardToCombat(strike, PileType.Hand, addedByPlayer: true);
+            await CardPileCmd.AddGeneratedCardToCombat(strike, PileType.Hand, Owner);
         }
     }
 

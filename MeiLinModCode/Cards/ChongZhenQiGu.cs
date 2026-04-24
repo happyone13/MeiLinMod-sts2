@@ -38,7 +38,7 @@ public class ChongZhenQiGu() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncom
         {
             await PowerCmd.Apply<QiPower>(Owner.Creature, -1m, Owner.Creature, this);
             if (IsUpgraded)
-                await PowerCmd.Apply<CardNextUseCostDownPower>(Owner.Creature, 1m, Owner.Creature, selected);
+                selected.EnergyCost.SetUntilPlayed(0);
             await CardPileCmd.Add(selected, PileType.Hand);
         }
     }

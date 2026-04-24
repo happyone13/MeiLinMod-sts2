@@ -13,7 +13,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
 namespace MeiLinMod.MeiLinModCode.Cards;
 
-[Pool(typeof(MeiLinModCardPool))]
+[Pool(typeof(NoneCardPool))]
 public class RanMu() : MeiLinModCard(1, CardType.Skill, CardRarity.Common, TargetType.AnyEnemy)
 {
     private const string EmberKey = "Ember";

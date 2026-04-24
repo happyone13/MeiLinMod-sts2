@@ -9,10 +9,21 @@ using MegaCrit.Sts2.Core.Localization;
 
 namespace MeiLinMod.MeiLinModCode.Cards;
 
+public enum SpinePortraitSlot
+{
+    Normal,
+    Ancient
+}
+
 [Pool(typeof(MeiLinModCardPool))]
 public abstract class MeiLinModCard(int cost, CardType type, CardRarity rarity, TargetType target) :
     CustomCardModel(cost, type, rarity, target)
 {
+    protected const string ChaosAncientFrameMaterialPath =
+        "res://MeiLinMod/materials/cards/frames/card_frame_chaos_mat.tres";
+    protected const string ChaosAncientBannerMaterialPath =
+        "res://MeiLinMod/materials/cards/banners/card_banner_chaos_mat.tres";
+
     protected string IdPortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePathOrDefault();
     protected string IdBigPortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".BigCardImagePathOrDefault();
 
@@ -28,6 +39,11 @@ public abstract class MeiLinModCard(int cost, CardType type, CardRarity rarity, 
     //Uses card_portraits/card_name.png as image path. These should be smaller images.
     public override string PortraitPath => IdPortraitPath;
     public override string BetaPortraitPath => $"beta/{Id.Entry.ToLowerInvariant()}.png".CardImagePath();
+    public virtual string? CustomSpinePortraitScenePath => null;
+    public virtual SpinePortraitSlot CustomSpinePortraitSlot => SpinePortraitSlot.Normal;
+    public virtual bool UseCustomAncientFrame => false;
+    public virtual string? CustomAncientFrameMaterialPath => null;
+    public virtual string? CustomAncientBannerMaterialPath => null;
 
     protected Task PlayPowerCastAnim()
     {

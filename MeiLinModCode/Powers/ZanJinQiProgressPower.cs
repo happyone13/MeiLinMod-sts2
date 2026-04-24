@@ -15,7 +15,7 @@ public class ZanJinQiProgressPower : MeiLinModPower
         if (player.Creature != Owner || player != Owner.Player)
             return;
 
-        await PowerCmd.Apply<QiPower>(Owner, 2m, Owner, null);
+        await QiCounterPower.AddProgress(Owner, 2, Owner, null);
 
         var remainingTurns = Amount - 1m;
         await PowerCmd.Apply<ZanJinQiProgressPower>(Owner, -1m, Owner, null, silent: true);

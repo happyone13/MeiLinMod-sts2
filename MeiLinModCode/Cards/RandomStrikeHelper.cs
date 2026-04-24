@@ -11,12 +11,12 @@ namespace MeiLinMod.MeiLinModCode.Cards;
 
 public static class RandomStrikeHelper
 {
-    public static CardModel? CreateRandomNonBasicStrike(Player player, CombatState? combatState, bool upgraded, CardModel? original = null)
+    public static CardModel? CreateRandomNonBasicStrike(Player player, ICombatState? combatState, bool upgraded, CardModel? original = null)
     {
         return CreateRandomNonBasicStrike(player, combatState, upgraded, false, original);
     }
 
-    public static CardModel? CreateRandomNonBasicStrike(Player player, CombatState? combatState, bool upgraded, bool forceOneCost, CardModel? original = null)
+    public static CardModel? CreateRandomNonBasicStrike(Player player, ICombatState? combatState, bool upgraded, bool forceOneCost, CardModel? original = null)
     {
         if (combatState == null)
             return null;
@@ -29,7 +29,7 @@ public static class RandomStrikeHelper
         if (upgraded)
             CardCmd.Upgrade(created, CardPreviewStyle.None);
         if (forceOneCost)
-            created.EnergyCost.SetThisTurn(1);
+            created.EnergyCost.SetThisCombat(1);
         return created;
     }
 
@@ -86,15 +86,15 @@ public static class RandomStrikeHelper
         return player.UnlockState.CardPools
             .Distinct()
             .SelectMany(pool => pool.GetUnlockedCards(player.UnlockState, player.RunState.CardMultiplayerConstraint))
-            .Where(IsNonBasicStrike)
+            .Where(card => IsNonBasicStrike(player, card))
             .DistinctBy(card => card.Id);
     }
 
-    private static bool IsNonBasicStrike(CardModel? card)
+    private static bool IsNonBasicStrike(Player player, CardModel? card)
     {
         return card != null &&
                BasicStrikeDefendHelper.IsStrikeCard(card) &&
-               !BasicStrikeDefendHelper.IsStarterStrike(card) &&
+               !BasicStrikeDefendHelper.IsStarterStrike(card, player) &&
                card.Type is not CardType.Status and not CardType.Curse and not CardType.Quest;
     }
 }

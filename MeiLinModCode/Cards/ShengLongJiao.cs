@@ -18,10 +18,15 @@ namespace MeiLinMod.MeiLinModCode.Cards;
 [Pool(typeof(MeiLinModCardPool))]
 public class ShengLongJiao() : MeiLinModCard(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(7m, ValueProp.Move)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(5m, ValueProp.Move)];
 
     public override string PortraitPath => IdPortraitPath;
     public override string CustomPortraitPath => IdBigPortraitPath;
+    public override string? CustomSpinePortraitScenePath => "res://MeiLinMod/scenes/cards/sheng_long_jiao_dynamic.tscn";
+    public override SpinePortraitSlot CustomSpinePortraitSlot => SpinePortraitSlot.Ancient;
+    public override bool UseCustomAncientFrame => true;
+    public override string? CustomAncientFrameMaterialPath => ChaosAncientFrameMaterialPath;
+    public override string? CustomAncientBannerMaterialPath => ChaosAncientBannerMaterialPath;
 
     protected override void AddExtraArgsToDescription(LocString description)
     {
@@ -52,7 +57,7 @@ public class ShengLongJiao() : MeiLinModCard(2, CardType.Attack, CardRarity.Unco
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(4m);
+        DynamicVars.Damage.UpgradeValueBy(2m);
     }
 
     private int GetHitCountThisTurn()
