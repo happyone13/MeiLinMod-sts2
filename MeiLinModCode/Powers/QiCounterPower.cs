@@ -20,7 +20,6 @@ public class QiCounterPower : MeiLinModPower
     }
 
     public override async Task AfterPowerAmountChanged(
-        MegaCrit.Sts2.Core.GameActions.Multiplayer.PlayerChoiceContext choiceContext,
         PowerModel power,
         decimal amount,
         Creature? applier,

@@ -12,7 +12,6 @@ public class QiGainEmberPower : MeiLinModPower
     public override PowerStackType StackType => PowerStackType.Counter;
 
     public override async Task AfterPowerAmountChanged(
-        PlayerChoiceContext choiceContext,
         PowerModel power,
         decimal amount,
         Creature? applier,

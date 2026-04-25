@@ -96,16 +96,19 @@
     <ItemGroup>
         <Compile Remove="MeiLinMod/**"/>
         <Compile Remove=".godot/**"/>
+        <Compile Remove="tmp/**"/>
         <Compile Remove="tools/**"/>
         <Compile Remove="materials/**"/>
         <Compile Remove="shaders/**"/>
         <Compile Remove="images/**"/>
         <EmbeddedResource Remove="MeiLinMod/**"/>
         <EmbeddedResource Remove=".godot/**"/>
+        <EmbeddedResource Remove="tmp/**"/>
         <EmbeddedResource Remove="tools/**"/>
         <EmbeddedResource Remove="materials/**"/>
         <EmbeddedResource Remove="shaders/**"/>
         <EmbeddedResource Remove="images/**"/>
+        <None Remove="tmp/**"/>
     </ItemGroup>
 
     <ItemGroup>

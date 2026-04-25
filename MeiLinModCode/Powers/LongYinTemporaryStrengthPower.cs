@@ -29,7 +29,6 @@ public class LongYinTemporaryStrengthPower : MeiLinModPower, ICustomModel
     }
 
     public override async Task AfterPowerAmountChanged(
-        PlayerChoiceContext choiceContext,
         PowerModel power,
         decimal amount,
         Creature? applier,

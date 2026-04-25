@@ -126,7 +126,6 @@ public class XiangzuLegacyPower : MeiLinModPower
     }
 
     public override async Task AfterPowerAmountChanged(
-        PlayerChoiceContext choiceContext,
         PowerModel power,
         decimal amount,
         Creature? applier,
@@ -160,7 +159,7 @@ public class XiangzuLegacyPower : MeiLinModPower
 
     private int GetQiAmount() => (int)(Owner.GetPower<QiPower>()?.Amount ?? 0m);
 
-    public override async Task AfterAttack(PlayerChoiceContext choiceContext, AttackCommand command)
+    public override async Task AfterAttack(AttackCommand command)
     {
         if (command.Attacker != Owner || !command.DamageProps.HasFlag(ValueProp.Move))
             return;

@@ -30,7 +30,7 @@ public class LongYanRelic : MeiLinModRelic
         }
     }
 
-    public override async Task AfterSideTurnStart(CombatSide side, ICombatState combatState)
+    public override async Task AfterSideTurnStart(CombatSide side, CombatState combatState)
     {
         if (side != Owner.Creature.Side)
             return;

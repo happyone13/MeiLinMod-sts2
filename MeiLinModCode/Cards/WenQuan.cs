@@ -40,7 +40,7 @@ public class WenQuan() : MeiLinModCard(0, CardType.Skill, CardRarity.Rare, Targe
                 if (IsUpgraded)
                     CardCmd.Upgrade(generated);
                 CardCmd.ApplyKeyword(generated, CardKeyword.Exhaust);
-                await CardPileCmd.AddGeneratedCardToCombat(generated, PileType.Hand, Owner);
+                await CardPileCmd.AddGeneratedCardToCombat(generated, PileType.Hand, true, CardPilePosition.Random);
             }
         }
 

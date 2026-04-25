@@ -23,7 +23,7 @@ public class ZuiZhongAoYiYanLongJiangLin() : MeiLinModCard(1, CardType.Power, Ca
         MeiLinAudioService.SuppressNextDefaultCastSfx(Owner);
         MeiLinAudioService.TryPlayCustomCardClip("zui_zhong_ao_yi_yan_long_jiang_lin", Owner);
         await PlayPowerCastAnim();
-        await PowerCmd.Apply<ZuiZhongAoYiYanLongJiangLinPower>(Owner.Creature, 1m, Owner.Creature, this);
+        await PowerCmd.Apply<YanLongJiangLinStrikeEchoPower>(Owner.Creature, 1m, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

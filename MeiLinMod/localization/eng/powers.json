@@ -233,6 +233,9 @@
     "MEILINMOD-ZUI_ZHONG_AO_YI_YAN_LONG_JIANG_LIN_POWER.title":  "Fire Dragon Descends",
     "MEILINMOD-ZUI_ZHONG_AO_YI_YAN_LONG_JIANG_LIN_POWER.description":  "Your [gold]Strikes[/gold] are played {Amount} additional time(s).",
     "MEILINMOD-ZUI_ZHONG_AO_YI_YAN_LONG_JIANG_LIN_POWER.smartDescription":  "Your [gold]Strikes[/gold] are played {Amount} additional time(s).",
+    "MEILINMOD-YAN_LONG_JIANG_LIN_STRIKE_ECHO_POWER.title":  "Fire Dragon Descends",
+    "MEILINMOD-YAN_LONG_JIANG_LIN_STRIKE_ECHO_POWER.description":  "Your [gold]Strikes[/gold] are played {Amount} additional time(s).",
+    "MEILINMOD-YAN_LONG_JIANG_LIN_STRIKE_ECHO_POWER.smartDescription":  "Your [gold]Strikes[/gold] are played {Amount} additional time(s).",
     "MEILINMOD-HUI_GUI_JI_BEN_GONG_POWER.title":  "Back to Basics",
     "MEILINMOD-HUI_GUI_JI_BEN_GONG_POWER.description":  "At the start of your turn, gain 2 Energy and draw 2 cards.",
     "MEILINMOD-HUI_GUI_JI_BEN_GONG_POWER.smartDescription":  "At the start of your turn, gain 2 Energy and draw 2 cards."
