@@ -6,6 +6,8 @@ using Godot;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Nodes.Cards;
+using MegaCrit.Sts2.Core.Nodes.Cards.Holders;
+using MegaCrit.Sts2.Core.Nodes.Combat;
 using MeiLinMod.MeiLinModCode.Cards;
 using MeiLinMod.MeiLinModCode.Config;
 
@@ -31,6 +33,12 @@ public static class CardSpinePortraitPatch
 
     private static readonly Dictionary<string, PackedScene> SceneCache = new();
     private static readonly ConditionalWeakTable<NCard, PortraitVisibilityState> VisibilityStates = new();
+    private static readonly FieldInfo? NCardHolderIsHoveredField =
+        typeof(NCardHolder).GetField("_isHovered", BindingFlags.Instance | BindingFlags.NonPublic);
+    private static readonly FieldInfo? NCardHolderIsFocusedField =
+        typeof(NCardHolder).GetField("_isFocused", BindingFlags.Instance | BindingFlags.NonPublic);
+    private static readonly FieldInfo? NCardHolderCurrentPressedActionField =
+        typeof(NCardHolder).GetField("_currentPressedAction", BindingFlags.Instance | BindingFlags.NonPublic);
 
     [HarmonyPostfix]
     [HarmonyPriority(Priority.Last)]
@@ -210,6 +218,58 @@ public static class CardSpinePortraitPatch
 
         if (framesSinceCreated == 8)
             LogOverlayDiagnostics(cardNode, container, subViewport, parentPortrait);
+    }
+
+    public static bool ShouldDisplayDynamicOverlays(NCard? cardNode)
+    {
+        if (cardNode == null || !GodotObject.IsInstanceValid(cardNode) || !cardNode.IsInsideTree())
+            return false;
+
+        bool hasHolderAncestor = false;
+        bool isHolderActive = false;
+        bool isInCardPlay = false;
+
+        CollectPresentationState(cardNode, ref hasHolderAncestor, ref isHolderActive, ref isInCardPlay);
+
+        bool isEnlarged = ((Control)cardNode).GetGlobalTransform().Scale.Y > 1.1f;
+        return hasHolderAncestor || isHolderActive || isInCardPlay || isEnlarged;
+    }
+
+    private static void CollectPresentationState(
+        NCard cardNode,
+        ref bool hasHolderAncestor,
+        ref bool isHolderActive,
+        ref bool isInCardPlay)
+    {
+        Node? current = cardNode.GetParent();
+        while (current != null)
+        {
+            if (current is NCardHolder holder)
+            {
+                hasHolderAncestor = true;
+                bool isHovered = (bool?)NCardHolderIsHoveredField?.GetValue(holder) ?? false;
+                bool isFocused = (bool?)NCardHolderIsFocusedField?.GetValue(holder) ?? false;
+                if (isHovered || isFocused)
+                    isHolderActive = true;
+
+                if (NCardHolderCurrentPressedActionField?.GetValue(holder) != null)
+                    isInCardPlay = true;
+
+                if (holder.GetParent() is NPlayerHand playerHand)
+                {
+                    foreach (Node child in playerHand.GetChildren())
+                    {
+                        if (child is NCardPlay cardPlay && cardPlay.Holder == holder)
+                        {
+                            isInCardPlay = true;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            current = current.GetParent();
+        }
     }
 
     private static void SetStaticPortraitFallback(
@@ -509,6 +569,7 @@ public static class CardSpinePortraitPatch
         public bool PortraitVisible { get; set; }
         public bool AncientPortraitVisible { get; set; }
     }
+
 }
 
 [HarmonyPatch(typeof(NCard), "_EnterTree")]
