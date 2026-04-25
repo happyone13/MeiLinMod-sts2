@@ -98,6 +98,8 @@ public static class CardCustomAncientFramePatch
         var ancientBanner = Get<Control>(AncientBannerField, cardNode!);
         var ancientHighlight = Get<TextureRect>(AncientHighlightField, cardNode!);
         bool shouldDisplayDynamicOverlays = CardSpinePortraitPatch.ShouldDisplayDynamicOverlays(cardNode);
+        Material? frameMaterial = LoadResource<Material>(cardModel!.CustomAncientFrameMaterialPath);
+        Material? bannerMaterial = LoadResource<Material>(cardModel.CustomAncientBannerMaterialPath);
 
         if (!CardSpinePortraitPatch.HasActiveSpineOverlay(cardNode))
         {
@@ -116,8 +118,8 @@ public static class CardCustomAncientFramePatch
 
         if (!shouldDisplayDynamicOverlays)
         {
-            ApplyMinimalDynamicPortraitState(cardNode!, cardModel!, frame, portrait, ancientPortrait, portraitBorder, banner,
-                ancientBorder, ancientTextBg, ancientBanner, ancientHighlight);
+            ApplyTransitionDynamicPortraitState(cardNode!, cardModel!, frame, portrait, ancientPortrait, portraitBorder, banner,
+                ancientBorder, ancientTextBg, ancientBanner, ancientHighlight, frameMaterial, bannerMaterial);
             return;
         }
 
@@ -129,9 +131,6 @@ public static class CardCustomAncientFramePatch
 
         if (ancientPortrait != null)
             ancientPortrait.Show();
-
-        Material? frameMaterial = LoadResource<Material>(cardModel!.CustomAncientFrameMaterialPath);
-        Material? bannerMaterial = LoadResource<Material>(cardModel.CustomAncientBannerMaterialPath);
 
         ApplyTextureRect(ancientBorder, AncientBorderPath, frameMaterial, show: true);
         if (ancientTextBg != null)
@@ -150,7 +149,7 @@ public static class CardCustomAncientFramePatch
         ApplyChaosEffects(cardNode!, cardModel);
     }
 
-    private static void ApplyMinimalDynamicPortraitState(
+    private static void ApplyTransitionDynamicPortraitState(
         NCard cardNode,
         MeiLinModCard cardModel,
         TextureRect? frame,
@@ -161,27 +160,35 @@ public static class CardCustomAncientFramePatch
         TextureRect? ancientBorder,
         TextureRect? ancientTextBg,
         Control? ancientBanner,
-        TextureRect? ancientHighlight)
+        TextureRect? ancientHighlight,
+        Material? frameMaterial,
+        Material? bannerMaterial)
     {
         CaptureOriginalState(cardNode);
-        RemoveChaosEffects(cardNode, restoreOriginalState: false);
+        RemoveChaosEffects(cardNode, restoreOriginalState: true);
 
         frame?.Hide();
         portraitBorder?.Hide();
-        banner?.Hide();
-        ancientBorder?.Hide();
+        ApplyTextureRect(banner, GetRarityTitlePath(cardModel.Rarity), bannerMaterial, show: true);
+        ApplyTextureRect(ancientBorder, AncientBorderPath, frameMaterial, show: true);
         ancientTextBg?.Hide();
         ancientBanner?.Hide();
-        ancientHighlight?.Hide();
+        ApplyTextureRect(ancientHighlight, AncientHighlightPath, material: null, show: true);
 
-        Get<Control>(TitleLabelField, cardNode)?.Hide();
-        Get<Control>(EnergyIconField, cardNode)?.Hide();
-        Get<Control>(EnergyLabelField, cardNode)?.Hide();
-        Get<Control>(DescriptionLabelField, cardNode)?.Hide();
-        Get<Control>(TypeLabelField, cardNode)?.Hide();
-        Get<Control>(TypePlaqueField, cardNode)?.Hide();
+        if (Get<TextureRect>(EnergyIconField, cardNode) is { } energyIcon)
+            ApplyTextureRect(energyIcon, $"{ChaosEffectsBasePath}energy_line_default.png", material: null, show: true);
+
+        Get<Control>(TitleLabelField, cardNode)?.Show();
+        Get<Control>(EnergyLabelField, cardNode)?.Show();
+        Get<Control>(DescriptionLabelField, cardNode)?.Show();
+        Get<Control>(TypeLabelField, cardNode)?.Show();
+        Get<Control>(TypePlaqueField, cardNode)?.Show();
 
         CardSpinePortraitPatch.ForcePortraitSlot(cardNode, portrait, ancientPortrait, cardModel.CustomSpinePortraitSlot);
+        if (portrait != null && cardModel.CustomSpinePortraitSlot == SpinePortraitSlot.Ancient)
+            portrait.Hide();
+        if (ancientPortrait != null && cardModel.CustomSpinePortraitSlot == SpinePortraitSlot.Ancient)
+            ancientPortrait.Show();
     }
 
     public static void PrepareForBaseVisuals(NCard? cardNode)

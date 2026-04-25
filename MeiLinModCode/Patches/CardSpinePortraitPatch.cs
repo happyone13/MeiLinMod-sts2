@@ -25,7 +25,6 @@ public static class CardSpinePortraitPatch
     private const float AncientOverlayInsetTop = 7.0f;
     private const float AncientOverlayInsetRight = 7.0f;
     private const float AncientOverlayInsetBottom = 10.0f;
-
     public static readonly FieldInfo? PortraitField =
         typeof(NCard).GetField("_portrait", BindingFlags.Instance | BindingFlags.NonPublic);
     public static readonly FieldInfo? AncientPortraitField =
