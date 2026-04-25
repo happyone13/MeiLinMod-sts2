@@ -1,7 +1,7 @@
 [gd_resource type="SpineSkeletonDataResource" load_steps=3 format=3 uid="uid://d0ohajv5r1hf4"]
 
-[ext_resource type="SpineAtlasResource" uid="uid://dn3e28msbhqoi" path="res://MeiLinMod/spine/card/unique_1027_01.atlas" id="1_atlas"]
-[ext_resource type="SpineSkeletonFileResource" uid="uid://35lm6yfqnpp0" path="res://MeiLinMod/spine/card/unique_1027_01.skel" id="2_skel"]
+[ext_resource type="SpineAtlasResource" path="res://.godot/imported/unique_1027_01.atlas-e1855e26e8f8fa429cd6e2d139a1f96a.spatlas" id="1_atlas"]
+[ext_resource type="SpineSkeletonFileResource" path="res://.godot/imported/unique_1027_01.skel-ef9f53a439adc4440f64b4aec57d8d06.spskel" id="2_skel"]
 
 [resource]
 atlas_res = ExtResource("1_atlas")

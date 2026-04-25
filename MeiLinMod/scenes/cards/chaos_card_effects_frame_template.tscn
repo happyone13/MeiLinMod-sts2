@@ -50,6 +50,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="CardContainer/DynamicPortraitViewport"]
 handle_input_locally = false
 size = Vector2i(598, 844)
+transparent_bg = true
 render_target_update_mode = 4
 
 [node name="PortraitBackground" type="ColorRect" parent="CardContainer/DynamicPortraitViewport/SubViewport"]
@@ -59,7 +60,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.04, 0.04, 0.04, 1)
+color = Color(0.04, 0.04, 0.04, 0)
 
 [node name="SpineSprite" type="SpineSprite" parent="CardContainer/DynamicPortraitViewport/SubViewport"]
 skeleton_data_res = ExtResource("10_spine")
@@ -75,7 +76,7 @@ script = ExtResource("11_player")
 
 [node name="DescriptionMask" type="TextureRect" parent="CardContainer"]
 layout_mode = 0
-z_index = -10
+z_index = -1
 offset_left = -150.0
 offset_top = 34.0
 offset_right = 146.0
@@ -96,6 +97,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 0.75)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 20
 text = "Attack"
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="EgoBadge" type="TextureRect" parent="CardContainer"]
@@ -203,6 +205,7 @@ theme_override_colors/font_outline_color = Color(0.18, 0.12, 0.08, 1)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 22
 text = "Custom Chaos Card"
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CategoryIcon" type="TextureRect" parent="CardContainer"]

@@ -85,6 +85,7 @@ public static class CardCustomAncientFramePatch
         if (!TryGetCustomFrameCard(cardNode, out MeiLinModCard? cardModel))
         {
             RemoveChaosEffects(cardNode);
+            NormalizeNonChaosCard(cardNode);
             return;
         }
 
@@ -98,7 +99,7 @@ public static class CardCustomAncientFramePatch
         var ancientBanner = Get<Control>(AncientBannerField, cardNode!);
         var ancientHighlight = Get<TextureRect>(AncientHighlightField, cardNode!);
 
-        if (!CardSpinePortraitPatch.HasActiveSpineOverlay(ancientPortrait))
+        if (!CardSpinePortraitPatch.HasActiveSpineOverlay(cardNode))
         {
             RemoveChaosEffects(cardNode);
             frame?.Show();
@@ -206,8 +207,7 @@ public static class CardCustomAncientFramePatch
         EnsureTemplateOverlay(cardNode, CostTextNodeName, "CostText", () => CreateLabelOverlay(CostTextLayout), configure: control =>
         {
             ApplyTemplateLayout(control, "CostText", CostTextLayout);
-            SetOverlayText(control, GetControlText(energyLabel), energyLabelVisible, energyLabel);
-            BringToFront(control);
+            SetOverlayText(control, GetControlText(energyLabel), true, energyLabel);
         });
 
         if (Get<Control>(AncientBannerField, cardNode) is { } ancientBanner)
@@ -225,24 +225,10 @@ public static class CardCustomAncientFramePatch
         EnsureTemplateOverlay(cardNode, CategoryTextNodeName, "CategoryText", () => CreateLabelOverlay(CategoryTextLayout), configure: control =>
         {
             ApplyTemplateLayout(control, "CategoryText", CategoryTextLayout);
-            SetOverlayText(control, GetControlText(typeLabel), typeLabelVisible, typeLabel);
-            BringToFront(control);
+            SetOverlayText(control, GetControlText(typeLabel), true, typeLabel);
         });
 
-        var descriptionLabel = Get<Control>(DescriptionLabelField, cardNode);
-        bool descriptionLabelVisible = descriptionLabel?.Visible ?? false;
-        EnsureTemplateOverlay(cardNode, DescriptionMaskNodeName, "DescriptionMask", () => CreateDescriptionMask(DescriptionMaskLayout), configure: control =>
-        {
-            ApplyTemplateLayout(control, "DescriptionMask", DescriptionMaskLayout);
-            control.ZIndex = -10;
-            SetOverlayVisibility(control, descriptionLabelVisible, descriptionLabel);
-            EnsureDrawBefore(control, descriptionLabel);
-        });
-        if (descriptionLabel != null)
-        {
-            descriptionLabel.ZIndex = 10;
-            BringToFront(descriptionLabel);
-        }
+        RemoveNode(cardNode, DescriptionMaskNodeName);
 
         EnsureTemplateOverlay(cardNode, EgoBadgeNodeName, "EgoBadge", () => CreateTextureOverlay(EgoBadgeLayout), configure: control =>
         {
@@ -274,7 +260,7 @@ public static class CardCustomAncientFramePatch
         EnsureTemplateOverlay(cardNode, CategoryIconNodeName, "CategoryIcon", () => CreateTextureOverlay(CategoryIconLayout), configure: control =>
         {
             ApplyTemplateLayout(control, "CategoryIcon", CategoryIconLayout);
-            SetOverlayVisibility(control, typeLabelVisible, typeLabel);
+            SetOverlayVisibility(control, true, typeLabel);
             EnsureDrawBefore(control, typeLabel);
             if (control is TextureRect textureRect)
                 ApplyTextureRect(textureRect, GetCategoryIconPath(cardModel.Type), material: null, show: true);
@@ -451,10 +437,19 @@ public static class CardCustomAncientFramePatch
     private static void CaptureOriginalState(NCard cardNode)
     {
         var state = OriginalStates.GetOrCreateValue(cardNode);
-        if (state.HasSnapshot)
+        if (state.HasSnapshot && ReferenceEquals(state.CapturedModel, cardNode.Model))
             return;
 
+        state.CapturedModel = cardNode.Model;
         state.Banner = CaptureControlSnapshot(Get<Control>(BannerField, cardNode));
+        state.Frame = CaptureControlSnapshot(Get<Control>(FrameField, cardNode));
+        state.Portrait = CaptureControlSnapshot(Get<Control>(CardSpinePortraitPatch.PortraitField, cardNode));
+        state.AncientPortrait = CaptureControlSnapshot(Get<Control>(CardSpinePortraitPatch.AncientPortraitField, cardNode));
+        state.PortraitBorder = CaptureControlSnapshot(Get<Control>(PortraitBorderField, cardNode));
+        state.AncientBorder = CaptureControlSnapshot(Get<Control>(AncientBorderField, cardNode));
+        state.AncientBanner = CaptureControlSnapshot(Get<Control>(AncientBannerField, cardNode));
+        state.AncientTextBg = CaptureControlSnapshot(Get<Control>(AncientTextBgField, cardNode));
+        state.AncientHighlight = CaptureControlSnapshot(Get<Control>(AncientHighlightField, cardNode));
         state.TitleLabel = CaptureControlSnapshot(Get<Control>(TitleLabelField, cardNode));
         state.EnergyIcon = CaptureControlSnapshot(Get<Control>(EnergyIconField, cardNode));
         state.DescriptionLabel = CaptureControlSnapshot(Get<Control>(DescriptionLabelField, cardNode));
@@ -469,13 +464,47 @@ public static class CardCustomAncientFramePatch
         if (!OriginalStates.TryGetValue(cardNode, out OriginalCardVisualState? state) || !state.HasSnapshot)
             return;
 
+        if (!ReferenceEquals(state.CapturedModel, cardNode.Model))
+        {
+            OriginalStates.Remove(cardNode);
+            return;
+        }
+
         RestoreControlSnapshot(Get<Control>(BannerField, cardNode), state.Banner);
+        RestoreControlSnapshot(Get<Control>(FrameField, cardNode), state.Frame);
+        RestoreControlSnapshot(Get<Control>(CardSpinePortraitPatch.PortraitField, cardNode), state.Portrait);
+        RestoreControlSnapshot(Get<Control>(CardSpinePortraitPatch.AncientPortraitField, cardNode), state.AncientPortrait);
+        RestoreControlSnapshot(Get<Control>(PortraitBorderField, cardNode), state.PortraitBorder);
+        RestoreControlSnapshot(Get<Control>(AncientBorderField, cardNode), state.AncientBorder);
+        RestoreControlSnapshot(Get<Control>(AncientBannerField, cardNode), state.AncientBanner);
+        RestoreControlSnapshot(Get<Control>(AncientTextBgField, cardNode), state.AncientTextBg);
+        RestoreControlSnapshot(Get<Control>(AncientHighlightField, cardNode), state.AncientHighlight);
         RestoreControlSnapshot(Get<Control>(TitleLabelField, cardNode), state.TitleLabel);
         RestoreControlSnapshot(Get<Control>(EnergyIconField, cardNode), state.EnergyIcon);
         RestoreControlSnapshot(Get<Control>(DescriptionLabelField, cardNode), state.DescriptionLabel);
         RestoreControlSnapshot(Get<Control>(EnergyLabelField, cardNode), state.EnergyLabel);
         RestoreControlSnapshot(Get<Control>(TypeLabelField, cardNode), state.TypeLabel);
         RestoreControlSnapshot(Get<Control>(TypePlaqueField, cardNode), state.TypePlaque);
+        OriginalStates.Remove(cardNode);
+    }
+
+    private static void NormalizeNonChaosCard(NCard? cardNode)
+    {
+        if (cardNode == null || cardNode.Model == null)
+            return;
+
+        if (cardNode.Model.Rarity == CardRarity.Ancient)
+            return;
+
+        Get<Control>(FrameField, cardNode)?.Show();
+        Get<Control>(CardSpinePortraitPatch.PortraitField, cardNode)?.Show();
+        Get<Control>(PortraitBorderField, cardNode)?.Show();
+        Get<Control>(BannerField, cardNode)?.Show();
+        Get<Control>(CardSpinePortraitPatch.AncientPortraitField, cardNode)?.Hide();
+        Get<Control>(AncientBorderField, cardNode)?.Hide();
+        Get<Control>(AncientTextBgField, cardNode)?.Hide();
+        Get<Control>(AncientBannerField, cardNode)?.Hide();
+        Get<Control>(AncientHighlightField, cardNode)?.Hide();
     }
 
     private static ControlSnapshot? CaptureControlSnapshot(Control? control)
@@ -506,7 +535,15 @@ public static class CardCustomAncientFramePatch
             Texture = (control as TextureRect)?.Texture,
             Material = control.Material,
             TextureExpandMode = (control as TextureRect)?.ExpandMode,
-            TextureStretchMode = (control as TextureRect)?.StretchMode
+            TextureStretchMode = (control as TextureRect)?.StretchMode,
+            LabelHorizontalAlignment = (control as Label)?.HorizontalAlignment,
+            LabelVerticalAlignment = (control as Label)?.VerticalAlignment,
+            LabelAutowrapMode = (control as Label)?.AutowrapMode,
+            LabelClipText = (control as Label)?.ClipText,
+            LabelUppercase = (control as Label)?.Uppercase,
+            RichTextScrollActive = (control as RichTextLabel)?.ScrollActive,
+            RichTextFitContent = (control as RichTextLabel)?.FitContent,
+            RichTextAutowrapMode = (control as RichTextLabel)?.AutowrapMode
         };
     }
 
@@ -542,6 +579,30 @@ public static class CardCustomAncientFramePatch
                 textureRect.ExpandMode = snapshot.TextureExpandMode.Value;
             if (snapshot.TextureStretchMode.HasValue)
                 textureRect.StretchMode = snapshot.TextureStretchMode.Value;
+        }
+
+        if (control is Label label)
+        {
+            if (snapshot.LabelHorizontalAlignment.HasValue)
+                label.HorizontalAlignment = snapshot.LabelHorizontalAlignment.Value;
+            if (snapshot.LabelVerticalAlignment.HasValue)
+                label.VerticalAlignment = snapshot.LabelVerticalAlignment.Value;
+            if (snapshot.LabelAutowrapMode.HasValue)
+                label.AutowrapMode = snapshot.LabelAutowrapMode.Value;
+            if (snapshot.LabelClipText.HasValue)
+                label.ClipText = snapshot.LabelClipText.Value;
+            if (snapshot.LabelUppercase.HasValue)
+                label.Uppercase = snapshot.LabelUppercase.Value;
+        }
+
+        if (control is RichTextLabel richTextLabel)
+        {
+            if (snapshot.RichTextScrollActive.HasValue)
+                richTextLabel.ScrollActive = snapshot.RichTextScrollActive.Value;
+            if (snapshot.RichTextFitContent.HasValue)
+                richTextLabel.FitContent = snapshot.RichTextFitContent.Value;
+            if (snapshot.RichTextAutowrapMode.HasValue)
+                richTextLabel.AutowrapMode = snapshot.RichTextAutowrapMode.Value;
         }
     }
 
@@ -651,6 +712,7 @@ public static class CardCustomAncientFramePatch
         if (source == null)
             return;
 
+        control.ZIndex = source.ZIndex;
         control.Modulate = source.Modulate;
         control.SelfModulate = source.SelfModulate;
     }
@@ -744,7 +806,16 @@ public static class CardCustomAncientFramePatch
     private sealed class OriginalCardVisualState
     {
         public bool HasSnapshot { get; set; }
+        public CardModel? CapturedModel { get; set; }
         public ControlSnapshot? Banner { get; set; }
+        public ControlSnapshot? Frame { get; set; }
+        public ControlSnapshot? Portrait { get; set; }
+        public ControlSnapshot? AncientPortrait { get; set; }
+        public ControlSnapshot? PortraitBorder { get; set; }
+        public ControlSnapshot? AncientBorder { get; set; }
+        public ControlSnapshot? AncientBanner { get; set; }
+        public ControlSnapshot? AncientTextBg { get; set; }
+        public ControlSnapshot? AncientHighlight { get; set; }
         public ControlSnapshot? TitleLabel { get; set; }
         public ControlSnapshot? EnergyIcon { get; set; }
         public ControlSnapshot? DescriptionLabel { get; set; }
@@ -777,6 +848,14 @@ public static class CardCustomAncientFramePatch
         public Material? Material { get; init; }
         public TextureRect.ExpandModeEnum? TextureExpandMode { get; init; }
         public TextureRect.StretchModeEnum? TextureStretchMode { get; init; }
+        public HorizontalAlignment? LabelHorizontalAlignment { get; init; }
+        public VerticalAlignment? LabelVerticalAlignment { get; init; }
+        public TextServer.AutowrapMode? LabelAutowrapMode { get; init; }
+        public bool? LabelClipText { get; init; }
+        public bool? LabelUppercase { get; init; }
+        public bool? RichTextScrollActive { get; init; }
+        public bool? RichTextFitContent { get; init; }
+        public TextServer.AutowrapMode? RichTextAutowrapMode { get; init; }
     }
 }
 
