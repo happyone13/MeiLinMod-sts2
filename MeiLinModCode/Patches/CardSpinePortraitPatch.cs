@@ -46,6 +46,13 @@ public static class CardSpinePortraitPatch
             ApplySpinePortrait(__instance, scenePath);
     }
 
+    [HarmonyPrefix]
+    [HarmonyPriority(Priority.First)]
+    public static void ReloadPrefix(NCard __instance)
+    {
+        PrepareForBaseVisuals(__instance);
+    }
+
     public static void ApplySpinePortrait(NCard cardNode, string scenePath)
     {
         string? currentScenePath = null;
@@ -169,6 +176,14 @@ public static class CardSpinePortraitPatch
 
         RestorePortraitTextures(cardNode);
         RestorePortraitVisibility(cardNode);
+    }
+
+    public static void PrepareForBaseVisuals(NCard? cardNode)
+    {
+        if (IsDynamicChaosCard(cardNode))
+            return;
+
+        RemoveSpineOverlay(cardNode);
     }
 
     public static void UpdateSpineAnimationState(
@@ -387,6 +402,11 @@ public static class CardSpinePortraitPatch
         return exists;
     }
 
+    private static bool IsDynamicChaosCard(NCard? cardNode)
+    {
+        return TryGetSpineScenePath(cardNode, out _);
+    }
+
     private static Node? GetOrCreateSpineInstance(string scenePath)
     {
         if (!SceneCache.TryGetValue(scenePath, out PackedScene? scene))
@@ -547,6 +567,13 @@ public partial class SpinePortraitUpdater : Node
 [HarmonyPatch(typeof(NCard), nameof(NCard.UpdateVisuals))]
 public static class CardSpineUpdateVisualsPatch
 {
+    [HarmonyPrefix]
+    [HarmonyPriority(Priority.First)]
+    public static void UpdateVisualsPrefix(NCard __instance)
+    {
+        CardSpinePortraitPatch.PrepareForBaseVisuals(__instance);
+    }
+
     [HarmonyPostfix]
     public static void UpdateVisualsPostfix(NCard __instance)
     {
@@ -561,6 +588,12 @@ public static class CardSpineUpdateVisualsPatch
         {
             CardSpinePortraitPatch.RemoveSpineOverlay(__instance);
             return;
+        }
+
+        if (!CardSpinePortraitPatch.HasActiveSpineOverlay(__instance) &&
+            ResourceLoader.Exists(cardModel.CustomSpinePortraitScenePath))
+        {
+            CardSpinePortraitPatch.ApplySpinePortrait(__instance, cardModel.CustomSpinePortraitScenePath);
         }
 
         var portrait = CardSpinePortraitPatch.PortraitField?.GetValue(__instance) as TextureRect;

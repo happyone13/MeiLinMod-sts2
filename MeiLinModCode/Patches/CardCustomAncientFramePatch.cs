@@ -84,8 +84,7 @@ public static class CardCustomAncientFramePatch
     {
         if (!TryGetCustomFrameCard(cardNode, out MeiLinModCard? cardModel))
         {
-            RemoveChaosEffects(cardNode);
-            NormalizeNonChaosCard(cardNode);
+            RemoveChaosEffects(cardNode, restoreOriginalState: false);
             return;
         }
 
@@ -101,7 +100,7 @@ public static class CardCustomAncientFramePatch
 
         if (!CardSpinePortraitPatch.HasActiveSpineOverlay(cardNode))
         {
-            RemoveChaosEffects(cardNode);
+            RemoveChaosEffects(cardNode, restoreOriginalState: false);
             frame?.Show();
             portrait?.Show();
             portraitBorder?.Show();
@@ -141,6 +140,14 @@ public static class CardCustomAncientFramePatch
                 ApplyTextureRect(ancientBannerTexture, AncientBannerPath, bannerMaterial, show: true);
         }
         ApplyChaosEffects(cardNode!, cardModel);
+    }
+
+    public static void PrepareForBaseVisuals(NCard? cardNode)
+    {
+        if (TryGetCustomFrameCard(cardNode, out _))
+            return;
+
+        RemoveChaosEffects(cardNode, restoreOriginalState: true);
     }
 
     private static bool TryGetCustomFrameCard(NCard? cardNode, out MeiLinModCard? cardModel)
@@ -293,7 +300,7 @@ public static class CardCustomAncientFramePatch
         });
     }
 
-    private static void RemoveChaosEffects(NCard? cardNode)
+    private static void RemoveChaosEffects(NCard? cardNode, bool restoreOriginalState)
     {
         if (cardNode == null)
             return;
@@ -307,7 +314,8 @@ public static class CardCustomAncientFramePatch
         RemoveNode(cardNode, CostTextNodeName);
         RemoveNode(cardNode, UpgradeIconNodeName);
         RemoveNode(cardNode, DescriptionMaskNodeName);
-        RestoreOriginalState(cardNode);
+        if (restoreOriginalState)
+            RestoreOriginalState(cardNode);
     }
 
     private static void EnsureTemplateOverlay(
@@ -500,25 +508,6 @@ public static class CardCustomAncientFramePatch
         RestoreControlSnapshot(Get<Control>(TypeLabelField, cardNode), state.TypeLabel, restoreTextures);
         RestoreControlSnapshot(Get<Control>(TypePlaqueField, cardNode), state.TypePlaque, restoreTextures);
         OriginalStates.Remove(cardNode);
-    }
-
-    private static void NormalizeNonChaosCard(NCard? cardNode)
-    {
-        if (cardNode == null || cardNode.Model == null)
-            return;
-
-        if (cardNode.Model.Rarity == CardRarity.Ancient)
-            return;
-
-        Get<Control>(FrameField, cardNode)?.Show();
-        Get<Control>(CardSpinePortraitPatch.PortraitField, cardNode)?.Show();
-        Get<Control>(PortraitBorderField, cardNode)?.Show();
-        Get<Control>(BannerField, cardNode)?.Show();
-        Get<Control>(CardSpinePortraitPatch.AncientPortraitField, cardNode)?.Hide();
-        Get<Control>(AncientBorderField, cardNode)?.Hide();
-        Get<Control>(AncientTextBgField, cardNode)?.Hide();
-        Get<Control>(AncientBannerField, cardNode)?.Hide();
-        Get<Control>(AncientHighlightField, cardNode)?.Hide();
     }
 
     private static ControlSnapshot? CaptureControlSnapshot(Control? control)
@@ -873,6 +862,13 @@ public static class CardCustomAncientFramePatch
 [HarmonyPatch(typeof(NCard), nameof(NCard.UpdateVisuals))]
 public static class CardCustomAncientFrameUpdateVisualsPatch
 {
+    [HarmonyPrefix]
+    [HarmonyPriority(Priority.First)]
+    public static void UpdateVisualsPrefix(NCard __instance)
+    {
+        CardCustomAncientFramePatch.PrepareForBaseVisuals(__instance);
+    }
+
     [HarmonyPostfix]
     [HarmonyPriority(Priority.Last)]
     public static void UpdateVisualsPostfix(NCard __instance)
@@ -884,6 +880,13 @@ public static class CardCustomAncientFrameUpdateVisualsPatch
 [HarmonyPatch(typeof(NCard), "Reload")]
 public static class CardCustomAncientFrameReloadPatch
 {
+    [HarmonyPrefix]
+    [HarmonyPriority(Priority.First)]
+    public static void ReloadPrefix(NCard __instance)
+    {
+        CardCustomAncientFramePatch.PrepareForBaseVisuals(__instance);
+    }
+
     [HarmonyPostfix]
     [HarmonyPriority(Priority.Last)]
     public static void ReloadPostfix(NCard __instance)

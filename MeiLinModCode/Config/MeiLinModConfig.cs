@@ -6,5 +6,5 @@ internal class MeiLinModConfig : SimpleModConfig
 {
     [ConfigSection("CardVisuals")]
     [ConfigHoverTip]
-    public static bool UseChaosCardDynamicPortraits { get; set; } = false;
+    public static bool UseChaosCardDynamicPortraits { get; set; } = true;
 }

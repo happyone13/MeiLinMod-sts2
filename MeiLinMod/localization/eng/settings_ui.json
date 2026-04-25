@@ -2,5 +2,5 @@
   "MEILINMOD.mod_title": "MeiLinMod",
   "MEILINMOD-CARD_VISUALS.title": "Card Visuals",
   "MEILINMOD-USE_CHAOS_CARD_DYNAMIC_PORTRAITS.title": "Enable Chaos Card Style",
-  "MEILINMOD-USE_CHAOS_CARD_DYNAMIC_PORTRAITS.hover.desc": "Off by default. When enabled, eligible cards use the Chaos frame and dynamic Spine portrait. When disabled, they use the normal version."
+  "MEILINMOD-USE_CHAOS_CARD_DYNAMIC_PORTRAITS.hover.desc": "On by default. When enabled, eligible cards use the Chaos frame and dynamic Spine portrait. When disabled, they use the normal version."
 }
