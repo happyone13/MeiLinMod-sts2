@@ -6,7 +6,7 @@
     "MEILINMOD-SHEN_GONG_FANG_YI_TI.title":  "神:攻防一体",
     "MEILINMOD-SHEN_GONG_FANG_YI_TI.description":  "打出手牌、抽牌堆和弃牌堆中的所有[gold]打击[/gold]与[gold]防御[/gold]。",
     "MEILINMOD-ZUI_ZHONG_AO_YI_YAN_LONG_JIANG_LIN.title":  "最终奥义:炎龙降临",
-    "MEILINMOD-ZUI_ZHONG_AO_YI_YAN_LONG_JIANG_LIN.description":  "获得4张0费、[gold]重放[/gold]1、[gold]消耗[/gold]的{IfUpgraded:show:[gold]打击+[/gold]|[gold]打击[/gold]}。",
+    "MEILINMOD-ZUI_ZHONG_AO_YI_YAN_LONG_JIANG_LIN.description":  "本场战斗中，你的[gold]打击[/gold]额外打出1次。",
     "MEILINMOD-FIRE_DRAGON_TURN.title":  "火龙转身",
     "MEILINMOD-FIRE_DRAGON_TURN.description":  "对1个敌人施加{Ember:diff()}层[gold]余烬[/gold]。\n[gold]觉醒[/gold]：切换姿态。",
     "MEILINMOD-FIRE_DRAGON_GEM.title":  "火龙宝石",

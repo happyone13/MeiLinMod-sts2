@@ -1,23 +1,19 @@
-using System.Collections.Generic;
 using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
-using MeiLinMod.MeiLinModCode.Extensions;
+using MeiLinMod.MeiLinModCode.Powers;
 using MeiLinMod.MeiLinModCode.Services;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
 
 namespace MeiLinMod.MeiLinModCode.Cards;
 
 [Pool(typeof(MeiLinModCardPool))]
-public class ZuiZhongAoYiYanLongJiangLin() : MeiLinModCard(2, CardType.Skill, CardRarity.Ancient, TargetType.Self)
+public class ZuiZhongAoYiYanLongJiangLin() : MeiLinModCard(1, CardType.Power, CardRarity.Ancient, TargetType.Self)
 {
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-    [
-        HoverTipFactory.Static(StaticHoverTip.ReplayStatic),
-        HoverTipFactory.FromKeyword(CardKeyword.Exhaust)
-    ];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => IsUpgraded
+        ? [CardKeyword.Innate]
+        : [];
 
     public override string PortraitPath => IdPortraitPath;
     public override string CustomPortraitPath => IdBigPortraitPath;
@@ -26,24 +22,12 @@ public class ZuiZhongAoYiYanLongJiangLin() : MeiLinModCard(2, CardType.Skill, Ca
     {
         MeiLinAudioService.SuppressNextDefaultCastSfx(Owner);
         MeiLinAudioService.TryPlayCustomCardClip("zui_zhong_ao_yi_yan_long_jiang_lin", Owner);
-
-        for (var i = 0; i < 4; i++)
-        {
-            var strike = BasicStrikeDefendHelper.CreateBasicStrikeForPlayer(Owner, CombatState);
-            if (strike == null)
-                continue;
-
-            if (IsUpgraded)
-                CardCmd.Upgrade(strike);
-
-            strike.SetToFreeThisCombat();
-            CardCmd.ApplyKeyword(strike, CardKeyword.Exhaust);
-            strike.BaseReplayCount += 1;
-            await CardPileCmd.AddGeneratedCardToCombat(strike, PileType.Hand, Owner);
-        }
+        await PlayPowerCastAnim();
+        await PowerCmd.Apply<ZuiZhongAoYiYanLongJiangLinPower>(Owner.Creature, 1m, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
+        AddKeyword(CardKeyword.Innate);
     }
 }
