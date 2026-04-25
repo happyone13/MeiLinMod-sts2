@@ -17,6 +17,7 @@ public class FireDragonGem() : MeiLinModCard(1, CardType.Power, CardRarity.Basic
         "res://MeiLinMod/scenes/cards/fire_dragon_gem_dynamic.tscn";
     public override SpinePortraitSlot CustomSpinePortraitSlot => SpinePortraitSlot.Ancient;
     public override bool UseCustomAncientFrame => true;
+    public override bool UsesDynamicChaosFrame => true;
     public override string? CustomAncientFrameMaterialPath => ChaosAncientFrameMaterialPath;
     public override string? CustomAncientBannerMaterialPath => ChaosAncientBannerMaterialPath;
 

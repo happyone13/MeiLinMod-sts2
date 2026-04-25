@@ -31,7 +31,7 @@ public class SiJiDaiFa() : MeiLinModCard(0, CardType.Skill, CardRarity.Common, T
             return;
 
         var candidates = PileType.Draw.GetPile(Owner).Cards
-            .Where(BasicStrikeDefendHelper.IsBasicStrikeOrDefend)
+            .Where(BasicStrikeDefendHelper.IsStrikeOrDefendCard)
             .ToList();
         if (candidates.Count == 0)
             return;

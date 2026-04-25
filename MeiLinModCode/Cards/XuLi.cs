@@ -31,14 +31,14 @@ public class XuLi() : MeiLinModCard(0, CardType.Skill, CardRarity.Common, Target
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var candidates = PileType.Hand.GetPile(Owner).Cards.Count(BasicStrikeDefendHelper.IsBasicStrikeOrDefend);
+        var candidates = PileType.Hand.GetPile(Owner).Cards.Count(BasicStrikeDefendHelper.IsStrikeOrDefendCard);
         MainFile.Logger.Info($"[XuLi] candidates={candidates}");
 
         var target = (await CardSelectCmd.FromHand(
                 context: choiceContext,
                 player: Owner,
                 prefs: new CardSelectorPrefs(SelectionScreenPrompt, 1),
-                filter: BasicStrikeDefendHelper.IsBasicStrikeOrDefend,
+                filter: BasicStrikeDefendHelper.IsStrikeOrDefendCard,
                 source: this))
             .FirstOrDefault();
         MainFile.Logger.Info($"[XuLi] selected={(target?.Id.Entry ?? "null")}");

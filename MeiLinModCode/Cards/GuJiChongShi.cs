@@ -32,7 +32,7 @@ public class GuJiChongShi() : MeiLinModCard(1, CardType.Skill, CardRarity.Uncomm
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         var hand = PileType.Hand.GetPile(Owner).Cards;
-        var candidateCards = hand.Where(BasicStrikeDefendHelper.IsBasicStrikeOrDefend).ToList();
+        var candidateCards = hand.Where(BasicStrikeDefendHelper.IsStrikeOrDefendCard).ToList();
         var candidates = candidateCards.Count;
         MainFile.Logger.Info($"[GuJiChongShi] candidates={candidates}");
 
@@ -43,7 +43,7 @@ public class GuJiChongShi() : MeiLinModCard(1, CardType.Skill, CardRarity.Uncomm
                     context: choiceContext,
                     player: Owner,
                     prefs: new CardSelectorPrefs(SelectionScreenPrompt, 1),
-                    filter: BasicStrikeDefendHelper.IsBasicStrikeOrDefend,
+                    filter: BasicStrikeDefendHelper.IsStrikeOrDefendCard,
                     source: this))
                 .FirstOrDefault();
         }

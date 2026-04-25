@@ -26,6 +26,7 @@ public class ShengLongJiao() : MeiLinModCard(2, CardType.Attack, CardRarity.Unco
     public override string? CustomSpinePortraitScenePath => "res://MeiLinMod/scenes/cards/sheng_long_jiao_dynamic.tscn";
     public override SpinePortraitSlot CustomSpinePortraitSlot => SpinePortraitSlot.Ancient;
     public override bool UseCustomAncientFrame => true;
+    public override bool UsesDynamicChaosFrame => true;
     public override string? CustomAncientFrameMaterialPath => ChaosAncientFrameMaterialPath;
     public override string? CustomAncientBannerMaterialPath => ChaosAncientBannerMaterialPath;
 

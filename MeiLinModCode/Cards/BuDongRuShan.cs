@@ -34,7 +34,7 @@ public class BuDongRuShan() : MeiLinModCard(0, CardType.Skill, CardRarity.Common
 
         var candidates = PileType.Draw.GetPile(Owner).Cards
             .Concat(PileType.Discard.GetPile(Owner).Cards)
-            .Where(BasicStrikeDefendHelper.IsBasicDefend)
+            .Where(BasicStrikeDefendHelper.IsDefendCard)
             .ToList();
         if (candidates.Count == 0)
             return;

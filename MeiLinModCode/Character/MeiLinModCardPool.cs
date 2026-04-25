@@ -37,7 +37,7 @@ public class MeiLinModCardPool : CustomCardPoolModel
         if (!MeiLinModConfig.UseChaosCardDynamicPortraits)
             return null;
 
-        if (card is not MeiLinModCard { UseCustomAncientFrame: true })
+        if (card is not MeiLinModCard { UseCustomAncientFrame: true, UsesDynamicChaosFrame: true })
             return null;
 
         return PreloadManager.Cache.GetAsset<Texture2D>(ChaosCardFramePath);

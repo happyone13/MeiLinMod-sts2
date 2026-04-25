@@ -14,7 +14,7 @@ public class NextDefendDoublePlayPower : MeiLinModPower
 
     public override int ModifyCardPlayCount(CardModel card, Creature? target, int playCount)
     {
-        if (card.Owner?.Creature != Owner || !BasicStrikeDefendHelper.IsBasicDefend(card))
+        if (card.Owner?.Creature != Owner || !BasicStrikeDefendHelper.IsDefendCard(card))
             return playCount;
 
         var extraPlays = (int)decimal.Floor(Amount);
@@ -26,7 +26,7 @@ public class NextDefendDoublePlayPower : MeiLinModPower
 
     public override async Task AfterModifyingCardPlayCount(CardModel card)
     {
-        if (card.Owner?.Creature != Owner || !BasicStrikeDefendHelper.IsBasicDefend(card))
+        if (card.Owner?.Creature != Owner || !BasicStrikeDefendHelper.IsDefendCard(card))
             return;
 
         await PowerCmd.Decrement(this);

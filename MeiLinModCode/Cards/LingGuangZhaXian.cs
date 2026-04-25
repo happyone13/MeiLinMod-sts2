@@ -23,7 +23,7 @@ public class LingGuangZhaXian() : MeiLinModCard(0, CardType.Skill, CardRarity.Un
         var drawnCards = (await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner)).ToList();
 
         var discardTargets = drawnCards
-            .Where(c => !BasicStrikeDefendHelper.IsBasicStrikeOrDefend(c))
+            .Where(c => !BasicStrikeDefendHelper.IsStrikeOrDefendCard(c))
             .ToList();
 
         foreach (var card in drawnCards.Except(discardTargets))
@@ -38,4 +38,3 @@ public class LingGuangZhaXian() : MeiLinModCard(0, CardType.Skill, CardRarity.Un
         DynamicVars.Cards.UpgradeValueBy(2m);
     }
 }
-

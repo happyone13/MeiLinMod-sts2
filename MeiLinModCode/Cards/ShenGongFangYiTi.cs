@@ -26,7 +26,7 @@ public class ShenGongFangYiTi() : MeiLinModCard(1, CardType.Skill, CardRarity.An
         var cardsToPlay = PileType.Hand.GetPile(Owner).Cards
             .Concat(PileType.Draw.GetPile(Owner).Cards)
             .Concat(PileType.Discard.GetPile(Owner).Cards)
-            .Where(BasicStrikeDefendHelper.IsBasicStrikeOrDefend)
+            .Where(BasicStrikeDefendHelper.IsStrikeOrDefendCard)
             .ToList();
 
         foreach (var card in cardsToPlay)

@@ -18,13 +18,13 @@ public class YouLongPower : MeiLinModPower
         if (cardPlay.Card.Owner?.Creature != Owner)
             return;
 
-        if (BasicStrikeDefendHelper.IsBasicStrike(cardPlay.Card))
+        if (BasicStrikeDefendHelper.IsStrikeCard(cardPlay.Card))
         {
             await CreatureCmd.GainBlock(Owner, Amount, ValueProp.Unpowered, null, fast: true);
             return;
         }
 
-        if (!BasicStrikeDefendHelper.IsBasicDefend(cardPlay.Card))
+        if (!BasicStrikeDefendHelper.IsDefendCard(cardPlay.Card))
             return;
 
         var enemies = CombatState.HittableEnemies.ToList();

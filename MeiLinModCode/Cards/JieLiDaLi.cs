@@ -27,7 +27,7 @@ public class JieLiDaLi() : MeiLinModCard(0, CardType.Skill, CardRarity.Common, T
 
         var candidates = PileType.Draw.GetPile(Owner).Cards
             .Concat(PileType.Discard.GetPile(Owner).Cards)
-            .Where(BasicStrikeDefendHelper.IsBasicStrike)
+            .Where(BasicStrikeDefendHelper.IsStrikeCard)
             .ToList();
         if (candidates.Count == 0)
             return;

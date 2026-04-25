@@ -22,7 +22,7 @@ public class LongYinPower : MeiLinModPower
         {
             var candidates = PileType.Draw.GetPile(player).Cards
                 .Concat(PileType.Discard.GetPile(player).Cards)
-                .Where(BasicStrikeDefendHelper.IsBasicDefend)
+                .Where(BasicStrikeDefendHelper.IsDefendCard)
                 .ToList();
             if (candidates.Count == 0)
                 return;

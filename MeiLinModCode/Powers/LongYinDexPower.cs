@@ -13,7 +13,7 @@ public class LongYinDexPower : MeiLinModPower
 
     public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
     {
-        if (cardPlay.Card.Owner?.Creature != Owner || !BasicStrikeDefendHelper.IsBasicStrikeOrDefend(cardPlay.Card))
+        if (cardPlay.Card.Owner?.Creature != Owner || !BasicStrikeDefendHelper.IsStrikeOrDefendCard(cardPlay.Card))
             return;
 
         await PowerCmd.Apply<LongYinTemporaryDexterityPower>(Owner, Amount, Owner, cardPlay.Card);

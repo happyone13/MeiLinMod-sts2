@@ -17,6 +17,7 @@ public class AttackDefenseUnity() : MeiLinModCard(1, CardType.Skill, CardRarity.
         "res://MeiLinMod/scenes/cards/attack_defense_unity_dynamic.tscn";
     public override SpinePortraitSlot CustomSpinePortraitSlot => SpinePortraitSlot.Ancient;
     public override bool UseCustomAncientFrame => true;
+    public override bool UsesDynamicChaosFrame => true;
     public override string? CustomAncientFrameMaterialPath => ChaosAncientFrameMaterialPath;
     public override string? CustomAncientBannerMaterialPath => ChaosAncientBannerMaterialPath;
 

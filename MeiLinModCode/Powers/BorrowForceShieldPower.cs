@@ -28,7 +28,7 @@ public class BorrowForceShieldPower : MeiLinModPower
         if (!props.HasFlag(ValueProp.Move))
             return;
 
-        if (!BasicStrikeDefendHelper.IsBasicStrike(cardSource))
+        if (!BasicStrikeDefendHelper.IsStrikeCard(cardSource))
             return;
 
         var gainedBlock = result.TotalDamage;
@@ -38,4 +38,3 @@ public class BorrowForceShieldPower : MeiLinModPower
         await PowerCmd.Remove(this);
     }
 }
-

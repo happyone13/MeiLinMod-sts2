@@ -23,6 +23,7 @@ public class XiangzuSpiritCard() : MeiLinModCard(0, CardType.Skill, CardRarity.U
         "res://MeiLinMod/scenes/cards/xiangzu_spirit_card_dynamic.tscn";
     public override SpinePortraitSlot CustomSpinePortraitSlot => SpinePortraitSlot.Ancient;
     public override bool UseCustomAncientFrame => true;
+    public override bool UsesDynamicChaosFrame => true;
     public override string? CustomAncientFrameMaterialPath => ChaosAncientFrameMaterialPath;
     public override string? CustomAncientBannerMaterialPath => ChaosAncientBannerMaterialPath;
 

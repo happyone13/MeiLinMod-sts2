@@ -45,9 +45,9 @@ public class JiBenGongPower : MeiLinModPower
         if (card.Owner?.Creature != Owner)
             return;
 
-        if (BasicStrikeDefendHelper.IsBasicStrike(card))
+        if (BasicStrikeDefendHelper.IsStrikeCard(card))
             card.DynamicVars.Damage.BaseValue += _appliedBonus;
-        else if (BasicStrikeDefendHelper.IsBasicDefend(card))
+        else if (BasicStrikeDefendHelper.IsDefendCard(card))
             card.DynamicVars.Block.BaseValue += _appliedBonus;
     }
 
@@ -64,9 +64,9 @@ public class JiBenGongPower : MeiLinModPower
         if (bonus == 0m || card.Owner?.Creature != owner)
             return;
 
-        if (BasicStrikeDefendHelper.IsBasicStrike(card))
+        if (BasicStrikeDefendHelper.IsStrikeCard(card))
             card.DynamicVars.Damage.BaseValue += bonus;
-        else if (BasicStrikeDefendHelper.IsBasicDefend(card))
+        else if (BasicStrikeDefendHelper.IsDefendCard(card))
             card.DynamicVars.Block.BaseValue += bonus;
     }
 }

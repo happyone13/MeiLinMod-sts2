@@ -24,7 +24,7 @@ public class AttackStanceStartStrikePower : MeiLinModPower
         {
             var candidates = PileType.Draw.GetPile(player).Cards
                 .Concat(PileType.Discard.GetPile(player).Cards)
-                .Where(BasicStrikeDefendHelper.IsBasicStrike)
+                .Where(BasicStrikeDefendHelper.IsStrikeCard)
                 .ToList();
             if (candidates.Count == 0)
                 return;

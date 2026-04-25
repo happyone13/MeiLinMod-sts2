@@ -15,7 +15,7 @@ public class StrikeDefendQiProgressPower : MeiLinModPower
         if (cardPlay.Card.Owner?.Creature != Owner)
             return;
 
-        if (!BasicStrikeDefendHelper.IsBasicStrikeOrDefend(cardPlay.Card))
+        if (!BasicStrikeDefendHelper.IsStrikeOrDefendCard(cardPlay.Card))
             return;
 
         await QiCounterPower.AddProgress(Owner, (int)Amount, Owner, cardPlay.Card);

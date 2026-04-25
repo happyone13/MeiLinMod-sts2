@@ -42,6 +42,7 @@ public abstract class MeiLinModCard(int cost, CardType type, CardRarity rarity, 
     public virtual string? CustomSpinePortraitScenePath => null;
     public virtual SpinePortraitSlot CustomSpinePortraitSlot => SpinePortraitSlot.Normal;
     public virtual bool UseCustomAncientFrame => false;
+    public virtual bool UsesDynamicChaosFrame => false;
     public virtual string? CustomAncientFrameMaterialPath => null;
     public virtual string? CustomAncientBannerMaterialPath => null;
 

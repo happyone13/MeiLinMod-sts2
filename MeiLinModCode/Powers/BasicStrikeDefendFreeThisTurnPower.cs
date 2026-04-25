@@ -15,7 +15,7 @@ public class BasicStrikeDefendFreeThisTurnPower : MeiLinModPower
 
     public override bool TryModifyEnergyCostInCombat(CardModel card, decimal originalCost, out decimal modifiedCost)
     {
-        if (card.Owner?.Creature != Owner || !BasicStrikeDefendHelper.IsBasicStrikeOrDefend(card))
+        if (card.Owner?.Creature != Owner || !BasicStrikeDefendHelper.IsStrikeOrDefendCard(card))
         {
             modifiedCost = originalCost;
             return false;

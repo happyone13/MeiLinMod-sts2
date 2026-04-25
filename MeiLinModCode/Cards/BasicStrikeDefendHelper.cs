@@ -22,6 +22,11 @@ public static class BasicStrikeDefendHelper
         return card != null && card.Tags.Contains(CardTag.Defend);
     }
 
+    public static bool IsStrikeOrDefendCard(CardModel? card)
+    {
+        return IsStrikeCard(card) || IsDefendCard(card);
+    }
+
     public static bool IsBasicStrikeOrDefend(CardModel? card)
     {
         if (card == null)

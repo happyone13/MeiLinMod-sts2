@@ -4,7 +4,7 @@
     "MEILINMOD-XIANGZU_SPIRIT_CARD.title":  "Spirit of the Aroma Clan",
     "MEILINMOD-XIANGZU_SPIRIT_CARD.description":  "This turn, whenever you play a card, gain {Power:diff()} temporary Strength.",
     "MEILINMOD-SHEN_GONG_FANG_YI_TI.title":  "Divine: Attack and Defense as One",
-    "MEILINMOD-SHEN_GONG_FANG_YI_TI.description":  "Play all basic [gold]Strike[/gold] and basic [gold]Defend[/gold] from your hand, draw pile, and discard pile.",
+    "MEILINMOD-SHEN_GONG_FANG_YI_TI.description":  "Play all [gold]Strike[/gold] and [gold]Defend[/gold] from your hand, draw pile, and discard pile.",
     "MEILINMOD-ZUI_ZHONG_AO_YI_YAN_LONG_JIANG_LIN.title":  "Final Secret: Flame Dragon Descends",
     "MEILINMOD-ZUI_ZHONG_AO_YI_YAN_LONG_JIANG_LIN.description":  "Add 4 0-cost {IfUpgraded:show:[gold]Strike+[/gold]|[gold]Strike[/gold]} to your hand. They gain [gold]Replay[/gold] 1 and [gold]Exhaust[/gold].",
     "MEILINMOD-FIRE_DRAGON_TURN.title":  "Fire Dragon Turn",

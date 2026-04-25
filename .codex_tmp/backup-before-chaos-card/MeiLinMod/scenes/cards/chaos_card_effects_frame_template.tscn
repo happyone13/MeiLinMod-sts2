@@ -1,10 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://cglbmyvvvdkrn"]
+[gd_scene load_steps=13 format=3 uid="uid://cglbmyvvvdkrn"]
 
 [ext_resource type="Texture2D" uid="uid://ddjlxyb5lwv5f" path="res://MeiLinMod/images/cards/card_effects/card_rarity_unique.png" id="2_rarity"]
 [ext_resource type="Texture2D" uid="uid://cqtd3ag1csp36" path="res://MeiLinMod/images/cards/card_effects/card_rarity_unique_sub.png" id="3_rarity_sub"]
 [ext_resource type="Texture2D" uid="uid://csry75klmvm81" path="res://MeiLinMod/images/cards/card_effects/card_title_rarity_unique.png" id="5_title"]
 [ext_resource type="Texture2D" uid="uid://bjsmtpro7aqre" path="res://MeiLinMod/images/cards/card_effects/card_frame_spark.png" id="6_spark"]
-[ext_resource type="FontFile" uid="uid://b0mn1fm7anxvw" path="res://MeiLinMod/images/cards/card_effects/card_normal.fnt" id="9_t21jw"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://dc6wlhgkl3a03" path="res://MeiLinMod/spine/card/unique_1027_03.tres" id="10_spine"]
 [ext_resource type="Script" uid="uid://ulv7r824rm8i" path="res://MeiLinModCode/Nodes/SpineAutoPlayer.cs" id="11_player"]
 [ext_resource type="Texture2D" uid="uid://dnlnfh5aatgdn" path="res://MeiLinMod/images/cards/card_effects/card_ego_basic.png" id="12_ego"]
@@ -13,23 +12,39 @@
 [ext_resource type="Texture2D" uid="uid://cb8gl2peajoes" path="res://MeiLinMod/images/cards/card_effects/icon_card_battle_expand_default.png" id="15_upgrade"]
 
 [sub_resource type="Gradient" id="Gradient_desc_mask"]
-offsets = PackedFloat32Array(0, 0.62, 1)
-colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.32, 0, 0, 0, 0.82)
+offsets = PackedFloat32Array(0.17333335, 0.64, 1)
+colors = PackedColorArray(0, 0, 0, 0.92, 0, 0, 0, 0.55, 0, 0, 0, 0)
 metadata/_snap_count = 2
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_desc_mask"]
 gradient = SubResource("Gradient_desc_mask")
-width = 92
-height = 256
+width = 70
 fill = 1
-fill_from = Vector2(0.5, 0)
-fill_to = Vector2(0.4756596, 0.5811966)
+fill_from = Vector2(0.52024925, 0.82457167)
+fill_to = Vector2(0.47040498, 0)
 
 [node name="ChaosCardEffectsFrameTemplate" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1200.0
 offset_bottom = 720.0
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.05, 0.058, 0.07, 1)
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 18.0
+offset_right = 1168.0
+offset_bottom = 48.0
+text = "Chaos card_effects frame template with ego, cost, category, upgrade, description area"
 
 [node name="CardContainer" type="Control" parent="."]
 anchors_preset = 0
@@ -48,9 +63,9 @@ mouse_filter = 2
 stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="CardContainer/DynamicPortraitViewport"]
-transparent_bg = true
 handle_input_locally = false
 size = Vector2i(598, 844)
+transparent_bg = true
 render_target_update_mode = 4
 
 [node name="PortraitBackground" type="ColorRect" parent="CardContainer/DynamicPortraitViewport/SubViewport"]
@@ -75,36 +90,47 @@ scale = Vector2(1.44, 1.44)
 script = ExtResource("11_player")
 
 [node name="DescriptionMask" type="TextureRect" parent="CardContainer"]
-z_index = -1
 layout_mode = 0
+<<<<<<< HEAD
+z_index = -1
 offset_left = -150.0
 offset_top = 34.0
 offset_right = 146.0
+=======
+offset_left = -153.0
+offset_top = -63.0
+offset_right = 145.0
+>>>>>>> parent of 915090c (chaos card)
 offset_bottom = 208.0
 mouse_filter = 2
 texture = SubResource("GradientTexture2D_desc_mask")
 expand_mode = 1
+<<<<<<< HEAD
+stretch_mode = 0
 
 [node name="CategoryText" type="Label" parent="CardContainer"]
 layout_mode = 0
-offset_left = -45.0
-offset_top = -163.0
-offset_right = 31.0
-offset_bottom = -131.0
+offset_left = -41.0
+offset_top = -169.0
+offset_right = 52.0
+offset_bottom = -133.0
 theme_override_colors/font_color = Color(0.9, 0.88, 0.84, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 0.75)
 theme_override_constants/outline_size = 5
-theme_override_font_sizes/font_size = 22
-text = "攻击"
+theme_override_font_sizes/font_size = 20
+text = "Attack"
 horizontal_alignment = 1
 vertical_alignment = 1
+=======
+stretch_mode = 5
+>>>>>>> parent of 915090c (chaos card)
 
 [node name="EgoBadge" type="TextureRect" parent="CardContainer"]
 layout_mode = 0
-offset_left = -190.0
-offset_top = -215.0
-offset_right = -94.0
-offset_bottom = 212.0
+offset_left = -202.0
+offset_top = -216.0
+offset_right = -106.0
+offset_bottom = 211.0
 mouse_filter = 2
 texture = ExtResource("12_ego")
 expand_mode = 1
@@ -112,10 +138,10 @@ stretch_mode = 5
 
 [node name="RarityBase" type="TextureRect" parent="CardContainer"]
 layout_mode = 0
-offset_left = -161.0
-offset_top = -204.0
-offset_right = -128.0
-offset_bottom = -126.0
+offset_left = -174.0
+offset_top = -194.0
+offset_right = -139.0
+offset_bottom = -116.0
 mouse_filter = 2
 texture = ExtResource("2_rarity")
 expand_mode = 1
@@ -123,10 +149,10 @@ stretch_mode = 5
 
 [node name="RaritySub" type="TextureRect" parent="CardContainer"]
 layout_mode = 0
-offset_left = 116.0
-offset_top = -205.0
-offset_right = 169.0
-offset_bottom = -120.0
+offset_left = 120.0
+offset_top = -199.0
+offset_right = 176.0
+offset_bottom = -109.0
 mouse_filter = 2
 texture = ExtResource("3_rarity_sub")
 expand_mode = 1
@@ -135,10 +161,10 @@ stretch_mode = 5
 [node name="FrameSpark" type="TextureRect" parent="CardContainer"]
 modulate = Color(1, 1, 1, 0.82)
 layout_mode = 0
-offset_left = -81.0
-offset_top = -72.0
-offset_right = 76.0
-offset_bottom = 146.0
+offset_left = -92.0
+offset_top = -84.0
+offset_right = 67.0
+offset_bottom = 147.0
 mouse_filter = 2
 texture = ExtResource("6_spark")
 expand_mode = 1
@@ -157,9 +183,9 @@ stretch_mode = 5
 
 [node name="CostLine" type="TextureRect" parent="CardContainer"]
 layout_mode = 0
-offset_left = -136.0
+offset_left = -149.0
 offset_top = -201.0
-offset_right = -68.0
+offset_right = -81.0
 offset_bottom = -86.0
 mouse_filter = 2
 texture = ExtResource("13_energy")
@@ -168,15 +194,13 @@ stretch_mode = 5
 
 [node name="CostText" type="Label" parent="CardContainer"]
 layout_mode = 0
-offset_left = -131.0
-offset_top = -234.0
-offset_right = -76.0
-offset_bottom = -144.0
+offset_left = -145.0
+offset_top = -203.0
+offset_right = -95.0
+offset_bottom = -128.0
 theme_override_colors/font_color = Color(1, 0.97, 0.92, 1)
 theme_override_colors/font_outline_color = Color(0.1, 0.08, 0.06, 1)
 theme_override_constants/outline_size = 9
-theme_override_fonts/font = ExtResource("9_t21jw")
-theme_override_font_sizes/font_size = 21
 text = "2"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -184,10 +208,10 @@ vertical_alignment = 1
 [node name="UpgradeIcon" type="TextureRect" parent="CardContainer"]
 visible = false
 layout_mode = 0
-offset_left = -135.0
-offset_top = -141.0
-offset_right = -73.0
-offset_bottom = -80.0
+offset_left = -131.0
+offset_top = -138.0
+offset_right = -99.0
+offset_bottom = -106.0
 mouse_filter = 2
 texture = ExtResource("15_upgrade")
 expand_mode = 1
@@ -195,38 +219,48 @@ stretch_mode = 5
 
 [node name="CardTitle" type="Label" parent="CardContainer"]
 layout_mode = 0
-offset_left = -75.0
-offset_top = -215.0
-offset_right = 134.0
-offset_bottom = -157.0
+offset_left = -104.0
+offset_top = -203.0
+offset_right = 104.0
+offset_bottom = -151.0
 theme_override_colors/font_color = Color(0.98, 0.95, 0.88, 1)
 theme_override_colors/font_outline_color = Color(0.18, 0.12, 0.08, 1)
 theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 30
-text = "升龙脚"
+text = "Custom Chaos Card"
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CategoryIcon" type="TextureRect" parent="CardContainer"]
 layout_mode = 0
-offset_left = -78.0
-offset_top = -169.0
-offset_right = -41.0
-offset_bottom = -123.0
+offset_left = -85.0
+offset_top = -171.0
+offset_right = -57.0
+offset_bottom = -127.0
 mouse_filter = 2
 texture = ExtResource("14_category")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="CategoryText" type="Label" parent="CardContainer"]
+layout_mode = 0
+offset_left = -56.0
+offset_top = -169.0
+offset_right = 142.0
+offset_bottom = -127.0
+theme_override_colors/font_color = Color(0.9, 0.88, 0.84, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.75)
+theme_override_constants/outline_size = 5
+text = "Attack"
+vertical_alignment = 1
+
 [node name="DescriptionText" type="RichTextLabel" parent="CardContainer"]
 layout_mode = 0
-offset_left = -132.0
-offset_top = 46.0
-offset_right = 139.0
-offset_bottom = 199.0
+offset_left = -142.0
+offset_top = 40.0
+offset_right = 136.0
+offset_bottom = 201.0
 mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
-text = "造成5点伤害x次"
+text = "[center]Deal 5 damage 3 times.[/center]
+[center]If upgraded, add 1 more hit.[/center]"
 scroll_active = false
-horizontal_alignment = 1
-vertical_alignment = 1

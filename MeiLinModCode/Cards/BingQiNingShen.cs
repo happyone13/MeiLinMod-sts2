@@ -31,7 +31,7 @@ public class BingQiNingShen() : MeiLinModCard(1, CardType.Skill, CardRarity.Unco
             return;
 
         var drawCards = PileType.Draw.GetPile(Owner).Cards
-            .Where(BasicStrikeDefendHelper.IsBasicStrikeOrDefend)
+            .Where(BasicStrikeDefendHelper.IsStrikeOrDefendCard)
             .ToList();
         if (drawCards.Count == 0)
             return;

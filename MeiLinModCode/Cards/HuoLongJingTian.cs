@@ -33,6 +33,7 @@ public class HuoLongJingTian() : MeiLinModCard(2, CardType.Attack, CardRarity.Ra
         "res://MeiLinMod/scenes/cards/huo_long_jing_tian_dynamic.tscn";
     public override SpinePortraitSlot CustomSpinePortraitSlot => SpinePortraitSlot.Ancient;
     public override bool UseCustomAncientFrame => true;
+    public override bool UsesDynamicChaosFrame => true;
     public override string? CustomAncientFrameMaterialPath => ChaosAncientFrameMaterialPath;
     public override string? CustomAncientBannerMaterialPath => ChaosAncientBannerMaterialPath;
 

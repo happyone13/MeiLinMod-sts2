@@ -16,7 +16,7 @@ public class XinHuoXiangChuanPower : MeiLinModPower
         if (cardPlay.Card.Owner?.Creature != Owner)
             return;
 
-        if (!BasicStrikeDefendHelper.IsBasicStrikeOrDefend(cardPlay.Card))
+        if (!BasicStrikeDefendHelper.IsStrikeOrDefendCard(cardPlay.Card))
             return;
 
         if (Owner.Player != null)
