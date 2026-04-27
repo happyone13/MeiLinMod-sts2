@@ -18,7 +18,8 @@ public class FireDragonGemPower : MeiLinModPower
 
     public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
     {
-        if (cardPlay.Card.Owner?.Creature != Owner)
+        var ownerCreature = cardPlay.Card.Owner?.Creature;
+        if (ownerCreature != Owner)
             return;
 
         if (cardPlay.Card.Type != CardType.Attack)
@@ -30,7 +31,11 @@ public class FireDragonGemPower : MeiLinModPower
             return;
         }
 
-        foreach (var enemy in CombatState.HittableEnemies)
+        var combatState = ownerCreature?.CombatState;
+        if (combatState == null)
+            return;
+
+        foreach (var enemy in combatState.HittableEnemies)
             await PowerCmd.Apply<EmberPower>(enemy, Amount, Owner, cardPlay.Card);
     }
 }
