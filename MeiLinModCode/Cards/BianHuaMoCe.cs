@@ -30,7 +30,7 @@ public class BianHuaMoCe() : MeiLinModCard(1, CardType.Skill, CardRarity.Uncommo
 
         var strike = RandomStrikeHelper.CreateRandomNonBasicStrike(Owner, CombatState, IsUpgraded, true);
         if (strike != null)
-            await CardPileCmd.AddGeneratedCardToCombat(strike, PileType.Hand, true, CardPilePosition.Random);
+            await CardPileCmd.AddGeneratedCardToCombat(strike, PileType.Hand, Owner);
     }
 
     protected override void OnUpgrade()

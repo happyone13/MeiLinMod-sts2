@@ -34,7 +34,7 @@ public class LongZhiDao() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncommon
         if (IsUpgraded)
             CardCmd.Upgrade(card);
 
-        await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, true, CardPilePosition.Random);
+        await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, Owner);
     }
 
     protected override void OnUpgrade()

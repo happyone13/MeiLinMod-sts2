@@ -22,6 +22,7 @@ public class TanZhaoPower : MeiLinModPower
     }
 
     public override Task AfterPowerAmountChanged(
+        PlayerChoiceContext choiceContext,
         PowerModel power,
         decimal amount,
         MegaCrit.Sts2.Core.Entities.Creatures.Creature? applier,
@@ -45,6 +46,6 @@ public class TanZhaoPower : MeiLinModPower
         if (_createUpgradedStrike)
             CardCmd.Upgrade(strike);
         CardCmd.ApplyKeyword(strike, CardKeyword.Exhaust);
-        await CardPileCmd.AddGeneratedCardToCombat(strike, PileType.Hand, true, CardPilePosition.Random);
+        await CardPileCmd.AddGeneratedCardToCombat(strike, PileType.Hand, player);
     }
 }
