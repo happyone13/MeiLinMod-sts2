@@ -1,7 +1,6 @@
-using System;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using BaseLib.Config;
+using System.Collections.Generic;
 using Godot;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -13,7 +12,6 @@ using MeiLinMod.MeiLinModCode.Config;
 
 namespace MeiLinMod.MeiLinModCode.Patches;
 
-[HarmonyPatch(typeof(NCard), "Reload")]
 public static class CardSpinePortraitPatch
 {
     public const string SpineOverlayNodeName = "MeiLinSpinePortraitOverlay";
@@ -25,12 +23,15 @@ public static class CardSpinePortraitPatch
     private const float AncientOverlayInsetTop = 7.0f;
     private const float AncientOverlayInsetRight = 7.0f;
     private const float AncientOverlayInsetBottom = 10.0f;
+    private const int WarmUpFrames = 3;
+
     public static readonly FieldInfo? PortraitField =
         typeof(NCard).GetField("_portrait", BindingFlags.Instance | BindingFlags.NonPublic);
     public static readonly FieldInfo? AncientPortraitField =
         typeof(NCard).GetField("_ancientPortrait", BindingFlags.Instance | BindingFlags.NonPublic);
 
     private static readonly Dictionary<string, PackedScene> SceneCache = new();
+    private static readonly Dictionary<string, bool> MissingResourceWarnings = new();
     private static readonly ConditionalWeakTable<NCard, PortraitVisibilityState> VisibilityStates = new();
     private static readonly FieldInfo? NCardHolderIsHoveredField =
         typeof(NCardHolder).GetField("_isHovered", BindingFlags.Instance | BindingFlags.NonPublic);
@@ -39,132 +40,94 @@ public static class CardSpinePortraitPatch
     private static readonly FieldInfo? NCardHolderCurrentPressedActionField =
         typeof(NCardHolder).GetField("_currentPressedAction", BindingFlags.Instance | BindingFlags.NonPublic);
 
-    [HarmonyPostfix]
-    [HarmonyPriority(Priority.Last)]
-    public static void ReloadPostfix(NCard __instance)
+    public static void Apply(NCard? cardNode)
     {
-        if (!TryGetSpineScenePath(__instance, out string? scenePath))
+        if (!TryGetSpineScenePath(cardNode, out string? scenePath))
         {
-            RemoveSpineOverlay(__instance);
+            RemoveSpineOverlay(cardNode);
             return;
         }
 
-        if (scenePath != null && __instance.IsInsideTree())
-            ApplySpinePortrait(__instance, scenePath);
+        if (cardNode?.IsInsideTree() == true)
+            ApplySpinePortrait(cardNode, scenePath!);
     }
 
-    [HarmonyPrefix]
-    [HarmonyPriority(Priority.First)]
-    public static void ReloadPrefix(NCard __instance)
+    public static bool ApplySpinePortrait(NCard cardNode, string scenePath)
     {
-        PrepareForBaseVisuals(__instance);
-    }
-
-    public static void ApplySpinePortrait(NCard cardNode, string scenePath)
-    {
-        string? currentScenePath = null;
         if (!GodotObject.IsInstanceValid(cardNode) ||
-            !TryGetSpineScenePath(cardNode, out currentScenePath) ||
-            currentScenePath != scenePath)
+            cardNode.Model is not MeiLinModCard cardModel ||
+            string.IsNullOrWhiteSpace(cardModel.CustomSpinePortraitScenePath) ||
+            cardModel.CustomSpinePortraitScenePath != scenePath)
         {
-            MainFile.Logger.Info($"[CardSpinePortrait] Skip ApplySpinePortrait current={currentScenePath ?? "<null>"} requested={scenePath}");
-            return;
+            return false;
         }
+
+        TextureRect? portrait = GetTargetPortrait(cardNode, cardModel.CustomSpinePortraitSlot);
+        if (portrait == null || !GodotObject.IsInstanceValid(portrait))
+            return false;
 
         RemoveSpineOverlay(cardNode);
 
-        if (cardNode.Model is not MeiLinModCard cardModel)
-            return;
+        PackedScene? scene = GetOrCreateSpineScene(scenePath);
+        if (scene == null)
+            return false;
 
-        var portrait = PortraitField?.GetValue(cardNode) as TextureRect;
-        var ancientPortrait = AncientPortraitField?.GetValue(cardNode) as TextureRect;
+        if (scene.Instantiate<Node>() is not Node spineInstance)
+            return false;
 
-        bool applied = cardModel.CustomSpinePortraitSlot switch
+        SubViewportContainer? viewportContainer = GetViewportContainer(spineInstance);
+        if (viewportContainer == null)
         {
-            SpinePortraitSlot.Ancient => ApplySpinePortraitToPortrait(cardNode, scenePath, ancientPortrait),
-            _ => ApplySpinePortraitToPortrait(cardNode, scenePath, portrait)
-        };
-
-        if (applied)
-        {
-            MainFile.Logger.Info($"[CardSpinePortrait] Applied scene={scenePath} slot={cardModel.CustomSpinePortraitSlot}");
-            ForcePortraitSlot(cardNode, portrait, ancientPortrait, cardModel.CustomSpinePortraitSlot);
-        }
-
-        if (!applied)
-        {
-            MainFile.Logger.Warn($"[CardSpinePortrait] No portrait TextureRect accepted dynamic scene: {scenePath}");
-        }
-    }
-
-    private static bool ApplySpinePortraitToPortrait(NCard cardNode, string scenePath, TextureRect? portrait)
-    {
-        if (portrait == null || !GodotObject.IsInstanceValid(portrait))
-        {
-            MainFile.Logger.Warn($"[CardSpinePortrait] Invalid portrait target for scene: {scenePath}");
+            MainFile.Logger?.Warn($"[CardSpinePortrait] ViewportContainer not found in Spine scene: {scenePath}");
+            spineInstance.QueueFree();
             return false;
         }
 
-        RemoveAllSpineOverlays(cardNode);
-        RemoveAllSpineOverlays(portrait);
-
-        Node? spineInstance = GetOrCreateSpineInstance(scenePath);
-        if (spineInstance == null)
-        {
-            MainFile.Logger.Warn($"[CardSpinePortrait] Failed to load Spine scene: {scenePath}");
-            return false;
-        }
-
-        var viewportContainer = spineInstance.GetNodeOrNull<SubViewportContainer>(SpineViewportContainerNodeName);
-        var subViewport = viewportContainer?.GetNodeOrNull<SubViewport>("SubViewport")
-                          ?? spineInstance.GetNodeOrNull<SubViewport>("SubViewport");
+        SubViewport? subViewport = viewportContainer.GetNodeOrNull<SubViewport>("SubViewport");
         if (subViewport == null)
         {
-            MainFile.Logger.Warn($"[CardSpinePortrait] SubViewport not found in Spine scene: {scenePath}");
+            MainFile.Logger?.Warn($"[CardSpinePortrait] SubViewport not found in Spine scene: {scenePath}");
             spineInstance.QueueFree();
             return false;
         }
 
         ConfigureDynamicSubViewport(subViewport);
+        PrepareViewportContainer(viewportContainer);
 
-        if (subViewport.GetNodeOrNull<Node>("SpineSprite") is Node spineSprite)
-        {
-            Variant skeletonData = spineSprite.Get("skeleton_data_res");
-            MainFile.Logger.Info($"[CardSpinePortrait] SpineSprite scene={scenePath} skeleton_data_res_nil={skeletonData.VariantType == Variant.Type.Nil}");
-        }
+        if (viewportContainer.GetParent() != null)
+            viewportContainer.GetParent()?.RemoveChild(viewportContainer);
 
-        var container = new Control
+        var overlay = new Control
         {
             Name = SpineOverlayNodeName,
             MouseFilter = Control.MouseFilterEnum.Ignore,
             ZIndex = 0,
             ClipContents = true,
+            AnchorLeft = 0.0f,
+            AnchorTop = 0.0f,
             AnchorRight = 1.0f,
             AnchorBottom = 1.0f,
             Modulate = Colors.White,
             SelfModulate = Colors.White
         };
-        container.SetMeta(
+        overlay.SetMeta(
             OverlayTargetSlotMetaKey,
             ReferenceEquals(AncientPortraitField?.GetValue(cardNode), portrait)
                 ? OverlayTargetSlotAncient
                 : OverlayTargetSlotNormal);
 
         portrait.ClipContents = true;
-        var hostedViewportContainer = DetachOrCreateViewportContainer(viewportContainer, subViewport);
-        hostedViewportContainer.ClipContents = true;
-        container.AddChild(hostedViewportContainer);
-        portrait.AddChild(container);
+        overlay.AddChild(viewportContainer);
+        portrait.AddChild(overlay);
         spineInstance.QueueFree();
 
         portrait.Texture = null;
+        SyncOverlayLayout(cardNode, portrait, overlay, subViewport);
         subViewport.RenderTargetUpdateMode = SubViewport.UpdateMode.Always;
-        SyncOverlayLayout(cardNode, portrait, container, subViewport);
-        MainFile.Logger.Info($"[CardSpinePortrait] Overlay attached scene={scenePath} portrait_visible={portrait.Visible} portrait_size={portrait.Size} container_size={container.Size}");
 
         var updater = new SpinePortraitUpdater();
-        updater.Initialize(cardNode, container, subViewport);
-        container.AddChild(updater);
+        updater.Initialize(cardNode, overlay, subViewport);
+        overlay.AddChild(updater);
         return true;
     }
 
@@ -187,7 +150,7 @@ public static class CardSpinePortraitPatch
 
     public static void PrepareForBaseVisuals(NCard? cardNode)
     {
-        if (IsDynamicChaosCard(cardNode))
+        if (TryGetSpineScenePath(cardNode, out _))
             return;
 
         RemoveSpineOverlay(cardNode);
@@ -210,13 +173,18 @@ public static class CardSpinePortraitPatch
         if (parentPortrait != null)
             SyncOverlayLayout(cardNode, parentPortrait, container, subViewport);
 
-        SetStaticPortraitFallback(cardNode, parentPortrait, container, enabled: false);
-        SetSpinePlaybackPaused(subViewport, paused: false);
-        if (subViewport.RenderTargetUpdateMode != SubViewport.UpdateMode.Always)
-            subViewport.RenderTargetUpdateMode = SubViewport.UpdateMode.Always;
+        if (framesSinceCreated < WarmUpFrames)
+        {
+            if (subViewport.RenderTargetUpdateMode != SubViewport.UpdateMode.Always)
+                subViewport.RenderTargetUpdateMode = SubViewport.UpdateMode.Always;
+            return;
+        }
 
-        if (framesSinceCreated == 8)
-            LogOverlayDiagnostics(cardNode, container, subViewport, parentPortrait);
+        bool shouldAnimate = ShouldDisplayDynamicOverlays(cardNode) ||
+                             ((Control)cardNode).GetGlobalTransform().Scale.Y > 1.1f;
+        var targetMode = shouldAnimate ? SubViewport.UpdateMode.Always : SubViewport.UpdateMode.Once;
+        if (subViewport.RenderTargetUpdateMode != targetMode)
+            subViewport.RenderTargetUpdateMode = targetMode;
     }
 
     public static bool ShouldDisplayDynamicOverlays(NCard? cardNode)
@@ -232,261 +200,6 @@ public static class CardSpinePortraitPatch
 
         bool isEnlarged = ((Control)cardNode).GetGlobalTransform().Scale.Y > 1.1f;
         return hasHolderAncestor || isHolderActive || isInCardPlay || isEnlarged;
-    }
-
-    private static void CollectPresentationState(
-        NCard cardNode,
-        ref bool hasHolderAncestor,
-        ref bool isHolderActive,
-        ref bool isInCardPlay)
-    {
-        Node? current = cardNode.GetParent();
-        while (current != null)
-        {
-            if (current is NCardHolder holder)
-            {
-                hasHolderAncestor = true;
-                bool isHovered = (bool?)NCardHolderIsHoveredField?.GetValue(holder) ?? false;
-                bool isFocused = (bool?)NCardHolderIsFocusedField?.GetValue(holder) ?? false;
-                if (isHovered || isFocused)
-                    isHolderActive = true;
-
-                if (NCardHolderCurrentPressedActionField?.GetValue(holder) != null)
-                    isInCardPlay = true;
-
-                if (holder.GetParent() is NPlayerHand playerHand)
-                {
-                    foreach (Node child in playerHand.GetChildren())
-                    {
-                        if (child is NCardPlay cardPlay && cardPlay.Holder == holder)
-                        {
-                            isInCardPlay = true;
-                            break;
-                        }
-                    }
-                }
-            }
-
-            current = current.GetParent();
-        }
-    }
-
-    private static void SetStaticPortraitFallback(
-        NCard cardNode,
-        TextureRect? portrait,
-        Control container,
-        bool enabled)
-    {
-        if (portrait == null)
-            return;
-
-        container.Visible = !enabled;
-        if (enabled)
-        {
-            portrait.Texture ??= cardNode.Model?.Portrait;
-            return;
-        }
-
-        if (portrait.Texture == cardNode.Model?.Portrait)
-            portrait.Texture = null;
-    }
-
-    private static void SyncOverlayLayout(NCard cardNode, TextureRect portrait, Control container, SubViewport subViewport)
-    {
-        if (!GodotObject.IsInstanceValid(portrait) ||
-            !GodotObject.IsInstanceValid(container) ||
-            !GodotObject.IsInstanceValid(subViewport))
-        {
-            return;
-        }
-
-        bool isAncientPortrait = ReferenceEquals(AncientPortraitField?.GetValue(cardNode), portrait);
-        var insetPosition = isAncientPortrait
-            ? new Vector2(AncientOverlayInsetLeft, AncientOverlayInsetTop)
-            : Vector2.Zero;
-        var insetSize = isAncientPortrait
-            ? new Vector2(
-                Mathf.Max(0.0f, portrait.Size.X - AncientOverlayInsetLeft - AncientOverlayInsetRight),
-                Mathf.Max(0.0f, portrait.Size.Y - AncientOverlayInsetTop - AncientOverlayInsetBottom))
-            : portrait.Size;
-
-        bool overlayParentIsPortrait = ReferenceEquals(container.GetParent(), portrait);
-        container.Position = overlayParentIsPortrait ? insetPosition : portrait.Position + insetPosition;
-        container.Size = insetSize;
-        container.Scale = overlayParentIsPortrait ? Vector2.One : portrait.Scale;
-        container.Rotation = overlayParentIsPortrait ? 0.0f : portrait.Rotation;
-        container.PivotOffset = Vector2.Zero;
-
-        if (container.GetNodeOrNull<SubViewportContainer>(SpineViewportContainerNodeName) is { } viewportContainer)
-        {
-            viewportContainer.Position = Vector2.Zero;
-            viewportContainer.Size = container.Size;
-        }
-    }
-
-    private static void SetSpinePlaybackPaused(SubViewport subViewport, bool paused)
-    {
-        var spineSprite = subViewport.GetNodeOrNull<Node>("SpineSprite");
-        if (spineSprite == null)
-            return;
-
-        var targetMode = paused ? Node.ProcessModeEnum.Disabled : Node.ProcessModeEnum.Inherit;
-        if (spineSprite.ProcessMode != targetMode)
-            spineSprite.ProcessMode = targetMode;
-    }
-
-    private static void ConfigureDynamicSubViewport(SubViewport subViewport)
-    {
-        subViewport.Set("transparent_bg", true);
-        subViewport.TransparentBg = true;
-
-        foreach (Node child in subViewport.GetChildren())
-        {
-            if (child is ColorRect colorRect)
-                colorRect.Visible = false;
-        }
-    }
-
-    private static SubViewportContainer DetachOrCreateViewportContainer(
-        SubViewportContainer? embeddedViewportContainer,
-        SubViewport subViewport)
-    {
-        if (embeddedViewportContainer != null)
-        {
-            embeddedViewportContainer.GetParent()?.RemoveChild(embeddedViewportContainer);
-            PrepareViewportContainer(embeddedViewportContainer);
-            return embeddedViewportContainer;
-        }
-
-        subViewport.GetParent()?.RemoveChild(subViewport);
-
-        Vector2I vpSize = subViewport.Size;
-        if (vpSize.X < 1 || vpSize.Y < 1)
-        {
-            vpSize = new Vector2I(598, 844);
-            subViewport.Size = vpSize;
-        }
-
-        var fallbackViewportContainer = new SubViewportContainer();
-        PrepareViewportContainer(fallbackViewportContainer);
-        fallbackViewportContainer.AddChild(subViewport);
-        return fallbackViewportContainer;
-    }
-
-    private static void PrepareViewportContainer(SubViewportContainer viewportContainer)
-    {
-        viewportContainer.Name = SpineViewportContainerNodeName;
-        viewportContainer.MouseFilter = Control.MouseFilterEnum.Ignore;
-        viewportContainer.AnchorLeft = 0.0f;
-        viewportContainer.AnchorTop = 0.0f;
-        viewportContainer.AnchorRight = 1.0f;
-        viewportContainer.AnchorBottom = 1.0f;
-        viewportContainer.OffsetLeft = 0.0f;
-        viewportContainer.OffsetTop = 0.0f;
-        viewportContainer.OffsetRight = 0.0f;
-        viewportContainer.OffsetBottom = 0.0f;
-        viewportContainer.Stretch = true;
-        viewportContainer.ClipContents = true;
-    }
-
-    private static void LogOverlayDiagnostics(
-        NCard cardNode,
-        Control container,
-        SubViewport subViewport,
-        TextureRect? portrait)
-    {
-        try
-        {
-            Texture2D texture = subViewport.GetTexture();
-            Color sampled = Colors.Transparent;
-            Vector2I imageSize = Vector2I.Zero;
-
-            if (texture?.GetImage() is { } image && !image.IsEmpty())
-            {
-                imageSize = new Vector2I(image.GetWidth(), image.GetHeight());
-                int sampleX = Mathf.Clamp(image.GetWidth() / 2, 0, image.GetWidth() - 1);
-                int sampleY = Mathf.Clamp(image.GetHeight() / 2, 0, image.GetHeight() - 1);
-                sampled = image.GetPixel(sampleX, sampleY);
-            }
-
-            string slot = container.GetMeta(OverlayTargetSlotMetaKey, OverlayTargetSlotNormal).AsString();
-            MainFile.Logger.Info(
-                $"[CardSpinePortrait] Diagnostics card={cardNode.Model?.Id.Entry ?? "<null>"} slot={slot} " +
-                $"portraitVisible={portrait?.Visible} portraitPos={portrait?.Position} portraitSize={portrait?.Size} " +
-                $"containerPos={container.Position} containerSize={container.Size} viewportSize={subViewport.Size} " +
-                $"imageSize={imageSize} sample={sampled}");
-        }
-        catch (Exception ex)
-        {
-            MainFile.Logger.Warn($"[CardSpinePortrait] Diagnostics failed: {ex.Message}");
-        }
-    }
-
-    private static void RestorePortraitTextures(NCard cardNode)
-    {
-        Texture2D? portraitTexture = cardNode.Model?.Portrait;
-        if (portraitTexture == null)
-            return;
-
-        if (PortraitField?.GetValue(cardNode) is TextureRect portrait && portrait.Texture == null)
-            portrait.Texture = portraitTexture;
-
-        if (AncientPortraitField?.GetValue(cardNode) is TextureRect ancientPortrait && ancientPortrait.Texture == null)
-            ancientPortrait.Texture = portraitTexture;
-    }
-
-    private static bool TryGetSpineScenePath(NCard? cardNode, out string? scenePath)
-    {
-        scenePath = null;
-
-        if (cardNode?.Model is not MeiLinModCard cardModel)
-        {
-            MainFile.Logger.Info("[CardSpinePortrait] Model is not MeiLinModCard");
-            return false;
-        }
-
-        if (!cardModel.UsesDynamicChaosFrame)
-            return false;
-
-        if (!MeiLinModConfig.UseChaosCardDynamicPortraits)
-        {
-            MainFile.Logger.Info("[CardSpinePortrait] Dynamic portraits disabled by config");
-            return false;
-        }
-
-        scenePath = cardModel.CustomSpinePortraitScenePath;
-        bool exists = !string.IsNullOrWhiteSpace(scenePath) && ResourceLoader.Exists(scenePath);
-        if (!exists)
-            MainFile.Logger.Warn($"[CardSpinePortrait] Scene path missing or not found: {scenePath ?? "<null>"}");
-        return exists;
-    }
-
-    private static bool IsDynamicChaosCard(NCard? cardNode)
-    {
-        return TryGetSpineScenePath(cardNode, out _);
-    }
-
-    private static Node? GetOrCreateSpineInstance(string scenePath)
-    {
-        if (!SceneCache.TryGetValue(scenePath, out PackedScene? scene))
-        {
-            scene = GD.Load<PackedScene>(scenePath);
-            if (scene == null)
-                return null;
-
-            SceneCache[scenePath] = scene;
-        }
-
-        return scene.Instantiate<Node>();
-    }
-
-    private static void RemoveAllSpineOverlays(Node parent)
-    {
-        foreach (Node child in parent.GetChildren())
-        {
-            if (child.Name == SpineOverlayNodeName && GodotObject.IsInstanceValid(child))
-                child.Free();
-        }
     }
 
     public static bool HasActiveSpineOverlay(NCard? cardNode)
@@ -540,6 +253,147 @@ public static class CardSpinePortraitPatch
         ancientPortrait.Visible = slot == SpinePortraitSlot.Ancient;
     }
 
+    internal static bool TryGetSpineScenePath(NCard? cardNode, out string? scenePath)
+    {
+        scenePath = null;
+
+        if (cardNode?.Model is not MeiLinModCard cardModel)
+            return false;
+
+        if (!cardModel.UsesDynamicChaosFrame || !MeiLinModConfig.UseChaosCardDynamicPortraits)
+            return false;
+
+        scenePath = cardModel.CustomSpinePortraitScenePath;
+        if (string.IsNullOrWhiteSpace(scenePath))
+            return false;
+
+        if (!ResourceLoader.Exists(scenePath))
+        {
+            if (!MissingResourceWarnings.ContainsKey(scenePath))
+            {
+                MissingResourceWarnings[scenePath] = true;
+                MainFile.Logger?.Warn($"[CardSpinePortrait] Scene path missing or not found: {scenePath}");
+            }
+
+            return false;
+        }
+
+        return true;
+    }
+
+    private static PackedScene? GetOrCreateSpineScene(string scenePath)
+    {
+        if (SceneCache.TryGetValue(scenePath, out PackedScene? scene))
+            return scene;
+
+        scene = GD.Load<PackedScene>(scenePath);
+        if (scene == null)
+        {
+            MainFile.Logger?.Warn($"[CardSpinePortrait] Failed to load PackedScene: {scenePath}");
+            return null;
+        }
+
+        SceneCache[scenePath] = scene;
+        return scene;
+    }
+
+    private static SubViewportContainer? GetViewportContainer(Node root)
+    {
+        if (root.GetNodeOrNull<SubViewportContainer>(SpineViewportContainerNodeName) is { } namedContainer)
+            return namedContainer;
+
+        if (root.GetNodeOrNull<SubViewportContainer>("SubViewportContainer") is { } altNamedContainer)
+            return altNamedContainer;
+
+        foreach (Node child in root.GetChildren())
+        {
+            if (child is SubViewportContainer container)
+                return container;
+        }
+
+        return null;
+    }
+
+    private static void PrepareViewportContainer(SubViewportContainer viewportContainer)
+    {
+        viewportContainer.Name = SpineViewportContainerNodeName;
+        viewportContainer.MouseFilter = Control.MouseFilterEnum.Ignore;
+        viewportContainer.AnchorLeft = 0.0f;
+        viewportContainer.AnchorTop = 0.0f;
+        viewportContainer.AnchorRight = 1.0f;
+        viewportContainer.AnchorBottom = 1.0f;
+        viewportContainer.OffsetLeft = 0.0f;
+        viewportContainer.OffsetTop = 0.0f;
+        viewportContainer.OffsetRight = 0.0f;
+        viewportContainer.OffsetBottom = 0.0f;
+        viewportContainer.Stretch = true;
+        viewportContainer.ClipContents = true;
+    }
+
+    private static void ConfigureDynamicSubViewport(SubViewport subViewport)
+    {
+        subViewport.Set("transparent_bg", true);
+        subViewport.TransparentBg = true;
+
+        if (subViewport.Size.X < 1 || subViewport.Size.Y < 1)
+            subViewport.Size = new Vector2I(598, 844);
+    }
+
+    private static void SyncOverlayLayout(NCard cardNode, TextureRect portrait, Control container, SubViewport subViewport)
+    {
+        if (!GodotObject.IsInstanceValid(portrait) ||
+            !GodotObject.IsInstanceValid(container) ||
+            !GodotObject.IsInstanceValid(subViewport))
+        {
+            return;
+        }
+
+        bool isAncientPortrait = ReferenceEquals(AncientPortraitField?.GetValue(cardNode), portrait);
+        Vector2 insetPosition = isAncientPortrait
+            ? new Vector2(AncientOverlayInsetLeft, AncientOverlayInsetTop)
+            : Vector2.Zero;
+        Vector2 insetSize = isAncientPortrait
+            ? new Vector2(
+                Mathf.Max(0.0f, portrait.Size.X - AncientOverlayInsetLeft - AncientOverlayInsetRight),
+                Mathf.Max(0.0f, portrait.Size.Y - AncientOverlayInsetTop - AncientOverlayInsetBottom))
+            : portrait.Size;
+
+        bool overlayParentIsPortrait = ReferenceEquals(container.GetParent(), portrait);
+        container.Position = overlayParentIsPortrait ? insetPosition : portrait.Position + insetPosition;
+        container.Size = insetSize;
+        container.Scale = overlayParentIsPortrait ? Vector2.One : portrait.Scale;
+        container.Rotation = overlayParentIsPortrait ? 0.0f : portrait.Rotation;
+        container.PivotOffset = Vector2.Zero;
+
+        if (container.GetNodeOrNull<SubViewportContainer>(SpineViewportContainerNodeName) is { } viewportContainer)
+        {
+            viewportContainer.Position = Vector2.Zero;
+            viewportContainer.Size = container.Size;
+        }
+    }
+
+    private static void RemoveAllSpineOverlays(Node parent)
+    {
+        foreach (Node child in parent.GetChildren())
+        {
+            if (child.Name == SpineOverlayNodeName && GodotObject.IsInstanceValid(child))
+                child.Free();
+        }
+    }
+
+    private static void RestorePortraitTextures(NCard cardNode)
+    {
+        Texture2D? portraitTexture = cardNode.Model?.Portrait;
+        if (portraitTexture == null)
+            return;
+
+        if (PortraitField?.GetValue(cardNode) is TextureRect portrait && portrait.Texture == null)
+            portrait.Texture = portraitTexture;
+
+        if (AncientPortraitField?.GetValue(cardNode) is TextureRect ancientPortrait && ancientPortrait.Texture == null)
+            ancientPortrait.Texture = portraitTexture;
+    }
+
     private static void RestorePortraitVisibility(NCard cardNode)
     {
         if (!VisibilityStates.TryGetValue(cardNode, out PortraitVisibilityState? state) || !state.HasSnapshot)
@@ -554,12 +408,74 @@ public static class CardSpinePortraitPatch
         VisibilityStates.Remove(cardNode);
     }
 
+    private static void CollectPresentationState(
+        NCard cardNode,
+        ref bool hasHolderAncestor,
+        ref bool isHolderActive,
+        ref bool isInCardPlay)
+    {
+        Node? current = cardNode.GetParent();
+        while (current != null)
+        {
+            if (current is NCardHolder holder)
+            {
+                hasHolderAncestor = true;
+
+                bool isHovered = (bool?)NCardHolderIsHoveredField?.GetValue(holder) ?? false;
+                bool isFocused = (bool?)NCardHolderIsFocusedField?.GetValue(holder) ?? false;
+                if (isHovered || isFocused)
+                    isHolderActive = true;
+
+                if (NCardHolderCurrentPressedActionField?.GetValue(holder) != null)
+                    isInCardPlay = true;
+
+                if (holder.GetParent() is NPlayerHand playerHand)
+                {
+                    foreach (Node child in playerHand.GetChildren())
+                    {
+                        if (child is NCardPlay cardPlay && cardPlay.Holder == holder)
+                        {
+                            isInCardPlay = true;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            current = current.GetParent();
+        }
+    }
+
+    private static TextureRect? GetTargetPortrait(NCard cardNode, SpinePortraitSlot slot)
+    {
+        var portrait = PortraitField?.GetValue(cardNode) as TextureRect;
+        var ancientPortrait = AncientPortraitField?.GetValue(cardNode) as TextureRect;
+
+        return slot switch
+        {
+            SpinePortraitSlot.Ancient => ancientPortrait ?? portrait,
+            _ => portrait ?? ancientPortrait
+        };
+    }
+
     private static TextureRect? ResolveOverlayTargetPortrait(NCard cardNode, Control container)
     {
         string slot = container.GetMeta(OverlayTargetSlotMetaKey, OverlayTargetSlotNormal).AsString();
         return slot == OverlayTargetSlotAncient
             ? AncientPortraitField?.GetValue(cardNode) as TextureRect
             : PortraitField?.GetValue(cardNode) as TextureRect;
+    }
+
+    internal static void UpdateOverlay(NCard cardNode, TextureRect? portrait)
+    {
+        if (portrait == null)
+            return;
+
+        var container = cardNode.GetNodeOrNull<Control>(SpineOverlayNodeName)
+                        ?? portrait.GetNodeOrNull<Control>(SpineOverlayNodeName);
+        var subViewport = container?.GetNodeOrNull<SubViewport>($"{SpineViewportContainerNodeName}/SubViewport");
+        if (container != null && subViewport != null)
+            UpdateSpineAnimationState(cardNode, container, subViewport, int.MaxValue);
     }
 
     private sealed class PortraitVisibilityState
@@ -571,26 +487,74 @@ public static class CardSpinePortraitPatch
 
 }
 
+[HarmonyPatch(typeof(NCard), "Reload")]
+public static class CardSpinePortraitReloadPatch
+{
+    [HarmonyPrefix]
+    [HarmonyPriority(Priority.First)]
+    public static void ReloadPrefix(NCard __instance)
+    {
+        CardSpinePortraitPatch.PrepareForBaseVisuals(__instance);
+    }
+
+    [HarmonyPostfix]
+    [HarmonyPriority(Priority.Last)]
+    public static void ReloadPostfix(NCard __instance)
+    {
+        CardSpinePortraitPatch.Apply(__instance);
+    }
+}
+
 [HarmonyPatch(typeof(NCard), "_EnterTree")]
-public static class CardSpineEnterTreePatch
+public static class CardSpinePortraitEnterTreePatch
 {
     [HarmonyPostfix]
+    [HarmonyPriority(Priority.Last)]
     public static void EnterTreePostfix(NCard __instance)
     {
+        CardSpinePortraitPatch.Apply(__instance);
+    }
+}
+
+[HarmonyPatch(typeof(NCard), nameof(NCard.UpdateVisuals))]
+public static class CardSpinePortraitUpdateVisualsPatch
+{
+    [HarmonyPrefix]
+    [HarmonyPriority(Priority.First)]
+    public static void UpdateVisualsPrefix(NCard __instance)
+    {
+        CardSpinePortraitPatch.PrepareForBaseVisuals(__instance);
+    }
+
+    [HarmonyPostfix]
+    [HarmonyPriority(Priority.Last)]
+    public static void UpdateVisualsPostfix(NCard __instance)
+    {
         if (__instance?.Model is not MeiLinModCard cardModel)
+        {
+            CardSpinePortraitPatch.RemoveSpineOverlay(__instance);
             return;
+        }
 
-        if (!__instance.IsNodeReady())
+        if (!CardSpinePortraitPatch.TryGetSpineScenePath(__instance, out string? scenePath))
+        {
+            CardSpinePortraitPatch.RemoveSpineOverlay(__instance);
             return;
+        }
 
-        if (!MeiLinModConfig.UseChaosCardDynamicPortraits)
-            return;
+        if (!CardSpinePortraitPatch.HasActiveSpineOverlay(__instance) &&
+            ResourceLoader.Exists(scenePath))
+        {
+            CardSpinePortraitPatch.ApplySpinePortrait(__instance, scenePath!);
+        }
 
-        string? scenePath = cardModel.CustomSpinePortraitScenePath;
-        if (string.IsNullOrWhiteSpace(scenePath) || !ResourceLoader.Exists(scenePath))
-            return;
+        var portrait = CardSpinePortraitPatch.PortraitField?.GetValue(__instance) as TextureRect;
+        var ancientPortrait = CardSpinePortraitPatch.AncientPortraitField?.GetValue(__instance) as TextureRect;
+        CardSpinePortraitPatch.ForcePortraitSlot(__instance!, portrait, ancientPortrait, cardModel.CustomSpinePortraitSlot);
 
-        CardSpinePortraitPatch.ApplySpinePortrait(__instance!, scenePath);
+        CardSpinePortraitPatch.UpdateOverlay(
+            __instance!,
+            cardModel.CustomSpinePortraitSlot == SpinePortraitSlot.Ancient ? ancientPortrait : portrait);
     }
 }
 
@@ -621,59 +585,5 @@ public partial class SpinePortraitUpdater : Node
 
         CardSpinePortraitPatch.UpdateSpineAnimationState(_card, _container, _subViewport, _framesSinceCreated);
         _framesSinceCreated++;
-    }
-}
-
-[HarmonyPatch(typeof(NCard), nameof(NCard.UpdateVisuals))]
-public static class CardSpineUpdateVisualsPatch
-{
-    [HarmonyPrefix]
-    [HarmonyPriority(Priority.First)]
-    public static void UpdateVisualsPrefix(NCard __instance)
-    {
-        CardSpinePortraitPatch.PrepareForBaseVisuals(__instance);
-    }
-
-    [HarmonyPostfix]
-    public static void UpdateVisualsPostfix(NCard __instance)
-    {
-        if (__instance?.Model is not MeiLinModCard cardModel)
-        {
-            CardSpinePortraitPatch.RemoveSpineOverlay(__instance);
-            return;
-        }
-
-        if (string.IsNullOrWhiteSpace(cardModel.CustomSpinePortraitScenePath) ||
-            !MeiLinModConfig.UseChaosCardDynamicPortraits)
-        {
-            CardSpinePortraitPatch.RemoveSpineOverlay(__instance);
-            return;
-        }
-
-        if (!CardSpinePortraitPatch.HasActiveSpineOverlay(__instance) &&
-            ResourceLoader.Exists(cardModel.CustomSpinePortraitScenePath))
-        {
-            CardSpinePortraitPatch.ApplySpinePortrait(__instance, cardModel.CustomSpinePortraitScenePath);
-        }
-
-        var portrait = CardSpinePortraitPatch.PortraitField?.GetValue(__instance) as TextureRect;
-        var ancientPortrait = CardSpinePortraitPatch.AncientPortraitField?.GetValue(__instance) as TextureRect;
-        CardSpinePortraitPatch.ForcePortraitSlot(__instance!, portrait, ancientPortrait, cardModel.CustomSpinePortraitSlot);
-
-        UpdateOverlay(
-            __instance!,
-            cardModel.CustomSpinePortraitSlot == SpinePortraitSlot.Ancient ? ancientPortrait : portrait);
-    }
-
-    private static void UpdateOverlay(NCard cardNode, TextureRect? portrait)
-    {
-        if (portrait == null)
-            return;
-
-        var container = cardNode.GetNodeOrNull<Control>(CardSpinePortraitPatch.SpineOverlayNodeName)
-                        ?? portrait.GetNodeOrNull<Control>(CardSpinePortraitPatch.SpineOverlayNodeName);
-        var subViewport = container?.GetNodeOrNull<SubViewport>($"{CardSpinePortraitPatch.SpineViewportContainerNodeName}/SubViewport");
-        if (container != null && subViewport != null)
-            CardSpinePortraitPatch.UpdateSpineAnimationState(cardNode, container, subViewport, int.MaxValue);
     }
 }
