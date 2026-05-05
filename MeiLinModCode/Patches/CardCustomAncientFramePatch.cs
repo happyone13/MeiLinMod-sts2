@@ -199,6 +199,16 @@ public static class CardCustomAncientFramePatch
         RemoveChaosEffects(cardNode, restoreOriginalState: true);
     }
 
+    public static void CleanupPooledCard(NCard? cardNode)
+    {
+        if (cardNode == null)
+            return;
+
+        RemoveChaosEffects(cardNode, restoreOriginalState: true);
+        CardSpinePortraitPatch.RemoveSpineOverlay(cardNode);
+        OriginalStates.Remove(cardNode);
+    }
+
     private static bool TryGetCustomFrameCard(NCard? cardNode, out MeiLinModCard? cardModel)
     {
         cardModel = null;
@@ -952,5 +962,16 @@ public static class CardCustomAncientFrameEnterTreePatch
     public static void EnterTreePostfix(NCard __instance)
     {
         CardCustomAncientFramePatch.Apply(__instance);
+    }
+}
+
+[HarmonyPatch(typeof(NCard), nameof(NCard.OnFreedToPool))]
+public static class CardCustomAncientFrameFreedToPoolPatch
+{
+    [HarmonyPostfix]
+    [HarmonyPriority(Priority.Last)]
+    public static void OnFreedToPoolPostfix(NCard __instance)
+    {
+        CardCustomAncientFramePatch.CleanupPooledCard(__instance);
     }
 }

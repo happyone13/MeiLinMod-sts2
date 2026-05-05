@@ -53,7 +53,7 @@ public class WanXiang() : MeiLinModCard(0, CardType.Skill, CardRarity.Rare, Targ
         if (Pile?.Type != PileType.Hand)
             return true;
 
-        if (card == this)
+        if (card is WanXiang)
             return true;
 
         if (autoPlayType != AutoPlayType.None)
