@@ -31,7 +31,11 @@ public class FireDragonGemPower : MeiLinModPower
             return;
         }
 
+#if STS2_104
         var combatState = ownerCreature?.CombatState;
+#else
+        var combatState = CombatState;
+#endif
         if (combatState == null)
             return;
 

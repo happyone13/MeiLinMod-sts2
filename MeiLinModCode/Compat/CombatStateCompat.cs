@@ -65,6 +65,22 @@ public static class CombatStateCompat
         return TryInvoke(() => (bool?)happenedThisTurnMethod.Invoke(entry, [combatState])) ?? false;
     }
 
+    public static IReadOnlyList<Creature> GetHittableEnemies(object? combatStateLike)
+    {
+        if (combatStateLike == null)
+            return [];
+
+        object? source = FindCombatStateLikeObject(combatStateLike);
+        if (source == null)
+            return [];
+
+        var property = source.GetType().GetProperty("HittableEnemies", BindingFlags.Public | BindingFlags.Instance);
+        if (property?.GetValue(source) is IEnumerable<Creature> enemies)
+            return enemies.ToList();
+
+        return [];
+    }
+
     private static MethodInfo? FindCreateCardMethod(bool generic)
     {
         return typeof(CardModel).Assembly
@@ -114,5 +130,19 @@ public static class CombatStateCompat
         {
             return default;
         }
+    }
+
+    private static object? FindCombatStateLikeObject(object source)
+    {
+        const BindingFlags flags = BindingFlags.Public | BindingFlags.Instance;
+
+        if (source.GetType().GetProperty("HittableEnemies", flags) != null)
+            return source;
+
+        object? combatState = TryInvoke(() => source.GetType().GetProperty("CombatState", flags)?.GetValue(source));
+        if (combatState != null)
+            return FindCombatStateLikeObject(combatState);
+
+        return null;
     }
 }

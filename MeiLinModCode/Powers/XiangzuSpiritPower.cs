@@ -17,7 +17,9 @@ public class XiangzuSpiritPower : MeiLinModPower
     }
 
     public override async Task AfterPowerAmountChanged(
+#if STS2_104
         MegaCrit.Sts2.Core.GameActions.Multiplayer.PlayerChoiceContext choiceContext,
+#endif
         PowerModel power,
         decimal amount,
         Creature? applier,

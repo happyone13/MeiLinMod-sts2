@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Models.Relics;
 using MegaCrit.Sts2.Core.Modding;
 using MegaCrit.Sts2.Core.Bindings.MegaSpine;
 using MeiLinMod.MeiLinModCode.Config;
+using MeiLinMod.MeiLinModCode.Patches;
 using MeiLinMod.MeiLinModCode.StanceVfx;
 using System.Linq;
 
@@ -23,6 +24,7 @@ public partial class MainFile : Node
     {
         ScriptManagerBridge.LookupScriptsInAssembly(typeof(MainFile).Assembly);
         ModConfigRegistry.Register(ModId, new MeiLinModConfig());
+        CardSpinePortraitPatch.PreloadDynamicPortraitScenes();
 
         Harmony harmony = new(ModId);
 

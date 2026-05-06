@@ -21,7 +21,11 @@ public class LongZhiDao() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncommon
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
         var targetPlayer = cardPlay.Target.Player;
+#if STS2_104
         var combatState = Owner.Creature.CombatState;
+#else
+        var combatState = CombatState;
+#endif
         if (targetPlayer == null || combatState == null)
             return;
 

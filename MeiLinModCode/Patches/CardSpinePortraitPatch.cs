@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Godot;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.Cards;
 using MegaCrit.Sts2.Core.Nodes.Cards.Holders;
 using MegaCrit.Sts2.Core.Nodes.Combat;
@@ -16,6 +17,8 @@ public static class CardSpinePortraitPatch
 {
     public const string SpineOverlayNodeName = "MeiLinSpinePortraitOverlay";
     internal const string SpineViewportContainerNodeName = "ViewportContainer";
+    private const string OverlayScenePathMetaKey = "meilin_spine_scene_path";
+    private const string OverlayModelIdentityMetaKey = "meilin_spine_model_identity";
     private const string OverlayTargetSlotMetaKey = "meilin_target_slot";
     private const string OverlayTargetSlotAncient = "ancient";
     private const string OverlayTargetSlotNormal = "normal";
@@ -29,6 +32,15 @@ public static class CardSpinePortraitPatch
         typeof(NCard).GetField("_portrait", BindingFlags.Instance | BindingFlags.NonPublic);
     public static readonly FieldInfo? AncientPortraitField =
         typeof(NCard).GetField("_ancientPortrait", BindingFlags.Instance | BindingFlags.NonPublic);
+
+    private static readonly string[] DynamicPortraitScenePaths =
+    {
+        "res://MeiLinMod/scenes/cards/attack_defense_unity_dynamic.tscn",
+        "res://MeiLinMod/scenes/cards/fire_dragon_gem_dynamic.tscn",
+        "res://MeiLinMod/scenes/cards/huo_long_jing_tian_dynamic.tscn",
+        "res://MeiLinMod/scenes/cards/sheng_long_jiao_dynamic.tscn",
+        "res://MeiLinMod/scenes/cards/xiangzu_spirit_card_dynamic.tscn"
+    };
 
     private static readonly Dictionary<string, PackedScene> SceneCache = new();
     private static readonly Dictionary<string, bool> MissingResourceWarnings = new();
@@ -66,7 +78,18 @@ public static class CardSpinePortraitPatch
         if (portrait == null || !GodotObject.IsInstanceValid(portrait))
             return false;
 
-        RemoveSpineOverlay(cardNode);
+        string? activeScenePath = GetActiveSpineOverlayScenePath(portrait);
+        int currentModelIdentity = GetModelIdentity(cardNode.Model);
+        int? activeModelIdentity = GetActiveSpineOverlayModelIdentity(portrait);
+        if (HasActiveSpineOverlay(cardNode) &&
+            (!string.Equals(activeScenePath, scenePath, System.StringComparison.Ordinal) ||
+             activeModelIdentity != currentModelIdentity))
+        {
+            RemoveSpineOverlay(cardNode);
+        }
+
+        if (HasActiveSpineOverlay(cardNode))
+            return true;
 
         PackedScene? scene = GetOrCreateSpineScene(scenePath);
         if (scene == null)
@@ -110,6 +133,8 @@ public static class CardSpinePortraitPatch
             Modulate = Colors.White,
             SelfModulate = Colors.White
         };
+        overlay.SetMeta(OverlayScenePathMetaKey, scenePath);
+        overlay.SetMeta(OverlayModelIdentityMetaKey, currentModelIdentity.ToString());
         overlay.SetMeta(
             OverlayTargetSlotMetaKey,
             ReferenceEquals(AncientPortraitField?.GetValue(cardNode), portrait)
@@ -129,6 +154,12 @@ public static class CardSpinePortraitPatch
         updater.Initialize(cardNode, overlay, subViewport);
         overlay.AddChild(updater);
         return true;
+    }
+
+    public static void PreloadDynamicPortraitScenes()
+    {
+        foreach (string scenePath in DynamicPortraitScenePaths)
+            GetOrCreateSpineScene(scenePath);
     }
 
     public static void RemoveSpineOverlay(NCard? cardNode)
@@ -180,11 +211,9 @@ public static class CardSpinePortraitPatch
             return;
         }
 
-        bool shouldAnimate = ShouldDisplayDynamicOverlays(cardNode) ||
-                             ((Control)cardNode).GetGlobalTransform().Scale.Y > 1.1f;
-        var targetMode = shouldAnimate ? SubViewport.UpdateMode.Always : SubViewport.UpdateMode.Once;
-        if (subViewport.RenderTargetUpdateMode != targetMode)
-            subViewport.RenderTargetUpdateMode = targetMode;
+        // Keep dynamic card portraits animating continuously once enabled.
+        if (subViewport.RenderTargetUpdateMode != SubViewport.UpdateMode.Always)
+            subViewport.RenderTargetUpdateMode = SubViewport.UpdateMode.Always;
     }
 
     public static bool ShouldDisplayDynamicOverlays(NCard? cardNode)
@@ -295,6 +324,36 @@ public static class CardSpinePortraitPatch
 
         SceneCache[scenePath] = scene;
         return scene;
+    }
+
+    private static string? GetActiveSpineOverlayScenePath(TextureRect? portrait)
+    {
+        if (portrait == null || !GodotObject.IsInstanceValid(portrait))
+            return null;
+
+        var overlay = portrait.GetNodeOrNull<Control>(SpineOverlayNodeName);
+        if (overlay == null || !overlay.HasMeta(OverlayScenePathMetaKey))
+            return null;
+
+        return overlay.GetMeta(OverlayScenePathMetaKey).AsString();
+    }
+
+    private static int? GetActiveSpineOverlayModelIdentity(TextureRect? portrait)
+    {
+        if (portrait == null || !GodotObject.IsInstanceValid(portrait))
+            return null;
+
+        var overlay = portrait.GetNodeOrNull<Control>(SpineOverlayNodeName);
+        if (overlay == null || !overlay.HasMeta(OverlayModelIdentityMetaKey))
+            return null;
+
+        string meta = overlay.GetMeta(OverlayModelIdentityMetaKey).AsString();
+        return int.TryParse(meta, out int value) ? value : null;
+    }
+
+    private static int GetModelIdentity(CardModel? model)
+    {
+        return model == null ? 0 : RuntimeHelpers.GetHashCode(model);
     }
 
     private static SubViewportContainer? GetViewportContainer(Node root)
@@ -542,11 +601,8 @@ public static class CardSpinePortraitUpdateVisualsPatch
             return;
         }
 
-        if (!CardSpinePortraitPatch.HasActiveSpineOverlay(__instance) &&
-            ResourceLoader.Exists(scenePath))
-        {
+        if (ResourceLoader.Exists(scenePath))
             CardSpinePortraitPatch.ApplySpinePortrait(__instance, scenePath!);
-        }
 
         var portrait = CardSpinePortraitPatch.PortraitField?.GetValue(__instance) as TextureRect;
         var ancientPortrait = CardSpinePortraitPatch.AncientPortraitField?.GetValue(__instance) as TextureRect;

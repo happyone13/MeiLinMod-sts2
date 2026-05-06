@@ -13,7 +13,9 @@ public class QiGainBlockPower : MeiLinModPower
     public override PowerStackType StackType => PowerStackType.Counter;
 
     public override async Task AfterPowerAmountChanged(
+#if STS2_104
         PlayerChoiceContext choiceContext,
+#endif
         PowerModel power,
         decimal amount,
         Creature? applier,

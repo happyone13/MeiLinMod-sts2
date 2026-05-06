@@ -195,7 +195,7 @@ public static class PowerCmdCompat
         return true;
     }
 
-    private static BlockingPlayerChoiceContext CreateDefaultContext() => new();
+    private static ThrowingPlayerChoiceContext CreateDefaultContext() => new();
 
     private enum ApplyTargetKind
     {
