@@ -32,8 +32,8 @@ public class JiChuShi() : MeiLinModCard(1, CardType.Skill, CardRarity.Common, Ta
         defend.SetToFreeThisCombat();
         CardCmd.ApplyKeyword(strike, CardKeyword.Exhaust);
         CardCmd.ApplyKeyword(defend, CardKeyword.Exhaust);
-        await CardPileCmd.AddGeneratedCardToCombat(strike, PileType.Hand, Owner);
-        await CardPileCmd.AddGeneratedCardToCombat(defend, PileType.Hand, Owner);
+        await CardPileCmd.AddGeneratedCardToCombat(strike, PileType.Hand, true);
+        await CardPileCmd.AddGeneratedCardToCombat(defend, PileType.Hand, true);
 
         if (IsUpgraded)
         {

@@ -1,4 +1,4 @@
-﻿using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
@@ -25,9 +25,6 @@ public class QiPower : MeiLinModPower
     }
 
     public override async Task AfterPowerAmountChanged(
-#if STS2_104
-        PlayerChoiceContext choiceContext,
-#endif
         PowerModel power,
         decimal amount,
         Creature? applier,

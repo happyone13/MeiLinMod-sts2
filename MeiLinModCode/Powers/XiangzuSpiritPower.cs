@@ -1,6 +1,7 @@
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 
 namespace MeiLinMod.MeiLinModCode.Powers;
@@ -17,9 +18,6 @@ public class XiangzuSpiritPower : MeiLinModPower
     }
 
     public override async Task AfterPowerAmountChanged(
-#if STS2_104
-        MegaCrit.Sts2.Core.GameActions.Multiplayer.PlayerChoiceContext choiceContext,
-#endif
         PowerModel power,
         decimal amount,
         Creature? applier,

@@ -9,7 +9,6 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace MeiLinMod.MeiLinModCode.Relics;
 
-[Pool(typeof(MeiLinModRelicPool))]
 public class XiangzuSpiritRelic : MeiLinModRelic
 {
     public override RelicRarity Rarity => RelicRarity.Starter;

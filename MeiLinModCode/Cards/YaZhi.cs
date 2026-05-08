@@ -32,7 +32,7 @@ public class YaZhi() : MeiLinModCard(-1, CardType.Skill, CardRarity.Uncommon, Ta
 
             strike.SetToFreeThisCombat();
             CardCmd.ApplyKeyword(strike, CardKeyword.Exhaust);
-            await CardPileCmd.AddGeneratedCardToCombat(strike, PileType.Hand, Owner);
+            await CardPileCmd.AddGeneratedCardToCombat(strike, PileType.Hand, true);
 
             if (IsUpgraded)
                 CardCmd.Upgrade(strike);

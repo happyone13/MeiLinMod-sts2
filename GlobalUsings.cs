@@ -1,2 +1,2 @@
-global using PowerCmd = MeiLinMod.MeiLinModCode.Compat.PowerCmdCompat;
-global using CardPileCmd = MeiLinMod.MeiLinModCode.Compat.CardPileCmdCompat;
+global using PowerCmd = MegaCrit.Sts2.Core.Commands.PowerCmd;
+global using CardPileCmd = MegaCrit.Sts2.Core.Commands.CardPileCmd;

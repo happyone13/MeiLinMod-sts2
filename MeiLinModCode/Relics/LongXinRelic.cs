@@ -10,7 +10,6 @@ using MegaCrit.Sts2.Core.Rooms;
 
 namespace MeiLinMod.MeiLinModCode.Relics;
 
-[Pool(typeof(MeiLinModRelicPool))]
 public class LongXinRelic : MeiLinModRelic
 {
     private bool _playedGuiYiThisCombat;

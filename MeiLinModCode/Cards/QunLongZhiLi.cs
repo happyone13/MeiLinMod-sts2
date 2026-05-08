@@ -21,11 +21,7 @@ public class QunLongZhiLi() : MeiLinModCard(3, CardType.Power, CardRarity.Rare, 
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-#if STS2_104
-        var combatState = Owner.Creature.CombatState;
-#else
         var combatState = CombatState;
-#endif
         if (combatState == null)
             return;
 

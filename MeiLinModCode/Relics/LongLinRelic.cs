@@ -6,7 +6,6 @@ using MegaCrit.Sts2.Core.Entities.Relics;
 
 namespace MeiLinMod.MeiLinModCode.Relics;
 
-[Pool(typeof(MeiLinModRelicPool))]
 public class LongLinRelic : MeiLinModRelic
 {
     public override RelicRarity Rarity => RelicRarity.Rare;

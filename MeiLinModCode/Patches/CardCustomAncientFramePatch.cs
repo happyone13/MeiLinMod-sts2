@@ -82,9 +82,14 @@ public static class CardCustomAncientFramePatch
 
     public static void Apply(NCard? cardNode)
     {
+        if (cardNode == null || !GodotObject.IsInstanceValid(cardNode) || !cardNode.IsNodeReady())
+            return;
+
         if (!TryGetCustomFrameCard(cardNode, out MeiLinModCard? cardModel))
         {
-            RemoveChaosEffects(cardNode, restoreOriginalState: false);
+            if (HasMeiLinVisualState(cardNode))
+                RemoveChaosEffects(cardNode, restoreOriginalState: true);
+
             return;
         }
 
@@ -193,7 +198,10 @@ public static class CardCustomAncientFramePatch
 
     public static void PrepareForBaseVisuals(NCard? cardNode)
     {
-        if (TryGetCustomFrameCard(cardNode, out _))
+        if (cardNode == null || !GodotObject.IsInstanceValid(cardNode) || !cardNode.IsNodeReady())
+            return;
+
+        if (TryGetCustomFrameCard(cardNode, out _) || !HasMeiLinVisualState(cardNode))
             return;
 
         RemoveChaosEffects(cardNode, restoreOriginalState: true);
@@ -204,8 +212,12 @@ public static class CardCustomAncientFramePatch
         if (cardNode == null)
             return;
 
-        RemoveChaosEffects(cardNode, restoreOriginalState: true);
-        CardSpinePortraitPatch.RemoveSpineOverlay(cardNode);
+        if (HasMeiLinVisualState(cardNode))
+            RemoveChaosEffects(cardNode, restoreOriginalState: true);
+
+        if (CardSpinePortraitPatch.HasActiveSpineOverlay(cardNode))
+            CardSpinePortraitPatch.RemoveSpineOverlay(cardNode);
+
         OriginalStates.Remove(cardNode);
     }
 
@@ -227,6 +239,22 @@ public static class CardCustomAncientFramePatch
 
         cardModel = model;
         return true;
+    }
+
+    private static bool HasMeiLinVisualState(NCard cardNode)
+    {
+        if (OriginalStates.TryGetValue(cardNode, out OriginalCardVisualState? state) && state.HasSnapshot)
+            return true;
+
+        return GetOverlayNode(cardNode, RarityBaseNodeName) != null ||
+               GetOverlayNode(cardNode, RaritySubNodeName) != null ||
+               GetOverlayNode(cardNode, EgoBadgeNodeName) != null ||
+               GetOverlayNode(cardNode, FrameSparkNodeName) != null ||
+               GetOverlayNode(cardNode, CategoryIconNodeName) != null ||
+               GetOverlayNode(cardNode, CategoryTextNodeName) != null ||
+               GetOverlayNode(cardNode, CostTextNodeName) != null ||
+               GetOverlayNode(cardNode, UpgradeIconNodeName) != null ||
+               GetOverlayNode(cardNode, DescriptionMaskNodeName) != null;
     }
 
     private static void ApplyTextureRect(TextureRect? textureRect, string texturePath, Material? material, bool show)
@@ -518,6 +546,11 @@ public static class CardCustomAncientFramePatch
     private static void RemoveNode(Node parent, string nodeName)
     {
         parent.GetNodeOrNull<Node>(nodeName)?.QueueFree();
+    }
+
+    private static Control? GetOverlayNode(Node parent, string nodeName)
+    {
+        return parent.GetNodeOrNull<Control>(nodeName);
     }
 
     private static void CaptureOriginalState(NCard cardNode)

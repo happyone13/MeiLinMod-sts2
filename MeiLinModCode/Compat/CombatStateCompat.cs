@@ -85,7 +85,7 @@ public static class CombatStateCompat
     {
         return typeof(CardModel).Assembly
             .GetTypes()
-            .Where(type => type.Name is "CombatState" or "ICombatState")
+            .Where(type => type.Name == "CombatState")
             .SelectMany(type => type.GetMethods(BindingFlags.Public | BindingFlags.Instance))
             .FirstOrDefault(method =>
                 method.Name == "CreateCard" &&

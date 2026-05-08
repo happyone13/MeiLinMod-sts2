@@ -9,7 +9,6 @@ using MegaCrit.Sts2.Core.Saves.Runs;
 
 namespace MeiLinMod.MeiLinModCode.Relics;
 
-[Pool(typeof(MeiLinModRelicPool))]
 public class LongYanRelic : MeiLinModRelic
 {
     private const int TurnThreshold = 3;
@@ -32,11 +31,7 @@ public class LongYanRelic : MeiLinModRelic
 
     public override async Task AfterSideTurnStart(
         CombatSide side,
-#if STS2_104
-        ICombatState combatState
-#else
         CombatState combatState
-#endif
     )
     {
         if (side != Owner.Creature.Side)
