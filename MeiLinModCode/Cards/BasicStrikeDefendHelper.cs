@@ -1,7 +1,7 @@
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Players;
+using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Models;
-using MeiLinMod.MeiLinModCode.Compat;
 using MegaCrit.Sts2.Core.Models.Exceptions;
 using System.Linq;
 
@@ -87,22 +87,22 @@ public static class BasicStrikeDefendHelper
                IsCharacterStarterCard(card, player, CardTag.Defend);
     }
 
-    public static CardModel? CreateBasicStrikeForPlayer(Player player, object? combatState)
+    public static CardModel? CreateBasicStrikeForPlayer(Player player, CombatState? combatState)
     {
         if (combatState == null)
             return null;
 
         var canonical = GetCanonicalBasicStrike(player);
-        return canonical == null ? null : CombatStateCompat.CreateCard(combatState, canonical, player);
+        return canonical == null ? null : combatState.CreateCard(canonical, player);
     }
 
-    public static CardModel? CreateBasicDefendForPlayer(Player player, object? combatState)
+    public static CardModel? CreateBasicDefendForPlayer(Player player, CombatState? combatState)
     {
         if (combatState == null)
             return null;
 
         var canonical = GetCanonicalBasicDefend(player);
-        return canonical == null ? null : CombatStateCompat.CreateCard(combatState, canonical, player);
+        return canonical == null ? null : combatState.CreateCard(canonical, player);
     }
 
     private static CardModel? GetCanonicalBasicStrike(Player player)

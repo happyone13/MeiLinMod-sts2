@@ -702,9 +702,9 @@ public static class CardCustomAncientFramePatch
         }
     }
 
-    private static void BringToFront(Node child)
+    private static void BringToFront(Node? child)
     {
-        if (child.GetParent() == null)
+        if (child?.GetParent() == null)
             return;
 
         child.GetParent().MoveChild(child, child.GetParent().GetChildCount() - 1);

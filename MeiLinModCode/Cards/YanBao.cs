@@ -30,6 +30,10 @@ public class YanBao() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommon, T
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
+        var combatState = CombatState;
+        if (combatState == null)
+            return;
+
         var ember = cardPlay.Target.GetPower<EmberPower>()?.Amount ?? 0m;
         if (ember > 0)
             await PowerCmd.Apply<EmberPower>(cardPlay.Target, -ember, Owner.Creature, this);
@@ -37,7 +41,7 @@ public class YanBao() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommon, T
         var totalDamage = DynamicVars.Damage.BaseValue + (ember * DynamicVars[BonusDamageKey].BaseValue);
         await DamageCmd.Attack(totalDamage)
             .FromCard(this)
-            .TargetingAllOpponents(CombatState)
+            .TargetingAllOpponents(combatState)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
     }
@@ -47,7 +51,6 @@ public class YanBao() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommon, T
         DynamicVars.Damage.UpgradeValueBy(5m);
     }
 }
-
 
 
 

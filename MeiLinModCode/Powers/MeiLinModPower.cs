@@ -8,5 +8,6 @@ public abstract class MeiLinModPower : CustomPowerModel
 {
     // Prefer same-name power icon; fall back to default power.png when missing.
     public override string CustomPackedIconPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".PowerImagePathOrDefault();
+    // The big icon slot also reuses the regular power icon asset.
     public override string CustomBigIconPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".BigPowerImagePathOrDefault();
 }

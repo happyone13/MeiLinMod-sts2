@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
-using MeiLinMod.MeiLinModCode.Compat;
 using MeiLinMod.MeiLinModCode.Extensions;
 using MeiLinMod.MeiLinModCode.Services;
 using MegaCrit.Sts2.Core.Combat.History.Entries;
@@ -68,12 +67,12 @@ public class ShengLongJiao() : MeiLinModCard(2, CardType.Attack, CardRarity.Unco
             return 0;
 
         var history = MegaCrit.Sts2.Core.Combat.CombatManager.Instance?.History?.CardPlaysFinished;
-        var combatState = CombatStateCompat.TryGetCombatState(this) ?? CombatStateCompat.TryGetCombatState(Owner?.Creature);
+        var combatState = CombatState ?? Owner?.Creature?.CombatState;
         if (history == null || combatState == null)
             return 0;
 
         return history.Count(e =>
-            CombatStateCompat.HappenedThisTurn(e, combatState) &&
+            e.HappenedThisTurn(combatState) &&
             e.CardPlay.Card.Owner == Owner);
     }
 }

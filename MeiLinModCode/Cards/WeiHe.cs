@@ -35,14 +35,18 @@ public class WeiHe() : MeiLinModCard(1, CardType.Skill, CardRarity.Uncommon, Tar
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        foreach (var enemy in CombatState.HittableEnemies)
+        var combatState = CombatState;
+        if (combatState == null)
+            return;
+
+        foreach (var enemy in combatState.HittableEnemies)
             await PowerCmd.Apply<WeakPower>(enemy, DynamicVars[WeakKey].BaseValue, Owner.Creature, this);
 
         if (!AwakeningHelper.IsAwakened(cardPlay))
             return;
 
         await PowerCmd.Apply<EmberPower>(Owner.Creature, DynamicVars[EmberKey].BaseValue, Owner.Creature, this);
-        foreach (var enemy in CombatState.HittableEnemies)
+        foreach (var enemy in combatState.HittableEnemies)
             await PowerCmd.Apply<VulnerablePower>(enemy, DynamicVars[VulnerableKey].BaseValue, Owner.Creature, this);
     }
 
@@ -51,5 +55,4 @@ public class WeiHe() : MeiLinModCard(1, CardType.Skill, CardRarity.Uncommon, Tar
         DynamicVars[VulnerableKey].UpgradeValueBy(1m);
     }
 }
-
 

@@ -171,8 +171,9 @@ public partial class SpineAutoPlayer : Node
         if (slot == null)
             return;
 
-        TryCall(slot, "set_attachment", default);
-        TryCall(slot, "SetAttachment", default);
+        Variant nullAttachment = default;
+        TryCall(slot, "set_attachment", nullAttachment);
+        TryCall(slot, "SetAttachment", nullAttachment);
     }
 
     private static bool IsCurrentAnimationComplete(GodotObject animationState, int track)

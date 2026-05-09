@@ -37,11 +37,14 @@ public class ShanHe() : MeiLinModCard(1, CardType.Attack, CardRarity.Common, Tar
 
         if (!AwakeningHelper.IsAwakened(cardPlay))
             return;
+        var combatState = CombatState;
+        if (combatState == null)
+            return;
 
         await PlayerCmd.LoseEnergy(1, Owner);
         await DamageCmd.Attack(DynamicVars[BurstKey].BaseValue)
             .FromCard(this)
-            .TargetingAllOpponents(CombatState)
+            .TargetingAllOpponents(combatState)
             .Execute(choiceContext);
     }
 

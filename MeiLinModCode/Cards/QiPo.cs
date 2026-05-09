@@ -40,9 +40,12 @@ public class QiPo() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncommon, Targ
     {
         if ((Owner.Creature.GetPower<QiPower>()?.Amount ?? 0m) < 1m)
             return;
+        var combatState = CombatState;
+        if (combatState == null)
+            return;
 
         await PowerCmd.Apply<QiPower>(Owner.Creature, -1m, Owner.Creature, this);
-        foreach (var enemy in CombatState.HittableEnemies)
+        foreach (var enemy in combatState.HittableEnemies)
         {
             await PowerCmd.Apply<QiPoTemporaryStrengthDownPower>(enemy, DynamicVars[StrengthLossKey].BaseValue, Owner.Creature, this);
             await PowerCmd.Apply<EmberPower>(enemy, DynamicVars[EmberKey].BaseValue, Owner.Creature, this);

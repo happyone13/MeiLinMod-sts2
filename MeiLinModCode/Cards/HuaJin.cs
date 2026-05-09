@@ -38,6 +38,9 @@ public class HuaJin() : MeiLinModCard(2, CardType.Skill, CardRarity.Common, Targ
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
+        var combatState = CombatState;
+        if (combatState == null)
+            return;
 
         var weak = DynamicVars["Weak"].BaseValue;
         if (AwakeningHelper.IsAwakened(cardPlay) && (Owner.Creature.GetPower<QiPower>()?.Amount ?? 0m) >= 1m)
@@ -46,7 +49,7 @@ public class HuaJin() : MeiLinModCard(2, CardType.Skill, CardRarity.Common, Targ
             weak += 2m;
         }
 
-        foreach (var enemy in CombatState.HittableEnemies)
+        foreach (var enemy in combatState.HittableEnemies)
             await PowerCmd.Apply<WeakPower>(enemy, weak, Owner.Creature, this);
     }
 

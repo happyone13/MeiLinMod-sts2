@@ -20,7 +20,7 @@ public static class StringExtensions
 
     public static string BigCardImagePath(this string path)
     {
-        return $"{MainFile.ModId}/images/card_portraits/big/{path}";
+        return path.CardImagePath();
     }
 
     public static string CardImagePathOrDefault(this string path)
@@ -31,8 +31,7 @@ public static class StringExtensions
 
     public static string BigCardImagePathOrDefault(this string path)
     {
-        var targetPath = path.BigCardImagePath();
-        return ResourceExists(targetPath) ? targetPath : "card.png".BigCardImagePath();
+        return path.CardImagePathOrDefault();
     }
 
     public static string PowerImagePath(this string path)
@@ -48,13 +47,12 @@ public static class StringExtensions
 
     public static string BigPowerImagePath(this string path)
     {
-        return $"{MainFile.ModId}/images/powers/big/{path}";
+        return path.PowerImagePath();
     }
 
     public static string BigPowerImagePathOrDefault(this string path)
     {
-        var targetPath = path.BigPowerImagePath();
-        return ResourceExists(targetPath) ? targetPath : "power.png".BigPowerImagePath();
+        return path.PowerImagePathOrDefault();
     }
 
     public static string PotionImagePath(this string path)
@@ -69,7 +67,7 @@ public static class StringExtensions
 
     public static string BigRelicImagePath(this string path)
     {
-        return $"{MainFile.ModId}/images/relics/big/{path}";
+        return path.RelicImagePath();
     }
 
     public static string CharacterUiPath(this string path)

@@ -32,8 +32,9 @@
         <!-- If on Windows and Slay the Spire 2 is not installed in your default steam library, adjust the following.-->
         <SteamLibraryPath Condition="'$(SteamLibraryPath)' == ''">C:/Program Files (x86)/Steam/steamapps</SteamLibraryPath>
 
-        <!-- 103 should point to a separate local install/copy. Configure via -p:Sts2Path103=... or STS2_103_PATH. -->
+        <!-- 103 defaults to the installed Steam copy. Override via -p:Sts2Path103=... or STS2_103_PATH when needed. -->
         <Sts2Path103 Condition="'$(Sts2Path103)' == '' and '$(STS2_103_PATH)' != ''">$(STS2_103_PATH)</Sts2Path103>
+        <Sts2Path103 Condition="'$(Sts2Path103)' == '' and Exists('$(SteamLibraryPath)/common/Slay the Spire 2')">$(SteamLibraryPath)/common/Slay the Spire 2</Sts2Path103>
         <Sts2Path>$(Sts2Path103)</Sts2Path>
         <ModsPath>$(Sts2Path)/mods/</ModsPath>
         <Sts2DataDir>$(Sts2Path)/data_sts2_windows_x86_64</Sts2DataDir>
@@ -120,10 +121,6 @@
         <None Include="MeiLinMod.json"/>
         <None Include="project.godot"/>
         <None Include="MeiLinMod/**"/>
-    </ItemGroup>
-
-    <ItemGroup>
-        <Folder Include="MeiLinMod\images\relics\big\"/>
     </ItemGroup>
 
     <ItemGroup>

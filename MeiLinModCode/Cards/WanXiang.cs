@@ -69,9 +69,10 @@ public class WanXiang() : MeiLinModCard(0, CardType.Skill, CardRarity.Rare, Targ
 
     private Creature? ResolveTarget(CardModel card)
     {
+        var combatState = CombatState;
         return card.TargetType switch
         {
-            TargetType.AnyEnemy => CombatState.HittableEnemies.FirstOrDefault(),
+            TargetType.AnyEnemy => combatState?.HittableEnemies.FirstOrDefault(),
             TargetType.AnyPlayer => Owner.Creature,
             _ => null
         };

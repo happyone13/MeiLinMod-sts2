@@ -38,9 +38,13 @@ public class QiZhenShanHe() : MeiLinModCard(2, CardType.Attack, CardRarity.Commo
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        var combatState = CombatState;
+        if (combatState == null)
+            return;
+
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .FromCard(this)
-            .TargetingAllOpponents(CombatState)
+            .TargetingAllOpponents(combatState)
             .Execute(choiceContext);
 
         var vulnerable = DynamicVars[VulnerableKey].BaseValue;
@@ -50,7 +54,7 @@ public class QiZhenShanHe() : MeiLinModCard(2, CardType.Attack, CardRarity.Commo
             vulnerable += 2m;
         }
 
-        foreach (var enemy in CombatState.HittableEnemies)
+        foreach (var enemy in combatState.HittableEnemies)
             await PowerCmd.Apply<VulnerablePower>(enemy, vulnerable, Owner.Creature, this);
     }
 

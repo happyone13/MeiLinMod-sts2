@@ -18,15 +18,19 @@ public class YaZhi() : MeiLinModCard(-1, CardType.Skill, CardRarity.Uncommon, Ta
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         var count = ResolveEnergyXValue();
+        var combatState = CombatState;
         if (count > 0)
         {
-            foreach (var enemy in CombatState.HittableEnemies)
+            if (combatState == null)
+                return;
+
+            foreach (var enemy in combatState.HittableEnemies)
                 await PowerCmd.Apply<Powers.EmberPower>(enemy, count, Owner.Creature, this);
         }
 
         for (var i = 0; i < count; i++)
         {
-            var strike = BasicStrikeDefendHelper.CreateBasicStrikeForPlayer(Owner, CombatState);
+            var strike = BasicStrikeDefendHelper.CreateBasicStrikeForPlayer(Owner, combatState);
             if (strike == null)
                 continue;
 

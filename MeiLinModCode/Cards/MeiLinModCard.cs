@@ -25,11 +25,11 @@ public abstract class MeiLinModCard(int cost, CardType type, CardRarity rarity, 
         "res://MeiLinMod/materials/cards/banners/card_banner_chaos_mat.tres";
 
     protected string IdPortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePathOrDefault();
+    // The "big portrait" slot now reuses the regular small portrait asset.
     protected string IdBigPortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".BigCardImagePathOrDefault();
 
-    //Image size:
-    //Normal art: 1000x760 (Using 500x380 should also work, it will simply be scaled.)
-    //Full art: 606x852
+    // CustomPortraitPath is still the full-art hook, but it now resolves to the same
+    // small portrait asset as the regular portrait slot.
     public override string CustomPortraitPath => IdBigPortraitPath;
 
     //Smaller variants of card images for efficiency:

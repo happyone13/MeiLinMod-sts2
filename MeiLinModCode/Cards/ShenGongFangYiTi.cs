@@ -45,7 +45,11 @@ public class ShenGongFangYiTi() : MeiLinModCard(1, CardType.Skill, CardRarity.An
         if (card.TargetType != TargetType.AnyEnemy)
             return null;
 
-        var enemies = CombatState.HittableEnemies.ToList();
+        var combatState = CombatState;
+        if (combatState == null)
+            return null;
+
+        var enemies = combatState.HittableEnemies.ToList();
         if (enemies.Count == 0)
             return null;
 

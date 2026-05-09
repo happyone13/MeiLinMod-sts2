@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using MeiLinMod.MeiLinModCode.Compat;
+using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Players;
@@ -11,12 +11,12 @@ namespace MeiLinMod.MeiLinModCode.Cards;
 
 public static class RandomStrikeHelper
 {
-    public static CardModel? CreateRandomNonBasicStrike(Player player, object? combatState, bool upgraded, CardModel? original = null)
+    public static CardModel? CreateRandomNonBasicStrike(Player player, CombatState? combatState, bool upgraded, CardModel? original = null)
     {
         return CreateRandomNonBasicStrike(player, combatState, upgraded, false, original);
     }
 
-    public static CardModel? CreateRandomNonBasicStrike(Player player, object? combatState, bool upgraded, bool forceOneCost, CardModel? original = null)
+    public static CardModel? CreateRandomNonBasicStrike(Player player, CombatState? combatState, bool upgraded, bool forceOneCost, CardModel? original = null)
     {
         if (combatState == null)
             return null;
@@ -25,7 +25,7 @@ public static class RandomStrikeHelper
         if (canonical == null)
             return null;
 
-        var created = CombatStateCompat.CreateCard(combatState, canonical, player);
+        var created = combatState.CreateCard(canonical, player);
         if (created == null)
             return null;
 
@@ -57,7 +57,7 @@ public static class RandomStrikeHelper
         {
             var replacement = CreateRandomNonBasicStrike(
                 player,
-                CombatStateCompat.TryGetCombatState(strikeCard) ?? player.PlayerCombatState,
+                strikeCard.CombatState ?? player.Creature?.CombatState,
                 upgraded,
                 forceOneCost,
                 strikeCard);

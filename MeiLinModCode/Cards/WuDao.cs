@@ -20,6 +20,10 @@ public class WuDao() : MeiLinModCard(0, CardType.Skill, CardRarity.Rare, TargetT
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        var combatState = CombatState;
+        if (combatState == null)
+            return;
+
         var poolCards = Owner.Character.CardPool
             .GetUnlockedCards(Owner.UnlockState, Owner.RunState.CardMultiplayerConstraint)
             .Where(c => c.Type == CardType.Power && c.Id != Id)
@@ -28,7 +32,10 @@ public class WuDao() : MeiLinModCard(0, CardType.Skill, CardRarity.Rare, TargetT
             return;
 
         var pickedCanonical = Owner.RunState.Rng.CombatCardSelection.NextItem(poolCards);
-        var created = CombatState.CreateCard(pickedCanonical, Owner);
+        if (pickedCanonical == null)
+            return;
+
+        var created = combatState.CreateCard(pickedCanonical, Owner);
         created.EnergyCost.AddThisTurn(-1, reduceOnly: true);
         if (IsUpgraded)
             CardCmd.Upgrade(created);

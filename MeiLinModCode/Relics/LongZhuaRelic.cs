@@ -1,7 +1,6 @@
 using System.Linq;
 using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
-using MeiLinMod.MeiLinModCode.Compat;
 using MeiLinMod.MeiLinModCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Relics;
@@ -15,7 +14,7 @@ public class LongZhuaRelic : MeiLinModRelic
     public override async Task BeforeCombatStartLate()
     {
         Flash();
-        var enemies = CombatStateCompat.GetHittableEnemies(Owner.PlayerCombatState);
+        var enemies = Owner.Creature.CombatState?.HittableEnemies.ToList() ?? [];
         if (enemies.Count == 0)
             return;
 

@@ -44,16 +44,24 @@ public static class AncientRelicMeiLinPatch
         var hasStarterInDeck = player.Deck.Cards.Any(c =>
             c is AttackDefenseUnity || c.Id.Entry == "MEILINMOD-ATTACK_DEFENSE_UNITY");
         var isMeiLin = IsMeiLinPlayer(player);
+        var poolType = player.Character?.CardPool?.GetType().FullName ?? "null";
         MainFile.Logger.Info(
-            $"[AncientRelicMeiLinPatch] DustyTome.SetupForPlayer enter: character={characterEntry}, hasStarter={hasStarterInDeck}, isMeiLin={isMeiLin}, poolType={player.Character.CardPool.GetType().FullName}");
+            $"[AncientRelicMeiLinPatch] DustyTome.SetupForPlayer enter: character={characterEntry}, hasStarter={hasStarterInDeck}, isMeiLin={isMeiLin}, poolType={poolType}");
 
         if (!isMeiLin)
         {
             return true;
         }
 
+        var cardPool = player.Character?.CardPool;
+        if (cardPool == null)
+        {
+            MainFile.Logger.Info("[AncientRelicMeiLinPatch] DustyTome.SetupForPlayer: MeiLin player has no card pool.");
+            return true;
+        }
+
         var poolCards = GetCardPoolCards(player).ToList();
-        var unlockedCards = player.Character.CardPool
+        var unlockedCards = cardPool
             .GetUnlockedCards(player.UnlockState, player.RunState.CardMultiplayerConstraint)
             .ToList();
 
@@ -82,6 +90,12 @@ public static class AncientRelicMeiLinPatch
         }
 
         var selected = player.PlayerRng.Rewards.NextItem(candidates);
+        if (selected == null)
+        {
+            MainFile.Logger.Info("[AncientRelicMeiLinPatch] DustyTome.SetupForPlayer: reward RNG returned null candidate.");
+            return true;
+        }
+
         __instance.AncientCard = selected.Id;
         MainFile.Logger.Info(
             $"[AncientRelicMeiLinPatch] DustyTome.SetupForPlayer: selected={selected.Id.Entry}, candidates={string.Join(",", candidates.Select(c => c.Id.Entry))}");

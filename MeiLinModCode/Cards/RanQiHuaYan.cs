@@ -39,7 +39,11 @@ public class RanQiHuaYan() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncommo
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        foreach (var enemy in CombatState.HittableEnemies)
+        var combatState = CombatState;
+        if (combatState == null)
+            return;
+
+        foreach (var enemy in combatState.HittableEnemies)
             await PowerCmd.Apply<EmberPower>(enemy, DynamicVars[EmberKey].BaseValue, Owner.Creature, this);
 
         if (!AwakeningHelper.IsAwakened(cardPlay))
@@ -51,7 +55,7 @@ public class RanQiHuaYan() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncommo
 
         await PowerCmd.Apply<QiPower>(Owner.Creature, -qi, Owner.Creature, this);
         var bonus = qi * DynamicVars[BonusPerQiKey].BaseValue;
-        foreach (var enemy in CombatState.HittableEnemies)
+        foreach (var enemy in combatState.HittableEnemies)
             await PowerCmd.Apply<EmberPower>(enemy, bonus, Owner.Creature, this);
     }
 

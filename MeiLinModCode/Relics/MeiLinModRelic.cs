@@ -14,5 +14,6 @@ public abstract class MeiLinModRelic : CustomRelicModel
     protected override string PackedIconOutlinePath =>
         $"{Id.Entry.RemovePrefix().ToLowerInvariant()}_outline.png".RelicImagePath();
 
+    // The big relic slot also reuses the regular relic icon asset.
     protected override string BigIconPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".BigRelicImagePath();
 }
