@@ -46,9 +46,9 @@ public class JiBenGongPower : MeiLinModPower
             return;
 
         if (BasicStrikeDefendHelper.IsStrikeCard(card))
-            card.DynamicVars.Damage.BaseValue += _appliedBonus;
+            ApplyStrikeBonus(card, _appliedBonus);
         else if (BasicStrikeDefendHelper.IsDefendCard(card))
-            card.DynamicVars.Block.BaseValue += _appliedBonus;
+            ApplyDefendBonus(card, _appliedBonus);
     }
 
     private void SyncBonusesToCurrentAmount()
@@ -65,8 +65,24 @@ public class JiBenGongPower : MeiLinModPower
             return;
 
         if (BasicStrikeDefendHelper.IsStrikeCard(card))
-            card.DynamicVars.Damage.BaseValue += bonus;
+            ApplyStrikeBonus(card, bonus);
         else if (BasicStrikeDefendHelper.IsDefendCard(card))
-            card.DynamicVars.Block.BaseValue += bonus;
+            ApplyDefendBonus(card, bonus);
+    }
+
+    private static void ApplyStrikeBonus(CardModel card, decimal bonus)
+    {
+        if (!card.DynamicVars.ContainsKey("Damage"))
+            return;
+
+        card.DynamicVars.Damage.BaseValue += bonus;
+    }
+
+    private static void ApplyDefendBonus(CardModel card, decimal bonus)
+    {
+        if (!card.DynamicVars.ContainsKey("Block"))
+            return;
+
+        card.DynamicVars.Block.BaseValue += bonus;
     }
 }
