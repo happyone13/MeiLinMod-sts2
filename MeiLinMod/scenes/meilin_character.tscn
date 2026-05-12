@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://c4dnpxxd6ldei"]
+[gd_scene load_steps=3 format=3 uid="uid://c4dnpxxd6ldei"]
 
 [ext_resource type="SpineSkeletonDataResource" uid="uid://bron0e5vx401g" path="res://MeiLinMod/spine/q/q.tres" id="1_d5o3x"]
+[ext_resource type="Script" uid="uid://cghtlla3sw0po" path="res://src/Core/Nodes/Combat/NCreatureVisuals.cs" id="2_visuals"]
 
 [node name="TestCharacter" type="Node2D"]
+script = ExtResource("2_visuals")
 metadata/_edit_group_ = true
 
 [node name="Visuals" type="SpineSprite" parent="."]
