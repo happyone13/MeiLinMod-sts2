@@ -55,8 +55,7 @@ public class QiCounterPower : MeiLinModPower
 
     public static int GetRequiredSlotsForNextQi(Creature owner)
     {
-        var qiAmount = owner.GetPower<QiPower>()?.Amount ?? 0m;
-        var qi = (int)decimal.Floor(qiAmount);
+        var qi = XiangzuCombatState.GetQi(owner);
 
         // TongQiao: gaining Qi no longer increases required Qi slots.
         if (owner.HasPower<TongQiaoPower>())
@@ -91,7 +90,7 @@ public class QiCounterPower : MeiLinModPower
 
                 await PowerCmd.Apply<QiCounterPower>(Owner, -required, actor, cardSource, silent: true);
                 await EnsureAttackStanceWhenNoStance(actor, cardSource);
-                await PowerCmd.Apply<QiPower>(Owner, 1m, actor, cardSource, silent: true);
+                await XiangzuCombatState.GainQi(Owner, 1m, actor, cardSource, silent: true);
                 Flash();
             }
         }
@@ -103,7 +102,7 @@ public class QiCounterPower : MeiLinModPower
 
     private async Task EnsureAttackStanceWhenNoStance(Creature actor, CardModel? cardSource)
     {
-        if (Owner.HasPower<StanceGongPower>() || Owner.HasPower<StanceYuPower>() || Owner.HasPower<GuiYiDualStancePower>())
+        if (XiangzuCombatState.HasAnyStance(Owner))
             return;
 
         var legacy = Owner.GetPower<XiangzuLegacyPower>();

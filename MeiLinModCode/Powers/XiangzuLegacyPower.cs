@@ -113,16 +113,16 @@ public class XiangzuLegacyPower : MeiLinModPower
             await EnterAttackStance();
     }
     public async Task AddQiCounterProgress(int value) =>
-        await QiCounterPower.AddProgress(Owner, Math.Max(0, value), Owner, null);
+        await XiangzuCombatState.AddQiProgress(Owner, Math.Max(0, value), Owner, null);
 
     public static bool IsInAttackStance(Creature creature)
     {
-        return creature.HasPower<StanceGongPower>() || creature.HasPower<GuiYiDualStancePower>();
+        return XiangzuCombatState.IsInAttackStance(creature);
     }
 
     public static bool IsInGuardStance(Creature creature)
     {
-        return creature.HasPower<StanceYuPower>() || creature.HasPower<GuiYiDualStancePower>();
+        return XiangzuCombatState.IsInGuardStance(creature);
     }
 
     public override async Task AfterPowerAmountChanged(
@@ -157,7 +157,7 @@ public class XiangzuLegacyPower : MeiLinModPower
         return XiangzuStance.Attack;
     }
 
-    private int GetQiAmount() => (int)(Owner.GetPower<QiPower>()?.Amount ?? 0m);
+    private int GetQiAmount() => XiangzuCombatState.GetQi(Owner);
 
     public override async Task AfterAttack(
         AttackCommand command)
@@ -166,7 +166,7 @@ public class XiangzuLegacyPower : MeiLinModPower
             return;
 
         var hitCount = Math.Max(1, command.Results.Count());
-        await QiCounterPower.AddProgress(Owner, hitCount, Owner, null);
+        await XiangzuCombatState.AddQiProgress(Owner, hitCount, Owner, null);
     }
 
     public override async Task AfterDamageReceived(
@@ -183,14 +183,14 @@ public class XiangzuLegacyPower : MeiLinModPower
         if (result.TotalDamage <= 0m && result.UnblockedDamage <= 0m && result.BlockedDamage <= 0m)
             return;
 
-        await QiCounterPower.AddProgress(Owner, 1, Owner, cardSource);
+        await XiangzuCombatState.AddQiProgress(Owner, 1, Owner, cardSource);
     }
 
     private async Task TriggerStanceSwitchBonuses()
     {
         var qiProgress = (int)(Owner.GetPower<StanceSwitchQiProgressPower>()?.Amount ?? 0m);
         if (qiProgress > 0)
-            await QiCounterPower.AddProgress(Owner, qiProgress, Owner, null);
+            await XiangzuCombatState.AddQiProgress(Owner, qiProgress, Owner, null);
 
         if (GetCurrentStance() == XiangzuStance.Attack)
         {

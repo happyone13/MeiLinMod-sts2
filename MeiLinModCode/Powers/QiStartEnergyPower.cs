@@ -15,11 +15,10 @@ public class QiStartEnergyPower : MeiLinModPower
         if (player.Creature != Owner)
             return;
 
-        var qi = (int)(Owner.GetPower<QiPower>()?.Amount ?? 0m);
+        var qi = XiangzuCombatState.GetQi(Owner);
         if (qi <= 0)
             return;
 
         await PlayerCmd.GainEnergy(qi * Amount, player);
     }
 }
-

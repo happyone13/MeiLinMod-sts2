@@ -13,7 +13,7 @@ namespace MeiLinMod.MeiLinModCode.Cards;
 [Pool(typeof(MeiLinModCardPool))]
 public class HuoLongXinZang() : MeiLinModCard(0, CardType.Skill, CardRarity.Rare, TargetType.Self)
 {
-    protected override bool IsPlayable => (Owner.Creature.GetPower<QiPower>()?.Amount ?? 0m) >= 1m;
+    protected override bool IsPlayable => XiangzuCombatState.HasQi(Owner.Creature);
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => IsUpgraded
         ? [CardKeyword.Retain]
@@ -31,10 +31,9 @@ public class HuoLongXinZang() : MeiLinModCard(0, CardType.Skill, CardRarity.Rare
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        if ((Owner.Creature.GetPower<QiPower>()?.Amount ?? 0m) < 1m)
+        if (!await XiangzuCombatState.TryConsumeQi(Owner.Creature, 1, Owner.Creature, this))
             return;
 
-        await PowerCmd.Apply<QiPower>(Owner.Creature, -1m, Owner.Creature, this);
         await PlayerCmd.GainEnergy(1m, Owner);
     }
 

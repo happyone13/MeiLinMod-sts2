@@ -60,8 +60,8 @@ public class QiPower : MeiLinModPower
     public async Task RefreshFromState(CardModel? cardSource)
     {
         var qiAmount = Amount;
-        var targetStrength = XiangzuLegacyPower.IsInAttackStance(Owner) ? qiAmount : 0m;
-        var targetDexterity = XiangzuLegacyPower.IsInGuardStance(Owner) ? qiAmount : 0m;
+        var targetStrength = XiangzuCombatState.IsInAttackStance(Owner) ? qiAmount : 0m;
+        var targetDexterity = XiangzuCombatState.IsInGuardStance(Owner) ? qiAmount : 0m;
 
         var deltaStrength = targetStrength - _appliedStrength;
         if (deltaStrength != 0m)

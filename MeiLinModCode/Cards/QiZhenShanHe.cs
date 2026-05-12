@@ -48,9 +48,9 @@ public class QiZhenShanHe() : MeiLinModCard(2, CardType.Attack, CardRarity.Commo
             .Execute(choiceContext);
 
         var vulnerable = DynamicVars[VulnerableKey].BaseValue;
-        if (AwakeningHelper.IsAwakened(cardPlay) && (Owner.Creature.GetPower<QiPower>()?.Amount ?? 0m) >= 1m)
+        if (AwakeningHelper.IsAwakened(cardPlay) &&
+            await XiangzuCombatState.TryConsumeQi(Owner.Creature, 1m, Owner.Creature, this))
         {
-            await PowerCmd.Apply<QiPower>(Owner.Creature, -1m, Owner.Creature, this);
             vulnerable += 2m;
         }
 

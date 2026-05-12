@@ -43,9 +43,9 @@ public class HuaJin() : MeiLinModCard(2, CardType.Skill, CardRarity.Common, Targ
             return;
 
         var weak = DynamicVars["Weak"].BaseValue;
-        if (AwakeningHelper.IsAwakened(cardPlay) && (Owner.Creature.GetPower<QiPower>()?.Amount ?? 0m) >= 1m)
+        if (AwakeningHelper.IsAwakened(cardPlay) &&
+            await XiangzuCombatState.TryConsumeQi(Owner.Creature, 1m, Owner.Creature, this))
         {
-            await PowerCmd.Apply<QiPower>(Owner.Creature, -1m, Owner.Creature, this);
             weak += 2m;
         }
 

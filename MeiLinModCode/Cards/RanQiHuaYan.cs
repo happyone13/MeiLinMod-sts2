@@ -49,11 +49,11 @@ public class RanQiHuaYan() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncommo
         if (!AwakeningHelper.IsAwakened(cardPlay))
             return;
 
-        var qi = (int)(Owner.Creature.GetPower<QiPower>()?.Amount ?? 0m);
+        var qi = XiangzuCombatState.GetQi(Owner.Creature);
         if (qi <= 0)
             return;
 
-        await PowerCmd.Apply<QiPower>(Owner.Creature, -qi, Owner.Creature, this);
+        await XiangzuCombatState.ConsumeAllQi(Owner.Creature, Owner.Creature, this);
         var bonus = qi * DynamicVars[BonusPerQiKey].BaseValue;
         foreach (var enemy in combatState.HittableEnemies)
             await PowerCmd.Apply<EmberPower>(enemy, bonus, Owner.Creature, this);

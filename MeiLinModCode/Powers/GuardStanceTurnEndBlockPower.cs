@@ -17,10 +17,10 @@ public class GuardStanceTurnEndBlockPower : MeiLinModPower
         if (side != Owner.Side)
             return;
 
-        if (XiangzuLegacyPower.IsInGuardStance(Owner))
+        if (XiangzuCombatState.IsInGuardStance(Owner))
             await CreatureCmd.GainBlock(Owner, Amount, ValueProp.Move | ValueProp.Unpowered, null, fast: true);
 
-        if (!XiangzuLegacyPower.IsInAttackStance(Owner))
+        if (!XiangzuCombatState.IsInAttackStance(Owner))
             return;
 
         var enemies = CombatState.HittableEnemies.ToList();

@@ -21,10 +21,10 @@ public class CanYingPower : MeiLinModPower
         if (extraTriggers <= 0)
             return playCount;
 
-        if (XiangzuLegacyPower.IsInAttackStance(Owner) && BasicStrikeDefendHelper.IsStrikeCard(card))
+        if (XiangzuCombatState.IsInAttackStance(Owner) && BasicStrikeDefendHelper.IsStrikeCard(card))
             return playCount + extraTriggers;
 
-        if (XiangzuLegacyPower.IsInGuardStance(Owner) && BasicStrikeDefendHelper.IsDefendCard(card))
+        if (XiangzuCombatState.IsInGuardStance(Owner) && BasicStrikeDefendHelper.IsDefendCard(card))
             return playCount + extraTriggers;
 
         return playCount;

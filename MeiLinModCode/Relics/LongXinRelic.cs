@@ -40,7 +40,7 @@ public class LongXinRelic : MeiLinModRelic
 
     public override Task AfterCombatEnd(CombatRoom _)
     {
-        _shouldHealAfterCombatVictory = XiangzuLegacyPower.IsInGuardStance(Owner.Creature) || _playedGuiYiThisCombat;
+        _shouldHealAfterCombatVictory = XiangzuCombatState.IsInGuardStance(Owner.Creature) || _playedGuiYiThisCombat;
         _playedGuiYiThisCombat = false;
         return Task.CompletedTask;
     }

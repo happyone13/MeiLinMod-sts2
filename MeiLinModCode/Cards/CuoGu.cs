@@ -38,10 +38,10 @@ public class CuoGu() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommon, Ta
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
 
-        if (XiangzuLegacyPower.IsInAttackStance(Owner.Creature))
+        if (XiangzuCombatState.IsInAttackStance(Owner.Creature))
             await PowerCmd.Apply<VulnerablePower>(cardPlay.Target, DynamicVars[VulnerableKey].BaseValue, Owner.Creature, this);
 
-        if (XiangzuLegacyPower.IsInGuardStance(Owner.Creature))
+        if (XiangzuCombatState.IsInGuardStance(Owner.Creature))
             await PowerCmd.Apply<WeakPower>(cardPlay.Target, DynamicVars[WeakKey].BaseValue, Owner.Creature, this);
     }
 
