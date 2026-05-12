@@ -24,7 +24,7 @@ public class YiQiHeCheng() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncomm
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
 
-        var qi = (int)(Owner.Creature.GetPower<QiPower>()?.Amount ?? 0m);
+        var qi = XiangzuCombatState.GetQi(Owner.Creature);
         var hitCount = Math.Max(1, qi + 1);
         PrepareAttackAnimation(hitCount);
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
@@ -40,5 +40,4 @@ public class YiQiHeCheng() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncomm
         DynamicVars.Damage.UpgradeValueBy(2m);
     }
 }
-
 

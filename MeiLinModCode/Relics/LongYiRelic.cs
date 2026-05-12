@@ -13,6 +13,6 @@ public class LongYiRelic : MeiLinModRelic
     public override async Task BeforeCombatStart()
     {
         Flash();
-        await PowerCmd.Apply<QiPower>(Owner.Creature, 1m, Owner.Creature, null);
+        await XiangzuCombatState.GainQi(Owner.Creature, 1m, Owner.Creature, null);
     }
 }

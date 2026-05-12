@@ -44,10 +44,9 @@ public class ZaiHuXi() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncommon, T
         if (!AwakeningHelper.IsAwakened(cardPlay))
             return;
 
-        if ((Owner.Creature.GetPower<QiPower>()?.Amount ?? 0m) < 1m)
+        if (!await XiangzuCombatState.TryConsumeQi(Owner.Creature, 1, Owner.Creature, this))
             return;
 
-        await PowerCmd.Apply<QiPower>(Owner.Creature, -1m, Owner.Creature, this);
         await CardPileCmd.Draw(choiceContext, DynamicVars[BurstDrawKey].BaseValue, Owner);
     }
 

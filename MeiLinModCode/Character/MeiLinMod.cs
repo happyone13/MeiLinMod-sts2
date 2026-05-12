@@ -136,7 +136,7 @@ public class MeiLinMod : PlaceholderCharacterModel
         while (current != null)
         {
             if (current is NCreature nCreature)
-                return XiangzuLegacyPower.IsInGuardStance(nCreature.Entity);
+                return XiangzuCombatState.IsInGuardStance(nCreature.Entity);
 
             current = current.GetParent();
         }

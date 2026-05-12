@@ -30,10 +30,10 @@ public class YanLongChuDongPower : MeiLinModPower
         if (result.TotalDamage <= 0m && result.BlockedDamage <= 0m && result.UnblockedDamage <= 0m)
             return;
 
-        if (XiangzuLegacyPower.IsInAttackStance(Owner))
+        if (XiangzuCombatState.IsInAttackStance(Owner))
             await PowerCmd.Apply<EmberPower>(target, Amount, Owner, cardSource);
 
-        if (!XiangzuLegacyPower.IsInGuardStance(Owner))
+        if (!XiangzuCombatState.IsInGuardStance(Owner))
             return;
 
         await QiCounterPower.AddProgress(Owner, (int)Amount, Owner, cardSource);

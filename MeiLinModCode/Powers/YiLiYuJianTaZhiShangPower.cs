@@ -38,7 +38,7 @@ public class YiLiYuJianTaZhiShangPower : MeiLinModPower
         if (amount <= maxLoss)
             return amount;
 
-        if ((Owner.GetPower<QiPower>()?.Amount ?? 0m) < _requiredQi)
+        if (!XiangzuCombatState.HasQi(Owner, _requiredQi))
             return amount;
 
         _protectedThisTurn = true;
@@ -58,7 +58,7 @@ public class YiLiYuJianTaZhiShangPower : MeiLinModPower
             return;
 
         _consumePending = false;
-        await PowerCmd.Apply<QiPower>(Owner, -_requiredQi, Owner, cardSource);
+        await XiangzuCombatState.TryConsumeQi(Owner, _requiredQi, Owner, cardSource);
         _requiredQi += 1m;
     }
 

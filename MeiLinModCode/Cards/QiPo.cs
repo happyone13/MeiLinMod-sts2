@@ -16,7 +16,7 @@ public class QiPo() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncommon, Targ
 {
     private const string EmberKey = "Ember";
     private const string StrengthLossKey = "StrengthLoss";
-    protected override bool IsPlayable => (Owner.Creature.GetPower<QiPower>()?.Amount ?? 0m) >= 1m;
+    protected override bool IsPlayable => XiangzuCombatState.HasQi(Owner.Creature);
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Retain];
 
@@ -38,13 +38,13 @@ public class QiPo() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncommon, Targ
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        if ((Owner.Creature.GetPower<QiPower>()?.Amount ?? 0m) < 1m)
+        if (!XiangzuCombatState.HasQi(Owner.Creature))
             return;
         var combatState = CombatState;
         if (combatState == null)
             return;
 
-        await PowerCmd.Apply<QiPower>(Owner.Creature, -1m, Owner.Creature, this);
+        await XiangzuCombatState.TryConsumeQi(Owner.Creature, 1, Owner.Creature, this);
         foreach (var enemy in combatState.HittableEnemies)
         {
             await PowerCmd.Apply<QiPoTemporaryStrengthDownPower>(enemy, DynamicVars[StrengthLossKey].BaseValue, Owner.Creature, this);

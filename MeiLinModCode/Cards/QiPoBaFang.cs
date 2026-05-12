@@ -29,7 +29,7 @@ public class QiPoBaFang() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommo
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var qi = (int)(Owner.Creature.GetPower<QiPower>()?.Amount ?? 0m);
+        var qi = XiangzuCombatState.GetQi(Owner.Creature);
         var combatState = CombatState;
         if (combatState == null)
             return;
@@ -41,7 +41,7 @@ public class QiPoBaFang() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommo
 
         if (qi > 0)
         {
-            await PowerCmd.Apply<QiPower>(Owner.Creature, -qi, Owner.Creature, this);
+            await XiangzuCombatState.ConsumeAllQi(Owner.Creature, Owner.Creature, this);
         }
     }
 

@@ -15,10 +15,9 @@ public class HuoLongXinZangPower : MeiLinModPower
         if (player.Creature != Owner || player != Owner.Player)
             return;
 
-        if ((Owner.GetPower<QiPower>()?.Amount ?? 0m) <= 0m)
+        if (!await XiangzuCombatState.TryConsumeQi(Owner, 1, Owner, null))
             return;
 
-        await PowerCmd.Apply<QiPower>(Owner, -1m, Owner, null);
         await PlayerCmd.GainEnergy(1m, player);
     }
 }

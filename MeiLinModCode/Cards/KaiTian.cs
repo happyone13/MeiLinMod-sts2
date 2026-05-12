@@ -17,7 +17,7 @@ namespace MeiLinMod.MeiLinModCode.Cards;
 public class KaiTian() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
 {
     public override bool GainsBlock => true;
-    protected override bool IsPlayable => (Owner.Creature.GetPower<QiPower>()?.Amount ?? 0m) >= 1m;
+    protected override bool IsPlayable => XiangzuCombatState.HasQi(Owner.Creature);
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
@@ -26,7 +26,7 @@ public class KaiTian() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommon, 
         new DynamicVar("GuardBonus", 9m)
     ];
 
-    protected override bool ShouldGlowGoldInternal => (Owner.Creature.GetPower<QiPower>()?.Amount ?? 0m) >= 1m;
+    protected override bool ShouldGlowGoldInternal => XiangzuCombatState.HasQi(Owner.Creature);
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
@@ -37,7 +37,7 @@ public class KaiTian() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommon, 
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        if ((Owner.Creature.GetPower<QiPower>()?.Amount ?? 0m) < 1m)
+        if (!XiangzuCombatState.HasQi(Owner.Creature))
             return;
 
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
@@ -46,9 +46,9 @@ public class KaiTian() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommon, 
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);
 
-        await PowerCmd.Apply<QiPower>(Owner.Creature, -1m, Owner.Creature, this);
+        await XiangzuCombatState.TryConsumeQi(Owner.Creature, 1, Owner.Creature, this);
 
-        if (XiangzuLegacyPower.IsInAttackStance(Owner.Creature))
+        if (XiangzuCombatState.IsInAttackStance(Owner.Creature))
         {
             await DamageCmd.Attack(DynamicVars["AttackBonus"].BaseValue)
                 .FromCard(this)
@@ -56,7 +56,7 @@ public class KaiTian() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommon, 
                 .Execute(choiceContext);
         }
 
-        if (XiangzuLegacyPower.IsInGuardStance(Owner.Creature))
+        if (XiangzuCombatState.IsInGuardStance(Owner.Creature))
             await CreatureCmd.GainBlock(Owner.Creature, DynamicVars["GuardBonus"].BaseValue, ValueProp.Move | ValueProp.Unpowered, null, fast: true);
     }
 

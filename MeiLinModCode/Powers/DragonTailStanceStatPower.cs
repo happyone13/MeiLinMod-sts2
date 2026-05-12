@@ -75,8 +75,8 @@ public class DragonTailStanceStatPower : MeiLinModPower
     public async Task RefreshFromState(CardModel? cardSource)
     {
         var stanceBonus = Amount;
-        var targetStrength = XiangzuLegacyPower.IsInGuardStance(Owner) ? stanceBonus : 0m;
-        var targetDexterity = XiangzuLegacyPower.IsInAttackStance(Owner) ? stanceBonus : 0m;
+        var targetStrength = XiangzuCombatState.IsInGuardStance(Owner) ? stanceBonus : 0m;
+        var targetDexterity = XiangzuCombatState.IsInAttackStance(Owner) ? stanceBonus : 0m;
 
         var deltaStrength = targetStrength - _appliedStrength;
         if (deltaStrength != 0m)
