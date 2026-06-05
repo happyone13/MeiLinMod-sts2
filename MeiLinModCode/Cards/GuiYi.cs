@@ -25,7 +25,6 @@ public class GuiYi() : MeiLinModCard(1, CardType.Power, CardRarity.Rare, TargetT
         var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
         if (legacy != null)
         {
-            await legacy.TriggerVirtualStanceSwitch();
             await legacy.RefreshFromStance();
         }
     }

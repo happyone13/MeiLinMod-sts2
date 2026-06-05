@@ -225,7 +225,7 @@
     "MEILINMOD-HUO_LONG_JING_TIAN.description":  "造成{Damage:diff()}点伤害。\n施加{Ember:diff()}层[gold]余烬[/gold]。\n目标本回合结束时[gold]余烬[/gold]不会衰减。",
     "MEILINMOD-SUI_XIN_ER_XING.description":  "回合开始时获得{Progress:diff()}点气槽。",
     "MEILINMOD-HU_XIAO.description":  "回合开始时，随机从抽牌堆或弃牌堆打出1张[gold]打击[/gold]。\n[gold]觉醒[/gold]：获得1点能量。",
-    "MEILINMOD-GUI_YI.description":  "同时视为攻击姿态与防御姿态，并触发一次切换姿态相关效果。\n{IfUpgraded:show:获得3点气槽。|}",
+    "MEILINMOD-GUI_YI.description":  "同时视为攻击姿态与防御姿态。\n{IfUpgraded:show:获得3点气槽。|}",
     "MEILINMOD-TIE_BU_SHAN.selectionScreenPrompt":  "选择1张手牌并消耗",
     "MEILINMOD-YIN_YANG.description":  "每次进入攻击姿态时，获得1点能量。",
     "MEILINMOD-LONG_ZHI_DAO.title":  "龙指导",
