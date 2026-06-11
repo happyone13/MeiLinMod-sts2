@@ -32,7 +32,7 @@ public class ZanJin() : MeiLinModCard(1, CardType.Skill, CardRarity.Common, Targ
         await XiangzuLegacyApi.SetStance(Owner, XiangzuStance.Guard);
 
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
-        await PowerCmd.Apply<ZanJinQiProgressPower>(Owner.Creature, 2m, Owner.Creature, this);
+        await PowerCmd.Apply<ZanJinQiProgressPower>(new BlockingPlayerChoiceContext(), Owner.Creature, 2m, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

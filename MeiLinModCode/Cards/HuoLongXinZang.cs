@@ -37,9 +37,9 @@ public class HuoLongXinZang() : MeiLinModCard(0, CardType.Skill, CardRarity.Rare
         await PlayerCmd.GainEnergy(1m, Owner);
     }
 
-    protected override PileType GetResultPileType()
+    protected override PileType GetResultPileTypeForCardPlay()
     {
-        var result = base.GetResultPileType();
+        var result = base.GetResultPileTypeForCardPlay();
         if (result == PileType.Discard)
             return PileType.Hand;
 

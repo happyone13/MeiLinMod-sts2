@@ -23,13 +23,13 @@ public class LongZhiQiShi() : MeiLinModCard(2, CardType.Power, CardRarity.Uncomm
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await PlayPowerCastAnim();
-        await PowerCmd.Apply<LongZhiQiShiPower>(Owner.Creature, 1m, Owner.Creature, this);
+        await PowerCmd.Apply<LongZhiQiShiPower>(new BlockingPlayerChoiceContext(), Owner.Creature, 1m, Owner.Creature, this);
 
         if (!AwakeningHelper.IsAwakened(cardPlay))
             return;
 
         await PlayerCmd.GainEnergy(2m, Owner);
-        await PowerCmd.Apply<LongZhiQiShiDrawPower>(Owner.Creature, 1m, Owner.Creature, this);
+        await PowerCmd.Apply<LongZhiQiShiDrawPower>(new BlockingPlayerChoiceContext(), Owner.Creature, 1m, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

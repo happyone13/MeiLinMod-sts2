@@ -21,7 +21,7 @@ public class YiLiYuJianTaZhiShang() : MeiLinModCard(1, CardType.Power, CardRarit
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await PlayPowerCastAnim();
-        await PowerCmd.Apply<YiLiYuJianTaZhiShangPower>(Owner.Creature, 1m, Owner.Creature, this);
+        await PowerCmd.Apply<YiLiYuJianTaZhiShangPower>(new BlockingPlayerChoiceContext(), Owner.Creature, 1m, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

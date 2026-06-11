@@ -29,7 +29,7 @@ public class YanZhen() : MeiLinModCard(1, CardType.Power, CardRarity.Rare, Targe
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await PlayPowerCastAnim();
-        await PowerCmd.Apply<StanceSwitchAllEnemiesEmberPower>(Owner.Creature, DynamicVars[EmberKey].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<StanceSwitchAllEnemiesEmberPower>(new BlockingPlayerChoiceContext(), Owner.Creature, DynamicVars[EmberKey].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

@@ -30,10 +30,11 @@ public class QiPoTemporaryStrengthDownPower : MeiLinModPower, ICustomModel
             return;
 
         _appliedAmount = Amount;
-        await PowerCmd.Apply<StrengthPower>(Owner, -_appliedAmount, applier, cardSource, silent: true);
+        await PowerCmd.Apply<StrengthPower>(new BlockingPlayerChoiceContext(), Owner, -_appliedAmount, applier, cardSource, silent: true);
     }
 
     public override async Task AfterPowerAmountChanged(
+        MegaCrit.Sts2.Core.GameActions.Multiplayer.PlayerChoiceContext choiceContext,
         PowerModel power,
         decimal amount,
         Creature? applier,
@@ -47,11 +48,11 @@ public class QiPoTemporaryStrengthDownPower : MeiLinModPower, ICustomModel
         if (amount > 0m && _appliedAmount == Amount)
             return;
 
-        await PowerCmd.Apply<StrengthPower>(Owner, -amount, applier, cardSource, silent: true);
+        await PowerCmd.Apply<StrengthPower>(new BlockingPlayerChoiceContext(), Owner, -amount, applier, cardSource, silent: true);
         _appliedAmount += amount;
     }
 
-    public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
+    public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, System.Collections.Generic.IEnumerable<MegaCrit.Sts2.Core.Entities.Creatures.Creature> participants)
     {
         if (side != Owner.Side)
             return;
@@ -64,7 +65,7 @@ public class QiPoTemporaryStrengthDownPower : MeiLinModPower, ICustomModel
         if (_appliedAmount == 0m)
             return;
 
-        await PowerCmd.Apply<StrengthPower>(oldOwner, _appliedAmount, oldOwner, null, silent: true);
+        await PowerCmd.Apply<StrengthPower>(new BlockingPlayerChoiceContext(), oldOwner, _appliedAmount, oldOwner, null, silent: true);
         _appliedAmount = 0m;
     }
 }

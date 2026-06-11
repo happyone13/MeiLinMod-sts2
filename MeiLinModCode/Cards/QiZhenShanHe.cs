@@ -55,7 +55,7 @@ public class QiZhenShanHe() : MeiLinModCard(2, CardType.Attack, CardRarity.Commo
         }
 
         foreach (var enemy in combatState.HittableEnemies)
-            await PowerCmd.Apply<VulnerablePower>(enemy, vulnerable, Owner.Creature, this);
+            await PowerCmd.Apply<VulnerablePower>(new BlockingPlayerChoiceContext(), enemy, vulnerable, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

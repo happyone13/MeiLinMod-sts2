@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
@@ -34,7 +34,7 @@ public class CunJin() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommon, T
             .Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
-        await PowerCmd.Apply<CunJinDelayedAoePower>(Owner.Creature, DynamicVars[DelayedDamageKey].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<CunJinDelayedAoePower>(new BlockingPlayerChoiceContext(), Owner.Creature, DynamicVars[DelayedDamageKey].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
@@ -29,7 +29,7 @@ public class ZuoYouQuan() : MeiLinModCard(1, CardType.Skill, CardRarity.Common, 
                 CardCmd.Upgrade(strike);
 
             strike.SetToFreeThisTurn();
-            await CardPileCmd.AddGeneratedCardToCombat(strike, PileType.Hand, true);
+            await CardPileCmd.AddGeneratedCardToCombat(strike, PileType.Hand, Owner, CardPilePosition.Top);
         }
     }
 

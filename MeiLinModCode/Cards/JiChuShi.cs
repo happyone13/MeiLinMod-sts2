@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
@@ -32,8 +32,8 @@ public class JiChuShi() : MeiLinModCard(1, CardType.Skill, CardRarity.Common, Ta
         defend.SetToFreeThisCombat();
         CardCmd.ApplyKeyword(strike, CardKeyword.Exhaust);
         CardCmd.ApplyKeyword(defend, CardKeyword.Exhaust);
-        await CardPileCmd.AddGeneratedCardToCombat(strike, PileType.Hand, true);
-        await CardPileCmd.AddGeneratedCardToCombat(defend, PileType.Hand, true);
+        await CardPileCmd.AddGeneratedCardToCombat(strike, PileType.Hand, Owner, CardPilePosition.Top);
+        await CardPileCmd.AddGeneratedCardToCombat(defend, PileType.Hand, Owner, CardPilePosition.Top);
 
         if (IsUpgraded)
         {

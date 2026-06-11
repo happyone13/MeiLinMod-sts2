@@ -20,7 +20,7 @@ public class SiJiDaiFa() : MeiLinModCard(0, CardType.Skill, CardRarity.Common, T
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<NextBasicStrikeDefendFreePower>(Owner.Creature, 1m, Owner.Creature, this);
+        await PowerCmd.Apply<NextBasicStrikeDefendFreePower>(new BlockingPlayerChoiceContext(), Owner.Creature, 1m, Owner.Creature, this);
 
         if (AwakeningHelper.IsAwakened(cardPlay))
         {

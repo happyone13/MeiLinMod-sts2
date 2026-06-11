@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
@@ -21,7 +21,7 @@ public class GuiYi() : MeiLinModCard(1, CardType.Power, CardRarity.Rare, TargetT
         if (IsUpgraded)
             await QiCounterPower.AddProgress(Owner.Creature, 3, Owner.Creature, this);
 
-        await PowerCmd.Apply<GuiYiDualStancePower>(Owner.Creature, 1m, Owner.Creature, this);
+        await PowerCmd.Apply<GuiYiDualStancePower>(new BlockingPlayerChoiceContext(), Owner.Creature, 1m, Owner.Creature, this);
         var legacy = Owner.Creature.GetPower<XiangzuLegacyPower>();
         if (legacy != null)
         {

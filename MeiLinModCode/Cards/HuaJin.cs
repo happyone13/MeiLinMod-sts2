@@ -50,7 +50,7 @@ public class HuaJin() : MeiLinModCard(2, CardType.Skill, CardRarity.Common, Targ
         }
 
         foreach (var enemy in combatState.HittableEnemies)
-            await PowerCmd.Apply<WeakPower>(enemy, weak, Owner.Creature, this);
+            await PowerCmd.Apply<WeakPower>(new BlockingPlayerChoiceContext(), enemy, weak, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

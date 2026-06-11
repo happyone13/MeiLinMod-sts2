@@ -1,4 +1,4 @@
-﻿using BaseLib.Utils;
+using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
 using MeiLinMod.MeiLinModCode.Powers;
@@ -29,7 +29,7 @@ public class TongQiao() : MeiLinModCard(3, CardType.Power, CardRarity.Rare, Targ
             await PowerCmd.Remove<TongQiaoPower>(Owner.Creature);
         }
 
-        await PowerCmd.Apply<TongQiaoPower>(Owner.Creature, targetMode, Owner.Creature, this);
+        await PowerCmd.Apply<TongQiaoPower>(new BlockingPlayerChoiceContext(), Owner.Creature, targetMode, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

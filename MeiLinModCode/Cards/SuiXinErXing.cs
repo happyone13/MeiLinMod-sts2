@@ -1,4 +1,4 @@
-﻿using BaseLib.Utils;
+using BaseLib.Utils;
 using System.Collections.Generic;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
@@ -23,7 +23,7 @@ public class SuiXinErXing() : MeiLinModCard(1, CardType.Power, CardRarity.Uncomm
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await PlayPowerCastAnim();
-        await PowerCmd.Apply<QiStartProgressPower>(Owner.Creature, DynamicVars[ProgressKey].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<QiStartProgressPower>(new BlockingPlayerChoiceContext(), Owner.Creature, DynamicVars[ProgressKey].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

@@ -24,8 +24,8 @@ public class BingQiNingShen() : MeiLinModCard(1, CardType.Skill, CardRarity.Unco
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<BingQiNingShenPower>(Owner.Creature, 1m, Owner.Creature, this);
-        await PowerCmd.Apply<NoDrawPower>(Owner.Creature, 1m, Owner.Creature, this);
+        await PowerCmd.Apply<BingQiNingShenPower>(new BlockingPlayerChoiceContext(), Owner.Creature, 1m, Owner.Creature, this);
+        await PowerCmd.Apply<NoDrawPower>(new BlockingPlayerChoiceContext(), Owner.Creature, 1m, Owner.Creature, this);
 
         if (!AwakeningHelper.IsAwakened(cardPlay))
             return;

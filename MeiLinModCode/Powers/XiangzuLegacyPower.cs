@@ -86,11 +86,11 @@ public class XiangzuLegacyPower : MeiLinModPower
         switch (stance)
         {
             case XiangzuStance.Guard:
-                await PowerCmd.Apply<StanceYuPower>(Owner, 1m, Owner, null, silent: true);
+                await PowerCmd.Apply<StanceYuPower>(new BlockingPlayerChoiceContext(), Owner, 1m, Owner, null, silent: true);
                 MeiLinAudioService.TryPlayGuardStanceSwitch(Owner.Player);
                 break;
             default:
-                await PowerCmd.Apply<StanceGongPower>(Owner, 1m, Owner, null, silent: true);
+                await PowerCmd.Apply<StanceGongPower>(new BlockingPlayerChoiceContext(), Owner, 1m, Owner, null, silent: true);
                 MeiLinAudioService.TryPlayAttackStanceSwitch(Owner.Player);
                 break;
         }
@@ -126,6 +126,7 @@ public class XiangzuLegacyPower : MeiLinModPower
     }
 
     public override async Task AfterPowerAmountChanged(
+        MegaCrit.Sts2.Core.GameActions.Multiplayer.PlayerChoiceContext choiceContext,
         PowerModel power,
         decimal amount,
         Creature? applier,
@@ -160,6 +161,7 @@ public class XiangzuLegacyPower : MeiLinModPower
     private int GetQiAmount() => XiangzuCombatState.GetQi(Owner);
 
     public override async Task AfterAttack(
+        MegaCrit.Sts2.Core.GameActions.Multiplayer.PlayerChoiceContext choiceContext,
         AttackCommand command)
     {
         if (command.Attacker != Owner || !command.DamageProps.HasFlag(ValueProp.Move))
@@ -210,7 +212,7 @@ public class XiangzuLegacyPower : MeiLinModPower
         if (ember > 0)
         {
             foreach (var enemy in CombatState.HittableEnemies)
-                await PowerCmd.Apply<EmberPower>(enemy, ember, Owner, null);
+                await PowerCmd.Apply<EmberPower>(new BlockingPlayerChoiceContext(), enemy, ember, Owner, null);
         }
     }
 

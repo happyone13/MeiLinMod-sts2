@@ -87,7 +87,7 @@ public static class BasicStrikeDefendHelper
                IsCharacterStarterCard(card, player, CardTag.Defend);
     }
 
-    public static CardModel? CreateBasicStrikeForPlayer(Player player, CombatState? combatState)
+    public static CardModel? CreateBasicStrikeForPlayer(Player player, ICombatState? combatState)
     {
         if (combatState == null)
             return null;
@@ -96,7 +96,7 @@ public static class BasicStrikeDefendHelper
         return canonical == null ? null : combatState.CreateCard(canonical, player);
     }
 
-    public static CardModel? CreateBasicDefendForPlayer(Player player, CombatState? combatState)
+    public static CardModel? CreateBasicDefendForPlayer(Player player, ICombatState? combatState)
     {
         if (combatState == null)
             return null;

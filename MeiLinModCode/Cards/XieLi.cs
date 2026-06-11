@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
@@ -34,7 +34,7 @@ public class XieLi() : MeiLinModCard(0, CardType.Skill, CardRarity.Common, Targe
         if (XiangzuCombatState.IsInGuardStance(Owner.Creature))
         {
             ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
-            await PowerCmd.Apply<WeakPower>(cardPlay.Target, DynamicVars[WeakKey].BaseValue, Owner.Creature, this);
+            await PowerCmd.Apply<WeakPower>(new BlockingPlayerChoiceContext(), cardPlay.Target, DynamicVars[WeakKey].BaseValue, Owner.Creature, this);
         }
     }
 

@@ -31,7 +31,8 @@ public class LongYanRelic : MeiLinModRelic
 
     public override async Task AfterSideTurnStart(
         CombatSide side,
-        CombatState combatState
+        System.Collections.Generic.IReadOnlyList<MegaCrit.Sts2.Core.Entities.Creatures.Creature> participants,
+        ICombatState combatState
     )
     {
         if (side != Owner.Creature.Side)
@@ -44,7 +45,7 @@ public class LongYanRelic : MeiLinModRelic
             return;
 
         Flash();
-        await PowerCmd.Apply<NextPowerCardCostDownPower>(Owner.Creature, 1m, Owner.Creature, null);
+        await PowerCmd.Apply<NextPowerCardCostDownPower>(new BlockingPlayerChoiceContext(), Owner.Creature, 1m, Owner.Creature, null);
     }
 
     public override Task AfterCombatEnd(CombatRoom _)

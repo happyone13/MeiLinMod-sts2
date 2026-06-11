@@ -14,6 +14,7 @@ public class LongXiPower : MeiLinModPower
     public override PowerStackType StackType => PowerStackType.Single;
 
     public override async Task AfterPowerAmountChanged(
+        MegaCrit.Sts2.Core.GameActions.Multiplayer.PlayerChoiceContext choiceContext,
         PowerModel power,
         decimal amount,
         Creature? applier,
@@ -28,7 +29,7 @@ public class LongXiPower : MeiLinModPower
         _adjusting = true;
         try
         {
-            await PowerCmd.Apply<EmberPower>(power.Owner, Amount, Owner, cardSource, silent: true);
+            await PowerCmd.Apply<EmberPower>(new BlockingPlayerChoiceContext(), power.Owner, Amount, Owner, cardSource, silent: true);
         }
         finally
         {

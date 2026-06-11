@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
@@ -44,7 +44,7 @@ public class ErChongTian() : MeiLinModCard(1, CardType.Attack, CardRarity.Common
         var awakened = AwakeningHelper.IsAwakened(cardPlay);
 
         if (XiangzuCombatState.IsInAttackStance(Owner.Creature) || awakened)
-            await PowerCmd.Apply<EmberPower>(cardPlay.Target, DynamicVars[EmberKey].BaseValue, Owner.Creature, this);
+            await PowerCmd.Apply<EmberPower>(new BlockingPlayerChoiceContext(), cardPlay.Target, DynamicVars[EmberKey].BaseValue, Owner.Creature, this);
 
         if (XiangzuCombatState.IsInGuardStance(Owner.Creature) || awakened)
             await QiCounterPower.AddProgress(Owner.Creature, DynamicVars[ProgressKey].IntValue, Owner.Creature, this);

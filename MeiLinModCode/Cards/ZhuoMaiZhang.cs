@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
@@ -43,13 +43,13 @@ public class ZhuoMaiZhang() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncom
             .Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
-        await PowerCmd.Apply<VulnerablePower>(cardPlay.Target, DynamicVars[VulnerableKey].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<VulnerablePower>(new BlockingPlayerChoiceContext(), cardPlay.Target, DynamicVars[VulnerableKey].BaseValue, Owner.Creature, this);
 
         if (!AwakeningHelper.IsAwakened(cardPlay))
             return;
 
-        await PowerCmd.Apply<EmberPower>(Owner.Creature, DynamicVars[SelfEmberKey].BaseValue, Owner.Creature, this);
-        await PowerCmd.Apply<EmberPower>(cardPlay.Target, DynamicVars[EnemyEmberKey].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<EmberPower>(new BlockingPlayerChoiceContext(), Owner.Creature, DynamicVars[SelfEmberKey].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<EmberPower>(new BlockingPlayerChoiceContext(), cardPlay.Target, DynamicVars[EnemyEmberKey].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

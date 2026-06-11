@@ -21,7 +21,7 @@ public class YunQiPower : MeiLinModPower
         if (cardPlay.Card.Owner?.Creature != Owner || !BasicStrikeDefendHelper.IsStrikeOrDefendCard(cardPlay.Card))
             return;
 
-        await PowerCmd.Apply<LongYinTemporaryStrengthPower>(Owner, Amount, Owner, cardPlay.Card);
-        await PowerCmd.Apply<LongYinTemporaryDexterityPower>(Owner, Amount, Owner, cardPlay.Card);
+        await PowerCmd.Apply<LongYinTemporaryStrengthPower>(new BlockingPlayerChoiceContext(), Owner, Amount, Owner, cardPlay.Card);
+        await PowerCmd.Apply<LongYinTemporaryDexterityPower>(new BlockingPlayerChoiceContext(), Owner, Amount, Owner, cardPlay.Card);
     }
 }

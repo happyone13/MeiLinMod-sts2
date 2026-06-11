@@ -40,7 +40,7 @@ public class BaoQi() : MeiLinModCard(0, CardType.Skill, CardRarity.Rare, TargetT
         if (!AwakeningHelper.IsAwakened(cardPlay))
             return;
 
-        await PowerCmd.Apply<EmberPower>(Owner.Creature, DynamicVars[EmberKey].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<EmberPower>(new BlockingPlayerChoiceContext(), Owner.Creature, DynamicVars[EmberKey].BaseValue, Owner.Creature, this);
         await QiCounterPower.AddProgress(Owner.Creature, DynamicVars[ProgressKey].IntValue, Owner.Creature, this);
     }
 

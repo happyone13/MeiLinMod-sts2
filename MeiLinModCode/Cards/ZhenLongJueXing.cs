@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
@@ -43,16 +43,16 @@ public class ZhenLongJueXing() : MeiLinModCard(0, CardType.Skill, CardRarity.Rar
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<NextPowerCardCostDownPower>(Owner.Creature, 99m, Owner.Creature, this);
+        await PowerCmd.Apply<NextPowerCardCostDownPower>(new BlockingPlayerChoiceContext(), Owner.Creature, 99m, Owner.Creature, this);
         if (!AwakeningHelper.IsAwakened(cardPlay))
             return;
 
         var awakenedValue = IsUpgraded ? 4m : 3m;
         await PlayerCmd.LoseEnergy(3, Owner);
-        await PowerCmd.Apply<EnergyNextTurnPower>(Owner.Creature, awakenedValue, Owner.Creature, this);
-        await PowerCmd.Apply<DrawCardsNextTurnPower>(Owner.Creature, awakenedValue, Owner.Creature, this);
-        await PowerCmd.Apply<ZhenLongAwakeningEnemyEmberNextTurnPower>(Owner.Creature, awakenedValue, Owner.Creature, this);
-        await PowerCmd.Apply<ZhenLongAwakeningQiProgressNextTurnPower>(Owner.Creature, awakenedValue, Owner.Creature, this);
+        await PowerCmd.Apply<EnergyNextTurnPower>(new BlockingPlayerChoiceContext(), Owner.Creature, awakenedValue, Owner.Creature, this);
+        await PowerCmd.Apply<DrawCardsNextTurnPower>(new BlockingPlayerChoiceContext(), Owner.Creature, awakenedValue, Owner.Creature, this);
+        await PowerCmd.Apply<ZhenLongAwakeningEnemyEmberNextTurnPower>(new BlockingPlayerChoiceContext(), Owner.Creature, awakenedValue, Owner.Creature, this);
+        await PowerCmd.Apply<ZhenLongAwakeningQiProgressNextTurnPower>(new BlockingPlayerChoiceContext(), Owner.Creature, awakenedValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

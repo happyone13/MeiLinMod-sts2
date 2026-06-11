@@ -36,6 +36,7 @@ public class EmberPower : MeiLinModPower
     }
 
     public override async Task AfterPowerAmountChanged(
+        MegaCrit.Sts2.Core.GameActions.Multiplayer.PlayerChoiceContext choiceContext,
         PowerModel power,
         decimal amount,
         Creature? applier,
@@ -75,7 +76,7 @@ public class EmberPower : MeiLinModPower
             null);
     }
 
-    public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
+    public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, System.Collections.Generic.IEnumerable<MegaCrit.Sts2.Core.Entities.Creatures.Creature> participants)
     {
         var shouldDecayThisTurnEnd = Owner.IsPlayer
             ? side != Owner.Side
@@ -96,7 +97,7 @@ public class EmberPower : MeiLinModPower
         var remove = (int)Amount - retain;
 
         if (remove > 0)
-            await PowerCmd.Apply<EmberPower>(Owner, -remove, Applier ?? Owner, null, silent: true);
+            await PowerCmd.Apply<EmberPower>(new BlockingPlayerChoiceContext(), Owner, -remove, Applier ?? Owner, null, silent: true);
 
         if (retain <= 0)
             await PowerCmd.Remove(this);

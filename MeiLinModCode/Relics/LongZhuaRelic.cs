@@ -19,6 +19,6 @@ public class LongZhuaRelic : MeiLinModRelic
             return;
 
         foreach (var enemy in enemies)
-            await PowerCmd.Apply<EmberPower>(enemy, 2m, Owner.Creature, null);
+            await PowerCmd.Apply<EmberPower>(new BlockingPlayerChoiceContext(), enemy, 2m, Owner.Creature, null);
     }
 }

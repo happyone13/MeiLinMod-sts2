@@ -21,6 +21,7 @@ public class QiCounterPower : MeiLinModPower
     }
 
     public override async Task AfterPowerAmountChanged(
+        MegaCrit.Sts2.Core.GameActions.Multiplayer.PlayerChoiceContext choiceContext,
         PowerModel power,
         decimal amount,
         Creature? applier,
@@ -41,7 +42,7 @@ public class QiCounterPower : MeiLinModPower
             progress *= 2;
 
         var actor = applier ?? owner;
-        await PowerCmd.Apply<QiCounterPower>(owner, progress, actor, cardSource, silent: true);
+        await PowerCmd.Apply<QiCounterPower>(new BlockingPlayerChoiceContext(), owner, progress, actor, cardSource, silent: true);
     }
 
     public static async Task ResolvePending(Creature owner, Creature? applier, CardModel? cardSource)
@@ -88,7 +89,7 @@ public class QiCounterPower : MeiLinModPower
                 if (Amount < required)
                     break;
 
-                await PowerCmd.Apply<QiCounterPower>(Owner, -required, actor, cardSource, silent: true);
+                await PowerCmd.Apply<QiCounterPower>(new BlockingPlayerChoiceContext(), Owner, -required, actor, cardSource, silent: true);
                 await EnsureAttackStanceWhenNoStance(actor, cardSource);
                 await XiangzuCombatState.GainQi(Owner, 1m, actor, cardSource, silent: true);
                 Flash();
@@ -112,6 +113,6 @@ public class QiCounterPower : MeiLinModPower
             return;
         }
 
-        await PowerCmd.Apply<StanceGongPower>(Owner, 1m, actor, cardSource, silent: true);
+        await PowerCmd.Apply<StanceGongPower>(new BlockingPlayerChoiceContext(), Owner, 1m, actor, cardSource, silent: true);
     }
 }

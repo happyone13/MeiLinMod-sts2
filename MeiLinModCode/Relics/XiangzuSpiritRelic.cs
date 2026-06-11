@@ -25,9 +25,9 @@ public class XiangzuSpiritRelic : MeiLinModRelic
     public override async Task BeforeCombatStart()
     {
         Flash();
-        await PowerCmd.Apply<XiangzuLegacyPower>(Owner.Creature, 1m, Owner.Creature, null);
+        await PowerCmd.Apply<XiangzuLegacyPower>(new BlockingPlayerChoiceContext(), Owner.Creature, 1m, Owner.Creature, null);
         await PowerCmd.Remove<StanceYuPower>(Owner.Creature);
-        await PowerCmd.Apply<StanceGongPower>(Owner.Creature, 1m, Owner.Creature, null, silent: true);
-        await PowerCmd.Apply<XiangzuSpiritPower>(Owner.Creature, 1m, Owner.Creature, null, silent: true);
+        await PowerCmd.Apply<StanceGongPower>(new BlockingPlayerChoiceContext(), Owner.Creature, 1m, Owner.Creature, null, silent: true);
+        await PowerCmd.Apply<XiangzuSpiritPower>(new BlockingPlayerChoiceContext(), Owner.Creature, 1m, Owner.Creature, null, silent: true);
     }
 }

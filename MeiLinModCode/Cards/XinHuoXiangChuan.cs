@@ -1,4 +1,4 @@
-﻿using BaseLib.Utils;
+using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
 using MeiLinMod.MeiLinModCode.Powers;
@@ -21,7 +21,7 @@ public class XinHuoXiangChuan() : MeiLinModCard(0, CardType.Skill, CardRarity.Un
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<XinHuoXiangChuanPower>(Owner.Creature, DynamicVars[TriggersKey].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<XinHuoXiangChuanPower>(new BlockingPlayerChoiceContext(), Owner.Creature, DynamicVars[TriggersKey].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

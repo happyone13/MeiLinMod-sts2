@@ -32,7 +32,7 @@ public class QunLongZhiLi() : MeiLinModCard(3, CardType.Power, CardRarity.Rare, 
             .ToList();
 
         foreach (Creature ally in allies)
-            await PowerCmd.Apply<FireDragonGemPower>(ally, 1m, Owner.Creature, this);
+            await PowerCmd.Apply<FireDragonGemPower>(new BlockingPlayerChoiceContext(), ally, 1m, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

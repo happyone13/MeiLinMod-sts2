@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
@@ -21,7 +21,7 @@ public class YangJingXuRui() : MeiLinModCard(1, CardType.Skill, CardRarity.Uncom
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         var encodedAmount = IsUpgraded ? 2002m : 2m;
-        await PowerCmd.Apply<YangJingXuRuiPower>(Owner.Creature, encodedAmount, Owner.Creature, this);
+        await PowerCmd.Apply<YangJingXuRuiPower>(new BlockingPlayerChoiceContext(), Owner.Creature, encodedAmount, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

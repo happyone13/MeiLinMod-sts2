@@ -47,8 +47,8 @@ public class QiPo() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncommon, Targ
         await XiangzuCombatState.TryConsumeQi(Owner.Creature, 1, Owner.Creature, this);
         foreach (var enemy in combatState.HittableEnemies)
         {
-            await PowerCmd.Apply<QiPoTemporaryStrengthDownPower>(enemy, DynamicVars[StrengthLossKey].BaseValue, Owner.Creature, this);
-            await PowerCmd.Apply<EmberPower>(enemy, DynamicVars[EmberKey].BaseValue, Owner.Creature, this);
+            await PowerCmd.Apply<QiPoTemporaryStrengthDownPower>(new BlockingPlayerChoiceContext(), enemy, DynamicVars[StrengthLossKey].BaseValue, Owner.Creature, this);
+            await PowerCmd.Apply<EmberPower>(new BlockingPlayerChoiceContext(), enemy, DynamicVars[EmberKey].BaseValue, Owner.Creature, this);
         }
     }
 

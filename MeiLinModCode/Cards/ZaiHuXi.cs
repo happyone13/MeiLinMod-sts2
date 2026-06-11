@@ -39,7 +39,7 @@ public class ZaiHuXi() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncommon, T
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner);
-        await PowerCmd.Apply<VigorPower>(Owner.Creature, DynamicVars[VigorKey].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<VigorPower>(new BlockingPlayerChoiceContext(), Owner.Creature, DynamicVars[VigorKey].BaseValue, Owner.Creature, this);
 
         if (!AwakeningHelper.IsAwakened(cardPlay))
             return;

@@ -1,4 +1,4 @@
-﻿using BaseLib.Utils;
+using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
 using MeiLinMod.MeiLinModCode.Powers;
@@ -18,9 +18,9 @@ public class XinLiu() : MeiLinModCard(1, CardType.Power, CardRarity.Rare, Target
     {
         await PlayPowerCastAnim();
         if (IsUpgraded)
-            await PowerCmd.Apply<XinLiuUpgradedPower>(Owner.Creature, 1m, Owner.Creature, this);
+            await PowerCmd.Apply<XinLiuUpgradedPower>(new BlockingPlayerChoiceContext(), Owner.Creature, 1m, Owner.Creature, this);
         else
-            await PowerCmd.Apply<XinLiuPower>(Owner.Creature, 1m, Owner.Creature, this);
+            await PowerCmd.Apply<XinLiuPower>(new BlockingPlayerChoiceContext(), Owner.Creature, 1m, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

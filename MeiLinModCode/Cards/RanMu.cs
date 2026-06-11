@@ -33,7 +33,7 @@ public class RanMu() : MeiLinModCard(1, CardType.Skill, CardRarity.Common, Targe
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
 
-        await PowerCmd.Apply<EmberPower>(
+        await PowerCmd.Apply<EmberPower>(new BlockingPlayerChoiceContext(), 
             cardPlay.Target,
             DynamicVars[EmberKey].BaseValue,
             Owner.Creature,

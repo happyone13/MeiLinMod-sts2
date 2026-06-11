@@ -1,4 +1,4 @@
-﻿using BaseLib.Utils;
+using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
 using MeiLinMod.MeiLinModCode.Powers;
@@ -17,7 +17,7 @@ public class YanLongChuDong() : MeiLinModCard(1, CardType.Power, CardRarity.Rare
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await PlayPowerCastAnim();
-        await PowerCmd.Apply<YanLongChuDongPower>(Owner.Creature, IsUpgraded ? 2m : 1m, Owner.Creature, this);
+        await PowerCmd.Apply<YanLongChuDongPower>(new BlockingPlayerChoiceContext(), Owner.Creature, IsUpgraded ? 2m : 1m, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

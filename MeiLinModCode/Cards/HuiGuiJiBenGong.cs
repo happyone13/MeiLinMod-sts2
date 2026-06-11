@@ -43,12 +43,12 @@ public class HuiGuiJiBenGong() : MeiLinModCard(1, CardType.Power, CardRarity.Rar
 
         if (generatedCards.Count > 0)
         {
-            var results = await CardPileCmd.AddGeneratedCardsToCombat(generatedCards, PileType.Draw, true, CardPilePosition.Random);
+            var results = await CardPileCmd.AddGeneratedCardsToCombat(generatedCards, PileType.Draw, Owner, CardPilePosition.Random);
             CardCmd.PreviewCardPileAdd(results, 1.8f, CardPreviewStyle.MessyLayout);
             PileType.Draw.GetPile(Owner).InvokeContentsChanged();
         }
 
-        await PowerCmd.Apply<HuiGuiJiBenGongPower>(Owner.Creature, 1m, Owner.Creature, this);
+        await PowerCmd.Apply<HuiGuiJiBenGongPower>(new BlockingPlayerChoiceContext(), Owner.Creature, 1m, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

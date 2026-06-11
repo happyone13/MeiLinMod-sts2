@@ -31,7 +31,7 @@ public class XiangzuSpiritCard() : MeiLinModCard(0, CardType.Skill, CardRarity.U
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 
-        var power = await PowerCmd.Apply<XiangzuSpiritCardPower>(Owner.Creature, 1m, Owner.Creature, this);
+        var power = await PowerCmd.Apply<XiangzuSpiritCardPower>(new BlockingPlayerChoiceContext(), Owner.Creature, 1m, Owner.Creature, this);
         if (power != null)
             power.DynamicVars.Strength.BaseValue = DynamicVars[PowerKey].BaseValue;
     }

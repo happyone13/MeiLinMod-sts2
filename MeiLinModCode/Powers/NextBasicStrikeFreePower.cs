@@ -35,6 +35,6 @@ public class NextBasicStrikeFreePower : MeiLinModPower
             return;
         }
 
-        await PowerCmd.Apply<NextBasicStrikeFreePower>(Owner, -1m, Owner, cardPlay.Card, silent: true);
+        await PowerCmd.Apply<NextBasicStrikeFreePower>(new BlockingPlayerChoiceContext(), Owner, -1m, Owner, cardPlay.Card, silent: true);
     }
 }

@@ -38,7 +38,7 @@ public class YangJingXuRuiPower : MeiLinModPower
         }
 
         var nextEncodedAmount = Encode(nextTurns, nextExtraDrawTurns);
-        await PowerCmd.Apply<YangJingXuRuiPower>(Owner, nextEncodedAmount - Amount, Owner, null, silent: true);
+        await PowerCmd.Apply<YangJingXuRuiPower>(new BlockingPlayerChoiceContext(), Owner, nextEncodedAmount - Amount, Owner, null, silent: true);
     }
 
     private int GetRemainingTurns() => Math.Abs((int)Amount) % 1000;

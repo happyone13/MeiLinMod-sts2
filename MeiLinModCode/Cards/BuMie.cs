@@ -17,7 +17,7 @@ public class BuMie() : MeiLinModCard(2, CardType.Power, CardRarity.Rare, TargetT
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await PlayPowerCastAnim();
-        await PowerCmd.Apply<BuMiePower>(Owner.Creature, 1m, Owner.Creature, this);
+        await PowerCmd.Apply<BuMiePower>(new BlockingPlayerChoiceContext(), Owner.Creature, 1m, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

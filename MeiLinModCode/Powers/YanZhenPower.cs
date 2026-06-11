@@ -16,6 +16,6 @@ public class YanZhenPower : MeiLinModPower
             return;
 
         await CardPileCmd.Draw(choiceContext, 2m, player);
-        await PowerCmd.Apply<EmberPower>(Owner, Amount, Owner, null);
+        await PowerCmd.Apply<EmberPower>(new BlockingPlayerChoiceContext(), Owner, Amount, Owner, null);
     }
 }

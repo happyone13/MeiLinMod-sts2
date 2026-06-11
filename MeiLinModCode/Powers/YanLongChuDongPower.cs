@@ -31,7 +31,7 @@ public class YanLongChuDongPower : MeiLinModPower
             return;
 
         if (XiangzuCombatState.IsInAttackStance(Owner))
-            await PowerCmd.Apply<EmberPower>(target, Amount, Owner, cardSource);
+            await PowerCmd.Apply<EmberPower>(new BlockingPlayerChoiceContext(), target, Amount, Owner, cardSource);
 
         if (!XiangzuCombatState.IsInGuardStance(Owner))
             return;

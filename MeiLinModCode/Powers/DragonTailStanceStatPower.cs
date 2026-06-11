@@ -40,6 +40,7 @@ public class DragonTailStanceStatPower : MeiLinModPower
     }
 
     public override async Task AfterPowerAmountChanged(
+        MegaCrit.Sts2.Core.GameActions.Multiplayer.PlayerChoiceContext choiceContext,
         PowerModel power,
         decimal amount,
         Creature? applier,
@@ -63,10 +64,10 @@ public class DragonTailStanceStatPower : MeiLinModPower
     public override async Task AfterRemoved(Creature oldOwner)
     {
         if (_appliedStrength != 0m)
-            await PowerCmd.Apply<StrengthPower>(oldOwner, -_appliedStrength, oldOwner, null, silent: true);
+            await PowerCmd.Apply<StrengthPower>(new BlockingPlayerChoiceContext(), oldOwner, -_appliedStrength, oldOwner, null, silent: true);
 
         if (_appliedDexterity != 0m)
-            await PowerCmd.Apply<DexterityPower>(oldOwner, -_appliedDexterity, oldOwner, null, silent: true);
+            await PowerCmd.Apply<DexterityPower>(new BlockingPlayerChoiceContext(), oldOwner, -_appliedDexterity, oldOwner, null, silent: true);
 
         _appliedStrength = 0m;
         _appliedDexterity = 0m;
@@ -81,14 +82,14 @@ public class DragonTailStanceStatPower : MeiLinModPower
         var deltaStrength = targetStrength - _appliedStrength;
         if (deltaStrength != 0m)
         {
-            await PowerCmd.Apply<StrengthPower>(Owner, deltaStrength, Owner, cardSource, silent: true);
+            await PowerCmd.Apply<StrengthPower>(new BlockingPlayerChoiceContext(), Owner, deltaStrength, Owner, cardSource, silent: true);
             _appliedStrength = targetStrength;
         }
 
         var deltaDexterity = targetDexterity - _appliedDexterity;
         if (deltaDexterity != 0m)
         {
-            await PowerCmd.Apply<DexterityPower>(Owner, deltaDexterity, Owner, cardSource, silent: true);
+            await PowerCmd.Apply<DexterityPower>(new BlockingPlayerChoiceContext(), Owner, deltaDexterity, Owner, cardSource, silent: true);
             _appliedDexterity = targetDexterity;
         }
     }
