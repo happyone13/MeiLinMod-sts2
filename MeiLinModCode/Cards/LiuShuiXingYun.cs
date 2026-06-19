@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
@@ -27,9 +27,9 @@ public class LiuShuiXingYun() : MeiLinModCard(1, CardType.Power, CardRarity.Unco
     {
         await PlayPowerCastAnim();
         if (IsUpgraded)
-            await PowerCmd.Apply<LiuShuiXingYunUpgradedPower>(Owner.Creature, 1m, Owner.Creature, this);
+            await PowerCmd.Apply<LiuShuiXingYunUpgradedPower>(new BlockingPlayerChoiceContext(), Owner.Creature, 1m, Owner.Creature, this);
         else
-            await PowerCmd.Apply<LiuShuiXingYunPower>(Owner.Creature, 1m, Owner.Creature, this);
+            await PowerCmd.Apply<LiuShuiXingYunPower>(new BlockingPlayerChoiceContext(), Owner.Creature, 1m, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

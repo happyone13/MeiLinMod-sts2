@@ -24,11 +24,12 @@ public class LongYinTemporaryDexterityPower : MeiLinModPower, ICustomModel
         if (_appliedAmount != 0m || Amount == 0m)
             return;
 
-        await PowerCmd.Apply<DexterityPower>(Owner, Amount, Owner, cardSource, silent: true);
+        await PowerCmd.Apply<DexterityPower>(new BlockingPlayerChoiceContext(), Owner, Amount, Owner, cardSource, silent: true);
         _appliedAmount = Amount;
     }
 
     public override async Task AfterPowerAmountChanged(
+        MegaCrit.Sts2.Core.GameActions.Multiplayer.PlayerChoiceContext choiceContext,
         PowerModel power,
         decimal amount,
         Creature? applier,
@@ -37,11 +38,11 @@ public class LongYinTemporaryDexterityPower : MeiLinModPower, ICustomModel
         if (power != this || amount == 0m)
             return;
 
-        await PowerCmd.Apply<DexterityPower>(Owner, amount, Owner, cardSource, silent: true);
+        await PowerCmd.Apply<DexterityPower>(new BlockingPlayerChoiceContext(), Owner, amount, Owner, cardSource, silent: true);
         _appliedAmount += amount;
     }
 
-    public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
+    public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, System.Collections.Generic.IEnumerable<MegaCrit.Sts2.Core.Entities.Creatures.Creature> participants)
     {
         if (side != Owner.Side)
             return;
@@ -54,7 +55,7 @@ public class LongYinTemporaryDexterityPower : MeiLinModPower, ICustomModel
         if (_appliedAmount == 0m)
             return;
 
-        await PowerCmd.Apply<DexterityPower>(oldOwner, -_appliedAmount, oldOwner, null, silent: true);
+        await PowerCmd.Apply<DexterityPower>(new BlockingPlayerChoiceContext(), oldOwner, -_appliedAmount, oldOwner, null, silent: true);
         _appliedAmount = 0m;
     }
 }

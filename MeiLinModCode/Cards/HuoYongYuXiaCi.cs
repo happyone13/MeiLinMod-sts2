@@ -38,7 +38,7 @@ public class HuoYongYuXiaCi() : MeiLinModCard(1, CardType.Attack, CardRarity.Rar
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
 
-        var killedByThisCard = shouldTriggerFatal && attackCommand.Results.Any(r => r.WasTargetKilled);
+        var killedByThisCard = shouldTriggerFatal && attackCommand.Results.SelectMany(r => r).Any(r => r.WasTargetKilled);
         if (killedByThisCard)
         {
             HuoYongYuXiaCiUpgradePower.QueueUpgrade(Owner, 1);

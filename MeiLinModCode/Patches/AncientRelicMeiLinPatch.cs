@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using HarmonyLib;
 using MeiLinMod.MeiLinModCode.Cards;
+using MeiLinCharacterModel = MeiLinMod.MeiLinModCode.Character.MeiLinMod;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Players;
@@ -14,6 +15,24 @@ namespace MeiLinMod.MeiLinModCode.Patches;
 [HarmonyPatch]
 public static class AncientRelicMeiLinPatch
 {
+    [HarmonyPatch(typeof(ArchaicTooth), nameof(ArchaicTooth.SetupForPlayer))]
+    [HarmonyPrefix]
+    public static bool ArchaicToothSetupForPlayerPrefix(ArchaicTooth __instance, Player player, ref bool __result)
+    {
+        var starter = GetStarterAttackDefenseUnity(player);
+        if (starter == null)
+        {
+            return true;
+        }
+
+        var transformed = player.RunState.CreateCard<ShenGongFangYiTi>(player);
+        CopyStarterUpgradesAndEnchantments(starter, transformed);
+
+        __instance.SetupForTests(starter.ToSerializable(), transformed.ToSerializable());
+        __result = true;
+        return false;
+    }
+
     [HarmonyPatch(typeof(ArchaicTooth), nameof(ArchaicTooth.AfterObtained))]
     [HarmonyPrefix]
     public static bool ArchaicToothAfterObtainedPrefix(ArchaicTooth __instance, ref Task __result)
@@ -24,15 +43,13 @@ public static class AncientRelicMeiLinPatch
             return true;
         }
 
-        var starterInDeck = owner.Deck.Cards.FirstOrDefault(c =>
-            c is AttackDefenseUnity || c.Id.Entry == "MEILINMOD-ATTACK_DEFENSE_UNITY");
-        if (starterInDeck == null)
+        var starter = GetStarterAttackDefenseUnity(owner);
+        if (starter == null)
         {
             return true;
         }
 
-        MainFile.Logger.Info("[AncientRelicMeiLinPatch] ArchaicTooth.AfterObtained: applying MeiLin custom transform.");
-        __result = HandleArchaicToothTransform(owner, starterInDeck);
+        __result = HandleArchaicToothTransform(owner, starter);
         return false;
     }
 
@@ -40,15 +57,7 @@ public static class AncientRelicMeiLinPatch
     [HarmonyPrefix]
     public static bool DustyTomeSetupForPlayerPrefix(DustyTome __instance, Player player)
     {
-        var characterEntry = player.Character?.Id.Entry ?? "null";
-        var hasStarterInDeck = player.Deck.Cards.Any(c =>
-            c is AttackDefenseUnity || c.Id.Entry == "MEILINMOD-ATTACK_DEFENSE_UNITY");
-        var isMeiLin = IsMeiLinPlayer(player);
-        var poolType = player.Character?.CardPool?.GetType().FullName ?? "null";
-        MainFile.Logger.Info(
-            $"[AncientRelicMeiLinPatch] DustyTome.SetupForPlayer enter: character={characterEntry}, hasStarter={hasStarterInDeck}, isMeiLin={isMeiLin}, poolType={poolType}");
-
-        if (!isMeiLin)
+        if (!IsMeiLinPlayer(player))
         {
             return true;
         }
@@ -56,60 +65,67 @@ public static class AncientRelicMeiLinPatch
         var cardPool = player.Character?.CardPool;
         if (cardPool == null)
         {
-            MainFile.Logger.Info("[AncientRelicMeiLinPatch] DustyTome.SetupForPlayer: MeiLin player has no card pool.");
             return true;
         }
 
-        var poolCards = GetCardPoolCards(player).ToList();
-        var unlockedCards = cardPool
-            .GetUnlockedCards(player.UnlockState, player.RunState.CardMultiplayerConstraint)
-            .ToList();
-
-        var ancientFromPool = poolCards
-            .Where(c => c.Rarity == CardRarity.Ancient)
-            .Select(c => c.Id.Entry)
-            .ToList();
-        var ancientFromUnlocked = unlockedCards
-            .Where(c => c.Rarity == CardRarity.Ancient)
-            .Select(c => c.Id.Entry)
-            .ToList();
-
-        MainFile.Logger.Info(
-            $"[AncientRelicMeiLinPatch] DustyTome.SetupForPlayer pool stats: allCards={poolCards.Count}, unlocked={unlockedCards.Count}, ancientInPool={ancientFromPool.Count}, ancientInUnlocked={ancientFromUnlocked.Count}");
-        MainFile.Logger.Info(
-            $"[AncientRelicMeiLinPatch] DustyTome.SetupForPlayer ancientInPool=[{string.Join(",", ancientFromPool)}], ancientInUnlocked=[{string.Join(",", ancientFromUnlocked)}]");
-
-        var candidates = poolCards
+        var candidates = GetCardPoolCards(player)
             .Where(IsDustyTomeCandidate)
             .ToList();
 
         if (candidates.Count == 0)
         {
-            MainFile.Logger.Info("[AncientRelicMeiLinPatch] DustyTome.SetupForPlayer: no ancient card candidates found in MeiLin card pool.");
             return true;
         }
 
         var selected = player.PlayerRng.Rewards.NextItem(candidates);
         if (selected == null)
         {
-            MainFile.Logger.Info("[AncientRelicMeiLinPatch] DustyTome.SetupForPlayer: reward RNG returned null candidate.");
             return true;
         }
 
         __instance.AncientCard = selected.Id;
-        MainFile.Logger.Info(
-            $"[AncientRelicMeiLinPatch] DustyTome.SetupForPlayer: selected={selected.Id.Entry}, candidates={string.Join(",", candidates.Select(c => c.Id.Entry))}");
         return false;
     }
 
-    private static async Task HandleArchaicToothTransform(Player owner, CardModel starterInDeck)
+    [HarmonyPatch(typeof(DustyTome), nameof(DustyTome.AfterObtained))]
+    [HarmonyPrefix]
+    public static void DustyTomeAfterObtainedPrefix(DustyTome __instance)
     {
-        var transformedCard = owner.RunState.CreateCard<ShenGongFangYiTi>(owner);
-        if (starterInDeck.IsUpgraded)
-            CardCmd.Upgrade(transformedCard);
+        var owner = __instance.Owner;
+        if (__instance.AncientCard != null || owner?.Character == null)
+        {
+            return;
+        }
 
-        await CardCmd.Transform(starterInDeck, transformedCard);
-        MainFile.Logger.Info("[AncientRelicMeiLinPatch] ArchaicTooth.AfterObtained: transform complete.");
+        var setupMethod = AccessTools.Method(typeof(DustyTome), nameof(DustyTome.SetupForPlayer));
+        setupMethod?.Invoke(__instance, [owner]);
+    }
+
+    private static async Task HandleArchaicToothTransform(Player owner, CardModel starter)
+    {
+        var transformed = owner.RunState.CreateCard<ShenGongFangYiTi>(owner);
+        CopyStarterUpgradesAndEnchantments(starter, transformed);
+        await CardCmd.Transform(starter, transformed);
+    }
+
+    private static void CopyStarterUpgradesAndEnchantments(CardModel starter, CardModel transformed)
+    {
+        if (starter.IsUpgraded)
+        {
+            CardCmd.Upgrade(transformed);
+        }
+
+        if (starter.Enchantment != null)
+        {
+            var enchantment = (EnchantmentModel)starter.Enchantment.MutableClone();
+            CardCmd.Enchant(enchantment, transformed, enchantment.Amount);
+        }
+    }
+
+    private static CardModel? GetStarterAttackDefenseUnity(Player player)
+    {
+        return player.Deck.Cards.FirstOrDefault(card =>
+            card is AttackDefenseUnity || card.Id.Entry == "MEILINMOD-ATTACK_DEFENSE_UNITY");
     }
 
     private static bool IsMeiLinPlayer(Player? player)
@@ -119,13 +135,12 @@ public static class AncientRelicMeiLinPatch
             return false;
         }
 
-        if (player.Character?.Id.Entry == "MEILINMOD-MEI_LIN_MOD")
+        if (player.Character is MeiLinCharacterModel || player.Character?.Id.Entry == "MEILINMOD-MEI_LIN_MOD")
         {
             return true;
         }
 
-        return player.Deck.Cards.Any(c =>
-            c is AttackDefenseUnity || c.Id.Entry == "MEILINMOD-ATTACK_DEFENSE_UNITY");
+        return GetStarterAttackDefenseUnity(player) != null;
     }
 
     private static IEnumerable<CardModel> GetCardPoolCards(Player player)

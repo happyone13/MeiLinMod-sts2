@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
@@ -30,7 +30,7 @@ public class YuHuo() : MeiLinModCard(0, CardType.Skill, CardRarity.Common, Targe
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await PlayerCmd.GainEnergy(DynamicVars.Energy.IntValue, Owner);
-        await PowerCmd.Apply<EmberPower>(Owner.Creature, DynamicVars[EmberKey].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<EmberPower>(new BlockingPlayerChoiceContext(), Owner.Creature, DynamicVars[EmberKey].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

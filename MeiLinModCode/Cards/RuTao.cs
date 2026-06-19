@@ -40,7 +40,7 @@ public class RuTao() : MeiLinModCard(1, CardType.Attack, CardRarity.Common, Targ
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);
 
-        await PowerCmd.Apply<EmberPower>(cardPlay.Target, DynamicVars[EmberKey].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<EmberPower>(new BlockingPlayerChoiceContext(), cardPlay.Target, DynamicVars[EmberKey].BaseValue, Owner.Creature, this);
     }
 
     public override async Task AfterCardPlayedLate(PlayerChoiceContext choiceContext, CardPlay cardPlay)

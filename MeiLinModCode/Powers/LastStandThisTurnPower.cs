@@ -52,7 +52,7 @@ public class LastStandThisTurnPower : MeiLinModPower
         await PowerCmd.Remove(this);
     }
 
-    public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
+    public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, System.Collections.Generic.IEnumerable<MegaCrit.Sts2.Core.Entities.Creatures.Creature> participants)
     {
         // Keep this protection through the opponent's turn, then clear it.
         if (side == Owner.Side)

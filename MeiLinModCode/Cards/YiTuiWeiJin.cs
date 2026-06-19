@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
@@ -30,9 +30,9 @@ public class YiTuiWeiJin() : MeiLinModCard(0, CardType.Skill, CardRarity.Common,
     {
         await XiangzuLegacyApi.SetStance(Owner, XiangzuStance.Guard);
 
-        await PowerCmd.Apply<YiTuiWeiJinNextTurnPower>(Owner.Creature, 1m, Owner.Creature, this);
+        await PowerCmd.Apply<YiTuiWeiJinNextTurnPower>(new BlockingPlayerChoiceContext(), Owner.Creature, 1m, Owner.Creature, this);
         if (IsUpgraded)
-            await PowerCmd.Apply<DrawCardsNextTurnPower>(Owner.Creature, 1m, Owner.Creature, this);
+            await PowerCmd.Apply<DrawCardsNextTurnPower>(new BlockingPlayerChoiceContext(), Owner.Creature, 1m, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

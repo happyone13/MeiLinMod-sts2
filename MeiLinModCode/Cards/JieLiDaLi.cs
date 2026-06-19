@@ -20,7 +20,7 @@ public class JieLiDaLi() : MeiLinModCard(0, CardType.Skill, CardRarity.Common, T
     {
         await XiangzuLegacyApi.SetStance(Owner, XiangzuStance.Attack);
 
-        await PowerCmd.Apply<BorrowForceShieldPower>(Owner.Creature, 1m, Owner.Creature, this);
+        await PowerCmd.Apply<BorrowForceShieldPower>(new BlockingPlayerChoiceContext(), Owner.Creature, 1m, Owner.Creature, this);
 
         if (!IsUpgraded)
             return;

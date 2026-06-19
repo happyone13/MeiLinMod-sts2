@@ -32,8 +32,8 @@ public class ShouJin() : MeiLinModCard(1, CardType.Attack, CardRarity.Common, Ta
         var selfEmber = Owner.Creature.GetPower<EmberPower>()?.Amount ?? 0m;
         if (selfEmber > 0m)
         {
-            await PowerCmd.Apply<EmberPower>(Owner.Creature, -selfEmber, Owner.Creature, this);
-            await PowerCmd.Apply<EmberPower>(cardPlay.Target, selfEmber, Owner.Creature, this);
+            await PowerCmd.Apply<EmberPower>(new BlockingPlayerChoiceContext(), Owner.Creature, -selfEmber, Owner.Creature, this);
+            await PowerCmd.Apply<EmberPower>(new BlockingPlayerChoiceContext(), cardPlay.Target, selfEmber, Owner.Creature, this);
         }
     }
 

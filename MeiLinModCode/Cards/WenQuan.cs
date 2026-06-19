@@ -40,14 +40,14 @@ public class WenQuan() : MeiLinModCard(0, CardType.Skill, CardRarity.Rare, Targe
                 if (IsUpgraded)
                     CardCmd.Upgrade(generated);
                 CardCmd.ApplyKeyword(generated, CardKeyword.Exhaust);
-                await CardPileCmd.AddGeneratedCardToCombat(generated, PileType.Hand, true);
+                await CardPileCmd.AddGeneratedCardToCombat(generated, PileType.Hand, Owner, CardPilePosition.Top);
             }
         }
 
         if (AwakeningHelper.IsAwakened(cardPlay))
         {
             await PlayerCmd.LoseEnergy(3, Owner);
-            await PowerCmd.Apply<BasicStrikeDefendFreeThisTurnPower>(Owner.Creature, 1m, Owner.Creature, this);
+            await PowerCmd.Apply<BasicStrikeDefendFreeThisTurnPower>(new BlockingPlayerChoiceContext(), Owner.Creature, 1m, Owner.Creature, this);
         }
     }
 

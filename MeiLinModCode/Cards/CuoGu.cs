@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
@@ -39,10 +39,10 @@ public class CuoGu() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommon, Ta
             .Execute(choiceContext);
 
         if (XiangzuCombatState.IsInAttackStance(Owner.Creature))
-            await PowerCmd.Apply<VulnerablePower>(cardPlay.Target, DynamicVars[VulnerableKey].BaseValue, Owner.Creature, this);
+            await PowerCmd.Apply<VulnerablePower>(new BlockingPlayerChoiceContext(), cardPlay.Target, DynamicVars[VulnerableKey].BaseValue, Owner.Creature, this);
 
         if (XiangzuCombatState.IsInGuardStance(Owner.Creature))
-            await PowerCmd.Apply<WeakPower>(cardPlay.Target, DynamicVars[WeakKey].BaseValue, Owner.Creature, this);
+            await PowerCmd.Apply<WeakPower>(new BlockingPlayerChoiceContext(), cardPlay.Target, DynamicVars[WeakKey].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

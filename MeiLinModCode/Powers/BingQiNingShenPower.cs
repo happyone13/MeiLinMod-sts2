@@ -25,7 +25,7 @@ public class BingQiNingShenPower : MeiLinModPower
         return true;
     }
 
-    public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
+    public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, System.Collections.Generic.IEnumerable<MegaCrit.Sts2.Core.Entities.Creatures.Creature> participants)
     {
         if (side != Owner.Side)
             return;

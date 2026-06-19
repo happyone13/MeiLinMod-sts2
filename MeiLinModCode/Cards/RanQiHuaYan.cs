@@ -44,7 +44,7 @@ public class RanQiHuaYan() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncommo
             return;
 
         foreach (var enemy in combatState.HittableEnemies)
-            await PowerCmd.Apply<EmberPower>(enemy, DynamicVars[EmberKey].BaseValue, Owner.Creature, this);
+            await PowerCmd.Apply<EmberPower>(new BlockingPlayerChoiceContext(), enemy, DynamicVars[EmberKey].BaseValue, Owner.Creature, this);
 
         if (!AwakeningHelper.IsAwakened(cardPlay))
             return;
@@ -56,7 +56,7 @@ public class RanQiHuaYan() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncommo
         await XiangzuCombatState.ConsumeAllQi(Owner.Creature, Owner.Creature, this);
         var bonus = qi * DynamicVars[BonusPerQiKey].BaseValue;
         foreach (var enemy in combatState.HittableEnemies)
-            await PowerCmd.Apply<EmberPower>(enemy, bonus, Owner.Creature, this);
+            await PowerCmd.Apply<EmberPower>(new BlockingPlayerChoiceContext(), enemy, bonus, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

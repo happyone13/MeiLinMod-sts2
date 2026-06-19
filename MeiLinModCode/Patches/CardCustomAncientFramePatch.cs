@@ -194,6 +194,8 @@ public static class CardCustomAncientFramePatch
             portrait.Hide();
         if (ancientPortrait != null && cardModel.CustomSpinePortraitSlot == SpinePortraitSlot.Ancient)
             ancientPortrait.Show();
+
+        BringCostOverlayToFront(cardNode);
     }
 
     public static void PrepareForBaseVisuals(NCard? cardNode)
@@ -336,7 +338,6 @@ public static class CardCustomAncientFramePatch
         });
 
         BringToFront(banner);
-        BringToFront(energyIcon);
         BringToFront(titleLabel);
         BringToFront(descriptionLabel);
 
@@ -385,6 +386,8 @@ public static class CardCustomAncientFramePatch
             if (control is TextureRect textureRect)
                 ApplyTextureRect(textureRect, $"{ChaosEffectsBasePath}icon_card_battle_expand_default.png", material: null, show: cardModel.IsUpgraded);
         });
+
+        BringCostOverlayToFront(cardNode);
     }
 
     private static void RemoveChaosEffects(NCard? cardNode, bool restoreOriginalState)
@@ -710,6 +713,13 @@ public static class CardCustomAncientFramePatch
         child.GetParent().MoveChild(child, child.GetParent().GetChildCount() - 1);
     }
 
+    private static void BringCostOverlayToFront(NCard cardNode)
+    {
+        BringToFront(Get<TextureRect>(EnergyIconField, cardNode));
+        BringToFront(Get<Control>(EnergyLabelField, cardNode));
+        BringToFront(GetOverlayNode(cardNode, CostTextNodeName));
+    }
+
     private static Control? CreateTextureOverlay(NodeLayout layout)
     {
         var textureRect = new TextureRect
@@ -868,6 +878,14 @@ public static class CardCustomAncientFramePatch
         return field?.GetValue(cardNode) as T;
     }
 
+    internal static void ApplyDeferredIfValid(NCard? cardNode)
+    {
+        if (cardNode == null || !GodotObject.IsInstanceValid(cardNode) || !cardNode.IsInsideTree() || !cardNode.IsNodeReady())
+            return;
+
+        Apply(cardNode);
+    }
+
     private static T? LoadResource<T>(string? path) where T : Resource
     {
         if (string.IsNullOrWhiteSpace(path))
@@ -995,6 +1013,17 @@ public static class CardCustomAncientFrameEnterTreePatch
     public static void EnterTreePostfix(NCard __instance)
     {
         CardCustomAncientFramePatch.Apply(__instance);
+    }
+}
+
+[HarmonyPatch(typeof(NCard), "_Ready")]
+public static class CardCustomAncientFrameReadyPatch
+{
+    [HarmonyPostfix]
+    [HarmonyPriority(Priority.Last)]
+    public static void ReadyPostfix(NCard __instance)
+    {
+        Callable.From(() => CardCustomAncientFramePatch.ApplyDeferredIfValid(__instance)).CallDeferred();
     }
 }
 

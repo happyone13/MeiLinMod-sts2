@@ -16,6 +16,6 @@ public class YuJinLiaoYuanPower : MeiLinModPower
             return;
 
         foreach (var enemy in CombatState.HittableEnemies)
-            await PowerCmd.Apply<EmberPower>(enemy, Amount, Owner, null);
+            await PowerCmd.Apply<EmberPower>(new BlockingPlayerChoiceContext(), enemy, Amount, Owner, null);
     }
 }

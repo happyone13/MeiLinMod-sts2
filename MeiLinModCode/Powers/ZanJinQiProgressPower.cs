@@ -18,7 +18,7 @@ public class ZanJinQiProgressPower : MeiLinModPower
         await QiCounterPower.AddProgress(Owner, 2, Owner, null);
 
         var remainingTurns = Amount - 1m;
-        await PowerCmd.Apply<ZanJinQiProgressPower>(Owner, -1m, Owner, null, silent: true);
+        await PowerCmd.Apply<ZanJinQiProgressPower>(new BlockingPlayerChoiceContext(), Owner, -1m, Owner, null, silent: true);
 
         if (remainingTurns <= 0m)
             await PowerCmd.Remove(this);

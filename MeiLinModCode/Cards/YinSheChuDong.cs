@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
@@ -44,7 +44,7 @@ public class YinSheChuDong() : MeiLinModCard(1, CardType.Attack, CardRarity.Comm
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
 
-        await PowerCmd.Apply<EnergyNextTurnPower>(Owner.Creature, DynamicVars.Energy.BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<EnergyNextTurnPower>(new BlockingPlayerChoiceContext(), Owner.Creature, DynamicVars.Energy.BaseValue, Owner.Creature, this);
 
         if (!AwakeningHelper.IsAwakened(cardPlay))
             return;

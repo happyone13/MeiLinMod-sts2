@@ -37,7 +37,7 @@ public class FaJin() : MeiLinModCard(1, CardType.Attack, CardRarity.Common, Targ
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
 
-        await PowerCmd.Apply<NextBasicStrikeExtraPlayPower>(
+        await PowerCmd.Apply<NextBasicStrikeExtraPlayPower>(new BlockingPlayerChoiceContext(), 
             Owner.Creature,
             DynamicVars[ExtraHitsKey].BaseValue,
             Owner.Creature,

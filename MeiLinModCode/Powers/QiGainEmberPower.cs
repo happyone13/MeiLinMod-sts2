@@ -12,6 +12,7 @@ public class QiGainEmberPower : MeiLinModPower
     public override PowerStackType StackType => PowerStackType.Counter;
 
     public override async Task AfterPowerAmountChanged(
+        MegaCrit.Sts2.Core.GameActions.Multiplayer.PlayerChoiceContext choiceContext,
         PowerModel power,
         decimal amount,
         Creature? applier,
@@ -21,6 +22,6 @@ public class QiGainEmberPower : MeiLinModPower
             return;
 
         foreach (var enemy in CombatState.HittableEnemies)
-            await PowerCmd.Apply<EmberPower>(enemy, amount * Amount, Owner, cardSource);
+            await PowerCmd.Apply<EmberPower>(new BlockingPlayerChoiceContext(), enemy, amount * Amount, Owner, cardSource);
     }
 }

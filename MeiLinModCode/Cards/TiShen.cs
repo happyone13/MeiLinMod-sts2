@@ -47,7 +47,7 @@ public class TiShen() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncommon, Ta
             return;
 
         await CardPileCmd.Add(selected, PileType.Exhaust);
-        await PowerCmd.Apply<VigorPower>(Owner.Creature, DynamicVars[VigorKey].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<VigorPower>(new BlockingPlayerChoiceContext(), Owner.Creature, DynamicVars[VigorKey].BaseValue, Owner.Creature, this);
 
         if (AwakeningHelper.IsAwakened(cardPlay))
             await XiangzuLegacyApi.ToggleAttackGuard(Owner);

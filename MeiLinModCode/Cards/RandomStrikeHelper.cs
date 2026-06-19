@@ -11,12 +11,12 @@ namespace MeiLinMod.MeiLinModCode.Cards;
 
 public static class RandomStrikeHelper
 {
-    public static CardModel? CreateRandomNonBasicStrike(Player player, CombatState? combatState, bool upgraded, CardModel? original = null)
+    public static CardModel? CreateRandomNonBasicStrike(Player player, ICombatState? combatState, bool upgraded, CardModel? original = null)
     {
         return CreateRandomNonBasicStrike(player, combatState, upgraded, false, original);
     }
 
-    public static CardModel? CreateRandomNonBasicStrike(Player player, CombatState? combatState, bool upgraded, bool forceOneCost, CardModel? original = null)
+    public static CardModel? CreateRandomNonBasicStrike(Player player, ICombatState? combatState, bool upgraded, bool forceOneCost, CardModel? original = null)
     {
         if (combatState == null)
             return null;

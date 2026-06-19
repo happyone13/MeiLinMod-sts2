@@ -29,7 +29,7 @@ public class FireDragonTurn() : MeiLinModCard(0, CardType.Skill, CardRarity.Comm
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
 
-        await PowerCmd.Apply<EmberPower>(
+        await PowerCmd.Apply<EmberPower>(new BlockingPlayerChoiceContext(), 
             cardPlay.Target,
             DynamicVars[EmberKey].BaseValue,
             Owner.Creature,

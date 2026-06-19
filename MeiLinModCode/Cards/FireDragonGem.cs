@@ -32,7 +32,7 @@ public class FireDragonGem() : MeiLinModCard(1, CardType.Power, CardRarity.Basic
             Owner.Character.CastAnimDelay
         );
 
-        await PowerCmd.Apply<FireDragonGemPower>(
+        await PowerCmd.Apply<FireDragonGemPower>(new BlockingPlayerChoiceContext(), 
             Owner.Creature,
             1m,
             Owner.Creature,

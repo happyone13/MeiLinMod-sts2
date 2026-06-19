@@ -30,6 +30,6 @@ public class YuJinPotion : MeiLinModPotion
     {
         PotionModel.AssertValidForTargetedPotion(target);
         NCombatRoom.Instance?.PlaySplashVfx(target, new Color("ff6a00"));
-        await PowerCmd.Apply<EmberPower>(target, DynamicVars[EmberKey].BaseValue, Owner.Creature, null);
+        await PowerCmd.Apply<EmberPower>(new BlockingPlayerChoiceContext(), target, DynamicVars[EmberKey].BaseValue, Owner.Creature, null);
     }
 }

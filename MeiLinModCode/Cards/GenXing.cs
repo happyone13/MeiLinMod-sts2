@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
@@ -24,7 +24,7 @@ public class GenXing() : MeiLinModCard(2, CardType.Skill, CardRarity.Common, Tar
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
-        await PowerCmd.Apply<GenXingPower>(Owner.Creature, 1m, Owner.Creature, this);
+        await PowerCmd.Apply<GenXingPower>(new BlockingPlayerChoiceContext(), Owner.Creature, 1m, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

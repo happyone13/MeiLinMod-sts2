@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
@@ -37,7 +37,7 @@ public class YanDunFanJi() : MeiLinModCard(1, CardType.Skill, CardRarity.Common,
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
-        await PowerCmd.Apply<DelayedEmberNextTurnPower>(cardPlay.Target, DynamicVars[EmberKey].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<DelayedEmberNextTurnPower>(new BlockingPlayerChoiceContext(), cardPlay.Target, DynamicVars[EmberKey].BaseValue, Owner.Creature, this);
 
         if (!AwakeningHelper.IsAwakened(cardPlay))
             return;

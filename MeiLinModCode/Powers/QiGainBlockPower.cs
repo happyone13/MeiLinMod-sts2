@@ -13,6 +13,7 @@ public class QiGainBlockPower : MeiLinModPower
     public override PowerStackType StackType => PowerStackType.Counter;
 
     public override async Task AfterPowerAmountChanged(
+        MegaCrit.Sts2.Core.GameActions.Multiplayer.PlayerChoiceContext choiceContext,
         PowerModel power,
         decimal amount,
         Creature? applier,

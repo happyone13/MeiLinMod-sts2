@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
@@ -23,7 +23,7 @@ public class YuJinLiaoYuan() : MeiLinModCard(1, CardType.Power, CardRarity.Uncom
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await PlayPowerCastAnim();
-        await PowerCmd.Apply<YuJinLiaoYuanPower>(Owner.Creature, DynamicVars[EmberKey].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<YuJinLiaoYuanPower>(new BlockingPlayerChoiceContext(), Owner.Creature, DynamicVars[EmberKey].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

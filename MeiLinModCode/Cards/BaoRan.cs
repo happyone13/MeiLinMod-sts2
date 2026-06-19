@@ -32,7 +32,7 @@ public class BaoRan() : MeiLinModCard(1, CardType.Attack, CardRarity.Rare, Targe
 
         var ember = cardPlay.Target.GetPower<EmberPower>()?.Amount ?? 0m;
         if (ember > 0m)
-            await PowerCmd.Apply<EmberPower>(cardPlay.Target, ember, Owner.Creature, this);
+            await PowerCmd.Apply<EmberPower>(new BlockingPlayerChoiceContext(), cardPlay.Target, ember, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

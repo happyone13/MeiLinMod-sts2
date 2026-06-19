@@ -25,7 +25,7 @@ public class XiangzuSpiritCardPower : MeiLinModPower
 
     public override int DisplayAmount => DynamicVars["StrengthApplied"].IntValue;
 
-    public override bool IsInstanced => true;
+    public override PowerInstanceType InstanceType => PowerInstanceType.Instanced;
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
@@ -56,17 +56,17 @@ public class XiangzuSpiritCardPower : MeiLinModPower
             return;
 
         Flash();
-        await PowerCmd.Apply<StrengthPower>(Owner, value, Owner, null, silent: true);
+        await PowerCmd.Apply<StrengthPower>(new BlockingPlayerChoiceContext(), Owner, value, Owner, null, silent: true);
         DynamicVars["StrengthApplied"].BaseValue += DynamicVars.Strength.IntValue;
         InvokeDisplayAmountChanged();
     }
 
-    public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
+    public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, System.Collections.Generic.IEnumerable<MegaCrit.Sts2.Core.Entities.Creatures.Creature> participants)
     {
         if (side != Owner.Side)
             return;
 
         await PowerCmd.Remove(this);
-        await PowerCmd.Apply<StrengthPower>(Owner, -DynamicVars["StrengthApplied"].BaseValue, Owner, null, silent: true);
+        await PowerCmd.Apply<StrengthPower>(new BlockingPlayerChoiceContext(), Owner, -DynamicVars["StrengthApplied"].BaseValue, Owner, null, silent: true);
     }
 }

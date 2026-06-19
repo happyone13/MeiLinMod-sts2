@@ -49,8 +49,8 @@ public class HuoLongJingTian() : MeiLinModCard(2, CardType.Attack, CardRarity.Ra
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
 
-        await PowerCmd.Apply<EmberPower>(cardPlay.Target, DynamicVars[EmberKey].BaseValue, Owner.Creature, this);
-        await PowerCmd.Apply<EmberNoExpireThisTurnPower>(cardPlay.Target, 1m, Owner.Creature, this, silent: true);
+        await PowerCmd.Apply<EmberPower>(new BlockingPlayerChoiceContext(), cardPlay.Target, DynamicVars[EmberKey].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<EmberNoExpireThisTurnPower>(new BlockingPlayerChoiceContext(), cardPlay.Target, 1m, Owner.Creature, this, silent: true);
     }
 
     protected override void OnUpgrade()

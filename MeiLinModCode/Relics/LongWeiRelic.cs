@@ -13,6 +13,6 @@ public class LongWeiRelic : MeiLinModRelic
     public override async Task BeforeCombatStart()
     {
         Flash();
-        await PowerCmd.Apply<DragonTailStanceStatPower>(Owner.Creature, 1m, Owner.Creature, null);
+        await PowerCmd.Apply<DragonTailStanceStatPower>(new BlockingPlayerChoiceContext(), Owner.Creature, 1m, Owner.Creature, null);
     }
 }

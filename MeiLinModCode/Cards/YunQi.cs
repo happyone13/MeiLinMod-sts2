@@ -1,4 +1,4 @@
-﻿using BaseLib.Utils;
+using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
 using MeiLinMod.MeiLinModCode.Powers;
@@ -17,7 +17,7 @@ public class YunQi() : MeiLinModCard(1, CardType.Power, CardRarity.Rare, TargetT
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await PlayPowerCastAnim();
-        await PowerCmd.Apply<YunQiPower>(Owner.Creature, 1m, Owner.Creature, this);
+        await PowerCmd.Apply<YunQiPower>(new BlockingPlayerChoiceContext(), Owner.Creature, 1m, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

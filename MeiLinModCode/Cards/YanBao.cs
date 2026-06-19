@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
@@ -36,7 +36,7 @@ public class YanBao() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommon, T
 
         var ember = cardPlay.Target.GetPower<EmberPower>()?.Amount ?? 0m;
         if (ember > 0)
-            await PowerCmd.Apply<EmberPower>(cardPlay.Target, -ember, Owner.Creature, this);
+            await PowerCmd.Apply<EmberPower>(new BlockingPlayerChoiceContext(), cardPlay.Target, -ember, Owner.Creature, this);
 
         var totalDamage = DynamicVars.Damage.BaseValue + (ember * DynamicVars[BonusDamageKey].BaseValue);
         await DamageCmd.Attack(totalDamage)

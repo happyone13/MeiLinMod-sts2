@@ -1,4 +1,4 @@
-﻿using BaseLib.Utils;
+using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
 using MegaCrit.Sts2.Core.Commands;
@@ -25,7 +25,7 @@ public class YaZhi() : MeiLinModCard(-1, CardType.Skill, CardRarity.Uncommon, Ta
                 return;
 
             foreach (var enemy in combatState.HittableEnemies)
-                await PowerCmd.Apply<Powers.EmberPower>(enemy, count, Owner.Creature, this);
+                await PowerCmd.Apply<Powers.EmberPower>(new BlockingPlayerChoiceContext(), enemy, count, Owner.Creature, this);
         }
 
         for (var i = 0; i < count; i++)
@@ -36,7 +36,7 @@ public class YaZhi() : MeiLinModCard(-1, CardType.Skill, CardRarity.Uncommon, Ta
 
             strike.SetToFreeThisCombat();
             CardCmd.ApplyKeyword(strike, CardKeyword.Exhaust);
-            await CardPileCmd.AddGeneratedCardToCombat(strike, PileType.Hand, true);
+            await CardPileCmd.AddGeneratedCardToCombat(strike, PileType.Hand, Owner, CardPilePosition.Top);
 
             if (IsUpgraded)
                 CardCmd.Upgrade(strike);

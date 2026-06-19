@@ -62,7 +62,7 @@ public class YiLiYuJianTaZhiShangPower : MeiLinModPower
         _requiredQi += 1m;
     }
 
-    public override Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
+    public override Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, System.Collections.Generic.IEnumerable<MegaCrit.Sts2.Core.Entities.Creatures.Creature> participants)
     {
         _protectedThisTurn = false;
         return Task.CompletedTask;

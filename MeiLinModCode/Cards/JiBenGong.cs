@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
@@ -26,7 +26,7 @@ public class JiBenGong() : MeiLinModCard(1, CardType.Power, CardRarity.Uncommon,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await PlayPowerCastAnim();
-        await PowerCmd.Apply<JiBenGongPower>(Owner.Creature, DynamicVars[BonusKey].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<JiBenGongPower>(new BlockingPlayerChoiceContext(), Owner.Creature, DynamicVars[BonusKey].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

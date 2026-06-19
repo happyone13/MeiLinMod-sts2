@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
@@ -29,7 +29,7 @@ public class LongZhiNu() : MeiLinModCard(1, CardType.Skill, CardRarity.Common, T
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
-        await PowerCmd.Apply<DragonRageQiOnBlockBreakPower>(Owner.Creature, DynamicVars[ProgressKey].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<DragonRageQiOnBlockBreakPower>(new BlockingPlayerChoiceContext(), Owner.Creature, DynamicVars[ProgressKey].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

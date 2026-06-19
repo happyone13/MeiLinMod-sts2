@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
@@ -24,7 +24,7 @@ public class XinRuZhiShui() : MeiLinModCard(1, CardType.Power, CardRarity.Rare, 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await PlayPowerCastAnim();
-        await PowerCmd.Apply<XinRuZhiShuiPower>(Owner.Creature, 1m, Owner.Creature, this);
+        await PowerCmd.Apply<XinRuZhiShuiPower>(new BlockingPlayerChoiceContext(), Owner.Creature, 1m, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

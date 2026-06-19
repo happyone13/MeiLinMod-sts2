@@ -13,6 +13,6 @@ public class LongLinRelic : MeiLinModRelic
     public override async Task BeforeCombatStart()
     {
         Flash();
-        await PowerCmd.Apply<BasicDefendBlockBonusPower>(Owner.Creature, 2m, Owner.Creature, null);
+        await PowerCmd.Apply<BasicDefendBlockBonusPower>(new BlockingPlayerChoiceContext(), Owner.Creature, 2m, Owner.Creature, null);
     }
 }

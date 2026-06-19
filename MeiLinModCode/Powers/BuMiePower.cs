@@ -28,6 +28,6 @@ public class BuMiePower : MeiLinModPower
     private async Task ApplyToAllEnemies(CardModel? cardSource)
     {
         foreach (var enemy in CombatState.HittableEnemies)
-            await PowerCmd.Apply<EnemyEmberHalfDecayPower>(enemy, 1m, Owner, cardSource, silent: true);
+            await PowerCmd.Apply<EnemyEmberHalfDecayPower>(new BlockingPlayerChoiceContext(), enemy, 1m, Owner, cardSource, silent: true);
     }
 }

@@ -42,7 +42,7 @@ public class HuoLongTuXi() : MeiLinModCard(1, CardType.Skill, CardRarity.Common,
         if (!AwakeningHelper.IsAwakened(cardPlay))
             return;
 
-        await PowerCmd.Apply<EmberPower>(Owner.Creature, DynamicVars[EmberKey].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<EmberPower>(new BlockingPlayerChoiceContext(), Owner.Creature, DynamicVars[EmberKey].BaseValue, Owner.Creature, this);
         await PlayerCmd.GainEnergy(DynamicVars.Energy.IntValue, Owner);
     }
 

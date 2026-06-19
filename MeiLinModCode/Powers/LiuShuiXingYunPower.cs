@@ -16,7 +16,7 @@ public class LiuShuiXingYunPower : MeiLinModPower
 
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
-    public override bool IsInstanced => true;
+    public override PowerInstanceType InstanceType => PowerInstanceType.Instanced;
     public override int DisplayAmount => TriggerCount - _progress;
 
     public override Task AfterApplied(Creature? applier, CardModel? cardSource)

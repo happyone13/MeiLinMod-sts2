@@ -27,7 +27,7 @@ public class FireDragonGemPower : MeiLinModPower
 
         if (cardPlay.Target != null)
         {
-            await PowerCmd.Apply<EmberPower>(cardPlay.Target, Amount, Owner, cardPlay.Card);
+            await PowerCmd.Apply<EmberPower>(new BlockingPlayerChoiceContext(), cardPlay.Target, Amount, Owner, cardPlay.Card);
             return;
         }
 
@@ -36,6 +36,6 @@ public class FireDragonGemPower : MeiLinModPower
             return;
 
         foreach (var enemy in combatState.HittableEnemies)
-            await PowerCmd.Apply<EmberPower>(enemy, Amount, Owner, cardPlay.Card);
+            await PowerCmd.Apply<EmberPower>(new BlockingPlayerChoiceContext(), enemy, Amount, Owner, cardPlay.Card);
     }
 }

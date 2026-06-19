@@ -28,11 +28,11 @@ public static class XiangzuLegacyApi
         {
             case XiangzuStance.Guard:
                 await PowerCmd.Remove<StanceGongPower>(player.Creature);
-                await PowerCmd.Apply<StanceYuPower>(player.Creature, 1m, player.Creature, null, silent: true);
+                await PowerCmd.Apply<StanceYuPower>(new BlockingPlayerChoiceContext(), player.Creature, 1m, player.Creature, null, silent: true);
                 break;
             default:
                 await PowerCmd.Remove<StanceYuPower>(player.Creature);
-                await PowerCmd.Apply<StanceGongPower>(player.Creature, 1m, player.Creature, null, silent: true);
+                await PowerCmd.Apply<StanceGongPower>(new BlockingPlayerChoiceContext(), player.Creature, 1m, player.Creature, null, silent: true);
                 break;
         }
     }
@@ -50,17 +50,17 @@ public static class XiangzuLegacyApi
         if (creature.HasPower<StanceGongPower>())
         {
             await PowerCmd.Remove<StanceGongPower>(creature);
-            await PowerCmd.Apply<StanceYuPower>(creature, 1m, creature, null, silent: true);
+            await PowerCmd.Apply<StanceYuPower>(new BlockingPlayerChoiceContext(), creature, 1m, creature, null, silent: true);
             return;
         }
 
         if (creature.HasPower<StanceYuPower>())
         {
             await PowerCmd.Remove<StanceYuPower>(creature);
-            await PowerCmd.Apply<StanceGongPower>(creature, 1m, creature, null, silent: true);
+            await PowerCmd.Apply<StanceGongPower>(new BlockingPlayerChoiceContext(), creature, 1m, creature, null, silent: true);
             return;
         }
 
-        await PowerCmd.Apply<StanceGongPower>(creature, 1m, creature, null, silent: true);
+        await PowerCmd.Apply<StanceGongPower>(new BlockingPlayerChoiceContext(), creature, 1m, creature, null, silent: true);
     }
 }

@@ -22,7 +22,7 @@ public class BuDongRuShan() : MeiLinModCard(0, CardType.Skill, CardRarity.Common
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<NextBasicDefendFreePower>(Owner.Creature, 1m, Owner.Creature, this);
+        await PowerCmd.Apply<NextBasicDefendFreePower>(new BlockingPlayerChoiceContext(), Owner.Creature, 1m, Owner.Creature, this);
 
         if (AwakeningHelper.IsAwakened(cardPlay))
         {

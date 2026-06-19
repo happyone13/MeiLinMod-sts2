@@ -23,7 +23,7 @@ public class XinHuoXiangChuanPower : MeiLinModPower
             await CardPileCmd.Draw(context, 1m, Owner.Player);
 
         var remainingStacks = Amount - 1m;
-        await PowerCmd.Apply<XinHuoXiangChuanPower>(Owner, -1m, Owner, cardPlay.Card, silent: true);
+        await PowerCmd.Apply<XinHuoXiangChuanPower>(new BlockingPlayerChoiceContext(), Owner, -1m, Owner, cardPlay.Card, silent: true);
 
         if (remainingStacks <= 0m)
             await PowerCmd.Remove(this);

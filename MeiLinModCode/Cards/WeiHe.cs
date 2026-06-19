@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
@@ -40,14 +40,14 @@ public class WeiHe() : MeiLinModCard(1, CardType.Skill, CardRarity.Uncommon, Tar
             return;
 
         foreach (var enemy in combatState.HittableEnemies)
-            await PowerCmd.Apply<WeakPower>(enemy, DynamicVars[WeakKey].BaseValue, Owner.Creature, this);
+            await PowerCmd.Apply<WeakPower>(new BlockingPlayerChoiceContext(), enemy, DynamicVars[WeakKey].BaseValue, Owner.Creature, this);
 
         if (!AwakeningHelper.IsAwakened(cardPlay))
             return;
 
-        await PowerCmd.Apply<EmberPower>(Owner.Creature, DynamicVars[EmberKey].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<EmberPower>(new BlockingPlayerChoiceContext(), Owner.Creature, DynamicVars[EmberKey].BaseValue, Owner.Creature, this);
         foreach (var enemy in combatState.HittableEnemies)
-            await PowerCmd.Apply<VulnerablePower>(enemy, DynamicVars[VulnerableKey].BaseValue, Owner.Creature, this);
+            await PowerCmd.Apply<VulnerablePower>(new BlockingPlayerChoiceContext(), enemy, DynamicVars[VulnerableKey].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

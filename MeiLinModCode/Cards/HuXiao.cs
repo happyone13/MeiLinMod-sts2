@@ -26,7 +26,7 @@ public class HuXiao : MeiLinModCard
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await PlayPowerCastAnim();
-        await PowerCmd.Apply<AttackStanceStartStrikePower>(Owner.Creature, 1m, Owner.Creature, this);
+        await PowerCmd.Apply<AttackStanceStartStrikePower>(new BlockingPlayerChoiceContext(), Owner.Creature, 1m, Owner.Creature, this);
 
         if (AwakeningHelper.IsAwakened(cardPlay))
             await PlayerCmd.GainEnergy(1, Owner);

@@ -56,7 +56,7 @@ public static class XiangzuCombatState
         if (amount == 0m)
             return;
 
-        await PowerCmd.Apply<QiPower>(owner, amount, applier ?? owner, cardSource, silent: silent);
+        await PowerCmd.Apply<QiPower>(new BlockingPlayerChoiceContext(), owner, amount, applier ?? owner, cardSource, silent: silent);
     }
 
     public static async Task<bool> TryConsumeQi(

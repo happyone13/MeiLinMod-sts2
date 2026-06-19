@@ -28,7 +28,7 @@ public class XiaoLi() : MeiLinModCard(1, CardType.Skill, CardRarity.Common, Targ
 
         if (cardPlay.Target == null)
             return;
-        await PowerCmd.Apply<WeakPower>(cardPlay.Target, DynamicVars["Weak"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<WeakPower>(new BlockingPlayerChoiceContext(), cardPlay.Target, DynamicVars["Weak"].BaseValue, Owner.Creature, this);
         await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner);
     }
 
