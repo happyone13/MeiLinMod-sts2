@@ -3,7 +3,7 @@
   "name": "MeiLinMod",
   "author": "lozalia",
   "description": "MeiLin playable character mod for Slay the Spire 2.",
-  "version": "v0.2.6",
+  "version": "v0.2.7",
   "has_pck": true,
   "has_dll": true,
   "dependencies": [
