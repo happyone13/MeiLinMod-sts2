@@ -1,0 +1,194 @@
+[gd_scene load_steps=116 format=3]
+
+[ext_resource type="SpineSkeletonDataResource" path="res://MeiLinMod/spine/effect/generated/meirin_strong_attack_play_ring_f/meirin_strong_attack_play_ring_f_skel_data.tres" id="1_meirin_strong_attack_play_ring_f"]
+[ext_resource type="SpineSkeletonDataResource" path="res://MeiLinMod/spine/effect/generated/meirin_strong_attack_play_ring_b/meirin_strong_attack_play_ring_b_skel_data.tres" id="2_meirin_strong_attack_play_ring_b"]
+[ext_resource type="SpineSkeletonDataResource" path="res://MeiLinMod/spine/effect/generated/meirin_strong_attack_play_round_f/meirin_strong_attack_play_round_f_skel_data.tres" id="3_meirin_strong_attack_play_round_f"]
+[ext_resource type="SpineSkeletonDataResource" path="res://MeiLinMod/spine/effect/generated/meirin_strong_attack_play_round2/meirin_strong_attack_play_round2_skel_data.tres" id="4_meirin_strong_attack_play_round2"]
+[ext_resource type="Texture2D" path="res://MeiLinMod/images/vfx/particles/pati_02.png" id="5_pati_02"]
+[ext_resource type="Texture2D" path="res://MeiLinMod/images/vfx/particles/pati_03.png" id="6_pati_03"]
+[ext_resource type="Texture2D" path="res://MeiLinMod/images/vfx/particles/blur_ticle_03.png" id="7_blur_ticle_03"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_2"]
+offsets = PackedFloat32Array(0, 0.036913, 0.067114, 0.09396, 0.127517, 0.16443, 0.201342, 0.228188, 0.261745, 0.291946, 0.322148, 0.348993, 0.385906, 0.402685, 0.432886, 0.520134, 0.57047, 0.614094, 0.644295, 0.667785, 0.708054, 0.738255, 0.765101, 0.805369, 0.83557, 0.879195, 0.90604, 0.936242, 0.959731, 1)
+colors = PackedColorArray(1, 0.976471, 0.843137, 1, 1, 0.976471, 0.831373, 1, 1, 0.976471, 0.823529, 0.094118, 1, 0.976471, 0.807843, 1, 1, 0.976471, 0.788235, 0.105882, 1, 0.976471, 0.772549, 1, 1, 0.976471, 0.756863, 0.082353, 1, 0.976471, 0.745098, 1, 1, 0.976471, 0.729412, 0.141176, 1, 0.980392, 0.713726, 1, 1, 0.984314, 0.698039, 0.137255, 1, 0.988235, 0.682353, 1, 1, 0.992157, 0.670588, 0.137255, 1, 0.996078, 0.662745, 1, 1, 1, 0.658824, 1, 1, 0.976471, 0.647059, 1, 1, 0.960784, 0.639216, 0.078431, 0.996078, 0.94902, 0.635294, 0.996078, 0.996078, 0.941176, 0.631373, 0.090196, 0.996078, 0.929412, 0.627451, 0.996078, 0.996078, 0.921569, 0.623529, 0.078431, 0.996078, 0.909804, 0.619608, 0.996078, 0.996078, 0.901961, 0.615686, 0.066667, 0.996078, 0.890196, 0.611765, 0.996078, 0.996078, 0.882353, 0.607843, 0.152941, 0.996078, 0.87451, 0.603922, 0.996078, 0.996078, 0.866667, 0.6, 0.090196, 0.996078, 0.862745, 0.6, 0.996078, 0.996078, 0.858824, 0.6, 0.098039, 1, 0.854902, 0.6, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3"]
+gradient = SubResource("Gradient_2")
+
+[sub_resource type="Curve" id="Curve_4"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.2), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_5"]
+curve = SubResource("Curve_4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_shape_scale = Vector3(800, 2, 1)
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(1, 0, 0)
+spread = 20
+initial_velocity_min = 1
+initial_velocity_max = 299
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_max = 2
+scale_curve = SubResource("CurveTexture_5")
+color_ramp = SubResource("GradientTexture1D_3")
+angle_min = 0
+angle_max = 0
+angular_velocity_min = 0
+angular_velocity_max = 0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_8"]
+offsets = PackedFloat32Array(0, 0.036913, 0.067114, 0.09396, 0.127517, 0.16443, 0.201342, 0.228188, 0.261745, 0.291946, 0.322148, 0.348993, 0.385906, 0.402685, 0.432886, 0.520134, 0.57047, 0.614094, 0.644295, 0.667785, 0.708054, 0.738255, 0.765101, 0.805369, 0.83557, 0.879195, 0.90604, 0.936242, 0.959731, 1)
+colors = PackedColorArray(1, 0.976471, 0.843137, 1, 1, 0.976471, 0.831373, 1, 1, 0.976471, 0.823529, 0.094118, 1, 0.976471, 0.807843, 1, 1, 0.976471, 0.788235, 0.105882, 1, 0.976471, 0.772549, 1, 1, 0.976471, 0.756863, 0.082353, 1, 0.976471, 0.745098, 1, 1, 0.976471, 0.729412, 0.141176, 1, 0.980392, 0.713726, 1, 1, 0.984314, 0.698039, 0.137255, 1, 0.988235, 0.682353, 1, 1, 0.992157, 0.670588, 0.137255, 1, 0.996078, 0.662745, 1, 1, 1, 0.658824, 1, 1, 0.976471, 0.647059, 1, 1, 0.960784, 0.639216, 0.078431, 0.996078, 0.94902, 0.635294, 0.996078, 0.996078, 0.941176, 0.631373, 0.090196, 0.996078, 0.929412, 0.627451, 0.996078, 0.996078, 0.921569, 0.623529, 0.078431, 0.996078, 0.909804, 0.619608, 0.996078, 0.996078, 0.901961, 0.615686, 0.066667, 0.996078, 0.890196, 0.611765, 0.996078, 0.996078, 0.882353, 0.607843, 0.152941, 0.996078, 0.87451, 0.603922, 0.996078, 0.996078, 0.866667, 0.6, 0.090196, 0.996078, 0.862745, 0.6, 0.996078, 0.996078, 0.858824, 0.6, 0.098039, 1, 0.854902, 0.6, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_9"]
+gradient = SubResource("Gradient_8")
+
+[sub_resource type="Curve" id="Curve_10"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.01), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_11"]
+curve = SubResource("Curve_10")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_12"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_shape_scale = Vector3(800, 2, 1)
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(1, 0, 0)
+spread = 20
+initial_velocity_min = 1
+initial_velocity_max = 299
+gravity = Vector3(0, 0, 0)
+scale_min = 0.01
+scale_max = 3.99
+scale_curve = SubResource("CurveTexture_11")
+color_ramp = SubResource("GradientTexture1D_9")
+angle_min = 0
+angle_max = 0
+angular_velocity_min = 0
+angular_velocity_max = 0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_13"]
+blend_mode = 0
+
+[sub_resource type="Gradient" id="Gradient_14"]
+offsets = PackedFloat32Array(0, 0.661074, 1)
+colors = PackedColorArray(0.4, 0.058824, 0, 1, 0.423529, 0.015686, 0.015686, 1, 0.419608, 0, 0.168627, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_15"]
+gradient = SubResource("Gradient_14")
+
+[sub_resource type="Curve" id="Curve_16"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.25), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_17"]
+curve = SubResource("Curve_16")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_18"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_shape_scale = Vector3(800, 2, 1)
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(1, 0, 0)
+spread = 20
+initial_velocity_min = 1
+initial_velocity_max = 299
+gravity = Vector3(0, 0, 0)
+scale_min = 0.15625
+scale_max = 0.46875
+scale_curve = SubResource("CurveTexture_17")
+color_ramp = SubResource("GradientTexture1D_15")
+angle_min = -180
+angle_max = 180
+angular_velocity_min = -150
+angular_velocity_max = 210
+
+
+[node name="MeirinStrongAttackPlayRoot" type="Node2D"]
+[node name="meirin_strong_attack_play_ring_f_layer_1" type="Node2D" parent="."]
+z_index = 3
+[node name="meirin_strong_attack_play_ring_f" type="SpineSprite" parent="meirin_strong_attack_play_ring_f_layer_1"]
+skeleton_data_res = ExtResource("1_meirin_strong_attack_play_ring_f")
+preview_skin = "Default"
+preview_animation = "animation"
+preview_frame = false
+preview_time = 0.0
+[node name="meirin_strong_attack_play_ring_b_layer_2" type="Node2D" parent="."]
+z_index = -2
+[node name="meirin_strong_attack_play_ring_b" type="SpineSprite" parent="meirin_strong_attack_play_ring_b_layer_2"]
+skeleton_data_res = ExtResource("2_meirin_strong_attack_play_ring_b")
+preview_skin = "Default"
+preview_animation = "animation"
+preview_frame = false
+preview_time = 0.0
+[node name="meirin_strong_attack_play_round_f_layer_3" type="Node2D" parent="."]
+z_index = 4
+[node name="meirin_strong_attack_play_round_f" type="SpineSprite" parent="meirin_strong_attack_play_round_f_layer_3"]
+skeleton_data_res = ExtResource("3_meirin_strong_attack_play_round_f")
+preview_skin = "Default"
+preview_animation = "animation"
+preview_frame = false
+preview_time = 0.0
+[node name="meirin_strong_attack_play_round2_layer_4" type="Node2D" parent="."]
+z_index = -3
+[node name="meirin_strong_attack_play_round2" type="SpineSprite" parent="meirin_strong_attack_play_round2_layer_4"]
+skeleton_data_res = ExtResource("4_meirin_strong_attack_play_round2")
+preview_skin = "Default"
+preview_animation = "animation"
+preview_frame = false
+preview_time = 0.0
+[node name="meirin_s_attack_line_par_layer_5" type="Node2D" parent="."]
+position = Vector2(450, -430)
+rotation_degrees = -21
+z_index = 1
+visible = false
+metadata/meilin_vfx_delay_sec = 0.099
+[node name="meirin_s_attack_line_par_bar2_1" type="GPUParticles2D" parent="meirin_s_attack_line_par_layer_5"]
+material = SubResource("CanvasItemMaterial_1")
+position = Vector2(0, 0)
+emitting = false
+amount = 20
+texture = ExtResource("5_pati_02")
+lifetime = 0.6
+preprocess = 0
+randomness = 0.6
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_6")
+[node name="meirin_s_attack_line_par_bar2_2" type="GPUParticles2D" parent="meirin_s_attack_line_par_layer_5"]
+material = SubResource("CanvasItemMaterial_7")
+position = Vector2(0, 0)
+emitting = false
+amount = 20
+texture = ExtResource("6_pati_03")
+lifetime = 0.6
+preprocess = 0
+randomness = 0.6
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_12")
+[node name="meirin_s_attack_line_par_bar2_3" type="GPUParticles2D" parent="meirin_s_attack_line_par_layer_5"]
+material = SubResource("CanvasItemMaterial_13")
+position = Vector2(0, 0)
+emitting = false
+amount = 20
+texture = ExtResource("7_blur_ticle_03")
+lifetime = 0.6
+preprocess = 0
+randomness = 0.6
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_18")

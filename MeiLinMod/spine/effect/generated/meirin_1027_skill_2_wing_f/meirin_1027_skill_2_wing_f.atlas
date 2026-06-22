@@ -1,0 +1,83 @@
+
+meirin_1027_skill_2_wing_f.png
+size: 1472,832
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+flame1
+  rotate: true
+  xy: 1016, 100
+  size: 354, 146
+  orig: 354, 146
+  offset: 0, 0
+  index: -1
+flame2
+  rotate: false
+  xy: 1181, 442
+  size: 277, 258
+  orig: 277, 258
+  offset: 0, 0
+  index: -1
+flame3
+  rotate: true
+  xy: 1164, 220
+  size: 220, 256
+  orig: 220, 256
+  offset: 0, 0
+  index: -1
+flame4
+  rotate: false
+  xy: 2, 11
+  size: 337, 303
+  orig: 337, 303
+  offset: 0, 0
+  index: -1
+flame5
+  rotate: true
+  xy: 1164, 2
+  size: 216, 192
+  orig: 216, 192
+  offset: 0, 0
+  index: -1
+flame6
+  rotate: false
+  xy: 1181, 702
+  size: 285, 126
+  orig: 285, 126
+  offset: 0, 0
+  index: -1
+flame7
+  rotate: true
+  xy: 341, 29
+  size: 285, 271
+  orig: 285, 271
+  offset: 0, 0
+  index: -1
+glow1
+  rotate: false
+  xy: 516, 421
+  size: 403, 407
+  orig: 403, 407
+  offset: 0, 0
+  index: -1
+impact1
+  rotate: false
+  xy: 2, 316
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+impact2
+  rotate: false
+  xy: 614, 19
+  size: 400, 400
+  orig: 400, 400
+  offset: 0, 0
+  index: -1
+rim1
+  rotate: false
+  xy: 921, 456
+  size: 258, 372
+  orig: 258, 372
+  offset: 0, 0
+  index: -1

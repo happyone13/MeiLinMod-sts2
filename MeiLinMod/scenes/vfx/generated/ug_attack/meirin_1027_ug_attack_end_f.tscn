@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="SpineSkeletonDataResource" path="res://MeiLinMod/spine/effect/generated/close_combat_step_player_arrive/close_combat_step_player_arrive_skel_data.tres" id="1_close_combat_step_player_arrive"]
+
+[node name="Meirin1027UgAttackEndF" type="Node2D"]
+[node name="close_combat_step_player_arrive_layer_1" type="Node2D" parent="."]
+scale = Vector2(0.6, 0.6)
+z_index = 50
+[node name="close_combat_step_player_arrive" type="SpineSprite" parent="close_combat_step_player_arrive_layer_1"]
+skeleton_data_res = ExtResource("1_close_combat_step_player_arrive")
+preview_skin = "Default"
+preview_animation = "f"
+preview_frame = false
+preview_time = 0.0

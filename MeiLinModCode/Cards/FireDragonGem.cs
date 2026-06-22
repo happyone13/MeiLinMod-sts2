@@ -20,17 +20,14 @@ public class FireDragonGem() : MeiLinModCard(1, CardType.Power, CardRarity.Basic
     public override bool UsesDynamicChaosFrame => true;
     public override string? CustomAncientFrameMaterialPath => ChaosAncientFrameMaterialPath;
     public override string? CustomAncientBannerMaterialPath => ChaosAncientBannerMaterialPath;
+    protected override string? CombatTimelineName => "u1_buff";
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         MeiLinAudioService.SuppressNextDefaultCastSfx(Owner);
         MeiLinAudioService.TryPlayCustomCardClip("fire_dragon_gam", Owner);
 
-        await CreatureCmd.TriggerAnim(
-            Owner.Creature,
-            "Cast",
-            Owner.Character.CastAnimDelay
-        );
+        await PlayPowerCastAnim();
 
         await PowerCmd.Apply<FireDragonGemPower>(new BlockingPlayerChoiceContext(), 
             Owner.Creature,

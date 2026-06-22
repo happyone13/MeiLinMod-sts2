@@ -1,0 +1,118 @@
+
+meirin_debuff_ready_target_self.png
+size: 908,532
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+beam2
+  rotate: false
+  xy: 2, 206
+  size: 402, 23
+  orig: 402, 23
+  offset: 0, 0
+  index: -1
+elec_beam1
+  rotate: false
+  xy: 2, 138
+  size: 300, 66
+  orig: 300, 66
+  offset: 0, 0
+  index: -1
+elec_beam2
+  rotate: false
+  xy: 2, 70
+  size: 300, 66
+  orig: 300, 66
+  offset: 0, 0
+  index: -1
+elec_beam3
+  rotate: false
+  xy: 2, 2
+  size: 300, 66
+  orig: 300, 66
+  offset: 0, 0
+  index: -1
+elec_beam4
+  rotate: true
+  xy: 612, 230
+  size: 300, 66
+  orig: 300, 66
+  offset: 0, 0
+  index: -1
+elec_beam5
+  rotate: true
+  xy: 680, 230
+  size: 300, 66
+  orig: 300, 66
+  offset: 0, 0
+  index: -1
+elec_beam6
+  rotate: true
+  xy: 748, 230
+  size: 300, 66
+  orig: 300, 66
+  offset: 0, 0
+  index: -1
+elec_beam7
+  rotate: true
+  xy: 816, 230
+  size: 300, 66
+  orig: 300, 66
+  offset: 0, 0
+  index: -1
+elec_beam8
+  rotate: false
+  xy: 304, 7
+  size: 300, 66
+  orig: 300, 66
+  offset: 0, 0
+  index: -1
+elec_beam9
+  rotate: false
+  xy: 606, 162
+  size: 300, 66
+  orig: 300, 66
+  offset: 0, 0
+  index: -1
+flash
+  rotate: false
+  xy: 354, 274
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+light_star2
+  rotate: false
+  xy: 2, 231
+  size: 350, 299
+  orig: 350, 299
+  offset: 0, 0
+  index: -1
+selfling_1
+  rotate: false
+  xy: 304, 75
+  size: 129, 129
+  orig: 129, 129
+  offset: 0, 0
+  index: -1
+selfling_2
+  rotate: false
+  xy: 435, 143
+  size: 129, 129
+  orig: 129, 129
+  offset: 0, 0
+  index: -1
+selfling_3
+  rotate: false
+  xy: 606, 31
+  size: 129, 129
+  orig: 129, 129
+  offset: 0, 0
+  index: -1
+selfling_4
+  rotate: false
+  xy: 737, 31
+  size: 129, 129
+  orig: 129, 129
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,258 @@
+
+meirin_1027_skill_2_end.png
+size: 1896,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+mairin_ring_c1
+  rotate: true
+  xy: 2, 254
+  size: 250, 95
+  orig: 250, 95
+  offset: 0, 0
+  index: -1
+mairin_ring_c10
+  rotate: true
+  xy: 390, 2
+  size: 250, 95
+  orig: 250, 95
+  offset: 0, 0
+  index: -1
+mairin_ring_c11
+  rotate: true
+  xy: 487, 254
+  size: 250, 95
+  orig: 250, 95
+  offset: 0, 0
+  index: -1
+mairin_ring_c2
+  rotate: true
+  xy: 2, 2
+  size: 250, 95
+  orig: 250, 95
+  offset: 0, 0
+  index: -1
+mairin_ring_c3
+  rotate: true
+  xy: 99, 254
+  size: 250, 95
+  orig: 250, 95
+  offset: 0, 0
+  index: -1
+mairin_ring_c4
+  rotate: true
+  xy: 99, 2
+  size: 250, 95
+  orig: 250, 95
+  offset: 0, 0
+  index: -1
+mairin_ring_c5
+  rotate: true
+  xy: 196, 254
+  size: 250, 95
+  orig: 250, 95
+  offset: 0, 0
+  index: -1
+mairin_ring_c6
+  rotate: true
+  xy: 196, 2
+  size: 250, 95
+  orig: 250, 95
+  offset: 0, 0
+  index: -1
+mairin_ring_c7
+  rotate: true
+  xy: 293, 254
+  size: 250, 95
+  orig: 250, 95
+  offset: 0, 0
+  index: -1
+mairin_ring_c8
+  rotate: true
+  xy: 293, 2
+  size: 250, 95
+  orig: 250, 95
+  offset: 0, 0
+  index: -1
+mairin_ring_c9
+  rotate: true
+  xy: 390, 254
+  size: 250, 95
+  orig: 250, 95
+  offset: 0, 0
+  index: -1
+mairin_ring_gl1
+  rotate: true
+  xy: 487, 2
+  size: 250, 95
+  orig: 250, 95
+  offset: 0, 0
+  index: -1
+mairin_ring_gl10
+  rotate: true
+  xy: 972, 254
+  size: 250, 95
+  orig: 250, 95
+  offset: 0, 0
+  index: -1
+mairin_ring_gl11
+  rotate: true
+  xy: 972, 2
+  size: 250, 95
+  orig: 250, 95
+  offset: 0, 0
+  index: -1
+mairin_ring_gl2
+  rotate: true
+  xy: 584, 254
+  size: 250, 95
+  orig: 250, 95
+  offset: 0, 0
+  index: -1
+mairin_ring_gl3
+  rotate: true
+  xy: 584, 2
+  size: 250, 95
+  orig: 250, 95
+  offset: 0, 0
+  index: -1
+mairin_ring_gl4
+  rotate: true
+  xy: 681, 254
+  size: 250, 95
+  orig: 250, 95
+  offset: 0, 0
+  index: -1
+mairin_ring_gl5
+  rotate: true
+  xy: 681, 2
+  size: 250, 95
+  orig: 250, 95
+  offset: 0, 0
+  index: -1
+mairin_ring_gl6
+  rotate: true
+  xy: 778, 254
+  size: 250, 95
+  orig: 250, 95
+  offset: 0, 0
+  index: -1
+mairin_ring_gl7
+  rotate: true
+  xy: 778, 2
+  size: 250, 95
+  orig: 250, 95
+  offset: 0, 0
+  index: -1
+mairin_ring_gl8
+  rotate: true
+  xy: 875, 254
+  size: 250, 95
+  orig: 250, 95
+  offset: 0, 0
+  index: -1
+mairin_ring_gl9
+  rotate: true
+  xy: 875, 2
+  size: 250, 95
+  orig: 250, 95
+  offset: 0, 0
+  index: -1
+mairin_ring_l1
+  rotate: true
+  xy: 1069, 254
+  size: 250, 95
+  orig: 250, 95
+  offset: 0, 0
+  index: -1
+mairin_ring_l10
+  rotate: false
+  xy: 1457, 312
+  size: 250, 95
+  orig: 250, 95
+  offset: 0, 0
+  index: -1
+mairin_ring_l11
+  rotate: false
+  xy: 1457, 215
+  size: 250, 95
+  orig: 250, 95
+  offset: 0, 0
+  index: -1
+mairin_ring_l2
+  rotate: true
+  xy: 1069, 2
+  size: 250, 95
+  orig: 250, 95
+  offset: 0, 0
+  index: -1
+mairin_ring_l3
+  rotate: true
+  xy: 1166, 254
+  size: 250, 95
+  orig: 250, 95
+  offset: 0, 0
+  index: -1
+mairin_ring_l4
+  rotate: true
+  xy: 1166, 2
+  size: 250, 95
+  orig: 250, 95
+  offset: 0, 0
+  index: -1
+mairin_ring_l5
+  rotate: true
+  xy: 1263, 254
+  size: 250, 95
+  orig: 250, 95
+  offset: 0, 0
+  index: -1
+mairin_ring_l6
+  rotate: true
+  xy: 1263, 2
+  size: 250, 95
+  orig: 250, 95
+  offset: 0, 0
+  index: -1
+mairin_ring_l7
+  rotate: true
+  xy: 1360, 254
+  size: 250, 95
+  orig: 250, 95
+  offset: 0, 0
+  index: -1
+mairin_ring_l8
+  rotate: true
+  xy: 1360, 2
+  size: 250, 95
+  orig: 250, 95
+  offset: 0, 0
+  index: -1
+mairin_ring_l9
+  rotate: false
+  xy: 1457, 409
+  size: 250, 95
+  orig: 250, 95
+  offset: 0, 0
+  index: -1
+smoke_1
+  rotate: false
+  xy: 1709, 323
+  size: 182, 181
+  orig: 182, 181
+  offset: 0, 0
+  index: -1
+smoke_2
+  rotate: false
+  xy: 1709, 140
+  size: 182, 181
+  orig: 182, 181
+  offset: 0, 0
+  index: -1
+smoke_5
+  rotate: true
+  xy: 1457, 34
+  size: 179, 167
+  orig: 179, 167
+  offset: 0, 0
+  index: -1

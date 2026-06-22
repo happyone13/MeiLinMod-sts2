@@ -1,0 +1,48 @@
+
+meirin_1027_u4_eff_play_f4.png
+size: 1360,176
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+glow01
+  rotate: false
+  xy: 1187, 2
+  size: 169, 169
+  orig: 169, 169
+  offset: 0, 0
+  index: -1
+meirin_u4_spk11
+  rotate: false
+  xy: 2, 9
+  size: 235, 162
+  orig: 235, 162
+  offset: 0, 0
+  index: -1
+meirin_u4_spk21
+  rotate: false
+  xy: 239, 9
+  size: 235, 162
+  orig: 235, 162
+  offset: 0, 0
+  index: -1
+meirin_u4_spk31
+  rotate: false
+  xy: 476, 9
+  size: 235, 162
+  orig: 235, 162
+  offset: 0, 0
+  index: -1
+meirin_u4_spk41
+  rotate: false
+  xy: 713, 9
+  size: 235, 162
+  orig: 235, 162
+  offset: 0, 0
+  index: -1
+meirin_u4_spk51
+  rotate: false
+  xy: 950, 9
+  size: 235, 162
+  orig: 235, 162
+  offset: 0, 0
+  index: -1

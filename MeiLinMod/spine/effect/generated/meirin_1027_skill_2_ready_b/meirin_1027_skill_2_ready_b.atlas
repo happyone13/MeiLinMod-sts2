@@ -1,0 +1,62 @@
+
+meirin_1027_skill_2_ready_b.png
+size: 2024,552
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+burst3
+  rotate: false
+  xy: 1721, 244
+  size: 300, 300
+  orig: 300, 300
+  offset: 0, 0
+  index: -1
+fire1_b_0001
+  rotate: true
+  xy: 407, 2
+  size: 542, 217
+  orig: 542, 217
+  offset: 0, 0
+  index: -1
+fire1_b_0002
+  rotate: true
+  xy: 626, 2
+  size: 542, 217
+  orig: 542, 217
+  offset: 0, 0
+  index: -1
+fire1_b_0003
+  rotate: true
+  xy: 845, 2
+  size: 542, 217
+  orig: 542, 217
+  offset: 0, 0
+  index: -1
+fire1_b_0004
+  rotate: true
+  xy: 1064, 2
+  size: 542, 217
+  orig: 542, 217
+  offset: 0, 0
+  index: -1
+fire1_b_0005
+  rotate: true
+  xy: 1283, 2
+  size: 542, 217
+  orig: 542, 217
+  offset: 0, 0
+  index: -1
+fire1_b_0006
+  rotate: true
+  xy: 1502, 2
+  size: 542, 217
+  orig: 542, 217
+  offset: 0, 0
+  index: -1
+glow1
+  rotate: false
+  xy: 2, 137
+  size: 403, 407
+  orig: 403, 407
+  offset: 0, 0
+  index: -1

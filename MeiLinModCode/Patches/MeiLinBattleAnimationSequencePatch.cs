@@ -3,9 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using Godot;
 using HarmonyLib;
 using MeiLinMod.MeiLinModCode.Character;
+using MeiLinMod.MeiLinModCode.Vfx;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Bindings.MegaSpine;
+using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Nodes.Combat;
 
 namespace MeiLinMod.MeiLinModCode.Patches;
 
@@ -19,8 +24,20 @@ public static class MeiLinBattleAnimationSequencePatch
 
     private sealed class RegistrationMarker;
 
+    private sealed class CreatureHolder
+    {
+        public Creature? Creature;
+    }
+
+    private sealed class ActiveAttackSequenceHolder
+    {
+        public DateTime UntilUtc;
+    }
+
     private static readonly ConditionalWeakTable<MegaAnimationState, LastAnimationHolder> LastAnimations = new();
     private static readonly ConditionalWeakTable<MegaAnimationState, RegistrationMarker> RegisteredStates = new();
+    private static readonly ConditionalWeakTable<MegaAnimationState, CreatureHolder> RegisteredCreatures = new();
+    private static readonly ConditionalWeakTable<MegaAnimationState, ActiveAttackSequenceHolder> ActiveAttackSequences = new();
     private static bool _sequenceInProgress;
 
     [HarmonyPatch(typeof(MeiLinMod.MeiLinModCode.Character.MeiLinMod), nameof(MeiLinMod.MeiLinModCode.Character.MeiLinMod.GenerateAnimator))]
@@ -31,6 +48,7 @@ public static class MeiLinBattleAnimationSequencePatch
         if (animationState != null)
         {
             RegisteredStates.GetOrCreateValue(animationState);
+            RegisteredCreatures.GetOrCreateValue(animationState).Creature = ResolveCreature(controller);
         }
     }
 
@@ -65,18 +83,6 @@ public static class MeiLinBattleAnimationSequencePatch
 
         string requested = Normalize(animation);
         string previous = GetLastAnimation(animationState);
-
-        if (requested == "attack_play1")
-        {
-            int hitCount = MeiLinBattleAnimationService.ConsumeNextAttackHits();
-            if (TryPlayAttackSequence(animationState, track, hitCount, out result))
-            {
-                RememberAnimation(animationState, requested);
-                return false;
-            }
-
-            return true;
-        }
 
         if (requested == "buff_play")
         {
@@ -138,28 +144,72 @@ public static class MeiLinBattleAnimationSequencePatch
                 return false;
             }
 
-            int totalHits = Math.Max(1, hitCount);
-            for (int i = 1; i < totalHits; i++)
+            IReadOnlyList<string> commands = BuildAttackCommands(hitCount);
+            MarkAttackSequenceActive(animationState, commands);
+            MainFile.Logger.Info($"[MeiLinBattleAnimationSequencePatch] Starting attack sequence. hits={Math.Max(1, hitCount)}, commands={string.Join(",", commands)}");
+
+            for (int i = 1; i < commands.Count; i++)
             {
-                string clip = i < totalHits - 1
-                    ? "attack_play1"
-                    : "u2_attack_play";
+                string clip = commands[i];
                 if (!TryAddAnimation(animationState, clip, false, track, 0f))
                 {
                     MainFile.Logger.Info($"[MeiLinBattleAnimationSequencePatch] Failed to queue attack clip '{clip}' on track {track}.");
                 }
             }
 
-            if (!TryAddAnimation(animationState, "attack_end", false, track, 0f))
+            string endClip = commands[^1] == "u2_attack_play" ? "u2_attack_end" : "attack_end";
+            if (!TryAddAnimation(animationState, endClip, false, track, 0f))
             {
-                MainFile.Logger.Info($"[MeiLinBattleAnimationSequencePatch] Failed to queue attack clip 'attack_end' on track {track}.");
+                MainFile.Logger.Info($"[MeiLinBattleAnimationSequencePatch] Failed to queue attack clip '{endClip}' on track {track}.");
             }
+
+            StartAttackVfxSequence(animationState, commands);
             return true;
         }
         finally
         {
             _sequenceInProgress = false;
         }
+    }
+
+    private static IReadOnlyList<string> BuildAttackCommands(int hitCount)
+    {
+        int totalHits = Math.Max(1, hitCount);
+        var commands = new List<string>(totalHits);
+
+        for (int i = 0; i < totalHits; i++)
+        {
+            if (totalHits > 3 && i == totalHits - 1)
+            {
+                commands.Add("u2_attack_play");
+                continue;
+            }
+
+            commands.Add(i % 2 == 0 ? "attack_play1" : "attack_play2");
+        }
+
+        return commands;
+    }
+
+    private static bool IsAttackSequenceActive(MegaAnimationState animationState)
+    {
+        if (!ActiveAttackSequences.TryGetValue(animationState, out ActiveAttackSequenceHolder? holder))
+            return false;
+
+        return DateTime.UtcNow < holder.UntilUtc;
+    }
+
+    private static void MarkAttackSequenceActive(MegaAnimationState animationState, IReadOnlyList<string> commands)
+    {
+        float seconds = 0f;
+        foreach (string command in commands)
+            seconds += MathF.Max(0.2f, MeiLinCommandVfxCoordinator.GetCommandDurationSeconds(command));
+
+        string endClip = commands[^1] == "u2_attack_play" ? "u2_attack_end" : "attack_end";
+        seconds += MathF.Max(0.2f, MeiLinCommandVfxCoordinator.GetCommandDurationSeconds(endClip));
+        seconds += 0.25f;
+
+        ActiveAttackSequences.GetOrCreateValue(animationState).UntilUtc = DateTime.UtcNow.AddSeconds(seconds);
     }
 
     private static bool TryPlayTwoStepSequence(
@@ -330,5 +380,55 @@ public static class MeiLinBattleAnimationSequencePatch
     private static string Normalize(string animation)
     {
         return animation.Trim().ToLowerInvariant();
+    }
+
+    private static Creature? ResolveCreature(MegaSprite controller)
+    {
+        if (controller.BoundObject is not Node node)
+            return null;
+
+        Node? current = node;
+        while (current != null)
+        {
+            if (current is NCreature creatureNode)
+                return creatureNode.Entity;
+
+            current = current.GetParent();
+        }
+
+        return null;
+    }
+
+    private static void StartAttackVfxSequence(MegaAnimationState animationState, IReadOnlyList<string> commands)
+    {
+        Creature? caster = RegisteredCreatures.TryGetValue(animationState, out CreatureHolder? holder)
+            ? holder.Creature
+            : null;
+        caster ??= MeiLinBattleAnimationService.ConsumeNextAttackCaster();
+        Creature? target = MeiLinBattleAnimationService.ConsumeNextAttackTarget();
+
+        if (caster == null)
+        {
+            MainFile.Logger.Info("[MeiLinBattleAnimationSequencePatch] Skip attack VFX: caster is null.");
+            return;
+        }
+
+        MainFile.Logger.Info($"[MeiLinBattleAnimationSequencePatch] Start attack VFX. commands={string.Join(",", commands)}, hasTarget={target != null}");
+        _ = PlayAttackVfxSequenceAsync(caster, target, commands);
+    }
+
+    private static async Task PlayAttackVfxSequenceAsync(Creature caster, Creature? target, IReadOnlyList<string> commands)
+    {
+        foreach (string command in commands)
+        {
+            MainFile.Logger.Info($"[MeiLinBattleAnimationSequencePatch] Play attack VFX command={command}");
+            MeiLinCommandVfxCoordinator.PlayCommandEffects(command, caster, target);
+
+            float duration = MeiLinCommandVfxCoordinator.GetCommandDurationSeconds(command);
+            if (duration <= 0f)
+                duration = 0.2f;
+
+            await Cmd.CustomScaledWait(duration, duration);
+        }
     }
 }

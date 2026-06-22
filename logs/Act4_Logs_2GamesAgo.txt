@@ -1,0 +1,1089 @@
+﻿=================================================================
+  Act4Placeholder v0.1.2f - Mod Log
+  Session: 2026-04-20 19:21:39 UTC
+  Share THIS file (not godot.log) when reporting issues.
+  godot.log contains personal system info, this one does not.
+=================================================================
+
+  Run: 梅琳 | 荣耀 | Floor 33
+
+=== STS2 Startup (filtered, no personal info) ===
+MegaDot v4.5.1.m.9.mono.custom_build - httpgodotengine.org
+FMOD Sound System: Successfully initialized
+[INFO] [Sentry.NET] Initialized: env=development, release=v0.103.2
+[INFO] Steamworks: attempting initialization...
+[INFO] Steam is running: True
+[INFO] Steam is enabled, we will write saves to steam storage. Enabled for account: True, app: False 
+[INFO] Registered 11 migrations
+[INFO] Current save versions: PrefsSave v2; ProfileSave v2; SerializableProgress v21; RunHistory v9; SerializableRun v16; SettingsSave v5
+[ERROR] Mod manifest Slay the Spire 2\mods\DamageMeter\mod_manifest.json is missing the 'id' field! This is not allowed. The mod will not be loaded.
+[INFO] Loading assembly DLL Slay the Spire 2\mods\BaseLib\BaseLib.dll
+[INFO] Calling initializer method of type BaseLib.BaseLibMain for BaseLib, Version=3.0.3.0, Culture=neutral, PublicKeyToken=null
+[INFO] [BaseLib] Registered config for mod BaseLib
+[INFO] Finished mod initialization for 'BaseLib' (BaseLib).
+[INFO] Loading assembly DLL Slay the Spire 2\mods\MeiLinMod\MeiLinMod.dll
+[INFO] Calling initializer method of type MeiLinMod.MainFile for MeiLinMod, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+[INFO] Finished mod initialization for 'MeiLinMod' (MeiLinMod).
+[INFO] Loading assembly DLL Slay the Spire 2\mods\DamageMeter\DamageMeter.dll
+[INFO] Calling initializer method of type DamageMeter.MainFile for DamageMeter, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+[INFO] Finished mod initialization for 'Skada: Damage Meter' (DamageMeter).
+[INFO] Loading assembly DLL Slay the Spire 2\mods\Act 4 Final Ascent-37-0-1-2f-1775405792\Act4FinalAscent.dll
+[INFO] Calling initializer method of type Act4Placeholder.ModEntry for Act4FinalAscent, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+
+=== Mod Init ===
+[03:21:39] [INFO] v0.1.2f - Initializing...
+[03:21:39] [INFO]   Game Assembly: sts2 v0.1.0.0
+[03:21:39] [INFO] Patching Group 1: Main Menu UI (SaveSync + RunSlots)
+[03:21:39] [INFO]   OK: SaveSync - NMainMenu._Ready
+[03:21:39] [INFO]   OK: SaveSync - NMainMenu.OnSubmenuStackChanged
+[03:21:39] [INFO]   OK: RunSlots - NMainMenu._Ready
+[03:21:39] [INFO]   OK: RunSlots - NMainMenu.OnSubmenuStackChanged
+[03:21:39] [INFO]   OK: RunSlots - NMainMenu.RefreshButtons
+[03:21:39] [INFO]   OK: RunSlots - NMainMenu.SingleplayerButtonPressed
+[03:21:39] [INFO]   OK: RunSlots - NMainMenu.OnContinueButtonPressed
+[03:21:39] [INFO]   OK: RunSlots - NMainMenu.OnAbandonRunButtonPressed
+[03:21:39] [INFO] Patching Group 2: Architect Event & Act 4 Injection
+[03:21:39] [INFO]   OK: Architect - EventModel.SetEventState
+[03:21:39] [INFO]   OK: Architect - EventModel.get_IsShared
+[03:21:39] [INFO]   OK: Architect - EventSynchronizer.ChooseSharedEventOption
+[03:21:39] [INFO]   OK: Architect - EventSynchronizer.ChooseOptionForSharedEvent
+[03:21:39] [INFO]   OK: Architect - EventSynchronizer.PlayerVotedForSharedOptionIndex
+[03:21:39] [INFO]   OK: Architect - NEventRoom host-only Act 4 choice UI
+[03:21:39] [INFO]   OK: GrandLibrary - EventSynchronizer shared vote (host-resolve)
+[03:21:39] [INFO]   OK: Act4 - RunManager.EnterNextAct
+[03:21:39] [INFO]   OK: Act4 - RunManager.OnEnded
+[03:21:39] [INFO]   OK: Act4 - NPauseMenu.OnSaveAndQuitButtonPressed
+[03:21:39] [INFO] Patching Group 3: Map, Rooms & Rewards
+[03:21:39] [INFO]   OK: Map - Hook.ModifyGeneratedMap
+[03:21:39] [INFO]   OK: Map - Hook.ModifyNextEvent
+[03:21:39] [INFO]   OK: Map - Hook.ModifyUnknownMapPointRoomTypes
+[03:21:39] [INFO]   OK: Map - RunManager.CreateRoom
+[03:21:39] [INFO]   OK: Rewards - RewardsSet.WithRewardsFromRoom
+[03:21:39] [INFO]   OK: Rewards - Hook.ModifyCardRewardCreationOptions
+[03:21:39] [INFO]   OK: Icons - ImageHelper.GetRoomIconPath
+[03:21:39] [INFO]   OK: Icons - ImageHelper.GetRoomIconOutlinePath
+[03:21:39] [INFO]   OK: Icons - NBossMapPoint._Ready
+[03:21:39] [INFO]   OK: Map - NMapScreen.Open
+[03:21:39] [INFO]   OK: Map - NMapScreen._Ready
+[03:21:39] [INFO] Patching Group 4: Combat & Scaling
+[03:21:39] [INFO]   OK: Combat - Hook.ModifyDamage
+[03:21:39] [INFO]   OK: Combat - Hook.AfterDamageGiven
+[03:21:39] [INFO]   OK: Combat - Guardbot.GuardMove (Architect fix)
+[03:21:39] [INFO]   OK: Combat - Hook.ModifyHandDraw
+[03:21:39] [INFO]   OK: Combat - MultiplayerScalingModel.GetMultiplayerScaling
+[03:21:39] [INFO]   OK: Combat - CombatManager.AddCreature
+[03:21:39] [INFO]   OK: Combat - CombatManager.AfterCreatureAdded
+[03:21:39] [INFO]   OK: Combat - EncounterModel.CreateBackground
+[03:21:39] [INFO]   OK: Rest - NRestSiteCharacter._Ready
+[03:21:39] [INFO]   OK: Combat - Creature.StunInternal (Architect once-per-phase stun cap)
+[03:21:39] [INFO]   OK: Combat - NPlayerHand.ReturnHolderToHand
+[03:21:39] [INFO] Patching Group 5: Save State & History
+[03:21:39] [INFO]   OK: Save - RunManager.ToSave
+[03:21:39] [INFO]   OK: Save - RunState.FromSerializable
+[03:21:39] [INFO]   OK: SaveSync - ClientLoadJoinResponseMessage.Serialize
+[03:21:39] [INFO]   OK: SaveSync - ClientLoadJoinResponseMessage.Deserialize
+[03:21:39] [INFO]   OK: Save - ProgressSaveManager.LoadProgress
+[03:21:39] [INFO]   OK: Save - ProgressSaveManager.ObtainCharUnlockEpoch
+[03:21:39] [INFO]   OK: Score - ScoreUtility.CalculateScore(IRunState)
+[03:21:39] [INFO]   OK: Score - ScoreUtility.CalculateScore(SerializableRun)
+[03:21:39] [INFO] Patching Group 6: Compendium & Stats
+[03:21:39] [INFO]   OK: Compendium - NRunHistory._Ready
+[03:21:39] [INFO]   OK: Compendium - NRunHistory.OnSubmenuOpened
+[03:21:39] [INFO]   OK: Compendium - NRunHistory.DisplayRun
+[03:21:39] [INFO]   OK: Compendium - NMapPointHistory.LoadHistory
+[03:21:39] [INFO]   OK: Compendium - NStatsScreen._Ready
+[03:21:39] [INFO]   OK: Compendium - NStatsScreen.OnSubmenuOpened
+[03:21:39] [INFO]   OK: Compendium - NGeneralStatsGrid.LoadStats
+[03:21:39] [INFO]   OK: Compendium - NCharacterStats.LoadStats
+[03:21:39] [INFO]   OK: History - NRun.ShowGameOverScreen
+[03:21:39] [INFO] Patching Group 7: Game Over & Power Hover
+[03:21:39] [INFO]   OK: GameOver - NGameOverScreen._Ready
+[03:21:39] [INFO]   OK: GameOver - NGameOverScreen.InitializeBannerAndQuote
+[03:21:39] [INFO]   OK: Power - NPower.OnHovered
+[03:21:39] [INFO]   OK: Power - NPower.OnUnhovered
+[03:21:39] [INFO] Patch classes: 61 OK, 0 FAILED - methods patched: 59
+[03:21:39] [INFO] v0.1.2f initialization complete.
+[INFO] [Act4Placeholder] v0.1.2f - Initializing...
+[INFO] [Act4Placeholder]   .NET Runtime: 9.0.7
+[INFO] [Act4Placeholder]   OS: Microsoft Windows NT 10.0.26200.0
+[INFO] [Act4Placeholder]   Game Assembly: sts2 v0.1.0.0
+[INFO] [Act4Placeholder] Patching Group 1: Main Menu UI...
+[INFO] [Act4Placeholder]   OK: SaveSync - NMainMenu._Ready
+[INFO] [Act4Placeholder]   OK: SaveSync - NMainMenu.OnSubmenuStackChanged
+[INFO] [Act4Placeholder]   OK: RunSlots - NMainMenu._Ready
+[INFO] [Act4Placeholder]   OK: RunSlots - NMainMenu.OnSubmenuStackChanged
+[INFO] [Act4Placeholder]   OK: RunSlots - NMainMenu.RefreshButtons
+[INFO] [Act4Placeholder]   OK: RunSlots - NMainMenu.SingleplayerButtonPressed
+[INFO] [Act4Placeholder]   OK: RunSlots - NMainMenu.OnContinueButtonPressed
+[INFO] [Act4Placeholder]   OK: RunSlots - NMainMenu.OnAbandonRunButtonPressed
+[INFO] [Act4Placeholder] Patching Group 2: Architect Event & Act 4 Injection...
+[INFO] [Act4Placeholder]   OK: Architect - EventModel.SetEventState
+[INFO] [Act4Placeholder]   OK: Architect - EventModel.get_IsShared
+[INFO] [Act4Placeholder]   OK: Architect - EventSynchronizer.ChooseSharedEventOption
+[INFO] [Act4Placeholder]   OK: Architect - EventSynchronizer.ChooseOptionForSharedEvent
+[INFO] [Act4Placeholder]   OK: Architect - EventSynchronizer.PlayerVotedForSharedOptionIndex
+[INFO] [Act4Placeholder]   OK: Architect - NEventRoom host-only Act 4 choice UI
+[INFO] [Act4Placeholder]   OK: GrandLibrary - EventSynchronizer shared vote (host-resolve)
+[INFO] [Act4Placeholder]   OK: Act4 - RunManager.EnterNextAct
+[INFO] [Act4Placeholder]   OK: Act4 - RunManager.OnEnded
+[INFO] [Act4Placeholder]   OK: Act4 - NPauseMenu.OnSaveAndQuitButtonPressed
+[INFO] [Act4Placeholder] Patching Group 3: Map, Rooms & Rewards...
+[INFO] [Act4Placeholder]   OK: Map - Hook.ModifyGeneratedMap
+[INFO] [Act4Placeholder]   OK: Map - Hook.ModifyNextEvent
+[INFO] [Act4Placeholder]   OK: Map - Hook.ModifyUnknownMapPointRoomTypes
+[INFO] [Act4Placeholder]   OK: Map - RunManager.CreateRoom
+[INFO] [Act4Placeholder]   OK: Rewards - RewardsSet.WithRewardsFromRoom
+[INFO] [Act4Placeholder]   OK: Rewards - Hook.ModifyCardRewardCreationOptions
+[INFO] [Act4Placeholder]   OK: Icons - ImageHelper.GetRoomIconPath
+[INFO] [Act4Placeholder]   OK: Icons - ImageHelper.GetRoomIconOutlinePath
+[INFO] [Act4Placeholder]   OK: Icons - NBossMapPoint._Ready
+[INFO] [Act4Placeholder]   OK: Map - NMapScreen.Open
+[INFO] [Act4Placeholder]   OK: Map - NMapScreen._Ready
+[INFO] [Act4Placeholder] Patching Group 4: Combat & Scaling...
+[INFO] [Act4Placeholder]   OK: Combat - Hook.ModifyDamage
+[INFO] [Act4Placeholder]   OK: Combat - Hook.AfterDamageGiven
+[INFO] [Act4Placeholder]   OK: Combat - Guardbot.GuardMove (Architect fix)
+[INFO] [Act4Placeholder]   OK: Combat - Hook.ModifyHandDraw
+[INFO] [Act4Placeholder]   OK: Combat - MultiplayerScalingModel.GetMultiplayerScaling
+[INFO] [Act4Placeholder]   OK: Combat - CombatManager.AddCreature
+[INFO] [Act4Placeholder]   OK: Combat - CombatManager.AfterCreatureAdded
+[INFO] [Act4Placeholder]   OK: Combat - EncounterModel.CreateBackground
+[INFO] [Act4Placeholder]   OK: Rest - NRestSiteCharacter._Ready
+[INFO] [Act4Placeholder]   OK: Combat - Creature.StunInternal (Architect once-per-phase stun cap)
+[INFO] [Act4Placeholder]   OK: Combat - NPlayerHand.ReturnHolderToHand
+[INFO] [Act4Placeholder] Patching Group 5: Save State & History...
+[INFO] [Act4Placeholder]   OK: Save - RunManager.ToSave
+[INFO] [Act4Placeholder]   OK: Save - RunState.FromSerializable
+[INFO] [Act4Placeholder]   OK: SaveSync - ClientLoadJoinResponseMessage.Serialize
+[INFO] [Act4Placeholder]   OK: SaveSync - ClientLoadJoinResponseMessage.Deserialize
+[INFO] [Act4Placeholder]   OK: Save - ProgressSaveManager.LoadProgress
+[INFO] [Act4Placeholder]   OK: Save - ProgressSaveManager.ObtainCharUnlockEpoch
+[INFO] [Act4Placeholder]   OK: Score - ScoreUtility.CalculateScore(IRunState)
+[INFO] [Act4Placeholder]   OK: Score - ScoreUtility.CalculateScore(SerializableRun)
+[INFO] [Act4Placeholder] Patching Group 6: Compendium & Stats...
+[INFO] [Act4Placeholder]   OK: Compendium - NRunHistory._Ready
+[INFO] [Act4Placeholder]   OK: Compendium - NRunHistory.OnSubmenuOpened
+[INFO] [Act4Placeholder]   OK: Compendium - NRunHistory.DisplayRun
+[INFO] [Act4Placeholder]   OK: Compendium - NMapPointHistory.LoadHistory
+[INFO] [Act4Placeholder]   OK: Compendium - NStatsScreen._Ready
+[INFO] [Act4Placeholder]   OK: Compendium - NStatsScreen.OnSubmenuOpened
+[INFO] [Act4Placeholder]   OK: Compendium - NGeneralStatsGrid.LoadStats
+[INFO] [Act4Placeholder]   OK: Compendium - NCharacterStats.LoadStats
+[INFO] [Act4Placeholder]   OK: History - NRun.ShowGameOverScreen
+[INFO] [Act4Placeholder] Patching Group 7: Game Over & Power Hover
+[INFO] [Act4Placeholder]   OK: GameOver - NGameOverScreen._Ready
+[INFO] [Act4Placeholder]   OK: GameOver - NGameOverScreen.InitializeBannerAndQuote
+[INFO] [Act4Placeholder]   OK: Power - NPower.OnHovered
+[INFO] [Act4Placeholder]   OK: Power - NPower.OnUnhovered
+[INFO] [Act4Placeholder] ═══════════════════════════════════════════════
+[INFO] [Act4Placeholder]   Patch classes: 61 OK, 0 FAILED
+[INFO] [Act4Placeholder]   Patched methods total: 59
+[INFO] [Act4Placeholder] ═══════════════════════════════════════════════
+[INFO] [Act4Placeholder] v0.1.2f initialization complete.
+[INFO] Finished mod initialization for 'Act 4: Final Ascent' (Act4FinalAscent).
+[INFO] Loading assembly DLL Slay the Spire 2\mods\KaylaMod\KaylaMod.dll
+[INFO] Calling initializer method of type KaylaMod.MainFile for KaylaMod, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+[INFO] Finished mod initialization for 'KaylaMod' (KaylaMod).
+[INFO] Loading assembly DLL Slay the Spire 2\mods\Watcher\Watcher.dll
+[INFO] Calling initializer method of type Watcher.Code.WatcherMainFile for Watcher, Version=1.3.4.0, Culture=neutral, PublicKeyToken=null
+[INFO] Finished mod initialization for 'Watcher' (Watcher).
+[INFO]  --- RUNNING MODDED! --- Loaded 6 mods (6 total)
+[INFO] AtlasManager: Loaded ui_atlas with 102 sprites
+[INFO] AtlasManager: Loaded compressed with 45 sprites
+[WARN] [BaseLib] Recommended to add a prefix such as "MeiLinMod_" to SavedProperty TurnsSeen for compatibility.
+[INFO] [BaseLib] Registered 0 SavedSpireFields.
+[INFO] Loading locale path=reeng
+[INFO] Found loc table from mod: eng ancients.json. Merging with base loc table
+[INFO] Found loc table from mod: eng ancients.json. Merging with base loc table
+[INFO] Found loc table from mod: eng ancients.json. Merging with base loc table
+[INFO] Found loc table from mod: eng card_keywords.json. Merging with base loc table
+[INFO] Found loc table from mod: eng card_keywords.json. Merging with base loc table
+[INFO] Found loc table from mod: eng cards.json. Merging with base loc table
+[INFO] Found loc table from mod: eng cards.json. Merging with base loc table
+[INFO] Found loc table from mod: eng characters.json. Merging with base loc table
+[INFO] Found loc table from mod: eng characters.json. Merging with base loc table
+[INFO] Found loc table from mod: eng encounters.json. Merging with base loc table
+[INFO] Found loc table from mod: eng events.json. Merging with base loc table
+[INFO] Found loc table from mod: eng events.json. Merging with base loc table
+[INFO] Found loc table from mod: eng events.json. Merging with base loc table
+[INFO] Found loc table from mod: eng main_menu_ui.json. Merging with base loc table
+[INFO] Found loc table from mod: eng monsters.json. Merging with base loc table
+[INFO] Found loc table from mod: eng potions.json. Merging with base loc table
+[INFO] Found loc table from mod: eng potions.json. Merging with base loc table
+[INFO] Found loc table from mod: eng powers.json. Merging with base loc table
+[INFO] Found loc table from mod: eng powers.json. Merging with base loc table
+[INFO] Found loc table from mod: eng powers.json. Merging with base loc table
+[INFO] Found loc table from mod: eng powers.json. Merging with base loc table
+[INFO] Found loc table from mod: eng relics.json. Merging with base loc table
+[INFO] Found loc table from mod: eng relics.json. Merging with base loc table
+[INFO] Found loc table from mod: eng settings_ui.json. Merging with base loc table
+[INFO] Found loc table from mod: eng static_hover_tips.json. Merging with base loc table
+[INFO] Found loc table from mod: eng static_hover_tips.json. Merging with base loc table
+[INFO] Loading locale path=rezhs
+[INFO] Found loc table from mod: zhs ancients.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs ancients.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs ancients.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs card_keywords.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs card_keywords.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs cards.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs cards.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs characters.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs characters.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs encounters.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs events.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs events.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs main_menu_ui.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs monsters.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs potions.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs potions.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs powers.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs powers.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs powers.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs powers.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs relics.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs relics.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs settings_ui.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs static_hover_tips.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs static_hover_tips.json. Merging with base loc table
+[INFO] ModelIdSerializationCache initialized. Categories: 20 Entries: 1985 Epochs: 57 Hash: 2928828197
+ERROR: Sentry: Failed to close native SDK cleanly. Error code: 1
+       at: sentry::native::NativeSDK::close (src\sentry\native\native_sdk.cpp:489)
+       GDScript backtrace (most recent call first):
+           [0] shutdown (reSentryInit.gd:189)
+       C# backtrace (most recent call first):
+           [0] Godot.Variant Godot.GodotObject.Call(Godot.StringName, Godot.Variant[])
+           [1] void MegaCrit.Sts2.Core.Debug.SentryService.Shutdown()
+           [2] void MegaCrit.Sts2.Core.Debug.SentryService.AfterGameInit(string, string, Godot.Node)
+           [3] void MegaCrit.Sts2.Core.Nodes.NGame+<GameStartup>d__115.MoveNext()
+           [4] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.ExecutionContextCallback(object)
+           [5] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+[INFO] AtlasManager: Loaded controller_atlas with 112 sprites
+
+=== Main Menu - SaveSync ===
+[03:21:56] [INFO] [SaveSync] NMainMenu._Ready patch fired - scheduling EnsureUi in 3 s.
+[WARN] SteamStatsManager: Global stats request failed with result k_EResultTimeout
+[INFO] [Startup] Time to main menu (Godot ticks): 19127ms
+[INFO] [Act4Placeholder.UnifiedSavePath] [SaveSync] NMainMenu._Ready Postfix fired - UI will appear in 5 s.
+[INFO] [Startup] Time to main menu: 19,388ms
+[INFO] AtlasManager: Loaded epoch_atlas with 57 sprites
+[INFO] AtlasManager: Loaded relic_atlas with 341 sprites
+[INFO] AtlasManager: Loaded relic_outline_atlas with 341 sprites
+[INFO] AtlasManager: Loaded power_atlas with 266 sprites
+[INFO] AtlasManager: Loaded card_atlas with 864 sprites
+[INFO] AtlasManager: Loaded potion_atlas with 63 sprites
+[INFO] AtlasManager: Loaded potion_outline_atlas with 63 sprites
+[INFO] AtlasManager: Loaded stats_screen_atlas with 16 sprites
+[INFO] AtlasManager: Loaded intent_atlas with 310 sprites
+[INFO] AtlasManager: Loaded era_atlas with 27 sprites
+[INFO] [BaseLib] Registered scene 'remeilin_character.tscn' for auto-conversion to NCreatureVisuals
+[INFO] [BaseLib] Registered scene 'remeilin_character_camp.tscn' for auto-conversion to NRestSiteCharacter
+[INFO] [BaseLib] Registered scene 'remeilinmod_merchant.tscn' for auto-conversion to NMerchantCharacter
+[INFO] [BaseLib] Registered scene 'reironclad_energy_counter.tscn' for auto-conversion to NEnergyCounter
+[INFO] [BaseLib] Registered scene 'rewatcher.tscn' for auto-conversion to NCreatureVisuals
+[INFO] [BaseLib] Registered scene 'rewatcher_rest_site.tscn' for auto-conversion to NRestSiteCharacter
+[INFO] [BaseLib] Registered scene 'rewatcher_merchant.tscn' for auto-conversion to NMerchantCharacter
+[03:22:00] [INFO] [SaveSync]   Panel created (deferred): True
+[INFO] [Act4Placeholder.UnifiedSavePath] [SaveSync]   Panel created (deferred): True
+[03:22:03] [INFO] Run status: (no active run)
+[INFO] [Act4Placeholder] RestoreAct4FlagsFromSave: startTime=1776708345 source=local-store brutal=False weakestCount=0 damagePlayers=0 bookSource=local-store bookBitmask=0
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [BaseLib] GetRawText: Key 'ACT4_ARCHITECT_REVIVAL_POWER.title' not found in table 'powers'
+[WARN] [BaseLib] GetRawText: Key 'ACT4_ARCHITECT_REVIVAL_POWER.description' not found in table 'powers'
+[WARN] [BaseLib] GetRawText: Key 'ACT4_ARCHITECT_REVIVAL_POWER.description' not found in table 'powers'
+[WARN] [KaylaMod] Skip bad power model: Canonical model of type Act4Placeholder.ArchitectAttackReadingsPower used in incorrect place.
+[WARN] [KaylaMod] Skip bad power model: Canonical model of type Act4Placeholder.ArchitectSkillReadingsPower used in incorrect place.
+[WARN] [BaseLib] GetRawText: Key 'CHOICE_POWER_CURSED_BOOK.title' not found in table 'powers'
+[WARN] [BaseLib] GetRawText: Key 'CHOICE_POWER_CURSED_BOOK.description' not found in table 'powers'
+[WARN] [BaseLib] GetRawText: Key 'CHOICE_POWER_CURSED_BOOK.description' not found in table 'powers'
+[WARN] [BaseLib] GetRawText: Key 'CHOICE_POWER_HOLY_BOOK.title' not found in table 'powers'
+[WARN] [BaseLib] GetRawText: Key 'CHOICE_POWER_HOLY_BOOK.description' not found in table 'powers'
+[WARN] [BaseLib] GetRawText: Key 'CHOICE_POWER_HOLY_BOOK.description' not found in table 'powers'
+[WARN] [BaseLib] GetRawText: Key 'CHOICE_POWER_SHADOW_BOOK.title' not found in table 'powers'
+[WARN] [BaseLib] GetRawText: Key 'CHOICE_POWER_SHADOW_BOOK.description' not found in table 'powers'
+[WARN] [BaseLib] GetRawText: Key 'CHOICE_POWER_SHADOW_BOOK.description' not found in table 'powers'
+[WARN] [BaseLib] GetRawText: Key 'CHOICE_POWER_SILVER_BOOK.title' not found in table 'powers'
+[WARN] [BaseLib] GetRawText: Key 'CHOICE_POWER_SILVER_BOOK.description' not found in table 'powers'
+[WARN] [BaseLib] GetRawText: Key 'CHOICE_POWER_SILVER_BOOK.description' not found in table 'powers'
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] AtlasResourceLoader: Missing sprite 'token/deprecated_card' in card_atlas (requested: redeprecated_card.tres)
+[WARN] AtlasResourceLoader: Missing sprite 'act4_architect_revival_power' in power_atlas (requested: react4_architect_revival_power.tres)
+[WARN] AtlasResourceLoader: Missing sprite 'choice_power_cursed_book' in power_atlas (requested: rechoice_power_cursed_book.tres)
+[WARN] AtlasResourceLoader: Missing sprite 'choice_power_holy_book' in power_atlas (requested: rechoice_power_holy_book.tres)
+[WARN] AtlasResourceLoader: Missing sprite 'choice_power_shadow_book' in power_atlas (requested: rechoice_power_shadow_book.tres)
+[WARN] AtlasResourceLoader: Missing sprite 'choice_power_silver_book' in power_atlas (requested: rechoice_power_silver_book.tres)
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad relic model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.RelicModel.get_Description()' failed.
+[WARN] [BaseLib] GetRawText: Key 'ACT4_ARCHITECT_REVIVAL_POWER.title' not found in table 'powers'
+[WARN] [BaseLib] GetRawText: Key 'ACT4_ARCHITECT_REVIVAL_POWER.description' not found in table 'powers'
+[WARN] [BaseLib] GetRawText: Key 'ACT4_ARCHITECT_REVIVAL_POWER.description' not found in table 'powers'
+[WARN] [KaylaMod] Skip bad power model: Canonical model of type Act4Placeholder.ArchitectAttackReadingsPower used in incorrect place.
+[WARN] [KaylaMod] Skip bad power model: Canonical model of type Act4Placeholder.ArchitectSkillReadingsPower used in incorrect place.
+[WARN] [BaseLib] GetRawText: Key 'CHOICE_POWER_CURSED_BOOK.title' not found in table 'powers'
+[WARN] [BaseLib] GetRawText: Key 'CHOICE_POWER_CURSED_BOOK.description' not found in table 'powers'
+[WARN] [BaseLib] GetRawText: Key 'CHOICE_POWER_CURSED_BOOK.description' not found in table 'powers'
+[WARN] [BaseLib] GetRawText: Key 'CHOICE_POWER_HOLY_BOOK.title' not found in table 'powers'
+[WARN] [BaseLib] GetRawText: Key 'CHOICE_POWER_HOLY_BOOK.description' not found in table 'powers'
+[WARN] [BaseLib] GetRawText: Key 'CHOICE_POWER_HOLY_BOOK.description' not found in table 'powers'
+[WARN] [BaseLib] GetRawText: Key 'CHOICE_POWER_SHADOW_BOOK.title' not found in table 'powers'
+[WARN] [BaseLib] GetRawText: Key 'CHOICE_POWER_SHADOW_BOOK.description' not found in table 'powers'
+[WARN] [BaseLib] GetRawText: Key 'CHOICE_POWER_SHADOW_BOOK.description' not found in table 'powers'
+[WARN] [BaseLib] GetRawText: Key 'CHOICE_POWER_SILVER_BOOK.title' not found in table 'powers'
+[WARN] [BaseLib] GetRawText: Key 'CHOICE_POWER_SILVER_BOOK.description' not found in table 'powers'
+[WARN] [BaseLib] GetRawText: Key 'CHOICE_POWER_SILVER_BOOK.description' not found in table 'powers'
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[WARN] [KaylaMod] Skip bad potion model: Attempt by method 'KaylaMod.UI.LoadoutOverlay.RefreshModelCaches()' to access method 'MegaCrit.Sts2.Core.Models.PotionModel.get_Description()' failed.
+[03:22:39] [INFO] Run status: 梅琳 | 荣耀 | Floor 33

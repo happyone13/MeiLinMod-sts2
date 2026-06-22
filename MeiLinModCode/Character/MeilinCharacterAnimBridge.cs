@@ -18,7 +18,7 @@ public partial class MeilinCharacterAnimBridge : Node2D
 
     private static readonly Dictionary<string, SpineMapping> CanonicalStateToSpine = new()
     {
-        [IdleState] = new("b_idle", true),
+        [IdleState] = new("idle", true),
         ["attack"] = new("attack_play1", false),
         ["cast"] = new("buff_play", false),
         ["hit"] = new("hit", false),

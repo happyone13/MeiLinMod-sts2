@@ -92,56 +92,26 @@ public class MeiLinMod : PlaceholderCharacterModel
 
     public override CreatureAnimator GenerateAnimator(MegaSprite controller)
     {
-        bool IsGuardStance() => ResolveGuardStance(controller);
-
         AnimState idle = new("idle", isLooping: true);
-        AnimState guardIdle = new("b_idle", isLooping: true);
-        AnimState attack = new("attack_play1");
-        AnimState guardAttack = new("attack_play1");
+        AnimState attackEnd = new("attack_end") { NextState = idle };
+        AnimState attack = new("attack_play1") { NextState = attackEnd };
         AnimState cast = new("buff_play");
-        AnimState guardCast = new("buff_play");
         AnimState hit = new("hit");
-        AnimState guardHit = new("hit");
         AnimState dead = new("death");
         AnimState relaxed = new("camping", isLooping: true);
 
-        attack.NextState = idle;
-        guardAttack.NextState = guardIdle;
         cast.NextState = idle;
-        guardCast.NextState = guardIdle;
         hit.NextState = idle;
-        guardHit.NextState = guardIdle;
 
         CreatureAnimator animator = new(idle, controller);
-        animator.AddAnyState("Idle", guardIdle, IsGuardStance);
-        animator.AddAnyState("Idle", idle, () => !IsGuardStance());
+        animator.AddAnyState("Idle", idle);
         animator.AddAnyState("Dead", dead);
-        animator.AddAnyState("Hit", guardHit, IsGuardStance);
-        animator.AddAnyState("Hit", hit, () => !IsGuardStance());
-        animator.AddAnyState("Attack", guardAttack, IsGuardStance);
-        animator.AddAnyState("Attack", attack, () => !IsGuardStance());
-        animator.AddAnyState("Cast", guardCast, IsGuardStance);
-        animator.AddAnyState("Cast", cast, () => !IsGuardStance());
+        animator.AddAnyState("Hit", hit);
+        animator.AddAnyState("Attack", attack);
+        animator.AddAnyState("Cast", cast);
         animator.AddAnyState("Relaxed", relaxed);
         animator.AddAnyState("Revive", idle);
         return animator;
-    }
-
-    private static bool ResolveGuardStance(MegaSprite controller)
-    {
-        if (controller.BoundObject is not Node node)
-            return false;
-
-        Node? current = node;
-        while (current != null)
-        {
-            if (current is NCreature nCreature)
-                return XiangzuCombatState.IsInGuardStance(nCreature.Entity);
-
-            current = current.GetParent();
-        }
-
-        return false;
     }
 
 }

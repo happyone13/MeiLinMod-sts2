@@ -1,0 +1,20 @@
+
+meirin_1027_skill_2_impact_b.png
+size: 1232,712
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+fire5_0001
+  rotate: true
+  xy: 516, 2
+  size: 704, 710
+  orig: 704, 710
+  offset: 0, 0
+  index: -1
+impact1
+  rotate: false
+  xy: 2, 194
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1

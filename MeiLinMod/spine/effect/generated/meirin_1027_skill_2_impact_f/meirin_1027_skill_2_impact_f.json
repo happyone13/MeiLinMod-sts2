@@ -1,0 +1,1293 @@
+{
+    "skeleton": {
+        "spine": "3.8.79",
+        "x": 0.0,
+        "y": 0.0,
+        "width": 322.3999938964844,
+        "height": 325.6000061035156,
+        "hash": "rpsvTSVHwM+rc3yEAd28BZbt+gM"
+    },
+    "bones": [
+        {
+            "name": "root",
+            "transform": "normal"
+        },
+        {
+            "name": "camera",
+            "parent": "root",
+            "transform": "normal"
+        },
+        {
+            "name": "char_node",
+            "parent": "camera",
+            "x": -320.0,
+            "y": -175.0,
+            "scaleX": 0.800000011920929,
+            "scaleY": 0.800000011920929,
+            "transform": "normal"
+        },
+        {
+            "name": "motion_eff",
+            "parent": "char_node",
+            "transform": "normal"
+        },
+        {
+            "name": "kickPivot",
+            "parent": "motion_eff",
+            "transform": "normal"
+        },
+        {
+            "name": "glow1",
+            "parent": "kickPivot",
+            "transform": "normal"
+        },
+        {
+            "name": "ember1",
+            "parent": "kickPivot",
+            "transform": "normal"
+        },
+        {
+            "name": "emberGlow1",
+            "parent": "ember1",
+            "transform": "normal"
+        },
+        {
+            "name": "ember2",
+            "parent": "kickPivot",
+            "transform": "normal"
+        },
+        {
+            "name": "emberGlow2",
+            "parent": "ember2",
+            "transform": "normal"
+        },
+        {
+            "name": "ember3",
+            "parent": "kickPivot",
+            "transform": "normal"
+        },
+        {
+            "name": "emberGlow3",
+            "parent": "ember3",
+            "transform": "normal"
+        },
+        {
+            "name": "ember4",
+            "parent": "kickPivot",
+            "transform": "normal"
+        },
+        {
+            "name": "flame1",
+            "parent": "kickPivot",
+            "transform": "normal"
+        },
+        {
+            "name": "flame2",
+            "parent": "kickPivot",
+            "transform": "normal"
+        }
+    ],
+    "ik": [],
+    "slots": [
+        {
+            "name": "flame2",
+            "bone": "flame2",
+            "attachment": "fire6_0001",
+            "blend": "additive"
+        },
+        {
+            "name": "glow1",
+            "bone": "glow1",
+            "attachment": "glow1",
+            "blend": "additive"
+        },
+        {
+            "name": "ember1",
+            "bone": "ember1",
+            "attachment": "ember1_0001",
+            "blend": "additive"
+        },
+        {
+            "name": "ember4",
+            "bone": "ember4",
+            "attachment": "ember1_0001",
+            "blend": "additive"
+        },
+        {
+            "name": "ember2",
+            "bone": "ember2",
+            "attachment": "ember2_0001",
+            "blend": "additive"
+        },
+        {
+            "name": "ember3",
+            "bone": "ember3",
+            "attachment": "ember5_1",
+            "blend": "additive"
+        },
+        {
+            "name": "emberGlow3",
+            "bone": "emberGlow3",
+            "attachment": "glow1",
+            "blend": "additive"
+        },
+        {
+            "name": "emberGlow1",
+            "bone": "emberGlow1",
+            "attachment": "glow1",
+            "blend": "additive"
+        },
+        {
+            "name": "emberGlow2",
+            "bone": "emberGlow2",
+            "attachment": "glow1",
+            "blend": "additive"
+        },
+        {
+            "name": "flame1",
+            "bone": "flame1",
+            "attachment": "flame5",
+            "blend": "additive"
+        }
+    ],
+    "transform": [],
+    "path": [],
+    "skins": [
+        {
+            "name": "default",
+            "attachments": {
+                "flame2": {
+                    "fire6_0001": {
+                        "type": "region",
+                        "x": 49.95000076293945,
+                        "y": -5.78000020980835,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 270.0,
+                        "height": 372.0,
+                        "path": "fire6_0001"
+                    },
+                    "fire6_0002": {
+                        "type": "region",
+                        "x": 49.95000076293945,
+                        "y": -5.78000020980835,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 270.0,
+                        "height": 372.0,
+                        "path": "fire6_0002"
+                    },
+                    "fire6_0003": {
+                        "type": "region",
+                        "x": 49.95000076293945,
+                        "y": -5.78000020980835,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 270.0,
+                        "height": 372.0,
+                        "path": "fire6_0003"
+                    },
+                    "fire6_0004": {
+                        "type": "region",
+                        "x": 49.95000076293945,
+                        "y": -5.78000020980835,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 270.0,
+                        "height": 372.0,
+                        "path": "fire6_0004"
+                    }
+                },
+                "glow1": {
+                    "glow1": {
+                        "type": "region",
+                        "x": 0.5,
+                        "y": 0.5,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 403.0,
+                        "height": 407.0,
+                        "path": "glow1"
+                    }
+                },
+                "ember1": {
+                    "ember1_0001": {
+                        "type": "region",
+                        "x": 55.54999923706055,
+                        "y": 14.710000038146973,
+                        "rotation": -62.79999923706055,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 159.0,
+                        "height": 138.0,
+                        "path": "ember1_0001"
+                    },
+                    "ember1_0002": {
+                        "type": "region",
+                        "x": 55.54999923706055,
+                        "y": 14.710000038146973,
+                        "rotation": -62.79999923706055,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 159.0,
+                        "height": 138.0,
+                        "path": "ember1_0002"
+                    },
+                    "ember1_0003": {
+                        "type": "region",
+                        "x": 55.54999923706055,
+                        "y": 14.710000038146973,
+                        "rotation": -62.79999923706055,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 159.0,
+                        "height": 138.0,
+                        "path": "ember1_0003"
+                    },
+                    "ember1_0004": {
+                        "type": "region",
+                        "x": 55.54999923706055,
+                        "y": 14.710000038146973,
+                        "rotation": -62.79999923706055,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 159.0,
+                        "height": 138.0,
+                        "path": "ember1_0004"
+                    }
+                },
+                "ember4": {
+                    "ember1_0001": {
+                        "type": "region",
+                        "x": 55.54999923706055,
+                        "y": 14.710000038146973,
+                        "rotation": -62.79999923706055,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 159.0,
+                        "height": 138.0,
+                        "path": "ember1_0001"
+                    },
+                    "ember1_0002": {
+                        "type": "region",
+                        "x": 55.54999923706055,
+                        "y": 14.710000038146973,
+                        "rotation": -62.79999923706055,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 159.0,
+                        "height": 138.0,
+                        "path": "ember1_0002"
+                    },
+                    "ember1_0003": {
+                        "type": "region",
+                        "x": 55.54999923706055,
+                        "y": 14.710000038146973,
+                        "rotation": -62.79999923706055,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 159.0,
+                        "height": 138.0,
+                        "path": "ember1_0003"
+                    },
+                    "ember1_0004": {
+                        "type": "region",
+                        "x": 55.54999923706055,
+                        "y": 14.710000038146973,
+                        "rotation": -62.79999923706055,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 159.0,
+                        "height": 138.0,
+                        "path": "ember1_0004"
+                    }
+                },
+                "ember2": {
+                    "ember2_0001": {
+                        "type": "region",
+                        "x": 13.050000190734863,
+                        "y": 47.09000015258789,
+                        "rotation": -43.709999084472656,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 111.0,
+                        "height": 120.0,
+                        "path": "ember2_0001"
+                    },
+                    "ember2_0002": {
+                        "type": "region",
+                        "x": 13.050000190734863,
+                        "y": 47.09000015258789,
+                        "rotation": -43.709999084472656,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 111.0,
+                        "height": 120.0,
+                        "path": "ember2_0002"
+                    },
+                    "ember2_0003": {
+                        "type": "region",
+                        "x": 13.050000190734863,
+                        "y": 47.09000015258789,
+                        "rotation": -43.709999084472656,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 111.0,
+                        "height": 120.0,
+                        "path": "ember2_0003"
+                    },
+                    "ember2_0004": {
+                        "type": "region",
+                        "x": 13.050000190734863,
+                        "y": 47.09000015258789,
+                        "rotation": -43.709999084472656,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 111.0,
+                        "height": 120.0,
+                        "path": "ember2_0004"
+                    }
+                },
+                "ember3": {
+                    "ember5_1": {
+                        "type": "region",
+                        "x": 0.11999999731779099,
+                        "y": 45.560001373291016,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 103.0,
+                        "height": 130.0,
+                        "path": "ember5_1"
+                    },
+                    "ember5_2": {
+                        "type": "region",
+                        "x": 0.11999999731779099,
+                        "y": 45.560001373291016,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 103.0,
+                        "height": 130.0,
+                        "path": "ember5_2"
+                    },
+                    "ember5_3": {
+                        "type": "region",
+                        "x": 0.11999999731779099,
+                        "y": 45.560001373291016,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 103.0,
+                        "height": 130.0,
+                        "path": "ember5_3"
+                    },
+                    "ember5_4": {
+                        "type": "region",
+                        "x": 0.11999999731779099,
+                        "y": 45.560001373291016,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 103.0,
+                        "height": 130.0,
+                        "path": "ember5_4"
+                    },
+                    "ember5_5": {
+                        "type": "region",
+                        "x": 0.11999999731779099,
+                        "y": 45.560001373291016,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 103.0,
+                        "height": 130.0,
+                        "path": "ember5_5"
+                    },
+                    "ember5_6": {
+                        "type": "region",
+                        "x": 0.11999999731779099,
+                        "y": 45.560001373291016,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 103.0,
+                        "height": 130.0,
+                        "path": "ember5_6"
+                    }
+                },
+                "emberGlow3": {
+                    "glow1": {
+                        "type": "region",
+                        "x": 0.5,
+                        "y": 0.5,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 403.0,
+                        "height": 407.0,
+                        "path": "glow1"
+                    }
+                },
+                "emberGlow1": {
+                    "glow1": {
+                        "type": "region",
+                        "x": 0.5,
+                        "y": 0.5,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 403.0,
+                        "height": 407.0,
+                        "path": "glow1"
+                    }
+                },
+                "emberGlow2": {
+                    "glow1": {
+                        "type": "region",
+                        "x": 0.5,
+                        "y": 0.5,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 403.0,
+                        "height": 407.0,
+                        "path": "glow1"
+                    }
+                },
+                "flame1": {
+                    "flame5": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.0,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 216.0,
+                        "height": 192.0,
+                        "path": "flame5"
+                    }
+                }
+            }
+        }
+    ],
+    "events": {},
+    "animations": {
+        "animation": {
+            "bones": {
+                "kickPivot": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": -25.100000381469727
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": -6.489999771118164,
+                            "y": 18.540000915527344
+                        }
+                    ]
+                },
+                "glow1": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 5.690000057220459,
+                            "curve": 0.161,
+                            "c2": 0.680001,
+                            "c3": 0.750001,
+                            "c4": 1.0
+                        },
+                        {
+                            "time": 0.10000000149011612,
+                            "angle": 1.4700000286102295
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 68.63999938964844,
+                            "y": -4.019999980926514,
+                            "curve": 0.160999,
+                            "c2": 0.679997,
+                            "c3": 0.401998,
+                            "c4": 0.929993
+                        },
+                        {
+                            "time": 0.10000000149011612,
+                            "x": 151.58999633789063,
+                            "y": -28.100000381469727
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.8170000314712524,
+                            "y": 4.945000171661377,
+                            "curve": 0.160999,
+                            "c2": 0.679997,
+                            "c3": 0.401998,
+                            "c4": 0.929993
+                        },
+                        {
+                            "time": 0.10000000149011612,
+                            "x": 3.242000102996826,
+                            "y": 15.640999794006348
+                        }
+                    ]
+                },
+                "ember1": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": -152.1999969482422
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": -4.920000076293945,
+                            "y": 1.7799999713897705
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.1440000534057617,
+                            "y": 0.5350000262260437
+                        },
+                        {
+                            "time": 0.06669999659061432,
+                            "x": 2.6410000324249268,
+                            "y": 0.9259999990463257
+                        }
+                    ]
+                },
+                "ember2": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 30.1299991607666
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": -25.68000030517578,
+                            "y": 31.559999465942383
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 0.335999995470047,
+                            "y": 0.9070000052452087
+                        },
+                        {
+                            "time": 0.10000000149011612,
+                            "x": 0.6980000138282776,
+                            "y": 1.8860000371932983
+                        }
+                    ]
+                },
+                "ember3": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": -23.959999084472656
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 31.049999237060547,
+                            "y": 70.37999725341797
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 0.5649999976158142,
+                            "y": 2.434000015258789
+                        }
+                    ]
+                },
+                "ember4": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 18.959999084472656
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 61.7400016784668,
+                            "y": 19.3799991607666
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 2.0320000648498535,
+                            "y": 1.0199999809265137
+                        },
+                        {
+                            "time": 0.0333000011742115,
+                            "x": 4.3979997634887695,
+                            "y": 2.2079999446868896
+                        }
+                    ]
+                },
+                "char_node": {
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 320.0,
+                            "y": 175.0
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.25,
+                            "y": 1.25
+                        }
+                    ]
+                }
+            },
+            "slots": {
+                "ember1": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFF77EFF"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.0333000011742115,
+                            "name": "ember1_0002"
+                        },
+                        {
+                            "time": 0.06669999659061432,
+                            "name": "ember1_0003"
+                        },
+                        {
+                            "time": 0.10000000149011612,
+                            "name": "ember1_0004"
+                        },
+                        {
+                            "time": 0.13330000638961792,
+                            "name": null
+                        }
+                    ]
+                },
+                "ember2": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FEFF9DFF"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.0333000011742115,
+                            "name": "ember2_0002"
+                        },
+                        {
+                            "time": 0.06669999659061432,
+                            "name": "ember2_0003"
+                        },
+                        {
+                            "time": 0.10000000149011612,
+                            "name": "ember2_0004"
+                        },
+                        {
+                            "time": 0.13330000638961792,
+                            "name": null
+                        }
+                    ]
+                },
+                "ember3": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "F9FF55A3"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.0333000011742115,
+                            "name": "ember5_2"
+                        },
+                        {
+                            "time": 0.06669999659061432,
+                            "name": "ember5_3"
+                        },
+                        {
+                            "time": 0.10000000149011612,
+                            "name": "ember5_4"
+                        },
+                        {
+                            "time": 0.13330000638961792,
+                            "name": "ember5_5"
+                        },
+                        {
+                            "time": 0.16670000553131104,
+                            "name": "ember5_6"
+                        },
+                        {
+                            "time": 0.20000000298023224,
+                            "name": null
+                        }
+                    ]
+                },
+                "ember4": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFA6BFF"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.0333000011742115,
+                            "name": "ember1_0002"
+                        },
+                        {
+                            "time": 0.06669999659061432,
+                            "name": "ember1_0003"
+                        },
+                        {
+                            "time": 0.10000000149011612,
+                            "name": "ember1_0004"
+                        },
+                        {
+                            "time": 0.13330000638961792,
+                            "name": null
+                        }
+                    ]
+                },
+                "emberGlow1": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "emberGlow2": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "emberGlow3": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "flame1": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "flame2": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFF00"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.0,
+                            "name": null
+                        }
+                    ]
+                },
+                "glow1": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FF6B01FF"
+                        },
+                        {
+                            "time": 0.10000000149011612,
+                            "color": "FF6A10FF"
+                        },
+                        {
+                            "time": 0.13330000638961792,
+                            "color": "FF690F00"
+                        }
+                    ]
+                }
+            },
+            "ik": {},
+            "transform": {},
+            "path": {},
+            "deform": {},
+            "duration": 0.20000000298023224
+        },
+        "impact2": {
+            "bones": {
+                "kickPivot": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": -25.100000381469727
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": -6.489999771118164,
+                            "y": 18.540000915527344
+                        }
+                    ]
+                },
+                "glow1": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 1.4700000286102295
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 151.58999633789063,
+                            "y": -28.100000381469727
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 3.242000102996826,
+                            "y": 15.640999794006348
+                        }
+                    ]
+                },
+                "ember1": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": -162.4499969482422
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 11.8100004196167,
+                            "y": -4.820000171661377
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0240000486373901,
+                            "y": 0.4790000021457672
+                        },
+                        {
+                            "time": 0.06669999659061432,
+                            "x": 2.6410000324249268,
+                            "y": 0.9259999990463257
+                        }
+                    ]
+                },
+                "ember2": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 25.510000228881836
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": -15.800000190734863,
+                            "y": -8.390000343322754
+                        },
+                        {
+                            "time": 0.13330000638961792,
+                            "x": -19.6299991607666,
+                            "y": -5.630000114440918
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 0.2160000056028366,
+                            "y": 0.5849999785423279
+                        },
+                        {
+                            "time": 0.13330000638961792,
+                            "x": 0.6980000138282776,
+                            "y": 1.8860000371932983
+                        }
+                    ]
+                },
+                "ember3": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": -23.959999084472656
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 31.049999237060547,
+                            "y": 70.37999725341797
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 0.5649999976158142,
+                            "y": 2.434000015258789
+                        }
+                    ]
+                },
+                "ember4": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 18.959999084472656
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 61.7400016784668,
+                            "y": 19.3799991607666
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 4.3979997634887695,
+                            "y": 2.2079999446868896
+                        }
+                    ]
+                },
+                "flame1": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.0333000011742115,
+                            "angle": -102.55999755859375
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.0333000011742115,
+                            "x": -23.229999542236328,
+                            "y": 0.8299999833106995
+                        },
+                        {
+                            "time": 0.13330000638961792,
+                            "x": -16.290000915527344,
+                            "y": 9.600000381469727
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.0333000011742115,
+                            "x": 0.4790000021457672,
+                            "y": 0.4790000021457672
+                        },
+                        {
+                            "time": 0.13330000638961792,
+                            "x": 0.8619999885559082,
+                            "y": 0.8619999885559082
+                        }
+                    ]
+                },
+                "flame2": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.0333000011742115,
+                            "angle": 35.0
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.0333000011742115,
+                            "x": -6.929999828338623,
+                            "y": -10.960000038146973
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.0333000011742115,
+                            "x": 0.2849999964237213,
+                            "y": 0.2840000092983246,
+                            "curve": 0.235001,
+                            "c2": 0.509999,
+                            "c3": 0.538002,
+                            "c4": 0.919997
+                        },
+                        {
+                            "time": 0.33329999446868896,
+                            "x": 0.6489999890327454,
+                            "y": 0.6470000147819519
+                        }
+                    ]
+                },
+                "char_node": {
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 320.0,
+                            "y": 175.0
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.25,
+                            "y": 1.25
+                        }
+                    ]
+                }
+            },
+            "slots": {
+                "ember1": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFF77EFF"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.06669999659061432,
+                            "name": "ember1_0002"
+                        },
+                        {
+                            "time": 0.13330000638961792,
+                            "name": "ember1_0003"
+                        },
+                        {
+                            "time": 0.16670000553131104,
+                            "name": "ember1_0004"
+                        },
+                        {
+                            "time": 0.20000000298023224,
+                            "name": null
+                        }
+                    ]
+                },
+                "ember2": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FEFF9DFF"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.0333000011742115,
+                            "name": "ember2_0002"
+                        },
+                        {
+                            "time": 0.06669999659061432,
+                            "name": "ember2_0003"
+                        },
+                        {
+                            "time": 0.10000000149011612,
+                            "name": "ember2_0004"
+                        },
+                        {
+                            "time": 0.13330000638961792,
+                            "name": null
+                        }
+                    ]
+                },
+                "ember3": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "F9FF55A3"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.0,
+                            "name": null
+                        }
+                    ]
+                },
+                "ember4": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFA6BFF"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.0,
+                            "name": null
+                        }
+                    ]
+                },
+                "emberGlow1": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "emberGlow2": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "emberGlow3": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "flame1": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFF00",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.0333000011742115,
+                            "color": "FFD36CFF"
+                        },
+                        {
+                            "time": 0.13330000638961792,
+                            "color": "FFB054FF"
+                        },
+                        {
+                            "time": 0.20000000298023224,
+                            "color": "FFB05400"
+                        }
+                    ]
+                },
+                "flame2": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFF00",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.0333000011742115,
+                            "color": "FFE9BDFF"
+                        },
+                        {
+                            "time": 0.23330000042915344,
+                            "color": "EEFFC5FF"
+                        },
+                        {
+                            "time": 0.33329999446868896,
+                            "color": "FFCB62FF"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.0,
+                            "name": null
+                        },
+                        {
+                            "time": 0.0333000011742115,
+                            "name": "fire6_0001"
+                        },
+                        {
+                            "time": 0.13330000638961792,
+                            "name": "fire6_0002"
+                        },
+                        {
+                            "time": 0.20000000298023224,
+                            "name": "fire6_0003"
+                        },
+                        {
+                            "time": 0.26669999957084656,
+                            "name": "fire6_0004"
+                        },
+                        {
+                            "time": 0.33329999446868896,
+                            "name": null
+                        }
+                    ]
+                },
+                "glow1": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FF690F00"
+                        }
+                    ]
+                }
+            },
+            "ik": {},
+            "transform": {},
+            "path": {},
+            "deform": {},
+            "duration": 0.33329999446868896
+        }
+    }
+}

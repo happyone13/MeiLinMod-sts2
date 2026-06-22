@@ -107,6 +107,9 @@ public static class CardCustomAncientFramePatch
         Material? bannerMaterial = LoadResource<Material>(cardModel.CustomAncientBannerMaterialPath);
 
         if (!CardSpinePortraitPatch.HasActiveSpineOverlay(cardNode))
+            CardSpinePortraitPatch.Apply(cardNode);
+
+        if (!CardSpinePortraitPatch.HasActiveSpineOverlay(cardNode))
         {
             RemoveChaosEffects(cardNode, restoreOriginalState: true);
             frame?.Show();

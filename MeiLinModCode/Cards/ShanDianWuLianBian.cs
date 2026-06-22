@@ -23,6 +23,7 @@ public class ShanDianWuLianBian() : MeiLinModCard(2, CardType.Attack, CardRarity
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
 
+        PrepareAttackAnimation(5);
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .FromCard(this)
             .WithHitCount(5)

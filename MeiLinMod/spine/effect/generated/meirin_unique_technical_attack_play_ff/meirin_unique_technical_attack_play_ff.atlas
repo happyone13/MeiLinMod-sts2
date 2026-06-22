@@ -1,0 +1,118 @@
+
+meirin_unique_technical_attack_play_ff.png
+size: 1064,528
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+beam2
+  rotate: false
+  xy: 2, 2
+  size: 402, 23
+  orig: 402, 23
+  offset: 0, 0
+  index: -1
+flash
+  rotate: false
+  xy: 802, 269
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+hit_imp1_3
+  rotate: true
+  xy: 2, 125
+  size: 400, 398
+  orig: 400, 398
+  offset: 0, 0
+  index: -1
+hit_imp1_4
+  rotate: true
+  xy: 402, 125
+  size: 400, 398
+  orig: 400, 398
+  offset: 0, 0
+  index: -1
+selfling_1
+  rotate: false
+  xy: 802, 138
+  size: 129, 129
+  orig: 129, 129
+  offset: 0, 0
+  index: -1
+selfling_1_2
+  rotate: false
+  xy: 933, 138
+  size: 129, 129
+  orig: 129, 129
+  offset: 0, 0
+  index: -1
+selfling_1_3
+  rotate: false
+  xy: 802, 7
+  size: 129, 129
+  orig: 129, 129
+  offset: 0, 0
+  index: -1
+selfling_1_4
+  rotate: false
+  xy: 933, 7
+  size: 129, 129
+  orig: 129, 129
+  offset: 0, 0
+  index: -1
+skill1_w10
+  rotate: true
+  xy: 710, 29
+  size: 30, 72
+  orig: 30, 72
+  offset: 0, 0
+  index: -1
+skill1_w11
+  rotate: true
+  xy: 555, 19
+  size: 40, 153
+  orig: 40, 153
+  offset: 0, 0
+  index: -1
+skill1_w12_1
+  rotate: true
+  xy: 555, 81
+  size: 42, 150
+  orig: 42, 150
+  offset: 0, 0
+  index: -1
+skill1_w1_2
+  rotate: true
+  xy: 204, 51
+  size: 72, 200
+  orig: 72, 200
+  offset: 0, 0
+  index: -1
+skill1_w2_1
+  rotate: true
+  xy: 2, 27
+  size: 96, 200
+  orig: 96, 200
+  offset: 0, 0
+  index: -1
+skill1_w7_1
+  rotate: true
+  xy: 707, 61
+  size: 62, 93
+  orig: 62, 93
+  offset: 0, 0
+  index: -1
+skill1_w9_1
+  rotate: true
+  xy: 406, 68
+  size: 55, 147
+  orig: 55, 147
+  offset: 0, 0
+  index: -1
+skill1_w9_2
+  rotate: true
+  xy: 406, 11
+  size: 55, 147
+  orig: 55, 147
+  offset: 0, 0
+  index: -1

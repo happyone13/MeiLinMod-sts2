@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="SpineSkeletonDataResource" path="res://MeiLinMod/spine/effect/generated/meirin_1027_skill_2_ready_b/meirin_1027_skill_2_ready_b_skel_data.tres" id="1_meirin_1027_skill_2_ready_b"]
+[ext_resource type="SpineSkeletonDataResource" path="res://MeiLinMod/spine/effect/generated/meirin_1027_skill_2_ready_f/meirin_1027_skill_2_ready_f_skel_data.tres" id="2_meirin_1027_skill_2_ready_f"]
+
+[node name="Meirin1027Skill2Ready" type="Node2D"]
+[node name="meirin_1027_skill_2_ready_b_layer_1" type="Node2D" parent="."]
+scale = Vector2(0.6, 0.6)
+z_index = -1
+[node name="meirin_1027_skill_2_ready_b" type="SpineSprite" parent="meirin_1027_skill_2_ready_b_layer_1"]
+skeleton_data_res = ExtResource("1_meirin_1027_skill_2_ready_b")
+preview_skin = "Default"
+preview_animation = "animation"
+preview_frame = false
+preview_time = 0.0
+[node name="meirin_1027_skill_2_ready_f_layer_2" type="Node2D" parent="."]
+scale = Vector2(0.6, 0.6)
+z_index = 1500
+[node name="meirin_1027_skill_2_ready_f" type="SpineSprite" parent="meirin_1027_skill_2_ready_f_layer_2"]
+skeleton_data_res = ExtResource("2_meirin_1027_skill_2_ready_f")
+preview_skin = "Default"
+preview_animation = "animation"
+preview_frame = false
+preview_time = 0.0

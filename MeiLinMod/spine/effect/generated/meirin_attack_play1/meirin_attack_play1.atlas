@@ -1,0 +1,104 @@
+
+meirin_attack_play1.png
+size: 464,992
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+3_fs_2_1
+  rotate: false
+  xy: 2, 32
+  size: 190, 92
+  orig: 190, 92
+  offset: 0, 0
+  index: -1
+3_fs_2_2
+  rotate: false
+  xy: 194, 2
+  size: 171, 91
+  orig: 171, 91
+  offset: 0, 0
+  index: -1
+3_fs_2_3
+  rotate: true
+  xy: 367, 16
+  size: 77, 83
+  orig: 77, 83
+  offset: 0, 0
+  index: -1
+att1_blur_2
+  rotate: true
+  xy: 260, 763
+  size: 227, 189
+  orig: 227, 189
+  offset: 0, 0
+  index: -1
+att2_obake7_1
+  rotate: true
+  xy: 405, 310
+  size: 200, 52
+  orig: 200, 52
+  offset: 0, 0
+  index: -1
+att_ring_wind
+  rotate: true
+  xy: 253, 95
+  size: 164, 200
+  orig: 164, 200
+  offset: 0, 0
+  index: -1
+flame8r_3
+  rotate: false
+  xy: 260, 512
+  size: 150, 249
+  orig: 150, 249
+  offset: 0, 0
+  index: -1
+flame8r_4
+  rotate: true
+  xy: 2, 582
+  size: 150, 249
+  orig: 150, 249
+  offset: 0, 0
+  index: -1
+flame8r_5
+  rotate: true
+  xy: 2, 430
+  size: 150, 249
+  orig: 150, 249
+  offset: 0, 0
+  index: -1
+flame8r_6
+  rotate: false
+  xy: 253, 261
+  size: 150, 249
+  orig: 150, 249
+  offset: 0, 0
+  index: -1
+flame8r_7
+  rotate: true
+  xy: 2, 278
+  size: 150, 249
+  orig: 150, 249
+  offset: 0, 0
+  index: -1
+flame8r_8
+  rotate: true
+  xy: 2, 126
+  size: 150, 249
+  orig: 150, 249
+  offset: 0, 0
+  index: -1
+flash
+  rotate: false
+  xy: 2, 734
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+skill1_w11
+  rotate: false
+  xy: 412, 608
+  size: 40, 153
+  orig: 40, 153
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,153 @@
+
+common_hit_eff.png
+size: 2016,1992
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bw_4
+  rotate: false
+  xy: 338, 178
+  size: 37, 82
+  orig: 37, 82
+  offset: 0, 0
+  index: -1
+bw_6
+  rotate: false
+  xy: 1829, 1778
+  size: 90, 210
+  orig: 90, 210
+  offset: 0, 0
+  index: -1
+gWind1_0001
+  rotate: false
+  xy: 1600, 1878
+  size: 227, 110
+  orig: 227, 110
+  offset: 0, 0
+  index: -1
+gWind1_0002
+  rotate: false
+  xy: 2, 150
+  size: 227, 110
+  orig: 227, 110
+  offset: 0, 0
+  index: -1
+gWind1_0003
+  rotate: false
+  xy: 1479, 490
+  size: 227, 110
+  orig: 227, 110
+  offset: 0, 0
+  index: -1
+gWind1_0004
+  rotate: false
+  xy: 1600, 1766
+  size: 227, 110
+  orig: 227, 110
+  offset: 0, 0
+  index: -1
+gWind2
+  rotate: false
+  xy: 2, 262
+  size: 873, 106
+  orig: 873, 106
+  offset: 0, 0
+  index: -1
+rock_1
+  rotate: false
+  xy: 2, 26
+  size: 94, 122
+  orig: 94, 122
+  offset: 0, 0
+  index: -1
+rock_2
+  rotate: false
+  xy: 1921, 1907
+  size: 88, 81
+  orig: 88, 81
+  offset: 0, 0
+  index: -1
+rock_3
+  rotate: false
+  xy: 1708, 513
+  size: 88, 87
+  orig: 88, 87
+  offset: 0, 0
+  index: -1
+rock_4
+  rotate: false
+  xy: 231, 165
+  size: 105, 95
+  orig: 105, 95
+  offset: 0, 0
+  index: -1
+rock_5
+  rotate: false
+  xy: 98, 73
+  size: 76, 75
+  orig: 76, 75
+  offset: 0, 0
+  index: -1
+rock_6
+  rotate: false
+  xy: 812, 502
+  size: 62, 98
+  orig: 62, 98
+  offset: 0, 0
+  index: -1
+rock_7
+  rotate: false
+  xy: 1600, 1674
+  size: 81, 90
+  orig: 81, 90
+  offset: 0, 0
+  index: -1
+rock_8
+  rotate: false
+  xy: 1479, 389
+  size: 101, 99
+  orig: 101, 99
+  offset: 0, 0
+  index: -1
+sw1_1
+  rotate: false
+  xy: 812, 602
+  size: 600, 598
+  orig: 600, 598
+  offset: 0, 0
+  index: -1
+sw1_2
+  rotate: false
+  xy: 1414, 602
+  size: 600, 598
+  orig: 600, 598
+  offset: 0, 0
+  index: -1
+sw1_3
+  rotate: false
+  xy: 877, 2
+  size: 600, 598
+  orig: 600, 598
+  offset: 0, 0
+  index: -1
+sw2_1
+  rotate: false
+  xy: 2, 1180
+  size: 808, 808
+  orig: 808, 808
+  offset: 0, 0
+  index: -1
+sw2_2
+  rotate: false
+  xy: 2, 370
+  size: 808, 808
+  orig: 808, 808
+  offset: 0, 0
+  index: -1
+sw2_3
+  rotate: false
+  xy: 812, 1202
+  size: 786, 786
+  orig: 786, 786
+  offset: 0, 0
+  index: -1

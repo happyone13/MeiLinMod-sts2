@@ -1,0 +1,195 @@
+
+meirin_attack_play1_smoke_b.png
+size: 1092,516
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+debuff2_0000_gl11
+  rotate: true
+  xy: 871, 261
+  size: 250, 71
+  orig: 250, 71
+  offset: 0, 0
+  index: -1
+debuff2_0001_gl10
+  rotate: false
+  xy: 367, 440
+  size: 250, 71
+  orig: 250, 71
+  offset: 0, 0
+  index: -1
+debuff2_0002_gl9
+  rotate: false
+  xy: 367, 367
+  size: 250, 71
+  orig: 250, 71
+  offset: 0, 0
+  index: -1
+debuff2_0003_gl8
+  rotate: false
+  xy: 619, 440
+  size: 250, 71
+  orig: 250, 71
+  offset: 0, 0
+  index: -1
+debuff2_0004_gl7
+  rotate: false
+  xy: 619, 367
+  size: 250, 71
+  orig: 250, 71
+  offset: 0, 0
+  index: -1
+debuff2_0005_gl6
+  rotate: false
+  xy: 367, 294
+  size: 250, 71
+  orig: 250, 71
+  offset: 0, 0
+  index: -1
+debuff2_0006_gl5
+  rotate: false
+  xy: 619, 294
+  size: 250, 71
+  orig: 250, 71
+  offset: 0, 0
+  index: -1
+debuff2_0007_gl4
+  rotate: false
+  xy: 343, 221
+  size: 250, 71
+  orig: 250, 71
+  offset: 0, 0
+  index: -1
+debuff2_0008_gl3
+  rotate: false
+  xy: 595, 221
+  size: 250, 71
+  orig: 250, 71
+  offset: 0, 0
+  index: -1
+debuff2_c10
+  rotate: false
+  xy: 572, 2
+  size: 250, 71
+  orig: 250, 71
+  offset: 0, 0
+  index: -1
+debuff2_c11
+  rotate: false
+  xy: 829, 49
+  size: 250, 71
+  orig: 250, 71
+  offset: 0, 0
+  index: -1
+debuff2_c3
+  rotate: true
+  xy: 944, 261
+  size: 250, 71
+  orig: 250, 71
+  offset: 0, 0
+  index: -1
+debuff2_c4
+  rotate: true
+  xy: 1017, 261
+  size: 250, 71
+  orig: 250, 71
+  offset: 0, 0
+  index: -1
+debuff2_c5
+  rotate: false
+  xy: 343, 148
+  size: 250, 71
+  orig: 250, 71
+  offset: 0, 0
+  index: -1
+debuff2_c6
+  rotate: false
+  xy: 595, 148
+  size: 250, 71
+  orig: 250, 71
+  offset: 0, 0
+  index: -1
+debuff2_c7
+  rotate: false
+  xy: 325, 75
+  size: 250, 71
+  orig: 250, 71
+  offset: 0, 0
+  index: -1
+debuff2_c8
+  rotate: false
+  xy: 577, 75
+  size: 250, 71
+  orig: 250, 71
+  offset: 0, 0
+  index: -1
+debuff2_c9
+  rotate: false
+  xy: 320, 2
+  size: 250, 71
+  orig: 250, 71
+  offset: 0, 0
+  index: -1
+m_smoke1_color
+  rotate: false
+  xy: 186, 129
+  size: 137, 78
+  orig: 137, 78
+  offset: 0, 0
+  index: -1
+m_smoke1_line
+  rotate: true
+  xy: 1008, 122
+  size: 137, 78
+  orig: 137, 78
+  offset: 0, 0
+  index: -1
+m_smoke3_color
+  rotate: false
+  xy: 2, 12
+  size: 155, 133
+  orig: 155, 133
+  offset: 0, 0
+  index: -1
+m_smoke3_line
+  rotate: false
+  xy: 186, 209
+  size: 155, 133
+  orig: 155, 133
+  offset: 0, 0
+  index: -1
+m_smoke4_color
+  rotate: false
+  xy: 847, 165
+  size: 159, 94
+  orig: 159, 94
+  offset: 0, 0
+  index: -1
+m_smoke4_line
+  rotate: false
+  xy: 159, 33
+  size: 159, 94
+  orig: 159, 94
+  offset: 0, 0
+  index: -1
+smoke_1
+  rotate: false
+  xy: 2, 330
+  size: 182, 181
+  orig: 182, 181
+  offset: 0, 0
+  index: -1
+smoke_2
+  rotate: false
+  xy: 2, 147
+  size: 182, 181
+  orig: 182, 181
+  offset: 0, 0
+  index: -1
+smoke_5
+  rotate: false
+  xy: 186, 344
+  size: 179, 167
+  orig: 179, 167
+  offset: 0, 0
+  index: -1

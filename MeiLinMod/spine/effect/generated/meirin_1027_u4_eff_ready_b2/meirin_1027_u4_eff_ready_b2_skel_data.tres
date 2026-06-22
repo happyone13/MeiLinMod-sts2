@@ -1,0 +1,8 @@
+[gd_resource type="SpineSkeletonDataResource" load_steps=3 format=3]
+
+[ext_resource type="SpineAtlasResource" path="res://MeiLinMod/spine/effect/generated/meirin_1027_u4_eff_ready_b2/meirin_1027_u4_eff_ready_b2.atlas" id="1_atlas"]
+[ext_resource type="SpineSkeletonFileResource" path="res://MeiLinMod/spine/effect/generated/meirin_1027_u4_eff_ready_b2/meirin_1027_u4_eff_ready_b2.skel" id="2_skel"]
+
+[resource]
+atlas_res = ExtResource("1_atlas")
+skeleton_file_res = ExtResource("2_skel")

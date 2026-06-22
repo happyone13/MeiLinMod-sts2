@@ -1,0 +1,1174 @@
+MegaDot v4.5.1.m.12.mono.custom_build - https://godotengine.org
+D3D12 12_0 - Forward+ - Using Device #0: NVIDIA - NVIDIA GeForce RTX 4060 Laptop GPU
+WARNING: PSO caching is not implemented yet in the Direct3D 12 driver.
+   at: pipeline_cache_create (drivers/d3d12/rendering_device_driver_d3d12.cpp:4469)
+
+FMOD Sound System: Successfully initialized
+[INFO] Found release_info.json at: D:\Steam\steamapps\common\Slay the Spire 2\release_info.json
+[INFO] [Sentry.NET] Initialized: env=development, release=v0.107.1
+[INFO] Steamworks: attempting initialization...
+[INFO] Steam is running: True
+[INFO] Steamworks initialization succeeded!
+[INFO] Steam is enabled, we will write saves to steam storage. Enabled for account: True, app: False 
+[INFO] Registered 11 migrations
+[INFO] Current save versions: PrefsSave v2; ProfileSave v2; SerializableProgress v21; RunHistory v9; SerializableRun v16; SettingsSave v5
+[INFO] Found mod manifest file D:\Steam\steamapps\common\Slay the Spire 2\mods\Fei\Fei.json
+[INFO] Found mod manifest file D:\Steam\steamapps\common\Slay the Spire 2\mods\GoldTransferMod\GoldTransferMod.json
+[INFO] Found mod manifest file D:\Steam\steamapps\common\Slay the Spire 2\mods\MeiLinMod\MeiLinMod.json
+[INFO] Found mod manifest file D:\Steam\steamapps\common\Slay the Spire 2\mods\YukiMod\YukiMod.json
+[INFO] Looking for mods to load from Steam Workshop mod 3737335127 in D:\Steam\steamapps\workshop\content\2868840\3737335127 (size 1021670, last modified 1781826303)
+[INFO] Found mod manifest file D:\Steam\steamapps\workshop\content\2868840\3737335127\BaseLib\BaseLib.json
+[Sentry.GDExtension] Initialized: env=playtesters, release=v0.107.1
+[INFO] MuteInBackground: environment [displayServer=Windows, os=Windows]
+[INFO] MuteInBackground: FocusOut received [tween=False, windowFocused=False]
+[INFO] MuteInBackground: FocusOut ignored (setting off or saves null)
+[INFO] Limiting background FPS to 30
+[INFO] Looking for mods to load from Steam Workshop mod 3747954551 in D:\Steam\steamapps\workshop\content\2868840\3747954551 (size 81508793, last modified 1781901323)
+[INFO] Found mod manifest file D:\Steam\steamapps\workshop\content\2868840\3747954551\StS2_MeiLinTexturePack.json
+[INFO] === Godot OS Debug Information ===
+Timestamp: 06/21/2026 12:00:09
+OS: Windows
+OS Version: 10.0.26200
+Distribution Name: Windows
+Device Model: Kuangshi16 Series GM6PD0X
+Is Debug Build: False
+Is Sandboxed: False
+Executable Path: D:/Steam/steamapps/common/Slay the Spire 2/SlayTheSpire2.exe
+Data Directory: C:/Users/lozalia/AppData/Roaming
+User Data Directory: C:/Users/lozalia/AppData/Roaming/SlayTheSpire2
+Command Line Args: 
+User Command Line Args: 
+OS Locale: zh_CN
+OS Language: zh
+Game Locale: zh_CN
+Is UserFS Persistent: True
+Is Stdout Verbose: False
+Is Low Processor Usage Mode: False
+Architecture: x86_64
+Engine Version: 4.5.1-m.12 (custom_build)
+Is Editor: False
+Release Version: v0.107.1
+Release Commit: 59260271
+Release Date: 06/18/2026 22:43:56
+Processor Count: 16
+Processor Name: 13th Gen Intel(R) Core(TM) i7-13620H
+Main assembly hash: -1555940892
+Rendering device name: NVIDIA GeForce RTX 4060 Laptop GPU
+  Graphics adapter 0: NVIDIA GeForce RTX 4060 Laptop GPU
+  version: 32.0.15.0
+  Graphics adapter 1: Microsoft Basic Render Driver
+  version: 10.0.26100.0
+Screen info (primary 0):
+  Index 0: Size: (2560, 1600) Orientation: Landscape Scale: 1 DPI: 168 Refresh Rate: 240.003
+Video Memory Used: 0.0B
+Memory Info:
+  physical: 15.7GB
+  free: 2.8GB
+  available: 45.7GB
+  stack: 8.0MB
+  Static Memory Usage: 0.0B
+  Static Memory Peak Usage: 0.0B
+Disk Info:
+  Index 0: Name: C:\ Type: Fixed Format: NTFS Available: 7.3GB Total Free: 7.3GB Total Size: 200.0GB
+  Index 1: Name: D:\ Type: Fixed Format: NTFS Available: 29.8GB Total Free: 29.8GB Total Size: 0.7TB
+  Index 2: Name: E:\ Type: Fixed Format: NTFS Available: 16.3GB Total Free: 16.3GB Total Size: 0.9TB
+Important Environment Variables:
+  PATH: E:\SOFT\JAVA\java17\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.2\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.2\libnvvp;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\dotnet\;C:\Program Files\NVIDIA Corporation\Nsight Compute 2023.2.2\;C:\Program Files (x86)\ZeroTier\One\;E:\SOFT\Git\cmd;E:\SOFT\PYTHON\python.exe;E:\SOFT\PYTHON\MeCab\bin;E:\SOFT\PYTHON\ffmpeg-master-latest-win64-gpl\bin;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;E:\SOFT\TortoiseGit\bin;E:\SOFT\Bandizip\;C:\Program Files\MySQL\MySQL Server 8.0\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA app\NvDLISR;D:\Windows Kits\10\Windows Performance Toolkit\;E:\SOFT\JAVA\java17\bin;E:\SOFT\Node\;D:\SOFT\Git\cmd;E:\SOFT\python3.13.5\Scripts\;E:\SOFT\python3.13.5\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;%USERPROFILE%\AppData\Local\Programs\Python\Python311\Scripts\;%USERPROFILE%\AppData\Local\Programs\Python\Python311\;D:\SOFT\PYTHON\Scripts\;D:\SOFT\PYTHON\;%USERPROFILE%\AppData\Local\Microsoft\WindowsApps;D:\SOFT\PYCHARM\PyCharm 2023.2.2\bin;;%USERPROFILE%\.dotnet\tools;D:\SOFT\Microsoft VS Code\bin;D:\SOFT\opensmile-3.0-win-x64\bin;D:\SOFT\texlive\2023\bin\windows;D:\SOFT\Tex_live\texlive\2023\bin\windows;D:\SOFT\sox-14-4-2;%USERPROFILE%\AppData\Local\GitHubDesktop\bin;D:\SOFT\PYTHON\MeCab\bin;%USERPROFILE%\AppData\Local\Muse Hub\lib;D:\SOFT\texlive\2025\bin\windows;E:\SOFT\JAVA\java17\bin;%USERPROFILE%\AppData\Roaming\npm;%USERPROFILE%\AppData\Local\Microsoft\WinGet\Packages\BurntSushi.ripgrep.MSVC_Microsoft.Winget.Source_8wekyb3d8bbwe\ripgrep-15.1.0-x86_64-pc-windows-msvc;
+  GODOT_ROOT_DIR: 
+  HOME: 
+  DYLD_LIBRARY_PATH: 
+  LD_LIBRARY_PATH: 
+
+[INFO] Looking for mods to load from Steam Workshop mod 3747511784 in D:\Steam\steamapps\workshop\content\2868840\3747511784 (size 104597470, last modified 1781890850)
+[INFO] Found mod manifest file D:\Steam\steamapps\workshop\content\2868840\3747511784\MeiLinMod.json
+[INFO] Looking for mods to load from Steam Workshop mod 3747834561 in D:\Steam\steamapps\workshop\content\2868840\3747834561 (size 217704667, last modified 1781884909)
+[INFO] Found mod manifest file D:\Steam\steamapps\workshop\content\2868840\3747834561\chizuruCharacter.json
+[INFO] Looking for mods to load from Steam Workshop mod 3747602295 in D:\Steam\steamapps\workshop\content\2868840\3747602295 (size 11907811, last modified 1782001002)
+[INFO] Found mod manifest file D:\Steam\steamapps\workshop\content\2868840\3747602295\mod_manifest.json
+[INFO] Looking for mods to load from Steam Workshop mod 3747552411 in D:\Steam\steamapps\workshop\content\2868840\3747552411 (size 531187, last modified 1781961956)
+[INFO] Found mod manifest file D:\Steam\steamapps\workshop\content\2868840\3747552411\GoldTransferMod.json
+[INFO] Looking for mods to load from Steam Workshop mod 3747536544 in D:\Steam\steamapps\workshop\content\2868840\3747536544 (size 139923417, last modified 1781838099)
+[INFO] Found mod manifest file D:\Steam\steamapps\workshop\content\2868840\3747536544\KalipeiMod.json
+[INFO] Looking for mods to load from Steam Workshop mod 3747516145 in D:\Steam\steamapps\workshop\content\2868840\3747516145 (size 318487549, last modified 1781946419)
+[INFO] Found mod manifest file D:\Steam\steamapps\workshop\content\2868840\3747516145\YukiMod.json
+[WARN] Mod with ID MeiLinMod is loaded both via Steam and local mods directory. Disabling the Steam workshop version.
+[WARN] Mod with ID GoldTransferMod is loaded both via Steam and local mods directory. Disabling the Steam workshop version.
+[WARN] Mod with ID YukiMod is loaded both via Steam and local mods directory. Disabling the Steam workshop version.
+[INFO] Mods have been re-sorted because we detected a change or dependency order was broken. New sorting order:
+[INFO]   0: BaseLib (BaseLib)
+[INFO]   1: RitsuLib (STS2-RitsuLib)
+[INFO]   2: 《卡厄思梦境》千鹤 (chizuruCharacter)
+[INFO]   3: KalipeiMod (KalipeiMod)
+[INFO]   4: Fei (Fei)
+[INFO]   5: MeiLinMod (MeiLinMod)
+[INFO]   6: MeiLin Texture Pack (StS2_MeiLinTexturePack)
+[INFO]   7: GoldTransferMod (GoldTransferMod)
+[INFO]   8: YukiMod (YukiMod)
+[WARN] Mod BaseLib does not declare min game version. Assuming that it is supported.
+[INFO] Loading assembly DLL D:\Steam\steamapps\workshop\content\2868840\3737335127\BaseLib\BaseLib.dll
+[INFO] Loading Godot PCK D:\Steam\steamapps\workshop\content\2868840\3737335127\BaseLib\BaseLib.pck
+[INFO] Calling initializer method of type BaseLib.BaseLibMain for BaseLib, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null
+[INFO] [BaseLib] Created node factory for Control.
+[INFO] [BaseLib] Created node factory for NCreatureVisuals.
+[INFO] [BaseLib] Created node factory for NRestSiteCharacter.
+[INFO] [BaseLib] Created node factory for NMerchantCharacter.
+[INFO] [BaseLib] Created node factory for NEnergyCounter.
+[INFO] [BaseLib] Created node factory for NCustomTreasureRoomChest.
+[INFO] [BaseLib] Registered config for mod BaseLib
+[INFO] [BaseLib] Performing CustomPile patch
+[INFO] [BaseLib] Starting PatchAll for assembly BaseLib, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null
+[INFO] [BaseLib] Patching state machine: MegaCrit.Sts2.Core.Nodes.Combat.NCreature+<AnimDie>d__105
+[INFO] [BaseLib] Adding new state 5 for method CustomAnimationPatch.WaitCustomAnim before Wait with result type None ()
+[INFO] [BaseLib] Patching state machine: MegaCrit.Sts2.Core.Hooks.Hook+<AfterCardPlayed>d__16
+[INFO] [BaseLib] Adding new state 2 for method AfterCardPlayedPatch.BeforeAfterPlayHooks before AfterCardPlayed with result type None ()
+[INFO] [BaseLib] Applied 245 patches successfully, 0 failed
+[INFO] Finished mod initialization for 'BaseLib' (BaseLib).
+[INFO] Loading assembly DLL D:\Steam\steamapps\workshop\content\2868840\3747602295\STS2-RitsuLib.dll
+[INFO] Calling initializer method of type STS2RitsuLib.Loader.Bootstrap for STS2-RitsuLib.Loader, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+[INFO] [RitsuLib.Loader] Host version label=v0.107.1 numeric=0.107.1; picked variant 0.107.1.
+[INFO] [com.ritsukage.sts2-RitsuLib] Framework ID: com.ritsukage.sts2-RitsuLib
+[INFO] [com.ritsukage.sts2-RitsuLib] Framework Name: RitsuLib
+[INFO] [com.ritsukage.sts2-RitsuLib] Version: 0.4.30 [compat branch: 0.107.1]
+[INFO] [com.ritsukage.sts2-RitsuLib] Initializing shared framework...
+[INFO] [com.ritsukage.sts2-RitsuLib] Applying migration 12 -> 13 for RitsuLibSettings (shortest path: step 1/1)
+[INFO] [com.ritsukage.sts2-RitsuLib] [Persistence] [settings.json] Data migrated to version 13
+[INFO] [com.ritsukage.sts2-RitsuLib] [Config] Debug compatibility master is disabled. Sub-flags (only when master on): LocTable=True, UnlockEpoch=True, AncientArchitect=True. Mod Steam cloud mirror: disabled. Config file: user://steam/76561199213624764/mod_data/com.ritsukage.sts2-RitsuLib/settings.json
+[INFO] [com.ritsukage.sts2-RitsuLib] [DebugLogViewer] Local debug log viewer listening at http://127.0.0.1:18742/?token=53b1e9703f639104d79b53b7f88234de
+[INFO] [com.ritsukage.sts2-RitsuLib] [Godot] RitsuGodot node factories initialized.
+[INFO] [com.ritsukage.sts2-RitsuLib] [SmartFormat] Registered Formatter: STS2RitsuLib.Combat.SecondaryResources.SecondaryResourceIconsFormatter (order=0).
+[INFO] [com.ritsukage.sts2-RitsuLib] [Patcher - framework core] Applying 375 patches...
+[INFO] [com.ritsukage.sts2-RitsuLib] [Patcher - framework core] Patch application complete: 375 applied, 0 ignored, 0 failed, 375 total
+[INFO] [com.ritsukage.sts2-RitsuLib] [Patcher - framework core] All patches applied successfully
+[INFO] [com.ritsukage.sts2-RitsuLib] [Patcher - settings ui] Applying 7 patches...
+[INFO] [com.ritsukage.sts2-RitsuLib] [Patcher - settings ui] Patch application complete: 7 applied, 0 ignored, 0 failed, 7 total
+[INFO] [com.ritsukage.sts2-RitsuLib] [Patcher - settings ui] All patches applied successfully
+[INFO] [com.ritsukage.sts2-RitsuLib] [Patcher - content assets] Applying 114 patches...
+[INFO] [com.ritsukage.sts2-RitsuLib] [Patcher - content assets] Patch application complete: 114 applied, 0 ignored, 0 failed, 114 total
+[INFO] [com.ritsukage.sts2-RitsuLib] [Patcher - content assets] All patches applied successfully
+[INFO] [com.ritsukage.sts2-RitsuLib] [Patcher - character assets] Applying 51 patches...
+[INFO] [com.ritsukage.sts2-RitsuLib] [Patcher - character assets] Patch application complete: 51 applied, 0 ignored, 0 failed, 51 total
+[INFO] [com.ritsukage.sts2-RitsuLib] [Patcher - character assets] All patches applied successfully
+[INFO] [com.ritsukage.sts2-RitsuLib] [Patcher - content registry] Applying 25 patches...
+[INFO] [com.ritsukage.sts2-RitsuLib] [Patcher - content registry] Patch application complete: 25 applied, 0 ignored, 0 failed, 25 total
+[INFO] [com.ritsukage.sts2-RitsuLib] [Patcher - content registry] All patches applied successfully
+[INFO] [com.ritsukage.sts2-RitsuLib] [Patcher - persistence] Applying 3 patches...
+[INFO] [com.ritsukage.sts2-RitsuLib] [Patcher - persistence] Patch application complete: 3 applied, 0 ignored, 0 failed, 3 total
+[INFO] [com.ritsukage.sts2-RitsuLib] [Patcher - persistence] All patches applied successfully
+[INFO] [com.ritsukage.sts2-RitsuLib] [Patcher - unlocks] Applying 22 patches...
+[INFO] [com.ritsukage.sts2-RitsuLib] [Patcher - unlocks] Patch application complete: 22 applied, 0 ignored, 0 failed, 22 total
+[INFO] [com.ritsukage.sts2-RitsuLib] [Patcher - unlocks] All patches applied successfully
+[INFO] [com.ritsukage.sts2-RitsuLib] [SteamWorkshopUpdate] Coordinator initialized.
+[INFO] [com.ritsukage.sts2-RitsuLib] Shared framework initialization complete.
+[INFO] Finished mod initialization for 'RitsuLib' (STS2-RitsuLib).
+[INFO] Loading assembly DLL D:\Steam\steamapps\workshop\content\2868840\3747834561\chizuruCharacter.dll
+[INFO] Loading Godot PCK D:\Steam\steamapps\workshop\content\2868840\3747834561\chizuruCharacter.pck
+[INFO] Calling initializer method of type chizuruCharacterbeta.ChizuruMainFile for chizuruCharacter, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+[INFO] [chizuruCharacter] Harmony patches applied.
+[INFO] [chizuruCharacter] SfxCmd.Play patched successfully.
+[INFO] [chizuruCharacter] SfxCmd.PlayDeath patched successfully.
+[VfxConfigRegistry] Loaded 8 composite and 7 particle configs from res://chizuruCharacter/vfx_configs
+[INFO] [chizuruCharacter] VFX configs loaded: 8 composite, 7 particle
+[INFO] [chizuruCharacter] [VfxPreloader] Preloaded 76 VFX assets (76 scenes, 0 textures)
+[INFO] [chizuruCharacter] Character skill system initialized.
+[INFO] [chizuruCharacter] Chizuru heal net action registered.
+[INFO] [chizuruCharacter] Chizuru card flash net action registered.
+[INFO] [chizuruCharacter] Bond keyword registered.
+[INFO] [chizuruCharacter] Chizuru hand card flash color registered (purple).
+[INFO] [chizuruCharacter] [ChizuruCardPool] Preloaded custom card scene: res://chizuruCharacter/scenes/cards/card.tscn
+[INFO] [chizuruCharacter] [ChizuruCardPool] Prewarmed 10 instances (total created: 10)
+[INFO] [chizuruCharacter] Mod settings registered.
+[INFO] Finished mod initialization for '《卡厄思梦境》千鹤' (chizuruCharacter).
+[INFO] Loading assembly DLL D:\Steam\steamapps\workshop\content\2868840\3747536544\KalipeiMod.dll
+[INFO] Loading Godot PCK D:\Steam\steamapps\workshop\content\2868840\3747536544\KalipeiMod.pck
+[INFO] Calling initializer method of type KalipeiMod.Scripts.Entry for KalipeiMod, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+[INFO] [KalipeiMod] KalipeiMod initialized.
+[INFO] [KalipeiMod] Harmony patches applied successfully!
+[INFO] [KalipeiMod] KalipeiMod initialized.
+[INFO] [KalipeiMod] [CardPiles] Registered pile: KALIPEI_MOD_CARDPILE_VOID_PILE (PileType=0x43C1182E, Style=BottomLeft, Scope=CombatOnly)
+[INFO] [KalipeiMod] 成功预加载特效场景: res://KalipeiMod/scenes/KalipeiVFX/bianda.tscn
+[INFO] [KalipeiMod] 成功预加载特效场景: res://KalipeiMod/scenes/KalipeiVFX/tuyingfashe.tscn
+[INFO] [KalipeiMod] 成功预加载特效场景: res://KalipeiMod/scenes/KalipeiVFX/fuchoudaji.tscn
+[INFO] [KalipeiMod] 成功预加载特效场景: res://KalipeiMod/scenes/KalipeiVFX/tianshang.tscn
+[INFO] [KalipeiMod] 成功预加载特效场景: res://KalipeiMod/scenes/KalipeiVFX/zhanshuqidong.tscn
+[INFO] [KalipeiMod] 成功预加载特效场景: res://KalipeiMod/scenes/KalipeiVFX/quntitianshangtexiao3.tscn
+[INFO] [KalipeiMod] 成功预加载特效场景: res://KalipeiMod/scenes/KalipeiVFX/quntitianshangtexiao2.tscn
+[INFO] [KalipeiMod] 成功预加载特效场景: res://KalipeiMod/scenes/KalipeiVFX/baoliefashe.tscn
+[INFO] [KalipeiMod] 成功预加载特效场景: res://KalipeiMod/scenes/KalipeiVFX/xunhanghongzha.tscn
+[INFO] [KalipeiMod] 成功预加载特效场景: res://KalipeiMod/scenes/KalipeiVFX/yinsezhimutexiao.tscn
+[INFO] [KalipeiMod] 成功预加载特效场景: res://KalipeiMod/scenes/KalipeiVFX/jiku.tscn
+[INFO] [KalipeiMod] 成功预加载特效场景: res://KalipeiMod/scenes/KalipeiVFX/jiqun.tscn
+[INFO] [KalipeiMod] 成功预加载特效场景: res://KalipeiMod/scenes/KalipeiVFX/quandanfashe.tscn
+[INFO] Finished mod initialization for 'KalipeiMod' (KalipeiMod).
+[INFO] Loading assembly DLL D:\Steam\steamapps\common\Slay the Spire 2\mods\Fei\Fei.dll
+[INFO] Loading Godot PCK D:\Steam\steamapps\common\Slay the Spire 2\mods\Fei\Fei.pck
+[INFO] Calling initializer method of type Fei.FeiCode.Entry for Fei, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+[INFO] [Fei] Fei initialized.
+[INFO] Finished mod initialization for 'Fei' (Fei).
+[INFO] Loading assembly DLL D:\Steam\steamapps\common\Slay the Spire 2\mods\MeiLinMod\MeiLinMod.dll
+[INFO] Loading Godot PCK D:\Steam\steamapps\common\Slay the Spire 2\mods\MeiLinMod\MeiLinMod.pck
+[INFO] Calling initializer method of type MeiLinMod.MainFile for MeiLinMod, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+[INFO] [BaseLib] Registered config for mod MeiLinMod
+[INFO] [MeiLinMod] [Harmony] ArchaicTooth.SetupForPlayer: patchedByMe=1
+[INFO] [MeiLinMod] [Harmony] ArchaicTooth.AfterObtained: patchedByMe=1
+[INFO] [MeiLinMod] [Harmony] DustyTome.SetupForPlayer: patchedByMe=1
+[INFO] [MeiLinMod] [Harmony] DustyTome.AfterObtained: patchedByMe=1
+[INFO] [MeiLinMod] [Harmony] TouchOfOrobas.SetupForPlayer: patchedByMe=1
+[INFO] [MeiLinMod] [Harmony] TouchOfOrobas.AfterObtained: patchedByMe=0
+[INFO] [MeiLinMod] [Harmony] MegaAnimationState.SetAnimation(String,Boolean,Int32): patchedByMe=3
+[INFO] Finished mod initialization for 'MeiLinMod' (MeiLinMod).
+[INFO] Loading Godot PCK D:\Steam\steamapps\workshop\content\2868840\3747954551\StS2_MeiLinTexturePack.pck
+[INFO] Finished mod initialization for 'MeiLin Texture Pack' (StS2_MeiLinTexturePack).
+[INFO] Loading assembly DLL D:\Steam\steamapps\common\Slay the Spire 2\mods\GoldTransferMod\GoldTransferMod.dll
+[INFO] Loading Godot PCK D:\Steam\steamapps\common\Slay the Spire 2\mods\GoldTransferMod\GoldTransferMod.pck
+[INFO] Calling initializer method of type GoldTransferMod.MainFile for GoldTransferMod, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+[INFO] [GoldTransferMod] [ShopTransfer] Network initialized.
+[INFO] Finished mod initialization for 'GoldTransferMod' (GoldTransferMod).
+[INFO] Loading assembly DLL D:\Steam\steamapps\common\Slay the Spire 2\mods\YukiMod\YukiMod.dll
+[INFO] Loading Godot PCK D:\Steam\steamapps\common\Slay the Spire 2\mods\YukiMod\YukiMod.pck
+[INFO] Calling initializer method of type YukiMod.MainFile for YukiMod, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+[INFO] [BaseLib] Registered config for mod YukiMod
+[INFO] Finished mod initialization for 'YukiMod' (YukiMod).
+[INFO] [com.ritsukage.sts2-RitsuLib] 
+=== RitsuLib Mod Debug Information ===
+Host Version: v0.107.1
+RitsuLib Version: 0.4.30 [compat branch: 0.107.1]
+BaseLib: v3.3.0
+Loaded Mods: 9
+Registered Mods: 12
+Mod List:
+  * BaseLib (v3.3.0)
+  * RitsuLib [STS2-RitsuLib] (0.4.30)
+  * 《卡厄思梦境》千鹤 [chizuruCharacter] (v1.0.6)
+  * KalipeiMod (2.0.1)
+  * Fei (0.0.0)
+  * MeiLinMod (v0.2.7)
+  * MeiLin Texture Pack [StS2_MeiLinTexturePack] (v1.0.1)
+  * GoldTransferMod (v0.2.0)
+  * YukiMod (v0.0.6)
+
+[INFO]  --- RUNNING MODDED! --- Loaded 9 mods (12 total)
+[Sentry.GDExtension] should_sample callable set
+[WARN] Asset not cached: res://scenes/debug/dev_console.tscn
+[INFO] OVERWRITING cloud saves with local saves.
+[WARN] Asset not cached: res://scenes/cards/card.tscn
+[WARN] Asset not cached: res://scenes/cards/holders/grid_card_holder.tscn
+[INFO] AtlasManager: Loaded ui_atlas with 102 sprites
+[INFO] AtlasManager: Loaded compressed with 45 sprites
+[WARN] [com.ritsukage.sts2-RitsuLib] [ModelDb] ReflectionHelper.ModTypes was already cached before LocManager.Initialize (3555 types). Clearing the cache so post-mod-load scans include all loaded mod types; another mod likely accessed ReflectionHelper.ModTypes before mod loading completed.
+[INFO] [BaseLib] Performing post-mod init patch
+[INFO] [BaseLib] Patching act types for custom encounters and events | DeprecatedAct | Glory | Hive | Overgrowth | Underdocks
+[INFO] [BaseLib] Generating interop methods and properties
+[WARN] [BaseLib] SavedProperty PendingCardCount will not work on type DoctrineOfBindingPower; this type is currently also unsupported by BaseLib for saved values.
+[WARN] [BaseLib] SavedProperty EvasionRollResult will not work on type EvasionPower; this type is currently also unsupported by BaseLib for saved values.
+[WARN] [BaseLib] SavedProperty PendingMoonShadowCount will not work on type GhostFirePower; this type is currently also unsupported by BaseLib for saved values.
+[WARN] [BaseLib] SavedProperty PendingAmountReduction will not work on type GhostFirePower; this type is currently also unsupported by BaseLib for saved values.
+[WARN] [BaseLib] SavedProperty IsProcessing will not work on type GhostFirePower; this type is currently also unsupported by BaseLib for saved values.
+[WARN] [BaseLib] SavedProperty LastCardTypeName will not work on type UnfinishedSoulPower; this type is currently also unsupported by BaseLib for saved values.
+[INFO] [BaseLib] Found 0 SavedSpireFields.
+[INFO] [Fei] [Content] Registered card: FeiDefend (id=FEI_CARD_FEI_DEFEND) -> FeiCardPool
+[INFO] [Fei] [Content] Registered card: FeiStrike (id=FEI_CARD_FEI_STRIKE) -> FeiCardPool
+[INFO] [Fei] [Content] Registered character: FeiCharacter (id=FEI_CHARACTER_FEI_CHARACTER)
+[INFO] [Fei] [Content] Registered relic: FeiRelic (id=FEI_RELIC_FEI_RELIC) -> FeiRelicPool
+[INFO] [com.ritsukage.sts2-RitsuLib] [AutoRegister] Processed assembly 'Fei': 4 operation(s), 4 succeeded, 0 failed.
+[INFO] [KalipeiMod] [Content] Registered card: BaoliefasheCard (id=KALIPEI_MOD_CARD_BAOLIEFASHE_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: BaoranCard (id=KALIPEI_MOD_CARD_BAORAN_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: BaqiCard (id=KALIPEI_MOD_CARD_BAQI_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: BiandaCard (id=KALIPEI_MOD_CARD_BIANDA_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: BihuzhijianCard (id=KALIPEI_MOD_CARD_BIHUZHIJIAN_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: ChangkongzhijianCard (id=KALIPEI_MOD_CARD_CHANGKONGZHIJIAN_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered power: ChangkongzhijianPower (id=KALIPEI_MOD_POWER_CHANGKONGZHIJIAN_POWER)
+[INFO] [KalipeiMod] [Content] Registered card: ChongnengpaodanCard (id=KALIPEI_MOD_CARD_CHONGNENGPAODAN_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: ChongxinjijieCard (id=KALIPEI_MOD_CARD_CHONGXINJIJIE_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: DongchaCard (id=KALIPEI_MOD_CARD_DONGCHA_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: ErcizhuranCard (id=KALIPEI_MOD_CARD_ERCIZHURAN_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered power: ErcizhuranPower (id=KALIPEI_MOD_POWER_ERCIZHURAN_POWER)
+[INFO] [KalipeiMod] [Content] Registered card: FanbaiweishengCard (id=KALIPEI_MOD_CARD_FANBAIWEISHENG_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered power: FanbaiweishengPower (id=KALIPEI_MOD_POWER_FANBAIWEISHENG_POWER)
+[INFO] [KalipeiMod] [Content] Registered card: FanchongjiCard (id=KALIPEI_MOD_CARD_FANCHONGJI_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered power: FanjiPower (id=KALIPEI_MOD_POWER_FANJI_POWER)
+[INFO] [KalipeiMod] [Content] Registered card: FanjideyishuCard (id=KALIPEI_MOD_CARD_FANJIDEYISHU_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered power: FanjideyishuPower (id=KALIPEI_MOD_POWER_FANJIDEYISHU_POWER)
+[INFO] [KalipeiMod] [Content] Registered card: FanzhiCard (id=KALIPEI_MOD_CARD_FANZHI_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: FeiyingHuhuanCard (id=KALIPEI_MOD_CARD_FEIYING_HUHUAN_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered power: FeiyingHuhuanPower (id=KALIPEI_MOD_POWER_FEIYING_HUHUAN_POWER)
+[INFO] [KalipeiMod] [Content] Registered card: FeiyingLieshouCard (id=KALIPEI_MOD_CARD_FEIYING_LIESHOU_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered power: FeiyingLieshouPower (id=KALIPEI_MOD_POWER_FEIYING_LIESHOU_POWER)
+[INFO] [KalipeiMod] [Content] Registered card: FeiyingLingdiCard (id=KALIPEI_MOD_CARD_FEIYING_LINGDI_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered power: FeiyingLingdiPower (id=KALIPEI_MOD_POWER_FEIYING_LINGDI_POWER)
+[INFO] [KalipeiMod] [Content] Registered card: FeiyingdajiCard (id=KALIPEI_MOD_CARD_FEIYINGDAJI_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: FeiyingjijieCard (id=KALIPEI_MOD_CARD_FEIYINGJIJIE_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: FeiyingshouhuzheCard (id=KALIPEI_MOD_CARD_FEIYINGSHOUHUZHE_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered power: FeiyingshouhuzhePower (id=KALIPEI_MOD_POWER_FEIYINGSHOUHUZHE_POWER)
+[INFO] [KalipeiMod] [Content] Registered card: FeiyingzhiyanCard (id=KALIPEI_MOD_CARD_FEIYINGZHIYAN_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered power: FeiyingzhiyanPower (id=KALIPEI_MOD_POWER_FEIYINGZHIYAN_POWER)
+[INFO] [KalipeiMod] [Content] Registered card: FengqunyishiCard (id=KALIPEI_MOD_CARD_FENGQUNYISHI_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered power: FengqunyishiPower (id=KALIPEI_MOD_POWER_FENGQUNYISHI_POWER)
+[INFO] [KalipeiMod] [Content] Registered card: FensuidajiCard (id=KALIPEI_MOD_CARD_FENSUIDAJI_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: FuchonghongzhaCard (id=KALIPEI_MOD_CARD_FUCHONGHONGZHA_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: FukejiCard (id=KALIPEI_MOD_CARD_FUKEJI_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: FuyuCard (id=KALIPEI_MOD_CARD_FUYU_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: FuzhijiCard (id=KALIPEI_MOD_CARD_FUZHIJI_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: GangtiezhijianCard (id=KALIPEI_MOD_CARD_GANGTIEZHIJIAN_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: GedangchongjiCard (id=KALIPEI_MOD_CARD_GEDANGCHONGJI_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: GedangfanjiCard (id=KALIPEI_MOD_CARD_GEDANGFANJI_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered power: GedangfanjiPower (id=KALIPEI_MOD_POWER_GEDANGFANJI_POWER)
+[INFO] [KalipeiMod] [Content] Registered card: GongmingChangjianCard (id=KALIPEI_MOD_CARD_GONGMING_CHANGJIAN_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: GuanceCard (id=KALIPEI_MOD_CARD_GUANCE_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: HaolingCard (id=KALIPEI_MOD_CARD_HAOLING_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: HejiCard (id=KALIPEI_MOD_CARD_HEJI_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: HudundajiCard (id=KALIPEI_MOD_CARD_HUDUNDAJI_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: HuopaoZhiyuanCard (id=KALIPEI_MOD_CARD_HUOPAO_ZHIYUAN_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered power: HuopaoZhiyuanPower (id=KALIPEI_MOD_POWER_HUOPAO_ZHIYUAN_POWER)
+[INFO] [KalipeiMod] [Content] Registered card: HuopaojiCard (id=KALIPEI_MOD_CARD_HUOPAOJI_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: JiangweizhilingCard (id=KALIPEI_MOD_CARD_JIANGWEIZHILING_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered power: JiangweizhilingPower (id=KALIPEI_MOD_POWER_JIANGWEIZHILING_POWER)
+[INFO] [KalipeiMod] [Content] Registered card: JianyidajiCard (id=KALIPEI_MOD_CARD_JIANYIDAJI_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: JidonghuaCard (id=KALIPEI_MOD_CARD_JIDONGHUA_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: JihuoCard (id=KALIPEI_MOD_CARD_JIHUO_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: Jiku (id=KALIPEI_MOD_CARD_JIKU) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: JikuCK2Card (id=KALIPEI_MOD_CARD_JIKU_CK2_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: JikuMk2Card (id=KALIPEI_MOD_CARD_JIKU_MK2_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered power: JikuPower (id=KALIPEI_MOD_POWER_JIKU_POWER)
+[INFO] [KalipeiMod] [Content] Registered card: JiqunCard (id=KALIPEI_MOD_CARD_JIQUN_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered power: JiqunPower (id=KALIPEI_MOD_POWER_JIQUN_POWER)
+[INFO] [KalipeiMod] [Content] Registered card: JisuHuishouCard (id=KALIPEI_MOD_CARD_JISU_HUISHOU_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered power: JueduilingkongBlockPower (id=KALIPEI_MOD_POWER_JUEDUILINGKONG_BLOCK_POWER)
+[INFO] [KalipeiMod] [Content] Registered card: JueduilingkongCard (id=KALIPEI_MOD_CARD_JUEDUILINGKONG_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered power: JueduilingkongTempDexPower (id=KALIPEI_MOD_POWER_JUEDUILINGKONG_TEMP_DEX_POWER)
+[INFO] [KalipeiMod] [Content] Registered card: JueduishouhuCard (id=KALIPEI_MOD_CARD_JUEDUISHOUHU_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: JuexinfanjiCard (id=KALIPEI_MOD_CARD_JUEXINFANJI_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: JufengdajiCard (id=KALIPEI_MOD_CARD_JUFENGDAJI_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered character: KalipeiModCharacter (id=KALIPEI_MOD_CHARACTER_KALIPEI_MOD_CHARACTER)
+[INFO] [KalipeiMod] [Content] Registered relic: KalipeiModRelic (id=KALIPEI_MOD_RELIC_KALIPEI_MOD_RELIC) -> KalipeiModRelicPool
+[INFO] [KalipeiMod] [Content] Registered relic: KalipeiModRelicPlus (id=KALIPEI_MOD_RELIC_KALIPEI_MOD_RELIC_PLUS) -> KalipeiModRelicPool
+[INFO] [KalipeiMod] [Content] Registered card: KalipeideyizhiCard (id=KALIPEI_MOD_CARD_KALIPEIDEYIZHI_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: KaoyanyizhiCard (id=KALIPEI_MOD_CARD_KAOYANYIZHI_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: KeyinChangjianCard (id=KALIPEI_MOD_CARD_KEYIN_CHANGJIAN_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: KongzhongbujixianCard (id=KALIPEI_MOD_CARD_KONGZHONGBUJIXIAN_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered power: KongzhongbujixianPower (id=KALIPEI_MOD_POWER_KONGZHONGBUJIXIAN_POWER)
+[INFO] [KalipeiMod] [Content] Registered card: LiangchanWurenjiCard (id=KALIPEI_MOD_CARD_LIANGCHAN_WURENJI_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: LiaojiCard (id=KALIPEI_MOD_CARD_LIAOJI_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered power: LiaojiPower (id=KALIPEI_MOD_POWER_LIAOJI_POWER)
+[INFO] [KalipeiMod] [Content] Registered card: LingyudajiCard (id=KALIPEI_MOD_CARD_LINGYUDAJI_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: NenglianghexinCard (id=KALIPEI_MOD_CARD_NENGLIANGHEXIN_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: PaohuozhiyuanCard (id=KALIPEI_MOD_CARD_PAOHUOZHIYUAN_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: PozhanjiexiCard (id=KALIPEI_MOD_CARD_POZHANJIEXI_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered power: QianghuafanjiBuffPower (id=KALIPEI_MOD_POWER_QIANGHUAFANJI_BUFF_POWER)
+[INFO] [KalipeiMod] [Content] Registered card: QianghuafanjiCard (id=KALIPEI_MOD_CARD_QIANGHUAFANJI_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: QianzhiCard (id=KALIPEI_MOD_CARD_QIANZHI_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered power: QianzhiPower (id=KALIPEI_MOD_POWER_QIANZHI_POWER)
+[INFO] [KalipeiMod] [Content] Registered card: QuanchongnengCard (id=KALIPEI_MOD_CARD_QUANCHONGNENG_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered power: QuanchongnengPower (id=KALIPEI_MOD_POWER_QUANCHONGNENG_POWER)
+[INFO] [KalipeiMod] [Content] Registered card: QuandanshasheCard (id=KALIPEI_MOD_CARD_QUANDANSHASHE_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: QuanyulianluCard (id=KALIPEI_MOD_CARD_QUANYULIANLU_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered power: QuanyulianluPower (id=KALIPEI_MOD_POWER_QUANYULIANLU_POWER)
+[INFO] [KalipeiMod] [Content] Registered card: QunyingtuxiCard (id=KALIPEI_MOD_CARD_QUNYINGTUXI_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered power: QunyingtuxiPower (id=KALIPEI_MOD_POWER_QUNYINGTUXI_POWER)
+[INFO] [KalipeiMod] [Content] Registered card: SaomiaoCard (id=KALIPEI_MOD_CARD_SAOMIAO_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered power: SaomiaoTrackerPower (id=KALIPEI_MOD_POWER_SAOMIAO_TRACKER_POWER)
+[INFO] [KalipeiMod] [Content] Registered card: ShouhuzhixinCard (id=KALIPEI_MOD_CARD_SHOUHUZHIXIN_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: SuiliezhanjiCard (id=KALIPEI_MOD_CARD_SUILIEZHANJI_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: TansuojiCard (id=KALIPEI_MOD_CARD_TANSUOJI_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered power: TansuojiTrackerPower (id=KALIPEI_MOD_POWER_TANSUOJI_TRACKER_POWER)
+[INFO] [KalipeiMod] [Content] Registered card: TianqiandajiCard (id=KALIPEI_MOD_CARD_TIANQIANDAJI_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered power: TianqiandajiPower (id=KALIPEI_MOD_POWER_TIANQIANDAJI_POWER)
+[INFO] [KalipeiMod] [Content] Registered card: TianshangjijieCard (id=KALIPEI_MOD_CARD_TIANSHANGJIJIE_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: TianyingchangjianCard (id=KALIPEI_MOD_CARD_TIANYINGCHANGJIAN_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: TiaozhengjikuCard (id=KALIPEI_MOD_CARD_TIAOZHENGJIKU_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered power: TiaozhengjikuPower (id=KALIPEI_MOD_POWER_TIAOZHENGJIKU_POWER)
+[INFO] [KalipeiMod] [Content] Registered card: TierdeyunshiCard (id=KALIPEI_MOD_CARD_TIERDEYUNSHI_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: ToufangWurenjiCard (id=KALIPEI_MOD_CARD_TOUFANG_WURENJI_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered power: ToufangWurenjiPower (id=KALIPEI_MOD_POWER_TOUFANG_WURENJI_POWER)
+[INFO] [KalipeiMod] [Content] Registered card: TuyingfasheCard (id=KALIPEI_MOD_CARD_TUYINGFASHE_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: WanmeiGedangCard (id=KALIPEI_MOD_CARD_WANMEI_GEDANG_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered power: WanmeiGedangPower (id=KALIPEI_MOD_POWER_WANMEI_GEDANG_POWER)
+[INFO] [KalipeiMod] [Content] Registered card: WurenjiDiaoduCard (id=KALIPEI_MOD_CARD_WURENJI_DIAODU_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered power: WurenjiDiaoduPower (id=KALIPEI_MOD_POWER_WURENJI_DIAODU_POWER)
+[INFO] [KalipeiMod] [Content] Registered card: WurenjiZhuijiCard (id=KALIPEI_MOD_CARD_WURENJI_ZHUIJI_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered power: WurenjiZhuijiPower (id=KALIPEI_MOD_POWER_WURENJI_ZHUIJI_POWER)
+[INFO] [KalipeiMod] [Content] Registered card: WurenjichudongCard (id=KALIPEI_MOD_CARD_WURENJICHUDONG_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: WuzhuangLiliangCard (id=KALIPEI_MOD_CARD_WUZHUANG_LILIANG_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered power: XiongyingShouhuPower (id=KALIPEI_MOD_POWER_XIONGYING_SHOUHU_POWER)
+[INFO] [KalipeiMod] [Content] Registered card: XunhanghongzhaCard (id=KALIPEI_MOD_CARD_XUNHANGHONGZHA_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: YazhiCard (id=KALIPEI_MOD_CARD_YAZHI_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: YingchaoCard (id=KALIPEI_MOD_CARD_YINGCHAO_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered power: YingchaoPower (id=KALIPEI_MOD_POWER_YINGCHAO_POWER)
+[INFO] [KalipeiMod] [Content] Registered power: YingqunshouhuBuffPower (id=KALIPEI_MOD_POWER_YINGQUNSHOUHU_BUFF_POWER)
+[INFO] [KalipeiMod] [Content] Registered card: YingqunshouhuCard (id=KALIPEI_MOD_CARD_YINGQUNSHOUHU_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered power: YingqunxietongBuffPower (id=KALIPEI_MOD_POWER_YINGQUNXIETONG_BUFF_POWER)
+[INFO] [KalipeiMod] [Content] Registered card: YingqunxietongCard (id=KALIPEI_MOD_CARD_YINGQUNXIETONG_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: YingsunShengyanCard (id=KALIPEI_MOD_CARD_YINGSUN_SHENGYAN_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered power: YingsunShengyanPower (id=KALIPEI_MOD_POWER_YINGSUN_SHENGYAN_POWER)
+[INFO] [KalipeiMod] [Content] Registered power: YingsunyijiPower (id=KALIPEI_MOD_POWER_YINGSUNYIJI_POWER)
+[INFO] [KalipeiMod] [Content] Registered card: YingwangjianglinCard (id=KALIPEI_MOD_CARD_YINGWANGJIANGLIN_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered power: YingwangjianglinPower (id=KALIPEI_MOD_POWER_YINGWANGJIANGLIN_POWER)
+[INFO] [KalipeiMod] [Content] Registered power: YubeifanjiPower (id=KALIPEI_MOD_POWER_YUBEIFANJI_POWER)
+[INFO] [KalipeiMod] [Content] Registered card: YujingjiCard (id=KALIPEI_MOD_CARD_YUJINGJI_CARD) -> TokenCardPool
+[INFO] [KalipeiMod] [Content] Registered card: YuliangCard (id=KALIPEI_MOD_CARD_YULIANG_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered power: YuliangPower (id=KALIPEI_MOD_POWER_YULIANG_POWER)
+[INFO] [KalipeiMod] [Content] Registered card: YuxiaoCard (id=KALIPEI_MOD_CARD_YUXIAO_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: YuyiHuhuanCard (id=KALIPEI_MOD_CARD_YUYI_HUHUAN_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered card: ZhanshuQidongCard (id=KALIPEI_MOD_CARD_ZHANSHU_QIDONG_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered power: ZhanshuQidongPower (id=KALIPEI_MOD_POWER_ZHANSHU_QIDONG_POWER)
+[INFO] [KalipeiMod] [Content] Registered card: ZhengbeiCard (id=KALIPEI_MOD_CARD_ZHENGBEI_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered power: ZhengbeiDebuffPower (id=KALIPEI_MOD_POWER_ZHENGBEI_DEBUFF_POWER)
+[INFO] [KalipeiMod] [Content] Registered power: ZhiyuanBuffPower (id=KALIPEI_MOD_POWER_ZHIYUAN_BUFF_POWER)
+[INFO] [KalipeiMod] [Content] Registered card: ZhiyuanCard (id=KALIPEI_MOD_CARD_ZHIYUAN_CARD) -> KalipeiModCardPool
+[INFO] [KalipeiMod] [Content] Registered starter card: BiandaCard (id=KALIPEI_MOD_CARD_BIANDA_CARD) x4 -> KalipeiModCharacter
+[INFO] [KalipeiMod] [Content] Registered starter card: Jiku (id=KALIPEI_MOD_CARD_JIKU) x1 -> KalipeiModCharacter
+[INFO] [KalipeiMod] [Content] Registered starter relic: KalipeiModRelic (id=KALIPEI_MOD_RELIC_KALIPEI_MOD_RELIC) x1 -> KalipeiModCharacter
+[INFO] [KalipeiMod] [Content] Registered starter card: TierdeyunshiCard (id=KALIPEI_MOD_CARD_TIERDEYUNSHI_CARD) x4 -> KalipeiModCharacter
+[INFO] [KalipeiMod] [Content] Registered starter card: YuyiHuhuanCard (id=KALIPEI_MOD_CARD_YUYI_HUHUAN_CARD) x1 -> KalipeiModCharacter
+[INFO] [KalipeiMod] [Keywords] Registered keyword: KALIPEI_MOD_KEYWORD_TIANSHANG (CardKeyword=0x6D3F84EC)
+[INFO] [KalipeiMod] [Keywords] Registered keyword: KALIPEI_MOD_KEYWORD_WURENJI (CardKeyword=0x65FBF717)
+[INFO] [com.ritsukage.sts2-RitsuLib] [AutoRegister] Processed assembly 'KalipeiMod': 151 operation(s), 151 succeeded, 0 failed.
+[INFO] [chizuruCharacter] [Content] Registered card: ForbiddenPortraitOfAnger (id=CHIZURU_CHARACTER_CARD_FORBIDDEN_PORTRAIT_OF_ANGER) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: PhantomReplicationDevice (id=CHIZURU_CHARACTER_CARD_PHANTOM_REPLICATION_DEVICE) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: DemonHunt (id=CHIZURU_CHARACTER_CARD_DEMON_HUNT) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: FullTideMoonlight (id=CHIZURU_CHARACTER_CARD_FULL_TIDE_MOONLIGHT) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: KarmaFire (id=CHIZURU_CHARACTER_CARD_KARMA_FIRE) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: MoonReading (id=CHIZURU_CHARACTER_CARD_MOON_READING) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: MoonShadow (id=CHIZURU_CHARACTER_CARD_MOON_SHADOW) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: TwilightBond (id=CHIZURU_CHARACTER_CARD_TWILIGHT_BOND) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: chizuruDefend (id=CHIZURU_CHARACTER_CARD_CHIZURU_DEFEND) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: chizuruStrike (id=CHIZURU_CHARACTER_CARD_CHIZURU_STRIKE) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: Abyssalization (id=CHIZURU_CHARACTER_CARD_ABYSSALIZATION) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: BreakthroughSlash (id=CHIZURU_CHARACTER_CARD_BREAKTHROUGH_SLASH) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: ConsecutiveAttack (id=CHIZURU_CHARACTER_CARD_CONSECUTIVE_ATTACK) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: Convergence (id=CHIZURU_CHARACTER_CARD_CONVERGENCE) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: FightingSpirit (id=CHIZURU_CHARACTER_CARD_FIGHTING_SPIRIT) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: Flash (id=CHIZURU_CHARACTER_CARD_FLASH) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: HoldFast (id=CHIZURU_CHARACTER_CARD_HOLD_FAST) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: IronSlashWave (id=CHIZURU_CHARACTER_CARD_IRON_SLASH_WAVE) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: MeditationSlash (id=CHIZURU_CHARACTER_CARD_MEDITATION_SLASH) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: MoonShadowFormOne (id=CHIZURU_CHARACTER_CARD_MOON_SHADOW_FORM_ONE) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: MoonShadowFormThree (id=CHIZURU_CHARACTER_CARD_MOON_SHADOW_FORM_THREE) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: MoonShadowFormTwo (id=CHIZURU_CHARACTER_CARD_MOON_SHADOW_FORM_TWO) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: PurpleGroupDance (id=CHIZURU_CHARACTER_CARD_PURPLE_GROUP_DANCE) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: SavageInstinct (id=CHIZURU_CHARACTER_CARD_SAVAGE_INSTINCT) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: Slash (id=CHIZURU_CHARACTER_CARD_SLASH) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: SwordHiltStrike (id=CHIZURU_CHARACTER_CARD_SWORD_HILT_STRIKE) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: Tyranny (id=CHIZURU_CHARACTER_CARD_TYRANNY) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: DemonHuntFlash1 (id=CHIZURU_CHARACTER_CARD_DEMON_HUNT_FLASH1) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered power: DemonHuntFlash1Power (id=CHIZURU_CHARACTER_POWER_DEMON_HUNT_FLASH1_POWER)
+[INFO] [chizuruCharacter] [Content] Registered card: DemonHuntFlash2 (id=CHIZURU_CHARACTER_CARD_DEMON_HUNT_FLASH2) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered power: DemonHuntFlash2Power (id=CHIZURU_CHARACTER_POWER_DEMON_HUNT_FLASH2_POWER)
+[INFO] [chizuruCharacter] [Content] Registered card: DemonHuntFlash3 (id=CHIZURU_CHARACTER_CARD_DEMON_HUNT_FLASH3) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: DemonHuntFlash4 (id=CHIZURU_CHARACTER_CARD_DEMON_HUNT_FLASH4) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: DemonHuntFlash5 (id=CHIZURU_CHARACTER_CARD_DEMON_HUNT_FLASH5) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered power: DemonHuntFlash5Power (id=CHIZURU_CHARACTER_POWER_DEMON_HUNT_FLASH5_POWER)
+[INFO] [chizuruCharacter] [Content] Registered card: KarmaFireFlash1 (id=CHIZURU_CHARACTER_CARD_KARMA_FIRE_FLASH1) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: KarmaFireFlash2 (id=CHIZURU_CHARACTER_CARD_KARMA_FIRE_FLASH2) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered power: KarmaFireFlash2Power (id=CHIZURU_CHARACTER_POWER_KARMA_FIRE_FLASH2_POWER)
+[INFO] [chizuruCharacter] [Content] Registered card: KarmaFireFlash3 (id=CHIZURU_CHARACTER_CARD_KARMA_FIRE_FLASH3) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: KarmaFireFlash4 (id=CHIZURU_CHARACTER_CARD_KARMA_FIRE_FLASH4) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: KarmaFireFlash5 (id=CHIZURU_CHARACTER_CARD_KARMA_FIRE_FLASH5) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered power: KarmaFireFlash5Power (id=CHIZURU_CHARACTER_POWER_KARMA_FIRE_FLASH5_POWER)
+[INFO] [chizuruCharacter] [Content] Registered card: MoonReadingFlash1 (id=CHIZURU_CHARACTER_CARD_MOON_READING_FLASH1) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered power: MoonReadingFlash1Power (id=CHIZURU_CHARACTER_POWER_MOON_READING_FLASH1_POWER)
+[INFO] [chizuruCharacter] [Content] Registered card: MoonReadingFlash2 (id=CHIZURU_CHARACTER_CARD_MOON_READING_FLASH2) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered power: MoonReadingFlash2Power (id=CHIZURU_CHARACTER_POWER_MOON_READING_FLASH2_POWER)
+[INFO] [chizuruCharacter] [Content] Registered card: MoonReadingFlash3 (id=CHIZURU_CHARACTER_CARD_MOON_READING_FLASH3) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered power: MoonReadingFlash3Power (id=CHIZURU_CHARACTER_POWER_MOON_READING_FLASH3_POWER)
+[INFO] [chizuruCharacter] [Content] Registered card: MoonReadingFlash4 (id=CHIZURU_CHARACTER_CARD_MOON_READING_FLASH4) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: MoonReadingFlash5 (id=CHIZURU_CHARACTER_CARD_MOON_READING_FLASH5) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered power: MoonReadingFlash5Power (id=CHIZURU_CHARACTER_POWER_MOON_READING_FLASH5_POWER)
+[INFO] [chizuruCharacter] [Content] Registered card: TwilightBondFlash1 (id=CHIZURU_CHARACTER_CARD_TWILIGHT_BOND_FLASH1) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered power: TwilightBondFlash1Power (id=CHIZURU_CHARACTER_POWER_TWILIGHT_BOND_FLASH1_POWER)
+[INFO] [chizuruCharacter] [Content] Registered card: TwilightBondFlash2 (id=CHIZURU_CHARACTER_CARD_TWILIGHT_BOND_FLASH2) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered power: TwilightBondFlash2Power (id=CHIZURU_CHARACTER_POWER_TWILIGHT_BOND_FLASH2_POWER)
+[INFO] [chizuruCharacter] [Content] Registered card: TwilightBondFlash3 (id=CHIZURU_CHARACTER_CARD_TWILIGHT_BOND_FLASH3) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered power: TwilightBondFlash3Power (id=CHIZURU_CHARACTER_POWER_TWILIGHT_BOND_FLASH3_POWER)
+[INFO] [chizuruCharacter] [Content] Registered card: TwilightBondFlash4 (id=CHIZURU_CHARACTER_CARD_TWILIGHT_BOND_FLASH4) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered power: TwilightBondFlash4Power (id=CHIZURU_CHARACTER_POWER_TWILIGHT_BOND_FLASH4_POWER)
+[INFO] [chizuruCharacter] [Content] Registered card: TwilightBondFlash5 (id=CHIZURU_CHARACTER_CARD_TWILIGHT_BOND_FLASH5) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered power: TwilightBondFlash5Power (id=CHIZURU_CHARACTER_POWER_TWILIGHT_BOND_FLASH5_POWER)
+[INFO] [chizuruCharacter] [Content] Registered card: AnZe (id=CHIZURU_CHARACTER_CARD_AN_ZE) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: BecomeThickShadow (id=CHIZURU_CHARACTER_CARD_BECOME_THICK_SHADOW) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: BloomingMoonPhase (id=CHIZURU_CHARACTER_CARD_BLOOMING_MOON_PHASE) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: Cleansing (id=CHIZURU_CHARACTER_CARD_CLEANSING) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: DemonAgitation (id=CHIZURU_CHARACTER_CARD_DEMON_AGITATION) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: DemonDevour (id=CHIZURU_CHARACTER_CARD_DEMON_DEVOUR) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: DesolateWraith (id=CHIZURU_CHARACTER_CARD_DESOLATE_WRAITH) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: EternalNightReflection (id=CHIZURU_CHARACTER_CARD_ETERNAL_NIGHT_REFLECTION) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: EternalNightResolve (id=CHIZURU_CHARACTER_CARD_ETERNAL_NIGHT_RESOLVE) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: ForbiddenGuidance (id=CHIZURU_CHARACTER_CARD_FORBIDDEN_GUIDANCE) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: MoonPhaseBlessing (id=CHIZURU_CHARACTER_CARD_MOON_PHASE_BLESSING) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: MoonShadowCompanion (id=CHIZURU_CHARACTER_CARD_MOON_SHADOW_COMPANION) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: MoonShadowDevourLife (id=CHIZURU_CHARACTER_CARD_MOON_SHADOW_DEVOUR_LIFE) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: MoonShadowRest (id=CHIZURU_CHARACTER_CARD_MOON_SHADOW_REST) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: MoonlightBlessing (id=CHIZURU_CHARACTER_CARD_MOONLIGHT_BLESSING) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: NightmareOtherSide (id=CHIZURU_CHARACTER_CARD_NIGHTMARE_OTHER_SIDE) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: ShadowlessSlash (id=CHIZURU_CHARACTER_CARD_SHADOWLESS_SLASH) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: Sharpen (id=CHIZURU_CHARACTER_CARD_SHARPEN) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: SoulFireDispersal (id=CHIZURU_CHARACTER_CARD_SOUL_FIRE_DISPERSAL) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: SoulFireGuard (id=CHIZURU_CHARACTER_CARD_SOUL_FIRE_GUARD) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: ThousandMoon (id=CHIZURU_CHARACTER_CARD_THOUSAND_MOON) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: UnfinishedSoul (id=CHIZURU_CHARACTER_CARD_UNFINISHED_SOUL) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: VowOfNothingness (id=CHIZURU_CHARACTER_CARD_VOW_OF_NOTHINGNESS) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: YeLan (id=CHIZURU_CHARACTER_CARD_YE_LAN) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: MoonShadowPlus (id=CHIZURU_CHARACTER_CARD_MOON_SHADOW_PLUS) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: AnYue (id=CHIZURU_CHARACTER_CARD_AN_YUE) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: AttackReaction (id=CHIZURU_CHARACTER_CARD_ATTACK_REACTION) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: Breakthrough (id=CHIZURU_CHARACTER_CARD_BREAKTHROUGH) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: BurningPact (id=CHIZURU_CHARACTER_CARD_BURNING_PACT) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: DarkSlash (id=CHIZURU_CHARACTER_CARD_DARK_SLASH) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: DoctrineOfBinding (id=CHIZURU_CHARACTER_CARD_DOCTRINE_OF_BINDING) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: Drain (id=CHIZURU_CHARACTER_CARD_DRAIN) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: EmotionalOutburst (id=CHIZURU_CHARACTER_CARD_EMOTIONAL_OUTBURST) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: EternalFlame (id=CHIZURU_CHARACTER_CARD_ETERNAL_FLAME) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: FengJin (id=CHIZURU_CHARACTER_CARD_FENG_JIN) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: GloryOfHolding (id=CHIZURU_CHARACTER_CARD_GLORY_OF_HOLDING) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: GrudgeSlash (id=CHIZURU_CHARACTER_CARD_GRUDGE_SLASH) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: GuiJin (id=CHIZURU_CHARACTER_CARD_GUI_JIN) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: ImageConvergence (id=CHIZURU_CHARACTER_CARD_IMAGE_CONVERGENCE) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: MagicRampage (id=CHIZURU_CHARACTER_CARD_MAGIC_RAMPAGE) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: MikoBlood (id=CHIZURU_CHARACTER_CARD_MIKO_BLOOD) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: MoonShadowDevour (id=CHIZURU_CHARACTER_CARD_MOON_SHADOW_DEVOUR) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: MoonShadowSeek (id=CHIZURU_CHARACTER_CARD_MOON_SHADOW_SEEK) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: MoonSlashHeart (id=CHIZURU_CHARACTER_CARD_MOON_SLASH_HEART) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: OniPhantom (id=CHIZURU_CHARACTER_CARD_ONI_PHANTOM) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: OverflowingEcho (id=CHIZURU_CHARACTER_CARD_OVERFLOWING_ECHO) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: PhantomBlade (id=CHIZURU_CHARACTER_CARD_PHANTOM_BLADE) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: PhantomDream (id=CHIZURU_CHARACTER_CARD_PHANTOM_DREAM) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: QuickBattle (id=CHIZURU_CHARACTER_CARD_QUICK_BATTLE) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: Resonance (id=CHIZURU_CHARACTER_CARD_RESONANCE) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: ResonantDarkness (id=CHIZURU_CHARACTER_CARD_RESONANT_DARKNESS) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: ReversalBlade (id=CHIZURU_CHARACTER_CARD_REVERSAL_BLADE) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: Sheathe (id=CHIZURU_CHARACTER_CARD_SHEATHE) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: ShiYe (id=CHIZURU_CHARACTER_CARD_SHI_YE) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: StagnantMoonShadow (id=CHIZURU_CHARACTER_CARD_STAGNANT_MOON_SHADOW) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: TwilightBlessing (id=CHIZURU_CHARACTER_CARD_TWILIGHT_BLESSING) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered card: YinYan (id=CHIZURU_CHARACTER_CARD_YIN_YAN) -> chizuruCharacterCardPool
+[INFO] [chizuruCharacter] [Content] Registered character: ChizuruCharacter (id=CHIZURU_CHARACTER_CHARACTER_CHIZURU_CHARACTER)
+[INFO] [chizuruCharacter] [Content] Registered power: AbyssalPower (id=CHIZURU_CHARACTER_POWER_ABYSSAL_POWER)
+[INFO] [chizuruCharacter] [Content] Registered power: BecomeThickShadowPower (id=CHIZURU_CHARACTER_POWER_BECOME_THICK_SHADOW_POWER)
+[INFO] [chizuruCharacter] [Content] Registered power: BlockRetainPower (id=CHIZURU_CHARACTER_POWER_BLOCK_RETAIN_POWER)
+[INFO] [chizuruCharacter] [Content] Registered power: BloomingMoonPhasePower (id=CHIZURU_CHARACTER_POWER_BLOOMING_MOON_PHASE_POWER)
+[INFO] [chizuruCharacter] [Content] Registered power: BreakthroughPower (id=CHIZURU_CHARACTER_POWER_BREAKTHROUGH_POWER)
+[INFO] [chizuruCharacter] [Content] Registered power: CleansingPower (id=CHIZURU_CHARACTER_POWER_CLEANSING_POWER)
+[INFO] [chizuruCharacter] [Content] Registered power: CurseBindPower (id=CHIZURU_CHARACTER_POWER_CURSE_BIND_POWER)
+[INFO] [chizuruCharacter] [Content] Registered power: DarkSlashPower (id=CHIZURU_CHARACTER_POWER_DARK_SLASH_POWER)
+[INFO] [chizuruCharacter] [Content] Registered power: DemonAgitationPower (id=CHIZURU_CHARACTER_POWER_DEMON_AGITATION_POWER)
+[INFO] [chizuruCharacter] [Content] Registered power: DemonDevourPower (id=CHIZURU_CHARACTER_POWER_DEMON_DEVOUR_POWER)
+[INFO] [chizuruCharacter] [Content] Registered power: DemonHuntPower (id=CHIZURU_CHARACTER_POWER_DEMON_HUNT_POWER)
+[INFO] [chizuruCharacter] [Content] Registered power: DeterminationPower (id=CHIZURU_CHARACTER_POWER_DETERMINATION_POWER)
+[INFO] [chizuruCharacter] [Content] Registered power: DivineSlitherPower (id=CHIZURU_CHARACTER_POWER_DIVINE_SLITHER_POWER)
+[INFO] [chizuruCharacter] [Content] Registered power: DoctrineOfBindingPower (id=CHIZURU_CHARACTER_POWER_DOCTRINE_OF_BINDING_POWER)
+[INFO] [chizuruCharacter] [Content] Registered power: EmotionalOutburstPower (id=CHIZURU_CHARACTER_POWER_EMOTIONAL_OUTBURST_POWER)
+[INFO] [chizuruCharacter] [Content] Registered power: EternalFlamePower (id=CHIZURU_CHARACTER_POWER_ETERNAL_FLAME_POWER)
+[INFO] [chizuruCharacter] [Content] Registered power: EvasionPower (id=CHIZURU_CHARACTER_POWER_EVASION_POWER)
+[INFO] [chizuruCharacter] [Content] Registered power: ForbiddenGuidancePower (id=CHIZURU_CHARACTER_POWER_FORBIDDEN_GUIDANCE_POWER)
+[INFO] [chizuruCharacter] [Content] Registered power: FragilePower (id=CHIZURU_CHARACTER_POWER_FRAGILE_POWER)
+[INFO] [chizuruCharacter] [Content] Registered power: GaleWindPower (id=CHIZURU_CHARACTER_POWER_GALE_WIND_POWER)
+[INFO] [chizuruCharacter] [Content] Registered power: GhostFirePower (id=CHIZURU_CHARACTER_POWER_GHOST_FIRE_POWER)
+[INFO] [chizuruCharacter] [Content] Registered power: GloryOfHoldingPower (id=CHIZURU_CHARACTER_POWER_GLORY_OF_HOLDING_POWER)
+[INFO] [chizuruCharacter] [Content] Registered power: GrudgeSlashPower (id=CHIZURU_CHARACTER_POWER_GRUDGE_SLASH_POWER)
+[INFO] [chizuruCharacter] [Content] Registered power: ImageConvergencePower (id=CHIZURU_CHARACTER_POWER_IMAGE_CONVERGENCE_POWER)
+[INFO] [chizuruCharacter] [Content] Registered power: ImmortalityPower (id=CHIZURU_CHARACTER_POWER_IMMORTALITY_POWER)
+[INFO] [chizuruCharacter] [Content] Registered power: MagicRampagePower (id=CHIZURU_CHARACTER_POWER_MAGIC_RAMPAGE_POWER)
+[INFO] [chizuruCharacter] [Content] Registered power: MarkPower (id=CHIZURU_CHARACTER_POWER_MARK_POWER)
+[INFO] [chizuruCharacter] [Content] Registered power: MoonReadingPower (id=CHIZURU_CHARACTER_POWER_MOON_READING_POWER)
+[INFO] [chizuruCharacter] [Content] Registered power: MoonShadowCompanionPower (id=CHIZURU_CHARACTER_POWER_MOON_SHADOW_COMPANION_POWER)
+[INFO] [chizuruCharacter] [Content] Registered power: MoonlightBlessingPower (id=CHIZURU_CHARACTER_POWER_MOONLIGHT_BLESSING_POWER)
+[INFO] [chizuruCharacter] [Content] Registered power: MoralePower (id=CHIZURU_CHARACTER_POWER_MORALE_POWER)
+[INFO] [chizuruCharacter] [Content] Registered power: OniFireBoostPower (id=CHIZURU_CHARACTER_POWER_ONI_FIRE_BOOST_POWER)
+[INFO] [chizuruCharacter] [Content] Registered power: PainPower (id=CHIZURU_CHARACTER_POWER_PAIN_POWER)
+[INFO] [chizuruCharacter] [Content] Registered power: ResonantDarknessPower (id=CHIZURU_CHARACTER_POWER_RESONANT_DARKNESS_POWER)
+[INFO] [chizuruCharacter] [Content] Registered power: RestraintPower (id=CHIZURU_CHARACTER_POWER_RESTRAINT_POWER)
+[INFO] [chizuruCharacter] [Content] Registered power: ReversalBladePower (id=CHIZURU_CHARACTER_POWER_REVERSAL_BLADE_POWER)
+[INFO] [chizuruCharacter] [Content] Registered power: ShadowlessSlashPower (id=CHIZURU_CHARACTER_POWER_SHADOWLESS_SLASH_POWER)
+[INFO] [chizuruCharacter] [Content] Registered power: SharpenPower (id=CHIZURU_CHARACTER_POWER_SHARPEN_POWER)
+[INFO] [chizuruCharacter] [Content] Registered power: SheathedPower (id=CHIZURU_CHARACTER_POWER_SHEATHED_POWER)
+[INFO] [chizuruCharacter] [Content] Registered power: SoulFireDispersalPower (id=CHIZURU_CHARACTER_POWER_SOUL_FIRE_DISPERSAL_POWER)
+[INFO] [chizuruCharacter] [Content] Registered power: StagnantMoonShadowPower (id=CHIZURU_CHARACTER_POWER_STAGNANT_MOON_SHADOW_POWER)
+[INFO] [chizuruCharacter] [Content] Registered power: TwilightBlessingPower (id=CHIZURU_CHARACTER_POWER_TWILIGHT_BLESSING_POWER)
+[INFO] [chizuruCharacter] [Content] Registered power: TwilightBondPower (id=CHIZURU_CHARACTER_POWER_TWILIGHT_BOND_POWER)
+[INFO] [chizuruCharacter] [Content] Registered power: UnfinishedSoulPower (id=CHIZURU_CHARACTER_POWER_UNFINISHED_SOUL_POWER)
+[INFO] [chizuruCharacter] [Content] Registered power: UnyieldingPower (id=CHIZURU_CHARACTER_POWER_UNYIELDING_POWER)
+[INFO] [chizuruCharacter] [Content] Registered relic: BindingOrbRelic (id=CHIZURU_CHARACTER_RELIC_BINDING_ORB_RELIC) -> chizuruCharacterRelicPool
+[INFO] [chizuruCharacter] [Content] Registered relic: CardFlashRelic (id=CHIZURU_CHARACTER_RELIC_CARD_FLASH_RELIC) -> chizuruCharacterRelicPool
+[INFO] [chizuruCharacter] [Content] Registered relic: ChizuruIseRelic (id=CHIZURU_CHARACTER_RELIC_CHIZURU_ISE_RELIC) -> chizuruCharacterRelicPool
+[INFO] [chizuruCharacter] [Content] Registered relic: ChizuruIseRelicPlus (id=CHIZURU_CHARACTER_RELIC_CHIZURU_ISE_RELIC_PLUS) -> chizuruCharacterRelicPool
+[INFO] [chizuruCharacter] [Content] Registered relic: DiseaseSacrificeRelic (id=CHIZURU_CHARACTER_RELIC_DISEASE_SACRIFICE_RELIC) -> chizuruCharacterRelicPool
+[INFO] [chizuruCharacter] [Content] Registered relic: ForestCloverRelic (id=CHIZURU_CHARACTER_RELIC_FOREST_CLOVER_RELIC) -> chizuruCharacterRelicPool
+[INFO] [chizuruCharacter] [Content] Registered relic: FreeBellRelic (id=CHIZURU_CHARACTER_RELIC_FREE_BELL_RELIC) -> chizuruCharacterRelicPool
+[INFO] [chizuruCharacter] [Content] Registered relic: GhostFlowerRelic (id=CHIZURU_CHARACTER_RELIC_GHOST_FLOWER_RELIC) -> chizuruCharacterRelicPool
+[INFO] [chizuruCharacter] [Content] Registered relic: GoldenHeartRelic (id=CHIZURU_CHARACTER_RELIC_GOLDEN_HEART_RELIC) -> chizuruCharacterRelicPool
+[INFO] [chizuruCharacter] [Content] Registered relic: NightDevourHeartRelic (id=CHIZURU_CHARACTER_RELIC_NIGHT_DEVOUR_HEART_RELIC) -> chizuruCharacterRelicPool
+[INFO] [chizuruCharacter] [Content] Registered relic: NightGazeRelic (id=CHIZURU_CHARACTER_RELIC_NIGHT_GAZE_RELIC) -> chizuruCharacterRelicPool
+[INFO] [chizuruCharacter] [Content] Registered relic: NightShelterRelic (id=CHIZURU_CHARACTER_RELIC_NIGHT_SHELTER_RELIC) -> chizuruCharacterRelicPool
+[INFO] [chizuruCharacter] [Content] Registered relic: RebirthSealRelic (id=CHIZURU_CHARACTER_RELIC_REBIRTH_SEAL_RELIC) -> chizuruCharacterRelicPool
+[INFO] [chizuruCharacter] [Content] Registered relic: SealReleaseStoneRelic (id=CHIZURU_CHARACTER_RELIC_SEAL_RELEASE_STONE_RELIC) -> chizuruCharacterRelicPool
+[INFO] [chizuruCharacter] [Content] Registered relic: SourceNightRelic (id=CHIZURU_CHARACTER_RELIC_SOURCE_NIGHT_RELIC) -> chizuruCharacterRelicPool
+[INFO] [chizuruCharacter] [Content] Registered relic: WitheredLifeFlowerRelic (id=CHIZURU_CHARACTER_RELIC_WITHERED_LIFE_FLOWER_RELIC) -> chizuruCharacterRelicPool
+[INFO] [chizuruCharacter] [Content] Registered starter relic: CardFlashRelic (id=CHIZURU_CHARACTER_RELIC_CARD_FLASH_RELIC) x1 -> ChizuruCharacter
+[INFO] [chizuruCharacter] [Keywords] Registered keyword: CHIZURU_CHARACTER_KEYWORD_BOND (CardKeyword=0x6B13C723)
+[INFO] [chizuruCharacter] [Keywords] Registered keyword: CHIZURU_CHARACTER_KEYWORD_UNIQUE (CardKeyword=0x4A4DBB22)
+[INFO] [chizuruCharacter] [Keywords] Registered keyword: CHIZURU_CHARACTER_KEYWORD_VANGUARD (CardKeyword=0x7AF32FDB)
+[INFO] [chizuruCharacter] [Timeline] Registered epoch: ChizuruCharacterEpoch (id=CHIZURU_CHARACTER_CHARACTER_CHIZURU_CHARACTER_EPOCH)
+[INFO] [com.ritsukage.sts2-RitsuLib] [AutoRegister] Processed assembly 'chizuruCharacter': 189 operation(s), 189 succeeded, 0 failed.
+[INFO] [com.ritsukage.sts2-RitsuLib] [SavedProperties] Injected 4 mod model type(s); property net IDs: 74 -> 80, bit size 7.
+[INFO] Loading locale path=res://localization/eng
+[INFO] Found loc table from mod: eng ancients.json. Merging with base loc table
+[INFO] Found loc table from mod: eng ancients.json. Merging with base loc table
+[INFO] Found loc table from mod: eng ancients.json. Merging with base loc table
+[INFO] Found loc table from mod: eng ancients.json. Merging with base loc table
+[INFO] Found loc table from mod: eng card_keywords.json. Merging with base loc table
+[INFO] Found loc table from mod: eng card_keywords.json. Merging with base loc table
+[INFO] Found loc table from mod: eng card_keywords.json. Merging with base loc table
+[INFO] Found loc table from mod: eng card_selection.json. Merging with base loc table
+[INFO] Found loc table from mod: eng cards.json. Merging with base loc table
+[INFO] Found loc table from mod: eng cards.json. Merging with base loc table
+[INFO] Found loc table from mod: eng cards.json. Merging with base loc table
+[INFO] Found loc table from mod: eng cards.json. Merging with base loc table
+[INFO] Found loc table from mod: eng characters.json. Merging with base loc table
+[INFO] Found loc table from mod: eng characters.json. Merging with base loc table
+[INFO] Found loc table from mod: eng characters.json. Merging with base loc table
+[INFO] Found loc table from mod: eng characters.json. Merging with base loc table
+[INFO] Found loc table from mod: eng events.json. Merging with base loc table
+[INFO] Found loc table from mod: eng gameplay_ui.json. Merging with base loc table
+[INFO] Found loc table from mod: eng main_menu_ui.json. Merging with base loc table
+[INFO] Found loc table from mod: eng potions.json. Merging with base loc table
+[INFO] Found loc table from mod: eng potions.json. Merging with base loc table
+[INFO] Found loc table from mod: eng powers.json. Merging with base loc table
+[INFO] Found loc table from mod: eng powers.json. Merging with base loc table
+[INFO] Found loc table from mod: eng powers.json. Merging with base loc table
+[INFO] Found loc table from mod: eng powers.json. Merging with base loc table
+[INFO] Found loc table from mod: eng relics.json. Merging with base loc table
+[INFO] Found loc table from mod: eng relics.json. Merging with base loc table
+[INFO] Found loc table from mod: eng relics.json. Merging with base loc table
+[INFO] Found loc table from mod: eng relics.json. Merging with base loc table
+[INFO] Found loc table from mod: eng settings_ui.json. Merging with base loc table
+[INFO] Found loc table from mod: eng settings_ui.json. Merging with base loc table
+[INFO] Found loc table from mod: eng settings_ui.json. Merging with base loc table
+[INFO] Found loc table from mod: eng static_hover_tips.json. Merging with base loc table
+[INFO] Found loc table from mod: eng static_hover_tips.json. Merging with base loc table
+[INFO] Found loc table from mod: eng static_hover_tips.json. Merging with base loc table
+[INFO] Loading locale path=res://localization/zhs
+[INFO] Found loc table from mod: zhs ancients.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs ancients.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs ancients.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs ancients.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs ancients.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs card_keywords.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs card_keywords.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs card_keywords.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs cards.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs cards.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs cards.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs cards.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs cards.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs characters.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs characters.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs characters.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs characters.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs characters.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs events.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs main_menu_ui.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs potions.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs potions.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs powers.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs powers.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs powers.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs powers.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs powers.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs relics.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs relics.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs relics.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs relics.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs relics.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs settings_ui.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs settings_ui.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs settings_ui.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs static_hover_tips.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs static_hover_tips.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs static_hover_tips.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs static_hover_tips.json. Merging with base loc table
+[INFO] [BaseLib] Starting custom enum generation for 7956 modded types
+[INFO] [BaseLib] Generated KeyGenerator for enum MegaCrit.Sts2.Core.Entities.Cards.TargetType with starting value 10 | IsFlag: False | Half-Size: 16
+[INFO] [BaseLib] Generated KeyGenerator for enum MegaCrit.Sts2.Core.Rewards.RewardType with starting value 7 | IsFlag: False | Half-Size: 16
+[INFO] [BaseLib] Registering CustomReward deserializer for BaseLib.Common.Rewards.CardTransformReward
+[INFO] [BaseLib] Registering RewardType CardTransform
+[INFO] [BaseLib] Registering CustomReward deserializer for BaseLib.Common.Rewards.CardUpgradeReward
+[INFO] [BaseLib] Registering RewardType CardUpgrade
+[INFO] [BaseLib] Generated KeyGenerator for enum MegaCrit.Sts2.Core.Entities.Cards.CardKeyword with starting value 8 | IsFlag: False | Half-Size: 16
+[INFO] [BaseLib] Registering CustomReward deserializer for BaseLib.Common.Rewards.RandomCardUpgradeReward
+[INFO] [BaseLib] Registering RewardType RandomCardUpgrade
+[INFO] [Fei] [Content] Content registration is now frozen (Init).
+[INFO] [KalipeiMod] [Content] Content registration is now frozen (Init).
+[INFO] [chizuruCharacter] [Content] Content registration is now frozen (Init).
+[INFO] [Fei] [Keywords] Keyword registration is now frozen (Init).
+[INFO] [KalipeiMod] [Keywords] Keyword registration is now frozen (Init).
+[INFO] [chizuruCharacter] [Keywords] Keyword registration is now frozen (Init).
+[INFO] [Fei] [CardTags] Card tag registration is now frozen (Init).
+[INFO] [KalipeiMod] [CardTags] Card tag registration is now frozen (Init).
+[INFO] [chizuruCharacter] [CardTags] Card tag registration is now frozen (Init).
+[INFO] [KalipeiMod] [CardPiles] Pile registration is now frozen (Init).
+[INFO] [com.ritsukage.sts2-RitsuLib] [Patcher - content registry] Applying 25 dynamic patch(es)...
+[INFO] [com.ritsukage.sts2-RitsuLib] [Patcher - content registry] Dynamic patch application complete: 25/25 succeeded
+[INFO] [com.ritsukage.sts2-RitsuLib] [Content] Dynamic act content patching initialized for 5 act type(s).
+[INFO] [com.ritsukage.sts2-RitsuLib] [Patcher - content registry] Applying 21 dynamic patch(es)...
+[INFO] [com.ritsukage.sts2-RitsuLib] [Patcher - content registry] Dynamic patch application complete: 21/21 succeeded
+[INFO] [com.ritsukage.sts2-RitsuLib] [Content] Dynamic character starter patching initialized for 13 character type(s).
+[INFO] [com.ritsukage.sts2-RitsuLib] [ModelDbDefer] Applied deferred patches after ModelDb.Init.
+[INFO] ModelIdSerializationCache initialized. Categories: 20 Entries: 2333 Epochs: 58 Hash: 3415163489
+[INFO] [com.ritsukage.sts2-RitsuLib] [ModelIdSerializationCache] Deterministic final-content cache enabled. Hash: 3415163489 -> 3657752592.
+[INFO] [BaseLib] Adjusting keys of custom message wrappers.
+[INFO] [BaseLib] Using IDs 128 and 129 for custom message wrappers.
+[INFO] SteamStatsManager: User stats received
+[INFO] SteamStatsManager: Global stats received (found=True), architect damage = 272002832667
+[INFO] Applying display settings...
+  FULLSCREEN: False
+  ASPECT_RATIO: (SixteenByNine)
+  TARGET_DISPLAY: (0)
+  WINDOW_SIZE: (2560, 1560)
+  POSITION: (0, 40)
+[INFO] [Display] Min size: (64, 64) Max size: (16384, 16384)
+[INFO] [Display] Attempting WINDOWED mode on Display 1 of 1 at position (0, 40)
+[INFO] MuteInBackground: FocusIn received [tween=False, msSinceFocusOut=17011, windowFocused=True]
+[INFO] Restored foreground FPS
+[INFO] [Display] SUCCESS: (2560, 1560) Windowed mode in Display 0: Position (0, 40) ((0, 40))
+[INFO] Window changed! New size: (2560, 1560)
+[INFO] [Display] New size: (2560, 1560) position: (0, 40)
+[INFO] VSync: Adaptive
+[INFO] Wrote 52 bytes to profile.save in steam remote store
+[INFO] Wrote 193200 bytes to modded/profile1/saves/progress.save in steam remote store
+[INFO] Wrote 47165 bytes to modded/profile1/saves/current_run.save in steam remote store
+[INFO] Wrote 135622 bytes to modded/profile1/saves/current_run_mp.save in steam remote store
+[INFO] Wrote 295 bytes to modded/profile1/saves/prefs.save in steam remote store
+[INFO] Wrote 32613 bytes to modded/profile1/saves/history/1773054343.run in steam remote store
+[INFO] Wrote 85255 bytes to modded/profile1/saves/history/1773113624.run in steam remote store
+[INFO] Wrote 32382 bytes to modded/profile1/saves/history/1773147840.run in steam remote store
+[INFO] [GoldTransferMod] [ShopTransfer] ModConfig not detected, using local JSON config.
+[INFO] Wrote 187199 bytes to modded/profile1/saves/history/1773148680.run in steam remote store
+[INFO] Wrote 199803 bytes to modded/profile1/saves/history/1773154689.run in steam remote store
+[INFO] Wrote 6298 bytes to modded/profile1/saves/history/1774592576.run in steam remote store
+[INFO] Wrote 14213 bytes to modded/profile1/saves/history/1774597363.run in steam remote store
+[INFO] Wrote 2081 bytes to modded/profile1/saves/history/1774597886.run in steam remote store
+[INFO] Wrote 8074 bytes to modded/profile1/saves/history/1774599071.run in steam remote store
+[INFO] Wrote 7418 bytes to modded/profile1/saves/history/1774599154.run in steam remote store
+[INFO] Wrote 2081 bytes to modded/profile1/saves/history/1774601245.run in steam remote store
+[INFO] Wrote 2081 bytes to modded/profile1/saves/history/1774601572.run in steam remote store
+[INFO] Wrote 3866 bytes to modded/profile1/saves/history/1774601797.run in steam remote store
+[INFO] Wrote 3866 bytes to modded/profile1/saves/history/1774601869.run in steam remote store
+[INFO] Wrote 6708 bytes to modded/profile1/saves/history/1774602694.run in steam remote store
+[INFO] Wrote 2081 bytes to modded/profile1/saves/history/1774603250.run in steam remote store
+[INFO] Wrote 13158 bytes to modded/profile1/saves/history/1774603631.run in steam remote store
+[INFO] Wrote 11517 bytes to modded/profile1/saves/history/1774610107.run in steam remote store
+[INFO] Wrote 31907 bytes to modded/profile1/saves/history/1773759020.run in steam remote store
+[INFO] Wrote 15564 bytes to modded/profile1/saves/history/1774677150.run in steam remote store
+[INFO] Wrote 5043 bytes to modded/profile1/saves/history/1774680271.run in steam remote store
+[INFO] Wrote 4255 bytes to modded/profile1/saves/history/1774680350.run in steam remote store
+[INFO] Wrote 3837 bytes to modded/profile1/saves/history/1774776005.run in steam remote store
+[INFO] Wrote 5297 bytes to modded/profile1/saves/history/1774803034.run in steam remote store
+[INFO] Wrote 4261 bytes to modded/profile1/saves/history/1774845432.run in steam remote store
+[INFO] Wrote 4746 bytes to modded/profile1/saves/history/1774845876.run in steam remote store
+[INFO] Wrote 4040 bytes to modded/profile1/saves/history/1774851741.run in steam remote store
+[INFO] Wrote 3901 bytes to modded/profile1/saves/history/1774852824.run in steam remote store
+[INFO] Wrote 5763 bytes to modded/profile1/saves/history/1774855033.run in steam remote store
+[INFO] Wrote 16200 bytes to modded/profile1/saves/history/1774857673.run in steam remote store
+[INFO] Wrote 9711 bytes to modded/profile1/saves/history/1774861518.run in steam remote store
+[INFO] Wrote 68533 bytes to modded/profile1/saves/history/1774618358.run in steam remote store
+[INFO] Wrote 144849 bytes to modded/profile1/saves/history/1774884274.run in steam remote store
+[INFO] Wrote 9119 bytes to modded/profile1/saves/history/1774956051.run in steam remote store
+[INFO] Wrote 4253 bytes to modded/profile1/saves/history/1774974984.run in steam remote store
+[INFO] Wrote 4021 bytes to modded/profile1/saves/history/1774975684.run in steam remote store
+[INFO] Wrote 6261 bytes to modded/profile1/saves/history/1774979321.run in steam remote store
+[INFO] Wrote 3922 bytes to modded/profile1/saves/history/1775099843.run in steam remote store
+[INFO] Wrote 4281 bytes to modded/profile1/saves/history/1775104843.run in steam remote store
+[INFO] Wrote 4269 bytes to modded/profile1/saves/history/1775105681.run in steam remote store
+[INFO] Wrote 4428 bytes to modded/profile1/saves/history/1775105747.run in steam remote store
+[INFO] Wrote 6090 bytes to modded/profile1/saves/history/1775108299.run in steam remote store
+[INFO] Wrote 4560 bytes to modded/profile1/saves/history/1775108471.run in steam remote store
+[INFO] Wrote 9729 bytes to modded/profile1/saves/history/1775108739.run in steam remote store
+[INFO] Wrote 4839 bytes to modded/profile1/saves/history/1775195546.run in steam remote store
+[INFO] Wrote 83505 bytes to modded/profile1/saves/history/1775198750.run in steam remote store
+[INFO] Wrote 111664 bytes to modded/profile1/saves/history/1775201646.run in steam remote store
+[INFO] Wrote 284042 bytes to modded/profile1/saves/history/1775204433.run in steam remote store
+[INFO] Wrote 4039 bytes to modded/profile1/saves/history/1775219037.run in steam remote store
+[INFO] Wrote 5704 bytes to modded/profile1/saves/history/1775233414.run in steam remote store
+[INFO] Wrote 2382 bytes to modded/profile1/saves/history/1775233461.run in steam remote store
+[INFO] Wrote 12154 bytes to modded/profile1/saves/history/1775235339.run in steam remote store
+[INFO] Wrote 12519 bytes to modded/profile1/saves/history/1775268497.run in steam remote store
+[INFO] Wrote 8418 bytes to modded/profile1/saves/history/1775323098.run in steam remote store
+[INFO] Wrote 5033 bytes to modded/profile1/saves/history/1775364249.run in steam remote store
+[INFO] Wrote 14127 bytes to modded/profile1/saves/history/1775532860.run in steam remote store
+[INFO] Wrote 80489 bytes to modded/profile1/saves/history/1775533517.run in steam remote store
+[INFO] Wrote 18473 bytes to modded/profile1/saves/history/1775537286.run in steam remote store
+[INFO] Wrote 6108 bytes to modded/profile1/saves/history/1775585086.run in steam remote store
+[INFO] Wrote 14519 bytes to modded/profile1/saves/history/1775585160.run in steam remote store
+[INFO] Wrote 15823 bytes to modded/profile1/saves/history/1775622768.run in steam remote store
+[INFO] Wrote 16274 bytes to modded/profile1/saves/history/1775627769.run in steam remote store
+[INFO] Wrote 7562 bytes to modded/profile1/saves/history/1775628045.run in steam remote store
+[INFO] Wrote 6062 bytes to modded/profile1/saves/history/1775631234.run in steam remote store
+[INFO] Wrote 11530 bytes to modded/profile1/saves/history/1775632744.run in steam remote store
+[INFO] Wrote 17241 bytes to modded/profile1/saves/history/1775709453.run in steam remote store
+[INFO] Wrote 22729 bytes to modded/profile1/saves/history/1775755141.run in steam remote store
+[INFO] Wrote 14367 bytes to modded/profile1/saves/history/1775882954.run in steam remote store
+[INFO] Wrote 5301 bytes to modded/profile1/saves/history/1775883300.run in steam remote store
+[INFO] Wrote 84804 bytes to modded/profile1/saves/history/1775883364.run in steam remote store
+[INFO] Wrote 5949 bytes to modded/profile1/saves/history/1775990595.run in steam remote store
+[INFO] Wrote 305108 bytes to modded/profile1/saves/history/1776001516.run in steam remote store
+[INFO] Wrote 2423 bytes to modded/profile1/saves/history/1776080538.run in steam remote store
+[INFO] Wrote 2404 bytes to modded/profile1/saves/history/1776080610.run in steam remote store
+[INFO] Wrote 2604 bytes to modded/profile1/saves/history/1776080821.run in steam remote store
+[INFO] Wrote 2450 bytes to modded/profile1/saves/history/1776080863.run in steam remote store
+[INFO] Wrote 46282 bytes to modded/profile1/saves/history/1776081974.run in steam remote store
+[INFO] Wrote 4067 bytes to modded/profile1/saves/history/1776081758.run in steam remote store
+[INFO] Wrote 3854 bytes to modded/profile1/saves/history/1776082965.run in steam remote store
+[INFO] Wrote 3844 bytes to modded/profile1/saves/history/1776087114.run in steam remote store
+[INFO] Wrote 3787 bytes to modded/profile1/saves/history/1776088209.run in steam remote store
+[INFO] Wrote 21740 bytes to modded/profile1/saves/history/1776091435.run in steam remote store
+[INFO] Wrote 3871 bytes to modded/profile1/saves/history/1776149304.run in steam remote store
+[INFO] Wrote 12853 bytes to modded/profile1/saves/history/1776149576.run in steam remote store
+[INFO] Wrote 3859 bytes to modded/profile1/saves/history/1776159227.run in steam remote store
+[INFO] Wrote 10683 bytes to modded/profile1/saves/history/1776159454.run in steam remote store
+[INFO] Wrote 51942 bytes to modded/profile1/saves/history/1776160997.run in steam remote store
+[INFO] Wrote 4488 bytes to modded/profile1/saves/history/1776215509.run in steam remote store
+[INFO] Wrote 3927 bytes to modded/profile1/saves/history/1776215552.run in steam remote store
+[INFO] Wrote 4060 bytes to modded/profile1/saves/history/1776351667.run in steam remote store
+[INFO] Wrote 15866 bytes to modded/profile1/saves/history/1776696854.run in steam remote store
+[INFO] Wrote 18821 bytes to modded/profile1/saves/history/1776708345.run in steam remote store
+[INFO] Wrote 7555 bytes to modded/profile1/saves/history/1776955349.run in steam remote store
+[INFO] Wrote 4230 bytes to modded/profile1/saves/history/1777045525.run in steam remote store
+[INFO] Wrote 24782 bytes to modded/profile1/saves/history/1777107630.run in steam remote store
+[INFO] Wrote 13424 bytes to modded/profile1/saves/history/1777130463.run in steam remote store
+[INFO] Wrote 3363 bytes to modded/profile1/saves/history/1777262505.run in steam remote store
+[INFO] Wrote 4322 bytes to modded/profile1/saves/history/1777268857.run in steam remote store
+[INFO] Wrote 11043 bytes to modded/profile1/saves/history/1777308772.run in steam remote store
+[INFO] Wrote 4393 bytes to modded/profile1/saves/history/1777312467.run in steam remote store
+[INFO] Wrote 3567 bytes to modded/profile1/saves/history/1777313431.run in steam remote store
+[INFO] Wrote 12854 bytes to modded/profile1/saves/history/1777353485.run in steam remote store
+[INFO] Wrote 4713 bytes to modded/profile1/saves/history/1777639920.run in steam remote store
+[INFO] Wrote 5285 bytes to modded/profile1/saves/history/1777704992.run in steam remote store
+[INFO] Wrote 3554 bytes to modded/profile1/saves/history/1777743097.run in steam remote store
+[INFO] Wrote 4071 bytes to modded/profile1/saves/history/1777746051.run in steam remote store
+[INFO] Wrote 13227 bytes to modded/profile1/saves/history/1777789442.run in steam remote store
+[INFO] Wrote 5146 bytes to modded/profile1/saves/history/1777796960.run in steam remote store
+[INFO] Wrote 9587 bytes to modded/profile1/saves/history/1777797353.run in steam remote store
+[INFO] Wrote 10370 bytes to modded/profile1/saves/history/1777824574.run in steam remote store
+[INFO] Wrote 4517 bytes to modded/profile1/saves/history/1777906046.run in steam remote store
+[INFO] Wrote 13322 bytes to modded/profile1/saves/history/1777906740.run in steam remote store
+[INFO] Wrote 14141 bytes to modded/profile1/saves/history/1777907811.run in steam remote store
+[INFO] Wrote 8383 bytes to modded/profile1/saves/history/1777909848.run in steam remote store
+[INFO] Wrote 4002 bytes to modded/profile1/saves/history/1777910690.run in steam remote store
+[INFO] Wrote 8878 bytes to modded/profile1/saves/history/1777911190.run in steam remote store
+[INFO] Wrote 4279 bytes to modded/profile1/saves/history/1777912117.run in steam remote store
+[INFO] Wrote 2493 bytes to modded/profile1/saves/history/1777949649.run in steam remote store
+[INFO] Wrote 4321 bytes to modded/profile1/saves/history/1777949667.run in steam remote store
+[INFO] Wrote 4014 bytes to modded/profile1/saves/history/1777951016.run in steam remote store
+[INFO] Wrote 3874 bytes to modded/profile1/saves/history/1777952895.run in steam remote store
+[INFO] Wrote 40542 bytes to modded/profile1/saves/history/1777962666.run in steam remote store
+[INFO] Wrote 135208 bytes to modded/profile1/saves/history/1777963747.run in steam remote store
+[INFO] Wrote 21904 bytes to modded/profile1/saves/history/1777999033.run in steam remote store
+[INFO] Wrote 29154 bytes to modded/profile1/saves/history/1778071136.run in steam remote store
+[INFO] Wrote 16415 bytes to modded/profile1/saves/history/1778079470.run in steam remote store
+[INFO] Wrote 1827 bytes to modded/profile1/saves/history/1778140872.run in steam remote store
+[INFO] Wrote 55083 bytes to modded/profile1/saves/history/1778143519.run in steam remote store
+[INFO] Wrote 12648 bytes to modded/profile1/saves/history/1778211829.run in steam remote store
+[INFO] Wrote 4178 bytes to modded/profile1/saves/history/1778220130.run in steam remote store
+[INFO] Wrote 47807 bytes to modded/profile1/saves/history/1778220651.run in steam remote store
+[INFO] Wrote 9721 bytes to modded/profile1/saves/history/1778222778.run in steam remote store
+[INFO] Wrote 78747 bytes to modded/profile1/saves/history/1778222906.run in steam remote store
+[INFO] Wrote 5015 bytes to modded/profile1/saves/history/1778307306.run in steam remote store
+[INFO] Wrote 80213 bytes to modded/profile1/saves/history/1778416796.run in steam remote store
+[INFO] Wrote 4067 bytes to modded/profile1/saves/history/1778558951.run in steam remote store
+[INFO] Wrote 3932 bytes to modded/profile1/saves/history/1778559006.run in steam remote store
+[INFO] Wrote 4226 bytes to modded/profile1/saves/history/1778559025.run in steam remote store
+[INFO] Wrote 6308 bytes to modded/profile1/saves/history/1778559079.run in steam remote store
+[INFO] Wrote 49208 bytes to modded/profile1/saves/history/1778559549.run in steam remote store
+[INFO] Wrote 6281 bytes to modded/profile1/saves/history/1778562087.run in steam remote store
+[INFO] Wrote 3719 bytes to modded/profile1/saves/history/1778562568.run in steam remote store
+[INFO] Wrote 1756 bytes to modded/profile1/saves/history/1778562808.run in steam remote store
+[INFO] Wrote 3870 bytes to modded/profile1/saves/history/1778565534.run in steam remote store
+[INFO] Wrote 4664 bytes to modded/profile1/saves/history/1778565594.run in steam remote store
+[INFO] Wrote 3685 bytes to modded/profile1/saves/history/1778566034.run in steam remote store
+[INFO] Wrote 124319 bytes to modded/profile1/saves/history/1778488686.run in steam remote store
+[INFO] Wrote 12064 bytes to modded/profile1/saves/history/1778566505.run in steam remote store
+[INFO] Wrote 13629 bytes to modded/profile1/saves/history/1779086686.run in steam remote store
+[INFO] Wrote 14380 bytes to modded/profile1/saves/history/1779111920.run in steam remote store
+[INFO] Wrote 54243 bytes to modded/profile1/saves/history/1779149901.run in steam remote store
+[INFO] Wrote 76367 bytes to modded/profile1/saves/history/1779151703.run in steam remote store
+[INFO] Wrote 6918 bytes to modded/profile1/saves/history/1779157722.run in steam remote store
+[INFO] Wrote 12757 bytes to modded/profile1/saves/history/1779159642.run in steam remote store
+[INFO] Wrote 80183 bytes to modded/profile1/saves/history/1779365456.run in steam remote store
+[INFO] Wrote 4014 bytes to modded/profile1/saves/history/1779509683.run in steam remote store
+[INFO] Wrote 17655 bytes to modded/profile1/saves/history/1779512928.run in steam remote store
+[INFO] Wrote 10767 bytes to modded/profile1/saves/history/1779592978.run in steam remote store
+[INFO] Wrote 4837 bytes to modded/profile1/saves/history/1779614293.run in steam remote store
+[INFO] Wrote 4938 bytes to modded/profile1/saves/history/1779627813.run in steam remote store
+[INFO] Wrote 7480 bytes to modded/profile1/saves/history/1780399141.run in steam remote store
+[INFO] Wrote 4506 bytes to modded/profile1/saves/history/1780764141.run in steam remote store
+[INFO] Wrote 75586 bytes to modded/profile1/saves/history/1781071213.run in steam remote store
+[INFO] Wrote 8871 bytes to modded/profile1/saves/history/1781114226.run in steam remote store
+[INFO] Wrote 5735 bytes to modded/profile1/saves/history/1781159127.run in steam remote store
+[INFO] Wrote 12386 bytes to modded/profile1/saves/history/1781161037.run in steam remote store
+[INFO] Wrote 4631 bytes to modded/profile1/saves/history/1781178392.run in steam remote store
+[INFO] Wrote 7189 bytes to modded/profile1/saves/history/1781184303.run in steam remote store
+[INFO] Wrote 15505 bytes to modded/profile1/saves/history/1781327921.run in steam remote store
+[INFO] Wrote 5373 bytes to modded/profile1/saves/history/1781432390.run in steam remote store
+[INFO] Wrote 5873 bytes to modded/profile1/saves/history/1781605486.run in steam remote store
+[INFO] Wrote 4597 bytes to modded/profile1/saves/history/1781606612.run in steam remote store
+[INFO] Wrote 4700 bytes to modded/profile1/saves/history/1781607426.run in steam remote store
+[INFO] Wrote 4697 bytes to modded/profile1/saves/history/1781607643.run in steam remote store
+[INFO] Wrote 4764 bytes to modded/profile1/saves/history/1781614100.run in steam remote store
+[INFO] Wrote 5440 bytes to modded/profile1/saves/history/1781614130.run in steam remote store
+[INFO] Wrote 5420 bytes to modded/profile1/saves/history/1781620508.run in steam remote store
+[INFO] Wrote 4054 bytes to modded/profile1/saves/history/1781778139.run in steam remote store
+[INFO] Wrote 7650 bytes to modded/profile1/saves/history/1781778158.run in steam remote store
+[INFO] Wrote 6069 bytes to modded/profile1/saves/history/1781778282.run in steam remote store
+[INFO] Wrote 5840 bytes to modded/profile1/saves/history/1781779871.run in steam remote store
+[INFO] Wrote 5880 bytes to modded/profile1/saves/history/1781861703.run in steam remote store
+[INFO] Wrote 8532 bytes to modded/profile1/saves/history/1781869297.run in steam remote store
+[INFO] Wrote 10897 bytes to modded/profile1/saves/history/1781887194.run in steam remote store
+[INFO] Wrote 16693 bytes to modded/profile1/saves/history/1781891673.run in steam remote store
+[INFO] Wrote 5509 bytes to modded/profile1/saves/history/1781929412.run in steam remote store
+[INFO] Wrote 21686 bytes to modded/profile1/saves/history/1781930541.run in steam remote store
+[INFO] Wrote 55091 bytes to modded/profile1/saves/history/1781947821.run in steam remote store
+[INFO] Wrote 216114 bytes to modded/profile1/saves/history/1781948517.run in steam remote store
+[INFO] Wrote 4720 bytes to modded/profile1/saves/history/1781957003.run in steam remote store
+[INFO] Wrote 60930 bytes to modded/profile2/saves/progress.save in steam remote store
+[INFO] Wrote 44984 bytes to modded/profile2/saves/current_run.save in steam remote store
+[INFO] Wrote 245 bytes to modded/profile2/saves/prefs.save in steam remote store
+[INFO] Wrote 32617 bytes to modded/profile2/saves/history/1773054343.run in steam remote store
+[INFO] Wrote 4215 bytes to modded/profile2/saves/history/1773377056.run in steam remote store
+[INFO] Wrote 280335 bytes to modded/profile2/saves/history/1773470764.run in steam remote store
+[INFO] Wrote 5508 bytes to modded/profile2/saves/history/1773377245.run in steam remote store
+[INFO] Wrote 8141 bytes to modded/profile2/saves/history/1773683065.run in steam remote store
+[INFO] Wrote 4761 bytes to modded/profile2/saves/history/1773904168.run in steam remote store
+[INFO] Wrote 1865 bytes to modded/profile2/saves/history/1774447700.run in steam remote store
+[INFO] Wrote 3931 bytes to modded/profile2/saves/history/1773997801.run in steam remote store
+[INFO] Wrote 26939 bytes to modded/profile2/saves/history/1773988793.run in steam remote store
+[INFO] Wrote 4600 bytes to modded/profile2/saves/history/1774004919.run in steam remote store
+[INFO] Wrote 4878 bytes to modded/profile2/saves/history/1774004979.run in steam remote store
+[INFO] Wrote 4456 bytes to modded/profile2/saves/history/1774005798.run in steam remote store
+[INFO] Wrote 4544 bytes to modded/profile2/saves/history/1774007396.run in steam remote store
+[INFO] Wrote 3734 bytes to modded/profile2/saves/history/1774025548.run in steam remote store
+[INFO] Wrote 2908 bytes to modded/profile2/saves/history/1774025690.run in steam remote store
+[INFO] Wrote 3931 bytes to modded/profile2/saves/history/1774025737.run in steam remote store
+[INFO] Wrote 3858 bytes to modded/profile2/saves/history/1774026240.run in steam remote store
+[INFO] Wrote 4558 bytes to modded/profile2/saves/history/1774026693.run in steam remote store
+[INFO] Wrote 4526 bytes to modded/profile2/saves/history/1774026743.run in steam remote store
+[INFO] Wrote 3840 bytes to modded/profile2/saves/history/1774108226.run in steam remote store
+[INFO] Wrote 3737 bytes to modded/profile2/saves/history/1774111159.run in steam remote store
+[INFO] Wrote 4628 bytes to modded/profile2/saves/history/1774113212.run in steam remote store
+[INFO] Wrote 4717 bytes to modded/profile2/saves/history/1774113501.run in steam remote store
+[INFO] Wrote 7008 bytes to modded/profile2/saves/history/1774149806.run in steam remote store
+[INFO] Wrote 3742 bytes to modded/profile2/saves/history/1774151064.run in steam remote store
+[INFO] Wrote 7014 bytes to modded/profile2/saves/history/1774155044.run in steam remote store
+[INFO] Wrote 21157 bytes to modded/profile2/saves/history/1774196080.run in steam remote store
+[INFO] Wrote 12643 bytes to modded/profile2/saves/history/1774369492.run in steam remote store
+[INFO] Wrote 26179 bytes to modded/profile2/saves/history/1774411447.run in steam remote store
+[INFO] Wrote 3885 bytes to modded/profile2/saves/history/1774420413.run in steam remote store
+[INFO] Wrote 80456 bytes to modded/profile2/saves/history/1774420439.run in steam remote store
+[INFO] Wrote 3820 bytes to modded/profile2/saves/history/1774446981.run in steam remote store
+[INFO] Wrote 5085 bytes to modded/profile2/saves/history/1774447030.run in steam remote store
+[INFO] Wrote 163234 bytes to modded/profile2/saves/history/1774447973.run in steam remote store
+[INFO] Wrote 3824 bytes to modded/profile2/saves/history/1774447832.run in steam remote store
+[INFO] Wrote 4392 bytes to modded/profile2/saves/history/1774493989.run in steam remote store
+[INFO] Wrote 138494 bytes to modded/profile2/saves/history/1774510634.run in steam remote store
+[INFO] Wrote 15076 bytes to modded/profile2/saves/history/1774528588.run in steam remote store
+[INFO] Wrote 2615 bytes to modded/profile2/saves/history/1774528515.run in steam remote store
+[INFO] Wrote 243608 bytes to modded/profile2/saves/history/1774529757.run in steam remote store
+[INFO] Profile-scoped data path initialized: user://steam/76561199213624764/modded/profile1
+[INFO] [com.ritsukage.sts2-RitsuLib] [Persistence] ProfileManager initialized with profile ID: 1
+[INFO] [com.ritsukage.sts2-RitsuLib] [Saves] Progress mirror merged into loaded progress
+[INFO] [com.ritsukage.sts2-RitsuLib] [Saves] Preserving unavailable progress records: cards=2, encounters=1, enemies=1, discoveries=376
+[INFO] [com.ritsukage.sts2-RitsuLib] [Saves] Suppressed 380 expected progress validation warning(s) for unavailable preserved records
+[INFO] [Sentry.NET] Is running modded
+[INFO] [Sentry.NET] Shutting down because event reporting is disabled.
+[INFO] [Sentry.NET] Shutting down
+[INFO] [com.ritsukage.sts2-RitsuLib] [SentryCompat] Skipped native Sentry GDExtension shutdown for STS2 0.107.1 workaround.
+[INFO] [BaseLib] Adding 0 custom acts to act list.
+[INFO] [BaseLib] Result: ACT.OVERGROWTH (2606533),ACT.UNDERDOCKS (23458797),ACT.HIVE (9802586),ACT.GLORY (21114411)
+[INFO] AtlasManager: Loaded controller_atlas with 112 sprites
+[INFO] [com.ritsukage.sts2-RitsuLib] [Content] Character timeline: CHARACTER.FEI_CHARACTER_FEI_CHARACTER RequiresEpochAndTimeline=False
+[INFO] [com.ritsukage.sts2-RitsuLib] [Content] Character timeline: CHARACTER.KALIPEI_MOD_CHARACTER_KALIPEI_MOD_CHARACTER RequiresEpochAndTimeline=False
+[INFO] [com.ritsukage.sts2-RitsuLib] [Content] Character timeline: CHARACTER.CHIZURU_CHARACTER_CHARACTER_CHIZURU_CHARACTER RequiresEpochAndTimeline=True
+[INFO] Preloading 'IntroLogo' assets... count=3 vfx=0
+[INFO] Preloading 'IntroLogo' Complete: assets=3 time_elapsed=26ms
+[INFO] Preloading 'MainMenuEssentials' assets... count=5 vfx=0
+[INFO] Preloading 'MainMenuEssentials' Complete: assets=5 time_elapsed=219ms
+[WARN] Asset not cached: res://debug_audio/SOTE_Logo_Echoing_ShortTail.mp3
+[INFO] [com.ritsukage.sts2-RitsuLib] [RitsuLib-ModSettings] Merged from embedded: STS2RitsuLib.Settings.Localization.ModSettingsUi.zhs.json (617 entries, 617 new)
+[INFO] [com.ritsukage.sts2-RitsuLib] [RitsuLib-ModSettings] Total: 617 entries from 1 source(s)
+[INFO] [com.ritsukage.sts2-RitsuLib] [RitsuLib-ModSettings] Successfully reloaded translations for language 'zhs' (617 entries)
+[INFO] [com.ritsukage.sts2-RitsuLib] [RitsuLib-ModSettings] Subscribed to locale change notifications
+[WARN] Asset not cached: res://themes/settings_screen_line_header.tres
+[WARN] Asset not cached: res://images/ui/reward_screen/reward_skip_button.png
+[WARN] Asset not cached: res://scenes/ui/selection_reticle.tscn
+[INFO] [YukiMod] Settings inject entered. source=_Ready screen=/root/Game/RootSceneContainer/MainMenu/Submenus/SettingsScreen
+[INFO] [YukiMod] EnsureModTab: tabManager=/root/Game/RootSceneContainer/MainMenu/Submenus/SettingsScreen/SettingsTabManager clipper=/root/Game/RootSceneContainer/MainMenu/Submenus/SettingsScreen/ScrollContainer/Mask/Clipper hasTab=False hasPanel=False
+[WARN] Asset not cached: res://scenes/screens/settings_tickbox.tscn
+[INFO] [BaseLib] More than 8 selection options, enabling character select scroll
+[INFO] [Startup] Time to main menu (Godot ticks): 34809ms
+[INFO] [BaseLib] Adding custom save data to SerializableRun.
+[INFO] [BaseLib] Added 0 new properties to SerializableRun
+[INFO] [BaseLib] Adding custom save data to SerializableCard.
+[INFO] [BaseLib] Added 0 new properties to SerializableCard
+[INFO] [BaseLib] Adding custom save data to SerializablePlayer.
+[INFO] [BaseLib] Added 0 new properties to SerializablePlayer
+[INFO] [BaseLib] Adding custom save data to SerializablePotion.
+[INFO] [BaseLib] Added 0 new properties to SerializablePotion
+[INFO] [BaseLib] Adding custom save data to SerializableRelic.
+[INFO] [BaseLib] Added 0 new properties to SerializableRelic
+[INFO] [BaseLib] Adding custom save data to SerializableReward.
+[INFO] [BaseLib] Added 0 new properties to SerializableReward
+[WARN] Asset not cached: MeiLinMod/images/charui/character_icon_meilin_name.png
+[INFO] [Startup] Time to main menu: 35,074ms
+[INFO] [Startup] Resource stats (main menu loaded (essential)): StaticMem=0B, VRAM=2.9GB, Objects=17,672, Resources=6,789, Nodes=1,778, CachedAssets=16
+[INFO] AtlasManager: Loaded epoch_atlas with 57 sprites
+[INFO] AtlasManager: Loaded relic_atlas with 341 sprites
+[INFO] AtlasManager: Loaded relic_outline_atlas with 341 sprites
+[INFO] AtlasManager: Loaded power_atlas with 264 sprites
+[INFO] AtlasManager: Loaded card_atlas with 875 sprites
+[INFO] AtlasManager: Loaded potion_atlas with 63 sprites
+[INFO] AtlasManager: Loaded potion_outline_atlas with 63 sprites
+[INFO] AtlasManager: Loaded stats_screen_atlas with 16 sprites
+[INFO] AtlasManager: Loaded intent_atlas with 310 sprites
+[INFO] AtlasManager: Loaded era_atlas with 27 sprites
+[WARN] [com.ritsukage.sts2-RitsuLib] [Assets] Missing resource path for FullTideMoonlight<CHIZURU_CHARACTER_CARD_FULL_TIDE_MOONLIGHT>.CustomPortraitPath: 'res://chizuruCharacter/images/card_portraits/full_tide_moonlight.png'. Falling back to the base asset.
+[WARN] [com.ritsukage.sts2-RitsuLib] [Assets] Missing resource path for JueduilingkongTempDexPower<KALIPEI_MOD_POWER_JUEDUILINGKONG_TEMP_DEX_POWER>.CustomIconPath: 'res://KalipeiMod/images/powers/kalipei-jueduilingkong_tempdex_power.png'. Falling back to the base asset.
+[WARN] [com.ritsukage.sts2-RitsuLib] [Assets] Missing resource path for JueduilingkongTempDexPower<KALIPEI_MOD_POWER_JUEDUILINGKONG_TEMP_DEX_POWER>.CustomBigIconPath: 'res://KalipeiMod/images/powers/kalipei-jueduilingkong_tempdex_power.png'. Falling back to the base asset.
+[WARN] [com.ritsukage.sts2-RitsuLib] [Assets] Missing resource path for TansuojiTrackerPower<KALIPEI_MOD_POWER_TANSUOJI_TRACKER_POWER>.CustomIconPath: 'res://KalipeiMod/images/powers/TansuojiTrackerPower.png'. Falling back to the base asset.
+[WARN] [com.ritsukage.sts2-RitsuLib] [Assets] Missing resource path for TansuojiTrackerPower<KALIPEI_MOD_POWER_TANSUOJI_TRACKER_POWER>.CustomBigIconPath: 'res://KalipeiMod/images/powers/TansuojiTrackerPower.png'. Falling back to the base asset.
+[WARN] [com.ritsukage.sts2-RitsuLib] [Assets] Missing resource path for TiaozhengjikuPower<KALIPEI_MOD_POWER_TIAOZHENGJIKU_POWER>.CustomIconPath: 'res://KalipeiMod/images/powers/kalipei-tiaozhengjiku_power.png'. Falling back to the base asset.
+[WARN] [com.ritsukage.sts2-RitsuLib] [Assets] Missing resource path for TiaozhengjikuPower<KALIPEI_MOD_POWER_TIAOZHENGJIKU_POWER>.CustomBigIconPath: 'res://KalipeiMod/images/powers/kalipei-tiaozhengjiku_power.png'. Falling back to the base asset.
+[INFO] [BaseLib] Registered scene 'res://MeiLinMod/scenes/meilin_character.tscn' for auto-conversion to NCreatureVisuals
+[INFO] [BaseLib] Registered scene 'res://MeiLinMod/scenes/meilin_character_camp.tscn' for auto-conversion to NRestSiteCharacter
+[INFO] [BaseLib] Registered scene 'res://MeiLinMod/scenes/merchant/characters/meilinmod_merchant.tscn' for auto-conversion to NMerchantCharacter
+[INFO] [BaseLib] Registered scene 'res://scenes/combat/energy_counters/ironclad_energy_counter.tscn' for auto-conversion to NEnergyCounter
+[INFO] [BaseLib] Registered scene 'res://YukiMod/ArtWorks/scenes/creature_visuals/chaos_yuki.tscn' for auto-conversion to NCreatureVisuals
+[INFO] [BaseLib] Registered scene 'res://YukiMod/scenes/yuki_character_camp.tscn' for auto-conversion to NRestSiteCharacter
+[INFO] [BaseLib] Registered scene 'res://YukiMod/scenes/merchant/characters/yukimod_merchant.tscn' for auto-conversion to NMerchantCharacter
+[INFO] [BaseLib] Registered scene 'res://scenes/combat/energy_counters/defect_energy_counter.tscn' for auto-conversion to NEnergyCounter
+[INFO] [com.ritsukage.sts2-RitsuLib] [Compat] External framework presence refreshed (deferred initialization completed).
+[INFO] [com.ritsukage.sts2-RitsuLib] [HealthBarForecast] Registered BaseLib bridge provider.
+[INFO] [com.ritsukage.sts2-RitsuLib] [HealthBarGraft] BaseLib graft registry type not found.
+[INFO] [com.ritsukage.sts2-RitsuLib] [MaxHandSize] BaseLib hand-size bridge postfix installed.
+[INFO] [com.ritsukage.sts2-RitsuLib] [Patcher - framework core] Applying 13 dynamic patch(es)...
+[INFO] [com.ritsukage.sts2-RitsuLib] [Patcher - framework core] Dynamic patch application complete: 13/13 succeeded
+[INFO] [com.ritsukage.sts2-RitsuLib] [MaxHandSize] RitsuLib hand-size patch set installed (modern profile).
+[INFO] [com.ritsukage.sts2-RitsuLib] [Audio] FMOD guid map OK: res://KalipeiMod/auidos/GUIDs.txt (1 event path(s))
+[INFO] [com.ritsukage.sts2-RitsuLib] [Audio] deferred FMOD flush complete (banks=1, guid files=1).
+[INFO] Unloading 9 missed cache assets
+[INFO] [com.ritsukage.sts2-RitsuLib] [Telemetry] Registered applicant 'com.ritsukage.sts2-RitsuLib' -> https://ritsulib-telemetry.ritsukage.com/v1/ingest (3 request(s)).
+[INFO] [com.ritsukage.sts2-RitsuLib] 
+=== RitsuLib Startup Audit: launch to main menu ===
+  settingsStore: 82.4 ms
+  debugLogViewer: 7.3 ms
+  modSettingsBootstrap: 19.2 ms
+  telemetryBootstrap: 1.1 ms
+  mobileSteamRuntime: 0.0 ms
+  imageResourceLoader: 0.8 ms
+  godotNodeFactories: 1.1 ms
+  modTypeDiscoveryBuiltIns: 0.2 ms
+  secondaryResourceLocalization: 0.8 ms
+  secondaryResourceCloneBridge: 1.0 ms
+  frameworkBuiltIns: 0.1 ms (inclusive 4.1 ms)
+  registerPatches: 32.6 ms
+  patchAll.Core(375): 706.8 ms
+  patchAll.SettingsUi(7): 22.7 ms
+  patchAll.ContentAssets(114): 110.7 ms
+  patchAll.CharacterAssets(51): 106.0 ms
+  patchAll.ContentRegistry(25): 38.4 ms
+  patchAll.Persistence(3): 3.4 ms
+  patchAll.Unlocks(22): 36.4 ms
+  patchAll: 1.3 ms (inclusive 1025.7 ms)
+  modDataInterop: 2.2 ms
+  runtimeServices: 7.0 ms
+  modTypeDiscovery.runOnce: 100.7 ms
+  flushDeferredContentPacks: 0.5 ms
+  modelDb.validateCollisions: 1.1 ms
+  modelDb.injectDynamicModels: 2.3 ms
+  modelDb.warmResolvedCaches: 3.1 ms
+  modelDb.validateBaseLibDynamicEnums: 22.2 ms
+  modelDb.warmResolvedCaches: 0.0 ms
+  runtimeDetourCompatibilityScan: 7.8 ms
+  ---
+  RitsuLib exclusive self-time total: 1319.1 ms
+[INFO] [com.ritsukage.sts2-RitsuLib] [UpdateCheck] RitsuLib external update check skipped: loaded from Steam Workshop.
+[INFO] [com.ritsukage.sts2-RitsuLib] [SteamWorkshopUpdate] Auto check requested.
+[INFO] [com.ritsukage.sts2-RitsuLib] [SteamWorkshopUpdate] Starting Auto check. SteamInitialized=True.
+[INFO] [com.ritsukage.sts2-RitsuLib] [SteamWorkshopUpdate] Steamworks Workshop binding initialized.
+[INFO] [com.ritsukage.sts2-RitsuLib] [SteamWorkshopUpdate] Scanning subscribed Workshop items. Reported=8, Returned=8.
+[INFO] Preloading 'Common' assets... count=706 vfx=92
+[INFO] [Startup] Resource stats (main menu loaded (complete)): StaticMem=0B, VRAM=3GB, Objects=16,999, Resources=6,787, Nodes=1,776, CachedAssets=5
+[INFO] [com.ritsukage.sts2-RitsuLib] [SteamWorkshopUpdate] Refreshed Workshop details for 8/8 subscribed item(s).
+[INFO] [com.ritsukage.sts2-RitsuLib] [SteamWorkshopUpdate] Scan complete. Inspected=8, NeedsUpdate=0, Triggered=0, AlreadyQueued=0, Failed=0.
+[INFO] [com.ritsukage.sts2-RitsuLib] [SteamWorkshopUpdate] Auto check result: Available=True, Inspected=8, NeedsUpdate=0, Triggered=0, AlreadyQueued=0, Failed=0, Error=<none>.
+[INFO] [com.ritsukage.sts2-RitsuLib] [SteamWorkshopUpdate] Auto update check found no Workshop item updates. Inspected=8.
+ERROR: No loader found for resource: res://KalipeiMod/images/characters/KalipeiMod_character_select_locked.png (expected type: unknown)
+   at: _load (core/io/resource_loader.cpp:328)
+[WARN] Threaded load status Failed for res://KalipeiMod/images/characters/KalipeiMod_character_select_locked.png, falling back to sync load
+ERROR: Error loading resource: 'res://KalipeiMod/images/characters/KalipeiMod_character_select_locked.png'.
+   at: load (core/core_bind.cpp:74)
+   C# backtrace (most recent call first):
+       [0] Godot.Resource Godot.ResourceLoader.Load(string, string, Godot.ResourceLoader+CacheMode)
+       [1] T Godot.ResourceLoader.Load<T>(string, string, Godot.ResourceLoader+CacheMode)
+       [2] void MegaCrit.Sts2.Core.Assets.AssetLoadingSession.CheckLoadingStatus()
+       [3] void MegaCrit.Sts2.Core.Assets.AssetLoadingSession.Process()
+       [4] void MegaCrit.Sts2.Core.Nodes.NAssetLoader._Process(double)
+       [5] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&)
+       [6] bool MegaCrit.Sts2.Core.Nodes.NAssetLoader.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&)
+       [7] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*)
+[ERROR] Failed to load resource synchronously: res://KalipeiMod/images/characters/KalipeiMod_character_select_locked.png
+   at MegaCrit.Sts2.Core.Assets.AssetLoadingSession.CheckLoadingStatus()
+   at MegaCrit.Sts2.Core.Assets.AssetLoadingSession.Process()
+   at MegaCrit.Sts2.Core.Nodes.NAssetLoader._Process(Double delta)
+   at Godot.Node.InvokeGodotClassMethod(godot_string_name& method, NativeVariantPtrArgs args, godot_variant& ret)
+   at MegaCrit.Sts2.Core.Nodes.NAssetLoader.InvokeGodotClassMethod(godot_string_name& method, NativeVariantPtrArgs args, godot_variant& ret)
+   at Godot.Bridge.CSharpInstanceBridge.Call(IntPtr godotObjectGCHandle, godot_string_name* method, godot_variant** args, Int32 argCount, godot_variant_call_error* refCallError, godot_variant* ret)
+
+[INFO] [com.ritsukage.sts2-RitsuLib] [Persistence] [runtime_reflection_spine_profile_auto] Using default values: File not found
+[WARN] Asset not cached: res://themes/settings_screen_line_header.tres
+[WARN] Asset not cached: res://scenes/ui/back_button.tscn
+[INFO] Preloading 'Common' Complete: assets=797 time_elapsed=3,848ms
+[INFO] MuteInBackground: FocusOut received [tween=False, windowFocused=False]
+[INFO] Limiting background FPS to 30
+[INFO] MuteInBackground: FocusIn received [tween=True, msSinceFocusOut=73906, windowFocused=True]
+[INFO] MuteInBackground: Unmuted, restored volume to 1
+[INFO] Restored foreground FPS
+[INFO] [BaseLib] NGame.Quit(): saving all ModConfigs
+[INFO] NGame.Quit called
+[INFO] [Display] On exit, saving window size: (2560, 1560) display: 0 position: (0, 40)
+[INFO] Wrote 3653 bytes to path=user://steam/76561199213624764/settings.save save_dir=user://steam/76561199213624764
+[INFO] Wrote 295 bytes to path=user://steam/76561199213624764/modded/profile1\saves\prefs.save save_dir=user://steam/76561199213624764
+[INFO] Wrote 295 bytes to modded/profile1/saves/prefs.save in steam remote store
+[INFO] Wrote 193200 bytes to path=user://steam/76561199213624764/modded/profile1\saves\progress.save save_dir=user://steam/76561199213624764
+[INFO] Wrote 193200 bytes to modded/profile1/saves/progress.save in steam remote store
+[INFO] Wrote 52 bytes to path=user://steam/76561199213624764/profile.save save_dir=user://steam/76561199213624764
+[INFO] Wrote 52 bytes to profile.save in steam remote store
+[INFO] Steamworks: shutting down...
+[INFO] Steamworks shutdown succeeded!
+FMOD Sound System: System released
+WARNING: 10 RIDs of type "Canvas" were leaked.
+   at: _free_rids (servers/rendering/renderer_canvas_cull.cpp:2678)
+WARNING: 2394 RIDs of type "CanvasItem" were leaked.
+   at: _free_rids (servers/rendering/renderer_canvas_cull.cpp:2678)
+ERROR: 1 RID allocations of type 'N26RendererEnvironmentStorage11EnvironmentE' were leaked at exit.
+ERROR: 12 shaders of type CanvasShaderRD were never freed
+   at: ~ShaderRD (servers/rendering/renderer_rd/shader_rd.cpp:1044)
+ERROR: 40 RID allocations of type 'N10RendererRD16ParticlesStorage9ParticlesE' were leaked at exit.
+ERROR: 1 shaders of type ParticlesShaderRD were never freed
+   at: ~ShaderRD (servers/rendering/renderer_rd/shader_rd.cpp:1044)
+ERROR: 10 RID allocations of type 'N10RendererRD12LightStorage11ShadowAtlasE' were leaked at exit.
+ERROR: 40 RID allocations of type 'N10RendererRD11MeshStorage4MeshE' were leaked at exit.
+ERROR: 154 RID allocations of type 'N10RendererRD15MaterialStorage8MaterialE' were leaked at exit.
+ERROR: 13 RID allocations of type 'N10RendererRD15MaterialStorage6ShaderE' were leaked at exit.
+ERROR: 10 RID allocations of type 'N10RendererRD14TextureStorage12RenderTargetE' were leaked at exit.
+ERROR: 291 RID allocations of type 'N10RendererRD14TextureStorage7TextureE' were leaked at exit.
+ERROR: 1 RID allocations of type 'N10RendererRD14TextureStorage13CanvasTextureE' were leaked at exit.
+ERROR: 10 RID allocations of type 'N16RendererViewport8ViewportE' were leaked at exit.
+WARNING: 294 RIDs of type "UniformBuffer" were leaked.
+   at: _free_rids (servers/rendering/rendering_device.cpp:6981)
+WARNING: 584 RIDs of type "Texture" were leaked.
+   at: finalize (servers/rendering/rendering_device.cpp:7191)
+ERROR: 692 RID allocations of type 'PN18TextServerAdvanced22ShapedTextDataAdvancedE' were leaked at exit.
+ERROR: 10 RID allocations of type 'PN18TextServerAdvanced12FontAdvancedE' were leaked at exit.
+ERROR: 4 RID allocations of type 'PN18TextServerAdvanced27FontAdvancedLinkedVariationE' were leaked at exit.
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2514)
+ERROR: 344 resources still in use at exit (run with --verbose for details).
+   at: clear (core/io/resource.cpp:795)

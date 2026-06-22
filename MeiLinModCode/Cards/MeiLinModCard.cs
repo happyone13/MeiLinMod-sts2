@@ -3,6 +3,7 @@ using BaseLib.Extensions;
 using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
+using MeiLinMod.MeiLinModCode.Vfx;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Localization;
@@ -45,18 +46,65 @@ public abstract class MeiLinModCard(int cost, CardType type, CardRarity rarity, 
     public virtual bool UsesDynamicChaosFrame => false;
     public virtual string? CustomAncientFrameMaterialPath => null;
     public virtual string? CustomAncientBannerMaterialPath => null;
+    protected virtual string? CombatTimelineName => Type switch
+    {
+        CardType.Power => "u4_buff",
+        CardType.Skill => "debuff",
+        _ => null
+    };
 
     protected Task PlayPowerCastAnim()
     {
         if (Type != CardType.Power || Owner?.Creature == null || Owner.Character == null)
             return Task.CompletedTask;
 
-        return CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
+        return PlayConfiguredTimeline();
     }
 
     protected void PrepareAttackAnimation(int hitCount = 1)
     {
         MeiLinBattleAnimationService.PrepareNextAttackHits(hitCount);
+    }
+
+    public override async Task BeforeCardPlayed(CardPlay cardPlay)
+    {
+        if (cardPlay.Card != this || Owner?.Creature == null)
+            return;
+
+        if (Type == CardType.Attack)
+        {
+            MeiLinBattleAnimationService.PrepareNextAttackContext(Owner.Creature, cardPlay.Target);
+            return;
+        }
+
+        if (Type == CardType.Skill)
+            await PlayConfiguredTimeline(cardPlay.Target);
+    }
+
+    protected Task PlayConfiguredTimeline()
+    {
+        return PlayConfiguredTimeline(Owner?.Creature);
+    }
+
+    private Task PlayConfiguredTimeline(MegaCrit.Sts2.Core.Entities.Creatures.Creature? target)
+    {
+        if (Owner?.Creature == null || Owner.Character == null || string.IsNullOrWhiteSpace(CombatTimelineName))
+            return Task.CompletedTask;
+
+        target ??= Owner.Creature;
+
+        if (CombatTimelineName == "debuff")
+        {
+            return MeiLinCommandVfxCoordinator.PlayCommandSequenceUntilFirstHitAsync(
+                ["debuff_ready", "debuff_play"],
+                Owner.Creature,
+                target);
+        }
+
+        return MeiLinCommandVfxCoordinator.PlayCommandSetUntilFirstHitAsync(
+            CombatTimelineName,
+            Owner.Creature,
+            target);
     }
 
     protected override void AddExtraArgsToDescription(LocString description)

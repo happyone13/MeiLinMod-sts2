@@ -1,279 +1,137 @@
-
 1027_battle_ready.png
-size: 716,1064
-format: RGBA8888
-filter: Linear,Linear
-repeat: none
+size:2048,1024
+filter:Linear,Linear
 arm1_1
-  rotate: false
-  xy: 533, 153
-  size: 140, 107
-  orig: 205, 112
-  offset: 1, 4
-  index: -1
+bounds:1883,605,140,107
+offsets:1,4,205,112
+rotate:90
 arm1_2
-  rotate: false
-  xy: 2, 566
-  size: 108, 94
-  orig: 205, 112
-  offset: 93, 2
-  index: -1
+bounds:1505,498,109,94
+offsets:93,2,205,112
 arm1_2_2
-  rotate: false
-  xy: 307, 600
-  size: 102, 96
-  orig: 205, 112
-  offset: 85, 2
-  index: -1
+bounds:1276,393,102,96
+offsets:85,2,205,112
 arm1_2_2_back
-  rotate: false
-  xy: 296, 945
-  size: 53, 80
-  orig: 205, 112
-  offset: 148, 20
-  index: -1
+bounds:1992,617,52,80
+offsets:149,20,205,112
 arm2
-  rotate: true
-  xy: 261, 206
-  size: 156, 162
-  orig: 160, 165
-  offset: 2, 1
-  index: -1
+bounds:758,272,156,162
+offsets:2,1,160,165
 arm2_1
-  rotate: false
-  xy: 2, 62
-  size: 75, 123
-  orig: 80, 130
-  offset: 2, 3
-  index: -1
+bounds:916,311,75,123
+offsets:2,3,80,130
 arm2_2
-  rotate: 180
-  xy: 408, 306
-  size: 129, 263
-  orig: 129, 264
-  offset: 0, 0
-  index: -1
+bounds:545,447,129,264
+rotate:90
 arm2_2_down
-  rotate: false
-  xy: 411, 171
-  size: 129, 162
-  orig: 129, 264
-  offset: 0, 0
-  index: -1
+bounds:1718,616,129,163
+offsets:0,0,129,264
+rotate:90
 arm2_2_up
-  rotate: true
-  xy: 134, 955
-  size: 102, 186
-  orig: 129, 264
-  offset: 0, 77
-  index: -1
+bounds:758,168,102,187
+offsets:0,77,129,264
+rotate:90
 body
-  rotate: true
-  xy: 552, 252
-  size: 165, 145
-  orig: 222, 282
-  offset: 1, 1
-  index: -1
+bounds:1002,431,165,145
+offsets:1,1,222,282
 body2
-  rotate: true
-  xy: 70, 272
-  size: 140, 189
-  orig: 222, 282
-  offset: 79, 80
-  index: -1
+bounds:811,436,140,189
+offsets:79,80,222,282
+rotate:90
 colar
-  rotate: false
-  xy: 310, 4
-  size: 72, 154
-  orig: 74, 158
-  offset: 0, 1
-  index: -1
+bounds:1644,599,72,154
+offsets:0,1,74,158
 dango_hair
-  rotate: false
-  xy: 151, 756
-  size: 53, 55
-  orig: 57, 61
-  offset: 1, 2
-  index: -1
+bounds:1287,335,53,56
+offsets:1,2,57,61
 ear
-  rotate: false
-  xy: 117, 955
-  size: 25, 40
-  orig: 33, 47
-  offset: 4, 4
-  index: -1
+bounds:2,7,25,40
+offsets:4,4,33,47
+rotate:90
 front_hair1
-  rotate: false
-  xy: 78, 17
-  size: 82, 102
-  orig: 89, 108
-  offset: 3, 4
-  index: -1
+bounds:1616,490,82,102
+offsets:3,4,89,108
 front_hair2
-  rotate: false
-  xy: 395, 530
-  size: 55, 84
-  orig: 59, 88
-  offset: 0, 1
-  index: -1
+bounds:1963,747,55,85
+offsets:0,1,59,88
 hair_acc
-  rotate: false
-  xy: 2, 293
-  size: 72, 94
-  orig: 72, 100
-  offset: 0, 4
-  index: -1
+bounds:1169,376,72,94
+offsets:0,4,72,100
+rotate:90
 hands1
-  rotate: false
-  xy: 61, 17
-  size: 65, 46
-  orig: 70, 52
-  offset: 2, 2
-  index: -1
+bounds:1238,308,66,47
+offsets:2,2,70,52
+rotate:90
 hands1_2
-  rotate: false
-  xy: 2, 17
-  size: 59, 47
-  orig: 63, 50
-  offset: 1, 1
-  index: -1
+bounds:1342,332,59,47
+offsets:1,1,63,50
+rotate:90
 hands2
-  rotate: false
-  xy: 401, 615
-  size: 51, 44
-  orig: 57, 50
-  offset: 4, 1
-  index: -1
+bounds:385,2,52,44
+offsets:4,1,57,50
 hands2_2
-  rotate: false
-  xy: 515, 802
-  size: 58, 46
-  orig: 60, 48
-  offset: 0, 1
-  index: -1
+bounds:1718,568,58,46
+offsets:0,2,60,48
 head
-  rotate: 180
-  xy: 549, 589
-  size: 144, 179
-  orig: 151, 185
-  offset: 3, 3
-  index: -1
+bounds:385,48,144,179
+offsets:3,3,151,185
+rotate:90
 heart_hair
-  rotate: false
-  xy: 158, 17
-  size: 54, 46
-  orig: 61, 53
-  offset: 3, 3
-  index: -1
+bounds:1992,699,54,46
+offsets:3,3,61,53
 jumper
-  rotate: false
-  xy: 2, 379
-  size: 159, 213
-  orig: 162, 216
-  offset: 2, 1
-  index: -1
+bounds:1429,594,159,213
+offsets:2,1,162,216
+rotate:90
 jumper_back
-  rotate: false
-  xy: 610, 495
-  size: 103, 104
-  orig: 107, 108
-  offset: 2, 3
-  index: -1
+bounds:1276,491,104,104
+offsets:2,3,107,108
 leg1
-  rotate: false
-  xy: 2, 349
-  size: 381, 411
-  orig: 382, 414
-  offset: 1, 1
-  index: -1
+bounds:2,34,381,411
+offsets:1,1,382,414
 leg2
-  rotate: true
-  xy: 221, 726
-  size: 228, 425
-  orig: 233, 428
-  offset: 2, 3
-  index: -1
+bounds:1199,597,228,425
+offsets:2,3,233,428
 neck
-  rotate: false
-  xy: 167, 905
-  size: 72, 61
-  orig: 222, 282
-  offset: 133, 217
-  index: -1
+bounds:1164,312,72,62
+offsets:133,217,222,282
 point_hair1
-  rotate: false
-  xy: 628, 61
-  size: 84, 221
-  orig: 85, 222
-  offset: 0, 0
-  index: -1
+bounds:1740,747,85,221
+offsets:0,0,85,222
+rotate:90
 point_hair2
-  rotate: false
-  xy: 493, 4
-  size: 110, 168
-  orig: 116, 174
-  offset: 4, 2
-  index: -1
+bounds:993,318,111,169
+offsets:4,2,116,174
+rotate:90
 side_hair1
-  rotate: false
-  xy: 383, 23
-  size: 85, 120
-  orig: 91, 127
-  offset: 3, 3
-  index: -1
+bounds:1382,507,85,121
+offsets:3,3,91,127
+rotate:90
 side_hair2
-  rotate: false
-  xy: 465, 19
-  size: 38, 155
-  orig: 42, 160
-  offset: 2, 3
-  index: -1
+bounds:2000,867,38,155
+offsets:2,3,42,160
 skirt1
-  rotate: true
-  xy: 510, 820
-  size: 240, 187
-  orig: 242, 190
-  offset: 0, 1
-  index: -1
+bounds:569,204,241,187
+offsets:0,1,242,190
+rotate:90
 skirt1_under
-  rotate: 180
-  xy: 75, 155
-  size: 251, 182
-  orig: 255, 186
-  offset: 0, 1
-  index: -1
+bounds:385,194,251,182
+offsets:0,1,255,186
+rotate:90
 skirt2
-  rotate: true
-  xy: 351, 803
-  size: 258, 187
-  orig: 260, 206
-  offset: 2, 0
-  index: -1
+bounds:1740,834,258,188
+offsets:2,0,260,206
 skirt_back
-  rotate: true
-  xy: 210, 651
-  size: 125, 105
-  orig: 260, 206
-  offset: 21, 100
-  index: -1
+bounds:1169,450,126,105
+offsets:21,101,260,206
+rotate:90
 twin_tail_hair1
-  rotate: 180
-  xy: 107, 378
-  size: 540, 575
-  orig: 545, 578
-  offset: 3, 0
-  index: -1
+bounds:2,447,541,575
+offsets:3,0,545,578
 twin_tail_hair2
-  rotate: false
-  xy: 2, 409
-  size: 443, 652
-  orig: 448, 656
-  offset: 2, 1
-  index: -1
+bounds:545,578,444,652
+offsets:2,1,448,656
+rotate:90
 twin_tail_hair2_point
-  rotate: 180
-  xy: 2, 4
-  size: 309, 267
-  orig: 448, 656
-  offset: 102, 282
-  index: -1
+bounds:1429,755,309,267
+offsets:102,282,448,656

@@ -1,0 +1,83 @@
+
+meirin_1027_skill_2_screen.png
+size: 1912,1944
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+fire_hookup1_0001
+  rotate: false
+  xy: 2, 1562
+  size: 800, 377
+  orig: 800, 377
+  offset: 0, 0
+  index: -1
+fire_hookup1_0002
+  rotate: false
+  xy: 804, 1562
+  size: 800, 377
+  orig: 800, 377
+  offset: 0, 0
+  index: -1
+fire_hookup1_0003
+  rotate: true
+  xy: 2, 760
+  size: 800, 377
+  orig: 800, 377
+  offset: 0, 0
+  index: -1
+fire_hookup1_0004
+  rotate: false
+  xy: 2, 381
+  size: 800, 377
+  orig: 800, 377
+  offset: 0, 0
+  index: -1
+fire_hookup1_0005
+  rotate: false
+  xy: 2, 2
+  size: 800, 377
+  orig: 800, 377
+  offset: 0, 0
+  index: -1
+fire_hookup1_0006
+  rotate: true
+  xy: 381, 760
+  size: 800, 377
+  orig: 800, 377
+  offset: 0, 0
+  index: -1
+fire_hookup1_0007
+  rotate: true
+  xy: 760, 760
+  size: 800, 377
+  orig: 800, 377
+  offset: 0, 0
+  index: -1
+fire_hookup1_0008
+  rotate: false
+  xy: 804, 381
+  size: 800, 377
+  orig: 800, 377
+  offset: 0, 0
+  index: -1
+fire_hookup1_0009
+  rotate: false
+  xy: 804, 2
+  size: 800, 377
+  orig: 800, 377
+  offset: 0, 0
+  index: -1
+glow1
+  rotate: false
+  xy: 1501, 1153
+  size: 403, 407
+  orig: 403, 407
+  offset: 0, 0
+  index: -1
+grad2
+  rotate: true
+  xy: 1139, 770
+  size: 790, 360
+  orig: 790, 360
+  offset: 0, 0
+  index: -1

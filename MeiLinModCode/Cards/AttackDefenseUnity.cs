@@ -20,6 +20,7 @@ public class AttackDefenseUnity() : MeiLinModCard(1, CardType.Skill, CardRarity.
     public override bool UsesDynamicChaosFrame => true;
     public override string? CustomAncientFrameMaterialPath => ChaosAncientFrameMaterialPath;
     public override string? CustomAncientBannerMaterialPath => ChaosAncientBannerMaterialPath;
+    protected override string? CombatTimelineName => "u3_buff";
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

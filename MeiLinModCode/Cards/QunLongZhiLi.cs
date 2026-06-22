@@ -25,7 +25,7 @@ public class QunLongZhiLi() : MeiLinModCard(3, CardType.Power, CardRarity.Rare, 
         if (combatState == null)
             return;
 
-        await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
+        await PlayPowerCastAnim();
 
         var allies = combatState.GetTeammatesOf(Owner.Creature)
             .Where(c => c is { IsAlive: true, IsPlayer: true })

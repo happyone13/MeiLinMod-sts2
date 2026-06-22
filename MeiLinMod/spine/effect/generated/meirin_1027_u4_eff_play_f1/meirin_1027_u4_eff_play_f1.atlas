@@ -1,0 +1,55 @@
+
+meirin_1027_u4_eff_play_f1.png
+size: 688,520
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+burst7
+  rotate: false
+  xy: 600, 165
+  size: 39, 178
+  orig: 39, 178
+  offset: 0, 0
+  index: -1
+burst7_2
+  rotate: false
+  xy: 641, 165
+  size: 39, 178
+  orig: 39, 178
+  offset: 0, 0
+  index: -1
+burst8
+  rotate: true
+  xy: 516, 90
+  size: 45, 165
+  orig: 45, 165
+  offset: 0, 0
+  index: -1
+burst9
+  rotate: false
+  xy: 516, 137
+  size: 40, 206
+  orig: 40, 206
+  offset: 0, 0
+  index: -1
+burst9_2
+  rotate: false
+  xy: 558, 137
+  size: 40, 206
+  orig: 40, 206
+  offset: 0, 0
+  index: -1
+circle3
+  rotate: false
+  xy: 2, 2
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+glow01
+  rotate: false
+  xy: 516, 345
+  size: 169, 169
+  orig: 169, 169
+  offset: 0, 0
+  index: -1

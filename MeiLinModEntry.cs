@@ -5,9 +5,12 @@ using BaseLib.Config;
 using MegaCrit.Sts2.Core.Models.Relics;
 using MegaCrit.Sts2.Core.Modding;
 using MegaCrit.Sts2.Core.Bindings.MegaSpine;
+using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MeiLinMod.MeiLinModCode.Config;
 using MeiLinMod.MeiLinModCode.Patches;
 using MeiLinMod.MeiLinModCode.StanceVfx;
+using MeiLinMod.MeiLinModCode.Vfx;
 using System.Linq;
 
 namespace MeiLinMod;
@@ -25,6 +28,8 @@ public partial class MainFile : Node
         ScriptManagerBridge.LookupScriptsInAssembly(typeof(MainFile).Assembly);
         ModConfigRegistry.Register(ModId, new MeiLinModConfig());
         CardSpinePortraitPatch.PreloadDynamicPortraitScenes();
+        MeiLinCommandVfxCoordinator.PreloadConfiguredScenes();
+        MeiLinAttackMovementController.PreloadMovementEffects();
 
         Harmony harmony = new(ModId);
 
@@ -37,6 +42,7 @@ public partial class MainFile : Node
         LogPatchStatus(harmony, typeof(TouchOfOrobas), nameof(TouchOfOrobas.SetupForPlayer));
         LogPatchStatus(harmony, typeof(TouchOfOrobas), nameof(TouchOfOrobas.AfterObtained));
         LogPatchStatus(harmony, typeof(MegaAnimationState), nameof(MegaAnimationState.SetAnimation), typeof(string), typeof(bool), typeof(int));
+        LogPatchStatus(harmony, typeof(CreatureCmd), nameof(CreatureCmd.TriggerAnim), typeof(Creature), typeof(string), typeof(float));
     }
 
     private static void LogPatchStatus(Harmony harmony, Type type, string methodName)

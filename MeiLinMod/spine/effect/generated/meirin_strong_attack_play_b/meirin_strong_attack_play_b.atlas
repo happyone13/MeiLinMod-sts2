@@ -1,0 +1,139 @@
+
+meirin_strong_attack_play_b.png
+size: 876,540
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+flash
+  rotate: false
+  xy: 2, 280
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+s_att_foot
+  rotate: false
+  xy: 486, 6
+  size: 113, 106
+  orig: 113, 106
+  offset: 0, 0
+  index: -1
+s_att_light1_1
+  rotate: false
+  xy: 2, 2
+  size: 200, 64
+  orig: 200, 64
+  offset: 0, 0
+  index: -1
+s_att_light1_2
+  rotate: false
+  xy: 606, 260
+  size: 200, 64
+  orig: 200, 64
+  offset: 0, 0
+  index: -1
+s_att_light1_3
+  rotate: false
+  xy: 606, 194
+  size: 200, 64
+  orig: 200, 64
+  offset: 0, 0
+  index: -1
+s_att_light2_1
+  rotate: false
+  xy: 606, 133
+  size: 180, 59
+  orig: 180, 59
+  offset: 0, 0
+  index: -1
+s_att_light2_2
+  rotate: false
+  xy: 304, 53
+  size: 180, 59
+  orig: 180, 59
+  offset: 0, 0
+  index: -1
+s_att_light2_3
+  rotate: false
+  xy: 606, 72
+  size: 180, 59
+  orig: 180, 59
+  offset: 0, 0
+  index: -1
+s_att_light3_1
+  rotate: true
+  xy: 808, 174
+  size: 150, 65
+  orig: 150, 65
+  offset: 0, 0
+  index: -1
+s_att_light3_2
+  rotate: false
+  xy: 601, 5
+  size: 150, 65
+  orig: 150, 65
+  offset: 0, 0
+  index: -1
+s_att_light3_3
+  rotate: true
+  xy: 788, 22
+  size: 150, 65
+  orig: 150, 65
+  offset: 0, 0
+  index: -1
+s_att_obake1
+  rotate: false
+  xy: 260, 432
+  size: 300, 104
+  orig: 300, 104
+  offset: 0, 0
+  index: -1
+s_att_obake2
+  rotate: false
+  xy: 260, 326
+  size: 300, 104
+  orig: 300, 104
+  offset: 0, 0
+  index: -1
+s_att_obake3
+  rotate: false
+  xy: 562, 432
+  size: 300, 104
+  orig: 300, 104
+  offset: 0, 0
+  index: -1
+s_att_obake4
+  rotate: false
+  xy: 562, 326
+  size: 300, 104
+  orig: 300, 104
+  offset: 0, 0
+  index: -1
+s_att_obake5
+  rotate: false
+  xy: 2, 174
+  size: 300, 104
+  orig: 300, 104
+  offset: 0, 0
+  index: -1
+s_att_obake6
+  rotate: false
+  xy: 2, 68
+  size: 300, 104
+  orig: 300, 104
+  offset: 0, 0
+  index: -1
+s_att_obake7
+  rotate: false
+  xy: 304, 220
+  size: 300, 104
+  orig: 300, 104
+  offset: 0, 0
+  index: -1
+s_att_obake8
+  rotate: false
+  xy: 304, 114
+  size: 300, 104
+  orig: 300, 104
+  offset: 0, 0
+  index: -1

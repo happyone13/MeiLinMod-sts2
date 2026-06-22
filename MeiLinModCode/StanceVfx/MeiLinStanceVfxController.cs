@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Godot;
+using MeiLinMod.MeiLinModCode.Config;
 using MegaCrit.Sts2.Core.Assets;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
@@ -19,6 +20,12 @@ public sealed class MeiLinStanceVfxController
 
     public async Task SetAura(Creature owner, string? auraScenePath)
     {
+        if (!MeiLinModConfig.UseCombatEffects)
+        {
+            await ClearAura();
+            return;
+        }
+
         if (string.IsNullOrWhiteSpace(auraScenePath))
         {
             await ClearAura();

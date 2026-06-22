@@ -1,0 +1,1869 @@
+{
+    "skeleton": {
+        "spine": "3.8.79",
+        "x": 0.0,
+        "y": 0.0,
+        "hash": "Z+G0A/gdgiryNKtljmYRzFE40XA"
+    },
+    "bones": [
+        {
+            "name": "root",
+            "transform": "normal"
+        },
+        {
+            "name": "pivot",
+            "parent": "root",
+            "transform": "normal"
+        },
+        {
+            "name": "flash",
+            "parent": "pivot",
+            "transform": "normal"
+        },
+        {
+            "name": "global_flash",
+            "parent": "flash",
+            "transform": "normal"
+        },
+        {
+            "name": "bot_ring",
+            "parent": "pivot",
+            "rotation": -19.170000076293945,
+            "transform": "normal"
+        },
+        {
+            "name": "d_ring_pivot",
+            "parent": "bot_ring",
+            "x": 8.579999923706055,
+            "y": -3.9600000381469727,
+            "rotation": 15.84000015258789,
+            "transform": "normal"
+        },
+        {
+            "name": "d_ring",
+            "parent": "d_ring_pivot",
+            "x": -7.170000076293945,
+            "y": 6.150000095367432,
+            "rotation": 3.3299999237060547,
+            "transform": "normal"
+        },
+        {
+            "name": "shock",
+            "parent": "flash",
+            "transform": "normal"
+        },
+        {
+            "name": "shock1",
+            "parent": "shock",
+            "transform": "normal"
+        },
+        {
+            "name": "shock2",
+            "parent": "shock",
+            "transform": "normal"
+        },
+        {
+            "name": "shock3",
+            "parent": "shock",
+            "transform": "normal"
+        },
+        {
+            "name": "impact_flash1",
+            "parent": "flash",
+            "transform": "normal"
+        },
+        {
+            "name": "impact_flash2",
+            "parent": "flash",
+            "transform": "normal"
+        },
+        {
+            "name": "shock4",
+            "parent": "shock",
+            "transform": "normal"
+        }
+    ],
+    "ik": [],
+    "slots": [
+        {
+            "name": "mairin_ring_c1",
+            "bone": "d_ring",
+            "color": "FF00E0FF"
+        },
+        {
+            "name": "mairin_ring_gl1",
+            "bone": "d_ring",
+            "color": "FF00E0FF",
+            "blend": "additive"
+        },
+        {
+            "name": "mairin_ring_l1",
+            "bone": "d_ring",
+            "color": "FF00E0FF"
+        },
+        {
+            "name": "hit_imp1_4",
+            "bone": "shock1",
+            "blend": "additive"
+        },
+        {
+            "name": "hit_imp1_6",
+            "bone": "shock3",
+            "blend": "additive"
+        },
+        {
+            "name": "hit_imp1_7",
+            "bone": "shock4",
+            "blend": "additive"
+        },
+        {
+            "name": "hit_imp1_5",
+            "bone": "shock2",
+            "blend": "additive"
+        },
+        {
+            "name": "impact_flash1",
+            "bone": "impact_flash1",
+            "blend": "additive"
+        },
+        {
+            "name": "impact_flash2",
+            "bone": "impact_flash2",
+            "blend": "additive"
+        },
+        {
+            "name": "global_flash",
+            "bone": "global_flash",
+            "blend": "additive"
+        }
+    ],
+    "transform": [],
+    "path": [],
+    "skins": [
+        {
+            "name": "default",
+            "attachments": {
+                "mairin_ring_c1": {
+                    "mairin_ring_c1": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.5,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 250.0,
+                        "height": 95.0,
+                        "path": "mairin_ring_c1"
+                    },
+                    "mairin_ring_c2": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.5,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 250.0,
+                        "height": 95.0,
+                        "path": "mairin_ring_c2"
+                    },
+                    "mairin_ring_c3": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.5,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 250.0,
+                        "height": 95.0,
+                        "path": "mairin_ring_c3"
+                    },
+                    "mairin_ring_c4": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.5,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 250.0,
+                        "height": 95.0,
+                        "path": "mairin_ring_c4"
+                    },
+                    "mairin_ring_c5": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.5,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 250.0,
+                        "height": 95.0,
+                        "path": "mairin_ring_c5"
+                    },
+                    "mairin_ring_c6": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.5,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 250.0,
+                        "height": 95.0,
+                        "path": "mairin_ring_c6"
+                    },
+                    "mairin_ring_c7": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.5,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 250.0,
+                        "height": 95.0,
+                        "path": "mairin_ring_c7"
+                    },
+                    "mairin_ring_c8": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.5,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 250.0,
+                        "height": 95.0,
+                        "path": "mairin_ring_c8"
+                    },
+                    "mairin_ring_c9": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.5,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 250.0,
+                        "height": 95.0,
+                        "path": "mairin_ring_c9"
+                    },
+                    "mairin_ring_c10": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.5,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 250.0,
+                        "height": 95.0,
+                        "path": "mairin_ring_c10"
+                    },
+                    "mairin_ring_c11": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.5,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 250.0,
+                        "height": 95.0,
+                        "path": "mairin_ring_c11"
+                    }
+                },
+                "mairin_ring_gl1": {
+                    "mairin_ring_gl1": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.5,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 250.0,
+                        "height": 95.0,
+                        "path": "mairin_ring_gl1"
+                    },
+                    "mairin_ring_gl2": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.5,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 250.0,
+                        "height": 95.0,
+                        "path": "mairin_ring_gl2"
+                    },
+                    "mairin_ring_gl3": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.5,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 250.0,
+                        "height": 95.0,
+                        "path": "mairin_ring_gl3"
+                    },
+                    "mairin_ring_gl4": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.5,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 250.0,
+                        "height": 95.0,
+                        "path": "mairin_ring_gl4"
+                    },
+                    "mairin_ring_gl5": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.5,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 250.0,
+                        "height": 95.0,
+                        "path": "mairin_ring_gl5"
+                    },
+                    "mairin_ring_gl6": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.5,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 250.0,
+                        "height": 95.0,
+                        "path": "mairin_ring_gl6"
+                    },
+                    "mairin_ring_gl7": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.5,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 250.0,
+                        "height": 95.0,
+                        "path": "mairin_ring_gl7"
+                    },
+                    "mairin_ring_gl8": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.5,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 250.0,
+                        "height": 95.0,
+                        "path": "mairin_ring_gl8"
+                    },
+                    "mairin_ring_gl9": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.5,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 250.0,
+                        "height": 95.0,
+                        "path": "mairin_ring_gl9"
+                    },
+                    "mairin_ring_gl10": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.5,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 250.0,
+                        "height": 95.0,
+                        "path": "mairin_ring_gl10"
+                    },
+                    "mairin_ring_gl11": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.5,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 250.0,
+                        "height": 95.0,
+                        "path": "mairin_ring_gl11"
+                    }
+                },
+                "mairin_ring_l1": {
+                    "mairin_ring_l1": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.5,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 250.0,
+                        "height": 95.0,
+                        "path": "mairin_ring_l1"
+                    },
+                    "mairin_ring_l2": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.5,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 250.0,
+                        "height": 95.0,
+                        "path": "mairin_ring_l2"
+                    },
+                    "mairin_ring_l3": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.5,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 250.0,
+                        "height": 95.0,
+                        "path": "mairin_ring_l3"
+                    },
+                    "mairin_ring_l4": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.5,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 250.0,
+                        "height": 95.0,
+                        "path": "mairin_ring_l4"
+                    },
+                    "mairin_ring_l5": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.5,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 250.0,
+                        "height": 95.0,
+                        "path": "mairin_ring_l5"
+                    },
+                    "mairin_ring_l6": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.5,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 250.0,
+                        "height": 95.0,
+                        "path": "mairin_ring_l6"
+                    },
+                    "mairin_ring_l7": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.5,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 250.0,
+                        "height": 95.0,
+                        "path": "mairin_ring_l7"
+                    },
+                    "mairin_ring_l8": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.5,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 250.0,
+                        "height": 95.0,
+                        "path": "mairin_ring_l8"
+                    },
+                    "mairin_ring_l9": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.5,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 250.0,
+                        "height": 95.0,
+                        "path": "mairin_ring_l9"
+                    },
+                    "mairin_ring_l10": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.5,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 250.0,
+                        "height": 95.0,
+                        "path": "mairin_ring_l10"
+                    },
+                    "mairin_ring_l11": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.5,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 250.0,
+                        "height": 95.0,
+                        "path": "mairin_ring_l11"
+                    }
+                },
+                "hit_imp1_4": {
+                    "hit_imp1_4": {
+                        "type": "region",
+                        "x": 9.069999694824219,
+                        "y": 95.58999633789063,
+                        "rotation": -128.02999877929688,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 400.0,
+                        "height": 398.0,
+                        "path": "hit_imp1_4"
+                    }
+                },
+                "hit_imp1_6": {
+                    "hit_imp1_4": {
+                        "type": "region",
+                        "x": 9.069999694824219,
+                        "y": 95.58999633789063,
+                        "rotation": -128.02999877929688,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 400.0,
+                        "height": 398.0,
+                        "path": "hit_imp1_4"
+                    }
+                },
+                "hit_imp1_7": {
+                    "hit_imp1_4": {
+                        "type": "region",
+                        "x": 9.069999694824219,
+                        "y": 95.58999633789063,
+                        "rotation": -128.02999877929688,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 400.0,
+                        "height": 398.0,
+                        "path": "hit_imp1_4"
+                    }
+                },
+                "hit_imp1_5": {
+                    "hit_imp1_4": {
+                        "type": "region",
+                        "x": 9.069999694824219,
+                        "y": 95.58999633789063,
+                        "rotation": -128.02999877929688,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 400.0,
+                        "height": 398.0,
+                        "path": "hit_imp1_4"
+                    }
+                },
+                "impact_flash1": {
+                    "flash": {
+                        "type": "mesh",
+                        "uvs": [
+                            0.75,
+                            1.0,
+                            0.5,
+                            1.0,
+                            0.25,
+                            1.0,
+                            0.0,
+                            0.75,
+                            0.0,
+                            0.5,
+                            0.0,
+                            0.25,
+                            0.25,
+                            0.0,
+                            0.5,
+                            0.0,
+                            0.75,
+                            0.0,
+                            1.0,
+                            0.25,
+                            1.0,
+                            0.5,
+                            1.0,
+                            0.75,
+                            0.6696100234985352,
+                            0.6696100234985352,
+                            0.5,
+                            0.75,
+                            0.31233999133110046,
+                            0.6597700119018555,
+                            0.75,
+                            0.5,
+                            0.5,
+                            0.5,
+                            0.25,
+                            0.5,
+                            0.6679700016975403,
+                            0.32875001430511475,
+                            0.5,
+                            0.25,
+                            0.3090600073337555,
+                            0.3418700098991394
+                        ],
+                        "triangles": [
+                            19,
+                            7,
+                            8,
+                            6,
+                            7,
+                            19,
+                            20,
+                            5,
+                            6,
+                            18,
+                            19,
+                            8,
+                            9,
+                            18,
+                            8,
+                            19,
+                            20,
+                            6,
+                            17,
+                            4,
+                            5,
+                            20,
+                            17,
+                            5,
+                            16,
+                            19,
+                            18,
+                            20,
+                            19,
+                            16,
+                            17,
+                            20,
+                            16,
+                            15,
+                            18,
+                            9,
+                            16,
+                            18,
+                            15,
+                            15,
+                            9,
+                            10,
+                            14,
+                            17,
+                            16,
+                            12,
+                            16,
+                            15,
+                            3,
+                            4,
+                            17,
+                            3,
+                            17,
+                            14,
+                            13,
+                            16,
+                            12,
+                            14,
+                            16,
+                            13,
+                            15,
+                            10,
+                            11,
+                            12,
+                            15,
+                            11,
+                            2,
+                            3,
+                            14,
+                            2,
+                            14,
+                            13,
+                            0,
+                            1,
+                            13,
+                            2,
+                            13,
+                            1,
+                            0,
+                            12,
+                            11,
+                            0,
+                            13,
+                            12
+                        ],
+                        "vertices": [
+                            64.0,
+                            -128.0,
+                            0.0,
+                            -128.0,
+                            -64.0,
+                            -128.0,
+                            -128.0,
+                            -64.0,
+                            -128.0,
+                            0.0,
+                            -128.0,
+                            64.0,
+                            -64.0,
+                            128.0,
+                            0.0,
+                            128.0,
+                            64.0,
+                            128.0,
+                            128.0,
+                            64.0,
+                            128.0,
+                            0.0,
+                            128.0,
+                            -64.0,
+                            43.41999816894531,
+                            -43.41999816894531,
+                            0.0,
+                            -64.0,
+                            -48.040000915527344,
+                            -40.900001525878906,
+                            64.0,
+                            0.0,
+                            0.0,
+                            0.0,
+                            -64.0,
+                            0.0,
+                            43.0,
+                            43.84000015258789,
+                            0.0,
+                            64.0,
+                            -48.880001068115234,
+                            40.47999954223633
+                        ],
+                        "hull": 12,
+                        "edges": [],
+                        "width": 32.0,
+                        "height": 32.0,
+                        "path": "flash"
+                    }
+                },
+                "impact_flash2": {
+                    "flash": {
+                        "type": "mesh",
+                        "uvs": [
+                            0.75,
+                            1.0,
+                            0.5,
+                            1.0,
+                            0.25,
+                            1.0,
+                            0.0,
+                            0.75,
+                            0.0,
+                            0.5,
+                            0.0,
+                            0.25,
+                            0.25,
+                            0.0,
+                            0.5,
+                            0.0,
+                            0.75,
+                            0.0,
+                            1.0,
+                            0.25,
+                            1.0,
+                            0.5,
+                            1.0,
+                            0.75,
+                            0.6696100234985352,
+                            0.6696100234985352,
+                            0.5,
+                            0.75,
+                            0.31233999133110046,
+                            0.6597700119018555,
+                            0.75,
+                            0.5,
+                            0.5,
+                            0.5,
+                            0.25,
+                            0.5,
+                            0.6679700016975403,
+                            0.32875001430511475,
+                            0.5,
+                            0.25,
+                            0.3090600073337555,
+                            0.3418700098991394
+                        ],
+                        "triangles": [
+                            19,
+                            7,
+                            8,
+                            6,
+                            7,
+                            19,
+                            20,
+                            5,
+                            6,
+                            18,
+                            19,
+                            8,
+                            9,
+                            18,
+                            8,
+                            19,
+                            20,
+                            6,
+                            17,
+                            4,
+                            5,
+                            20,
+                            17,
+                            5,
+                            16,
+                            19,
+                            18,
+                            20,
+                            19,
+                            16,
+                            17,
+                            20,
+                            16,
+                            15,
+                            18,
+                            9,
+                            16,
+                            18,
+                            15,
+                            15,
+                            9,
+                            10,
+                            14,
+                            17,
+                            16,
+                            12,
+                            16,
+                            15,
+                            3,
+                            4,
+                            17,
+                            3,
+                            17,
+                            14,
+                            13,
+                            16,
+                            12,
+                            14,
+                            16,
+                            13,
+                            15,
+                            10,
+                            11,
+                            12,
+                            15,
+                            11,
+                            2,
+                            3,
+                            14,
+                            2,
+                            14,
+                            13,
+                            0,
+                            1,
+                            13,
+                            2,
+                            13,
+                            1,
+                            0,
+                            12,
+                            11,
+                            0,
+                            13,
+                            12
+                        ],
+                        "vertices": [
+                            64.0,
+                            -128.0,
+                            0.0,
+                            -128.0,
+                            -64.0,
+                            -128.0,
+                            -128.0,
+                            -64.0,
+                            -128.0,
+                            0.0,
+                            -128.0,
+                            64.0,
+                            -64.0,
+                            128.0,
+                            0.0,
+                            128.0,
+                            64.0,
+                            128.0,
+                            128.0,
+                            64.0,
+                            128.0,
+                            0.0,
+                            128.0,
+                            -64.0,
+                            43.41999816894531,
+                            -43.41999816894531,
+                            0.0,
+                            -64.0,
+                            -48.040000915527344,
+                            -40.900001525878906,
+                            64.0,
+                            0.0,
+                            0.0,
+                            0.0,
+                            -64.0,
+                            0.0,
+                            43.0,
+                            43.84000015258789,
+                            0.0,
+                            64.0,
+                            -48.880001068115234,
+                            40.47999954223633
+                        ],
+                        "hull": 12,
+                        "edges": [],
+                        "width": 32.0,
+                        "height": 32.0,
+                        "path": "flash"
+                    }
+                },
+                "global_flash": {
+                    "flash": {
+                        "type": "mesh",
+                        "uvs": [
+                            0.75,
+                            1.0,
+                            0.5,
+                            1.0,
+                            0.25,
+                            1.0,
+                            0.0,
+                            0.75,
+                            0.0,
+                            0.5,
+                            0.0,
+                            0.25,
+                            0.25,
+                            0.0,
+                            0.5,
+                            0.0,
+                            0.75,
+                            0.0,
+                            1.0,
+                            0.25,
+                            1.0,
+                            0.5,
+                            1.0,
+                            0.75,
+                            0.6696100234985352,
+                            0.6696100234985352,
+                            0.5,
+                            0.75,
+                            0.31233999133110046,
+                            0.6597700119018555,
+                            0.75,
+                            0.5,
+                            0.5,
+                            0.5,
+                            0.25,
+                            0.5,
+                            0.6679700016975403,
+                            0.32875001430511475,
+                            0.5,
+                            0.25,
+                            0.3090600073337555,
+                            0.3418700098991394
+                        ],
+                        "triangles": [
+                            19,
+                            7,
+                            8,
+                            6,
+                            7,
+                            19,
+                            20,
+                            5,
+                            6,
+                            18,
+                            19,
+                            8,
+                            9,
+                            18,
+                            8,
+                            19,
+                            20,
+                            6,
+                            17,
+                            4,
+                            5,
+                            20,
+                            17,
+                            5,
+                            16,
+                            19,
+                            18,
+                            20,
+                            19,
+                            16,
+                            17,
+                            20,
+                            16,
+                            15,
+                            18,
+                            9,
+                            16,
+                            18,
+                            15,
+                            15,
+                            9,
+                            10,
+                            14,
+                            17,
+                            16,
+                            12,
+                            16,
+                            15,
+                            3,
+                            4,
+                            17,
+                            3,
+                            17,
+                            14,
+                            13,
+                            16,
+                            12,
+                            14,
+                            16,
+                            13,
+                            15,
+                            10,
+                            11,
+                            12,
+                            15,
+                            11,
+                            2,
+                            3,
+                            14,
+                            2,
+                            14,
+                            13,
+                            0,
+                            1,
+                            13,
+                            2,
+                            13,
+                            1,
+                            0,
+                            12,
+                            11,
+                            0,
+                            13,
+                            12
+                        ],
+                        "vertices": [
+                            64.0,
+                            -128.0,
+                            0.0,
+                            -128.0,
+                            -64.0,
+                            -128.0,
+                            -128.0,
+                            -64.0,
+                            -128.0,
+                            0.0,
+                            -128.0,
+                            64.0,
+                            -64.0,
+                            128.0,
+                            0.0,
+                            128.0,
+                            64.0,
+                            128.0,
+                            128.0,
+                            64.0,
+                            128.0,
+                            0.0,
+                            128.0,
+                            -64.0,
+                            43.41999816894531,
+                            -43.41999816894531,
+                            0.0,
+                            -64.0,
+                            -48.040000915527344,
+                            -40.900001525878906,
+                            64.0,
+                            0.0,
+                            0.0,
+                            0.0,
+                            -64.0,
+                            0.0,
+                            43.0,
+                            43.84000015258789,
+                            0.0,
+                            64.0,
+                            -48.880001068115234,
+                            40.47999954223633
+                        ],
+                        "hull": 12,
+                        "edges": [],
+                        "width": 32.0,
+                        "height": 32.0,
+                        "path": "flash"
+                    }
+                }
+            }
+        }
+    ],
+    "events": {},
+    "animations": {
+        "animation": {
+            "bones": {
+                "global_flash": {
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 3.359999895095825,
+                            "y": 107.37000274658203,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.0333000011742115,
+                            "x": 3.359999895095825,
+                            "y": 107.37000274658203,
+                            "curve": 0.0,
+                            "c2": 1.0,
+                            "c3": 0.004,
+                            "c4": 0.940004
+                        },
+                        {
+                            "time": 0.06669999659061432,
+                            "x": 0.0,
+                            "y": 190.0399932861328
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 5.447000026702881,
+                            "y": 3.611999988555908,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.0333000011742115,
+                            "x": 5.447000026702881,
+                            "y": 3.611999988555908,
+                            "curve": 0.0,
+                            "c2": 1.0,
+                            "c3": 0.004,
+                            "c4": 0.940004
+                        },
+                        {
+                            "time": 0.06669999659061432,
+                            "x": 15.229999542236328,
+                            "y": 10.322999954223633
+                        }
+                    ]
+                },
+                "d_ring_pivot": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": -15.84000015258789
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": -15.850000381469727,
+                            "y": 6.340000152587891,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.06669999659061432,
+                            "x": -1.8200000524520874,
+                            "y": -3.4800000190734863
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 2.6519999504089355,
+                            "y": 2.6519999504089355,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.06669999659061432,
+                            "x": 2.2179999351501465,
+                            "y": 2.2179999351501465
+                        }
+                    ]
+                },
+                "shock1": {
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": -6.119999885559082,
+                            "y": -15.3100004196167
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 0.800000011920929,
+                            "y": 0.8270000219345093,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.0333000011742115,
+                            "x": 0.800000011920929,
+                            "y": 0.8270000219345093,
+                            "curve": 0.0,
+                            "c2": 1.0,
+                            "c3": 0.280999,
+                            "c4": 0.910002
+                        },
+                        {
+                            "time": 0.10000000149011612,
+                            "x": 2.0390000343322754,
+                            "y": 1.6890000104904175
+                        }
+                    ]
+                },
+                "shock2": {
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": -6.550000190734863,
+                            "y": 0.0
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.1230000257492065,
+                            "y": -0.25200000405311584,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.0333000011742115,
+                            "x": 1.1230000257492065,
+                            "y": -0.25200000405311584,
+                            "curve": 0.0,
+                            "c2": 1.0,
+                            "c3": 0.280999,
+                            "c4": 0.910002
+                        },
+                        {
+                            "time": 0.10000000149011612,
+                            "x": 3.4089999198913574,
+                            "y": -0.765999972820282
+                        }
+                    ]
+                },
+                "bot_ring": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 18.889999389648438,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.0333000011742115,
+                            "angle": 18.889999389648438
+                        },
+                        {
+                            "time": 0.06669999659061432,
+                            "angle": 16.59000015258789
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": -0.28999999165534973,
+                            "y": -6.489999771118164
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 0.6439999938011169,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.0333000011742115,
+                            "x": 1.0,
+                            "y": 0.6439999938011169
+                        },
+                        {
+                            "time": 0.06669999659061432,
+                            "x": 1.9900000095367432,
+                            "y": 1.3940000534057617
+                        }
+                    ]
+                },
+                "shock3": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": -14.449999809265137
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 9.600000381469727,
+                            "y": -15.3100004196167,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.0333000011742115,
+                            "x": 9.600000381469727,
+                            "y": -15.3100004196167,
+                            "curve": 0.0,
+                            "c2": 1.0,
+                            "c3": 0.280999,
+                            "c4": 0.910002
+                        },
+                        {
+                            "time": 0.10000000149011612,
+                            "x": 34.38999938964844,
+                            "y": -64.9000015258789
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": -1.2699999809265137,
+                            "y": 1.347000002861023,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.0333000011742115,
+                            "x": -1.2699999809265137,
+                            "y": 1.347000002861023,
+                            "curve": 0.0,
+                            "c2": 1.0,
+                            "c3": 0.280999,
+                            "c4": 0.910002
+                        },
+                        {
+                            "time": 0.10000000149011612,
+                            "x": -3.013000011444092,
+                            "y": 2.447000026702881
+                        }
+                    ]
+                },
+                "impact_flash1": {
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 9.170000076293945,
+                            "y": 47.72999954223633,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.0333000011742115,
+                            "x": 9.170000076293945,
+                            "y": 47.72999954223633,
+                            "curve": 0.0,
+                            "c2": 1.0,
+                            "c3": 0.004,
+                            "c4": 0.940004
+                        },
+                        {
+                            "time": 0.06669999659061432,
+                            "x": 20.420000076293945,
+                            "y": 78.66000366210938
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 2.0290000438690186,
+                            "y": 1.4800000190734863,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.0333000011742115,
+                            "x": 2.0290000438690186,
+                            "y": 1.4800000190734863,
+                            "curve": 0.0,
+                            "c2": 1.0,
+                            "c3": 0.004,
+                            "c4": 0.940004
+                        },
+                        {
+                            "time": 0.06669999659061432,
+                            "x": 4.421000003814697,
+                            "y": 2.812999963760376
+                        }
+                    ]
+                },
+                "impact_flash2": {
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 5.809999942779541,
+                            "y": 15.789999961853027,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.0333000011742115,
+                            "x": 5.809999942779541,
+                            "y": 15.789999961853027,
+                            "curve": 0.0,
+                            "c2": 1.0,
+                            "c3": 0.004,
+                            "c4": 0.940004
+                        },
+                        {
+                            "time": 0.06669999659061432,
+                            "x": -19.65999984741211,
+                            "y": 25.75
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.3819999694824219,
+                            "y": 0.7260000109672546,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.0333000011742115,
+                            "x": 1.3819999694824219,
+                            "y": 0.7260000109672546,
+                            "curve": 0.0,
+                            "c2": 1.0,
+                            "c3": 0.004,
+                            "c4": 0.940004
+                        },
+                        {
+                            "time": 0.06669999659061432,
+                            "x": 6.5289998054504395,
+                            "y": 2.688999891281128
+                        }
+                    ]
+                },
+                "shock4": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": -14.449999809265137
+                        },
+                        {
+                            "time": 0.0333000011742115,
+                            "angle": 170.4199981689453
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 9.600000381469727,
+                            "y": -15.3100004196167
+                        },
+                        {
+                            "time": 0.0333000011742115,
+                            "x": -33.22999954223633,
+                            "y": -4.039999961853027
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": -1.2699999809265137,
+                            "y": 1.347000002861023
+                        },
+                        {
+                            "time": 0.0333000011742115,
+                            "x": 0.8169999718666077,
+                            "y": 0.3009999990463257,
+                            "curve": 0.25,
+                            "c2": 0.0,
+                            "c3": 0.280999,
+                            "c4": 0.910001
+                        },
+                        {
+                            "time": 0.10000000149011612,
+                            "x": 3.0850000381469727,
+                            "y": 1.1380000114440918
+                        }
+                    ]
+                },
+                "root": {
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": -284.3599853515625,
+                            "y": 23.43000030517578
+                        }
+                    ]
+                }
+            },
+            "slots": {
+                "global_flash": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FF3B0076"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.0,
+                            "name": "flash"
+                        },
+                        {
+                            "time": 0.06669999659061432,
+                            "name": null
+                        }
+                    ]
+                },
+                "hit_imp1_4": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFF442FF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.06669999659061432,
+                            "color": "FFF442FF"
+                        },
+                        {
+                            "time": 0.10000000149011612,
+                            "color": "FF840000"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.0,
+                            "name": "hit_imp1_4"
+                        },
+                        {
+                            "time": 0.06669999659061432,
+                            "name": null
+                        }
+                    ]
+                },
+                "hit_imp1_5": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFF442FF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.06669999659061432,
+                            "color": "FFF442FF"
+                        },
+                        {
+                            "time": 0.10000000149011612,
+                            "color": "FF840000"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.0,
+                            "name": "hit_imp1_4"
+                        },
+                        {
+                            "time": 0.06669999659061432,
+                            "name": null
+                        }
+                    ]
+                },
+                "hit_imp1_6": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FF4D00FF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.06669999659061432,
+                            "color": "FF4D00FF"
+                        },
+                        {
+                            "time": 0.10000000149011612,
+                            "color": "FF100000"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.0,
+                            "name": "hit_imp1_4"
+                        },
+                        {
+                            "time": 0.06669999659061432,
+                            "name": null
+                        }
+                    ]
+                },
+                "hit_imp1_7": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FF4D00FF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.06669999659061432,
+                            "color": "FF4D00FF"
+                        },
+                        {
+                            "time": 0.10000000149011612,
+                            "color": "FF100000"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.0,
+                            "name": "hit_imp1_4"
+                        },
+                        {
+                            "time": 0.06669999659061432,
+                            "name": null
+                        }
+                    ]
+                },
+                "impact_flash1": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFC0E2FF"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.0,
+                            "name": "flash"
+                        },
+                        {
+                            "time": 0.06669999659061432,
+                            "name": null
+                        }
+                    ]
+                },
+                "impact_flash2": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFF8B0FF"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.0,
+                            "name": "flash"
+                        },
+                        {
+                            "time": 0.06669999659061432,
+                            "name": null
+                        }
+                    ]
+                },
+                "mairin_ring_c1": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FF6500FF"
+                        },
+                        {
+                            "time": 0.06669999659061432,
+                            "color": "CF5200FF"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.0,
+                            "name": "mairin_ring_c1"
+                        },
+                        {
+                            "time": 0.06669999659061432,
+                            "name": null
+                        }
+                    ]
+                },
+                "mairin_ring_gl1": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFD300FF"
+                        },
+                        {
+                            "time": 0.06669999659061432,
+                            "color": "FFB400CE"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.0,
+                            "name": "mairin_ring_gl1"
+                        },
+                        {
+                            "time": 0.06669999659061432,
+                            "name": null
+                        }
+                    ]
+                },
+                "mairin_ring_l1": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFECB4FF"
+                        },
+                        {
+                            "time": 0.06669999659061432,
+                            "color": "FFECB47F"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.0,
+                            "name": "mairin_ring_l1"
+                        },
+                        {
+                            "time": 0.06669999659061432,
+                            "name": null
+                        }
+                    ]
+                }
+            },
+            "ik": {},
+            "transform": {},
+            "path": {},
+            "deform": {
+                "default": {
+                    "global_flash": {
+                        "flash": [
+                            {
+                                "time": 0.0,
+                                "vertices": [
+                                    -10.148666381835938,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    9.999999747378752e-06,
+                                    8.11893081665039,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    -30.784290313720703
+                                ],
+                                "offset": 3,
+                                "curve": "stepped"
+                            },
+                            {
+                                "time": 0.0333000011742115,
+                                "vertices": [
+                                    -10.148666381835938,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    9.999999747378752e-06,
+                                    8.11893081665039,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    -30.784290313720703
+                                ],
+                                "offset": 3,
+                                "curve": 0.0,
+                                "c2": 1.0,
+                                "c3": 0.004,
+                                "c4": 0.940004
+                            },
+                            {
+                                "time": 0.06669999659061432,
+                                "vertices": [
+                                    -0.0846710205078125,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    3.9999998989515007e-05,
+                                    18.18292999267578,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    9.999999747378752e-06,
+                                    -14.203660011291504
+                                ],
+                                "offset": 3
+                            }
+                        ]
+                    }
+                }
+            },
+            "duration": 0.10000000149011612
+        }
+    }
+}

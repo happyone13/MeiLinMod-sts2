@@ -17,6 +17,7 @@ public class ShenGongFangYiTi() : MeiLinModCard(1, CardType.Skill, CardRarity.An
 {
     public override string PortraitPath => IdPortraitPath;
     public override string CustomPortraitPath => IdBigPortraitPath;
+    protected override string? CombatTimelineName => "u3_buff";
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

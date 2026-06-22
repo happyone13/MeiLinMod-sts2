@@ -1,0 +1,555 @@
+﻿=================================================================
+  Act4Placeholder v0.1.2f - Mod Log
+  Session: 2026-04-21 13:54:51 UTC
+  Share THIS file (not godot.log) when reporting issues.
+  godot.log contains personal system info, this one does not.
+=================================================================
+
+  Run: (waiting for run to start...)
+
+=== STS2 Startup (filtered, no personal info) ===
+MegaDot v4.5.1.m.9.mono.custom_build - httpgodotengine.org
+FMOD Sound System: Successfully initialized
+[INFO] [Sentry.NET] Initialized: env=development, release=v0.103.2
+[INFO] Steamworks: attempting initialization...
+[INFO] Steam is running: True
+[INFO] Steam is enabled, we will write saves to steam storage. Enabled for account: True, app: False 
+[INFO] Registered 11 migrations
+[INFO] Current save versions: PrefsSave v2; ProfileSave v2; SerializableProgress v21; RunHistory v9; SerializableRun v16; SettingsSave v5
+[ERROR] Mod manifest Slay the Spire 2\mods\DamageMeter\mod_manifest.json is missing the 'id' field! This is not allowed. The mod will not be loaded.
+[INFO] Loading assembly DLL Slay the Spire 2\mods\BaseLib.3.0.7\BaseLib.dll
+[INFO] Calling initializer method of type BaseLib.BaseLibMain for BaseLib, Version=3.0.7.0, Culture=neutral, PublicKeyToken=null
+[WARN] [BaseLib] Config BaseLib.Config.BaseLibConfig has no value for OpenLogWindowOnError; will re-save to fill in the default.
+[WARN] [BaseLib] Loaded config BaseLib.Config.BaseLibConfig with some missing or invalid fields.
+[WARN] [BaseLib] Saving fresh config for BaseLib.Config.BaseLibConfig to correct soft errors (missing fields, invalid fields).
+[INFO] [BaseLib] Registered config for mod BaseLib
+[INFO] Finished mod initialization for 'BaseLib' (BaseLib).
+[ERROR] Mod manifest for mod MeiLinMod declares that it should load an assembly, but no assembly at path Slay the Spire 2\mods\MeiLinMod\MeiLinMod.dll was found!
+[INFO] Finished mod initialization for 'MeiLinMod' (MeiLinMod).
+[INFO] Loading assembly DLL Slay the Spire 2\mods\DamageMeter\DamageMeter.dll
+[INFO] Calling initializer method of type DamageMeter.MainFile for DamageMeter, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+[INFO] Finished mod initialization for 'Skada: Damage Meter' (DamageMeter).
+[INFO] Loading assembly DLL Slay the Spire 2\mods\Act 4 Final Ascent-37-0-1-2f-1775405792\Act4FinalAscent.dll
+[INFO] Calling initializer method of type Act4Placeholder.ModEntry for Act4FinalAscent, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+
+=== Mod Init ===
+[21:54:51] [INFO] v0.1.2f - Initializing...
+[21:54:51] [INFO]   Game Assembly: sts2 v0.1.0.0
+[21:54:51] [INFO] Patching Group 1: Main Menu UI (SaveSync + RunSlots)
+[21:54:51] [INFO]   OK: SaveSync - NMainMenu._Ready
+[21:54:51] [INFO]   OK: SaveSync - NMainMenu.OnSubmenuStackChanged
+[21:54:51] [INFO]   OK: RunSlots - NMainMenu._Ready
+[21:54:51] [INFO]   OK: RunSlots - NMainMenu.OnSubmenuStackChanged
+[21:54:51] [INFO]   OK: RunSlots - NMainMenu.RefreshButtons
+[21:54:51] [INFO]   OK: RunSlots - NMainMenu.SingleplayerButtonPressed
+[21:54:51] [INFO]   OK: RunSlots - NMainMenu.OnContinueButtonPressed
+[21:54:51] [INFO]   OK: RunSlots - NMainMenu.OnAbandonRunButtonPressed
+[21:54:51] [INFO] Patching Group 2: Architect Event & Act 4 Injection
+[21:54:51] [INFO]   OK: Architect - EventModel.SetEventState
+[21:54:51] [INFO]   OK: Architect - EventModel.get_IsShared
+[21:54:51] [INFO]   OK: Architect - EventSynchronizer.ChooseSharedEventOption
+[21:54:51] [INFO]   OK: Architect - EventSynchronizer.ChooseOptionForSharedEvent
+[21:54:51] [INFO]   OK: Architect - EventSynchronizer.PlayerVotedForSharedOptionIndex
+[21:54:51] [INFO]   OK: Architect - NEventRoom host-only Act 4 choice UI
+[21:54:51] [INFO]   OK: GrandLibrary - EventSynchronizer shared vote (host-resolve)
+[21:54:51] [INFO]   OK: Act4 - RunManager.EnterNextAct
+[21:54:51] [INFO]   OK: Act4 - RunManager.OnEnded
+[21:54:51] [INFO]   OK: Act4 - NPauseMenu.OnSaveAndQuitButtonPressed
+[21:54:51] [INFO] Patching Group 3: Map, Rooms & Rewards
+[21:54:51] [INFO]   OK: Map - Hook.ModifyGeneratedMap
+[21:54:51] [INFO]   OK: Map - Hook.ModifyNextEvent
+[21:54:51] [INFO]   OK: Map - Hook.ModifyUnknownMapPointRoomTypes
+[21:54:51] [INFO]   OK: Map - RunManager.CreateRoom
+[21:54:51] [INFO]   OK: Rewards - RewardsSet.WithRewardsFromRoom
+[21:54:51] [INFO]   OK: Rewards - Hook.ModifyCardRewardCreationOptions
+[21:54:51] [INFO]   OK: Icons - ImageHelper.GetRoomIconPath
+[21:54:51] [INFO]   OK: Icons - ImageHelper.GetRoomIconOutlinePath
+[21:54:51] [INFO]   OK: Icons - NBossMapPoint._Ready
+[21:54:51] [INFO]   OK: Map - NMapScreen.Open
+[21:54:51] [INFO]   OK: Map - NMapScreen._Ready
+[21:54:51] [INFO] Patching Group 4: Combat & Scaling
+[21:54:51] [INFO]   OK: Combat - Hook.ModifyDamage
+[21:54:51] [INFO]   OK: Combat - Hook.AfterDamageGiven
+[21:54:51] [INFO]   OK: Combat - Guardbot.GuardMove (Architect fix)
+[21:54:51] [INFO]   OK: Combat - Hook.ModifyHandDraw
+[21:54:51] [INFO]   OK: Combat - MultiplayerScalingModel.GetMultiplayerScaling
+[21:54:51] [INFO]   OK: Combat - CombatManager.AddCreature
+[21:54:51] [INFO]   OK: Combat - CombatManager.AfterCreatureAdded
+[21:54:51] [INFO]   OK: Combat - EncounterModel.CreateBackground
+[21:54:51] [INFO]   OK: Rest - NRestSiteCharacter._Ready
+[21:54:51] [INFO]   OK: Combat - Creature.StunInternal (Architect once-per-phase stun cap)
+[21:54:51] [INFO]   OK: Combat - NPlayerHand.ReturnHolderToHand
+[21:54:51] [INFO] Patching Group 5: Save State & History
+[21:54:51] [INFO]   OK: Save - RunManager.ToSave
+[21:54:51] [INFO]   OK: Save - RunState.FromSerializable
+[21:54:51] [INFO]   OK: SaveSync - ClientLoadJoinResponseMessage.Serialize
+[21:54:51] [INFO]   OK: SaveSync - ClientLoadJoinResponseMessage.Deserialize
+[21:54:51] [INFO]   OK: Save - ProgressSaveManager.LoadProgress
+[21:54:51] [INFO]   OK: Save - ProgressSaveManager.ObtainCharUnlockEpoch
+[21:54:51] [INFO]   OK: Score - ScoreUtility.CalculateScore(IRunState)
+[21:54:51] [INFO]   OK: Score - ScoreUtility.CalculateScore(SerializableRun)
+[21:54:51] [INFO] Patching Group 6: Compendium & Stats
+[21:54:51] [INFO]   OK: Compendium - NRunHistory._Ready
+[21:54:51] [INFO]   OK: Compendium - NRunHistory.OnSubmenuOpened
+[21:54:51] [INFO]   OK: Compendium - NRunHistory.DisplayRun
+[21:54:51] [INFO]   OK: Compendium - NMapPointHistory.LoadHistory
+[21:54:51] [INFO]   OK: Compendium - NStatsScreen._Ready
+[21:54:51] [INFO]   OK: Compendium - NStatsScreen.OnSubmenuOpened
+[21:54:51] [INFO]   OK: Compendium - NGeneralStatsGrid.LoadStats
+[21:54:51] [INFO]   OK: Compendium - NCharacterStats.LoadStats
+[21:54:51] [INFO]   OK: History - NRun.ShowGameOverScreen
+[21:54:51] [INFO] Patching Group 7: Game Over & Power Hover
+[21:54:51] [INFO]   OK: GameOver - NGameOverScreen._Ready
+[21:54:51] [INFO]   OK: GameOver - NGameOverScreen.InitializeBannerAndQuote
+[21:54:51] [INFO]   OK: Power - NPower.OnHovered
+[21:54:51] [INFO]   OK: Power - NPower.OnUnhovered
+[21:54:51] [INFO] Patch classes: 61 OK, 0 FAILED - methods patched: 59
+[21:54:51] [INFO] v0.1.2f initialization complete.
+[21:54:55] [INFO] Progress cleanup: rewrote progress.save after removing stale unknown IDs.
+[INFO] [Act4Placeholder] v0.1.2f - Initializing...
+[INFO] [Act4Placeholder]   .NET Runtime: 9.0.7
+[INFO] [Act4Placeholder]   OS: Microsoft Windows NT 10.0.26200.0
+[INFO] [Act4Placeholder]   Game Assembly: sts2 v0.1.0.0
+[INFO] [Act4Placeholder] Patching Group 1: Main Menu UI...
+[INFO] [Act4Placeholder]   OK: SaveSync - NMainMenu._Ready
+[INFO] [Act4Placeholder]   OK: SaveSync - NMainMenu.OnSubmenuStackChanged
+[INFO] [Act4Placeholder]   OK: RunSlots - NMainMenu._Ready
+[INFO] [Act4Placeholder]   OK: RunSlots - NMainMenu.OnSubmenuStackChanged
+[INFO] [Act4Placeholder]   OK: RunSlots - NMainMenu.RefreshButtons
+[INFO] [Act4Placeholder]   OK: RunSlots - NMainMenu.SingleplayerButtonPressed
+[INFO] [Act4Placeholder]   OK: RunSlots - NMainMenu.OnContinueButtonPressed
+[INFO] [Act4Placeholder]   OK: RunSlots - NMainMenu.OnAbandonRunButtonPressed
+[INFO] [Act4Placeholder] Patching Group 2: Architect Event & Act 4 Injection...
+[INFO] [Act4Placeholder]   OK: Architect - EventModel.SetEventState
+[INFO] [Act4Placeholder]   OK: Architect - EventModel.get_IsShared
+[INFO] [Act4Placeholder]   OK: Architect - EventSynchronizer.ChooseSharedEventOption
+[INFO] [Act4Placeholder]   OK: Architect - EventSynchronizer.ChooseOptionForSharedEvent
+[INFO] [Act4Placeholder]   OK: Architect - EventSynchronizer.PlayerVotedForSharedOptionIndex
+[INFO] [Act4Placeholder]   OK: Architect - NEventRoom host-only Act 4 choice UI
+[INFO] [Act4Placeholder]   OK: GrandLibrary - EventSynchronizer shared vote (host-resolve)
+[INFO] [Act4Placeholder]   OK: Act4 - RunManager.EnterNextAct
+[INFO] [Act4Placeholder]   OK: Act4 - RunManager.OnEnded
+[INFO] [Act4Placeholder]   OK: Act4 - NPauseMenu.OnSaveAndQuitButtonPressed
+[INFO] [Act4Placeholder] Patching Group 3: Map, Rooms & Rewards...
+[INFO] [Act4Placeholder]   OK: Map - Hook.ModifyGeneratedMap
+[INFO] [Act4Placeholder]   OK: Map - Hook.ModifyNextEvent
+[INFO] [Act4Placeholder]   OK: Map - Hook.ModifyUnknownMapPointRoomTypes
+[INFO] [Act4Placeholder]   OK: Map - RunManager.CreateRoom
+[INFO] [Act4Placeholder]   OK: Rewards - RewardsSet.WithRewardsFromRoom
+[INFO] [Act4Placeholder]   OK: Rewards - Hook.ModifyCardRewardCreationOptions
+[INFO] [Act4Placeholder]   OK: Icons - ImageHelper.GetRoomIconPath
+[INFO] [Act4Placeholder]   OK: Icons - ImageHelper.GetRoomIconOutlinePath
+[INFO] [Act4Placeholder]   OK: Icons - NBossMapPoint._Ready
+[INFO] [Act4Placeholder]   OK: Map - NMapScreen.Open
+[INFO] [Act4Placeholder]   OK: Map - NMapScreen._Ready
+[INFO] [Act4Placeholder] Patching Group 4: Combat & Scaling...
+[INFO] [Act4Placeholder]   OK: Combat - Hook.ModifyDamage
+[INFO] [Act4Placeholder]   OK: Combat - Hook.AfterDamageGiven
+[INFO] [Act4Placeholder]   OK: Combat - Guardbot.GuardMove (Architect fix)
+[INFO] [Act4Placeholder]   OK: Combat - Hook.ModifyHandDraw
+[INFO] [Act4Placeholder]   OK: Combat - MultiplayerScalingModel.GetMultiplayerScaling
+[INFO] [Act4Placeholder]   OK: Combat - CombatManager.AddCreature
+[INFO] [Act4Placeholder]   OK: Combat - CombatManager.AfterCreatureAdded
+[INFO] [Act4Placeholder]   OK: Combat - EncounterModel.CreateBackground
+[INFO] [Act4Placeholder]   OK: Rest - NRestSiteCharacter._Ready
+[INFO] [Act4Placeholder]   OK: Combat - Creature.StunInternal (Architect once-per-phase stun cap)
+[INFO] [Act4Placeholder]   OK: Combat - NPlayerHand.ReturnHolderToHand
+[INFO] [Act4Placeholder] Patching Group 5: Save State & History...
+[INFO] [Act4Placeholder]   OK: Save - RunManager.ToSave
+[INFO] [Act4Placeholder]   OK: Save - RunState.FromSerializable
+[INFO] [Act4Placeholder]   OK: SaveSync - ClientLoadJoinResponseMessage.Serialize
+[INFO] [Act4Placeholder]   OK: SaveSync - ClientLoadJoinResponseMessage.Deserialize
+[INFO] [Act4Placeholder]   OK: Save - ProgressSaveManager.LoadProgress
+[INFO] [Act4Placeholder]   OK: Save - ProgressSaveManager.ObtainCharUnlockEpoch
+[INFO] [Act4Placeholder]   OK: Score - ScoreUtility.CalculateScore(IRunState)
+[INFO] [Act4Placeholder]   OK: Score - ScoreUtility.CalculateScore(SerializableRun)
+[INFO] [Act4Placeholder] Patching Group 6: Compendium & Stats...
+[INFO] [Act4Placeholder]   OK: Compendium - NRunHistory._Ready
+[INFO] [Act4Placeholder]   OK: Compendium - NRunHistory.OnSubmenuOpened
+[INFO] [Act4Placeholder]   OK: Compendium - NRunHistory.DisplayRun
+[INFO] [Act4Placeholder]   OK: Compendium - NMapPointHistory.LoadHistory
+[INFO] [Act4Placeholder]   OK: Compendium - NStatsScreen._Ready
+[INFO] [Act4Placeholder]   OK: Compendium - NStatsScreen.OnSubmenuOpened
+[INFO] [Act4Placeholder]   OK: Compendium - NGeneralStatsGrid.LoadStats
+[INFO] [Act4Placeholder]   OK: Compendium - NCharacterStats.LoadStats
+[INFO] [Act4Placeholder]   OK: History - NRun.ShowGameOverScreen
+[INFO] [Act4Placeholder] Patching Group 7: Game Over & Power Hover
+[INFO] [Act4Placeholder]   OK: GameOver - NGameOverScreen._Ready
+[INFO] [Act4Placeholder]   OK: GameOver - NGameOverScreen.InitializeBannerAndQuote
+[INFO] [Act4Placeholder]   OK: Power - NPower.OnHovered
+[INFO] [Act4Placeholder]   OK: Power - NPower.OnUnhovered
+[INFO] [Act4Placeholder] ═══════════════════════════════════════════════
+[INFO] [Act4Placeholder]   Patch classes: 61 OK, 0 FAILED
+[INFO] [Act4Placeholder]   Patched methods total: 59
+[INFO] [Act4Placeholder] ═══════════════════════════════════════════════
+[INFO] [Act4Placeholder] v0.1.2f initialization complete.
+[INFO] Finished mod initialization for 'Act 4: Final Ascent' (Act4FinalAscent).
+[INFO] Loading assembly DLL Slay the Spire 2\mods\KaylaMod\KaylaMod.dll
+[INFO] Calling initializer method of type KaylaMod.MainFile for KaylaMod, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+[INFO] Finished mod initialization for 'KaylaMod' (KaylaMod).
+[INFO] Loading assembly DLL Slay the Spire 2\mods\Watcher\Watcher.dll
+[INFO] Calling initializer method of type Watcher.Code.WatcherMainFile for Watcher, Version=1.3.4.0, Culture=neutral, PublicKeyToken=null
+[INFO] Finished mod initialization for 'Watcher' (Watcher).
+[INFO]  --- RUNNING MODDED! --- Loaded 6 mods (6 total)
+[INFO] AtlasManager: Loaded ui_atlas with 102 sprites
+[INFO] AtlasManager: Loaded compressed with 45 sprites
+[INFO] [BaseLib] Registered 0 SavedSpireFields.
+[INFO] Loading locale path=reeng
+[INFO] Found loc table from mod: eng ancients.json. Merging with base loc table
+[INFO] Found loc table from mod: eng ancients.json. Merging with base loc table
+[INFO] Found loc table from mod: eng ancients.json. Merging with base loc table
+[INFO] Found loc table from mod: eng card_keywords.json. Merging with base loc table
+[INFO] Found loc table from mod: eng card_keywords.json. Merging with base loc table
+[INFO] Found loc table from mod: eng card_keywords.json. Merging with base loc table
+[INFO] Found loc table from mod: eng cards.json. Merging with base loc table
+[INFO] Found loc table from mod: eng cards.json. Merging with base loc table
+[INFO] Found loc table from mod: eng characters.json. Merging with base loc table
+[INFO] Found loc table from mod: eng characters.json. Merging with base loc table
+[INFO] Found loc table from mod: eng encounters.json. Merging with base loc table
+[INFO] Found loc table from mod: eng events.json. Merging with base loc table
+[INFO] Found loc table from mod: eng events.json. Merging with base loc table
+[INFO] Found loc table from mod: eng events.json. Merging with base loc table
+[INFO] Found loc table from mod: eng main_menu_ui.json. Merging with base loc table
+[INFO] Found loc table from mod: eng monsters.json. Merging with base loc table
+[INFO] Found loc table from mod: eng potions.json. Merging with base loc table
+[INFO] Found loc table from mod: eng potions.json. Merging with base loc table
+[INFO] Found loc table from mod: eng powers.json. Merging with base loc table
+[INFO] Found loc table from mod: eng powers.json. Merging with base loc table
+[INFO] Found loc table from mod: eng powers.json. Merging with base loc table
+[INFO] Found loc table from mod: eng powers.json. Merging with base loc table
+[INFO] Found loc table from mod: eng relics.json. Merging with base loc table
+[INFO] Found loc table from mod: eng relics.json. Merging with base loc table
+[INFO] Found loc table from mod: eng settings_ui.json. Merging with base loc table
+[INFO] Found loc table from mod: eng static_hover_tips.json. Merging with base loc table
+[INFO] Found loc table from mod: eng static_hover_tips.json. Merging with base loc table
+[INFO] Loading locale path=rezhs
+[INFO] Found loc table from mod: zhs ancients.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs ancients.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs ancients.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs card_keywords.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs card_keywords.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs cards.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs cards.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs characters.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs characters.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs encounters.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs events.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs events.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs main_menu_ui.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs monsters.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs potions.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs potions.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs powers.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs powers.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs powers.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs powers.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs relics.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs relics.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs settings_ui.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs static_hover_tips.json. Merging with base loc table
+[INFO] Found loc table from mod: zhs static_hover_tips.json. Merging with base loc table
+[INFO] ModelIdSerializationCache initialized. Categories: 20 Entries: 1784 Epochs: 57 Hash: 997439646
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CharStats.[6], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[138], Message = Unknown card ID: CARD.MEILINMOD-FIRE_DRAGON_GEM, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[139], Message = Unknown card ID: CARD.MEILINMOD-STRIKE_MEILIN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[140], Message = Unknown card ID: CARD.MEILINMOD-DEFEND_MEILIN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[141], Message = Unknown card ID: CARD.MEILINMOD-LONG_ZHI_DAO, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[142], Message = Unknown card ID: CARD.MEILINMOD-JU_QI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[143], Message = Unknown card ID: CARD.MEILINMOD-JIE_LI_DA_LI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[144], Message = Unknown card ID: CARD.MEILINMOD-HU_XIAO, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[145], Message = Unknown card ID: CARD.MEILINMOD-LING_GUANG_ZHA_XIAN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[146], Message = Unknown card ID: CARD.MEILINMOD-DENG_FENG_ZAO_JI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[147], Message = Unknown card ID: CARD.MEILINMOD-JI_CHU_SHI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[148], Message = Unknown card ID: CARD.MEILINMOD-CUO_GU, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[149], Message = Unknown card ID: CARD.MEILINMOD-LONG_YIN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[150], Message = Unknown card ID: CARD.MEILINMOD-YAN_LONG_CHU_DONG, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[151], Message = Unknown card ID: CARD.MEILINMOD-SHEN_GONG_FANG_YI_TI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[152], Message = Unknown card ID: CARD.MEILINMOD-YANG_JING_XU_RUI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[153], Message = Unknown card ID: CARD.MEILINMOD-QUN_LONG_ZHI_LI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[154], Message = Unknown card ID: CARD.MEILINMOD-XIN_HUO_XIANG_CHUAN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[155], Message = Unknown card ID: CARD.MEILINMOD-XU_LI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[156], Message = Unknown card ID: CARD.MEILINMOD-YUN_QI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[157], Message = Unknown card ID: CARD.MEILINMOD-HUA_JIN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[158], Message = Unknown card ID: CARD.MEILINMOD-XIAO_LI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[159], Message = Unknown card ID: CARD.MEILINMOD-JIN_ZHONG_ZHAO, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[160], Message = Unknown card ID: CARD.MEILINMOD-YAN_DUN_FAN_JI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[162], Message = Unknown card ID: CARD.MEILINMOD-JIAN_JI_XING_SHI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[163], Message = Unknown card ID: CARD.MEILINMOD-YAN_QI_CHAN_SHEN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[164], Message = Unknown card ID: CARD.MEILINMOD-ER_CHONG_TIAN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[165], Message = Unknown card ID: CARD.MEILINMOD-HUO_LONG_TU_XI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[166], Message = Unknown card ID: CARD.MEILINMOD-FIRE_DRAGON_TURN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[167], Message = Unknown card ID: CARD.MEILINMOD-GEN_XING, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[168], Message = Unknown card ID: CARD.MEILINMOD-LONG_ZHI_NU, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[169], Message = Unknown card ID: CARD.MEILINMOD-ZAI_HU_XI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[170], Message = Unknown card ID: CARD.MEILINMOD-LIU_SHUI_XING_YUN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[171], Message = Unknown card ID: CARD.MEILINMOD-BAO_QI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[172], Message = Unknown card ID: CARD.MEILINMOD-YAN_ZHEN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[173], Message = Unknown card ID: CARD.MEILINMOD-SI_JI_DAI_FA, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[174], Message = Unknown card ID: CARD.MEILINMOD-YU_HUO, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[175], Message = Unknown card ID: CARD.MEILINMOD-YIN_SHE_CHU_DONG, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[176], Message = Unknown card ID: CARD.MEILINMOD-RAN_MU, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[177], Message = Unknown card ID: CARD.MEILINMOD-ZAN_JIN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[178], Message = Unknown card ID: CARD.MEILINMOD-TI_SHEN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[179], Message = Unknown card ID: CARD.MEILINMOD-ZHUO_MAI_ZHANG, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[180], Message = Unknown card ID: CARD.MEILINMOD-LONG_ZHI_QI_SHI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[181], Message = Unknown card ID: CARD.MEILINMOD-QUAN_XIN_QUAN_LING, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[182], Message = Unknown card ID: CARD.MEILINMOD-FA_JIN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[183], Message = Unknown card ID: CARD.MEILINMOD-TIE_BU_SHAN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[184], Message = Unknown card ID: CARD.MEILINMOD-YI_TUI_WEI_JIN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[185], Message = Unknown card ID: CARD.MEILINMOD-CI_QUAN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[186], Message = Unknown card ID: CARD.MEILINMOD-SHOU_JIN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[187], Message = Unknown card ID: CARD.MEILINMOD-RAN_QI_HUA_YAN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[188], Message = Unknown card ID: CARD.MEILINMOD-WEI_HE, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[189], Message = Unknown card ID: CARD.MEILINMOD-QI_ZHEN_SHAN_HE, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[190], Message = Unknown card ID: CARD.MEILINMOD-QI_PO_BA_FANG, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[191], Message = Unknown card ID: CARD.MEILINMOD-PAN_LONG, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[192], Message = Unknown card ID: CARD.MEILINMOD-QI_PO, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[198], Message = Unknown card ID: CARD.MEILINMOD-ATTACK_DEFENSE_UNITY, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[199], Message = Unknown card ID: CARD.MEILINMOD-ZUI_ZHONG_AO_YI_YAN_LONG_JIANG_LIN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[200], Message = Unknown card ID: CARD.MEILINMOD-XIAO_YAO, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[205], Message = Unknown card ID: CARD.MEILINMOD-CUN_JIN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[207], Message = Unknown card ID: CARD.MEILINMOD-ZHEN_LONG_JUE_XING, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[208], Message = Unknown card ID: CARD.MEILINMOD-SHAN_DIAN_WU_LIAN_BIAN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[209], Message = Unknown card ID: CARD.MEILINMOD-CAN_YING, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[210], Message = Unknown card ID: CARD.MEILINMOD-YI_LI_YU_JIAN_TA_ZHI_SHANG, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[211], Message = Unknown card ID: CARD.MEILINMOD-CHONG_ZHEN_QI_GU, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[212], Message = Unknown card ID: CARD.MEILINMOD-SUI_XIN_ER_XING, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[213], Message = Unknown card ID: CARD.MEILINMOD-YU_JIN_LIAO_YUAN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[214], Message = Unknown card ID: CARD.MEILINMOD-BU_MIE, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[215], Message = Unknown card ID: CARD.MEILINMOD-SHUANG_LONG_CHU_HAI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[216], Message = Unknown card ID: CARD.MEILINMOD-BING_QI_NING_SHEN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[217], Message = Unknown card ID: CARD.MEILINMOD-YA_ZHI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[218], Message = Unknown card ID: CARD.MEILINMOD-ZUO_YOU_QUAN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[219], Message = Unknown card ID: CARD.MEILINMOD-JI_BEN_GONG, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[220], Message = Unknown card ID: CARD.MEILINMOD-SHENG_LONG_JIAO, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[221], Message = Unknown card ID: CARD.MEILINMOD-YIN_YANG, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[222], Message = Unknown card ID: CARD.MEILINMOD-TIAO_XI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[223], Message = Unknown card ID: CARD.MEILINMOD-GUI_YI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[224], Message = Unknown card ID: CARD.MEILINMOD-GU_JI_CHONG_SHI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[227], Message = Unknown card ID: CARD.MEILINMOD-YOU_LONG, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = CardStats.[228], Message = Unknown card ID: CARD.MEILINMOD-BAO_RAN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EncounterStats.[1].FightStats[0], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EncounterStats.[3].FightStats[2], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EncounterStats.[8].FightStats[1], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EncounterStats.[9].FightStats[2], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EncounterStats.[10].FightStats[0], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EncounterStats.[11].FightStats[0], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EncounterStats.[16].FightStats[0], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EncounterStats.[17].FightStats[0], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EncounterStats.[19].FightStats[0], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EncounterStats.[20].FightStats[0], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EncounterStats.[21].FightStats[0], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EncounterStats.[28].FightStats[0], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EncounterStats.[31].FightStats[0], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EncounterStats.[32].FightStats[0], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EncounterStats.[38].FightStats[0], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EncounterStats.[39].FightStats[0], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EncounterStats.[40].FightStats[0], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EncounterStats.[41].FightStats[0], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EncounterStats.[46].FightStats[0], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EncounterStats.[47].FightStats[0], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EncounterStats.[52].FightStats[0], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EncounterStats.[54].FightStats[0], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EncounterStats.[59].FightStats[0], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EncounterStats.[61].FightStats[0], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EncounterStats.[62].FightStats[0], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EncounterStats.[63].FightStats[0], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EncounterStats.[67].FightStats[0], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EncounterStats.[68].FightStats[0], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EncounterStats.[69].FightStats[0], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EncounterStats.[70].FightStats[0], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EncounterStats.[71].FightStats[0], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EncounterStats.[72].FightStats[0], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EncounterStats.[73].FightStats[0], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EncounterStats.[74].FightStats[0], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EncounterStats.[75].FightStats[0], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EncounterStats.[76].FightStats[0], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EnemyStats.[1].FightStats[1], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EnemyStats.[32].FightStats[1], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EnemyStats.[34].FightStats[1], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EnemyStats.[35].FightStats[1], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EnemyStats.[36].FightStats[1], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EnemyStats.[37].FightStats[1], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EnemyStats.[38].FightStats[1], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EnemyStats.[39].FightStats[1], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EnemyStats.[41].FightStats[1], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EnemyStats.[42].FightStats[1], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EnemyStats.[48].FightStats[1], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EnemyStats.[57].FightStats[1], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EnemyStats.[58].FightStats[1], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EnemyStats.[60].FightStats[1], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EnemyStats.[65].FightStats[1], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EnemyStats.[70].FightStats[1], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EnemyStats.[72].FightStats[1], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EnemyStats.[74].FightStats[1], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EnemyStats.[75].FightStats[1], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EnemyStats.[78].FightStats[1], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EnemyStats.[79].FightStats[1], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EnemyStats.[80].FightStats[2], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EnemyStats.[81].FightStats[1], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EnemyStats.[82].FightStats[1], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EnemyStats.[83].FightStats[1], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EnemyStats.[85].FightStats[1], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EnemyStats.[86].FightStats[1], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EnemyStats.[89].FightStats[1], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EnemyStats.[90].FightStats[1], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EnemyStats.[91].FightStats[1], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EnemyStats.[92].FightStats[1], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EnemyStats.[93].FightStats[1], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EnemyStats.[94].FightStats[1], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EnemyStats.[95].FightStats[1], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EnemyStats.[97].FightStats[1], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EnemyStats.[98].FightStats[2], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EnemyStats.[99].FightStats[1], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EnemyStats.[100].FightStats[1], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = EnemyStats.[102].FightStats[0], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = AncientStats.[0].CharStats[4], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = AncientStats.[2].CharStats[1], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = AncientStats.[3].CharStats[1], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = AncientStats.[4].CharStats[0], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = AncientStats.[6].CharStats[0], Message = Unknown character ID: CHARACTER.MEILINMOD-MEI_LIN_MOD, removing, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-STRIKE_MEILIN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-DEFEND_MEILIN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-FIRE_DRAGON_GEM, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-ATTACK_DEFENSE_UNITY, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-HUA_JIN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-LONG_ZHI_DAO, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-XIAO_LI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-JIN_ZHONG_ZHAO, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-JU_QI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-JIE_LI_DA_LI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-YAN_DUN_FAN_JI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-HU_XIAO, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-JIAN_JI_XING_SHI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-YAN_QI_CHAN_SHEN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-ER_CHONG_TIAN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-LING_GUANG_ZHA_XIAN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-DENG_FENG_ZAO_JI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-HUO_LONG_TU_XI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-FIRE_DRAGON_TURN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-GEN_XING, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-JI_CHU_SHI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-CUO_GU, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-LONG_ZHI_NU, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-LONG_YIN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-ZAI_HU_XI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-LIU_SHUI_XING_YUN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-BAO_QI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-YAN_LONG_CHU_DONG, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-YAN_ZHEN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-SHEN_GONG_FANG_YI_TI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-SI_JI_DAI_FA, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-YU_HUO, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-XU_LI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-YAN_LONG_JIANG_LIN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-SHUANG_LONG_CHU_HAI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-SHOU_JIN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-BAO_RAN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-YU_JIN_LIAO_YUAN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-BING_QI_NING_SHEN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-BU_MIE, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-CAN_YING, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-CHONG_ZHEN_QI_GU, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-CI_QUAN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-CUN_JIN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-FA_JIN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-GUI_YI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-GU_JI_CHONG_SHI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-HUO_LONG_JING_TIAN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-HUO_LONG_XIN_ZANG, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-HU_XI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-JI_BEN_GONG, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-LIAN_YUN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-LONG_XI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-LONG_ZHI_QI_SHI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-PAN_LONG, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-QI_GUAN_CHANG_HONG, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-QI_PO, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-QI_PO_BA_FANG, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-QI_ZHEN_SHAN_HE, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-QUAN_XIN_QUAN_LING, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-QUN_LONG_ZHI_LI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-RAN_MU, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-RAN_QI_HUA_YAN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-SHAN_DIAN_WU_LIAN_BIAN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-SHENG_LONG_JIAO, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-SHOU_SHI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-SUI_XIN_ER_XING, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-SUI_XING, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-TAN_ZHAO, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-TIAO_XI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-TIE_BU_SHAN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-TI_SHEN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-TONG_QIAO, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-TU_NA, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-WEI_HE, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-WEN_QUAN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-WU_DAO, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-XIAO_YAO, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-XIN_HUO_XIANG_CHUAN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-XIN_LIU, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-XIN_RU_ZHI_SHUI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-YAN_BAO, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-YANG_JING_XU_RUI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-YAN_QI_HU_TI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-YA_ZHI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-YI_LI_YU_JIAN_TA_ZHI_SHANG, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-YIN_SHE_CHU_DONG, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-YIN_YANG, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-YI_QI_HE_CHENG, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-YI_TUI_WEI_JIN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-YOU_LONG, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-YUN_QI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-ZAN_JIN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-ZHEN_LONG_JUE_XING, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-ZHUO_MAI_ZHANG, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-ZUI_ZHONG_AO_YI_YAN_LONG_JIANG_LIN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-ZUO_YOU_QUAN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-HUO_YONG_YU_XIA_CI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-JING_YUE, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-KAI_TIAN, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-LIAN_XIE, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-RU_TAO, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-SHAN_HE, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-WAN_XIANG, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-SHI_BA_BAN_WU_YI, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-HUI_GUI_JI_BEN_GONG, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredCards, Message = Unknown ID: CARD.MEILINMOD-BIAN_HUA_MO_CE, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredRelics, Message = Unknown ID: RELIC.MEILINMOD-XIANGZU_LEGACY_RELIC, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredRelics, Message = Unknown ID: RELIC.MEILINMOD-LONG_LIN_RELIC, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredRelics, Message = Unknown ID: RELIC.MEILINMOD-LONG_WEI_RELIC, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredRelics, Message = Unknown ID: RELIC.MEILINMOD-LONG_XIN_RELIC, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredRelics, Message = Unknown ID: RELIC.MEILINMOD-LONG_YA_RELIC, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredRelics, Message = Unknown ID: RELIC.MEILINMOD-LONG_YAN_RELIC, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredRelics, Message = Unknown ID: RELIC.MEILINMOD-LONG_YI_RELIC, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredRelics, Message = Unknown ID: RELIC.MEILINMOD-LONG_ZHUA_RELIC, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredRelics, Message = Unknown ID: RELIC.MEILINMOD-XIANGZU_SPIRIT_RELIC, skipping, IsFatal = False }
+[WARN] Progress parse: ValidationError { Severity = Warning, Path = DiscoveredPotions, Message = Unknown ID: POTION.MEILINMOD-YU_JIN_POTION, skipping, IsFatal = False }
+[INFO] AtlasManager: Loaded controller_atlas with 112 sprites
+[WARN] SteamStatsManager: Global stats request failed with result k_EResultTimeout
+[INFO] [Startup] Time to main menu (Godot ticks): 21527ms
+ERROR: MegaCrit.Sts2.Core.Models.Exceptions.ModelNotFoundException: Model id=CHARACTER.MEILINMOD-MEI_LIN_MOD not found
+       at MegaCrit.Sts2.Core.Models.ModelDb.GetById[T](ModelId id)
+       at MegaCrit.Sts2.Core.Nodes.Screens.MainMenu.NContinueRunInfo.ShowInfo(SerializableRun save)
+       at MegaCrit.Sts2.Core.Nodes.Screens.MainMenu.NContinueRunInfo.SetResult(ReadSaveResult`1 result)
+       at Act4Placeholder.SingleplayerRunSlotsPatches.NMainMenuRefreshButtonsPatch.Postfix(NMainMenu __instance)
+       at MegaCrit.Sts2.Core.Nodes.Screens.MainMenu.NMainMenu.RefreshButtons_Patch1(NMainMenu this)
+       at MegaCrit.Sts2.Core.Nodes.Screens.MainMenu.NMainMenu._Ready_Patch6(NMainMenu this)
+       at Godot.Node.InvokeGodotClassMethod(godot_string_name& method, NativeVariantPtrArgs args, godot_variant& ret)
+       at Godot.Control.InvokeGodotClassMethod(godot_string_name& method, NativeVariantPtrArgs args, godot_variant& ret)
+       at MegaCrit.Sts2.Core.Nodes.Screens.MainMenu.NMainMenu.InvokeGodotClassMethod(godot_string_name& method, NativeVariantPtrArgs args, godot_variant& ret)
+       at Godot.Bridge.CSharpInstanceBridge.Call(IntPtr godotObjectGCHandle, godot_string_name* method, godot_variant** args, Int32 argCount, godot_variant_call_error* refCallError, godot_variant* ret)
+[INFO] [Startup] Time to main menu: 21,790ms
+[INFO] AtlasManager: Loaded epoch_atlas with 57 sprites
+[INFO] AtlasManager: Loaded relic_atlas with 341 sprites
+[INFO] AtlasManager: Loaded relic_outline_atlas with 341 sprites
+[INFO] AtlasManager: Loaded power_atlas with 266 sprites
+[INFO] AtlasManager: Loaded card_atlas with 864 sprites
+[INFO] AtlasManager: Loaded potion_atlas with 63 sprites
+[INFO] AtlasManager: Loaded potion_outline_atlas with 63 sprites
+[INFO] AtlasManager: Loaded stats_screen_atlas with 16 sprites
+[INFO] AtlasManager: Loaded intent_atlas with 310 sprites
+[INFO] AtlasManager: Loaded era_atlas with 27 sprites
+[INFO] [BaseLib] Registered scene 'rewatcher.tscn' for auto-conversion to NCreatureVisuals
+[INFO] [BaseLib] Registered scene 'rewatcher_rest_site.tscn' for auto-conversion to NRestSiteCharacter
+[INFO] [BaseLib] Registered scene 'rewatcher_merchant.tscn' for auto-conversion to NMerchantCharacter

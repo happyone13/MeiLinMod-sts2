@@ -1,0 +1,3880 @@
+{
+  "source": "E:\\DATA\\GODOT\\res\\1027\\model_data\\1027.srmd",
+  "commandSets": {
+    "u2_attack": {
+      "name": "u2_attack",
+      "ready": "attack_ready",
+      "loop": "normal_attack",
+      "monster_loop": null,
+      "play_ready_flag": true,
+      "play_ready": "u2_attack_ready",
+      "play": "u2_attack_play",
+      "play_delay": 0.0,
+      "end": "u2_attack_end",
+      "random_play": false,
+      "alter_command": null
+    },
+    "u3_buff": {
+      "name": "u3_buff",
+      "ready": "u3_buff_ready",
+      "loop": "normal_attack",
+      "monster_loop": null,
+      "play_ready_flag": false,
+      "play_ready": "",
+      "play": "u3_buff_play",
+      "play_delay": 0.0,
+      "end": "u3_buff_end",
+      "random_play": false,
+      "alter_command": null
+    },
+    "u4_buff": {
+      "name": "u4_buff",
+      "ready": "u4_buff_ready",
+      "loop": "normal_attack",
+      "monster_loop": null,
+      "play_ready_flag": false,
+      "play_ready": "",
+      "play": "u4_buff_play",
+      "play_delay": 0.0,
+      "end": "u4_buff_end",
+      "random_play": false,
+      "alter_command": null
+    },
+    "u1_buff": {
+      "name": "u1_buff",
+      "ready": "u1_buff_ready",
+      "loop": "normal_attack",
+      "monster_loop": null,
+      "play_ready_flag": false,
+      "play_ready": "",
+      "play": "u1_buff_play",
+      "play_delay": 0.0,
+      "end": "u1_buff_end",
+      "random_play": false,
+      "alter_command": null
+    },
+    "ug_attack": {
+      "name": "ug_attack",
+      "ready": null,
+      "loop": "",
+      "monster_loop": null,
+      "play_ready_flag": false,
+      "play_ready": null,
+      "play": "ug_attack",
+      "play_delay": 0.0,
+      "end": null,
+      "random_play": false,
+      "alter_command": null
+    },
+    "ux_buff": {
+      "name": "ux_buff",
+      "ready": null,
+      "loop": "",
+      "monster_loop": null,
+      "play_ready_flag": false,
+      "play_ready": null,
+      "play": "ux_buff",
+      "play_delay": 0.0,
+      "end": null,
+      "random_play": false,
+      "alter_command": null
+    },
+    "": {
+      "name": "",
+      "ready": "_ready",
+      "loop": null,
+      "monster_loop": null,
+      "play_ready_flag": false,
+      "play_ready": "",
+      "play": null,
+      "play_delay": 0.0,
+      "end": null,
+      "random_play": false,
+      "alter_command": null
+    }
+  },
+  "commands": {
+    "idle": {
+      "animation": [
+        {
+          "animationName": "idle",
+          "delayMs": 0.0,
+          "durationMs": 2133.3,
+          "loop": true,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [],
+      "hits": [],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "b_idle": {
+      "animation": [
+        {
+          "animationName": "b_idle",
+          "delayMs": 0.0,
+          "durationMs": 1466.7,
+          "loop": true,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [],
+      "hits": [],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "b_idle_to_idle": {
+      "animation": [
+        {
+          "animationName": "b_idle_to_idle",
+          "delayMs": 0.0,
+          "durationMs": 466.69998,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [],
+      "hits": [],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "idle_to_b_idle": {
+      "animation": [
+        {
+          "animationName": "idle_to_b_idle",
+          "delayMs": 0.0,
+          "durationMs": 466.69998,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [],
+      "hits": [],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "hit": {
+      "animation": [
+        {
+          "animationName": "hit",
+          "delayMs": 0.0,
+          "durationMs": 600.0,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [],
+      "hits": [],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "enter_ready": {
+      "animation": [
+        {
+          "animationName": "enter_ready",
+          "delayMs": 0.0,
+          "durationMs": 333.3,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [],
+      "hits": [],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "enter_play": {
+      "animation": [
+        {
+          "animationName": "enter_play",
+          "delayMs": 0.0,
+          "durationMs": 666.7,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [],
+      "hits": [],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "enter_end": {
+      "animation": [
+        {
+          "animationName": "enter_end",
+          "delayMs": 0.0,
+          "durationMs": 466.69998,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [],
+      "hits": [],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "fatal_intro": {
+      "animation": [
+        {
+          "animationName": "fatal_intro",
+          "delayMs": 0.0,
+          "durationMs": 266.7,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [],
+      "hits": [],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "fatal1": {
+      "animation": [
+        {
+          "animationName": "fatal1",
+          "delayMs": 0.0,
+          "durationMs": 666.7,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [],
+      "hits": [],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "fatal2": {
+      "animation": [
+        {
+          "animationName": "fatal2",
+          "delayMs": 0.0,
+          "durationMs": 333.3,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [],
+      "hits": [],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "fatal3": {
+      "animation": [
+        {
+          "animationName": "fatal3",
+          "delayMs": 0.0,
+          "durationMs": 3933.3,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [],
+      "hits": [],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "1_set": {
+      "animation": [
+        {
+          "animationName": "1_set",
+          "delayMs": 0.0,
+          "durationMs": 1333.3,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [],
+      "hits": [],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "all_attack_end": {
+      "animation": [
+        {
+          "animationName": "all_attack_end",
+          "delayMs": 0.0,
+          "durationMs": 400.0,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [],
+      "hits": [],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "all_attack_play": {
+      "animation": [
+        {
+          "animationName": "all_attack_play",
+          "delayMs": 0.0,
+          "durationMs": 666.7,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [],
+      "hits": [
+        {
+          "name": "action",
+          "motion_delay": 0.0,
+          "play_action": true,
+          "effect": null,
+          "wait_until_end": false,
+          "sequence": 0,
+          "duration": 0.0,
+          "delayMs": 0.0
+        }
+      ],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "all_attack_ready": {
+      "animation": [
+        {
+          "animationName": "all_attack_ready",
+          "delayMs": 0.0,
+          "durationMs": 400.0,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [],
+      "hits": [],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "attack_end": {
+      "animation": [
+        {
+          "animationName": "attack_end",
+          "delayMs": 0.0,
+          "durationMs": 400.0,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [],
+      "hits": [],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "attack_play1": {
+      "animation": [
+        {
+          "animationName": "attack_play1",
+          "delayMs": 0.0,
+          "durationMs": 666.7,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [
+        {
+          "fileName": "meirin_attack_play1_self",
+          "sceneGroup": "attack_play1",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/attack_play1/meirin_attack_play1_self.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "SELF",
+          "boneType": "ATTACH",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 0.6,
+          "inheritScale": true,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 50,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "common_hit_eff",
+          "sceneGroup": "common",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/common/common_hit_eff.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "TARGET",
+          "boneType": "POSITION",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 0.8,
+          "inheritScale": false,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "meirin_attack_play1_root",
+          "sceneGroup": "attack_play1",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/attack_play1/meirin_attack_play1_root.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "SELF",
+          "boneType": "ATTACH",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 0.6,
+          "inheritScale": true,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 50,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "meirin_attack_play_target",
+          "sceneGroup": "common",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/common/meirin_attack_play_target.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "TARGET",
+          "boneType": "POSITION",
+          "bone": "target",
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 0.6,
+          "inheritScale": false,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 40,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "meirin_attack_play_target_botglow",
+          "sceneGroup": "common",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/common/meirin_attack_play_target_botglow.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "TARGET",
+          "boneType": "POSITION",
+          "bone": "root",
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 0.6,
+          "inheritScale": false,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "hits": [
+        {
+          "name": "action",
+          "motion_delay": 0.0,
+          "play_action": true,
+          "effect": [],
+          "wait_until_end": false,
+          "sequence": 0,
+          "duration": 0.0,
+          "delayMs": 66.0
+        }
+      ],
+      "shakes": [
+        {
+          "file_name": "cm_shake_vb_dn",
+          "cam_ignore_hitstop": true,
+          "cam_ignore_slow": false,
+          "wait_until_end": false,
+          "sequence": 0,
+          "duration": 0.0,
+          "delayMs": 66.0
+        },
+        {
+          "file_name": "cm_shake_vb_lt",
+          "cam_ignore_hitstop": true,
+          "cam_ignore_slow": false,
+          "wait_until_end": false,
+          "sequence": 0,
+          "duration": 0.0,
+          "delayMs": 66.0
+        }
+      ],
+      "stops": [
+        {
+          "type": "STOP_SUBJECTS",
+          "strong_type": "WEAK",
+          "duration": 80.0,
+          "wait_until_end": false,
+          "sequence": 0,
+          "delayMs": 132.0
+        },
+        {
+          "type": "STOP_SUBJECTS",
+          "strong_type": "STRONG",
+          "duration": 160.0,
+          "wait_until_end": false,
+          "sequence": 0,
+          "delayMs": 132.0
+        },
+        {
+          "type": "STOP_SUBJECTS",
+          "strong_type": "FINISH",
+          "duration": 360.0,
+          "wait_until_end": false,
+          "sequence": 0,
+          "delayMs": 132.0
+        }
+      ],
+      "moves": [],
+      "closeCombat": true,
+      "closeCombatOffset": "-100,-35",
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "-50,-30"
+    },
+    "attack_play2": {
+      "animation": [
+        {
+          "animationName": "attack_play2",
+          "delayMs": 0.0,
+          "durationMs": 666.7,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [
+        {
+          "fileName": "meirin_attack_play_target",
+          "sceneGroup": "common",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/common/meirin_attack_play_target.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "TARGET",
+          "boneType": "POSITION",
+          "bone": "target",
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 0.6,
+          "inheritScale": false,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 40,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "meirin_attack_play_target_botglow",
+          "sceneGroup": "common",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/common/meirin_attack_play_target_botglow.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "TARGET",
+          "boneType": "POSITION",
+          "bone": "root",
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 0.6,
+          "inheritScale": false,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "meirin_attack_play2_self",
+          "sceneGroup": "attack_play2",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/attack_play2/meirin_attack_play2_self.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "SELF",
+          "boneType": "ATTACH",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 0.6,
+          "inheritScale": true,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 50,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "meirin_attack_play2_root",
+          "sceneGroup": "attack_play2",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/attack_play2/meirin_attack_play2_root.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "SELF",
+          "boneType": "ATTACH",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 0.6,
+          "inheritScale": true,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 50,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "common_hit_eff",
+          "sceneGroup": "common",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/common/common_hit_eff.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "TARGET",
+          "boneType": "POSITION",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 0.8,
+          "inheritScale": false,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "hits": [
+        {
+          "name": "action",
+          "motion_delay": 0.0,
+          "play_action": true,
+          "effect": [],
+          "wait_until_end": false,
+          "sequence": 0,
+          "duration": 0.0,
+          "delayMs": 66.0
+        }
+      ],
+      "shakes": [
+        {
+          "file_name": "cm_shake_vb_lt",
+          "cam_ignore_hitstop": true,
+          "cam_ignore_slow": false,
+          "wait_until_end": false,
+          "sequence": 0,
+          "duration": 0.0,
+          "delayMs": 66.0
+        },
+        {
+          "file_name": "cm_shake_vb_dn",
+          "cam_ignore_hitstop": true,
+          "cam_ignore_slow": false,
+          "wait_until_end": false,
+          "sequence": 0,
+          "duration": 0.0,
+          "delayMs": 66.0
+        }
+      ],
+      "stops": [
+        {
+          "type": "STOP_SUBJECTS",
+          "strong_type": "WEAK",
+          "duration": 80.0,
+          "wait_until_end": false,
+          "sequence": 0,
+          "delayMs": 132.0
+        },
+        {
+          "type": "STOP_SUBJECTS",
+          "strong_type": "STRONG",
+          "duration": 160.0,
+          "wait_until_end": false,
+          "sequence": 0,
+          "delayMs": 132.0
+        },
+        {
+          "type": "STOP_SUBJECTS",
+          "strong_type": "FINISH",
+          "duration": 360.0,
+          "wait_until_end": false,
+          "sequence": 0,
+          "delayMs": 132.0
+        }
+      ],
+      "moves": [],
+      "closeCombat": true,
+      "closeCombatOffset": "-156,-35",
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "-50,-30"
+    },
+    "attack_play3": {
+      "animation": [
+        {
+          "animationName": "attack_play3",
+          "delayMs": 0.0,
+          "durationMs": 666.7,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [],
+      "hits": [
+        {
+          "name": "action",
+          "motion_delay": 0.0,
+          "play_action": true,
+          "effect": null,
+          "wait_until_end": false,
+          "sequence": 0,
+          "duration": 0.0,
+          "delayMs": 0.0
+        }
+      ],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "attack_ready": {
+      "animation": [
+        {
+          "animationName": "attack_ready",
+          "delayMs": 0.0,
+          "durationMs": 200.0,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [],
+      "hits": [],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "buff_play": {
+      "animation": [
+        {
+          "animationName": "buff_play",
+          "delayMs": 0.0,
+          "durationMs": 1100.0,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [
+        {
+          "fileName": "meirin_unique_buff_paly_target2",
+          "sceneGroup": "u1_buff",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/u1_buff/meirin_unique_buff_paly_target2.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "OUR_CENTER",
+          "boneType": "ATTACH",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 0.45,
+          "inheritScale": false,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "meirin_unique_buff_paly_target_botglow",
+          "sceneGroup": "u1_buff",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/u1_buff/meirin_unique_buff_paly_target_botglow.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "OUR_CENTER",
+          "boneType": "POSITION",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 0.45,
+          "inheritScale": false,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "meirin_unique_buff_paly_self",
+          "sceneGroup": "u1_buff",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/u1_buff/meirin_unique_buff_paly_self.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "SELF",
+          "boneType": "ATTACH",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 0.6,
+          "inheritScale": true,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "hits": [
+        {
+          "name": "action",
+          "motion_delay": 0.0,
+          "play_action": true,
+          "effect": null,
+          "wait_until_end": false,
+          "sequence": 0,
+          "duration": 0.0,
+          "delayMs": 0.0
+        }
+      ],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,-30"
+    },
+    "buff_ready": {
+      "animation": [
+        {
+          "animationName": "buff_ready",
+          "delayMs": 0.0,
+          "durationMs": 466.69998,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [
+        {
+          "fileName": "meirin_unique_buff_ready",
+          "sceneGroup": "u1_buff",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/u1_buff/meirin_unique_buff_ready.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "SELF",
+          "boneType": "ATTACH",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 0.6,
+          "inheritScale": true,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "hits": [],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "camping_on": {
+      "animation": [
+        {
+          "animationName": "camping_on",
+          "delayMs": 0.0,
+          "durationMs": 4000.0,
+          "loop": true,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [],
+      "hits": [],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "collapse_idle": {
+      "animation": [
+        {
+          "animationName": "collapse_idle",
+          "delayMs": 0.0,
+          "durationMs": 5066.7,
+          "loop": true,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [],
+      "hits": [],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "cure_play": {
+      "animation": [
+        {
+          "animationName": "cure_play",
+          "delayMs": 0.0,
+          "durationMs": 1100.0,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [
+        {
+          "fileName": "meirin_unique_buff_paly_target2",
+          "sceneGroup": "u1_buff",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/u1_buff/meirin_unique_buff_paly_target2.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "OUR_CENTER",
+          "boneType": "ATTACH",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 0.45,
+          "inheritScale": false,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "meirin_unique_buff_paly_target_botglow",
+          "sceneGroup": "u1_buff",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/u1_buff/meirin_unique_buff_paly_target_botglow.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "OUR_CENTER",
+          "boneType": "POSITION",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 0.45,
+          "inheritScale": false,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "meirin_unique_buff_paly_self",
+          "sceneGroup": "u1_buff",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/u1_buff/meirin_unique_buff_paly_self.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "SELF",
+          "boneType": "ATTACH",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 0.6,
+          "inheritScale": true,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "hits": [
+        {
+          "name": "action",
+          "motion_delay": 0.0,
+          "play_action": true,
+          "effect": null,
+          "wait_until_end": false,
+          "sequence": 0,
+          "duration": 0.0,
+          "delayMs": 0.0
+        }
+      ],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "cure_ready": {
+      "animation": [
+        {
+          "animationName": "cure_ready",
+          "delayMs": 0.0,
+          "durationMs": 466.69998,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [
+        {
+          "fileName": "meirin_unique_buff_ready",
+          "sceneGroup": "u1_buff",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/u1_buff/meirin_unique_buff_ready.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "SELF",
+          "boneType": "ATTACH",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 0.6,
+          "inheritScale": true,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "hits": [],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "death_ready": {
+      "animation": [
+        {
+          "animationName": "death_ready",
+          "delayMs": 0.0,
+          "durationMs": 933.30005,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [],
+      "hits": [],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "debuff_play": {
+      "animation": [
+        {
+          "animationName": "debuff_play",
+          "delayMs": 0.0,
+          "durationMs": 1066.7,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [
+        {
+          "fileName": "meirin_debuff_play_target_action",
+          "sceneGroup": "debuff",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/debuff/meirin_debuff_play_target_action.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "TARGET",
+          "boneType": "POSITION",
+          "bone": "target",
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 0.5,
+          "inheritScale": false,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "meirin_debuff_play_target_action_botglow",
+          "sceneGroup": "debuff",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/debuff/meirin_debuff_play_target_action_botglow.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "TARGET",
+          "boneType": "POSITION",
+          "bone": "root",
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,-8",
+          "scale": 0.5,
+          "inheritScale": false,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "hits": [
+        {
+          "name": "action",
+          "motion_delay": 333.0,
+          "play_action": true,
+          "effect": [],
+          "wait_until_end": false,
+          "sequence": 0,
+          "duration": 0.0,
+          "delayMs": 0.0
+        }
+      ],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "20,-10"
+    },
+    "debuff_ready": {
+      "animation": [
+        {
+          "animationName": "debuff_ready",
+          "delayMs": 0.0,
+          "durationMs": 466.69998,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [
+        {
+          "fileName": "meirin_debuff_ready",
+          "sceneGroup": "debuff",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/debuff/meirin_debuff_ready.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "SELF",
+          "boneType": "ATTACH",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 0.6,
+          "inheritScale": true,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "meirin_debuff_ready_target_self",
+          "sceneGroup": "debuff",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/debuff/meirin_debuff_ready_target_self.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "TARGET",
+          "boneType": "POSITION",
+          "bone": "target",
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 0.6,
+          "inheritScale": false,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "meirin_debuff_ready_target_event_botglow",
+          "sceneGroup": "debuff",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/debuff/meirin_debuff_ready_target_event_botglow.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "TARGET",
+          "boneType": "POSITION",
+          "bone": "",
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,-8",
+          "scale": 0.6,
+          "inheritScale": false,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "meirin_debuff_ready_botglow",
+          "sceneGroup": "debuff",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/debuff/meirin_debuff_ready_botglow.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "SELF",
+          "boneType": "POSITION",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 0.6,
+          "inheritScale": true,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "hits": [],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "defense_play": {
+      "animation": [
+        {
+          "animationName": "defense_play",
+          "delayMs": 0.0,
+          "durationMs": 1100.0,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [],
+      "hits": [
+        {
+          "name": "action",
+          "motion_delay": 0.0,
+          "play_action": true,
+          "effect": null,
+          "wait_until_end": false,
+          "sequence": 0,
+          "duration": 0.0,
+          "delayMs": 0.0
+        }
+      ],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "10,-25"
+    },
+    "defense_ready": {
+      "animation": [
+        {
+          "animationName": "defense_ready",
+          "delayMs": 0.0,
+          "durationMs": 466.69998,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [],
+      "hits": [],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "f_strong_attack_end": {
+      "animation": [
+        {
+          "animationName": "f_strong_attack_end",
+          "delayMs": 0.0,
+          "durationMs": 400.0,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [],
+      "hits": [],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "f_strong_attack_play": {
+      "animation": [
+        {
+          "animationName": "f_strong_attack_play",
+          "delayMs": 0.0,
+          "durationMs": 666.7,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [
+        {
+          "fileName": "meirin_strong_attack_play_self",
+          "sceneGroup": "strong_attack",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/strong_attack/meirin_strong_attack_play_self.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "SELF",
+          "boneType": "ATTACH",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 0.6,
+          "inheritScale": true,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "meirin_strong_attack_play_root",
+          "sceneGroup": "strong_attack",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/strong_attack/meirin_strong_attack_play_root.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "SELF",
+          "boneType": "POSITION",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 0.6,
+          "inheritScale": true,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "meirin_strong_attack_play_botglow",
+          "sceneGroup": "strong_attack",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/strong_attack/meirin_strong_attack_play_botglow.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "TARGET",
+          "boneType": "POSITION",
+          "bone": "root",
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 0.6,
+          "inheritScale": false,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "meirin_attack_play_target",
+          "sceneGroup": "common",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/common/meirin_attack_play_target.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "TARGET",
+          "boneType": "POSITION",
+          "bone": "target",
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 1.0,
+          "inheritScale": false,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 40,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "meirin_attack_play_target_botglow",
+          "sceneGroup": "common",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/common/meirin_attack_play_target_botglow.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "TARGET",
+          "boneType": "POSITION",
+          "bone": "root",
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 1.0,
+          "inheritScale": false,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "hits": [
+        {
+          "name": "action",
+          "motion_delay": 99.0,
+          "play_action": true,
+          "effect": [],
+          "wait_until_end": false,
+          "sequence": 0,
+          "duration": 0.0,
+          "delayMs": 0.0
+        }
+      ],
+      "shakes": [
+        {
+          "file_name": "cm_shake_vb_lt",
+          "cam_ignore_hitstop": true,
+          "cam_ignore_slow": false,
+          "wait_until_end": false,
+          "sequence": 0,
+          "duration": 0.0,
+          "delayMs": 99.0
+        },
+        {
+          "file_name": "cm_shake_vb_dn",
+          "cam_ignore_hitstop": true,
+          "cam_ignore_slow": false,
+          "wait_until_end": false,
+          "sequence": 0,
+          "duration": 0.0,
+          "delayMs": 99.0
+        }
+      ],
+      "stops": [
+        {
+          "type": "STOP_SUBJECTS",
+          "strong_type": "WEAK",
+          "duration": 80.0,
+          "wait_until_end": false,
+          "sequence": 0,
+          "delayMs": 99.0
+        },
+        {
+          "type": "STOP_SUBJECTS",
+          "strong_type": "FINISH",
+          "duration": 360.0,
+          "wait_until_end": false,
+          "sequence": 0,
+          "delayMs": 99.0
+        },
+        {
+          "type": "STOP_SUBJECTS",
+          "strong_type": "STRONG",
+          "duration": 160.0,
+          "wait_until_end": false,
+          "sequence": 0,
+          "delayMs": 99.0
+        }
+      ],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "f_strong_attack_ready": {
+      "animation": [
+        {
+          "animationName": "f_strong_attack_ready",
+          "delayMs": 0.0,
+          "durationMs": 200.0,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [],
+      "hits": [],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "node_test": {
+      "animation": [],
+      "effects": [
+        {
+          "fileName": "meirin_1027_skill_2_end",
+          "sceneGroup": "ug_attack",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/ug_attack/meirin_1027_skill_2_end.tscn",
+          "delayMs": 33.0,
+          "durationMs": -1.0,
+          "type": "SELF",
+          "boneType": "POSITION",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 1.0,
+          "inheritScale": false,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "hits": [],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "skill_x": {
+      "animation": [
+        {
+          "animationName": "skill_x",
+          "delayMs": 0.0,
+          "durationMs": 3800.0,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [
+        {
+          "fileName": "meirin_1027_skill_x_eff_screen",
+          "sceneGroup": "skill_x",
+          "scenePath": "",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "SCREEN",
+          "boneType": "CAMERA",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 1.0,
+          "inheritScale": false,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 9999,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "meirin_1027_skill_x_eff_1",
+          "sceneGroup": "skill_x",
+          "scenePath": "",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "SELF",
+          "boneType": "ATTACH",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 1.0,
+          "inheritScale": true,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "hits": [
+        {
+          "name": "action",
+          "motion_delay": 3033.0,
+          "play_action": true,
+          "effect": null,
+          "wait_until_end": false,
+          "sequence": 0,
+          "duration": 0.0,
+          "delayMs": 0.0
+        }
+      ],
+      "shakes": [
+        {
+          "file_name": "cm_shake_vb_dn",
+          "cam_ignore_hitstop": true,
+          "cam_ignore_slow": false,
+          "wait_until_end": false,
+          "sequence": 0,
+          "duration": 0.0,
+          "delayMs": 167.0
+        },
+        {
+          "file_name": "cm_shake_vb_dn",
+          "cam_ignore_hitstop": true,
+          "cam_ignore_slow": false,
+          "wait_until_end": false,
+          "sequence": 0,
+          "duration": 0.0,
+          "delayMs": 330.0
+        },
+        {
+          "file_name": "cm_shake_vb_dn",
+          "cam_ignore_hitstop": true,
+          "cam_ignore_slow": false,
+          "wait_until_end": false,
+          "sequence": 0,
+          "duration": 0.0,
+          "delayMs": 500.0
+        },
+        {
+          "file_name": "cm_shake_wk_dn",
+          "cam_ignore_hitstop": true,
+          "cam_ignore_slow": false,
+          "wait_until_end": false,
+          "sequence": 0,
+          "duration": 0.0,
+          "delayMs": 1000.0
+        },
+        {
+          "file_name": "cm_shake_vb_lt",
+          "cam_ignore_hitstop": true,
+          "cam_ignore_slow": false,
+          "wait_until_end": false,
+          "sequence": 0,
+          "duration": 0.0,
+          "delayMs": 1200.0
+        },
+        {
+          "file_name": "cm_shake_vb_dn",
+          "cam_ignore_hitstop": true,
+          "cam_ignore_slow": false,
+          "wait_until_end": false,
+          "sequence": 0,
+          "duration": 0.0,
+          "delayMs": 1400.0
+        },
+        {
+          "file_name": "cm_shake_wk_dn",
+          "cam_ignore_hitstop": true,
+          "cam_ignore_slow": false,
+          "wait_until_end": false,
+          "sequence": 0,
+          "duration": 0.0,
+          "delayMs": 3000.0
+        },
+        {
+          "file_name": "cm_shake_vb_dn",
+          "cam_ignore_hitstop": true,
+          "cam_ignore_slow": false,
+          "wait_until_end": false,
+          "sequence": 0,
+          "duration": 0.0,
+          "delayMs": 3200.0
+        }
+      ],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "strong_defense_play": {
+      "animation": [
+        {
+          "animationName": "strong_defense_play",
+          "delayMs": 0.0,
+          "durationMs": 1100.0,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [],
+      "hits": [
+        {
+          "name": "action",
+          "motion_delay": 0.0,
+          "play_action": true,
+          "effect": null,
+          "wait_until_end": false,
+          "sequence": 0,
+          "duration": 0.0,
+          "delayMs": 0.0
+        }
+      ],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "10,-25"
+    },
+    "strong_defense_ready": {
+      "animation": [
+        {
+          "animationName": "strong_defense_ready",
+          "delayMs": 0.0,
+          "durationMs": 466.69998,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [],
+      "hits": [],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "u1_buff_play": {
+      "animation": [
+        {
+          "animationName": "u1_buff_play",
+          "delayMs": 0.0,
+          "durationMs": 1100.0,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [
+        {
+          "fileName": "meirin_unique_buff_paly_target_botglow",
+          "sceneGroup": "u1_buff",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/u1_buff/meirin_unique_buff_paly_target_botglow.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "OUR_CENTER",
+          "boneType": "POSITION",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 0.6,
+          "inheritScale": false,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "meirin_unique_buff_paly_target2",
+          "sceneGroup": "u1_buff",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/u1_buff/meirin_unique_buff_paly_target2.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "OUR_CENTER",
+          "boneType": "ATTACH",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 0.6,
+          "inheritScale": false,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 1000,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "meirin_unique_buff_paly_self",
+          "sceneGroup": "u1_buff",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/u1_buff/meirin_unique_buff_paly_self.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "SELF",
+          "boneType": "ATTACH",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 0.6,
+          "inheritScale": true,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "meirin_unique_buff_paly_target2_b",
+          "sceneGroup": "u1_buff",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/u1_buff/meirin_unique_buff_paly_target2_b.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "OUR_CENTER",
+          "boneType": "ATTACH",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 0.6,
+          "inheritScale": false,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": -1000,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "hits": [
+        {
+          "name": "action",
+          "motion_delay": 66.0,
+          "play_action": true,
+          "effect": null,
+          "wait_until_end": false,
+          "sequence": 0,
+          "duration": 0.0,
+          "delayMs": 0.0
+        }
+      ],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "u1_buff_ready": {
+      "animation": [
+        {
+          "animationName": "u1_buff_ready",
+          "delayMs": 0.0,
+          "durationMs": 466.69998,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [
+        {
+          "fileName": "meirin_unique_buff_ready",
+          "sceneGroup": "u1_buff",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/u1_buff/meirin_unique_buff_ready.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "SELF",
+          "boneType": "ATTACH",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 0.6,
+          "inheritScale": true,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 50,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "hits": [],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "u2_attack_end": {
+      "animation": [
+        {
+          "animationName": "u2_attack_end",
+          "delayMs": 0.0,
+          "durationMs": 400.0,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [],
+      "hits": [],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "u2_attack_play": {
+      "animation": [
+        {
+          "animationName": "u2_attack_play",
+          "delayMs": 0.0,
+          "durationMs": 666.7,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [
+        {
+          "fileName": "",
+          "sceneGroup": "",
+          "scenePath": "",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "SCREEN",
+          "boneType": "POSITION",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 1.0,
+          "inheritScale": false,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 9999,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "meirin_unique_strong_attack_play_root",
+          "sceneGroup": "u2_attack",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/u2_attack/meirin_unique_strong_attack_play_root.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "TARGET",
+          "boneType": "POSITION",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,-30",
+          "scale": 0.6,
+          "inheritScale": false,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 31,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "",
+          "sceneGroup": "",
+          "scenePath": "",
+          "delayMs": 99.0,
+          "durationMs": -1.0,
+          "type": "FOR_CENTER",
+          "boneType": "POSITION",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 1.3,
+          "inheritScale": false,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": -100,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "meirin_unique_strong_attack_play_botglow",
+          "sceneGroup": "u2_attack",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/u2_attack/meirin_unique_strong_attack_play_botglow.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "SELF",
+          "boneType": "ATTACH",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 0.6,
+          "inheritScale": true,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "meirin_attack_play_target",
+          "sceneGroup": "common",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/common/meirin_attack_play_target.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "TARGET",
+          "boneType": "POSITION",
+          "bone": "target",
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 0.8,
+          "inheritScale": false,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 29,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "meirin_attack_play_target_botglow",
+          "sceneGroup": "common",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/common/meirin_attack_play_target_botglow.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "TARGET",
+          "boneType": "POSITION",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 0.6,
+          "inheritScale": false,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "meirin_unique_strong_attack_play_self",
+          "sceneGroup": "u2_attack",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/u2_attack/meirin_unique_strong_attack_play_self.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "SELF",
+          "boneType": "ATTACH",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 0.6,
+          "inheritScale": true,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "meirin_uinique_strong_attack_play_selfglow",
+          "sceneGroup": "u2_attack",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/u2_attack/meirin_uinique_strong_attack_play_selfglow.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "TARGET",
+          "boneType": "POSITION",
+          "bone": "target",
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 0.6,
+          "inheritScale": false,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 125,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "hits": [
+        {
+          "name": "action",
+          "motion_delay": 66.0,
+          "play_action": true,
+          "effect": [],
+          "wait_until_end": false,
+          "sequence": 0,
+          "duration": 0.0,
+          "delayMs": 66.0
+        }
+      ],
+      "shakes": [
+        {
+          "file_name": "cm_shake_vb_lt",
+          "cam_ignore_hitstop": true,
+          "cam_ignore_slow": false,
+          "wait_until_end": false,
+          "sequence": 0,
+          "duration": 0.0,
+          "delayMs": 66.0
+        },
+        {
+          "file_name": "cm_shake_vb_dn",
+          "cam_ignore_hitstop": true,
+          "cam_ignore_slow": false,
+          "wait_until_end": false,
+          "sequence": 0,
+          "duration": 0.0,
+          "delayMs": 66.0
+        }
+      ],
+      "stops": [
+        {
+          "type": "STOP_SUBJECTS",
+          "strong_type": "STRONG",
+          "duration": 160.0,
+          "wait_until_end": false,
+          "sequence": 0,
+          "delayMs": 100.0
+        }
+      ],
+      "moves": [],
+      "closeCombat": true,
+      "closeCombatOffset": "-156,-35",
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "u2_attack_ready": {
+      "animation": [
+        {
+          "animationName": "u2_attack_ready",
+          "delayMs": 0.0,
+          "durationMs": 400.0,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [],
+      "hits": [],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "u3_buff_play": {
+      "animation": [
+        {
+          "animationName": "u3_buff_play",
+          "delayMs": 0.0,
+          "durationMs": 1000.0,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [
+        {
+          "fileName": "meirin_1027_u3_play",
+          "sceneGroup": "u3_buff",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/u3_buff/meirin_1027_u3_play.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "SELF",
+          "boneType": "ATTACH",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 1.0,
+          "inheritScale": true,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": false
+        },
+        {
+          "fileName": "meirin_1027_u3_play_c",
+          "sceneGroup": "u3_buff",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/u3_buff/meirin_1027_u3_play_c.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "SELF",
+          "boneType": "ATTACH",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 1.0,
+          "inheritScale": true,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": false
+        },
+        {
+          "fileName": "meirin_1027_u3_play_gr",
+          "sceneGroup": "u3_buff",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/u3_buff/meirin_1027_u3_play_gr.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "SELF",
+          "boneType": "ATTACH",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 1.0,
+          "inheritScale": true,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": false
+        },
+        {
+          "fileName": "meirin_1027_u3_in_eff",
+          "sceneGroup": "u3_buff",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/u3_buff/meirin_1027_u3_in_eff.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "SELF",
+          "boneType": "ATTACH",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 1.0,
+          "inheritScale": true,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": false
+        }
+      ],
+      "hits": [
+        {
+          "name": "action",
+          "motion_delay": 0.0,
+          "play_action": true,
+          "effect": null,
+          "wait_until_end": false,
+          "sequence": 0,
+          "duration": 0.0,
+          "delayMs": 416.0
+        }
+      ],
+      "shakes": [
+        {
+          "file_name": "cm_shake_vb_up",
+          "cam_ignore_hitstop": true,
+          "cam_ignore_slow": false,
+          "wait_until_end": false,
+          "sequence": 0,
+          "duration": 0.0,
+          "delayMs": 416.0
+        }
+      ],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "u3_buff_ready": {
+      "animation": [
+        {
+          "animationName": "u3_buff_ready",
+          "delayMs": 0.0,
+          "durationMs": 466.69998,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [],
+      "hits": [],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "u4_buff_play": {
+      "animation": [
+        {
+          "animationName": "u4_buff_play",
+          "delayMs": 0.0,
+          "durationMs": 1000.0,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [
+        {
+          "fileName": "meirin_1027_u4_play",
+          "sceneGroup": "u4_buff",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/u4_buff/meirin_1027_u4_play.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "SELF",
+          "boneType": "ATTACH",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 1.0,
+          "inheritScale": true,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": false
+        },
+        {
+          "fileName": "meirin_1027_u4_play_c",
+          "sceneGroup": "u4_buff",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/u4_buff/meirin_1027_u4_play_c.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "SELF",
+          "boneType": "ATTACH",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 1.0,
+          "inheritScale": true,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": false
+        },
+        {
+          "fileName": "meirin_1027_u4_play_gr",
+          "sceneGroup": "u4_buff",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/u4_buff/meirin_1027_u4_play_gr.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "SELF",
+          "boneType": "ATTACH",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 1.0,
+          "inheritScale": true,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": false
+        }
+      ],
+      "hits": [
+        {
+          "name": "action",
+          "motion_delay": 0.0,
+          "play_action": true,
+          "effect": null,
+          "wait_until_end": false,
+          "sequence": 0,
+          "duration": 0.0,
+          "delayMs": 216.0
+        }
+      ],
+      "shakes": [
+        {
+          "file_name": "cm_shake_vb_up",
+          "cam_ignore_hitstop": true,
+          "cam_ignore_slow": false,
+          "wait_until_end": false,
+          "sequence": 0,
+          "duration": 0.0,
+          "delayMs": 216.0
+        }
+      ],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "u4_buff_ready": {
+      "animation": [
+        {
+          "animationName": "u4_buff_ready",
+          "delayMs": 0.0,
+          "durationMs": 466.69998,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [
+        {
+          "fileName": "meirin_1027_u4_ready",
+          "sceneGroup": "u4_buff",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/u4_buff/meirin_1027_u4_ready.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "SELF",
+          "boneType": "ATTACH",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 1.0,
+          "inheritScale": true,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": false
+        },
+        {
+          "fileName": "meirin_1027_u4_ready_c",
+          "sceneGroup": "u4_buff",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/u4_buff/meirin_1027_u4_ready_c.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "SELF",
+          "boneType": "ATTACH",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 1.0,
+          "inheritScale": true,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": false
+        },
+        {
+          "fileName": "meirin_1027_u4_ready_gr",
+          "sceneGroup": "u4_buff",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/u4_buff/meirin_1027_u4_ready_gr.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "SELF",
+          "boneType": "ATTACH",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 1.0,
+          "inheritScale": true,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": false
+        }
+      ],
+      "hits": [],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "ug_attack": {
+      "animation": [
+        {
+          "animationName": "ug_attack_1",
+          "delayMs": 0.0,
+          "durationMs": 333.3,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "animationName": "ug_attack_2",
+          "delayMs": 0.0,
+          "durationMs": 133.3,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "animationName": "ug_attack_3",
+          "delayMs": 100.0,
+          "durationMs": 2233.3,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "animationName": "ug_attack_4",
+          "delayMs": 0.0,
+          "durationMs": 600.0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "animationName": "b_idle_to_idle",
+          "delayMs": 0.0,
+          "durationMs": 466.69998,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [
+        {
+          "fileName": "meirin_1027_skill_2_impact",
+          "sceneGroup": "ug_attack",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/ug_attack/meirin_1027_skill_2_impact.tscn",
+          "delayMs": 1900.0,
+          "durationMs": -1.0,
+          "type": "SELF",
+          "boneType": "POSITION",
+          "bone": "",
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 3.0,
+          "inheritScale": true,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "meirin_1027_skill_2_play",
+          "sceneGroup": "ug_attack",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/ug_attack/meirin_1027_skill_2_play.tscn",
+          "delayMs": 1300.0,
+          "durationMs": -1.0,
+          "type": "SELF",
+          "boneType": "ATTACH",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 1.65,
+          "inheritScale": true,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "meirin_1027_skill_2_ready",
+          "sceneGroup": "ug_attack",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/ug_attack/meirin_1027_skill_2_ready.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "SELF",
+          "boneType": "POSITION",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 1.65,
+          "inheritScale": true,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "meirin_1027_skill_2_burst",
+          "sceneGroup": "ug_attack",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/ug_attack/meirin_1027_skill_2_burst.tscn",
+          "delayMs": 2500.0,
+          "durationMs": -1.0,
+          "type": "TARGET",
+          "boneType": "POSITION",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "50,-30",
+          "scale": 1.9,
+          "inheritScale": false,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 100,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "meirin_1027_skill_2_impact2",
+          "sceneGroup": "ug_attack",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/ug_attack/meirin_1027_skill_2_impact2.tscn",
+          "delayMs": 2500.0,
+          "durationMs": -1.0,
+          "type": "SELF",
+          "boneType": "POSITION",
+          "bone": "",
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 1.0,
+          "inheritScale": true,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "meirin_1027_skill_2_wing",
+          "sceneGroup": "ug_attack",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/ug_attack/meirin_1027_skill_2_wing.tscn",
+          "delayMs": 600.0,
+          "durationMs": -1.0,
+          "type": "SELF",
+          "boneType": "ATTACH",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 1.0,
+          "inheritScale": true,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "meirin_1027_skill_2_screen",
+          "sceneGroup": "ug_attack",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/ug_attack/meirin_1027_skill_2_screen.tscn",
+          "delayMs": 1883.0,
+          "durationMs": -1.0,
+          "type": "SCREEN",
+          "boneType": "CAMERA",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 1.0,
+          "inheritScale": false,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "",
+          "sceneGroup": "",
+          "scenePath": "",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "SCREEN",
+          "boneType": "POSITION",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 1.0,
+          "inheritScale": false,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 9999,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "meirin_1027_unique_technical_attack_play_target",
+          "sceneGroup": "ug_attack",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/ug_attack/meirin_1027_unique_technical_attack_play_target.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "TARGET",
+          "boneType": "POSITION",
+          "bone": "target",
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 0.5,
+          "inheritScale": false,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "meirin_1027_unique_technical_attack_play_botglow",
+          "sceneGroup": "ug_attack",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/ug_attack/meirin_1027_unique_technical_attack_play_botglow.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "TARGET",
+          "boneType": "POSITION",
+          "bone": "",
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 0.4,
+          "inheritScale": false,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "",
+          "sceneGroup": "",
+          "scenePath": "",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "TARGET",
+          "boneType": "POSITION",
+          "bone": "root",
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "20,0",
+          "scale": 1.0,
+          "inheritScale": false,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": -100,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "meirin_attack_play_target",
+          "sceneGroup": "common",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/common/meirin_attack_play_target.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "TARGET",
+          "boneType": "POSITION",
+          "bone": "target",
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 0.6,
+          "inheritScale": false,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 40,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "meirin_1027_ug_attack_cutin_eff",
+          "sceneGroup": "ug_attack",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/ug_attack/meirin_1027_ug_attack_cutin_eff.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "SCREEN",
+          "boneType": "ATTACH",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 1.0,
+          "inheritScale": false,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "meirin_1027_ug_attack_end_f",
+          "sceneGroup": "ug_attack",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/ug_attack/meirin_1027_ug_attack_end_f.tscn",
+          "delayMs": 2950.0,
+          "durationMs": -1.0,
+          "type": "SELF",
+          "boneType": "POSITION",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 1.0,
+          "inheritScale": false,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 1,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "meirin_1027_ug_attack_end_b",
+          "sceneGroup": "ug_attack",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/ug_attack/meirin_1027_ug_attack_end_b.tscn",
+          "delayMs": 2950.0,
+          "durationMs": -1.0,
+          "type": "SELF",
+          "boneType": "POSITION",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 1.0,
+          "inheritScale": false,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "hits": [
+        {
+          "name": "action",
+          "motion_delay": 0.0,
+          "play_action": true,
+          "effect": [],
+          "wait_until_end": false,
+          "sequence": 0,
+          "duration": 0.0,
+          "delayMs": 2200.0
+        }
+      ],
+      "shakes": [
+        {
+          "file_name": "cm_shake_vb_up",
+          "cam_ignore_hitstop": true,
+          "cam_ignore_slow": false,
+          "wait_until_end": false,
+          "sequence": 0,
+          "duration": 0.0,
+          "delayMs": 50.0
+        },
+        {
+          "file_name": "cm_shake_vb_up",
+          "cam_ignore_hitstop": true,
+          "cam_ignore_slow": false,
+          "wait_until_end": false,
+          "sequence": 0,
+          "duration": 0.0,
+          "delayMs": 200.0
+        },
+        {
+          "file_name": "cm_shake_wk_lt",
+          "cam_ignore_hitstop": true,
+          "cam_ignore_slow": false,
+          "wait_until_end": false,
+          "sequence": 0,
+          "duration": 0.0,
+          "delayMs": 2100.0
+        },
+        {
+          "file_name": "cm_shake_vb_up",
+          "cam_ignore_hitstop": true,
+          "cam_ignore_slow": false,
+          "wait_until_end": false,
+          "sequence": 1,
+          "duration": 0.0,
+          "delayMs": 0.0
+        }
+      ],
+      "stops": [
+        {
+          "type": "STOP_SUBJECTS",
+          "strong_type": "STRONG",
+          "duration": 160.0,
+          "wait_until_end": false,
+          "sequence": 0,
+          "delayMs": 132.0
+        }
+      ],
+      "moves": [
+        {
+          "duration": 0.0,
+          "our_target_type": "SELF",
+          "for_target_type": "NONE",
+          "from_bone": null,
+          "slot": null,
+          "dest_type": "NONE",
+          "dest_slot": null,
+          "bone": "",
+          "effect_id": null,
+          "effect_spine": null,
+          "effect_bone": null,
+          "offset_xy": "0,0",
+          "curve": "0,0,1,1",
+          "scale": 1.0,
+          "scale_curve": "0,0,1,1",
+          "rotation": 0.0,
+          "rotation_curve": "0,0,1,1",
+          "formation_scale": true,
+          "sequence": 0,
+          "wait_until_end": true,
+          "delayMs": 200.0
+        },
+        {
+          "duration": 0.0,
+          "our_target_type": "SELF",
+          "for_target_type": "NONE",
+          "from_bone": null,
+          "slot": null,
+          "dest_type": "TARGET",
+          "dest_slot": null,
+          "bone": "target",
+          "effect_id": null,
+          "effect_spine": null,
+          "effect_bone": null,
+          "offset_xy": "0,0",
+          "curve": "0,0,1,1",
+          "scale": 1.0,
+          "scale_curve": "0,0,1,1",
+          "rotation": 0.0,
+          "rotation_curve": "0,0,1,1",
+          "formation_scale": true,
+          "sequence": 0,
+          "wait_until_end": true,
+          "delayMs": 2116.0
+        },
+        {
+          "duration": 20.0,
+          "our_target_type": "NONE",
+          "for_target_type": "TARGET",
+          "from_bone": null,
+          "slot": null,
+          "dest_type": "NONE",
+          "dest_slot": null,
+          "bone": "",
+          "effect_id": null,
+          "effect_spine": null,
+          "effect_bone": null,
+          "offset_xy": "0,0",
+          "curve": "0,0,1,1",
+          "scale": 1.0,
+          "scale_curve": "0,0,1,1",
+          "rotation": 0.0,
+          "rotation_curve": "0,0,1,1",
+          "formation_scale": true,
+          "sequence": 0,
+          "wait_until_end": true,
+          "delayMs": 1950.0
+        }
+      ],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "ug_attack_1": {
+      "animation": [
+        {
+          "animationName": "ug_attack_1",
+          "delayMs": 0.0,
+          "durationMs": 333.3,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [
+        {
+          "fileName": "",
+          "sceneGroup": "",
+          "scenePath": "",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "FOR_CENTER",
+          "boneType": "POSITION",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 1.0,
+          "inheritScale": false,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": -100,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "meirin_1027_unique_technical_attack_play_target",
+          "sceneGroup": "ug_attack",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/ug_attack/meirin_1027_unique_technical_attack_play_target.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "TARGET",
+          "boneType": "POSITION",
+          "bone": "target",
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 0.5,
+          "inheritScale": false,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "meirin_1027_unique_technical_attack_play_botglow",
+          "sceneGroup": "ug_attack",
+          "scenePath": "res://MeiLinMod/scenes/vfx/generated/ug_attack/meirin_1027_unique_technical_attack_play_botglow.tscn",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "TARGET",
+          "boneType": "POSITION",
+          "bone": "",
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 0.4,
+          "inheritScale": false,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "",
+          "sceneGroup": "",
+          "scenePath": "",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "SCREEN",
+          "boneType": "POSITION",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 1.0,
+          "inheritScale": false,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 9999,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "hits": [
+        {
+          "name": "action",
+          "motion_delay": 0.0,
+          "play_action": true,
+          "effect": [],
+          "wait_until_end": false,
+          "sequence": 0,
+          "duration": 0.0,
+          "delayMs": 0.0
+        }
+      ],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "ug_attack_2": {
+      "animation": [
+        {
+          "animationName": "ug_attack_2",
+          "delayMs": 0.0,
+          "durationMs": 133.3,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [],
+      "hits": [],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "ug_attack_3": {
+      "animation": [
+        {
+          "animationName": "ug_attack_3",
+          "delayMs": 0.0,
+          "durationMs": 2233.3,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [],
+      "hits": [],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "ug_attack_4": {
+      "animation": [
+        {
+          "animationName": "ug_attack_4",
+          "delayMs": 0.0,
+          "durationMs": 600.0,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [],
+      "hits": [],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "ux_buff": {
+      "animation": [
+        {
+          "animationName": "ux_buff",
+          "delayMs": 0.0,
+          "durationMs": 3800.0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "animationName": "b_idle_to_idle",
+          "delayMs": 0.0,
+          "durationMs": 466.69998,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [
+        {
+          "fileName": "meirin_1027_skill_x_eff_screen",
+          "sceneGroup": "skill_x",
+          "scenePath": "",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "SCREEN",
+          "boneType": "CAMERA",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 1.0,
+          "inheritScale": false,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 9999,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        },
+        {
+          "fileName": "meirin_1027_skill_x_eff_1",
+          "sceneGroup": "skill_x",
+          "scenePath": "",
+          "delayMs": 0.0,
+          "durationMs": -1.0,
+          "type": "SELF",
+          "boneType": "ATTACH",
+          "bone": null,
+          "offset": [
+            0,
+            0
+          ],
+          "offsetXY": "0,0",
+          "scale": 1.0,
+          "inheritScale": true,
+          "formationScale": false,
+          "ignoreSlotScale": false,
+          "rotation": 0.0,
+          "zOrder": 0,
+          "globalZ": 0,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "hits": [
+        {
+          "name": "action",
+          "motion_delay": 0.0,
+          "play_action": true,
+          "effect": null,
+          "wait_until_end": false,
+          "sequence": 0,
+          "duration": 0.0,
+          "delayMs": 2700.0
+        }
+      ],
+      "shakes": [
+        {
+          "file_name": "cm_shake_wk_dn",
+          "cam_ignore_hitstop": true,
+          "cam_ignore_slow": false,
+          "wait_until_end": false,
+          "sequence": 0,
+          "duration": 0.0,
+          "delayMs": 2667.0
+        },
+        {
+          "file_name": "cm_shake_vb_dn",
+          "cam_ignore_hitstop": true,
+          "cam_ignore_slow": false,
+          "wait_until_end": false,
+          "sequence": 0,
+          "duration": 0.0,
+          "delayMs": 2867.0
+        },
+        {
+          "file_name": "cm_shake_wk_dn",
+          "cam_ignore_hitstop": true,
+          "cam_ignore_slow": false,
+          "wait_until_end": false,
+          "sequence": 0,
+          "duration": 0.0,
+          "delayMs": 667.0
+        },
+        {
+          "file_name": "cm_shake_vb_lt",
+          "cam_ignore_hitstop": true,
+          "cam_ignore_slow": false,
+          "wait_until_end": false,
+          "sequence": 0,
+          "duration": 0.0,
+          "delayMs": 867.0
+        },
+        {
+          "file_name": "cm_shake_vb_dn",
+          "cam_ignore_hitstop": true,
+          "cam_ignore_slow": false,
+          "wait_until_end": false,
+          "sequence": 0,
+          "duration": 0.0,
+          "delayMs": 1367.0
+        },
+        {
+          "file_name": "cm_shake_vb_dn",
+          "cam_ignore_hitstop": true,
+          "cam_ignore_slow": false,
+          "wait_until_end": false,
+          "sequence": 0,
+          "duration": 0.0,
+          "delayMs": 167.0
+        }
+      ],
+      "stops": [],
+      "moves": [
+        {
+          "duration": 0.0,
+          "our_target_type": "SELF",
+          "for_target_type": "NONE",
+          "from_bone": null,
+          "slot": null,
+          "dest_type": "NONE",
+          "dest_slot": null,
+          "bone": "",
+          "effect_id": null,
+          "effect_spine": null,
+          "effect_bone": null,
+          "offset_xy": "0,0",
+          "curve": "0,0,1,1",
+          "scale": 1.0,
+          "scale_curve": "0,0,1,1",
+          "rotation": 0.0,
+          "rotation_curve": "0,0,1,1",
+          "sequence": 0,
+          "wait_until_end": true,
+          "delayMs": 0.0
+        },
+        {
+          "duration": 0.0,
+          "our_target_type": "SELF",
+          "for_target_type": "NONE",
+          "from_bone": null,
+          "slot": null,
+          "dest_type": "NONE",
+          "dest_slot": null,
+          "bone": "",
+          "effect_id": null,
+          "effect_spine": null,
+          "effect_bone": null,
+          "offset_xy": "0,0",
+          "curve": "0,0,1,1",
+          "scale": 1.0,
+          "scale_curve": "0,0,1,1",
+          "rotation": 0.0,
+          "rotation_curve": "0,0,1,1",
+          "sequence": 0,
+          "wait_until_end": true,
+          "delayMs": 2700.0
+        }
+      ],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "groggy": {
+      "animation": [
+        {
+          "animationName": "groggy",
+          "delayMs": 0.0,
+          "durationMs": 166.70001,
+          "loop": true,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [],
+      "hits": [],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "death": {
+      "animation": [
+        {
+          "animationName": "death",
+          "delayMs": 0.0,
+          "durationMs": 166.70001,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [],
+      "hits": [],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "move": {
+      "animation": [
+        {
+          "animationName": "move",
+          "delayMs": 0.0,
+          "durationMs": 1066.7,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [],
+      "hits": [],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "stop": {
+      "animation": [
+        {
+          "animationName": "stop",
+          "delayMs": 0.0,
+          "durationMs": 2666.7,
+          "loop": true,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [],
+      "hits": [],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "camping": {
+      "animation": [
+        {
+          "animationName": "camping",
+          "delayMs": 0.0,
+          "durationMs": 4000.0,
+          "loop": true,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [],
+      "hits": [],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "camping_off": {
+      "animation": [
+        {
+          "animationName": "camping_off",
+          "delayMs": 0.0,
+          "durationMs": 4000.0,
+          "loop": true,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [],
+      "hits": [],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "victory_ready": {
+      "animation": [
+        {
+          "animationName": "victory_ready",
+          "delayMs": 0.0,
+          "durationMs": 933.30005,
+          "loop": false,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [],
+      "hits": [],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    },
+    "victory": {
+      "animation": [
+        {
+          "animationName": "victory",
+          "delayMs": 0.0,
+          "durationMs": 2666.7,
+          "loop": true,
+          "waitUntilEnd": true
+        }
+      ],
+      "effects": [],
+      "hits": [],
+      "shakes": [],
+      "stops": [],
+      "moves": [],
+      "closeCombat": false,
+      "closeCombatOffset": null,
+      "sparkDelayMs": 67.0,
+      "sparkOffset": "0,0"
+    }
+  },
+  "missingEffectScenes": [
+    "meirin_1027_skill_x_eff_1",
+    "meirin_1027_skill_x_eff_screen"
+  ]
+}

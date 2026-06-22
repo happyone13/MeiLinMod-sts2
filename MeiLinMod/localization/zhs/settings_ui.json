@@ -2,5 +2,7 @@
   "MEILINMOD.mod_title": "梅铃 Mod",
   "MEILINMOD-CARD_VISUALS.title": "卡牌显示",
   "MEILINMOD-USE_CHAOS_CARD_DYNAMIC_PORTRAITS.title": "启用卡厄斯卡牌样式",
-  "MEILINMOD-USE_CHAOS_CARD_DYNAMIC_PORTRAITS.hover.desc": "默认开启。开启后，符合条件的卡牌会使用卡厄斯边框与动态 Spine 卡图；关闭时使用普通版本。"
+  "MEILINMOD-USE_CHAOS_CARD_DYNAMIC_PORTRAITS.hover.desc": "默认开启。开启后，符合条件的卡牌会使用卡厄斯边框与动态 Spine 卡图；关闭时使用普通版本。",
+  "MEILINMOD-USE_BATTLE_READY_OVERLAY.title": "启用背身立绘",
+  "MEILINMOD-USE_COMBAT_EFFECTS.title": "启用战斗特效"
 }

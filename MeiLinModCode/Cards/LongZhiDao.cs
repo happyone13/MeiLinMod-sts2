@@ -25,8 +25,6 @@ public class LongZhiDao() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncommon
         if (targetPlayer == null || combatState == null)
             return;
 
-        await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-
         var card = combatState.CreateCard<AttackDefenseUnity>(targetPlayer);
         if (card == null)
             return;
