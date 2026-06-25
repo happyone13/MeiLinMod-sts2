@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.Nodes.Combat;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MeiLinMod.MeiLinModCode.Config;
 using FileAccess = Godot.FileAccess;
+using MegaCrit.Sts2.Core.Bindings.MegaSpine;
 
 namespace MeiLinMod.MeiLinModCode.Vfx;
 
@@ -148,6 +149,8 @@ public static class MeiLinCommandVfxCoordinator
 
         if (!hitFired && onHit != null)
             await onHit();
+
+        ReturnCharacterToIdle(caster);
     }
 
     public static async Task PlayCommandSetUntilFirstHitAsync(
@@ -195,6 +198,8 @@ public static class MeiLinCommandVfxCoordinator
 
         if (!hitFired && onHit != null)
             await onHit();
+
+        ReturnCharacterToIdle(caster);
     }
 
     public static async Task PlayCommandSequenceUntilFirstHitAsync(
@@ -503,13 +508,44 @@ public static class MeiLinCommandVfxCoordinator
                     state.AddAnimation(endAnimation, 0f, loop: false);
 
                 if (IsAttackAnimation(animationName))
-                    state.AddAnimation("idle", 0f, loop: true);
+                    QueueBattleIdleToIdle(state);
             }
         }
         catch (Exception ex)
         {
             MainFile.Logger.Info($"[MeiLinVfx] Character segment animation failed. anim={animationName}, ex={ex.GetType().Name}: {ex.Message}");
         }
+    }
+
+    private static void ReturnCharacterToIdle(Creature? caster)
+    {
+        if (caster == null)
+            return;
+
+        try
+        {
+            var room = NCombatRoom.Instance;
+            var creatureNode = room?.GetCreatureNode(caster);
+            if (creatureNode == null || !GodotObject.IsInstanceValid(creatureNode))
+                return;
+
+            var state = creatureNode.SpineAnimation.GetAnimationState();
+            if (state == null)
+                return;
+
+            state.SetAnimation("b_idle_to_idle", loop: false);
+            state.AddAnimation("idle", 0f, loop: true);
+        }
+        catch (Exception ex)
+        {
+            MainFile.Logger.Info($"[MeiLinVfx] Return idle failed. ex={ex.GetType().Name}: {ex.Message}");
+        }
+    }
+
+    private static void QueueBattleIdleToIdle(MegaAnimationState state)
+    {
+        state.AddAnimation("b_idle_to_idle", 0f, loop: false);
+        state.AddAnimation("idle", 0f, loop: true);
     }
 
     private static bool IsGroundAnchoredEffect(MeiLinCommandVfxEffect effect)

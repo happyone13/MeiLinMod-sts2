@@ -8,7 +8,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 namespace MeiLinMod.MeiLinModCode.Cards;
 
-[Pool(typeof(MeiLinModCardPool))]
+[Pool(typeof(NoneCardPool))]
 public class LongXi() : MeiLinModCard(2, CardType.Power, CardRarity.Rare, TargetType.Self)
 {
     public override string PortraitPath => IdPortraitPath;
@@ -25,6 +25,5 @@ public class LongXi() : MeiLinModCard(2, CardType.Power, CardRarity.Rare, Target
         EnergyCost.UpgradeBy(-1);
     }
 }
-
 
 

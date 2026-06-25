@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Reflection;
 using Godot;
@@ -30,7 +31,9 @@ public static class CardCustomAncientFramePatch
     private const string FrameSparkNodeName = "MeiLinChaosFrameSpark";
     private const string CategoryIconNodeName = "MeiLinChaosCategoryIcon";
     private const string CategoryTextNodeName = "MeiLinChaosCategoryText";
+    private const string CostLineNodeName = "MeiLinChaosCostLine";
     private const string CostTextNodeName = "MeiLinChaosCostText";
+    private const string CostOverlayRefreshNodeName = "MeiLinChaosCostOverlayRefresh";
     private const string UpgradeIconNodeName = "MeiLinChaosUpgradeIcon";
     private const string DescriptionMaskNodeName = "MeiLinChaosDescriptionMask";
     private static readonly NodeLayout TitleRibbonLayout = new(-146.0f, -214.0f, 292.0f, 82.0f);
@@ -257,6 +260,7 @@ public static class CardCustomAncientFramePatch
                GetOverlayNode(cardNode, FrameSparkNodeName) != null ||
                GetOverlayNode(cardNode, CategoryIconNodeName) != null ||
                GetOverlayNode(cardNode, CategoryTextNodeName) != null ||
+               GetOverlayNode(cardNode, CostLineNodeName) != null ||
                GetOverlayNode(cardNode, CostTextNodeName) != null ||
                GetOverlayNode(cardNode, UpgradeIconNodeName) != null ||
                GetOverlayNode(cardNode, DescriptionMaskNodeName) != null;
@@ -302,41 +306,28 @@ public static class CardCustomAncientFramePatch
 
         ApplyTemplateLayout(banner, "TitleRibbon", TitleRibbonLayout);
         ApplyTemplateLayout(titleLabel, "CardTitle", CardTitleLayout);
-        ApplyTemplateLayout(energyIcon, "CostLine", CostLineLayout);
-        ApplyTemplateLayout(energyLabel, "CostText", CostTextLayout);
         ApplyTemplateLayout(descriptionLabel, "DescriptionText", DescriptionTextLayout);
         ApplyTemplateLayout(typeLabel, "CategoryText", CategoryTextLayout);
         EnsureControlVisible(banner);
         EnsureControlVisible(titleLabel);
-        EnsureControlVisible(energyIcon);
         EnsureControlVisible(descriptionLabel);
 
         ApplyTextureRect(banner, GetRarityTitlePath(cardModel.Rarity), material: null, show: true);
-        ApplyTextureRect(energyIcon, $"{ChaosEffectsBasePath}energy_line_default.png", material: null, show: true);
-        string energyText = GetControlText(energyLabel);
-        if (energyLabel != null)
-            energyLabel.Hide();
-
-        EnsureTemplateOverlay(cardNode, CostTextNodeName, "CostText", () => CreateLabelOverlay(CostTextLayout), configure: control =>
-        {
-            ApplyTemplateLayout(control, "CostText", CostTextLayout);
-            SetOverlayText(control, energyText, !string.IsNullOrWhiteSpace(energyText), energyLabel);
-            BringToFront(control);
-        });
+        ConfigureCostOverlay(cardNode, cardModel, energyIcon, energyLabel);
 
         if (Get<Control>(AncientBannerField, cardNode) is { } ancientBanner)
             ancientBanner.Hide();
 
         if (typePlaque != null)
             typePlaque.Visible = false;
-        string typeText = GetControlText(typeLabel);
+        string typeText = ResolveTypeText(cardModel, typeLabel);
         if (typeLabel != null)
             typeLabel.Hide();
 
         EnsureTemplateOverlay(cardNode, CategoryTextNodeName, "CategoryText", () => CreateLabelOverlay(CategoryTextLayout), configure: control =>
         {
             ApplyTemplateLayout(control, "CategoryText", CategoryTextLayout);
-            SetOverlayText(control, typeText, !string.IsNullOrWhiteSpace(typeText), typeLabel);
+            SetOverlayText(control, typeText, !string.IsNullOrWhiteSpace(typeText));
             BringToFront(control);
         });
 
@@ -376,7 +367,7 @@ public static class CardCustomAncientFramePatch
         EnsureTemplateOverlay(cardNode, CategoryIconNodeName, "CategoryIcon", () => CreateTextureOverlay(CategoryIconLayout), configure: control =>
         {
             ApplyTemplateLayout(control, "CategoryIcon", CategoryIconLayout);
-            SetOverlayVisibility(control, !string.IsNullOrWhiteSpace(typeText), typeLabel);
+            SetOverlayVisibility(control, !string.IsNullOrWhiteSpace(typeText));
             EnsureDrawBefore(control, typeLabel);
             if (control is TextureRect textureRect)
                 ApplyTextureRect(textureRect, GetCategoryIconPath(cardModel.Type), material: null, show: true);
@@ -391,6 +382,36 @@ public static class CardCustomAncientFramePatch
         });
 
         BringCostOverlayToFront(cardNode);
+        EnsureCostOverlayRefresh(cardNode);
+    }
+
+    private static void ConfigureCostOverlay(
+        NCard cardNode,
+        CardModel cardModel,
+        TextureRect? energyIcon,
+        Control? energyLabel)
+    {
+        EnsureTemplateOverlay(cardNode, CostLineNodeName, "CostLine", () => CreateTextureOverlay(CostLineLayout), configure: control =>
+        {
+            ApplyTemplateLayout(control, "CostLine", CostLineLayout);
+            if (control is TextureRect textureRect)
+                ApplyTextureRect(textureRect, $"{ChaosEffectsBasePath}energy_line_default.png", material: null, show: true);
+            BringToFront(control);
+        });
+
+        string energyText = ResolveCostText(cardModel, energyLabel);
+        EnsureTemplateOverlay(cardNode, CostTextNodeName, "CostText", () => CreateLabelOverlay(CostTextLayout), configure: control =>
+        {
+            ApplyTemplateLayout(control, "CostText", CostTextLayout);
+            SetOverlayText(control, energyText, !string.IsNullOrWhiteSpace(energyText));
+            BringToFront(control);
+        });
+
+        if (energyIcon != null)
+            energyIcon.Hide();
+
+        if (energyLabel != null)
+            energyLabel.Hide();
     }
 
     private static void RemoveChaosEffects(NCard? cardNode, bool restoreOriginalState)
@@ -404,7 +425,9 @@ public static class CardCustomAncientFramePatch
         RemoveNode(cardNode, FrameSparkNodeName);
         RemoveNode(cardNode, CategoryIconNodeName);
         RemoveNode(cardNode, CategoryTextNodeName);
+        RemoveNode(cardNode, CostLineNodeName);
         RemoveNode(cardNode, CostTextNodeName);
+        RemoveNode(cardNode, CostOverlayRefreshNodeName);
         RemoveNode(cardNode, UpgradeIconNodeName);
         RemoveNode(cardNode, DescriptionMaskNodeName);
         if (restoreOriginalState)
@@ -718,8 +741,7 @@ public static class CardCustomAncientFramePatch
 
     private static void BringCostOverlayToFront(NCard cardNode)
     {
-        BringToFront(Get<TextureRect>(EnergyIconField, cardNode));
-        BringToFront(Get<Control>(EnergyLabelField, cardNode));
+        BringToFront(GetOverlayNode(cardNode, CostLineNodeName));
         BringToFront(GetOverlayNode(cardNode, CostTextNodeName));
     }
 
@@ -754,6 +776,42 @@ public static class CardCustomAncientFramePatch
         };
     }
 
+    private static string ResolveCostText(CardModel cardModel, Control? energyLabel)
+    {
+        string labelText = GetControlText(energyLabel);
+        if (!string.IsNullOrWhiteSpace(labelText))
+            return labelText;
+
+        try
+        {
+            decimal cost = cardModel.EnergyCost.GetWithModifiers(CostModifiers.All);
+            return cost < 0 ? "X" : ((int)cost).ToString(CultureInfo.InvariantCulture);
+        }
+        catch (Exception ex)
+        {
+            MainFile.Logger.Warn($"[MeiLinCardFrame] Failed to resolve cost text for {cardModel.Id}: {ex}");
+            return string.Empty;
+        }
+    }
+
+    private static string ResolveTypeText(CardModel cardModel, Control? typeLabel)
+    {
+        string labelText = GetControlText(typeLabel);
+        if (!string.IsNullOrWhiteSpace(labelText))
+            return labelText;
+
+        return cardModel.Type switch
+        {
+            CardType.Attack => "攻击",
+            CardType.Skill => "技能",
+            CardType.Power => "能力",
+            CardType.Status => "状态",
+            CardType.Curse => "诅咒",
+            CardType.Quest => "任务",
+            _ => cardModel.Type.ToString()
+        };
+    }
+
     private static void SetOverlayText(Control control, string text, bool sourceVisible, Control? source = null)
     {
         SetOverlayVisibility(control, sourceVisible, source);
@@ -762,6 +820,8 @@ public static class CardCustomAncientFramePatch
             label.Text = text;
 
         control.Visible = visible;
+        if (visible)
+            EnsureReadableModulate(control);
     }
 
     private static Control CreateDescriptionMask(NodeLayout layout)
@@ -809,17 +869,36 @@ public static class CardCustomAncientFramePatch
     {
         control.Visible = sourceVisible;
         if (source == null)
+        {
+            if (sourceVisible)
+                EnsureReadableModulate(control);
             return;
+        }
 
         control.ZIndex = source.ZIndex;
         control.Modulate = source.Modulate;
         control.SelfModulate = source.SelfModulate;
+        if (sourceVisible)
+            EnsureReadableModulate(control);
     }
 
     private static void EnsureControlVisible(Control? control)
     {
         if (control != null)
             control.Visible = true;
+    }
+
+    private static void EnsureReadableModulate(Control control)
+    {
+        if (control.Modulate.A <= 0.01f)
+            control.Modulate = new Color(control.Modulate.R, control.Modulate.G, control.Modulate.B, 1.0f);
+
+        if (control.SelfModulate.A <= 0.01f)
+            control.SelfModulate = new Color(
+                control.SelfModulate.R,
+                control.SelfModulate.G,
+                control.SelfModulate.B,
+                1.0f);
     }
 
     private static string GetCategoryIconPath(CardType type)
@@ -887,6 +966,34 @@ public static class CardCustomAncientFramePatch
             return;
 
         Apply(cardNode);
+    }
+
+    private static void EnsureCostOverlayRefresh(NCard cardNode)
+    {
+        if (!IsEnlargedCard(cardNode) ||
+            cardNode.GetNodeOrNull<Node>(CostOverlayRefreshNodeName) != null)
+        {
+            return;
+        }
+
+        var refresh = new MeiLinCardCostOverlayRefresh
+        {
+            Name = CostOverlayRefreshNodeName,
+            CardNode = cardNode
+        };
+        cardNode.AddChild(refresh);
+    }
+
+    private static bool IsEnlargedCard(NCard cardNode)
+    {
+        try
+        {
+            return ((Control)cardNode).GetGlobalTransform().Scale.Y > 1.1f;
+        }
+        catch
+        {
+            return false;
+        }
     }
 
     private static T? LoadResource<T>(string? path) where T : Resource
@@ -969,6 +1076,26 @@ public static class CardCustomAncientFramePatch
         public bool? RichTextScrollActive { get; init; }
         public bool? RichTextFitContent { get; init; }
         public TextServer.AutowrapMode? RichTextAutowrapMode { get; init; }
+    }
+}
+
+public partial class MeiLinCardCostOverlayRefresh : Node
+{
+    public NCard? CardNode { get; init; }
+    private int _remainingFrames = 8;
+
+    public override void _Process(double delta)
+    {
+        if (CardNode == null ||
+            !GodotObject.IsInstanceValid(CardNode) ||
+            !CardNode.IsInsideTree() ||
+            _remainingFrames-- <= 0)
+        {
+            QueueFree();
+            return;
+        }
+
+        CardCustomAncientFramePatch.ApplyDeferredIfValid(CardNode);
     }
 }
 

@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
 namespace MeiLinMod.MeiLinModCode.Cards;
 
@@ -14,6 +15,7 @@ namespace MeiLinMod.MeiLinModCode.Cards;
 public class HuoLongXinZang() : MeiLinModCard(0, CardType.Skill, CardRarity.Rare, TargetType.Self)
 {
     protected override bool IsPlayable => XiangzuCombatState.HasQi(Owner.Creature);
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new EnergyVar(1)];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => IsUpgraded
         ? [CardKeyword.Retain]
@@ -34,7 +36,7 @@ public class HuoLongXinZang() : MeiLinModCard(0, CardType.Skill, CardRarity.Rare
         if (!await XiangzuCombatState.TryConsumeQi(Owner.Creature, 1, Owner.Creature, this))
             return;
 
-        await PlayerCmd.GainEnergy(1m, Owner);
+        await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, Owner);
     }
 
     protected override PileType GetResultPileTypeForCardPlay()

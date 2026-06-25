@@ -97,6 +97,12 @@ public static class MeiLinBattleReadyOverlayPatches
             if (MeiLinTarget.IsMineTargetCard(card))
             {
                 MeiLinBattleReadyOverlay.NotifyUiFocused(card!, focused: false);
+                if (Input.IsMouseButtonPressed(MouseButton.Left))
+                {
+                    MeiLinCharacterHoverAnimation.NotifyClicked(card!);
+                    return;
+                }
+
                 MeiLinCharacterHoverAnimation.NotifyFocused(card!, focused: false);
             }
         }
@@ -118,38 +124,8 @@ public static class MeiLinBattleReadyOverlayPatches
             if (MeiLinTarget.IsMineTargetCard(card))
             {
                 MeiLinBattleReadyOverlay.NotifyHovered(card!, hovered: true);
-                MeiLinCharacterHoverAnimation.NotifySelected(card!);
+                MeiLinCharacterHoverAnimation.NotifyClicked(card!);
             }
-        }
-        catch
-        {
-        }
-    }
-
-    [HarmonyPatch(typeof(NMouseCardPlay), "Start")]
-    [HarmonyPostfix]
-    public static void AfterMouseCardPlayStart(NMouseCardPlay __instance)
-    {
-        try
-        {
-            CardModel? card = __instance.Holder?.CardModel;
-            if (MeiLinTarget.IsMineTargetCard(card) && card!.CanPlay())
-                MeiLinCharacterHoverAnimation.NotifySelected(card);
-        }
-        catch
-        {
-        }
-    }
-
-    [HarmonyPatch(typeof(NControllerCardPlay), "Start")]
-    [HarmonyPostfix]
-    public static void AfterControllerCardPlayStart(NControllerCardPlay __instance)
-    {
-        try
-        {
-            CardModel? card = __instance.Holder?.CardModel;
-            if (MeiLinTarget.IsMineTargetCard(card) && card!.CanPlay())
-                MeiLinCharacterHoverAnimation.NotifySelected(card);
         }
         catch
         {

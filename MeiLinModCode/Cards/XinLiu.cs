@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using BaseLib.Utils;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
@@ -5,12 +6,15 @@ using MeiLinMod.MeiLinModCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
 namespace MeiLinMod.MeiLinModCode.Cards;
 
 [Pool(typeof(MeiLinModCardPool))]
 public class XinLiu() : MeiLinModCard(1, CardType.Power, CardRarity.Rare, TargetType.Self)
 {
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new EnergyVar(1)];
+
     public override string PortraitPath => IdPortraitPath;
     public override string CustomPortraitPath => IdBigPortraitPath;
 
@@ -27,5 +31,3 @@ public class XinLiu() : MeiLinModCard(1, CardType.Power, CardRarity.Rare, Target
     {
     }
 }
-
-

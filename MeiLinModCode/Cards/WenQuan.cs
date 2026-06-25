@@ -32,9 +32,7 @@ public class WenQuan() : MeiLinModCard(0, CardType.Skill, CardRarity.Rare, Targe
 
             for (var i = 0; i < toExhaust.Count; i++)
             {
-                CardModel? generated = Owner.RunState.Rng.CombatCardSelection.NextBool()
-                    ? BasicStrikeDefendHelper.CreateBasicStrikeForPlayer(Owner, CombatState)
-                    : BasicStrikeDefendHelper.CreateBasicDefendForPlayer(Owner, CombatState);
+                CardModel? generated = BasicStrikeDefendHelper.CreateBasicStrikeForPlayer(Owner, CombatState);
                 if (generated == null)
                     continue;
                 if (IsUpgraded)

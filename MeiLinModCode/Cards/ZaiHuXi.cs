@@ -15,22 +15,27 @@ namespace MeiLinMod.MeiLinModCode.Cards;
 [Pool(typeof(MeiLinModCardPool))]
 public class ZaiHuXi() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {
+    private const string ProgressKey = "Progress";
     private const string VigorKey = "Vigor";
     private const string BurstDrawKey = "BurstDraw";
+    private const string EmberKey = "Ember";
 
     protected override bool ShouldGlowGoldInternal => AwakeningHelper.CanAwakenNow(this);
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new CardsVar(1),
+        new DynamicVar(ProgressKey, 2m),
         new DynamicVar(VigorKey, 3m),
-        new DynamicVar(BurstDrawKey, 2m)
+        new DynamicVar(BurstDrawKey, 2m),
+        new DynamicVar(EmberKey, 2m)
     ];
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         MeiLinHoverTipFactory.Awakening,
         HoverTipFactory.FromPower<VigorPower>(),
         MeiLinHoverTipFactory.Qi,
-        MeiLinHoverTipFactory.QiConsume
+        MeiLinHoverTipFactory.QiGauge,
+        MeiLinHoverTipFactory.QiConsume,
+        MeiLinHoverTipFactory.Ember
     ];
 
     public override string PortraitPath => IdPortraitPath;
@@ -38,7 +43,7 @@ public class ZaiHuXi() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncommon, T
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner);
+        await QiCounterPower.AddProgress(Owner.Creature, DynamicVars[ProgressKey].IntValue, Owner.Creature, this);
         await PowerCmd.Apply<VigorPower>(new BlockingPlayerChoiceContext(), Owner.Creature, DynamicVars[VigorKey].BaseValue, Owner.Creature, this);
 
         if (!AwakeningHelper.IsAwakened(cardPlay))
@@ -48,11 +53,19 @@ public class ZaiHuXi() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncommon, T
             return;
 
         await CardPileCmd.Draw(choiceContext, DynamicVars[BurstDrawKey].BaseValue, Owner);
+
+        var combatState = CombatState;
+        if (combatState == null)
+            return;
+
+        foreach (var enemy in combatState.HittableEnemies)
+            await PowerCmd.Apply<EmberPower>(new BlockingPlayerChoiceContext(), enemy, DynamicVars[EmberKey].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
+        DynamicVars[ProgressKey].UpgradeValueBy(1m);
         DynamicVars[VigorKey].UpgradeValueBy(2m);
-        DynamicVars[BurstDrawKey].UpgradeValueBy(1m);
+        DynamicVars[EmberKey].UpgradeValueBy(1m);
     }
 }

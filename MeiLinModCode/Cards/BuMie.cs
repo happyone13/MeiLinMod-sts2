@@ -8,7 +8,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 namespace MeiLinMod.MeiLinModCode.Cards;
 
-[Pool(typeof(MeiLinModCardPool))]
+[Pool(typeof(NoneCardPool))]
 public class BuMie() : MeiLinModCard(2, CardType.Power, CardRarity.Rare, TargetType.Self)
 {
     public override string PortraitPath => IdPortraitPath;

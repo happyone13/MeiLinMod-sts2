@@ -20,8 +20,8 @@ public class HuiGuiJiBenGong() : MeiLinModCard(1, CardType.Power, CardRarity.Rar
     {
         await PlayPowerCastAnim();
 
-        var generatedCards = new List<CardModel>(10);
-        for (int i = 0; i < 5; i++)
+        var generatedCards = new List<CardModel>(8);
+        for (int i = 0; i < 4; i++)
         {
             var strike = BasicStrikeDefendHelper.CreateBasicStrikeForPlayer(Owner, CombatState);
             var defend = BasicStrikeDefendHelper.CreateBasicDefendForPlayer(Owner, CombatState);

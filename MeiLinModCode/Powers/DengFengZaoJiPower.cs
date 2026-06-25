@@ -9,7 +9,6 @@ namespace MeiLinMod.MeiLinModCode.Powers;
 public class DengFengZaoJiPower : MeiLinModPower
 {
     private decimal _strikeBonus;
-    private decimal _defendBonus;
 
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
@@ -21,13 +20,8 @@ public class DengFengZaoJiPower : MeiLinModPower
 
         if (cardPlay.Card.Tags.Contains(CardTag.Strike))
         {
-            _strikeBonus += 1m;
-            BuffAllStrikeCards(1m);
-        }
-        else if (Amount >= 2m && cardPlay.Card.Tags.Contains(CardTag.Defend))
-        {
-            _defendBonus += 1m;
-            BuffAllDefendCards(1m);
+            _strikeBonus += Amount;
+            BuffAllStrikeCards(Amount);
         }
 
         return Task.CompletedTask;
@@ -41,11 +35,6 @@ public class DengFengZaoJiPower : MeiLinModPower
         if (_strikeBonus > 0m && card.Tags.Contains(CardTag.Strike))
         {
             ApplyStrikeBonus(card, _strikeBonus);
-        }
-
-        if (_defendBonus > 0m && card.Tags.Contains(CardTag.Defend))
-        {
-            ApplyDefendBonus(card, _defendBonus);
         }
 
         return Task.CompletedTask;
@@ -63,31 +52,11 @@ public class DengFengZaoJiPower : MeiLinModPower
         }
     }
 
-    private void BuffAllDefendCards(decimal bonus)
-    {
-        var player = Owner.Player;
-        if (player?.PlayerCombatState == null)
-            return;
-
-        foreach (var card in player.PlayerCombatState.AllCards.Where(c => c.Tags.Contains(CardTag.Defend)))
-        {
-            ApplyDefendBonus(card, bonus);
-        }
-    }
-
     private static void ApplyStrikeBonus(CardModel card, decimal bonus)
     {
         if (!card.DynamicVars.ContainsKey("Damage"))
             return;
 
         card.DynamicVars.Damage.BaseValue += bonus;
-    }
-
-    private static void ApplyDefendBonus(CardModel card, decimal bonus)
-    {
-        if (!card.DynamicVars.ContainsKey("Block"))
-            return;
-
-        card.DynamicVars.Block.BaseValue += bonus;
     }
 }

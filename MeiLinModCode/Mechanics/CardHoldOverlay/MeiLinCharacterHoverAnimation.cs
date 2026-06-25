@@ -10,14 +10,17 @@ namespace MeiLinMod.MeiLinModCode.Mechanics.CardHoldOverlay;
 
 public static class MeiLinCharacterHoverAnimation
 {
+    private const double CardPlayFocusSuppressSeconds = 2.5;
     private static bool _isFocused;
     private static CardModel? _focusedCard;
-    private static bool _isSelected;
-    private static CardModel? _selectedCard;
+    private static DateTime _suppressFocusUntilUtc = DateTime.MinValue;
 
     public static void NotifyFocused(CardModel card, bool focused)
     {
         if (!IsValidCard(card))
+            return;
+
+        if (IsFocusSuppressed())
             return;
 
         if (focused)
@@ -31,13 +34,7 @@ public static class MeiLinCharacterHoverAnimation
 
             _isFocused = true;
             _focusedCard = card;
-            if (IsCurrentAnimation(creatureNode, "b_idle") ||
-                IsCurrentAnimation(creatureNode, "idle_to_b_idle"))
-            {
-                return;
-            }
-
-            PlaySequence(creatureNode, "idle_to_b_idle", "b_idle");
+            EnterBattleIdle(creatureNode);
             return;
         }
 
@@ -47,37 +44,7 @@ public static class MeiLinCharacterHoverAnimation
         _isFocused = false;
         _focusedCard = null;
 
-        if (_isSelected && _selectedCard == card)
-            return;
-
         ExitBattleIdle(card);
-    }
-
-    public static void NotifySelected(CardModel card)
-    {
-        if (!IsValidCard(card))
-            return;
-
-        if (_isSelected && _selectedCard == card)
-            return;
-
-        var creatureNode = GetCreatureNode(card);
-        if (creatureNode == null || IsPlayingActionAnimation(creatureNode))
-            return;
-
-        _isSelected = true;
-        _selectedCard = card;
-        _isFocused = true;
-        _focusedCard = card;
-
-        if (IsCurrentAnimation(creatureNode, "b_idle") ||
-            IsCurrentAnimation(creatureNode, "idle_to_b_idle"))
-        {
-            PlayLoop(creatureNode, "b_idle");
-            return;
-        }
-
-        PlayLoop(creatureNode, "b_idle");
     }
 
     public static void NotifyCanceled(CardModel card)
@@ -85,17 +52,30 @@ public static class MeiLinCharacterHoverAnimation
         if (!IsValidCard(card))
             return;
 
-        bool shouldExit = (_isSelected && _selectedCard == card) ||
-                          (_isFocused && _focusedCard == card);
-        if (!shouldExit)
+        if (!_isFocused || _focusedCard != card)
             return;
 
-        _isSelected = false;
-        _selectedCard = null;
         _isFocused = false;
         _focusedCard = null;
 
         ExitBattleIdle(card);
+    }
+
+    public static void NotifyClicked(CardModel card)
+    {
+        if (!IsValidCard(card))
+            return;
+
+        if (IsFocusSuppressed())
+            return;
+
+        var creatureNode = GetCreatureNode(card);
+        if (creatureNode == null || IsPlayingActionAnimation(creatureNode))
+            return;
+
+        _isFocused = true;
+        _focusedCard = card;
+        PlayLoop(creatureNode, "b_idle");
     }
 
     public static void NotifyCardPlayed(CardModel card)
@@ -103,18 +83,22 @@ public static class MeiLinCharacterHoverAnimation
         if (!IsValidCard(card))
             return;
 
-        _isSelected = false;
-        _selectedCard = null;
         _isFocused = false;
         _focusedCard = null;
+        _suppressFocusUntilUtc = DateTime.UtcNow.AddSeconds(CardPlayFocusSuppressSeconds);
+        ExitBattleIdle(card);
     }
 
     public static void NotifyCombatEnded()
     {
-        _isSelected = false;
-        _selectedCard = null;
         _isFocused = false;
         _focusedCard = null;
+        _suppressFocusUntilUtc = DateTime.MinValue;
+    }
+
+    private static bool IsFocusSuppressed()
+    {
+        return DateTime.UtcNow < _suppressFocusUntilUtc;
     }
 
     private static bool IsValidCard(CardModel? card)
@@ -209,6 +193,17 @@ public static class MeiLinCharacterHoverAnimation
         {
             MainFile.Logger.Info($"[MeiLinCharacterHover] Loop animation failed. loop={loop}, ex={ex.GetType().Name}: {ex.Message}");
         }
+    }
+
+    private static void EnterBattleIdle(NCreature creatureNode)
+    {
+        if (IsCurrentAnimation(creatureNode, "b_idle") ||
+            IsCurrentAnimation(creatureNode, "idle_to_b_idle"))
+        {
+            return;
+        }
+
+        PlaySequence(creatureNode, "idle_to_b_idle", "b_idle");
     }
 
     private static bool HasAnimation(MegaSprite sprite, string animationName)

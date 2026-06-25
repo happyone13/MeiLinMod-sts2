@@ -9,7 +9,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 namespace MeiLinMod.MeiLinModCode.Cards;
 
 [Pool(typeof(MeiLinModCardPool))]
-public class LongZhiDao() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncommon, TargetType.AnyAlly)
+public class LongZhiDao() : MeiLinModCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.AnyAlly)
 {
     public override CardMultiplayerConstraint MultiplayerConstraint => CardMultiplayerConstraint.MultiplayerOnly;
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
@@ -29,13 +29,13 @@ public class LongZhiDao() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncommon
         if (card == null)
             return;
 
-        if (IsUpgraded)
-            CardCmd.Upgrade(card);
+        CardCmd.Upgrade(card);
 
         await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, Owner, CardPilePosition.Top);
     }
 
     protected override void OnUpgrade()
     {
+        EnergyCost.UpgradeBy(-1);
     }
 }

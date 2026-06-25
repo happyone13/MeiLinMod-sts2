@@ -15,7 +15,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace MeiLinMod.MeiLinModCode.Cards;
 
-[Pool(typeof(MeiLinModCardPool))]
+[Pool(typeof(NoneCardPool))]
 public class YinSheChuDong() : MeiLinModCard(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
 {
     protected override bool ShouldGlowGoldInternal => AwakeningHelper.CanAwakenNow(this);
@@ -57,4 +57,3 @@ public class YinSheChuDong() : MeiLinModCard(1, CardType.Attack, CardRarity.Comm
         DynamicVars.Energy.UpgradeValueBy(1m);
     }
 }
-

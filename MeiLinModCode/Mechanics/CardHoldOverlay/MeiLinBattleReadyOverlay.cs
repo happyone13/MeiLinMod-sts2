@@ -37,6 +37,7 @@ public static class MeiLinBattleReadyOverlay
 
     private static bool _outPlaying;
     private static bool _cardUsePlaying;
+    private static readonly Queue<string> CardAnimQueue = new();
 
     private static bool _baseCaptured;
     private static Vector2 _basePos;
@@ -162,16 +163,11 @@ public static class MeiLinBattleReadyOverlay
         if (anim == null)
             return;
 
-        _outPlaying = false;
-        _cardUsePlaying = true;
-        if (!PlaySingle(anim))
-        {
-            _cardUsePlaying = false;
-            if (IsFocused)
-                PlaySequence(AnimIdle, AnimIdle);
-            else
-                StartOut();
-        }
+        if (_outPlaying)
+            _outPlaying = false;
+
+        CardAnimQueue.Enqueue(anim);
+        TryPlayNextQueuedCardAnim();
     }
 
     public static void NotifyCanceled(CardModel card)
@@ -187,7 +183,7 @@ public static class MeiLinBattleReadyOverlay
         _outScheduled = true;
         ulong token = ++_focusToken;
 
-        if (!_cardUsePlaying && !_outPlaying)
+        if (!_cardUsePlaying && CardAnimQueue.Count == 0 && !_outPlaying)
             TaskHelper.RunSafely(DelayedOutIfStillUnfocused(token, CancelOutDelaySeconds));
     }
 
@@ -246,6 +242,7 @@ public static class MeiLinBattleReadyOverlay
             _busy = true;
             _outPlaying = false;
             _cardUsePlaying = false;
+            CardAnimQueue.Clear();
 
             ulong watchToken = ++_watchToken;
             TaskHelper.RunSafely(IdleWatchLoop(instance, watchToken));
@@ -257,6 +254,9 @@ public static class MeiLinBattleReadyOverlay
 
                 if (_cardUsePlaying)
                 {
+                    if (TryPlayNextQueuedCardAnim(currentCompleted: true))
+                        return;
+
                     _cardUsePlaying = false;
                     if (IsFocused)
                         PlaySequence(AnimIdle, AnimIdle);
@@ -360,6 +360,7 @@ public static class MeiLinBattleReadyOverlay
         _busy = false;
         _outPlaying = false;
         _cardUsePlaying = false;
+        CardAnimQueue.Clear();
         _lastFirst = null;
         _lastNextLoop = null;
         _baseCaptured = false;
@@ -396,7 +397,7 @@ public static class MeiLinBattleReadyOverlay
             if (!_busy || _node != instance || !GodotObject.IsInstanceValid(instance) || _sprite == null)
                 return;
 
-            if (_cardUsePlaying || _outPlaying || _outScheduled || IsFocused)
+            if (_cardUsePlaying || CardAnimQueue.Count > 0 || _outPlaying || _outScheduled || IsFocused)
                 continue;
 
             if (!string.Equals(_lastFirst, AnimIdle, StringComparison.Ordinal) || _lastNextLoop != null)
@@ -431,7 +432,7 @@ public static class MeiLinBattleReadyOverlay
 
     private static void StartOut()
     {
-        if (_cardUsePlaying || _outPlaying)
+        if (_cardUsePlaying || CardAnimQueue.Count > 0 || _outPlaying)
             return;
 
         if (!_hasAnimOut)
@@ -452,6 +453,35 @@ public static class MeiLinBattleReadyOverlay
             PlaySequence(AnimIn, AnimIdle);
         else
             PlaySequence(AnimIdle, AnimIdle);
+    }
+
+    private static bool TryPlayNextQueuedCardAnim(bool currentCompleted = false)
+    {
+        if (_cardUsePlaying && !currentCompleted)
+            return true;
+
+        if (CardAnimQueue.Count == 0)
+            return false;
+
+        while (CardAnimQueue.Count > 0)
+        {
+            string anim = CardAnimQueue.Dequeue();
+            _cardUsePlaying = true;
+            _outScheduled = false;
+            _outPlaying = false;
+
+            if (PlaySingle(anim, restartIfSame: true))
+                return true;
+
+            _cardUsePlaying = false;
+        }
+
+        if (IsFocused)
+            PlaySequence(AnimIdle, AnimIdle);
+        else
+            StartOut();
+
+        return false;
     }
 
     private static void PlaySequence(string first, string nextLoop)
@@ -496,7 +526,7 @@ public static class MeiLinBattleReadyOverlay
         }
     }
 
-    private static bool PlaySingle(string anim)
+    private static bool PlaySingle(string anim, bool restartIfSame = false)
     {
         MegaSprite? sprite = _sprite;
         if (sprite == null)
@@ -508,7 +538,7 @@ public static class MeiLinBattleReadyOverlay
             return false;
         }
 
-        if (string.Equals(_lastFirst, anim, StringComparison.Ordinal) && _lastNextLoop == null)
+        if (!restartIfSame && string.Equals(_lastFirst, anim, StringComparison.Ordinal) && _lastNextLoop == null)
             return true;
 
         sprite.GetAnimationState().SetAnimation(anim, loop: false);
