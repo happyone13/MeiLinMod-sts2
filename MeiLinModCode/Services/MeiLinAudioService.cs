@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Godot;
+using MeiLinMod.MeiLinModCode.Mechanics.Settings;
 using MegaCrit.Sts2.Core.Entities.Players;
 
 namespace MeiLinMod.MeiLinModCode.Services;
@@ -101,6 +102,14 @@ public static class MeiLinAudioService
         return TryPlay(PickRandom(YuPool), linearVolume);
     }
 
+    public static bool TryPlayAttackVoice(Player? player = null, float linearVolume = 1f)
+    {
+        if (!IsMeiLinPlayer(player))
+            return false;
+
+        return TryPlay(PickRandom(AttackPool), linearVolume);
+    }
+
     public static bool TryPlayCustomCardClip(string clipKey, Player? player = null, float linearVolume = 1f)
     {
         if (!IsMeiLinPlayer(player))
@@ -134,13 +143,13 @@ public static class MeiLinAudioService
             return false;
 
         var key = sfx.Trim().ToLowerInvariant();
-        if (key.Contains("attack", StringComparison.Ordinal) && _suppressNextAttackSfxCount > 0)
+        if (key == "meilin_attack" && _suppressNextAttackSfxCount > 0)
         {
             _suppressNextAttackSfxCount--;
             return true;
         }
 
-        if (key.Contains("cast", StringComparison.Ordinal) && _suppressNextCastSfxCount > 0)
+        if (key == "meilin_cast" && _suppressNextCastSfxCount > 0)
         {
             _suppressNextCastSfxCount--;
             return true;
@@ -202,7 +211,7 @@ public static class MeiLinAudioService
         {
             Name = $"MeiLinSfx_{++_playerCounter}",
             Stream = stream,
-            VolumeDb = LinearToDb(linearVolume)
+            VolumeDb = LinearToDb(linearVolume * MeiLinSharedSettings.VoiceVolume)
         };
 
         host.AddChild(player);

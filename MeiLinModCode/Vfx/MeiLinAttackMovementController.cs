@@ -14,8 +14,8 @@ public static class MeiLinAttackMovementController
     private const float AttackDistance = 170f;
     private const float MinimumMoveDistance = 8f;
     private const float ReturnPadSeconds = 0.05f;
+    private const float AbandonedSegmentReturnPadSeconds = 0.25f;
     private const float MovementEffectScale = 1.3f;
-    private const int AttackZIndex = 1000;
     private const string FootEffectMarkerName = "MeiLinFootEff";
     private const string MovementEffectFrontScenePath = "res://MeiLinMod/scenes/vfx/generated/ug_attack/meirin_1027_ug_attack_end_f.tscn";
     private const string MovementEffectBackScenePath = "res://MeiLinMod/scenes/vfx/generated/ug_attack/meirin_1027_ug_attack_end_b.tscn";
@@ -29,6 +29,10 @@ public static class MeiLinAttackMovementController
         public bool HasOriginalLayer;
         public int OriginalZIndex;
         public bool OriginalZAsRelative;
+        public Node? OriginalParent;
+        public int OriginalSiblingIndex;
+        public bool ReorderedSibling;
+        public bool ChangedZFallback;
         public int Version;
     }
 
@@ -55,7 +59,11 @@ public static class MeiLinAttackMovementController
 
         var session = Sessions.GetOrCreateValue(caster);
         if (session.Teleported)
+        {
+            session.Version++;
+            StartPositionLock(caster, session.Version, session.AttackGlobalPosition, 0.8f);
             return;
+        }
 
         if (!session.HasOrigin)
         {
@@ -78,7 +86,7 @@ public static class MeiLinAttackMovementController
 
         MainFile.Logger.Info($"[MeiLinMove] Move to target. origin={session.OriginGlobalPosition}, targetFoot={targetFoot}, planned={planned}, distance={AttackDistance:0.#}");
         PlayMovementEffectPair(casterNode, GetCreatureFootAnchor(casterNode), "leave_origin");
-        RaiseAboveEnemies(casterNode, session);
+        RaiseAboveEnemies(casterNode, targetNode, session);
         casterNode.GlobalPosition = planned;
         casterNode.GlobalPosition = planned;
         PlayMovementEffectPair(casterNode, GetCreatureFootAnchor(casterNode), "arrive_target");
@@ -97,29 +105,59 @@ public static class MeiLinAttackMovementController
         if (!isFinalSegment)
         {
             session.Version++;
-            StartPositionLock(caster, session.Version, session.AttackGlobalPosition, duration + 0.35f);
+            var version = session.Version;
+            StartPositionLock(caster, version, session.AttackGlobalPosition, duration + 0.35f);
+            _ = ReturnAfterDelayAsync(
+                caster,
+                version,
+                duration + AbandonedSegmentReturnPadSeconds,
+                interruptedCommandName: commandName);
             return;
         }
 
         session.Version++;
-        _ = ReturnAfterDelayAsync(caster, session.Version, duration + ReturnPadSeconds);
+        _ = ReturnAfterDelayAsync(caster, session.Version, duration + ReturnPadSeconds, force: true);
     }
 
-    private static async Task ReturnAfterDelayAsync(Creature caster, int version, float seconds)
+    public static void ForceReturnSoon(Creature caster, float delaySeconds = 0.05f, string? interruptedCommandName = null)
     {
+        if (!Sessions.TryGetValue(caster, out var session) || !session.Teleported)
+            return;
+
+        session.Version++;
+        _ = ReturnAfterDelayAsync(caster, session.Version, delaySeconds, force: true, interruptedCommandName: interruptedCommandName);
+    }
+
+    private static async Task ReturnAfterDelayAsync(
+        Creature caster,
+        int version,
+        float seconds,
+        bool force = false,
+        string? interruptedCommandName = null)
+    {
+        MovementSession? session = null;
         try
         {
             await Cmd.CustomScaledWait(MathF.Max(0.01f, seconds), MathF.Max(0.01f, seconds));
 
-            if (!Sessions.TryGetValue(caster, out var session) ||
+            if (!Sessions.TryGetValue(caster, out session) ||
                 !session.Teleported ||
-                session.Version != version)
+                (!force && session.Version != version))
             {
                 return;
             }
 
             var room = NCombatRoom.Instance;
-            var casterNode = room?.GetCreatureNode(caster);
+            NCreature? casterNode = null;
+            try
+            {
+                casterNode = room?.GetCreatureNode(caster);
+            }
+            catch
+            {
+                casterNode = null;
+            }
+
             if (casterNode == null || !GodotObject.IsInstanceValid(casterNode))
             {
                 ResetSession(session);
@@ -135,10 +173,15 @@ public static class MeiLinAttackMovementController
             casterNode.GlobalPosition = origin;
             casterNode.GlobalPosition = origin;
             PlayMovementEffectPair(casterNode, GetCreatureFootAnchor(casterNode), "arrive_origin");
+
+            if (!string.IsNullOrWhiteSpace(interruptedCommandName))
+                MeiLinCommandVfxCoordinator.QueueAttackEndToIdle(caster, interruptedCommandName);
         }
         catch (Exception ex)
         {
             MainFile.Logger.Info($"[MeiLinMove] Return failed. ex={ex.GetType().Name}: {ex.Message}");
+            if (session != null)
+                ResetSession(session);
         }
     }
 
@@ -161,7 +204,6 @@ public static class MeiLinAttackMovementController
                 if (casterNode == null || !GodotObject.IsInstanceValid(casterNode))
                     return;
 
-                RaiseAboveEnemies(casterNode, session);
                 casterNode.GlobalPosition = position;
                 var tree = casterNode.GetTree();
                 if (tree == null || !GodotObject.IsInstanceValid(tree))
@@ -190,8 +232,18 @@ public static class MeiLinAttackMovementController
         if (currentRoom == null)
             return false;
 
-        var currentCasterNode = currentRoom.GetCreatureNode(caster);
-        var currentTargetNode = currentRoom.GetCreatureNode(target);
+        NCreature? currentCasterNode;
+        NCreature? currentTargetNode;
+        try
+        {
+            currentCasterNode = currentRoom.GetCreatureNode(caster);
+            currentTargetNode = currentRoom.GetCreatureNode(target);
+        }
+        catch
+        {
+            return false;
+        }
+
         if (currentCasterNode == null ||
             currentTargetNode == null ||
             !GodotObject.IsInstanceValid(currentCasterNode) ||
@@ -320,7 +372,7 @@ public static class MeiLinAttackMovementController
         return null;
     }
 
-    private static void RaiseAboveEnemies(NCreature casterNode, MovementSession session)
+    private static void RaiseAboveEnemies(NCreature casterNode, NCreature targetNode, MovementSession session)
     {
         try
         {
@@ -329,10 +381,29 @@ public static class MeiLinAttackMovementController
                 session.HasOriginalLayer = true;
                 session.OriginalZIndex = casterNode.ZIndex;
                 session.OriginalZAsRelative = casterNode.ZAsRelative;
+                session.OriginalParent = casterNode.GetParent();
+                session.OriginalSiblingIndex = casterNode.GetIndex();
             }
 
-            casterNode.ZAsRelative = false;
-            casterNode.ZIndex = AttackZIndex;
+            var casterParent = casterNode.GetParent();
+            var targetParent = targetNode.GetParent();
+            if (casterParent != null &&
+                targetParent == casterParent &&
+                GodotObject.IsInstanceValid(casterParent))
+            {
+                var desiredIndex = Math.Min(targetNode.GetIndex() + 1, casterParent.GetChildCount() - 1);
+                if (casterNode.GetIndex() != desiredIndex)
+                {
+                    casterParent.MoveChild(casterNode, desiredIndex);
+                    session.ReorderedSibling = true;
+                }
+
+                return;
+            }
+
+            casterNode.ZAsRelative = true;
+            casterNode.ZIndex = Math.Max(casterNode.ZIndex, targetNode.ZIndex + 1);
+            session.ChangedZFallback = true;
         }
         catch
         {
@@ -346,8 +417,20 @@ public static class MeiLinAttackMovementController
 
         try
         {
-            casterNode.ZAsRelative = session.OriginalZAsRelative;
-            casterNode.ZIndex = session.OriginalZIndex;
+            if (session.ReorderedSibling &&
+                session.OriginalParent != null &&
+                GodotObject.IsInstanceValid(session.OriginalParent) &&
+                casterNode.GetParent() == session.OriginalParent)
+            {
+                var restoreIndex = Math.Clamp(session.OriginalSiblingIndex, 0, session.OriginalParent.GetChildCount() - 1);
+                session.OriginalParent.MoveChild(casterNode, restoreIndex);
+            }
+
+            if (session.ChangedZFallback)
+            {
+                casterNode.ZAsRelative = session.OriginalZAsRelative;
+                casterNode.ZIndex = session.OriginalZIndex;
+            }
         }
         catch
         {
@@ -368,6 +451,10 @@ public static class MeiLinAttackMovementController
         session.HasOriginalLayer = false;
         session.OriginalZIndex = 0;
         session.OriginalZAsRelative = true;
+        session.OriginalParent = null;
+        session.OriginalSiblingIndex = 0;
+        session.ReorderedSibling = false;
+        session.ChangedZFallback = false;
         session.Version++;
     }
 }

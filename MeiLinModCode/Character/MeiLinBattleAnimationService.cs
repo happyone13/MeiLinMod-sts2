@@ -11,6 +11,7 @@ public static class MeiLinBattleAnimationService
         public required string Command { get; init; }
         public Creature? Target { get; init; }
         public int RemainingSegments { get; init; }
+        public bool IsFirstSegment { get; init; }
     }
 
     private static readonly object Sync = new();
@@ -20,6 +21,7 @@ public static class MeiLinBattleAnimationService
     private static readonly Queue<string> ActiveAttackCommands = new();
     private static Creature? ActiveAttackCaster;
     private static Creature? ActiveAttackTarget;
+    private static int ActiveAttackTotalSegments;
     private static DateTime ActiveAttackExpiresUtc = DateTime.MinValue;
     private static Creature? LastAttackCaster;
     private static Creature? LastAttackTarget;
@@ -90,6 +92,7 @@ public static class MeiLinBattleAnimationService
                 foreach (var command in BuildAttackCommands(totalHits))
                     ActiveAttackCommands.Enqueue(command);
 
+                ActiveAttackTotalSegments = ActiveAttackCommands.Count;
                 ActiveAttackCaster = PendingAttackCasters.Count > 0 ? PendingAttackCasters.Dequeue() : caster;
                 ActiveAttackTarget = PendingAttackTargets.Count > 0 ? PendingAttackTargets.Dequeue() : LastAttackTarget;
                 LastAttackCaster = ActiveAttackCaster;
@@ -97,6 +100,7 @@ public static class MeiLinBattleAnimationService
             }
 
             ActiveAttackExpiresUtc = now.AddSeconds(10);
+            var remainingBeforeDequeue = ActiveAttackCommands.Count;
             var nextCommand = ActiveAttackCommands.Count > 0 ? ActiveAttackCommands.Dequeue() : "attack_play1";
             var remaining = ActiveAttackCommands.Count;
             if (remaining == 0)
@@ -106,7 +110,8 @@ public static class MeiLinBattleAnimationService
             {
                 Command = nextCommand,
                 Target = ActiveAttackTarget,
-                RemainingSegments = remaining
+                RemainingSegments = remaining,
+                IsFirstSegment = remainingBeforeDequeue == ActiveAttackTotalSegments
             };
         }
     }

@@ -1,6 +1,7 @@
 using HarmonyLib;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Mechanics.CardHoldOverlay;
+using MeiLinMod.MeiLinModCode.Services;
 using MeiLinMod.MeiLinModCode.Vfx;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -38,18 +39,41 @@ public static class MeiLinTriggerAnimPatch
         MeiLinBattleAnimationService.AttackSegment segment,
         float waitTime)
     {
-        await MeiLinAttackMovementController.MoveToTargetIfNeededAsync(caster, segment.Target);
+        using var actionScope = MeiLinAnimationSequenceManager.BeginAction($"attack:{segment.Command}");
+        var completed = false;
+        try
+        {
+            await MeiLinAttackMovementController.MoveToTargetIfNeededAsync(caster, segment.Target);
 
-        await MeiLinCommandVfxCoordinator.PlayCommandSegmentAsync(
-            segment.Command,
-            caster,
-            segment.Target,
-            waitTime,
-            queueEndAnimation: segment.RemainingSegments == 0);
+            if (segment.IsFirstSegment)
+                MeiLinAudioService.TryPlayAttackVoice(caster.Player);
 
-        MeiLinAttackMovementController.ScheduleReturnAfterSegment(
-            caster,
-            segment.Command,
-            isFinalSegment: segment.RemainingSegments == 0);
+            await MeiLinCommandVfxCoordinator.PlayCommandSegmentAsync(
+                segment.Command,
+                caster,
+                segment.Target,
+                waitTime,
+                queueEndAnimation: segment.RemainingSegments == 0);
+
+            completed = true;
+        }
+        catch (Exception ex)
+        {
+            MainFile.Logger.Info($"[MeiLinTriggerAnimPatch] Attack segment failed. command={segment.Command}, ex={ex.GetType().Name}: {ex.Message}");
+        }
+        finally
+        {
+            if (completed)
+            {
+                MeiLinAttackMovementController.ScheduleReturnAfterSegment(
+                    caster,
+                    segment.Command,
+                    isFinalSegment: segment.RemainingSegments == 0);
+            }
+            else
+            {
+                MeiLinAttackMovementController.ForceReturnSoon(caster, interruptedCommandName: segment.Command);
+            }
+        }
     }
 }

@@ -132,6 +132,42 @@ public static class MeiLinBattleReadyOverlayPatches
         }
     }
 
+    [HarmonyPatch(typeof(NMouseCardPlay), "Start")]
+    [HarmonyPostfix]
+    public static void AfterMouseCardPlayStart(NMouseCardPlay __instance)
+    {
+        try
+        {
+            CardModel? card = __instance.Holder?.CardModel;
+            if (!MeiLinTarget.IsMineTargetCard(card) || card!.CanPlay() != true)
+                return;
+
+            MeiLinBattleReadyOverlay.NotifyHovered(card, hovered: true);
+            MeiLinCharacterHoverAnimation.NotifyPlayStarted(card);
+        }
+        catch
+        {
+        }
+    }
+
+    [HarmonyPatch(typeof(NControllerCardPlay), "Start")]
+    [HarmonyPostfix]
+    public static void AfterControllerCardPlayStart(NControllerCardPlay __instance)
+    {
+        try
+        {
+            CardModel? card = __instance.Holder?.CardModel;
+            if (!MeiLinTarget.IsMineTargetCard(card) || card!.CanPlay() != true)
+                return;
+
+            MeiLinBattleReadyOverlay.NotifyUiFocused(card, focused: true);
+            MeiLinCharacterHoverAnimation.NotifyControllerStarted(card);
+        }
+        catch
+        {
+        }
+    }
+
     [HarmonyPatch(typeof(NHandCardHolder), "DoCardHoverEffects")]
     [HarmonyPostfix]
     public static void AfterHandHoverEffects(NHandCardHolder __instance, bool isHovered)

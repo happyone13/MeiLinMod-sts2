@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.Bindings.MegaSpine;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MeiLinMod.MeiLinModCode.Config;
+using MeiLinMod.MeiLinModCode.Mechanics.Settings;
 using MeiLinMod.MeiLinModCode.Patches;
 using MeiLinMod.MeiLinModCode.StanceVfx;
 using MeiLinMod.MeiLinModCode.Vfx;
@@ -26,6 +27,7 @@ public partial class MainFile : Node
     public static void Initialize()
     {
         ScriptManagerBridge.LookupScriptsInAssembly(typeof(MainFile).Assembly);
+        MeiLinSharedSettings.EnsureSettingsLoaded();
         ModConfigRegistry.Register(ModId, new MeiLinModConfig());
         CardSpinePortraitPatch.PreloadDynamicPortraitScenes();
         MeiLinCommandVfxCoordinator.PreloadConfiguredScenes();

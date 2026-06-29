@@ -9,6 +9,7 @@ using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MeiLinMod.MeiLinModCode.Config;
+using MeiLinMod.MeiLinModCode.Mechanics.Settings;
 
 namespace MeiLinMod.MeiLinModCode.Mechanics.CardHoldOverlay;
 
@@ -75,6 +76,13 @@ public static class MeiLinBattleReadyOverlay
         _isUiFocused = false;
         _outScheduled = false;
         Cleanup();
+    }
+
+    public static void ApplyTransformFromSettings()
+    {
+        Node? node = _node;
+        if (node != null && GodotObject.IsInstanceValid(node))
+            ApplyTransform(node);
     }
 
     public static void NotifyHovered(CardModel card, bool hovered)
@@ -345,13 +353,18 @@ public static class MeiLinBattleReadyOverlay
 
     private static Vector2 GetTargetScale()
     {
-        Vector2 scale = new(MeiLinBattleReadyProfile.BattleReadyScale, MeiLinBattleReadyProfile.BattleReadyScale);
+        float sharedScale = MeiLinSharedSettings.BattleReadyScale;
+        Vector2 scale = new(
+            MeiLinBattleReadyProfile.BattleReadyScale * sharedScale,
+            MeiLinBattleReadyProfile.BattleReadyScale * sharedScale);
         return _baseScale * scale;
     }
 
     private static Vector2 GetTargetPosition()
     {
-        Vector2 offset = new(MeiLinBattleReadyProfile.BattleReadyOffsetX, -MeiLinBattleReadyProfile.BattleReadyOffsetY);
+        Vector2 offset = new(
+            MeiLinBattleReadyProfile.BattleReadyOffsetX + MeiLinSharedSettings.BattleReadyOffsetX,
+            -(MeiLinBattleReadyProfile.BattleReadyOffsetY + MeiLinSharedSettings.BattleReadyOffsetY));
         return _basePos + offset;
     }
 
@@ -396,6 +409,14 @@ public static class MeiLinBattleReadyOverlay
 
             if (!_busy || _node != instance || !GodotObject.IsInstanceValid(instance) || _sprite == null)
                 return;
+
+            if (!MeiLinModConfig.UseBattleReadyOverlay)
+            {
+                Cleanup();
+                return;
+            }
+
+            ApplyTransform(instance);
 
             if (_cardUsePlaying || CardAnimQueue.Count > 0 || _outPlaying || _outScheduled || IsFocused)
                 continue;

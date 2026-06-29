@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Nodes.Combat;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MeiLinMod.MeiLinModCode.Config;
+using MeiLinMod.MeiLinModCode.Mechanics.CardHoldOverlay;
 using FileAccess = Godot.FileAccess;
 using MegaCrit.Sts2.Core.Bindings.MegaSpine;
 
@@ -116,6 +117,7 @@ public static class MeiLinCommandVfxCoordinator
         Func<Task>? onHit = null,
         MeiLinCommandVfxPlaybackOptions? options = null)
     {
+        using var actionScope = MeiLinAnimationSequenceManager.BeginAction($"commandSet:{commandSetName}");
         var config = LoadConfig();
         if (config == null || !config.CommandSets.TryGetValue(commandSetName, out var commandSet))
         {
@@ -161,7 +163,7 @@ public static class MeiLinCommandVfxCoordinator
     {
         var hitReached = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
 
-        _ = PlayCommandSetTimelineAsync(
+        var playbackTask = PlayCommandSetTimelineAsync(
             commandSetName,
             caster,
             target,
@@ -171,6 +173,7 @@ public static class MeiLinCommandVfxCoordinator
                 return Task.CompletedTask;
             },
             options);
+        _ = CompleteHitWhenPlaybackStopsAsync(playbackTask, hitReached, $"commandSet={commandSetName}");
 
         await hitReached.Task;
     }
@@ -182,6 +185,7 @@ public static class MeiLinCommandVfxCoordinator
         Func<Task>? onHit = null,
         MeiLinCommandVfxPlaybackOptions? options = null)
     {
+        using var actionScope = MeiLinAnimationSequenceManager.BeginAction("commandSequence");
         var hitFired = false;
 
         async Task HitOnce()
@@ -209,9 +213,10 @@ public static class MeiLinCommandVfxCoordinator
         MeiLinCommandVfxPlaybackOptions? options = null)
     {
         var hitReached = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
+        var commandList = commandNames.ToArray();
 
-        _ = PlayCommandSequenceTimelineAsync(
-            commandNames,
+        var playbackTask = PlayCommandSequenceTimelineAsync(
+            commandList,
             caster,
             target,
             () =>
@@ -220,6 +225,7 @@ public static class MeiLinCommandVfxCoordinator
                 return Task.CompletedTask;
             },
             options);
+        _ = CompleteHitWhenPlaybackStopsAsync(playbackTask, hitReached, $"commands={string.Join(",", commandList.Where(command => !string.IsNullOrWhiteSpace(command)))}");
 
         await hitReached.Task;
     }
@@ -249,6 +255,10 @@ public static class MeiLinCommandVfxCoordinator
             MainFile.Logger.Info($"[MeiLinVfx] Command missing: {commandName}");
             return;
         }
+
+        MeiLinAnimationSequenceManager.MarkActionBusy(
+            $"segment:{commandName}",
+            EstimateCommandDurationSeconds(command) + 0.25f);
 
         var room = NCombatRoom.Instance;
         if (room == null)
@@ -303,6 +313,10 @@ public static class MeiLinCommandVfxCoordinator
             MainFile.Logger.Info($"[MeiLinVfx] Command missing: {commandName}");
             return;
         }
+
+        MeiLinAnimationSequenceManager.MarkActionBusy(
+            $"timeline:{commandName}",
+            EstimateCommandDurationSeconds(command) + 0.25f);
 
         var room = NCombatRoom.Instance;
         if (room == null)
@@ -433,7 +447,15 @@ public static class MeiLinCommandVfxCoordinator
         if (creature == null)
             return null;
 
-        creatureNode = room.GetCreatureNode(creature);
+        try
+        {
+            creatureNode = room.GetCreatureNode(creature);
+        }
+        catch
+        {
+            creatureNode = null;
+        }
+
         if (creatureNode == null || !GodotObject.IsInstanceValid(creatureNode))
             return null;
 
@@ -514,6 +536,26 @@ public static class MeiLinCommandVfxCoordinator
         catch (Exception ex)
         {
             MainFile.Logger.Info($"[MeiLinVfx] Character segment animation failed. anim={animationName}, ex={ex.GetType().Name}: {ex.Message}");
+        }
+    }
+
+    public static void QueueAttackEndToIdle(Creature? caster, string? commandName)
+    {
+        if (caster == null)
+            return;
+
+        try
+        {
+            var room = NCombatRoom.Instance;
+            var creatureNode = room?.GetCreatureNode(caster);
+            if (creatureNode == null || !GodotObject.IsInstanceValid(creatureNode))
+                return;
+
+            MeiLinAnimationSequenceManager.PlayAttackEndToIdle(creatureNode, commandName);
+        }
+        catch (Exception ex)
+        {
+            MainFile.Logger.Info($"[MeiLinVfx] Queue attack end idle failed. command={commandName ?? "<null>"}, ex={ex.GetType().Name}: {ex.Message}");
         }
     }
 
@@ -788,6 +830,25 @@ public static class MeiLinCommandVfxCoordinator
         await onHit();
     }
 
+    private static async Task CompleteHitWhenPlaybackStopsAsync(
+        Task playbackTask,
+        TaskCompletionSource hitReached,
+        string context)
+    {
+        try
+        {
+            await playbackTask;
+        }
+        catch (Exception ex)
+        {
+            MainFile.Logger.Info($"[MeiLinVfx] Timeline playback failed before hit. {context}, ex={ex.GetType().Name}: {ex.Message}");
+        }
+        finally
+        {
+            hitReached.TrySetResult();
+        }
+    }
+
     private static void LogTimeline(string commandName, MeiLinCommandVfxCommand command)
     {
         foreach (var hit in command.Hits)
@@ -818,8 +879,17 @@ public static class MeiLinCommandVfxCoordinator
         {
         }
 
-        if (GodotObject.IsInstanceValid(node))
+        if (!GodotObject.IsInstanceValid(node))
+            return;
+
+        try
+        {
             action();
+        }
+        catch (Exception ex)
+        {
+            MainFile.Logger.Info($"[MeiLinVfx] Delayed action failed. ex={ex.GetType().Name}: {ex.Message}");
+        }
     }
 
     private static async void AutoFreeAfter(Node node, float seconds)
