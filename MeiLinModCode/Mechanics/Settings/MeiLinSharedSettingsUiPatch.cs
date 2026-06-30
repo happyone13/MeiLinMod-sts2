@@ -13,7 +13,6 @@ using MeiLinMod.MeiLinModCode.Mechanics.CardHoldOverlay;
 
 namespace MeiLinMod.MeiLinModCode.Mechanics.Settings;
 
-[HarmonyPatch(typeof(NSettingsScreen), nameof(NSettingsScreen._Ready))]
 public static class MeiLinSharedSettingsUiPatch
 {
 	private const string ClipperPath = "ScrollContainer/Mask/Clipper";
@@ -68,12 +67,8 @@ public static class MeiLinSharedSettingsUiPatch
 	private const string ResetButtonName = "ChaosModBattleReadyResetButton";
 	private const string ResetLineName = "Line_ChaosModBattleReadyReset";
 	private const string ControlWiredMeta = "XCskin_SettingsWired";
-
-	[HarmonyPostfix]
-	public static void Postfix(NSettingsScreen __instance)
-	{
-		TryInject(__instance, "_Ready");
-	}
+	private const string PanelJustCreatedMeta = "XCskin_SettingsPanelJustCreated";
+	private const string PanelClearedMeta = "XCskin_SettingsPanelCleared";
 
 	public static void TryInject(NSettingsScreen screen, string source)
 	{
@@ -97,6 +92,23 @@ public static class MeiLinSharedSettingsUiPatch
 		{
 			Log.Warn("[MeiLinMod] Settings inject skipped (" + source + "): panel missing VBoxContainer");
 			return;
+		}
+
+		if (panel.HasMeta(PanelJustCreatedMeta))
+		{
+			panel.RemoveMeta(PanelJustCreatedMeta);
+			Callable.From(() => TryInject(screen, source + ":deferred")).CallDeferred();
+			return;
+		}
+
+		if (!panel.HasMeta(PanelClearedMeta))
+		{
+			panel.SetMeta(PanelClearedMeta, true);
+			foreach (Node child in vbox.GetChildren())
+			{
+				vbox.RemoveChild(child);
+				child.QueueFree();
+			}
 		}
 
 		RichTextLabel? templateLabel = screen.GetNodeOrNull<RichTextLabel>(TemplateLabelFullPath);
@@ -356,18 +368,13 @@ public static class MeiLinSharedSettingsUiPatch
 			settingsPanel.Name = ModPanelName;
 			settingsPanel.UniqueNameInOwner = true;
 			settingsPanel.Visible = false;
+			settingsPanel.SetMeta(PanelJustCreatedMeta, true);
 
 			VBoxContainer? vbox = settingsPanel.GetNodeOrNull<VBoxContainer>("VBoxContainer");
 			if (vbox == null)
 			{
 				Log.Warn("[MeiLinMod] Settings inject skipped (" + source + "): duplicated panel missing VBoxContainer");
 				return false;
-			}
-
-			foreach (Node child in vbox.GetChildren())
-			{
-				vbox.RemoveChild(child);
-				child.QueueFree();
 			}
 
 			clipper.AddChild(settingsPanel);
@@ -1145,6 +1152,6 @@ public static class MeiLinSharedSettingsUiOpenPatch
 	[HarmonyPostfix]
 	public static void Postfix(NSettingsScreen __instance)
 	{
-		MeiLinSharedSettingsUiPatch.TryInject(__instance, "OnSubmenuOpened");
+		Callable.From(() => MeiLinSharedSettingsUiPatch.TryInject(__instance, "OnSubmenuOpened:deferred")).CallDeferred();
 	}
 }
