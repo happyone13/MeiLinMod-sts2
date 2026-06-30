@@ -17,6 +17,7 @@ public static class MeiLinBattleReadyOverlay
 {
     private const float OutDelaySeconds = 0.3f;
     private const float CancelOutDelaySeconds = 0.8f;
+    private const float CardUseOutDelaySeconds = 0.2f;
     private const string AnimIn = "b_in";
     private const string AnimIdle = "b_idle";
     private const string AnimOut = "b_out";
@@ -260,18 +261,18 @@ public static class MeiLinBattleReadyOverlay
                 if (_node != instance)
                     return;
 
-                if (_cardUsePlaying)
-                {
-                    if (TryPlayNextQueuedCardAnim(currentCompleted: true))
-                        return;
+                    if (_cardUsePlaying)
+                    {
+                        if (TryPlayNextQueuedCardAnim(currentCompleted: true))
+                            return;
 
-                    _cardUsePlaying = false;
-                    if (IsFocused)
-                        PlaySequence(AnimIdle, AnimIdle);
-                    else
-                        StartOut();
-                    return;
-                }
+                        _cardUsePlaying = false;
+                        if (IsFocused)
+                            PlaySequence(AnimIdle, AnimIdle);
+                        else
+                            ScheduleOutIfStillUnfocused(CardUseOutDelaySeconds);
+                        return;
+                    }
 
                 if (_outPlaying)
                 {
@@ -500,9 +501,16 @@ public static class MeiLinBattleReadyOverlay
         if (IsFocused)
             PlaySequence(AnimIdle, AnimIdle);
         else
-            StartOut();
+            ScheduleOutIfStillUnfocused(CardUseOutDelaySeconds);
 
         return false;
+    }
+
+    private static void ScheduleOutIfStillUnfocused(float delaySeconds)
+    {
+        _outScheduled = true;
+        ulong token = ++_focusToken;
+        TaskHelper.RunSafely(DelayedOutIfStillUnfocused(token, delaySeconds));
     }
 
     private static void PlaySequence(string first, string nextLoop)
