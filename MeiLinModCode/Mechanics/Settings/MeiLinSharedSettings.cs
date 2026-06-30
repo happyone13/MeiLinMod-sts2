@@ -15,7 +15,8 @@ public static class MeiLinSharedSettings
     private static readonly string SharedBattleReadyOffsetYKey = SharedDomainKeyPrefix + "BATTLE_READY_OFFSET_Y";
     private static readonly string SharedBattleReadyOverlayEnabledKey = SharedDomainKeyPrefix + "PORTRAITS_ENABLED";
     private static readonly string SharedCombatEffectsEnabledKey = SharedDomainKeyPrefix + "ACTION_VFX_ENABLED";
-    private static readonly string SharedDynamicCardPortraitsKey = SharedDomainKeyPrefix + "DYNAMIC_CARD_PORTRAITS";
+    private static readonly string SharedDynamicCardPortraitsKey = SharedDomainKeyPrefix + "DYNAMIC_CARD_PORTRAITS_ENABLED";
+    private static readonly string LegacyDynamicCardPortraitsKey = SharedDomainKeyPrefix + "DYNAMIC_CARD_PORTRAITS";
 
     private static int _settingsLoaded;
     private static float _voiceVolume = 0.8f;
@@ -85,11 +86,45 @@ public static class MeiLinSharedSettings
         get
         {
             EnsureSettingsLoaded();
-            if (TryGetYukiDynamicCardPortraits(out bool yukiValue))
-                return yukiValue;
-
-            return GetSharedBool(SharedDynamicCardPortraitsKey, _dynamicCardPortraitsEnabled);
+            return GetSharedBool(SharedDynamicCardPortraitsKey,
+                GetSharedBool(LegacyDynamicCardPortraitsKey, _dynamicCardPortraitsEnabled));
         }
+    }
+
+    public static void SetVoiceVolume(float value, bool persist)
+    {
+        EnsureSettingsLoaded();
+        _voiceVolume = Mathf.Clamp(value, 0f, 1f);
+        SetSharedFloat(SharedVoiceVolumeKey, _voiceVolume);
+        if (persist)
+            Save();
+    }
+
+    public static void SetBattleReadyScale(float value, bool persist)
+    {
+        EnsureSettingsLoaded();
+        _battleReadyScale = Mathf.Clamp(value, 0.5f, 2f);
+        SetSharedFloat(SharedBattleReadyScaleKey, _battleReadyScale);
+        if (persist)
+            Save();
+    }
+
+    public static void SetBattleReadyOffsetX(float value, bool persist)
+    {
+        EnsureSettingsLoaded();
+        _battleReadyOffsetX = Mathf.Clamp(value, -400f, 400f);
+        SetSharedFloat(SharedBattleReadyOffsetXKey, _battleReadyOffsetX);
+        if (persist)
+            Save();
+    }
+
+    public static void SetBattleReadyOffsetY(float value, bool persist)
+    {
+        EnsureSettingsLoaded();
+        _battleReadyOffsetY = Mathf.Clamp(value, -400f, 400f);
+        SetSharedFloat(SharedBattleReadyOffsetYKey, _battleReadyOffsetY);
+        if (persist)
+            Save();
     }
 
     public static void SetBattleReadyOverlayEnabled(bool value, bool persist)
@@ -223,29 +258,6 @@ public static class MeiLinSharedSettings
         }
 
         return fallback;
-    }
-
-    private static bool TryGetYukiDynamicCardPortraits(out bool value)
-    {
-        value = false;
-        try
-        {
-            foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
-            {
-                Type? type = assembly.GetType("YukiMod.YukiModCode.Config.YukiModConfig");
-                PropertyInfo? prop = type?.GetProperty("UseDynamicCardPortraits", BindingFlags.Public | BindingFlags.Static);
-                if (prop?.GetValue(null) is bool boolValue)
-                {
-                    value = boolValue;
-                    return true;
-                }
-            }
-        }
-        catch
-        {
-        }
-
-        return false;
     }
 
     private static float GetSharedFloat(string key, float fallback)
