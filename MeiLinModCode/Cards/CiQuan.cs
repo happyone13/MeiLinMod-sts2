@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using BaseLib.Utils;
+using MeiLinMod.MeiLinModCode.Migration;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
 using MeiLinMod.MeiLinModCode.HoverTips;
@@ -25,7 +25,7 @@ public class CiQuan() : MeiLinModCard(1, CardType.Attack, CardRarity.Common, Tar
         new EnergyVar(1)
     ];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
     [
         EnergyHoverTip,
         MeiLinHoverTipFactory.Awakening
@@ -43,7 +43,7 @@ public class CiQuan() : MeiLinModCard(1, CardType.Attack, CardRarity.Common, Tar
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
 
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);
 

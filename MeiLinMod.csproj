@@ -7,8 +7,8 @@
         <DefaultItemExcludes>packages/**</DefaultItemExcludes>
         <AppOutputBase>$(MSBuildProjectDirectory)\</AppOutputBase>
         <PathMap>$(AppOutputBase)=.\</PathMap>
-        <Sts2TargetVersion Condition="'$(Sts2TargetVersion)' == ''">107</Sts2TargetVersion>
-        <BaseLibVersion Condition="'$(BaseLibVersion)' == ''">3.2.0</BaseLibVersion>
+        <Sts2TargetVersion Condition="'$(Sts2TargetVersion)' == ''">108</Sts2TargetVersion>
+        <RitsuLibVersion Condition="'$(RitsuLibVersion)' == ''">0.4.50</RitsuLibVersion>
     </PropertyGroup>
 
     <!-- OS Detection -->
@@ -32,14 +32,20 @@
         <!-- If on Windows and Slay the Spire 2 is not installed in your default steam library, adjust the following.-->
         <SteamLibraryPath Condition="'$(SteamLibraryPath)' == ''">C:/Program Files (x86)/Steam/steamapps</SteamLibraryPath>
 
-        <!-- 103/107 default to the installed Steam copy. Override via -p:Sts2PathXXX=... or STS2_XXX_PATH when needed. -->
+        <!-- 103/107/108 default to the installed Steam copy. Override via -p:Sts2PathXXX=... or STS2_XXX_PATH when needed. -->
         <Sts2Path103 Condition="'$(Sts2Path103)' == '' and '$(STS2_103_PATH)' != ''">$(STS2_103_PATH)</Sts2Path103>
         <Sts2Path103 Condition="'$(Sts2Path103)' == '' and Exists('$(SteamLibraryPath)/common/Slay the Spire 2')">$(SteamLibraryPath)/common/Slay the Spire 2</Sts2Path103>
         <Sts2Path107 Condition="'$(Sts2Path107)' == '' and '$(STS2_107_PATH)' != ''">$(STS2_107_PATH)</Sts2Path107>
         <Sts2Path107 Condition="'$(Sts2Path107)' == '' and Exists('$(SteamLibraryPath)/common/Slay the Spire 2')">$(SteamLibraryPath)/common/Slay the Spire 2</Sts2Path107>
+        <Sts2Path108 Condition="'$(Sts2Path108)' == '' and '$(STS2_108_PATH)' != ''">$(STS2_108_PATH)</Sts2Path108>
+        <Sts2Path108 Condition="'$(Sts2Path108)' == '' and Exists('$(SteamLibraryPath)/common/Slay the Spire 2')">$(SteamLibraryPath)/common/Slay the Spire 2</Sts2Path108>
         <Sts2Path Condition="'$(Sts2TargetVersion)' == '103'">$(Sts2Path103)</Sts2Path>
         <Sts2Path Condition="'$(Sts2TargetVersion)' == '107'">$(Sts2Path107)</Sts2Path>
-        <ModsPath>$(Sts2Path)/mods/</ModsPath>
+        <Sts2Path Condition="'$(Sts2TargetVersion)' == '108'">$(Sts2Path108)</Sts2Path>
+        <LocalModsDirName Condition="'$(LocalModsDirName)' == '' and Exists('$(Sts2Path)/mods2')">mods2</LocalModsDirName>
+        <LocalModsDirName Condition="'$(LocalModsDirName)' == ''">mods</LocalModsDirName>
+        <ModsPath>$(Sts2Path)/$(LocalModsDirName)/</ModsPath>
+        <LegacyModsPath>$(Sts2Path)/mods/</LegacyModsPath>
         <Sts2DataDir>$(Sts2Path)/data_sts2_windows_x86_64</Sts2DataDir>
     </PropertyGroup>
 
@@ -51,7 +57,10 @@
 
         <!-- The below should not need to be changed. -->
         <Sts2Path>$(SteamLibraryPath)/common/Slay the Spire 2</Sts2Path>
-        <ModsPath>$(Sts2Path)/mods/</ModsPath>
+        <LocalModsDirName Condition="'$(LocalModsDirName)' == '' and Exists('$(Sts2Path)/mods2')">mods2</LocalModsDirName>
+        <LocalModsDirName Condition="'$(LocalModsDirName)' == ''">mods</LocalModsDirName>
+        <ModsPath>$(Sts2Path)/$(LocalModsDirName)/</ModsPath>
+        <LegacyModsPath>$(Sts2Path)/mods/</LegacyModsPath>
         <Sts2DataDir>$(Sts2Path)/data_sts2_linuxbsd_x86_64</Sts2DataDir>
     </PropertyGroup>
 
@@ -72,6 +81,7 @@
         <NoWarn>$(NoWarn);MSB3270</NoWarn>
         <DefineConstants Condition="'$(Sts2TargetVersion)' == '103'">$(DefineConstants);STS2_103</DefineConstants>
         <DefineConstants Condition="'$(Sts2TargetVersion)' == '107'">$(DefineConstants);STS2_107</DefineConstants>
+        <DefineConstants Condition="'$(Sts2TargetVersion)' == '108'">$(DefineConstants);STS2_108</DefineConstants>
     </PropertyGroup>
 
     <ItemGroup Condition="Exists('$(Sts2DataDir)') and '$(Configuration)' == 'Debug'">
@@ -97,81 +107,91 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Alchyr.Sts2.BaseLib" Version="$(BaseLibVersion)" GeneratePathProperty="true" PrivateAssets="All"/>
-        <PackageReference Include="Alchyr.Sts2.ModAnalyzers" Version="*"/>
-        <AdditionalFiles Include="MeiLinMod/localization/**/*.json"/>
+        <PackageReference Include="STS2.RitsuLib" Version="$(RitsuLibVersion)" GeneratePathProperty="true" PrivateAssets="All" />
+        <AdditionalFiles Include="MeiLinMod/localization/**/*.json" />
     </ItemGroup>
 
     <ItemGroup>
-        <Compile Remove="MeiLinMod/**"/>
-        <Compile Remove=".godot/**"/>
-        <Compile Remove="tmp/**"/>
-        <Compile Remove="tools/**"/>
-        <Compile Remove="materials/**"/>
-        <Compile Remove="shaders/**"/>
-        <Compile Remove="images/**"/>
-        <EmbeddedResource Remove="MeiLinMod/**"/>
-        <EmbeddedResource Remove=".godot/**"/>
-        <EmbeddedResource Remove="tmp/**"/>
-        <EmbeddedResource Remove="tools/**"/>
-        <EmbeddedResource Remove="materials/**"/>
-        <EmbeddedResource Remove="shaders/**"/>
-        <EmbeddedResource Remove="images/**"/>
-        <None Remove="tmp/**"/>
+        <Compile Remove="MeiLinMod/**" />
+        <Compile Remove=".godot/**" />
+        <Compile Remove="tmp/**" />
+        <Compile Remove="tests/**" />
+        <Compile Remove="tools/**" />
+        <Compile Remove="materials/**" />
+        <Compile Remove="shaders/**" />
+        <Compile Remove="images/**" />
+        <EmbeddedResource Remove="MeiLinMod/**" />
+        <EmbeddedResource Remove=".godot/**" />
+        <EmbeddedResource Remove="tmp/**" />
+        <EmbeddedResource Remove="tests/**" />
+        <EmbeddedResource Remove="tools/**" />
+        <EmbeddedResource Remove="materials/**" />
+        <EmbeddedResource Remove="shaders/**" />
+        <EmbeddedResource Remove="images/**" />
+        <None Remove="tmp/**" />
+        <None Remove="tests/**" />
+        <None Remove="MeiLinMod/newcard/**" />
     </ItemGroup>
 
     <ItemGroup>
-        <None Include=".gitignore"/>
-        <None Include="MeiLinMod.json"/>
-        <None Include="project.godot"/>
-        <None Include="MeiLinMod/**"/>
+        <None Include=".gitignore" />
+        <None Include="MeiLinMod.json" />
+        <None Include="project.godot" />
+        <None Include="MeiLinMod/**" Exclude="MeiLinMod/newcard/**" />
     </ItemGroup>
 
     <ItemGroup>
       <Content Include=".godot\mono\temp\obj\Debug\MeiLinMod.csproj.Up2Date" />
     </ItemGroup>
 
+    <ItemGroup>
+        <GodotExportIgnoreMarker Include="addons\auto_spine_skel_data\.gdignore" />
+        <GodotExportIgnoreMarker Include="addons\godot_mcp_server\.gdignore" />
+        <GodotExportIgnoreMarker Include="addons\spine_speed_inspector\.gdignore" />
+        <GodotExportIgnoreMarker Include="tools\.gdignore" />
+    </ItemGroup>
+
     <Target Name="CheckDependencyPaths">
-        <Error
-                Text=" Unsupported Sts2TargetVersion '$(Sts2TargetVersion)'. Use 103 or 107."
-                Condition="'$(Sts2TargetVersion)' != '103' and '$(Sts2TargetVersion)' != '107'"/>
-        <Error
-                Text=" Sts2Path103 is not configured. Pass -p:Sts2Path103=&lt;path&gt; or set STS2_103_PATH when building 103."
-                Condition="'$(Sts2TargetVersion)' == '103' and '$(Sts2Path103)' == ''"/>
-        <Error
-                Text=" Sts2Path107 is not configured. Pass -p:Sts2Path107=&lt;path&gt; or set STS2_107_PATH when building 107."
-                Condition="'$(Sts2TargetVersion)' == '107' and '$(Sts2Path107)' == ''"/>
-        <Error
-                Text=" Slay the Spire 2 $(Sts2TargetVersion) data not found at path '$(Sts2DataDir)'"
-                Condition="'$(Sts2DataDir)' == '' or !Exists('$(Sts2DataDir)')"/>
-        <Error
-                Text=" Godot not found at path '$(GodotPath)'"
-                Condition="'$(GodotPath)' == '' or !Exists('$(GodotPath)')"/>
+        <Error Text=" Unsupported Sts2TargetVersion '$(Sts2TargetVersion)'. Use 103, 107, or 108." Condition="'$(Sts2TargetVersion)' != '103' and '$(Sts2TargetVersion)' != '107' and '$(Sts2TargetVersion)' != '108'" />
+        <Error Text=" Sts2Path103 is not configured. Pass -p:Sts2Path103=&lt;path&gt; or set STS2_103_PATH when building 103." Condition="'$(Sts2TargetVersion)' == '103' and '$(Sts2Path103)' == ''" />
+        <Error Text=" Sts2Path107 is not configured. Pass -p:Sts2Path107=&lt;path&gt; or set STS2_107_PATH when building 107." Condition="'$(Sts2TargetVersion)' == '107' and '$(Sts2Path107)' == ''" />
+        <Error Text=" Sts2Path108 is not configured. Pass -p:Sts2Path108=&lt;path&gt; or set STS2_108_PATH when building 108." Condition="'$(Sts2TargetVersion)' == '108' and '$(Sts2Path108)' == ''" />
+        <Error Text=" Slay the Spire 2 $(Sts2TargetVersion) data not found at path '$(Sts2DataDir)'" Condition="'$(Sts2DataDir)' == '' or !Exists('$(Sts2DataDir)')" />
+        <Error Text=" Godot not found at path '$(GodotPath)'" Condition="'$(GodotPath)' == '' or !Exists('$(GodotPath)')" />
     </Target>
 
     <Target Name="CopyToModsFolderOnBuild" AfterTargets="PostBuildEvent">
-        <Message Text="Copying .dll and manifest to mods folder." Importance="high"/>
-        <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ModsPath)$(MSBuildProjectName)/"/>
-        <Copy SourceFiles="MeiLinMod.json" DestinationFolder="$(ModsPath)$(MSBuildProjectName)/"/>
+        <Message Text="Copying .dll and manifest to mods folder." Importance="high" />
+        <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ModsPath)$(MSBuildProjectName)/" />
+        <Copy SourceFiles="MeiLinMod.json" DestinationFolder="$(ModsPath)$(MSBuildProjectName)/" />
+        <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(LegacyModsPath)$(MSBuildProjectName)/" Condition="'$(LegacyModsPath)' != '' and '$(LegacyModsPath)' != '$(ModsPath)'" />
+        <Copy SourceFiles="MeiLinMod.json" DestinationFolder="$(LegacyModsPath)$(MSBuildProjectName)/" Condition="'$(LegacyModsPath)' != '' and '$(LegacyModsPath)' != '$(ModsPath)'" />
     </Target>
 
-    <Target Name="GodotPackOnBuild"
-            AfterTargets="Build"
-            Condition="'$(GodotPath)' != '' and Exists('$(GodotPath)') and '$(IsInnerGodotExport)' != 'true'">
-        <Message Text="Exporting Godot .pck to mods folder on Build" Importance="high"/>
-        <Exec Command="&quot;$(GodotPath)&quot; --headless --export-pack &quot;BasicExport&quot; &quot;$(ModsPath)$(MSBuildProjectName)/$(MSBuildProjectName).pck&quot;"
-              EnvironmentVariables="IsInnerGodotExport=true;MSBUILDDISABLENODEREUSE=1;STS2_103_PATH=$(Sts2Path103);STS2_107_PATH=$(Sts2Path107)"
-              ContinueOnError="WarnAndContinue"/>
+    <Target Name="MirrorGodotPackToLegacyModsFolder" AfterTargets="GodotPackOnBuild;GodotPublish" Condition="'$(LegacyModsPath)' != '' and '$(LegacyModsPath)' != '$(ModsPath)' and Exists('$(ModsPath)$(MSBuildProjectName)/$(MSBuildProjectName).pck')">
+        <Message Text="Mirroring Godot .pck to legacy mods folder for test loaders" Importance="high" />
+        <Copy SourceFiles="$(ModsPath)$(MSBuildProjectName)/$(MSBuildProjectName).pck" DestinationFolder="$(LegacyModsPath)$(MSBuildProjectName)/" />
+    </Target>
+
+    <Target Name="CreateGodotExportIgnoreMarkers" BeforeTargets="GodotPackOnBuild;GodotPublish">
+        <WriteLinesToFile File="%(GodotExportIgnoreMarker.Identity)" Lines="Generated during MSBuild export to keep development-only tools out of the PCK." Overwrite="true" />
+    </Target>
+
+    <Target Name="DeleteGodotExportIgnoreMarkers" AfterTargets="GodotPackOnBuild;GodotPublish">
+        <Delete Files="@(GodotExportIgnoreMarker)" TreatErrorsAsWarnings="true" />
+    </Target>
+
+    <Target Name="GodotPackOnBuild" AfterTargets="Build" Condition="'$(GodotPath)' != '' and Exists('$(GodotPath)') and '$(IsInnerGodotExport)' != 'true'">
+        <Message Text="Exporting Godot .pck to mods folder on Build" Importance="high" />
+        <Exec Command="&quot;$(GodotPath)&quot; --headless --export-pack &quot;BasicExport&quot; &quot;$(ModsPath)$(MSBuildProjectName)/$(MSBuildProjectName).pck&quot;" EnvironmentVariables="IsInnerGodotExport=true;MSBUILDDISABLENODEREUSE=1;STS2_103_PATH=$(Sts2Path103);STS2_107_PATH=$(Sts2Path107);STS2_108_PATH=$(Sts2Path108)" ContinueOnError="WarnAndContinue" />
     </Target>
 
     <Target Name="GodotPublish" AfterTargets="Publish" Condition="'$(GodotPath)' != '' and Exists('$(GodotPath)') and '$(IsInnerGodotExport)' != 'true'">
-        <Message Text="Exporting Godot .pck to mods folder" Importance="high"/>
-        <Exec Command="&quot;$(GodotPath)&quot; --headless --export-pack &quot;BasicExport&quot; &quot;$(ModsPath)$(MSBuildProjectName)/$(MSBuildProjectName).pck&quot;"
-              EnvironmentVariables="IsInnerGodotExport=true;MSBUILDDISABLENODEREUSE=1;STS2_103_PATH=$(Sts2Path103);STS2_107_PATH=$(Sts2Path107)"
-              ContinueOnError="WarnAndContinue"/>
+        <Message Text="Exporting Godot .pck to mods folder" Importance="high" />
+        <Exec Command="&quot;$(GodotPath)&quot; --headless --export-pack &quot;BasicExport&quot; &quot;$(ModsPath)$(MSBuildProjectName)/$(MSBuildProjectName).pck&quot;" EnvironmentVariables="IsInnerGodotExport=true;MSBUILDDISABLENODEREUSE=1;STS2_103_PATH=$(Sts2Path103);STS2_107_PATH=$(Sts2Path107);STS2_108_PATH=$(Sts2Path108)" ContinueOnError="WarnAndContinue" />
     </Target>
 
     <Target Name="GodotPublishSkipped" AfterTargets="Publish" Condition="'$(GodotPath)' == '' or !Exists('$(GodotPath)')">
-        <Message Text="Skipping Godot .pck export because GodotPath is not configured." Importance="high"/>
+        <Message Text="Skipping Godot .pck export because GodotPath is not configured." Importance="high" />
     </Target>
 </Project>

@@ -1,19 +1,26 @@
 using System.Collections.Generic;
 using System.Linq;
-using HarmonyLib;
 using MeiLinCharacter = MeiLinMod.MeiLinModCode.Character.MeiLinMod;
 using MegaCrit.Sts2.Core.Events;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Events;
 using MegaCrit.Sts2.Core.Models.Relics;
+using STS2RitsuLib.Patching.Models;
 
 namespace MeiLinMod.MeiLinModCode.Patches;
 
-[HarmonyPatch(typeof(Orobas), "GenerateInitialOptions")]
-public static class OrobasSeaGlassMeiLinPatch
+public sealed class OrobasSeaGlassMeiLinPatch : IPatchMethod
 {
-    [HarmonyPostfix]
-    public static void GenerateInitialOptionsPostfix(Orobas __instance, ref IReadOnlyList<EventOption> __result)
+    public static string PatchId => "meilin_orobas_sea_glass_character";
+    public static bool IsCritical => false;
+    public static string Description => "Allow Orobas Sea Glass to target MeiLin when MeiLin is unlocked";
+
+    public static ModPatchTarget[] GetTargets() =>
+    [
+        PatchTarget.Method<Orobas>("GenerateInitialOptions")
+    ];
+
+    public static void Postfix(Orobas __instance, ref IReadOnlyList<EventOption> __result)
     {
         var owner = __instance.Owner;
         if (owner == null)

@@ -1,5 +1,5 @@
-using System.Collections.Generic;
-using BaseLib.Utils;
+﻿using System.Collections.Generic;
+using MeiLinMod.MeiLinModCode.Migration;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.HoverTips;
 using MeiLinMod.MeiLinModCode.Powers;
@@ -21,7 +21,7 @@ public class HuoLongXinZang() : MeiLinModCard(0, CardType.Skill, CardRarity.Rare
         ? [CardKeyword.Retain]
         : [];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
     [
         EnergyHoverTip,
         MeiLinHoverTipFactory.Qi,
@@ -39,11 +39,11 @@ public class HuoLongXinZang() : MeiLinModCard(0, CardType.Skill, CardRarity.Rare
         await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, Owner);
     }
 
-    protected override PileType GetResultPileTypeForCardPlay()
+    protected override (PileType, CardPilePosition) GetResultPileTypeAndPositionForCardPlay()
     {
-        var result = base.GetResultPileTypeForCardPlay();
-        if (result == PileType.Discard)
-            return PileType.Hand;
+        var result = base.GetResultPileTypeAndPositionForCardPlay();
+        if (result.Item1 == PileType.Discard)
+            return (PileType.Hand, result.Item2);
 
         return result;
     }

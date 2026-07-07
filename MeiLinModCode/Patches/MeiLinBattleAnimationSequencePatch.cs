@@ -4,17 +4,77 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using Godot;
-using HarmonyLib;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Vfx;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Bindings.MegaSpine;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Nodes.Combat;
+using STS2RitsuLib.Patching.Models;
 
 namespace MeiLinMod.MeiLinModCode.Patches;
 
-[HarmonyPatch]
+public sealed class MeiLinBattleAnimationGenerateAnimatorPatch : IPatchMethod
+{
+    public static string PatchId => "MeiLinMod.Animation.GenerateAnimatorRegistration";
+
+    public static bool IsCritical => false;
+
+    public static string Description => "Register MeiLin animation states for custom animation sequencing";
+
+    public static ModPatchTarget[] GetTargets() =>
+    [
+        PatchTarget.Method<MeiLinMod.MeiLinModCode.Character.MeiLinMod>(nameof(MeiLinMod.MeiLinModCode.Character.MeiLinMod.GenerateAnimator))
+    ];
+
+    public static void Postfix(MegaSprite controller)
+    {
+        MeiLinBattleAnimationSequencePatch.RegisterAnimator(controller);
+    }
+}
+
+public sealed class MeiLinBattleAnimationSetAnimationPrefixPatch : IPatchMethod
+{
+    public static string PatchId => "MeiLinMod.Animation.SetAnimationSequencePrefix";
+
+    public static bool IsCritical => false;
+
+    public static string Description => "Convert MeiLin requested animations into queued battle animation sequences";
+
+    public static ModPatchTarget[] GetTargets() =>
+    [
+        PatchTarget.Method<MegaAnimationState>(
+            nameof(MegaAnimationState.SetAnimation),
+            [typeof(string), typeof(bool), typeof(int)])
+    ];
+
+    public static bool Prefix(MegaAnimationState __instance, string __0, bool __1, int __2)
+    {
+        return MeiLinBattleAnimationSequencePatch.SetAnimationWithTrackPrefix(__instance, __0, __1, __2);
+    }
+}
+
+public sealed class MeiLinBattleAnimationSetAnimationPostfixPatch : IPatchMethod
+{
+    public static string PatchId => "MeiLinMod.Animation.SetAnimationSequencePostfix";
+
+    public static bool IsCritical => false;
+
+    public static string Description => "Remember the last MeiLin animation requested for transition sequencing";
+
+    public static ModPatchTarget[] GetTargets() =>
+    [
+        PatchTarget.Method<MegaAnimationState>(
+            nameof(MegaAnimationState.SetAnimation),
+            [typeof(string), typeof(bool), typeof(int)])
+    ];
+
+    public static void Postfix(MegaAnimationState __instance, string __0)
+    {
+        MeiLinBattleAnimationSequencePatch.SetAnimationWithTrackPostfix(__instance, __0);
+    }
+}
+
 public static class MeiLinBattleAnimationSequencePatch
 {
     private sealed class LastAnimationHolder
@@ -40,9 +100,7 @@ public static class MeiLinBattleAnimationSequencePatch
     private static readonly ConditionalWeakTable<MegaAnimationState, ActiveAttackSequenceHolder> ActiveAttackSequences = new();
     private static bool _sequenceInProgress;
 
-    [HarmonyPatch(typeof(MeiLinMod.MeiLinModCode.Character.MeiLinMod), nameof(MeiLinMod.MeiLinModCode.Character.MeiLinMod.GenerateAnimator))]
-    [HarmonyPostfix]
-    public static void GenerateAnimatorPostfix(MegaSprite controller)
+    public static void RegisterAnimator(MegaSprite controller)
     {
         MegaAnimationState? animationState = controller.GetAnimationState();
         if (animationState != null)
@@ -52,24 +110,17 @@ public static class MeiLinBattleAnimationSequencePatch
         }
     }
 
-    [HarmonyPatch(typeof(MegaAnimationState), nameof(MegaAnimationState.SetAnimation), [typeof(string), typeof(bool), typeof(int)])]
-    [HarmonyPrefix]
-    public static bool SetAnimationWithTrackPrefix(MegaAnimationState __instance, string __0, bool __1, int __2, ref MegaTrackEntry? __result)
+    public static bool SetAnimationWithTrackPrefix(MegaAnimationState __instance, string __0, bool __1, int __2)
     {
-        return HandleSetAnimation(__instance, __0, __1, __2, ref __result);
+        return HandleSetAnimation(__instance, __0, __1, __2);
     }
 
-    [HarmonyPatch(typeof(MegaAnimationState), nameof(MegaAnimationState.SetAnimation), [typeof(string), typeof(bool), typeof(int)])]
-    [HarmonyPostfix]
-    public static void SetAnimationWithTrackPostfix(MegaAnimationState __instance, string __0, ref MegaTrackEntry? __result)
+    public static void SetAnimationWithTrackPostfix(MegaAnimationState __instance, string __0)
     {
-        if (__result != null)
-        {
-            RememberAnimation(__instance, __0);
-        }
+        RememberAnimation(__instance, __0);
     }
 
-    private static bool HandleSetAnimation(MegaAnimationState animationState, string animation, bool loop, int track, ref MegaTrackEntry? result)
+    private static bool HandleSetAnimation(MegaAnimationState animationState, string animation, bool loop, int track)
     {
         if (_sequenceInProgress)
         {
@@ -86,7 +137,7 @@ public static class MeiLinBattleAnimationSequencePatch
 
         if (requested == "buff_play")
         {
-            if (TryPlayTwoStepSequence(animationState, track, "buff_ready", "buff_play", loopSecond: false, out result))
+            if (TryPlayTwoStepSequence(animationState, track, "buff_ready", "buff_play", loopSecond: false))
             {
                 RememberAnimation(animationState, requested);
                 return false;
@@ -97,7 +148,7 @@ public static class MeiLinBattleAnimationSequencePatch
 
         if (requested == "death")
         {
-            if (TryPlayTwoStepSequence(animationState, track, "death_ready", "death", loopSecond: false, out result))
+            if (TryPlayTwoStepSequence(animationState, track, "death_ready", "death", loopSecond: false))
             {
                 RememberAnimation(animationState, requested);
                 return false;
@@ -108,7 +159,7 @@ public static class MeiLinBattleAnimationSequencePatch
 
         if (requested == "b_idle" && previous == "idle")
         {
-            if (TryPlayTwoStepSequence(animationState, track, "idle_to_b_idle", "b_idle", loopSecond: true, out result))
+            if (TryPlayTwoStepSequence(animationState, track, "idle_to_b_idle", "b_idle", loopSecond: true))
             {
                 RememberAnimation(animationState, requested);
                 return false;
@@ -119,7 +170,7 @@ public static class MeiLinBattleAnimationSequencePatch
 
         if (requested == "idle" && previous == "b_idle")
         {
-            if (TryPlayTwoStepSequence(animationState, track, "b_idle_to_idle", "idle", loopSecond: true, out result))
+            if (TryPlayTwoStepSequence(animationState, track, "b_idle_to_idle", "idle", loopSecond: true))
             {
                 RememberAnimation(animationState, requested);
                 return false;
@@ -131,20 +182,14 @@ public static class MeiLinBattleAnimationSequencePatch
         return true;
     }
 
-    private static bool TryPlayAttackSequence(MegaAnimationState animationState, int track, int hitCount, out MegaTrackEntry? result)
+    private static bool TryPlayAttackSequence(MegaAnimationState animationState, int track, int hitCount)
     {
-        result = null;
-
         try
         {
             _sequenceInProgress = true;
-            result = animationState.SetAnimation("attack_play1", false, track);
-            if (result == null)
-            {
-                return false;
-            }
+            animationState.SetAnimation("attack_play1", false, track);
 
-            IReadOnlyList<string> commands = BuildAttackCommands(hitCount);
+            IReadOnlyList<string> commands = MeiLinBattleAnimationService.BuildAttackCommands(hitCount);
             MarkAttackSequenceActive(animationState, commands);
             MainFile.Logger.Info($"[MeiLinBattleAnimationSequencePatch] Starting attack sequence. hits={Math.Max(1, hitCount)}, commands={string.Join(",", commands)}");
 
@@ -170,25 +215,6 @@ public static class MeiLinBattleAnimationSequencePatch
         {
             _sequenceInProgress = false;
         }
-    }
-
-    private static IReadOnlyList<string> BuildAttackCommands(int hitCount)
-    {
-        int totalHits = Math.Max(1, hitCount);
-        var commands = new List<string>(totalHits);
-
-        for (int i = 0; i < totalHits; i++)
-        {
-            if (totalHits > 3 && i == totalHits - 1)
-            {
-                commands.Add("u2_attack_play");
-                continue;
-            }
-
-            commands.Add(i % 2 == 0 ? "attack_play1" : "attack_play2");
-        }
-
-        return commands;
     }
 
     private static bool IsAttackSequenceActive(MegaAnimationState animationState)
@@ -217,19 +243,12 @@ public static class MeiLinBattleAnimationSequencePatch
         int track,
         string first,
         string second,
-        bool loopSecond,
-        out MegaTrackEntry? result)
+        bool loopSecond)
     {
-        result = null;
-
         try
         {
             _sequenceInProgress = true;
-            result = animationState.SetAnimation(first, false, track);
-            if (result == null)
-            {
-                return false;
-            }
+            animationState.SetAnimation(first, false, track);
 
             if (!TryAddAnimation(animationState, second, loopSecond, track, 0f))
             {

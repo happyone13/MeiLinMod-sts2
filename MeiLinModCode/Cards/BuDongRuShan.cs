@@ -1,5 +1,5 @@
-using System.Linq;
-using BaseLib.Utils;
+﻿using System.Linq;
+using MeiLinMod.MeiLinModCode.Migration;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
 using MeiLinMod.MeiLinModCode.HoverTips;
@@ -15,7 +15,7 @@ namespace MeiLinMod.MeiLinModCode.Cards;
 public class BuDongRuShan() : MeiLinModCard(0, CardType.Skill, CardRarity.Common, TargetType.Self)
 {
     protected override bool ShouldGlowGoldInternal => AwakeningHelper.CanAwakenNow(this);
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [MeiLinHoverTipFactory.Awakening];
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => [MeiLinHoverTipFactory.Awakening];
 
     public override string PortraitPath => IdPortraitPath;
     public override string CustomPortraitPath => IdBigPortraitPath;

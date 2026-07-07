@@ -1,5 +1,5 @@
-using System.Collections.Generic;
-using BaseLib.Utils;
+﻿using System.Collections.Generic;
+using MeiLinMod.MeiLinModCode.Migration;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
 using MeiLinMod.MeiLinModCode.HoverTips;
@@ -28,7 +28,7 @@ public class WeiHe() : MeiLinModCard(1, CardType.Skill, CardRarity.Uncommon, Tar
         new DynamicVar(VulnerableKey, 1m),
         new DynamicVar(EmberKey, 1m)
     ];
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [MeiLinHoverTipFactory.Awakening, MeiLinHoverTipFactory.Ember];
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => [MeiLinHoverTipFactory.Awakening, MeiLinHoverTipFactory.Ember];
 
     public override string PortraitPath => IdPortraitPath;
     public override string CustomPortraitPath => IdBigPortraitPath;

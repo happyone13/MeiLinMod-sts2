@@ -8,6 +8,8 @@ namespace MeiLinMod.MeiLinModCode.Services;
 
 public static class MeiLinAudioService
 {
+    private const float MeiLinVoiceGain = 2f;
+
     private static readonly string[] FmodPrefixes = ["event:/", "snapshot:/", "bus:/", "vca:/", "parameter:/"];
 
     private static readonly string[] AttackPool =
@@ -211,7 +213,7 @@ public static class MeiLinAudioService
         {
             Name = $"MeiLinSfx_{++_playerCounter}",
             Stream = stream,
-            VolumeDb = LinearToDb(linearVolume * MeiLinSharedSettings.VoiceVolume)
+            VolumeDb = LinearToDb(linearVolume * MeiLinSharedSettings.VoiceVolume * MeiLinVoiceGain)
         };
 
         host.AddChild(player);

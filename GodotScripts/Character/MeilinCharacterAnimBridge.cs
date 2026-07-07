@@ -4,7 +4,7 @@ using Godot;
 namespace MeiLinMod.MeiLinModCode.Character;
 
 [GlobalClass]
-[ScriptPath("res://MeiLinModCode/Character/MeilinCharacterAnimBridge.cs")]
+[ScriptPath("res://GodotScripts/Character/MeilinCharacterAnimBridge.cs")]
 public partial class MeilinCharacterAnimBridge : Node2D
 {
     [Export] public bool CampMode { get; set; } = false;

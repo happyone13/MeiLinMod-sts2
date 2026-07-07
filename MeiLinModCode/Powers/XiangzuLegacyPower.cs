@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using MeiLinMod.MeiLinModCode.Migration;
 using System.Linq;
 using MeiLinMod.MeiLinModCode.Extensions;
 using MeiLinMod.MeiLinModCode.HoverTips;
@@ -32,7 +32,7 @@ public class XiangzuLegacyPower : MeiLinModPower
     public override PowerStackType StackType => PowerStackType.Counter;
     // Show hit/been-hit progress on the power counter.
     public override int DisplayAmount => (int)(Owner.GetPower<QiCounterPower>()?.Amount ?? 0m);
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
     [
         MeiLinHoverTipFactory.Qi,
         MeiLinHoverTipFactory.QiGauge

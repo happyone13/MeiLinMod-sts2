@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using BaseLib.Utils;
+using MeiLinMod.MeiLinModCode.Migration;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
 using MeiLinMod.MeiLinModCode.HoverTips;
@@ -27,7 +27,7 @@ public class ErChongTian() : MeiLinModCard(1, CardType.Attack, CardRarity.Common
         new DynamicVar(EmberKey, 2m),
         new DynamicVar(ProgressKey, 3m)
     ];
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [MeiLinHoverTipFactory.Awakening, MeiLinHoverTipFactory.Ember, MeiLinHoverTipFactory.Qi];
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => [MeiLinHoverTipFactory.Awakening, MeiLinHoverTipFactory.Ember, MeiLinHoverTipFactory.Qi];
 
     public override string PortraitPath => IdPortraitPath;
     public override string CustomPortraitPath => IdBigPortraitPath;
@@ -36,7 +36,7 @@ public class ErChongTian() : MeiLinModCard(1, CardType.Attack, CardRarity.Common
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);

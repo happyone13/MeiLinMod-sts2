@@ -15,7 +15,7 @@ namespace MeiLinMod.MeiLinModCode.Mechanics.CardHoldOverlay;
 
 public static class MeiLinBattleReadyOverlay
 {
-    private const float OutDelaySeconds = 0.3f;
+    private const float OutDelaySeconds = 0.2f;
     private const float CancelOutDelaySeconds = 0.8f;
     private const string AnimIn = "b_in";
     private const string AnimIdle = "b_idle";

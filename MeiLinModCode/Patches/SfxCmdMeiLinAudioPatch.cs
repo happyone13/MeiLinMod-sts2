@@ -1,24 +1,27 @@
-using HarmonyLib;
 using MeiLinMod.MeiLinModCode.Services;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Players;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using STS2RitsuLib.Patching.Models;
 
 namespace MeiLinMod.MeiLinModCode.Patches;
 
-[HarmonyPatch(typeof(SfxCmd))]
-public static class SfxCmdMeiLinAudioPatch
+public sealed class SfxCmdMeiLinAudioPatch : IPatchMethod
 {
-    [HarmonyTargetMethods]
-    private static IEnumerable<MethodBase> TargetMethods()
-    {
-        return AccessTools.GetDeclaredMethods(typeof(SfxCmd))
-            .Where(m => m.Name is nameof(SfxCmd.Play) or nameof(SfxCmd.PlayDeath));
-    }
+    public static string PatchId => "MeiLinMod.Audio.SfxCmd";
 
-    [HarmonyPrefix]
+    public static bool IsCritical => false;
+
+    public static string Description => "Redirect MeiLin SfxCmd voice events";
+
+    public static ModPatchTarget[] GetTargets() =>
+    [
+        PatchTarget.Method(typeof(SfxCmd), nameof(SfxCmd.Play), typeof(string), typeof(float)),
+        PatchTarget.Method(typeof(SfxCmd), nameof(SfxCmd.Play), typeof(string), typeof(string), typeof(float), typeof(float)),
+        PatchTarget.Method(typeof(SfxCmd), nameof(SfxCmd.PlayDeath), typeof(Player))
+    ];
+
     private static bool Prefix(MethodBase __originalMethod, object[] __args)
     {
         if (__originalMethod.Name == nameof(SfxCmd.Play))

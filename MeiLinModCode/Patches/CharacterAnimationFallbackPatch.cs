@@ -1,40 +1,87 @@
 using Godot;
-using HarmonyLib;
 using MegaCrit.Sts2.Core.Bindings.MegaSpine;
 using MegaCrit.Sts2.Core.Nodes.RestSite;
 using MegaCrit.Sts2.Core.Nodes.Screens.Shops;
 using MegaCrit.Sts2.Core.Random;
+using STS2RitsuLib.Patching.Models;
 
 namespace MeiLinMod.MeiLinModCode.Patches;
 
-[HarmonyPatch]
-public static class CharacterAnimationFallbackPatch
+public sealed class MerchantCharacterAnimationFallbackPatch : IPatchMethod
 {
-    private static readonly string[] MerchantFallbacks = ["relaxed_loop", "stop", "camping", "b_idle", "idle"];
-    private static readonly string[] RestFallbacks = ["overgrowth_loop", "hive_loop", "glory_loop", "camping", "b_idle", "idle"];
+    public static string PatchId => "meilin_merchant_character_animation_fallback";
 
-    [HarmonyPatch(typeof(NMerchantCharacter), nameof(NMerchantCharacter._Ready))]
-    [HarmonyPrefix]
-    public static bool MerchantReadyPrefix(NMerchantCharacter __instance)
+    public static bool IsCritical => false;
+
+    public static string Description => "Play the first available MeiLin merchant scene fallback animation";
+
+    public static ModPatchTarget[] GetTargets() =>
+    [
+        PatchTarget.Method<NMerchantCharacter>(nameof(NMerchantCharacter._Ready))
+    ];
+
+    public static bool Prefix(NMerchantCharacter __instance)
     {
-        if (!IsMeiLinScene(__instance))
+        if (!CharacterAnimationFallbackPatch.IsMeiLinScene(__instance))
         {
             return true;
         }
 
-        if (TryPlayFirstAvailableOnFirstChild(__instance, MerchantFallbacks, loop: true))
+        if (CharacterAnimationFallbackPatch.TryPlayFirstAvailableOnFirstChild(
+                __instance,
+                CharacterAnimationFallbackPatch.MerchantFallbacks,
+                loop: true))
         {
             return false;
         }
 
         return true;
     }
+}
 
-    [HarmonyPatch(typeof(NRestSiteCharacter), nameof(NRestSiteCharacter._Ready))]
-    [HarmonyPostfix]
-    public static void RestSiteReadyPostfix(NRestSiteCharacter __instance)
+public sealed class MerchantCharacterPlayAnimationFallbackPatch : IPatchMethod
+{
+    public static string PatchId => "meilin_merchant_character_play_animation_fallback";
+
+    public static bool IsCritical => false;
+
+    public static string Description => "Remap missing MeiLin merchant scene animation cues";
+
+    public static ModPatchTarget[] GetTargets() =>
+    [
+        PatchTarget.Method<NMerchantCharacter>(nameof(NMerchantCharacter.PlayAnimation))
+    ];
+
+    public static void Prefix(NMerchantCharacter __instance, ref string anim)
     {
-        if (!IsMeiLinScene(__instance))
+        if (!CharacterAnimationFallbackPatch.IsMeiLinScene(__instance))
+        {
+            return;
+        }
+
+        if (string.Equals(anim, "relaxed_loop", System.StringComparison.OrdinalIgnoreCase))
+        {
+            anim = "idle";
+        }
+    }
+}
+
+public sealed class RestSiteCharacterAnimationFallbackPatch : IPatchMethod
+{
+    public static string PatchId => "meilin_rest_site_character_animation_fallback";
+
+    public static bool IsCritical => false;
+
+    public static string Description => "Play the first available MeiLin rest site scene fallback animation";
+
+    public static ModPatchTarget[] GetTargets() =>
+    [
+        PatchTarget.Method<NRestSiteCharacter>(nameof(NRestSiteCharacter._Ready))
+    ];
+
+    public static void Postfix(NRestSiteCharacter __instance)
+    {
+        if (!CharacterAnimationFallbackPatch.IsMeiLinScene(__instance))
         {
             return;
         }
@@ -46,23 +93,38 @@ public static class CharacterAnimationFallbackPatch
                 continue;
             }
 
-            TryPlayFirstAvailable(node2D, RestFallbacks, loop: true);
+            CharacterAnimationFallbackPatch.TryPlayFirstAvailable(
+                node2D,
+                CharacterAnimationFallbackPatch.RestFallbacks,
+                loop: true);
         }
     }
+}
 
-    private static bool IsMeiLinScene(Node node)
+internal static class CharacterAnimationFallbackPatch
+{
+    public static readonly string[] MerchantFallbacks = ["relaxed_loop", "stop", "camping", "b_idle", "idle"];
+    public static readonly string[] RestFallbacks = ["overgrowth_loop", "hive_loop", "glory_loop", "camping", "b_idle", "idle"];
+
+    public static bool IsMeiLinScene(Node node)
     {
         string path = node.SceneFilePath ?? string.Empty;
-        return path.Contains("MeiLinMod/scenes/", System.StringComparison.OrdinalIgnoreCase);
+        if (path.Contains("MeiLinMod/scenes/", System.StringComparison.OrdinalIgnoreCase))
+        {
+            return true;
+        }
+
+        string name = node.Name.ToString();
+        return name.Contains("MeiLin", System.StringComparison.OrdinalIgnoreCase);
     }
 
-    private static bool TryPlayFirstAvailableOnFirstChild(Node parent, string[] candidates, bool loop)
+    public static bool TryPlayFirstAvailableOnFirstChild(Node parent, string[] candidates, bool loop)
     {
         Node? child = parent.GetChildCount() > 0 ? parent.GetChild(0) : null;
         return child is Node2D node2D && TryPlayFirstAvailable(node2D, candidates, loop);
     }
 
-    private static bool TryPlayFirstAvailable(Node2D node, string[] candidates, bool loop)
+    public static bool TryPlayFirstAvailable(Node2D node, string[] candidates, bool loop)
     {
         MegaSprite sprite;
         try
@@ -91,12 +153,7 @@ public static class CharacterAnimationFallbackPatch
                 continue;
             }
 
-            MegaTrackEntry? entry = sprite.GetAnimationState().SetAnimation(anim, loop);
-            if (loop && entry != null)
-            {
-                entry.SetTrackTime(entry.GetAnimationEnd() * Rng.Chaotic.NextFloat());
-            }
-
+            sprite.GetAnimationState().SetAnimation(anim, loop);
             return true;
         }
 

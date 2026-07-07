@@ -1,0 +1,12 @@
+{
+"id": "xunit.v3.assert",
+"name": "xUnit v3 Assert",
+"author": "xUnit.net",
+"description": "Assertion library dependency for STS2 combat tests.",
+"version": "3.2.2",
+"has_pck": false,
+"has_dll": true,
+"dependencies": [],
+"min_game_version": "v0.108.0",
+"affects_gameplay": false
+}

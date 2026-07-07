@@ -1,19 +1,15 @@
-﻿using BaseLib.Abstracts;
-using BaseLib.Extensions;
-using BaseLib.Utils;
+using MeiLinMod.MeiLinModCode.Migration;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
+using STS2RitsuLib.Scaffolding.Content;
 
 namespace MeiLinMod.MeiLinModCode.Relics;
 
 [Pool(typeof(MeiLinModRelicPool))]
-public abstract class MeiLinModRelic : CustomRelicModel
+public abstract class MeiLinModRelic : ModRelicTemplate
 {
-    public override string PackedIconPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".RelicImagePath();
-
-    protected override string PackedIconOutlinePath =>
-        $"{Id.Entry.RemovePrefix().ToLowerInvariant()}_outline.png".RelicImagePath();
-
-    // The big relic slot also reuses the regular relic icon asset.
-    protected override string BigIconPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".BigRelicImagePath();
+    public override RelicAssetProfile AssetProfile => new(
+        IconPath: $"{GetType().ToSnakeCaseAssetStem()}.png".RelicImagePath(),
+        IconOutlinePath: $"{GetType().ToSnakeCaseAssetStem()}_outline.png".RelicImagePath(),
+        BigIconPath: $"{GetType().ToSnakeCaseAssetStem()}.png".BigRelicImagePath());
 }

@@ -1,9 +1,9 @@
-﻿using BaseLib.Abstracts;
 using Godot;
+using STS2RitsuLib.Scaffolding.Content;
 
 namespace MeiLinMod.MeiLinModCode.Character;
 
-public class MeiLinModRelicPool : CustomRelicPoolModel
+public class MeiLinModRelicPool : TypeListRelicPoolModel
 {
     //public override string EnergyColorName => MeiLinMod.CharacterId;
     public override string EnergyColorName => "ironclad";

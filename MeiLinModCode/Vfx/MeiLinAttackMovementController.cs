@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Nodes.Combat;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
+using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Config;
 
 namespace MeiLinMod.MeiLinModCode.Vfx;
@@ -121,6 +122,9 @@ public static class MeiLinAttackMovementController
 
     public static void ForceReturnSoon(Creature caster, float delaySeconds = 0.05f, string? interruptedCommandName = null)
     {
+        if (!string.IsNullOrWhiteSpace(interruptedCommandName))
+            MeiLinBattleAnimationService.AbortActiveAttack(caster);
+
         if (!Sessions.TryGetValue(caster, out var session) || !session.Teleported)
             return;
 
@@ -146,6 +150,9 @@ public static class MeiLinAttackMovementController
             {
                 return;
             }
+
+            if (!string.IsNullOrWhiteSpace(interruptedCommandName))
+                MeiLinBattleAnimationService.AbortActiveAttack(caster);
 
             var room = NCombatRoom.Instance;
             NCreature? casterNode = null;

@@ -141,13 +141,14 @@ public static class MeiLinCommandVfxCoordinator
         await PlayCommandTimelineAsync(commandSet.Ready, caster, target, HitOnce, options);
 
         if (!string.IsNullOrWhiteSpace(commandSet.PlayReady))
-            await PlayCommandTimelineAsync(commandSet.PlayReady, caster, target, HitOnce, options);
+        await PlayCommandTimelineAsync(commandSet.PlayReady, caster, target, HitOnce, options);
 
         if (commandSet.PlayDelay > 0f)
             await Cmd.CustomScaledWait(commandSet.PlayDelay / 1000f, commandSet.PlayDelay / 1000f);
 
         await PlayCommandTimelineAsync(commandSet.Play, caster, target, HitOnce, options);
-        await PlayCommandTimelineAsync(commandSet.End, caster, target, HitOnce, options);
+        if (!string.IsNullOrWhiteSpace(commandSet.End) && config.Commands.ContainsKey(commandSet.End))
+            await PlayCommandTimelineAsync(commandSet.End, caster, target, HitOnce, options);
 
         if (!hitFired && onHit != null)
             await onHit();

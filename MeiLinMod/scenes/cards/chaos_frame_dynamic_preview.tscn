@@ -8,7 +8,7 @@
 [ext_resource type="Material" path="res://MeiLinMod/materials/cards/frames/card_frame_chaos_mat.tres" id="6_frame_mat"]
 [ext_resource type="Material" path="res://MeiLinMod/materials/cards/banners/card_banner_chaos_mat.tres" id="7_banner_mat"]
 [ext_resource type="SpineSkeletonDataResource" path="res://MeiLinMod/spine/card/unique_1027_03.tres" id="8_spine"]
-[ext_resource type="Script" path="res://MeiLinModCode/Nodes/SpineAutoPlayer.cs" id="9_player"]
+[ext_resource type="Script" path="res://GodotScripts/Nodes/SpineAutoPlayer.cs" id="9_player"]
 
 [node name="ChaosFrameDynamicPreview" type="Control"]
 layout_mode = 3

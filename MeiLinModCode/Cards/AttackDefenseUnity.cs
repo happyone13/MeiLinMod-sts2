@@ -1,5 +1,5 @@
-using System.Linq;
-using BaseLib.Utils;
+﻿using System.Linq;
+using MeiLinMod.MeiLinModCode.Migration;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Services;
 using MegaCrit.Sts2.Core.Commands;
@@ -18,7 +18,7 @@ public class AttackDefenseUnity() : MeiLinModCard(1, CardType.Skill, CardRarity.
     public override SpinePortraitSlot CustomSpinePortraitSlot => SpinePortraitSlot.Ancient;
     public override bool UseCustomAncientFrame => true;
     public override bool UsesDynamicChaosFrame => true;
-    public override string? CustomAncientFrameMaterialPath => ChaosAncientFrameMaterialPath;
+    public override string? CustomAncientBorderMaterialPath => ChaosAncientFrameMaterialPath;
     public override string? CustomAncientBannerMaterialPath => ChaosAncientBannerMaterialPath;
     protected override string? CombatTimelineName => "u3_buff";
 

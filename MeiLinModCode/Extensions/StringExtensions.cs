@@ -74,4 +74,22 @@ public static class StringExtensions
     {
         return $"{MainFile.ModId}/images/charui/{path}";
     }
+
+    public static string ToSnakeCaseAssetStem(this Type type)
+    {
+        var name = type.Name;
+        if (string.IsNullOrEmpty(name))
+            return string.Empty;
+
+        var result = new System.Text.StringBuilder(name.Length + 8);
+        for (var i = 0; i < name.Length; i++)
+        {
+            var c = name[i];
+            if (char.IsUpper(c) && i > 0)
+                result.Append('_');
+            result.Append(char.ToLowerInvariant(c));
+        }
+
+        return result.ToString();
+    }
 }

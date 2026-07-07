@@ -1,5 +1,5 @@
-using System.Collections.Generic;
-using BaseLib.Utils;
+﻿using System.Collections.Generic;
+using MeiLinMod.MeiLinModCode.Migration;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
@@ -22,7 +22,7 @@ public class ZanJin() : MeiLinModCard(1, CardType.Skill, CardRarity.Common, Targ
         new DynamicVar(TurnsKey, 2m)
     ];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<ZanJinQiProgressPower>()];
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => [HoverTipFactory.FromPower<ZanJinQiProgressPower>()];
 
     public override string PortraitPath => IdPortraitPath;
     public override string CustomPortraitPath => IdBigPortraitPath;

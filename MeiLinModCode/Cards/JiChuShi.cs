@@ -1,5 +1,5 @@
-using System.Collections.Generic;
-using BaseLib.Utils;
+﻿using System.Collections.Generic;
+using MeiLinMod.MeiLinModCode.Migration;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
 using MeiLinMod.MeiLinModCode.HoverTips;
@@ -16,7 +16,7 @@ public class JiChuShi() : MeiLinModCard(1, CardType.Skill, CardRarity.Common, Ta
 {
     protected override bool ShouldGlowGoldInternal => AwakeningHelper.CanAwakenNow(this);
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [MeiLinHoverTipFactory.Awakening];
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => [MeiLinHoverTipFactory.Awakening];
 
     public override string PortraitPath => IdPortraitPath;
     public override string CustomPortraitPath => IdBigPortraitPath;

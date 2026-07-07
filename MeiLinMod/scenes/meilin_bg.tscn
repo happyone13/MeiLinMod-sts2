@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b4xxdrnhk4xll" path="res://MeiLinMod/images/charui/154056.png" id="1_271ek"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://cp67ocggdvb3j" path="res://MeiLinMod/spine/idle/idle.tres" id="2_3dk15"]
-[ext_resource type="Script" path="res://MeiLinModCode/Nodes/SpineAutoPlayer.cs" id="3_8x2j5"]
+[ext_resource type="Script" path="res://GodotScripts/Nodes/SpineAutoPlayer.cs" id="3_8x2j5"]
 
 [node name="TestBg" type="Control"]
 layout_mode = 3

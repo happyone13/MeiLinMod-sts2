@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using BaseLib.Utils;
+using MeiLinMod.MeiLinModCode.Migration;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.HoverTips;
 using MeiLinMod.MeiLinModCode.Powers;
@@ -26,7 +26,7 @@ public class QiZhenShanHe() : MeiLinModCard(2, CardType.Attack, CardRarity.Commo
         new DynamicVar(VulnerableKey, 1m)
     ];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
     [
         MeiLinHoverTipFactory.Awakening,
         MeiLinHoverTipFactory.Qi,
@@ -43,7 +43,7 @@ public class QiZhenShanHe() : MeiLinModCard(2, CardType.Attack, CardRarity.Commo
             return;
 
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .TargetingAllOpponents(combatState)
             .Execute(choiceContext);
 

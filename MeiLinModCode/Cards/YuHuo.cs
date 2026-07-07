@@ -1,5 +1,5 @@
-using System.Collections.Generic;
-using BaseLib.Utils;
+﻿using System.Collections.Generic;
+using MeiLinMod.MeiLinModCode.Migration;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
 using MeiLinMod.MeiLinModCode.Powers;
@@ -22,7 +22,7 @@ public class YuHuo() : MeiLinModCard(0, CardType.Skill, CardRarity.Common, Targe
         new DynamicVar(EmberKey, 2m)
     ];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [EnergyHoverTip];
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => [EnergyHoverTip];
 
     public override string PortraitPath => IdPortraitPath;
     public override string CustomPortraitPath => IdBigPortraitPath;

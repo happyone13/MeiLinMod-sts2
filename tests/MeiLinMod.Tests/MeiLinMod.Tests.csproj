@@ -1,0 +1,134 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>true</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>13.0</LangVersion>
+    <AssemblyName>MeiLinMod.Tests</AssemblyName>
+    <RootNamespace>MeiLinMod.Tests</RootNamespace>
+    <RestoreSources>../../../TestTheSpire/artifacts/packages;https://api.nuget.org/v3/index.json</RestoreSources>
+    <Sts2Path Condition="'$(Sts2Path)' == ''">D:/steam/steamapps/common/Slay the Spire 2</Sts2Path>
+    <Sts2MainModId>MeiLinMod</Sts2MainModId>
+    <Sts2TestModId>MeiLinMod.Tests</Sts2TestModId>
+    <Sts2TestModName>MeiLinMod.Tests</Sts2TestModName>
+    <Sts2TestModAuthor>lozalia</Sts2TestModAuthor>
+    <Sts2TestMinGameVersion>v0.108.0</Sts2TestMinGameVersion>
+    <Sts2TestMainModMinVersion>v0.3.1</Sts2TestMainModMinVersion>
+    <Sts2TestTheSpireMinVersion>0.1.0</Sts2TestTheSpireMinVersion>
+    <Sts2XunitAssertMinVersion>3.2.2</Sts2XunitAssertMinVersion>
+    <Sts2TestDisabledModIds>BaseLib;Fei;KalipeiMod;KaylaMod;YukiMod;StS2_MeiLinTexturePack</Sts2TestDisabledModIds>
+    <Sts2TestXdgDataHome Condition="'$(Sts2TestXdgDataHome)' == ''">$(MSBuildProjectDirectory)/../../tmp/sts2-combat-tests/$(Sts2TestModId)</Sts2TestXdgDataHome>
+    <Sts2TestTempDir Condition="'$(Sts2TestTempDir)' == ''">$(MSBuildProjectDirectory)/../../tmp/sts2-combat-tests/$(Sts2TestModId)/temp</Sts2TestTempDir>
+    <Sts2TestEnvironmentVariables Condition="'$(Sts2TestEnvironmentVariables)' == '' and $([MSBuild]::IsOSPlatform('Windows'))">APPDATA=$(Sts2TestXdgDataHome);XDG_DATA_HOME=$(Sts2TestXdgDataHome);TEMP=$(Sts2TestTempDir);TMP=$(Sts2TestTempDir)</Sts2TestEnvironmentVariables>
+    <Sts2TestEnvironmentVariables Condition="'$(Sts2TestEnvironmentVariables)' == ''">XDG_DATA_HOME=$(Sts2TestXdgDataHome);TMPDIR=$(Sts2TestTempDir)</Sts2TestEnvironmentVariables>
+    <GodotProjectDir Condition="'$(GodotProjectDir)' == ''">$(MSBuildProjectDirectory)/../../</GodotProjectDir>
+    <GodotProjectDir>$([MSBuild]::EnsureTrailingSlash('$(GodotProjectDir)'))</GodotProjectDir>
+    <GodotProjectDirBase64 Condition="'$(GodotProjectDirBase64)' == '' and $([MSBuild]::VersionGreaterThanOrEquals($(MSBuildAssemblyVersion), '17.3'))">$([MSBuild]::ConvertToBase64('$(GodotProjectDir)'))</GodotProjectDirBase64>
+    <Sts2SteamAppsPath Condition="'$(Sts2SteamAppsPath)' == ''">$(Sts2Path)/../..</Sts2SteamAppsPath>
+    <Sts2WorkshopContentPath Condition="'$(Sts2WorkshopContentPath)' == ''">$(Sts2SteamAppsPath)/workshop/content/2868840</Sts2WorkshopContentPath>
+    <Sts2RitsuLibWorkshopPath Condition="'$(Sts2RitsuLibWorkshopPath)' == '' and Exists('$(Sts2WorkshopContentPath)/3747602295')">$(Sts2WorkshopContentPath)/3747602295</Sts2RitsuLibWorkshopPath>
+    <Sts2RitsuLibSourcePath Condition="'$(Sts2RitsuLibSourcePath)' == '' and Exists('$(Sts2RitsuLibWorkshopPath)')">$(Sts2RitsuLibWorkshopPath)</Sts2RitsuLibSourcePath>
+    <Sts2RitsuLibSourcePath Condition="'$(Sts2RitsuLibSourcePath)' == '' and Exists('$(Sts2Path)/mods2/STS2-RitsuLib')">$(Sts2Path)/mods2/STS2-RitsuLib</Sts2RitsuLibSourcePath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <CompilerVisibleProperty Include="GodotDisabledSourceGenerators" />
+    <CompilerVisibleProperty Include="GodotProjectDir" />
+    <CompilerVisibleProperty Include="GodotProjectDirBase64" />
+    <CompilerVisibleProperty Include="GodotSourceGenerators" />
+    <CompilerVisibleProperty Include="IsGodotToolsProject" />
+    <ProjectReference Include="../../MeiLinMod.csproj" />
+    <PackageReference Include="STS2.RitsuLib" Version="0.4.50" PrivateAssets="all" />
+    <PackageReference Include="TestTheSpire" Version="0.1.0" />
+  </ItemGroup>
+
+  <Target Name="PrepareMeiLinSts2TestTemp" BeforeTargets="RunSts2Tests;ListSts2Tests">
+    <MakeDir Directories="$(Sts2TestTempDir)" />
+  </Target>
+
+  <Target Name="MirrorMeiLinSts2Mods2DependenciesForTests" BeforeTargets="RunSts2Tests;ListSts2Tests">
+    <ItemGroup>
+      <_MeiLinMods2TestDependency Include="$(Sts2RitsuLibSourcePath)/**/*" Condition="'$(Sts2RitsuLibSourcePath)' != '' and Exists('$(Sts2RitsuLibSourcePath)')">
+        <TargetDir>RitsuLib/</TargetDir>
+      </_MeiLinMods2TestDependency>
+      <_MeiLinMods2TestDependency Include="$(Sts2Path)/mods2/BaseLib.3.3.2/**/*" Condition="Exists('$(Sts2Path)/mods2/BaseLib.3.3.2')">
+        <TargetDir>BaseLib.3.3.2/</TargetDir>
+      </_MeiLinMods2TestDependency>
+      <_MeiLinMods2TestDependency Include="$(Sts2Path)/mods2/YukiMod/**/*" Condition="Exists('$(Sts2Path)/mods2/YukiMod')">
+        <TargetDir>YukiMod/</TargetDir>
+      </_MeiLinMods2TestDependency>
+      <_MeiLinMods2TestDependency Include="$(Sts2Path)/mods2/KaylaMod/**/*" Condition="Exists('$(Sts2Path)/mods2/KaylaMod')">
+        <TargetDir>KaylaMod/</TargetDir>
+      </_MeiLinMods2TestDependency>
+    </ItemGroup>
+    <Copy SourceFiles="@(_MeiLinMods2TestDependency)"
+          DestinationFiles="@(_MeiLinMods2TestDependency->'$(Sts2Path)/mods/%(TargetDir)%(RecursiveDir)%(Filename)%(Extension)')"
+          SkipUnchangedFiles="true"
+          Condition="'@(_MeiLinMods2TestDependency)' != ''" />
+  </Target>
+
+  <Target Name="RewriteMeiLinSts2TestManifestWithVersionedDependencies" AfterTargets="GenerateSts2TestManifest">
+    <ItemGroup>
+      <_MeiLinSts2TestManifestLine Include="{" />
+      <_MeiLinSts2TestManifestLine Include="  &quot;id&quot;: &quot;$(Sts2TestModId)&quot;," />
+      <_MeiLinSts2TestManifestLine Include="  &quot;name&quot;: &quot;$(Sts2TestModName)&quot;," />
+      <_MeiLinSts2TestManifestLine Include="  &quot;author&quot;: &quot;$(Sts2TestModAuthor)&quot;," />
+      <_MeiLinSts2TestManifestLine Include="  &quot;description&quot;: &quot;$(Sts2TestModDescription)&quot;," />
+      <_MeiLinSts2TestManifestLine Include="  &quot;version&quot;: &quot;$(Sts2TestModVersion)&quot;," />
+      <_MeiLinSts2TestManifestLine Include="  &quot;has_pck&quot;: false," />
+      <_MeiLinSts2TestManifestLine Include="  &quot;has_dll&quot;: true," />
+      <_MeiLinSts2TestManifestLine Include="  &quot;dependencies&quot;: [" />
+      <_MeiLinSts2TestManifestLine Include="    { &quot;id&quot;: &quot;$(TestTheSpireModId)&quot;, &quot;min_version&quot;: &quot;$(Sts2TestTheSpireMinVersion)&quot; }," Condition="'$(Sts2MainModId)' != ''" />
+      <_MeiLinSts2TestManifestLine Include="    { &quot;id&quot;: &quot;$(TestTheSpireModId)&quot;, &quot;min_version&quot;: &quot;$(Sts2TestTheSpireMinVersion)&quot; }" Condition="'$(Sts2MainModId)' == ''" />
+      <_MeiLinSts2TestManifestLine Include="    { &quot;id&quot;: &quot;$(Sts2MainModId)&quot;, &quot;min_version&quot;: &quot;$(Sts2TestMainModMinVersion)&quot; }" Condition="'$(Sts2MainModId)' != ''" />
+      <_MeiLinSts2TestManifestLine Include="  ]," />
+      <_MeiLinSts2TestManifestLine Include="  &quot;min_game_version&quot;: &quot;$(Sts2TestMinGameVersion)&quot;," />
+      <_MeiLinSts2TestManifestLine Include="  &quot;affects_gameplay&quot;: $(Sts2TestAffectsGameplay)" />
+      <_MeiLinSts2TestManifestLine Include="}" />
+    </ItemGroup>
+    <WriteLinesToFile File="$(Sts2GeneratedManifestPath)"
+                      Lines="@(_MeiLinSts2TestManifestLine)"
+                      Overwrite="true"
+                      WriteOnlyWhenDifferent="true" />
+  </Target>
+
+  <Target Name="RewriteMeiLinSts2TestDependencyManifestsWithVersionedDependencies" AfterTargets="CopySts2TestDependencyMods">
+    <ItemGroup>
+      <_MeiLinSts2XunitManifestLine Include="{" />
+      <_MeiLinSts2XunitManifestLine Include="  &quot;id&quot;: &quot;$(Sts2XunitAssertModId)&quot;," />
+      <_MeiLinSts2XunitManifestLine Include="  &quot;name&quot;: &quot;xUnit v3 Assert&quot;," />
+      <_MeiLinSts2XunitManifestLine Include="  &quot;author&quot;: &quot;xUnit.net&quot;," />
+      <_MeiLinSts2XunitManifestLine Include="  &quot;description&quot;: &quot;Assertion library dependency for STS2 combat tests.&quot;," />
+      <_MeiLinSts2XunitManifestLine Include="  &quot;version&quot;: &quot;$(Sts2XunitAssertMinVersion)&quot;," />
+      <_MeiLinSts2XunitManifestLine Include="  &quot;has_pck&quot;: false," />
+      <_MeiLinSts2XunitManifestLine Include="  &quot;has_dll&quot;: true," />
+      <_MeiLinSts2XunitManifestLine Include="  &quot;dependencies&quot;: []," />
+      <_MeiLinSts2XunitManifestLine Include="  &quot;min_game_version&quot;: &quot;$(Sts2TestMinGameVersion)&quot;," />
+      <_MeiLinSts2XunitManifestLine Include="  &quot;affects_gameplay&quot;: false" />
+      <_MeiLinSts2XunitManifestLine Include="}" />
+
+      <_MeiLinTestTheSpireManifestLine Include="{" />
+      <_MeiLinTestTheSpireManifestLine Include="  &quot;id&quot;: &quot;$(TestTheSpireModId)&quot;," />
+      <_MeiLinTestTheSpireManifestLine Include="  &quot;name&quot;: &quot;TestTheSpire&quot;," />
+      <_MeiLinTestTheSpireManifestLine Include="  &quot;author&quot;: &quot;shadowversebydmod group&quot;," />
+      <_MeiLinTestTheSpireManifestLine Include="  &quot;description&quot;: &quot;Reusable headless combat test runner for STS2 mods.&quot;," />
+      <_MeiLinTestTheSpireManifestLine Include="  &quot;version&quot;: &quot;$(Sts2TestTheSpireMinVersion)&quot;," />
+      <_MeiLinTestTheSpireManifestLine Include="  &quot;has_pck&quot;: false," />
+      <_MeiLinTestTheSpireManifestLine Include="  &quot;has_dll&quot;: true," />
+      <_MeiLinTestTheSpireManifestLine Include="  &quot;dependencies&quot;: [" />
+      <_MeiLinTestTheSpireManifestLine Include="    { &quot;id&quot;: &quot;$(Sts2XunitAssertModId)&quot;, &quot;min_version&quot;: &quot;$(Sts2XunitAssertMinVersion)&quot; }" />
+      <_MeiLinTestTheSpireManifestLine Include="  ]," />
+      <_MeiLinTestTheSpireManifestLine Include="  &quot;min_game_version&quot;: &quot;$(Sts2TestMinGameVersion)&quot;," />
+      <_MeiLinTestTheSpireManifestLine Include="  &quot;affects_gameplay&quot;: false" />
+      <_MeiLinTestTheSpireManifestLine Include="}" />
+    </ItemGroup>
+    <WriteLinesToFile File="$(Sts2XunitAssertManifestPath)"
+                      Lines="@(_MeiLinSts2XunitManifestLine)"
+                      Overwrite="true"
+                      WriteOnlyWhenDifferent="true" />
+    <WriteLinesToFile File="$(TestTheSpireManifestPath)"
+                      Lines="@(_MeiLinTestTheSpireManifestLine)"
+                      Overwrite="true"
+                      WriteOnlyWhenDifferent="true" />
+  </Target>
+</Project>

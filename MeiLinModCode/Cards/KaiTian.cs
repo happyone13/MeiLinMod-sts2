@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using BaseLib.Utils;
+using MeiLinMod.MeiLinModCode.Migration;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.HoverTips;
 using MeiLinMod.MeiLinModCode.Powers;
@@ -27,7 +27,7 @@ public class KaiTian() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommon, 
 
     protected override bool ShouldGlowGoldInternal => XiangzuCombatState.HasQi(Owner.Creature);
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
     [
         MeiLinHoverTipFactory.Qi,
         MeiLinHoverTipFactory.QiGauge,
@@ -45,7 +45,7 @@ public class KaiTian() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommon, 
         if (XiangzuCombatState.IsInAttackStance(Owner.Creature))
         {
             await DamageCmd.Attack(DynamicVars["AttackBonus"].BaseValue)
-                .FromCard(this)
+                .FromCard(this, cardPlay)
                 .Targeting(cardPlay.Target)
                 .Execute(choiceContext);
         }

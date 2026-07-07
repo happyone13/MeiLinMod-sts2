@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using MeiLinMod.MeiLinModCode.Migration;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
 using MeiLinMod.MeiLinModCode.HoverTips;
@@ -12,7 +12,7 @@ namespace MeiLinMod.MeiLinModCode.Relics;
 public class XiangzuSpiritRelic : MeiLinModRelic
 {
     public override RelicRarity Rarity => RelicRarity.Starter;
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
     [
         MeiLinHoverTipFactory.XiangzuLegacy,
         MeiLinHoverTipFactory.Qi

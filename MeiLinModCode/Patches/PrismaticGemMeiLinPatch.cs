@@ -1,20 +1,29 @@
 using System.Collections.Generic;
 using System.Linq;
-using HarmonyLib;
 using MeiLinCharacter = MeiLinMod.MeiLinModCode.Character.MeiLinMod;
 using MeiLinMod.MeiLinModCode.Character;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Runs;
 using MegaCrit.Sts2.Core.Models.Relics;
+using STS2RitsuLib.Patching.Models;
 
 namespace MeiLinMod.MeiLinModCode.Patches;
 
-[HarmonyPatch(typeof(PrismaticGem), nameof(PrismaticGem.ModifyCardRewardCreationOptions))]
-public static class PrismaticGemMeiLinPatch
+public sealed class PrismaticGemMeiLinPatch : IPatchMethod
 {
-    [HarmonyPostfix]
-    public static void ModifyCardRewardCreationOptionsPostfix(
+    public static string PatchId => "meilin_prismatic_gem_card_pool";
+
+    public static bool IsCritical => false;
+
+    public static string Description => "Allow Prismatic Gem to add MeiLin cards when MeiLin is available";
+
+    public static ModPatchTarget[] GetTargets() =>
+    [
+        PatchTarget.Method<PrismaticGem>(nameof(PrismaticGem.ModifyCardRewardCreationOptions))
+    ];
+
+    public static void Postfix(
         PrismaticGem __instance,
         Player player,
         CardCreationOptions options,
@@ -24,9 +33,6 @@ public static class PrismaticGemMeiLinPatch
             return;
 
         if (options.Flags.HasFlag(CardCreationFlags.NoCardPoolModifications))
-            return;
-
-        if (options.CustomCardPool != null)
             return;
 
         if (options.CardPools.All(p => p.IsColorless))
@@ -40,7 +46,7 @@ public static class PrismaticGemMeiLinPatch
             return;
 
         var mergedPools = __result.CardPools.Union(new List<CardPoolModel> { meiLinPool });
-        __result = __result.WithCardPools(mergedPools, __result.CardPoolFilter);
+        __result = __result.WithCardPools(mergedPools);
     }
 
     private static bool IsMeiLinAvailable(Player player)

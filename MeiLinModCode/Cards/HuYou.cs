@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using BaseLib.Utils;
+using MeiLinMod.MeiLinModCode.Migration;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
 using MeiLinMod.MeiLinModCode.HoverTips;
@@ -19,7 +19,7 @@ public class HuYou() : MeiLinModCard(1, CardType.Skill, CardRarity.Uncommon, Tar
     protected override bool ShouldGlowGoldInternal => AwakeningHelper.CanAwakenNow(this);
     public override bool GainsBlock => true;
     protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(7m, ValueProp.Move), new EnergyVar(1)];
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [EnergyHoverTip, MeiLinHoverTipFactory.Awakening];
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => [EnergyHoverTip, MeiLinHoverTipFactory.Awakening];
 
     public override string PortraitPath => IdPortraitPath;
     public override string CustomPortraitPath => IdBigPortraitPath;

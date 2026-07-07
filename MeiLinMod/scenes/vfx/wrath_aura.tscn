@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://5k8ku8f4yu82"]
 
-[ext_resource type="Script" path="res://MeiLinModCode/StanceVfx/MeiLinWrathGlowSparkSpawner.cs" id="1"]
-[ext_resource type="Script" path="res://MeiLinModCode/StanceVfx/MeiLinAuraBlobEmitter.cs" id="2"]
-[ext_resource type="Script" path="res://MeiLinModCode/StanceVfx/MeiLinWrathActivationBurst.cs" id="3"]
+[ext_resource type="Script" path="res://GodotScripts/StanceVfx/MeiLinWrathGlowSparkSpawner.cs" id="1"]
+[ext_resource type="Script" path="res://GodotScripts/StanceVfx/MeiLinAuraBlobEmitter.cs" id="2"]
+[ext_resource type="Script" path="res://GodotScripts/StanceVfx/MeiLinWrathActivationBurst.cs" id="3"]
 
 [node name="WrathAura" type="Node2D"]
 scale = Vector2(0.85, 0.85)

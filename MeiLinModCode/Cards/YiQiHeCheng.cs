@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using BaseLib.Utils;
+using MeiLinMod.MeiLinModCode.Migration;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
 using MeiLinMod.MeiLinModCode.Powers;
@@ -28,7 +28,7 @@ public class YiQiHeCheng() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncomm
         var hitCount = Math.Max(1, qi + 1);
         PrepareAttackAnimation(hitCount);
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .WithHitCount(hitCount)
             .Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_slash")

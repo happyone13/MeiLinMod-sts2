@@ -116,6 +116,21 @@ public static class MeiLinBattleAnimationService
         }
     }
 
+    public static void AbortActiveAttack(Creature? caster)
+    {
+        lock (Sync)
+        {
+            if (caster != null && ActiveAttackCaster != caster)
+                return;
+
+            ActiveAttackCommands.Clear();
+            ActiveAttackCaster = null;
+            ActiveAttackTarget = null;
+            ActiveAttackTotalSegments = 0;
+            ActiveAttackExpiresUtc = DateTime.MinValue;
+        }
+    }
+
     public static IReadOnlyList<string> BuildAttackCommands(int hitCount)
     {
         int totalHits = Math.Max(1, hitCount);

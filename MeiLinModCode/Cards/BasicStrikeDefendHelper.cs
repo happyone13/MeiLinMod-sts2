@@ -3,14 +3,15 @@ using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Exceptions;
+using MeiLinMod.MeiLinModCode.Mechanics.CardHoldOverlay;
 using System.Linq;
 
 namespace MeiLinMod.MeiLinModCode.Cards;
 
 public static class BasicStrikeDefendHelper
 {
-    private const string StrikeId = "MEILINMOD-STRIKE_MEILIN";
-    private const string DefendId = "MEILINMOD-DEFEND_MEILIN";
+    private const string StrikeId = "MEILINMOD_STRIKE_MEILIN";
+    private const string DefendId = "MEILINMOD_DEFEND_MEILIN";
 
     public static bool IsStrikeCard(CardModel? card)
     {
@@ -63,7 +64,7 @@ public static class BasicStrikeDefendHelper
             return false;
 
         return card is StrikeMeilin ||
-               card.Id.Entry == StrikeId ||
+               MeiLinTarget.EntryEquals(card.Id.Entry, StrikeId) ||
                (card.IsBasicStrikeOrDefend && card.Tags.Contains(CardTag.Strike)) ||
                IsCharacterStarterCard(card, player, CardTag.Strike);
     }
@@ -82,7 +83,7 @@ public static class BasicStrikeDefendHelper
             return false;
 
         return card is DefendMeilin ||
-               card.Id.Entry == DefendId ||
+               MeiLinTarget.EntryEquals(card.Id.Entry, DefendId) ||
                (card.IsBasicStrikeOrDefend && card.Tags.Contains(CardTag.Defend)) ||
                IsCharacterStarterCard(card, player, CardTag.Defend);
     }

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using BaseLib.Utils;
+using MeiLinMod.MeiLinModCode.Migration;
 using MeiLinMod;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
@@ -20,7 +20,7 @@ public class XuLi() : MeiLinModCard(0, CardType.Skill, CardRarity.Common, Target
 {
     protected override bool ShouldGlowGoldInternal => AwakeningHelper.CanAwakenNow(this);
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
     [
         HoverTipFactory.Static(StaticHoverTip.ReplayStatic),
         MeiLinHoverTipFactory.Awakening

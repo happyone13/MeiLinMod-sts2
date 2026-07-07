@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using BaseLib.Utils;
+using MeiLinMod.MeiLinModCode.Migration;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.HoverTips;
 using MeiLinMod.MeiLinModCode.Powers;
@@ -25,7 +25,7 @@ public class LianXie() : MeiLinModCard(0, CardType.Attack, CardRarity.Uncommon, 
         new DamageVar(1m, ValueProp.Move)
     ];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
     [
         MeiLinHoverTipFactory.QiGauge
     ];
@@ -34,7 +34,7 @@ public class LianXie() : MeiLinModCard(0, CardType.Attack, CardRarity.Uncommon, 
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);
     }

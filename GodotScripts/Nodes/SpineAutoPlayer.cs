@@ -3,7 +3,7 @@ using Godot;
 namespace MeiLinMod.MeiLinModCode.Nodes;
 
 [GlobalClass]
-[ScriptPath("res://MeiLinModCode/Nodes/SpineAutoPlayer.cs")]
+[ScriptPath("res://GodotScripts/Nodes/SpineAutoPlayer.cs")]
 public partial class SpineAutoPlayer : Node
 {
     [Export] public string AnimationName { get; set; } = "animation";

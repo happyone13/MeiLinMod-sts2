@@ -1,6 +1,6 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using BaseLib.Utils;
+using MeiLinMod.MeiLinModCode.Migration;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.HoverTips;
 using MeiLinMod.MeiLinModCode.Powers;
@@ -26,7 +26,7 @@ public class TiShen() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncommon, Ta
         new DynamicVar(VigorKey, 5m)
     ];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
     [
         MeiLinHoverTipFactory.Awakening
     ];

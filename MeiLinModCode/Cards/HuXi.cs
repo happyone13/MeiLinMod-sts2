@@ -1,6 +1,6 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using BaseLib.Utils;
+using MeiLinMod.MeiLinModCode.Migration;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.HoverTips;
 using MeiLinMod.MeiLinModCode.Powers;
@@ -19,7 +19,7 @@ public class HuXi() : MeiLinModCard(1, CardType.Skill, CardRarity.Uncommon, Targ
     protected override bool ShouldGlowGoldInternal => AwakeningHelper.CanAwakenNow(this);
     protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(3)];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
     [
         HoverTipFactory.FromKeyword(CardKeyword.Retain),
         MeiLinHoverTipFactory.Awakening
