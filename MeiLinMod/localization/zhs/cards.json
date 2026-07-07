@@ -231,5 +231,11 @@
     "MEILINMOD_LONG_ZHI_DAO.title":  "龙指导",
     "MEILINMOD_LONG_ZHI_DAO.description":  "选择1名友方，使其获得1张[gold]攻防一体+[/gold]。",
     "MEILINMOD_QUN_LONG_ZHI_LI.title":  "群龙之力",
-    "MEILINMOD_QUN_LONG_ZHI_LI.description":  "所有友方获得1层[gold]火龙宝石[/gold]。"
+    "MEILINMOD_QUN_LONG_ZHI_LI.description":  "所有友方获得1层[gold]火龙宝石[/gold]。",
+    "MEILINMOD_LONG_ZHI_JING_SHEN.title":  "龙之精神",
+    "MEILINMOD_LONG_ZHI_JING_SHEN.description":  "选择1名玩家，使其获得[gold]香族传承[/gold]。",
+    "MEILINMOD_LONG_ZHI_CHUAN_CHENG.title":  "龙之传承",
+    "MEILINMOD_LONG_ZHI_CHUAN_CHENG.description":  "选择1名友方。其获得{Ember:diff()}层[gold]余烬[/gold]，抽{Cards:diff()}张牌并获得{Energy:energyIcons()}。",
+    "MEILINMOD_LONG_ZHI_BEI_FU.title":  "龙之背负",
+    "MEILINMOD_LONG_ZHI_BEI_FU.description":  "将所有友方手牌、抽牌堆和弃牌堆中的所有[gold]打击[/gold]与[gold]防御[/gold]转交到你的弃牌堆。"
 }

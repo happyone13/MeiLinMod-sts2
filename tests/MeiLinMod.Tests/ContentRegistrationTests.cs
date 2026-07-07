@@ -1,4 +1,5 @@
 using System.Reflection;
+using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Cards;
@@ -137,6 +138,36 @@ public sealed class ContentRegistrationTests : CombatTestSuite
         Assert.DoesNotContain("BaseLib", registrationSource + poolAttributeSource);
     }
 
+    [Fact]
+    public async Task Multiplayer_dragon_cards_keep_expected_shape()
+    {
+        var defend = await AddToHand<DefendMeilin>();
+        await Play(defend);
+
+        AssertMultiplayerCard<LongZhiJingShen>(1, CardType.Power, CardRarity.Uncommon, TargetType.AnyPlayer);
+        AssertMultiplayerCard<LongZhiChuanCheng>(0, CardType.Skill, CardRarity.Uncommon, TargetType.AnyAlly);
+        AssertMultiplayerCard<LongZhiBeiFu>(1, CardType.Skill, CardRarity.Rare, TargetType.Self);
+
+        Assert.Contains(CardKeyword.Exhaust, ModelDb.Card<LongZhiBeiFu>().Keywords);
+
+        var spiritSource = File.ReadAllText(RepoFile("MeiLinModCode", "Cards", "LongZhiJingShen.cs"));
+        var inheritanceSource = File.ReadAllText(RepoFile("MeiLinModCode", "Cards", "LongZhiChuanCheng.cs"));
+        var burdenSource = File.ReadAllText(RepoFile("MeiLinModCode", "Cards", "LongZhiBeiFu.cs"));
+
+        Assert.Contains("PowerCmd.Apply<XiangzuLegacyPower>", spiritSource);
+        Assert.Contains("ApplyXiangzuLegacy(cardPlay.Target)", spiritSource);
+        Assert.Contains("PowerCmd.Apply<EmberPower>", inheritanceSource);
+        Assert.Contains("CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, targetPlayer)", inheritanceSource);
+        Assert.Contains("PlayerCmd.GainEnergy(DynamicVars.Energy.IntValue, targetPlayer)", inheritanceSource);
+        Assert.Contains("CombatState.GetTeammatesOf(Owner.Creature)", burdenSource);
+        Assert.Contains("card.RemoveFromCurrentPile(false)", burdenSource);
+        Assert.Contains("card.GiveToAnotherPlayer(Owner)", burdenSource);
+        Assert.Contains("PileType.Discard.GetPile(Owner)", burdenSource);
+        Assert.Contains("isChangingOwners: true", burdenSource);
+        Assert.Contains("PileType.Hand, PileType.Draw, PileType.Discard", burdenSource);
+        Assert.Contains("BasicStrikeDefendHelper.IsStrikeOrDefendCard", burdenSource);
+    }
+
     private static void AssertEntry(string expected, string actual)
     {
         Assert.True(MeiLinTarget.EntryEquals(actual, expected), $"Expected entry {expected}, got {actual}.");
@@ -160,6 +191,21 @@ public sealed class ContentRegistrationTests : CombatTestSuite
     {
         var expected = ModelDb.Card<TCard>().Id;
         Assert.DoesNotContain(cards, card => card.Id == expected);
+    }
+
+    private static void AssertMultiplayerCard<TCard>(
+        int cost,
+        CardType type,
+        CardRarity rarity,
+        TargetType targetType)
+        where TCard : CardModel
+    {
+        var card = ModelDb.Card<TCard>();
+        Assert.Equal(cost, card.EnergyCost.GetWithModifiers(CostModifiers.All));
+        Assert.Equal(type, card.Type);
+        Assert.Equal(rarity, card.Rarity);
+        Assert.Equal(targetType, card.TargetType);
+        Assert.Equal(CardMultiplayerConstraint.MultiplayerOnly, card.MultiplayerConstraint);
     }
 
     private static CardModel[] GetAllCards(CardPoolModel pool)
