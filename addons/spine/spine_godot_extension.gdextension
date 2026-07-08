@@ -15,7 +15,6 @@ ios.release = "ios/libspine_godot.ios.template_release.framework"
 windows.editor.x86_64 = "windows/libspine_godot.windows.editor.x86_64.dll"
 windows.debug.x86_64 = "windows/libspine_godot.windows.template_debug.x86_64.dll"
 windows.release.x86_64 = "windows/libspine_godot.windows.template_release.x86_64.dll"
-windows.editor.msil = "windows/libspine_godot.windows.editor.x86_64.dll"
 windows.debug.msil = "windows/libspine_godot.windows.template_debug.x86_64.dll"
 windows.release.msil = "windows/libspine_godot.windows.template_release.x86_64.dll"
 
