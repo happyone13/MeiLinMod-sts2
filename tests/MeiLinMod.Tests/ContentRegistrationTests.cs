@@ -146,7 +146,7 @@ public sealed class ContentRegistrationTests : CombatTestSuite
 
         AssertMultiplayerCard<LongZhiJingShen>(1, CardType.Power, CardRarity.Uncommon, TargetType.AnyPlayer);
         AssertMultiplayerCard<LongZhiChuanCheng>(0, CardType.Skill, CardRarity.Uncommon, TargetType.AnyAlly);
-        AssertMultiplayerCard<LongZhiBeiFu>(1, CardType.Skill, CardRarity.Rare, TargetType.Self);
+        AssertMultiplayerCard<LongZhiBeiFu>(1, CardType.Skill, CardRarity.Rare, TargetType.AnyAlly);
 
         Assert.Contains(CardKeyword.Exhaust, ModelDb.Card<LongZhiBeiFu>().Keywords);
 
@@ -159,11 +159,12 @@ public sealed class ContentRegistrationTests : CombatTestSuite
         Assert.Contains("PowerCmd.Apply<EmberPower>", inheritanceSource);
         Assert.Contains("CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, targetPlayer)", inheritanceSource);
         Assert.Contains("PlayerCmd.GainEnergy(DynamicVars.Energy.IntValue, targetPlayer)", inheritanceSource);
-        Assert.Contains("CombatState.GetTeammatesOf(Owner.Creature)", burdenSource);
-        Assert.Contains("card.RemoveFromCurrentPile(false)", burdenSource);
-        Assert.Contains("card.GiveToAnotherPlayer(Owner)", burdenSource);
-        Assert.Contains("PileType.Discard.GetPile(Owner)", burdenSource);
-        Assert.Contains("isChangingOwners: true", burdenSource);
+        Assert.Contains("targetPlayer == null || targetPlayer == Owner", burdenSource);
+        Assert.Contains("RemoveLocalHandHolderIfPresent(card)", burdenSource);
+        Assert.Contains("CardPileCmd.GiveToAnotherPlayer", burdenSource);
+        Assert.Contains("PileType.Discard", burdenSource);
+        Assert.Contains("hand.Remove(card)", burdenSource);
+        Assert.Contains("hand.ForceRefreshCardIndices()", burdenSource);
         Assert.Contains("PileType.Hand, PileType.Draw, PileType.Discard", burdenSource);
         Assert.Contains("BasicStrikeDefendHelper.IsStrikeOrDefendCard", burdenSource);
     }
