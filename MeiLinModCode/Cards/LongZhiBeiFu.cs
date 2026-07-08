@@ -13,7 +13,7 @@ using MegaCrit.Sts2.Core.Nodes.Rooms;
 namespace MeiLinMod.MeiLinModCode.Cards;
 
 [Pool(typeof(MeiLinModCardPool))]
-public class LongZhiBeiFu() : MeiLinModCard(1, CardType.Skill, CardRarity.Rare, TargetType.AnyAlly)
+public class LongZhiBeiFu() : MeiLinModCard(1, CardType.Skill, CardRarity.Rare, TargetType.AllAllies)
 {
     public override CardMultiplayerConstraint MultiplayerConstraint => CardMultiplayerConstraint.MultiplayerOnly;
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
@@ -23,13 +23,21 @@ public class LongZhiBeiFu() : MeiLinModCard(1, CardType.Skill, CardRarity.Rare, 
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var targetPlayer = cardPlay.Target?.Player;
-        if (targetPlayer == null || targetPlayer == Owner)
+        if (CombatState == null || Owner?.Creature == null)
             return;
 
-        var cardsToTake = GetStrikeAndDefendCards(targetPlayer).ToList();
-        foreach (var card in cardsToTake)
-            await TakeCardToDiscard(card);
+        var otherAllies = CombatState.GetTeammatesOf(Owner.Creature)
+            .Where(creature => creature is { IsAlive: true, IsPlayer: true, Player: not null } && creature.Player != Owner)
+            .Select(creature => creature.Player!)
+            .Distinct()
+            .ToList();
+
+        foreach (var ally in otherAllies)
+        {
+            var cardsToTake = GetStrikeAndDefendCards(ally).ToList();
+            foreach (var card in cardsToTake)
+                await TakeCardToDiscard(card);
+        }
     }
 
     protected override void OnUpgrade()

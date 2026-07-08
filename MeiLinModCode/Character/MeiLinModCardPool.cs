@@ -8,6 +8,6 @@ public class MeiLinModCardPool : TypeListCardPoolModel
     public override string Title => MeiLinMod.CharacterId; //This is not a display name.
     //public override string EnergyColorName => MeiLinMod.CharacterId;
     public override string EnergyColorName => "ironclad";
-    public override Color DeckEntryCardColor => new("FFC0CB");
+    public override Color DeckEntryCardColor => new("E83D3D");
     public override bool IsColorless => false;
 }

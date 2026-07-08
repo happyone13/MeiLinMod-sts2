@@ -236,5 +236,5 @@
     "MEILINMOD_LONG_ZHI_CHUAN_CHENG.title":  "Dragon Inheritance",
     "MEILINMOD_LONG_ZHI_CHUAN_CHENG.description":  "Choose an ally. They gain {Ember:diff()} [gold]Ember[/gold], draw {Cards:diff()} cards, and gain {Energy:energyIcons()}.",
     "MEILINMOD_LONG_ZHI_BEI_FU.title":  "Dragon Burden",
-    "MEILINMOD_LONG_ZHI_BEI_FU.description":  "Choose another ally. Transfer all [gold]Strike[/gold] and [gold]Defend[/gold] cards from their hand, draw pile, and discard pile to your discard pile."
+    "MEILINMOD_LONG_ZHI_BEI_FU.description":  "Transfer all [gold]Strike[/gold] and [gold]Defend[/gold] cards from every other ally's hand, draw pile, and discard pile to your discard pile."
 }

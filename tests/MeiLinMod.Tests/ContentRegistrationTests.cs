@@ -146,7 +146,7 @@ public sealed class ContentRegistrationTests : CombatTestSuite
 
         AssertMultiplayerCard<LongZhiJingShen>(1, CardType.Power, CardRarity.Uncommon, TargetType.AnyPlayer);
         AssertMultiplayerCard<LongZhiChuanCheng>(0, CardType.Skill, CardRarity.Uncommon, TargetType.AnyAlly);
-        AssertMultiplayerCard<LongZhiBeiFu>(1, CardType.Skill, CardRarity.Rare, TargetType.AnyAlly);
+        AssertMultiplayerCard<LongZhiBeiFu>(1, CardType.Skill, CardRarity.Rare, TargetType.AllAllies);
 
         Assert.Contains(CardKeyword.Exhaust, ModelDb.Card<LongZhiBeiFu>().Keywords);
 
@@ -159,7 +159,8 @@ public sealed class ContentRegistrationTests : CombatTestSuite
         Assert.Contains("PowerCmd.Apply<EmberPower>", inheritanceSource);
         Assert.Contains("CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, targetPlayer)", inheritanceSource);
         Assert.Contains("PlayerCmd.GainEnergy(DynamicVars.Energy.IntValue, targetPlayer)", inheritanceSource);
-        Assert.Contains("targetPlayer == null || targetPlayer == Owner", burdenSource);
+        Assert.Contains("creature.Player != Owner", burdenSource);
+        Assert.Contains("GetTeammatesOf(Owner.Creature)", burdenSource);
         Assert.Contains("RemoveLocalHandHolderIfPresent(card)", burdenSource);
         Assert.Contains("CardPileCmd.GiveToAnotherPlayer", burdenSource);
         Assert.Contains("PileType.Discard", burdenSource);
