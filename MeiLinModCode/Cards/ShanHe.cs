@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using MeiLinMod.MeiLinModCode.Migration;
 using MeiLinMod.MeiLinModCode.Character;
@@ -32,7 +32,7 @@ public class ShanHe() : MeiLinModCard(1, CardType.Attack, CardRarity.Common, Tar
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this, cardPlay)
+            .FromCardCompat(this, cardPlay)
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);
 
@@ -44,7 +44,7 @@ public class ShanHe() : MeiLinModCard(1, CardType.Attack, CardRarity.Common, Tar
 
         await PlayerCmd.LoseEnergy(DynamicVars.Energy.IntValue, Owner);
         await DamageCmd.Attack(DynamicVars[BurstKey].BaseValue)
-            .FromCard(this, cardPlay)
+            .FromCardCompat(this, cardPlay)
             .TargetingAllOpponents(combatState)
             .Execute(choiceContext);
     }

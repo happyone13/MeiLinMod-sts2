@@ -87,6 +87,7 @@ public sealed class ContentRegistrationTests : CombatTestSuite
         AssertContains<LongXi>(nonePoolCards);
         AssertContains<TongQiao>(nonePoolCards);
         AssertContains<RuTao>(nonePoolCards);
+        AssertContains<LongZhiBeiFu>(nonePoolCards);
 
         AssertDoesNotContain<YinSheChuDong>(mainPoolCards);
         AssertDoesNotContain<JianJiXingShi>(mainPoolCards);
@@ -97,6 +98,7 @@ public sealed class ContentRegistrationTests : CombatTestSuite
         AssertDoesNotContain<LongXi>(mainPoolCards);
         AssertDoesNotContain<TongQiao>(mainPoolCards);
         AssertDoesNotContain<RuTao>(mainPoolCards);
+        AssertDoesNotContain<LongZhiBeiFu>(mainPoolCards);
 
         AssertContains<TiaoXi>(mainPoolCards);
     }
@@ -163,6 +165,8 @@ public sealed class ContentRegistrationTests : CombatTestSuite
         Assert.Contains("GetTeammatesOf(Owner.Creature)", burdenSource);
         Assert.Contains("RemoveLocalHandHolderIfPresent(card)", burdenSource);
         Assert.Contains("CardPileCmd.GiveToAnotherPlayer", burdenSource);
+        Assert.Contains("CombatState.CreateCard(card, Owner)", burdenSource);
+        Assert.Contains("CardPileCmd.RemoveFromCombat(card", burdenSource);
         Assert.Contains("PileType.Discard", burdenSource);
         Assert.Contains("hand.Remove(card)", burdenSource);
         Assert.Contains("hand.ForceRefreshCardIndices()", burdenSource);

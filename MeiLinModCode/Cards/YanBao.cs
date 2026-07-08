@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using MeiLinMod.MeiLinModCode.Migration;
 using MeiLinMod.MeiLinModCode.Character;
@@ -40,7 +40,7 @@ public class YanBao() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommon, T
 
         var totalDamage = DynamicVars.Damage.BaseValue + (ember * DynamicVars[BonusDamageKey].BaseValue);
         await DamageCmd.Attack(totalDamage)
-            .FromCard(this, cardPlay)
+            .FromCardCompat(this, cardPlay)
             .TargetingAllOpponents(combatState)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);

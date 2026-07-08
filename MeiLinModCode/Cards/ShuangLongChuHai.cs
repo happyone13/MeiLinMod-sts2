@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using MeiLinMod.MeiLinModCode.Migration;
 using MeiLinMod.MeiLinModCode.Character;
@@ -27,7 +27,7 @@ public class ShuangLongChuHai() : MeiLinModCard(1, CardType.Attack, CardRarity.C
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
         PrepareAttackAnimation(2);
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this, cardPlay)
+            .FromCardCompat(this, cardPlay)
             .WithHitCount(2)
             .Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_slash")

@@ -39,6 +39,17 @@ public class YouLongPower : MeiLinModPower
         if (target == null)
             return;
 
-        await CreatureCmd.Damage(context, target, Amount, ValueProp.Unpowered, Owner, null, null);
+        await CreatureCmd.Damage(
+            context,
+            target,
+            Amount,
+            ValueProp.Unpowered,
+            Owner,
+            null
+#if STS2_108
+            ,
+            null
+#endif
+            );
     }
 }

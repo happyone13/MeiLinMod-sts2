@@ -35,6 +35,17 @@ public class GuardStanceTurnEndBlockPower : MeiLinModPower
         if (target == null)
             return;
 
-        await CreatureCmd.Damage(choiceContext, target, Amount + 1m, ValueProp.Move | ValueProp.Unpowered, Owner, null, null);
+        await CreatureCmd.Damage(
+            choiceContext,
+            target,
+            Amount + 1m,
+            ValueProp.Move | ValueProp.Unpowered,
+            Owner,
+            null
+#if STS2_108
+            ,
+            null
+#endif
+            );
     }
 }

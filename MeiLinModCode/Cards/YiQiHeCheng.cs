@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using MeiLinMod.MeiLinModCode.Migration;
 using MeiLinMod.MeiLinModCode.Character;
@@ -28,7 +28,7 @@ public class YiQiHeCheng() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncomm
         var hitCount = Math.Max(1, qi + 1);
         PrepareAttackAnimation(hitCount);
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this, cardPlay)
+            .FromCardCompat(this, cardPlay)
             .WithHitCount(hitCount)
             .Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_slash")

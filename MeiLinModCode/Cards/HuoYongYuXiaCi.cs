@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using MeiLinMod.MeiLinModCode.Migration;
@@ -33,7 +33,7 @@ public class HuoYongYuXiaCi() : MeiLinModCard(1, CardType.Attack, CardRarity.Rar
         var shouldTriggerFatal = target.Powers.All(p => p.ShouldOwnerDeathTriggerFatal());
 
         var attackCommand = await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this, cardPlay)
+            .FromCardCompat(this, cardPlay)
             .Targeting(target)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);

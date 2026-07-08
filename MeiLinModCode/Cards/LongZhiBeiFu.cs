@@ -12,7 +12,7 @@ using MegaCrit.Sts2.Core.Nodes.Rooms;
 
 namespace MeiLinMod.MeiLinModCode.Cards;
 
-[Pool(typeof(MeiLinModCardPool))]
+[Pool(typeof(NoneCardPool))]
 public class LongZhiBeiFu() : MeiLinModCard(1, CardType.Skill, CardRarity.Rare, TargetType.AllAllies)
 {
     public override CardMultiplayerConstraint MultiplayerConstraint => CardMultiplayerConstraint.MultiplayerOnly;
@@ -55,13 +55,22 @@ public class LongZhiBeiFu() : MeiLinModCard(1, CardType.Skill, CardRarity.Rare, 
 
     private async Task TakeCardToDiscard(CardModel card)
     {
+        if (CombatState == null || Owner == null)
+            return;
+
         RemoveLocalHandHolderIfPresent(card);
+#if STS2_108
         await CardPileCmd.GiveToAnotherPlayer(
             card,
             Owner,
             PileType.Discard,
             CardPilePosition.Random,
             this);
+#else
+        var takenCard = CombatState.CreateCard(card, Owner);
+        await CardPileCmd.RemoveFromCombat(card, skipVisuals: true);
+        await CardPileCmd.Add(takenCard, PileType.Discard, CardPilePosition.Random, this, skipVisuals: true);
+#endif
     }
 
     private static void RemoveLocalHandHolderIfPresent(CardModel card)

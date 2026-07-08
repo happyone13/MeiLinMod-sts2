@@ -39,6 +39,7 @@ public class HuoLongXinZang() : MeiLinModCard(0, CardType.Skill, CardRarity.Rare
         await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, Owner);
     }
 
+#if STS2_108
     protected override (PileType, CardPilePosition) GetResultPileTypeAndPositionForCardPlay()
     {
         var result = base.GetResultPileTypeAndPositionForCardPlay();
@@ -47,6 +48,15 @@ public class HuoLongXinZang() : MeiLinModCard(0, CardType.Skill, CardRarity.Rare
 
         return result;
     }
+#else
+    protected override PileType GetResultPileTypeForCardPlay()
+    {
+        var result = base.GetResultPileTypeForCardPlay();
+        return result == PileType.Discard
+            ? PileType.Hand
+            : result;
+    }
+#endif
 
     protected override void OnUpgrade()
     {

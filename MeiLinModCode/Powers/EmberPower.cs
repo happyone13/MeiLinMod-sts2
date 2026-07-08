@@ -23,8 +23,12 @@ public class EmberPower : MeiLinModPower
         decimal amount,
         ValueProp props,
         Creature? dealer,
-        CardModel? cardSource,
-        CardPlay? cardPlay)
+        CardModel? cardSource
+#if STS2_108
+        ,
+        CardPlay? cardPlay
+#endif
+        )
     {
         if (target != Owner)
             return 0m;
@@ -74,8 +78,12 @@ public class EmberPower : MeiLinModPower
             burstDamage,
             ValueProp.Unblockable | ValueProp.Unpowered,
             Applier,
-            null,
-            null);
+            null
+#if STS2_108
+            ,
+            null
+#endif
+            );
     }
 
     public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, System.Collections.Generic.IEnumerable<MegaCrit.Sts2.Core.Entities.Creatures.Creature> participants)

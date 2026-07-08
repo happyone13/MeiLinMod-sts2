@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using MeiLinMod.MeiLinModCode.Migration;
 using MeiLinMod.MeiLinModCode.Character;
@@ -25,7 +25,7 @@ public class ShanDianWuLianBian() : MeiLinModCard(2, CardType.Attack, CardRarity
 
         PrepareAttackAnimation(5);
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this, cardPlay)
+            .FromCardCompat(this, cardPlay)
             .WithHitCount(5)
             .Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_slash")

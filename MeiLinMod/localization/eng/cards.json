@@ -49,7 +49,7 @@
     "MEILINMOD_PAN_LONG.title":  "Coiled Dragon",
     "MEILINMOD_PAN_LONG.description":  "Gain {Block:diff()} Block.\nThis combat, each [gold]Strike[/gold] played makes this card gain +{Grow:diff()} Block (currently +{CurrentBonus}).",
     "MEILINMOD_HUO_LONG_XIN_ZANG.title":  "Fire Dragon Heart",
-    "MEILINMOD_HUO_LONG_XIN_ZANG.description":  "Lose 1 [gold]Qi[/gold], gain {Energy:energyIcons()}, and draw 1 card. Return this card to your hand.",
+    "MEILINMOD_HUO_LONG_XIN_ZANG.description":  "Lose 1 [gold]Qi[/gold] and gain {Energy:energyIcons()}. Return this card to your hand.",
     "MEILINMOD_YA_ZHI.title":  "Suppression",
     "MEILINMOD_YA_ZHI.description":  "Add X basic {IfUpgraded:show:[gold]Strike+[/gold]|[gold]Strike[/gold]} to your hand. They cost 0 and [gold]Exhaust[/gold].\nAll enemies gain X [gold]Ember[/gold].",
     "MEILINMOD_HU_XI.title":  "Breathing",

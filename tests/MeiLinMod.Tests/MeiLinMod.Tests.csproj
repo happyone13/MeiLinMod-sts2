@@ -12,8 +12,8 @@
     <Sts2TestModId>MeiLinMod.Tests</Sts2TestModId>
     <Sts2TestModName>MeiLinMod.Tests</Sts2TestModName>
     <Sts2TestModAuthor>lozalia</Sts2TestModAuthor>
-    <Sts2TestMinGameVersion>v0.108.0</Sts2TestMinGameVersion>
-    <Sts2TestMainModMinVersion>v0.3.1</Sts2TestMainModMinVersion>
+    <Sts2TestMinGameVersion>v0.107.1</Sts2TestMinGameVersion>
+    <Sts2TestMainModMinVersion>v0.4.0</Sts2TestMainModMinVersion>
     <Sts2TestTheSpireMinVersion>0.1.0</Sts2TestTheSpireMinVersion>
     <Sts2XunitAssertMinVersion>3.2.2</Sts2XunitAssertMinVersion>
     <Sts2TestDisabledModIds>BaseLib;Fei;KalipeiMod;KaylaMod;YukiMod;StS2_MeiLinTexturePack</Sts2TestDisabledModIds>

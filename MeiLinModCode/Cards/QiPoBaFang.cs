@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using MeiLinMod.MeiLinModCode.Migration;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
@@ -35,7 +35,7 @@ public class QiPoBaFang() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommo
             return;
         
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue + DynamicVars[BurstKey].BaseValue * qi)
-            .FromCard(this, cardPlay)
+            .FromCardCompat(this, cardPlay)
             .TargetingAllOpponents(combatState)
             .Execute(choiceContext);
 
