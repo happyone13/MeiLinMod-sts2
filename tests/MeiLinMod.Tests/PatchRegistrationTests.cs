@@ -69,8 +69,8 @@ public sealed class PatchRegistrationTests : CombatTestSuite
         }
 
         Assert.Empty(unresolvedTargets);
-        Assert.Equal(39, patchTypes.Length);
-        Assert.Equal(41, resolvedTargetCount);
+        Assert.Equal(35, patchTypes.Length);
+        Assert.Equal(37, resolvedTargetCount);
     }
 
     [Fact]
@@ -146,9 +146,6 @@ public sealed class PatchRegistrationTests : CombatTestSuite
             "optional-combat-animation",
             "optional combat animation",
             [
-                "MeiLinBattleAnimationGenerateAnimatorPatch",
-                "MeiLinBattleAnimationSetAnimationPostfixPatch",
-                "MeiLinBattleAnimationSetAnimationPrefixPatch",
                 "MeiLinTriggerAnimPatch"
             ]);
         AssertPatchGroup(
@@ -156,7 +153,6 @@ public sealed class PatchRegistrationTests : CombatTestSuite
             "optional-scene",
             "optional scene",
             [
-                "GameOverAnimationFallbackOnMegaStatePatch",
                 "MerchantCharacterAnimationFallbackPatch",
                 "MerchantCharacterPlayAnimationFallbackPatch",
                 "RestSiteCharacterAnimationFallbackPatch"

@@ -36,6 +36,23 @@ public sealed class LocalizationTests : CombatTestSuite
         LocManager.Instance.SetLanguage("zhs");
     }
 
+    [Fact]
+    public async Task Fire_dragon_heart_english_text_matches_current_card_effect()
+    {
+        var defend = await AddToHand<DefendMeilin>();
+        await Play(defend);
+
+        LocManager.Instance.SetLanguage("eng");
+
+        var description = new LocString("cards", "MEILINMOD_HUO_LONG_XIN_ZANG.description").GetRawText();
+        Assert.Equal(
+            "Lose 1 [gold]Qi[/gold] and gain {Energy:energyIcons()}. Return this card to your hand.",
+            description);
+        Assert.DoesNotContain("draw", description, StringComparison.OrdinalIgnoreCase);
+
+        LocManager.Instance.SetLanguage("zhs");
+    }
+
     private static void AssertCoreKeysExist(string language)
     {
         AssertLoc(language, "characters", "MEILINMOD_MEI_LIN_MOD.title");

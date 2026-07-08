@@ -28,7 +28,6 @@ public sealed class OptionalUiScenePatchTests : CombatTestSuite
         [
             typeof(StatsScreenMeiLinPatch),
             typeof(YukiSettingsPanelEmptyReadyCompatPatch),
-            typeof(GameOverAnimationFallbackOnMegaStatePatch),
             typeof(MerchantCharacterAnimationFallbackPatch),
             typeof(MerchantCharacterPlayAnimationFallbackPatch),
             typeof(RestSiteCharacterAnimationFallbackPatch)
@@ -56,22 +55,6 @@ public sealed class OptionalUiScenePatchTests : CombatTestSuite
         Assert.Contains("name.Contains(\"MeiLin\"", source);
         Assert.Contains("catch", source);
         Assert.Contains("return false;", source);
-    }
-
-    [Fact]
-    public async Task Game_over_fallback_only_retries_missing_die_animation_as_death()
-    {
-        await InitializeBattle();
-
-        var source = File.ReadAllText(RepoFile("MeiLinModCode", "Patches", "GameOverAnimationFallbackPatch.cs"));
-        Assert.Contains("private static bool _fallbackInProgress;", source);
-        Assert.Contains("Exception? __exception", source);
-        Assert.Contains("if (__exception == null || _fallbackInProgress)", source);
-        Assert.Contains("string.Equals(__0, \"die\", System.StringComparison.Ordinal)", source);
-        Assert.Contains("__instance.SetAnimation(\"death\", __1, __2)", source);
-        Assert.Contains("return null;", source);
-        Assert.Contains("return __exception;", source);
-        Assert.Contains("_fallbackInProgress = false;", source);
     }
 
     [Fact]

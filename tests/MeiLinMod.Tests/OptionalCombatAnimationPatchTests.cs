@@ -26,9 +26,6 @@ public sealed class OptionalCombatAnimationPatchTests : CombatTestSuite
 
         Type[] patchTypes =
         [
-            typeof(MeiLinBattleAnimationGenerateAnimatorPatch),
-            typeof(MeiLinBattleAnimationSetAnimationPrefixPatch),
-            typeof(MeiLinBattleAnimationSetAnimationPostfixPatch),
             typeof(MeiLinTriggerAnimPatch)
         ];
 
@@ -48,9 +45,6 @@ public sealed class OptionalCombatAnimationPatchTests : CombatTestSuite
 
         var targetDescriptions = new[]
             {
-                typeof(MeiLinBattleAnimationGenerateAnimatorPatch),
-                typeof(MeiLinBattleAnimationSetAnimationPrefixPatch),
-                typeof(MeiLinBattleAnimationSetAnimationPostfixPatch),
                 typeof(MeiLinTriggerAnimPatch)
             }
             .SelectMany(type => InvokeStatic<ModPatchTarget[]>(type, nameof(IPatchMethod.GetTargets)))
@@ -58,10 +52,9 @@ public sealed class OptionalCombatAnimationPatchTests : CombatTestSuite
             .OrderBy(target => target, StringComparer.Ordinal)
             .ToArray();
 
-        Assert.Equal(4, targetDescriptions.Length);
+        Assert.Equal(1, targetDescriptions.Length);
         Assert.Contains("CreatureCmd.TriggerAnim(Creature, String, Single)", targetDescriptions);
-        Assert.Equal(2, targetDescriptions.Count(target => target == "MegaAnimationState.SetAnimation(String, Boolean, Int32)"));
-        Assert.Contains(targetDescriptions, target => target.Contains("MeiLinMod.GenerateAnimator", StringComparison.Ordinal));
+        Assert.DoesNotContain("MegaAnimationState.SetAnimation(String, Boolean, Int32)", targetDescriptions);
     }
 
     [Fact]

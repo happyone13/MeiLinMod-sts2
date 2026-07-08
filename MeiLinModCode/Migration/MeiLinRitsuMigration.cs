@@ -49,14 +49,10 @@ internal static class MeiLinRitsuMigration
         overlayPatcher.PatchAll();
 
         var combatAnimationPatcher = RitsuLibFramework.CreatePatcher(MainFile.ModId, "optional-combat-animation", "optional combat animation");
-        combatAnimationPatcher.RegisterPatch<MeiLinBattleAnimationGenerateAnimatorPatch>();
-        combatAnimationPatcher.RegisterPatch<MeiLinBattleAnimationSetAnimationPrefixPatch>();
-        combatAnimationPatcher.RegisterPatch<MeiLinBattleAnimationSetAnimationPostfixPatch>();
         combatAnimationPatcher.RegisterPatch<MeiLinTriggerAnimPatch>();
         combatAnimationPatcher.PatchAll();
 
         var scenePatcher = RitsuLibFramework.CreatePatcher(MainFile.ModId, "optional-scene", "optional scene");
-        scenePatcher.RegisterPatch<GameOverAnimationFallbackOnMegaStatePatch>();
         scenePatcher.RegisterPatch<MerchantCharacterAnimationFallbackPatch>();
         scenePatcher.RegisterPatch<MerchantCharacterPlayAnimationFallbackPatch>();
         scenePatcher.RegisterPatch<RestSiteCharacterAnimationFallbackPatch>();

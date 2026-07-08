@@ -106,7 +106,7 @@ BaseLib 已不再作为主 Mod 的编译期或运行时依赖。默认测试环�
 
 ## 动画、VFX 和位移
 
-战斗动画由角色模板、`MeiLinBattleAnimationService`、`MeiLinBattleAnimationSequencePatch` 和 `MeiLinTriggerAnimPatch` 协作处理。
+战斗动画由角色模板、`MeiLinBattleAnimationService`、`MeiLinTriggerAnimPatch`、`MeiLinCommandVfxCoordinator` 和移动控制器协作处理。
 
 当前攻击流程按命令序列控制：
 

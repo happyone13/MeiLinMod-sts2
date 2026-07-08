@@ -142,19 +142,16 @@ SUMMARY total=9 passed=9 failed=0 skipped=0
   - `OptionalOverlayPatchTests` 固定了 11 个 overlay patch 的 target、非关键补丁元数据、点击不触发退出、退出延迟和持卡动画序列。
 - `optional-combat-animation`
   - `MeiLinTriggerAnimPatch`
-  - `MeiLinBattleAnimationGenerateAnimatorPatch`
-  - `MeiLinBattleAnimationSetAnimationPrefixPatch`
-  - `MeiLinBattleAnimationSetAnimationPostfixPatch`
-  - 当前仍需保留为运行时补丁，因为基础攻击动画触发来自 `CreatureCmd.TriggerAnim`，而持卡/攻击结束序列依赖 `MegaAnimationState.SetAnimation` 的即时调用。
+  - 不再注册 `MegaAnimationState.SetAnimation(String, Boolean, Int32)` 的 prefix/postfix 补丁，避免和其他角色/动画 mod 的同类 Harmony 补丁互相影响。
   - `MeiLinTriggerAnimPatch` 只拦截美铃玩家的 `Attack` trigger；非美铃、非玩家或非攻击 trigger 必须回到原流程。
   - 攻击段执行时先位移到目标，再播放首段攻击语音、命令 VFX/动画和命中反馈；成功段调用 `ScheduleReturnAfterSegment`，失败段调用 `ForceReturnSoon`。
   - 非最终多段攻击会安排 abandoned return，并用 `AbortActiveAttack` 丢弃剩余段，避免目标提前死亡或流程中断后角色留在敌人位置。
   - 位移层级只在战斗角色父节点内移动 sibling 或使用相对 `ZIndex` fallback，返回时恢复原 sibling/Z 状态，避免超过 UI 层。
-  - `OptionalCombatAnimationPatchTests` 固定了 4 个补丁 target、拦截范围、攻击段返回保证、 abandoned return 和层级恢复结构。
+  - `OptionalCombatAnimationPatchTests` 固定了 1 个补丁 target、拦截范围、攻击段返回保证、 abandoned return 和层级恢复结构。
 - `optional-scene`
   - 商店/营火角色动画 fallback。
-  - game over `die -> death` fallback。
-  - 当前仍需保留为运行时场景补丁，因为它修正的是 Godot/MegaSpine 场景生命周期中的缺失动画。`OptionalUiScenePatchTests` 固定了只作用于 `MeiLinMod/scenes/`、候选动画顺序、异常时返回基础流程，以及 `die` 缺失时只回退到 `death`。
+  - 不再注册 `MegaAnimationState.SetAnimation(String, Boolean, Int32)` fallback 补丁，包括旧的 game over `die -> death` fallback。
+  - 当前只保留商店/营火运行时场景补丁，因为它们修正的是 Godot/MegaSpine 场景生命周期中的缺失动画，且不全局 hook `SetAnimation`。`OptionalUiScenePatchTests` 固定了只作用于 `MeiLinMod/scenes/`、候选动画顺序和异常时返回基础流程。
 - `optional-card-visual`
   - 动态卡图 overlay。
   - 古旧/混沌卡框、费用层、稀有度装饰和卡框状态清理。
