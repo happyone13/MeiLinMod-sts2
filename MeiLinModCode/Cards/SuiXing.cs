@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+ï»¿using MeiLinMod.MeiLinModCode.Migration;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
 using MeiLinMod.MeiLinModCode.Powers;
@@ -17,7 +17,7 @@ public class SuiXing() : MeiLinModCard(1, CardType.Power, CardRarity.Uncommon, T
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await PlayPowerCastAnim();
-        // ËæĞÔ£º½øÈë¹¥»÷×ËÌ¬Ê±³é1ÕÅÅÆ¡£
+        // éšæ€§ï¼šè¿›å…¥æ”»å‡»å§¿æ€æ—¶æŠ½1å¼ ç‰Œã€‚
         await PowerCmd.Apply<StanceSwitchDrawPower>(new BlockingPlayerChoiceContext(), Owner.Creature, 1m, Owner.Creature, this);
     }
 

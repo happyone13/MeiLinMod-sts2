@@ -1,5 +1,4 @@
-using BaseLib.Abstracts;
-using MegaCrit.Sts2.Core.Commands;
+﻿using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -9,10 +8,11 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MeiLinMod.MeiLinModCode.Cards;
 using MeiLinMod.MeiLinModCode.Extensions;
+using STS2RitsuLib.Scaffolding.Content;
 
 namespace MeiLinMod.MeiLinModCode.Powers;
 
-public class QiPoTemporaryStrengthDownPower : MeiLinModPower, ICustomModel
+public class QiPoTemporaryStrengthDownPower : MeiLinModPower
 {
     private decimal _appliedAmount;
 
@@ -21,8 +21,9 @@ public class QiPoTemporaryStrengthDownPower : MeiLinModPower, ICustomModel
     public override PowerStackType StackType => PowerStackType.Counter;
 
     // Reuse QiPo icon so this debuff is always visible and themed.
-    public override string CustomPackedIconPath => "qi_po_power.png".PowerImagePathOrDefault();
-    public override string CustomBigIconPath => "qi_po_power.png".BigPowerImagePathOrDefault();
+    public override PowerAssetProfile AssetProfile => new(
+        IconPath: "qi_po_power.png".PowerImagePathOrDefault(),
+        BigIconPath: "qi_po_power.png".BigPowerImagePathOrDefault());
 
     public override async Task AfterApplied(Creature? applier, CardModel? cardSource)
     {

@@ -10,6 +10,7 @@ using MegaCrit.Sts2.Core.Nodes.Cards.Holders;
 using MegaCrit.Sts2.Core.Nodes.Combat;
 using MeiLinMod.MeiLinModCode.Cards;
 using MeiLinMod.MeiLinModCode.Config;
+using STS2RitsuLib.Patching.Models;
 
 namespace MeiLinMod.MeiLinModCode.Patches;
 
@@ -546,48 +547,67 @@ public static class CardSpinePortraitPatch
 
 }
 
-[HarmonyPatch(typeof(NCard), "Reload")]
-public static class CardSpinePortraitReloadPatch
+public sealed class CardSpinePortraitReloadPatch : IPatchMethod
 {
-    [HarmonyPrefix]
+    public static string PatchId => "meilin_card_spine_portrait_reload";
+    public static bool IsCritical => false;
+    public static string Description => "Refresh MeiLin dynamic Spine card portraits after NCard.Reload";
+
+    public static ModPatchTarget[] GetTargets() =>
+    [
+        PatchTarget.Method<NCard>("Reload")
+    ];
+
     [HarmonyPriority(Priority.First)]
-    public static void ReloadPrefix(NCard __instance)
+    public static void Prefix(NCard __instance)
     {
         CardSpinePortraitPatch.PrepareForBaseVisuals(__instance);
     }
 
-    [HarmonyPostfix]
     [HarmonyPriority(Priority.Last)]
-    public static void ReloadPostfix(NCard __instance)
+    public static void Postfix(NCard __instance)
     {
         CardSpinePortraitPatch.Apply(__instance);
     }
 }
 
-[HarmonyPatch(typeof(NCard), "_EnterTree")]
-public static class CardSpinePortraitEnterTreePatch
+public sealed class CardSpinePortraitEnterTreePatch : IPatchMethod
 {
-    [HarmonyPostfix]
+    public static string PatchId => "meilin_card_spine_portrait_enter_tree";
+    public static bool IsCritical => false;
+    public static string Description => "Apply MeiLin dynamic Spine card portraits when cards enter the tree";
+
+    public static ModPatchTarget[] GetTargets() =>
+    [
+        PatchTarget.Method<NCard>("_EnterTree")
+    ];
+
     [HarmonyPriority(Priority.Last)]
-    public static void EnterTreePostfix(NCard __instance)
+    public static void Postfix(NCard __instance)
     {
         CardSpinePortraitPatch.Apply(__instance);
     }
 }
 
-[HarmonyPatch(typeof(NCard), nameof(NCard.UpdateVisuals))]
-public static class CardSpinePortraitUpdateVisualsPatch
+public sealed class CardSpinePortraitUpdateVisualsPatch : IPatchMethod
 {
-    [HarmonyPrefix]
+    public static string PatchId => "meilin_card_spine_portrait_update_visuals";
+    public static bool IsCritical => false;
+    public static string Description => "Synchronize MeiLin dynamic Spine card portraits during NCard.UpdateVisuals";
+
+    public static ModPatchTarget[] GetTargets() =>
+    [
+        PatchTarget.Method<NCard>(nameof(NCard.UpdateVisuals))
+    ];
+
     [HarmonyPriority(Priority.First)]
-    public static void UpdateVisualsPrefix(NCard __instance)
+    public static void Prefix(NCard __instance)
     {
         CardSpinePortraitPatch.PrepareForBaseVisuals(__instance);
     }
 
-    [HarmonyPostfix]
     [HarmonyPriority(Priority.Last)]
-    public static void UpdateVisualsPostfix(NCard __instance)
+    public static void Postfix(NCard __instance)
     {
         if (__instance?.Model is not MeiLinModCard cardModel)
         {

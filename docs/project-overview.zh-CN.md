@@ -1,369 +1,212 @@
-# MeiLinMod 项目文档
+# MeiLinMod 项目概览
 
-## 1. 项目定位
+## 项目定位
 
-`MeiLinMod` 是一个面向《Slay the Spire 2》公开测试版的自定义角色 Mod。
+`MeiLinMod` 是面向《Slay the Spire 2》的自定义角色 Mod。当前分支已经进入从 BaseLib 迁移到 RitsuLib 的收尾阶段，核心目标是让内容注册、设置页和补丁注册由 RitsuLib 承接，同时保持原有卡牌 ID、本地化 key、存档兼容、VFX、背身立绘和动态卡图行为不漂移。
 
-项目使用：
+构建产物由两部分组成：
 
-- `Godot 4.5.1`
-- `C# / .NET 9`
-- `BaseLib`
-- `Harmony`
+- `MeiLinMod.dll`：角色、卡牌、能力、遗物、药水、补丁、设置、VFX 调度和迁移入口。
+- `MeiLinMod.pck`：Godot 场景、图片、音频、Spine 资源、本地化、VFX 配置和少量场景挂载脚本。
 
-构建结果由两部分组成：
+## 当前技术栈
 
-- `MeiLinMod.dll`：游戏逻辑、角色、卡牌、能力、遗物、补丁
-- `MeiLinMod.pck`：Godot 资源包，包含场景、图片、音效、Spine 资源、本地化
+- Godot 4.5.1
+- C# / .NET 9
+- STS2.RitsuLib 0.4.50
+- RitsuLib optional patcher
+- TestTheSpire headless 测试
+- Spine Godot GDExtension
 
-## 2. 目录结构
+BaseLib 已不再作为主 Mod 的编译期或运行时依赖。默认测试环境会显式禁用 BaseLib、YukiMod、Fei 等外部 Mod，用来验证 MeiLinMod 在 RitsuLib 下可以独立加载；另外会单独跑 BaseLib + RitsuLib + MeiLinMod 的设置兼容冒烟测试，确认 MeiLinMod 不依赖 BaseLib 也不会因为 BaseLib 同时存在而阻断加载。
 
-### 根目录
+## 目录结构
 
-- `MainFile.cs`
-  - Mod 初始化入口。
-- `MeiLinMod.csproj`
-  - .NET / Godot 工程配置，定义依赖、构建和导出流程。
-- `MeiLinMod.json`
-  - Mod 清单。
-- `project.godot`
-  - Godot 工程配置。
-
-### 代码目录
-
-- `MeiLinModCode/Character`
-  - 角色定义、卡池/遗物池/药水池、动画桥接。
+- `MeiLinModCode/Entry`
+  - Mod 初始化入口和全局 using。
+- `MeiLinModCode/Migration`
+  - RitsuLib 初始化、集中内容注册、本地 `PoolAttribute`。
 - `MeiLinModCode/Cards`
   - 自定义卡牌实现。
 - `MeiLinModCode/Powers`
-  - 自定义能力、姿态、资源和状态效果。
+  - 能力、姿态、气、余烬和临时状态。
 - `MeiLinModCode/Relics`
   - 自定义遗物。
 - `MeiLinModCode/Potions`
   - 自定义药水。
 - `MeiLinModCode/Patches`
-  - Harmony 补丁，处理兼容、替换和引擎行为修正。
-- `MeiLinModCode/Services`
-  - 运行时服务，例如音频播放。
-- `MeiLinModCode/StanceVfx`
-  - 姿态相关特效控制。
-- `MeiLinModCode/HoverTips`
-  - 自定义关键词说明与悬浮提示。
-- `MeiLinModCode/Extensions`
-  - 路径、命名等辅助扩展方法。
+  - RitsuLib `IPatchMethod` 补丁，覆盖内容兼容、音频、卡图、动画和场景 fallback。
+- `MeiLinModCode/Mechanics`
+  - 背身立绘、共享设置和其他机制。
+- `MeiLinModCode/Vfx`
+  - 技能特效、攻击位移和命令式 VFX 调度。
+- `MeiLinModCode/Telemetry`
+  - RitsuLib 遥测接入，当前使用 PostHog US 直连，并注册 BasicUsage、ModInventory、Diagnostics 与 MeiLin 过滤后的 RunHistory。
+- `GodotScripts`
+  - Godot 场景实际引用的 C# 脚本。普通运行时代码不放在这里，避免进入 `.pck`。
+- `MeiLinMod`
+  - Godot 资源、场景、图片、音频、Spine、本地化和 VFX 配置。
+- `tests/MeiLinMod.Tests`
+  - TestTheSpire 自动测试。
 
-### 资源目录
+## 初始化流程
 
-- `MeiLinMod/scenes`
-  - 角色、背景、图标、特效场景。
-- `MeiLinMod/images`
-  - 卡图、能力图标、遗物图标、UI 素材。
-- `MeiLinMod/sound`
-  - 角色语音与技能音效。
-- `MeiLinMod/spine`
-  - 角色 Spine 资源。
-- `MeiLinMod/localization`
-  - 中英文本地化文本。
+入口位于 `MeiLinModCode/Entry/MeiLinModEntry.cs`。当前初始化顺序为：
 
-## 3. 初始化流程
+1. `MeiLinRitsuMigration.Initialize()` 注册 RitsuLib 集成。
+2. `ScriptManagerBridge.LookupScriptsInAssembly(assembly)` 注册 Godot 脚本桥接。
+3. `MeiLinSharedSettings.EnsureSettingsLoaded()` 加载 Yuki/Chaos 共享设置。
+4. `CardSpinePortraitPatch.PreloadDynamicPortraitScenes()` 预加载动态卡图场景。
+5. `MeiLinCommandVfxCoordinator.PreloadConfiguredScenes()` 预加载 VFX 配置引用场景。
+6. `MeiLinAttackMovementController.PreloadMovementEffects()` 预加载位移特效。
 
-入口文件是 `MainFile.cs`。
+入口中不再调用 `harmony.PatchAll()`。补丁由 `MeiLinRitsuMigration.RegisterOptionalPatchers()` 分区注册。
 
-启动时主要完成以下工作：
+## RitsuLib 集成
 
-1. 使用 `ScriptManagerBridge.LookupScriptsInAssembly` 注册程序集中的脚本。
-2. 创建 `Harmony` 实例并执行 `PatchAll()`。
-3. 打印关键补丁目标是否成功挂载，便于排查兼容问题。
+迁移入口 `MeiLinRitsuMigration` 负责：
 
-这意味着项目是一个混合型 Mod：
+- `ModTypeDiscoveryHub.RegisterModAssembly(MainFile.ModId, assembly)`
+- `MeiLinRitsuContentRegistration.Register(assembly)`
+- `RitsuLibFramework.RegisterModSettings(...)`
+- 创建并应用 optional patcher：
+  - `optional-ui`
+  - `optional-audio`
+  - `optional-overlay`
+  - `optional-combat-animation`
+  - `optional-scene`
+  - `optional-card-visual`
+  - `optional-content`
 
-- 一部分通过 BaseLib 的模型注册机制接入游戏。
-- 一部分通过 Harmony 修改或修正游戏原有逻辑。
-- 一部分通过 Godot 场景和资源包提供可视化表现。
+`optional-ui` 里包含一个很窄的 YukiMod 兼容补丁：当旧 YukiMod 在设置界面创建空的 `XCskin_ModSettingsPanel` 时，`NSettingsPanel._Ready()` 会先于 Yuki 填充控件而抛出 `Sequence contains no elements`。MeiLin 只在该面板名、该异常和 VBox 为空同时成立时吞掉这个临时异常，避免影响其他设置面板。
 
-## 4. 角色定义
+内容注册由 `MeiLinRitsuContentRegistration` 集中处理。它会遍历程序集中的具体卡牌、遗物、药水和能力类型，按本地 `PoolAttribute` 决定卡池/遗物池/药水池，并显式固定旧 public entry：`MEILINMOD-*`。这可以避免 RitsuLib 默认命名导致本地化 key、存档引用或旧卡牌逻辑漂移。
 
-角色定义位于 `MeiLinModCode/Character/MeiLinMod.cs`。
+## 角色与核心机制
 
-当前角色特征包括：
+角色定义位于 `MeiLinModCode/Character/MeiLinMod.cs`。当前角色模板保留：
 
-- 角色 ID：`MeiLinMod`
-- 性别：`Feminine`
-- 初始生命：`75`
-- 初始遗物：`XiangzuLegacyRelic`
-- 初始卡组：
+- 起始生命：75
+- 起始金币：99
+- 起始遗物：`XiangzuLegacyRelic`
+- 初始牌组：
   - `AttackDefenseUnity`
   - `FireDragonGem`
   - `StrikeMeilin` x4
   - `DefendMeilin` x4
 
-角色还定义了：
+核心玩法包括：
 
-- 自定义立绘、营火、商店、选人界面和地图标记资源
-- 自定义攻击、施法、死亡、选人音效
-- 自定义战斗动画状态
-- 额外预加载资源路径，避免姿态特效在首次使用时缺资源
+- 攻/御姿态切换。
+- 气槽与气层。
+- 余烬。
+- 攻防一体。
+- 多段攻击。
+- 技能动画与 VFX 命令联动。
 
-## 5. 核心玩法机制
+## 动画、VFX 和位移
 
-### 5.1 香族传承
+战斗动画由角色模板、`MeiLinBattleAnimationService`、`MeiLinBattleAnimationSequencePatch` 和 `MeiLinTriggerAnimPatch` 协作处理。
 
-核心起始遗物是 `XiangzuLegacyRelic`。
+当前攻击流程按命令序列控制：
 
-战斗开始时它会：
+- 普通多段攻击循环使用 `attack_play1`、`attack_play2`。
+- 超过 3 段时，最后一段使用 `u2_attack_play` 收尾。
+- 中途目标死亡或攻击中止时，会丢弃剩余动画段，避免下一次攻击消费旧队列。
 
-- 施加 `XiangzuLegacyPower`
-- 移除御姿态
-- 默认进入攻姿态
+VFX 配置主要来自 `MeiLinMod/vfx_configs/1027/generated/meilin_vfx_commands.json`。测试会验证基础流程仍存在，包括 `u1_buff`、`u2_attack`、`u3_buff`、`u4_buff`、普通攻击和 debuff 流程。
 
-`XiangzuLegacyPower` 是整个角色玩法的中枢，负责：
+## 设置
 
-- 记录当前姿态
-- 处理姿态切换
-- 触发姿态切换收益
-- 刷新姿态特效
-- 同步依赖姿态的能力数值
+RitsuLib 设置页当前覆盖：
 
-### 5.2 攻 / 御姿态
+- 背身立绘开关。
+- 战斗特效开关。
+- 动态卡图开关。
+- 背身立绘缩放。
+- 背身立绘 X/Y 偏移。
+- 语音音量。
 
-角色存在两种姿态：
+这些设置仍然读写 Yuki/Chaos 共享配置：
 
-- 攻姿态：由 `StanceGongPower` 表示
-- 御姿态：由 `StanceYuPower` 表示
+- 目录：`chaosmod`
+- 文件：`xcskin_settings.json`
+- AppDomain key 前缀：`CHAOSMOD_XCSKIN_`
 
-姿态切换后，系统会：
+旧的 `NSettingsScreen` 手工注入实现已经移除。当前设置页只走 RitsuLib 注册路径，避免维护两套 UI 和旧乱码文本。
 
-- 更新角色身上的姿态能力
-- 播放对应语音
-- 刷新姿态光效
-- 结算“切换姿态时”的附加收益
-- 强制角色回到正确的待机动画
+迁移中没有改变共享设置 schema。未来如果要改成 RitsuLib data store，必须先做一次性旧配置导入，并单独验证 YukiMod 兼容性。
 
-### 5.3 气槽与气
+## 导出策略
 
-资源系统由 `QiCounterPower` 与 `QiPower` 共同实现。
+`MeiLinMod.csproj` 和 `export_presets.cfg` 会排除开发目录和废弃资源，避免把普通 C# 源码、测试、文档、工具、旧 BaseLib 包、编辑器插件和临时文件打入 `.pck`。Windows/Linux 本地输出优先使用游戏目录下已经存在的 `mods2`，没有 `mods2` 时回退到旧 `mods`；当两者不同时，会镜像到旧 `mods` 以兼容 TestTheSpire。
 
-`QiCounterPower` 负责：
+Godot 场景实际引用的 C# 脚本被移动到 `GodotScripts`。普通运行时代码保留在 `MeiLinModCode`，并由 DLL 承载。
 
-- 记录当前气槽进度
-- 在攻击命中或被攻击命中时累积气槽
-- 达到阈值后转化为 1 层 `QiPower`
+导出保留 Spine GDExtension 的 `msil` Windows alias，保证 `binary_format/architecture="msil"` 时仍能找到对应库。
 
-气槽阈值并不是固定值。下一层气所需槽位会受到以下因素影响：
+## 自动测试
 
-- 当前已有的气层数
-- `TongQiaoPower`
-- `XiangzuSpiritPower`
-- `QiRequirementIncreasePower`
+测试项目位于 `tests/MeiLinMod.Tests`。当前覆盖：
 
-### 5.4 气的属性转化
+- 基础战斗与基础牌可打出。
+- 角色模板起始属性、卡组和遗物。
+- Ritsu 内容注册 public entry 兼容。
+- 卡池归属。
+- 本地化 key。
+- Godot 脚本路径与预加载资源。
+- Manifest 与 csproj 不重新引入 BaseLib。
+- `.pck` 不包含开发目录、旧资源和普通 C# 源码。
+- Ritsu patch target 解析和 patcher 分组。
+- 音频补丁不再挂到怪物死亡音效路径。
+- 设置 round-trip 与 Yuki/Chaos schema 兼容。
+- BaseLib + RitsuLib + MeiLinMod 同时加载时，设置相关测试能通过。
+- 多段攻击队列中止和 `1212 + u2` 收尾规则。
+- VFX 命令配置。
+- 遥测 PostHog adapter 和 RunHistory 过滤。
 
-`QiPower` 本身不直接写死为力量或敏捷，而是根据姿态动态映射：
+最近一次完整结果：
 
-- 攻姿态：每层气提供 `+1 Strength`
-- 御姿态：每层气提供 `+1 Dexterity`
+```text
+SUMMARY total=54 passed=54 failed=0 skipped=0
+```
 
-姿态变化或气层变化时，`QiPower` 会自动刷新已施加的属性差值。
+0.108 迁移依赖专项结果：
 
-### 5.5 余烬
+```text
+SUMMARY total=9 passed=9 failed=0 skipped=0
+```
 
-`EmberPower` 是另一条重要机制线。
+BaseLib 共存冒烟结果：
 
-效果大致为：
+```text
+SettingsTests total=3 passed=3 failed=0 skipped=0
+```
 
-- 每层使目标受到的攻击伤害 `+1`
-- 每累计到 `5` 层的整数档位时，额外损失一次最大生命值 `5%`
-- 回合结束时层数衰减
+该测试使用缓存的 BaseLib v3.2.1。BaseLib 自身在 STS2 v0.108.0 下会记录一个旧 `CustomPile` 补丁初始化异常，但 RitsuLib、MeiLinMod 和 MeiLinMod.Tests 仍能继续加载并完成设置测试；这说明当前已验证的是“MeiLinMod 与已加载 BaseLib 共存不阻断”，不是“BaseLib 3.2.1 已完全适配 0.108”。
 
-该机制可用于：
+## 遥测
 
-- 压低敌人承伤阈值
-- 强化多段攻击收益
-- 形成持续性压制
+遥测功能参考 `STSVWB` 和 `STSVLogs` 的分层方式：配置、注册、适配器和事件发送分离。MeiLinMod 当前通过 `TelemetryRegistry.RegisterApplicant(...)` 注册 applicant，并在 RitsuLib 授权机制下请求 `BasicUsage`、`ModInventory`、`Diagnostics` 与 `RunHistory` 类别。
 
-## 6. 代表性卡牌设计
+当前状态：
 
-### `AttackDefenseUnity`
+- `MeiLinModEntry.Initialize()` 已调用 `MeiLinTelemetryBootstrap.Initialize()`。
+- `MeiLinTelemetryConfiguration` 使用 `PostHogTelemetryAdapter`，host 为 `https://us.i.posthog.com`。
+- `RunHistory` 已启用，但通过 `MeiLinTelemetryBootstrap.IsMeiLinRun` 过滤为包含 MeiLin 角色的跑局。
+- 自定义本地平衡摘要已移除，不再在 mod 端生成二次摘要事件。
 
-定位是基础启动卡。
+平衡看板用途：选择率、胜率、死亡层数和完整卡组分析从 `run_history.completed` 读取。卡牌选择率、入组率、升级率、最终卡组和路线统计应由 PostHog HogQL、ingest 后端或离线 ETL 解析完整 RunHistory 得出。
 
-效果思路：
+隐私边界：不要上传玩家姓名、路径、完整日志或任何本地文件内容。直接 PostHog 会把 project API key 暴露在 mod 包里，后续公开长期收集时建议增加代理做限流、字段过滤和来源校验。
 
-- 从抽牌堆和弃牌堆中检索基础攻击/防御牌
-- 选出 2 张加入手牌
-- 本回合将其费用改为 `0`
+## 仍需人工运行时验证
 
-### `FireDragonGem`
+自动测试已经覆盖主要注册、构建和逻辑门禁，但以下内容仍需要游戏内实测：
 
-定位是初始能力牌。
-
-特点：
-
-- `Innate`
-- 播放自定义施法音效
-- 触发施法动画
-- 施加 `FireDragonGemPower`
-
-### `GuiYi`
-
-定位是姿态系统的高阶能力牌。
-
-效果思路：
-
-- 施加双姿态能力 `GuiYiDualStancePower`
-- 升级后额外获得气槽
-- 手动触发一次“虚拟姿态切换”，使切姿态奖励也能结算
-
-## 7. 内容规模
-
-基于当前代码注册情况，项目内容大致为：
-
-- 池内卡牌：约 `98` 张
-- 能力类文件：约 `78` 个
-- 池内遗物：约 `10` 个
-- 药水：`1` 个
-- Harmony Patch 标记：约 `15` 处
-
-按卡牌稀有度粗略统计：
-
-- `Basic`：约 `4`
-- `Common`：约 `31`
-- `Uncommon`：约 `40`
-- `Rare`：约 `30`
-- `Ancient`：约 `2`
-
-这些数字反映的是当前代码层面的实现规模，不等同于所有内容都已经过完整平衡与联机验证。
-
-## 8. 音频、动画与表现层
-
-### 音频
-
-`MeiLinAudioService` 负责：
-
-- 拦截或替换部分默认 `SfxCmd`
-- 为角色攻击、施法、死亡、选人播放自定义音频
-- 为个别卡牌播放专属音效
-- 在需要时屏蔽默认音效，避免重叠
-
-### 动画
-
-角色动画有两层处理：
-
-- `MeiLinMod.cs` 中的 `GenerateAnimator`
-  - 面向战斗状态机，定义 Idle / Attack / Cast / Hit / Dead / Relaxed 等状态。
-- `MeilinCharacterAnimBridge.cs`
-  - 在 Godot 节点层面桥接动画触发名与 Spine 动画名，解决命名不一致问题。
-
-### 姿态特效
-
-`MeiLinStanceVfxController` 负责切换姿态时的 aura 场景表现。
-
-当前项目里已存在：
-
-- 攻姿态特效
-- 御姿态特效
-- 若干测试场景
-
-## 9. 兼容补丁与工程策略
-
-项目并不只依赖公开注册接口，也通过 Harmony 修补了一些游戏或遗物行为。
-
-代表性补丁包括：
-
-- `AncientRelicMeiLinPatch`
-  - 处理 `ArchaicTooth`、`DustyTome` 对梅琳卡池和进化牌的适配。
-- `SfxCmdMeiLinAudioPatch`
-  - 接管部分音效播放逻辑。
-- `CharacterAnimationFallbackPatch`
-  - 在商店和营火场景中为角色寻找可用的备用动画，避免场景空播。
-
-这类补丁的意义在于：
-
-- 让新角色接入游戏原生遗物/事件逻辑
-- 修正官方动画调用与自定义资源之间的接口落差
-- 在角色资源尚未完全对齐原版命名时提供兜底
-
-## 10. 构建与导出
-
-`MeiLinMod.csproj` 中包含了完整的构建和导出流程。
-
-主要逻辑如下：
-
-1. 检查 `Slay the Spire 2` 数据目录是否存在。
-2. 检查本机 `Godot 4.5.1` 路径是否存在。
-3. 编译 DLL。
-4. 将 DLL 和 `MeiLinMod.json` 复制到游戏 `mods/MeiLinMod/` 目录。
-5. 调用 Godot 的 headless 导出，把 `.pck` 导出到同一目录。
-
-工程上特别强调了一点：
-
-- 当前应固定使用 `Godot 4.5.1`
-
-因为注释中已经明确说明，如果使用比游戏更高的 Godot 版本，游戏可能不会加载导出的 `.pck`。
-
-## 11. 当前已知问题
-
-### 11.1 Mod 清单格式异常
-
-`MeiLinMod.json` 当前看起来不是合法 JSON。
-
-已观察到的问题：
-
-- `description` 字段缺少闭合引号
-
-这类错误可能导致：
-
-- Mod 清单解析失败
-- 游戏无法正确显示 Mod 信息
-- 构建产物被复制后仍然无法正常加载
-
-### 11.2 编码不一致
-
-当前仓库中文本存在编码混用现象。
-
-已观察到：
-
-- `README.md` 在终端中呈现乱码
-- `MeiLinMod.json` 的中文描述也呈现乱码
-- 部分本地化文件正常，例如 `localization/zhs/card_keywords.json`
-
-这通常意味着仓库中同时存在：
-
-- 正常 UTF-8 文件
-- 以其他编码保存的旧文件
-
-建议后续统一为 `UTF-8`。
-
-## 12. 维护建议
-
-如果后续要继续扩展该项目，建议优先做以下几件事：
-
-1. 修复 `MeiLinMod.json` 的合法性，确保清单可被稳定解析。
-2. 统一文档和配置文件编码为 `UTF-8`。
-3. 为核心机制补一份“设计文档”，单独记录：
-   - 气槽增长规则
-   - 姿态切换收益
-   - 余烬结算逻辑
-   - 联机或多目标场景下的边界行为
-4. 为关键能力和补丁补充回归测试思路，尤其是：
-   - 气转化阈值
-   - 姿态切换后的属性刷新
-   - 遗物/事件对自定义卡池的兼容
-
-## 13. 总结
-
-`MeiLinMod` 当前已经不是一个简单的角色原型，而是一个具备完整战斗资源系统、姿态系统、音频表现、动画桥接、资源包导出和兼容补丁的中大型角色 Mod。
-
-项目的核心强项在于：
-
-- 玩法主轴明确
-- 表现层投入较多
-- 已考虑与原版系统的融合
-
-当前最需要优先收口的部分不是内容量，而是工程稳定性：
-
-- 清单合法性
-- 编码一致性
-- 若干关键机制的可验证性
-
-这些问题处理完之后，项目会更适合继续做平衡、发布和协作开发。
+- 无 BaseLib 时角色能进入游戏并正常显示 MeiLin 卡池、遗物、药水和能力。
+- 设置页在有/无 YukiMod 时都能读写背身立绘、特效、动态卡图、语音音量和立绘缩放/偏移；自动测试已覆盖初始化和共享配置 schema，视觉布局仍需进游戏看。
+- 鼠标移入/移出手牌、键盘/手柄选牌、打出牌后 `idle -> b_idle -> b_idle_to_idle -> idle` 状态机正常。
+- 多段攻击击杀敌人后能归位，并执行攻击结束到 idle 的动画。
+- 动态卡图、古旧卡框、费用层、卡牌类型文本没有被放大卡图遮挡。
+- 梅铃语音补丁不再吞掉怪物声效。

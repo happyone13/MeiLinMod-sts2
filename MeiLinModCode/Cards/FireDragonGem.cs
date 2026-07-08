@@ -1,5 +1,5 @@
-using System.Collections.Generic;
-using BaseLib.Utils;
+﻿using System.Collections.Generic;
+using MeiLinMod.MeiLinModCode.Migration;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Powers;
 using MeiLinMod.MeiLinModCode.Services;
@@ -18,7 +18,7 @@ public class FireDragonGem() : MeiLinModCard(1, CardType.Power, CardRarity.Basic
     public override SpinePortraitSlot CustomSpinePortraitSlot => SpinePortraitSlot.Ancient;
     public override bool UseCustomAncientFrame => true;
     public override bool UsesDynamicChaosFrame => true;
-    public override string? CustomAncientFrameMaterialPath => ChaosAncientFrameMaterialPath;
+    public override string? CustomAncientBorderMaterialPath => ChaosAncientFrameMaterialPath;
     public override string? CustomAncientBannerMaterialPath => ChaosAncientBannerMaterialPath;
     protected override string? CombatTimelineName => "u1_buff";
 

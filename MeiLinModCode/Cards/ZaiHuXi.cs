@@ -1,5 +1,5 @@
-using System.Collections.Generic;
-using BaseLib.Utils;
+﻿using System.Collections.Generic;
+using MeiLinMod.MeiLinModCode.Migration;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.HoverTips;
 using MeiLinMod.MeiLinModCode.Powers;
@@ -28,7 +28,7 @@ public class ZaiHuXi() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncommon, T
         new DynamicVar(BurstDrawKey, 2m),
         new DynamicVar(EmberKey, 2m)
     ];
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
     [
         MeiLinHoverTipFactory.Awakening,
         HoverTipFactory.FromPower<VigorPower>(),

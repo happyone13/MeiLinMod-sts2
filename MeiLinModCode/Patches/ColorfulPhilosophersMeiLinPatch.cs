@@ -9,17 +9,27 @@ using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Events;
+using STS2RitsuLib.Patching.Models;
 
 namespace MeiLinMod.MeiLinModCode.Patches;
 
-[HarmonyPatch(typeof(ColorfulPhilosophers), "GenerateInitialOptions")]
-public static class ColorfulPhilosophersMeiLinPatch
+public sealed class ColorfulPhilosophersMeiLinPatch : IPatchMethod
 {
+    public static string PatchId => "meilin_colorful_philosophers_card_pool";
+
+    public static bool IsCritical => false;
+
+    public static string Description => "Allow Colorful Philosophers to offer MeiLin card rewards";
+
+    public static ModPatchTarget[] GetTargets() =>
+    [
+        PatchTarget.Method<ColorfulPhilosophers>("GenerateInitialOptions")
+    ];
+
     private static readonly MethodInfo? OfferRewardsMethod =
         AccessTools.Method(typeof(ColorfulPhilosophers), "OfferRewards");
 
-    [HarmonyPrefix]
-    public static bool GenerateInitialOptionsPrefix(ColorfulPhilosophers __instance, ref IReadOnlyList<EventOption> __result)
+    public static bool Prefix(ColorfulPhilosophers __instance, ref IReadOnlyList<EventOption> __result)
     {
         var owner = __instance.Owner;
         if (owner == null || OfferRewardsMethod == null)

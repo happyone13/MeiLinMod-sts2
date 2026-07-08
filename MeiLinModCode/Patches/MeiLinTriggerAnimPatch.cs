@@ -1,16 +1,26 @@
-using HarmonyLib;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Mechanics.CardHoldOverlay;
 using MeiLinMod.MeiLinModCode.Services;
 using MeiLinMod.MeiLinModCode.Vfx;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
+using STS2RitsuLib.Patching.Models;
 
 namespace MeiLinMod.MeiLinModCode.Patches;
 
-[HarmonyPatch(typeof(CreatureCmd), nameof(CreatureCmd.TriggerAnim))]
-public static class MeiLinTriggerAnimPatch
+public sealed class MeiLinTriggerAnimPatch : IPatchMethod
 {
+    public static string PatchId => "MeiLinMod.Animation.TriggerAnim";
+
+    public static bool IsCritical => false;
+
+    public static string Description => "Route MeiLin attack TriggerAnim through custom animation and VFX flow";
+
+    public static ModPatchTarget[] GetTargets() =>
+    [
+        PatchTarget.Method(typeof(CreatureCmd), nameof(CreatureCmd.TriggerAnim), typeof(Creature), typeof(string), typeof(float))
+    ];
+
     public static bool Prefix(Creature creature, string triggerName, float waitTime, ref Task __result)
     {
         if (!string.Equals(triggerName, "Attack", StringComparison.Ordinal) ||

@@ -1,5 +1,5 @@
-using System.Collections.Generic;
-using BaseLib.Utils;
+﻿using System.Collections.Generic;
+using MeiLinMod.MeiLinModCode.Migration;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
 using MeiLinMod.MeiLinModCode.HoverTips;
@@ -22,7 +22,7 @@ public class BaoQi() : MeiLinModCard(0, CardType.Skill, CardRarity.Rare, TargetT
     public override IEnumerable<CardKeyword> CanonicalKeywords => IsUpgraded
         ? [CardKeyword.Innate, CardKeyword.Exhaust]
         : [CardKeyword.Exhaust];
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [MeiLinHoverTipFactory.Awakening, MeiLinHoverTipFactory.Ember, MeiLinHoverTipFactory.Qi];
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => [MeiLinHoverTipFactory.Awakening, MeiLinHoverTipFactory.Ember, MeiLinHoverTipFactory.Qi];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [

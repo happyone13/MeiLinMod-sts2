@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using BaseLib.Utils;
+using MeiLinMod.MeiLinModCode.Migration;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.HoverTips;
 using MeiLinMod.MeiLinModCode.Powers;
@@ -26,7 +26,7 @@ public class RuTao() : MeiLinModCard(1, CardType.Attack, CardRarity.Common, Targ
         new DynamicVar(EmberKey, 2m)
     ];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
     [
         MeiLinHoverTipFactory.Awakening,
         MeiLinHoverTipFactory.Ember
@@ -36,7 +36,7 @@ public class RuTao() : MeiLinModCard(1, CardType.Attack, CardRarity.Common, Targ
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);
 

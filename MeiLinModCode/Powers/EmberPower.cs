@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using MeiLinMod.MeiLinModCode.Migration;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -23,7 +23,8 @@ public class EmberPower : MeiLinModPower
         decimal amount,
         ValueProp props,
         Creature? dealer,
-        CardModel? cardSource)
+        CardModel? cardSource,
+        CardPlay? cardPlay)
     {
         if (target != Owner)
             return 0m;
@@ -73,6 +74,7 @@ public class EmberPower : MeiLinModPower
             burstDamage,
             ValueProp.Unblockable | ValueProp.Unpowered,
             Applier,
+            null,
             null);
     }
 

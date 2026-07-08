@@ -18,6 +18,17 @@ public sealed class MeiLinStanceVfxController
     private Node2D? _currentAura;
     private string? _currentAuraScenePath;
 
+    public static IEnumerable<string> GetPreloadScenePaths()
+    {
+        yield return AttackAuraScenePath;
+        yield return GuardAuraScenePath;
+    }
+
+    public static void PreloadStanceEffects()
+    {
+        MeiLinMod.MeiLinModCode.Vfx.MeiLinVfxHelper.Prewarm(GetPreloadScenePaths());
+    }
+
     public async Task SetAura(Creature owner, string? auraScenePath)
     {
         if (!MeiLinModConfig.UseCombatEffects)

@@ -1,5 +1,4 @@
 using Godot;
-using HarmonyLib;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Context;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -8,16 +7,26 @@ using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.Cards.Holders;
 using MegaCrit.Sts2.Core.Nodes.Combat;
+using MegaCrit.Sts2.Core.Rooms;
 using MegaCrit.Sts2.Core.Runs;
+using STS2RitsuLib.Patching.Models;
 
 namespace MeiLinMod.MeiLinModCode.Mechanics.CardHoldOverlay;
 
-[HarmonyPatch]
-public static class MeiLinBattleReadyOverlayPatches
+public sealed class MeiLinBattleReadyBeforeCombatStartPatch : IPatchMethod
 {
-    [HarmonyPatch(typeof(Hook), nameof(Hook.BeforeCombatStart))]
-    [HarmonyPostfix]
-    public static void AfterBeforeCombatStart(IRunState runState, CombatState? combatState)
+    public static string PatchId => "MeiLinMod.BattleReadyOverlay.BeforeCombatStart";
+
+    public static bool IsCritical => false;
+
+    public static string Description => "Preload MeiLin battle ready overlay on combat start";
+
+    public static ModPatchTarget[] GetTargets() =>
+    [
+        PatchTarget.Method(typeof(Hook), nameof(Hook.BeforeCombatStart), typeof(IRunState), typeof(ICombatState))
+    ];
+
+    public static void Postfix(IRunState runState, ICombatState? combatState)
     {
         try
         {
@@ -31,10 +40,22 @@ public static class MeiLinBattleReadyOverlayPatches
         {
         }
     }
+}
 
-    [HarmonyPatch(typeof(Hook), nameof(Hook.AfterCombatVictory))]
-    [HarmonyPostfix]
-    public static void AfterCombatVictory(IRunState runState, CombatState? combatState)
+public sealed class MeiLinBattleReadyAfterCombatVictoryPatch : IPatchMethod
+{
+    public static string PatchId => "MeiLinMod.BattleReadyOverlay.AfterCombatVictory";
+
+    public static bool IsCritical => false;
+
+    public static string Description => "Clear MeiLin battle ready overlay after combat victory";
+
+    public static ModPatchTarget[] GetTargets() =>
+    [
+        PatchTarget.Method(typeof(Hook), nameof(Hook.AfterCombatVictory), typeof(IRunState), typeof(ICombatState), typeof(CombatRoom))
+    ];
+
+    public static void Postfix(IRunState runState, ICombatState? combatState)
     {
         try
         {
@@ -48,10 +69,22 @@ public static class MeiLinBattleReadyOverlayPatches
         {
         }
     }
+}
 
-    [HarmonyPatch(typeof(Hook), nameof(Hook.AfterDeath))]
-    [HarmonyPostfix]
-    public static void AfterDeathPostfix(IRunState runState, CombatState? combatState, Creature creature, bool wasRemovalPrevented, float deathAnimLength)
+public sealed class MeiLinBattleReadyAfterDeathPatch : IPatchMethod
+{
+    public static string PatchId => "MeiLinMod.BattleReadyOverlay.AfterDeath";
+
+    public static bool IsCritical => false;
+
+    public static string Description => "Clear MeiLin battle ready overlay after player death";
+
+    public static ModPatchTarget[] GetTargets() =>
+    [
+        PatchTarget.Method(typeof(Hook), nameof(Hook.AfterDeath), typeof(IRunState), typeof(ICombatState), typeof(Creature), typeof(bool), typeof(float))
+    ];
+
+    public static void Postfix(IRunState runState, ICombatState? combatState, Creature creature, bool wasRemovalPrevented, float deathAnimLength)
     {
         try
         {
@@ -68,10 +101,20 @@ public static class MeiLinBattleReadyOverlayPatches
         {
         }
     }
+}
 
-    [HarmonyPatch(typeof(NHandCardHolder), "OnFocus")]
-    [HarmonyPostfix]
-    public static void AfterHandFocus(NHandCardHolder __instance)
+public sealed class MeiLinBattleReadyHandFocusPatch : IPatchMethod
+{
+    public static string PatchId => "MeiLinMod.BattleReadyOverlay.HandFocus";
+    public static bool IsCritical => false;
+    public static string Description => "Enter MeiLin battle ready overlay when a hand card gains focus";
+
+    public static ModPatchTarget[] GetTargets() =>
+    [
+        PatchTarget.Method<NHandCardHolder>("OnFocus")
+    ];
+
+    public static void Postfix(NHandCardHolder __instance)
     {
         try
         {
@@ -86,10 +129,20 @@ public static class MeiLinBattleReadyOverlayPatches
         {
         }
     }
+}
 
-    [HarmonyPatch(typeof(NHandCardHolder), "OnUnfocus")]
-    [HarmonyPostfix]
-    public static void AfterHandUnfocus(NHandCardHolder __instance)
+public sealed class MeiLinBattleReadyHandUnfocusPatch : IPatchMethod
+{
+    public static string PatchId => "MeiLinMod.BattleReadyOverlay.HandUnfocus";
+    public static bool IsCritical => false;
+    public static string Description => "Exit MeiLin battle ready overlay when a hand card loses focus";
+
+    public static ModPatchTarget[] GetTargets() =>
+    [
+        PatchTarget.Method<NHandCardHolder>("OnUnfocus")
+    ];
+
+    public static void Postfix(NHandCardHolder __instance)
     {
         try
         {
@@ -110,10 +163,20 @@ public static class MeiLinBattleReadyOverlayPatches
         {
         }
     }
+}
 
-    [HarmonyPatch(typeof(NHandCardHolder), "OnMousePressed")]
-    [HarmonyPostfix]
-    public static void AfterHandMousePressed(NHandCardHolder __instance, InputEvent inputEvent)
+public sealed class MeiLinBattleReadyHandMousePressedPatch : IPatchMethod
+{
+    public static string PatchId => "MeiLinMod.BattleReadyOverlay.HandMousePressed";
+    public static bool IsCritical => false;
+    public static string Description => "Keep MeiLin battle ready overlay active when a hand card is clicked";
+
+    public static ModPatchTarget[] GetTargets() =>
+    [
+        PatchTarget.Method<NHandCardHolder>("OnMousePressed", typeof(InputEvent))
+    ];
+
+    public static void Postfix(NHandCardHolder __instance, InputEvent inputEvent)
     {
         try
         {
@@ -131,10 +194,20 @@ public static class MeiLinBattleReadyOverlayPatches
         {
         }
     }
+}
 
-    [HarmonyPatch(typeof(NMouseCardPlay), "Start")]
-    [HarmonyPostfix]
-    public static void AfterMouseCardPlayStart(NMouseCardPlay __instance)
+public sealed class MeiLinBattleReadyMouseCardPlayStartPatch : IPatchMethod
+{
+    public static string PatchId => "MeiLinMod.BattleReadyOverlay.MouseCardPlayStart";
+    public static bool IsCritical => false;
+    public static string Description => "Keep MeiLin battle ready overlay active during mouse card play";
+
+    public static ModPatchTarget[] GetTargets() =>
+    [
+        PatchTarget.Method<NMouseCardPlay>("Start")
+    ];
+
+    public static void Postfix(NMouseCardPlay __instance)
     {
         try
         {
@@ -149,10 +222,20 @@ public static class MeiLinBattleReadyOverlayPatches
         {
         }
     }
+}
 
-    [HarmonyPatch(typeof(NControllerCardPlay), "Start")]
-    [HarmonyPostfix]
-    public static void AfterControllerCardPlayStart(NControllerCardPlay __instance)
+public sealed class MeiLinBattleReadyControllerCardPlayStartPatch : IPatchMethod
+{
+    public static string PatchId => "MeiLinMod.BattleReadyOverlay.ControllerCardPlayStart";
+    public static bool IsCritical => false;
+    public static string Description => "Keep MeiLin battle ready overlay active during controller card play";
+
+    public static ModPatchTarget[] GetTargets() =>
+    [
+        PatchTarget.Method<NControllerCardPlay>("Start")
+    ];
+
+    public static void Postfix(NControllerCardPlay __instance)
     {
         try
         {
@@ -167,10 +250,20 @@ public static class MeiLinBattleReadyOverlayPatches
         {
         }
     }
+}
 
-    [HarmonyPatch(typeof(NHandCardHolder), "DoCardHoverEffects")]
-    [HarmonyPostfix]
-    public static void AfterHandHoverEffects(NHandCardHolder __instance, bool isHovered)
+public sealed class MeiLinBattleReadyHandHoverEffectsPatch : IPatchMethod
+{
+    public static string PatchId => "MeiLinMod.BattleReadyOverlay.HandHoverEffects";
+    public static bool IsCritical => false;
+    public static string Description => "Synchronize MeiLin battle ready overlay with hand hover effects";
+
+    public static ModPatchTarget[] GetTargets() =>
+    [
+        PatchTarget.Method<NHandCardHolder>("DoCardHoverEffects", typeof(bool))
+    ];
+
+    public static void Postfix(NHandCardHolder __instance, bool isHovered)
     {
         try
         {
@@ -195,10 +288,20 @@ public static class MeiLinBattleReadyOverlayPatches
         {
         }
     }
+}
 
-    [HarmonyPatch(typeof(NCardPlay), "CancelPlayCard")]
-    [HarmonyPostfix]
-    public static void AfterCancelPlayCard(NCardPlay __instance)
+public sealed class MeiLinBattleReadyCancelPlayCardPatch : IPatchMethod
+{
+    public static string PatchId => "MeiLinMod.BattleReadyOverlay.CancelPlayCard";
+    public static bool IsCritical => false;
+    public static string Description => "Clear MeiLin battle ready overlay when card play is canceled";
+
+    public static ModPatchTarget[] GetTargets() =>
+    [
+        PatchTarget.Method<NCardPlay>("CancelPlayCard")
+    ];
+
+    public static void Postfix(NCardPlay __instance)
     {
         try
         {
@@ -213,10 +316,20 @@ public static class MeiLinBattleReadyOverlayPatches
         {
         }
     }
+}
 
-    [HarmonyPatch(typeof(Hook), nameof(Hook.BeforeCardPlayed))]
-    [HarmonyPrefix]
-    public static void BeforeCardPlayedPrefix(CombatState combatState, CardPlay cardPlay)
+public sealed class MeiLinBattleReadyBeforeCardPlayedPatch : IPatchMethod
+{
+    public static string PatchId => "MeiLinMod.BattleReadyOverlay.BeforeCardPlayed";
+    public static bool IsCritical => false;
+    public static string Description => "Clear MeiLin battle ready overlay when a card starts playing";
+
+    public static ModPatchTarget[] GetTargets() =>
+    [
+        PatchTarget.Method(typeof(Hook), nameof(Hook.BeforeCardPlayed), typeof(CombatState), typeof(CardPlay))
+    ];
+
+    public static void Prefix(CombatState combatState, CardPlay cardPlay)
     {
         try
         {
@@ -230,5 +343,4 @@ public static class MeiLinBattleReadyOverlayPatches
         {
         }
     }
-
 }

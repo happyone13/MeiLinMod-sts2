@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using MeiLinMod.MeiLinModCode.Migration;
 using System.Collections.Generic;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.HoverTips;
@@ -16,7 +16,7 @@ public class LongYin : MeiLinModCard
 {
     protected override bool ShouldGlowGoldInternal => AwakeningHelper.CanAwakenNow(this);
     protected override IEnumerable<DynamicVar> CanonicalVars => [new EnergyVar(1)];
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [EnergyHoverTip, MeiLinHoverTipFactory.Awakening];
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => [EnergyHoverTip, MeiLinHoverTipFactory.Awakening];
 
     public LongYin() : base(2, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {

@@ -1,8 +1,8 @@
 {
   "MEILINMOD.mod_title": "MeiLinMod",
-  "MEILINMOD-CARD_VISUALS.title": "Card Visuals",
-  "MEILINMOD-USE_CHAOS_CARD_DYNAMIC_PORTRAITS.title": "Enable Chaos Card Style",
-  "MEILINMOD-USE_CHAOS_CARD_DYNAMIC_PORTRAITS.hover.desc": "On by default. When enabled, eligible cards use the Chaos frame and dynamic Spine portrait. When disabled, they use the normal version.",
-  "MEILINMOD-USE_BATTLE_READY_OVERLAY.title": "Use Back Portrait",
-  "MEILINMOD-USE_COMBAT_EFFECTS.title": "Use Combat Effects"
+  "MEILINMOD_CARD_VISUALS.title": "Card Visuals",
+  "MEILINMOD_USE_CHAOS_CARD_DYNAMIC_PORTRAITS.title": "Enable Chaos Card Style",
+  "MEILINMOD_USE_CHAOS_CARD_DYNAMIC_PORTRAITS.hover.desc": "On by default. When enabled, eligible cards use the Chaos frame and dynamic Spine portrait. When disabled, they use the normal version.",
+  "MEILINMOD_USE_BATTLE_READY_OVERLAY.title": "Use Back Portrait",
+  "MEILINMOD_USE_COMBAT_EFFECTS.title": "Use Combat Effects"
 }

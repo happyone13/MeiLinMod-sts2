@@ -1,5 +1,5 @@
-using System.Collections.Generic;
-using BaseLib.Utils;
+﻿using System.Collections.Generic;
+using MeiLinMod.MeiLinModCode.Migration;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
 using MeiLinMod.MeiLinModCode.HoverTips;
@@ -30,7 +30,7 @@ public class ZhenLongJueXing() : MeiLinModCard(0, CardType.Skill, CardRarity.Rar
         new DynamicVar(ProgressKey, 3m)
     ];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
     [
         HoverTipFactory.FromPower<EnergyNextTurnPower>(),
         HoverTipFactory.FromPower<DrawCardsNextTurnPower>(),

@@ -1,14 +1,23 @@
-using HarmonyLib;
 using MeiLinMod.MeiLinModCode.Powers;
 using MegaCrit.Sts2.Core.Entities.Players;
+using STS2RitsuLib.Patching.Models;
 
 namespace MeiLinMod.MeiLinModCode.Patches;
 
-[HarmonyPatch(typeof(Player), nameof(Player.AfterCombatEnd))]
-public static class HuoYongYuXiaCiAfterCombatPatch
+public sealed class HuoYongYuXiaCiAfterCombatPatch : IPatchMethod
 {
-    [HarmonyPostfix]
-    public static void AfterCombatEndPostfix(Player __instance)
+    public static string PatchId => "meilin_huo_yong_yu_xia_ci_after_combat";
+
+    public static bool IsCritical => false;
+
+    public static string Description => "Resolve Huo Yong Yu Xia Ci pending card upgrades after combat";
+
+    public static ModPatchTarget[] GetTargets() =>
+    [
+        PatchTarget.Method<Player>(nameof(Player.AfterCombatEnd))
+    ];
+
+    public static void Postfix(Player __instance)
     {
         var pending = HuoYongYuXiaCiUpgradePower.ConsumePendingUpgrades(__instance);
         if (pending <= 0)

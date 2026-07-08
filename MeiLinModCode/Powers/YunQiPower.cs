@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using STS2RitsuLib.Scaffolding.Content;
 
 namespace MeiLinMod.MeiLinModCode.Powers;
 
@@ -13,8 +14,9 @@ public class YunQiPower : MeiLinModPower
     public override PowerStackType StackType => PowerStackType.Counter;
 
     // Reuse previous LongYin power icon resources.
-    public override string CustomPackedIconPath => "long_yin_power.png".PowerImagePathOrDefault();
-    public override string CustomBigIconPath => "long_yin_power.png".BigPowerImagePathOrDefault();
+    public override PowerAssetProfile AssetProfile => new(
+        IconPath: "long_yin_power.png".PowerImagePathOrDefault(),
+        BigIconPath: "long_yin_power.png".BigPowerImagePathOrDefault());
 
     public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
     {

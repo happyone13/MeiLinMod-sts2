@@ -1,5 +1,5 @@
-using System.Collections.Generic;
-using BaseLib.Utils;
+﻿using System.Collections.Generic;
+using MeiLinMod.MeiLinModCode.Migration;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.HoverTips;
 using MeiLinMod.MeiLinModCode.Powers;
@@ -16,7 +16,7 @@ public class YanZhen() : MeiLinModCard(1, CardType.Power, CardRarity.Rare, Targe
 {
     private const string EmberKey = "Ember";
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [MeiLinHoverTipFactory.Ember];
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => [MeiLinHoverTipFactory.Ember];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [

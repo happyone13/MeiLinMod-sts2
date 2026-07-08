@@ -1,6 +1,6 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
-using BaseLib.Utils;
+using MeiLinMod.MeiLinModCode.Migration;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.HoverTips;
 using MeiLinMod.MeiLinModCode.Powers;
@@ -22,7 +22,7 @@ public class FireDragonTurn() : MeiLinModCard(0, CardType.Skill, CardRarity.Comm
 
     protected override bool ShouldGlowGoldInternal => AwakeningHelper.CanAwakenNow(this);
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
         [MeiLinHoverTipFactory.Ember, MeiLinHoverTipFactory.Awakening];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

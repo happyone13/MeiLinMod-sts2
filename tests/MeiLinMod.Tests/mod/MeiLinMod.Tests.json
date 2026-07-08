@@ -1,0 +1,15 @@
+{
+"id": "MeiLinMod.Tests",
+"name": "MeiLinMod.Tests",
+"author": "lozalia",
+"description": "Headless combat assertion harness for MeiLinMod.",
+"version": "0.1.0",
+"has_pck": false,
+"has_dll": true,
+"dependencies": [
+{ "id": "TestTheSpire", "min_version": "0.1.0" },
+{ "id": "MeiLinMod", "min_version": "v0.4.0" }
+],
+"min_game_version": "v0.108.0",
+"affects_gameplay": true
+}

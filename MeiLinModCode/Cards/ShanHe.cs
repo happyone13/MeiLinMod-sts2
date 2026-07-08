@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using BaseLib.Utils;
+using MeiLinMod.MeiLinModCode.Migration;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.HoverTips;
 using MegaCrit.Sts2.Core.Commands;
@@ -26,13 +26,13 @@ public class ShanHe() : MeiLinModCard(1, CardType.Attack, CardRarity.Common, Tar
         new DynamicVar(BurstKey, 10m)
     ];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [MeiLinHoverTipFactory.Awakening];
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => [MeiLinHoverTipFactory.Awakening];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);
 
@@ -44,7 +44,7 @@ public class ShanHe() : MeiLinModCard(1, CardType.Attack, CardRarity.Common, Tar
 
         await PlayerCmd.LoseEnergy(DynamicVars.Energy.IntValue, Owner);
         await DamageCmd.Attack(DynamicVars[BurstKey].BaseValue)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .TargetingAllOpponents(combatState)
             .Execute(choiceContext);
     }

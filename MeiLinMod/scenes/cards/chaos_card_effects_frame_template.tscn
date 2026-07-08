@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bjsmtpro7aqre" path="res://MeiLinMod/images/cards/card_effects/card_frame_spark.png" id="6_spark"]
 [ext_resource type="FontFile" uid="uid://b0mn1fm7anxvw" path="res://MeiLinMod/images/cards/card_effects/card_normal.fnt" id="9_t21jw"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://dc6wlhgkl3a03" path="res://MeiLinMod/spine/card/unique_1027_03.tres" id="10_spine"]
-[ext_resource type="Script" uid="uid://ulv7r824rm8i" path="res://MeiLinModCode/Nodes/SpineAutoPlayer.cs" id="11_player"]
+[ext_resource type="Script" uid="uid://ulv7r824rm8i" path="res://GodotScripts/Nodes/SpineAutoPlayer.cs" id="11_player"]
 [ext_resource type="Texture2D" uid="uid://dnlnfh5aatgdn" path="res://MeiLinMod/images/cards/card_effects/card_ego_basic.png" id="12_ego"]
 [ext_resource type="Texture2D" uid="uid://d04l72ca2vorv" path="res://MeiLinMod/images/cards/card_effects/energy_line_default.png" id="13_energy"]
 [ext_resource type="Texture2D" uid="uid://dxd6stfuold37" path="res://MeiLinMod/images/cards/card_effects/icon_category_card_atk.png" id="14_category"]
@@ -203,7 +203,7 @@ theme_override_colors/font_color = Color(0.98, 0.95, 0.88, 1)
 theme_override_colors/font_outline_color = Color(0.18, 0.12, 0.08, 1)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 30
-text = "升龙脚"
+text = "升龙�?
 vertical_alignment = 1
 
 [node name="CategoryIcon" type="TextureRect" parent="CardContainer"]
@@ -226,7 +226,7 @@ offset_bottom = 199.0
 mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
-text = "造成5点伤害x次"
+text = "造成5点伤害x�?
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1

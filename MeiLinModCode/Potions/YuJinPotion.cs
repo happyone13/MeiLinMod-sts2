@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Godot;
 using MeiLinMod.MeiLinModCode.HoverTips;
@@ -24,7 +24,7 @@ public class YuJinPotion : MeiLinModPotion
     public override TargetType TargetType => TargetType.AnyEnemy;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar(EmberKey, 5m)];
-    public override IEnumerable<IHoverTip> ExtraHoverTips => [MeiLinHoverTipFactory.Ember];
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => [MeiLinHoverTipFactory.Ember];
 
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
     {

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Reflection;
@@ -9,6 +9,7 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.Cards;
 using MeiLinMod.MeiLinModCode.Cards;
 using MeiLinMod.MeiLinModCode.Config;
+using STS2RitsuLib.Patching.Models;
 
 namespace MeiLinMod.MeiLinModCode.Patches;
 
@@ -106,7 +107,7 @@ public static class CardCustomAncientFramePatch
         var ancientBanner = Get<Control>(AncientBannerField, cardNode!);
         var ancientHighlight = Get<TextureRect>(AncientHighlightField, cardNode!);
         bool shouldDisplayDynamicOverlays = CardSpinePortraitPatch.ShouldDisplayDynamicOverlays(cardNode);
-        Material? frameMaterial = LoadResource<Material>(cardModel!.CustomAncientFrameMaterialPath);
+        Material? frameMaterial = LoadResource<Material>(cardModel!.CustomAncientBorderMaterialPath);
         Material? bannerMaterial = LoadResource<Material>(cardModel.CustomAncientBannerMaterialPath);
 
         if (!CardSpinePortraitPatch.HasActiveSpineOverlay(cardNode))
@@ -1099,70 +1100,103 @@ public partial class MeiLinCardCostOverlayRefresh : Node
     }
 }
 
-[HarmonyPatch(typeof(NCard), nameof(NCard.UpdateVisuals))]
-public static class CardCustomAncientFrameUpdateVisualsPatch
+public sealed class CardCustomAncientFrameUpdateVisualsPatch : IPatchMethod
 {
-    [HarmonyPrefix]
+    public static string PatchId => "meilin_card_custom_ancient_frame_update_visuals";
+    public static bool IsCritical => false;
+    public static string Description => "Synchronize MeiLin custom ancient card frame during NCard.UpdateVisuals";
+
+    public static ModPatchTarget[] GetTargets() =>
+    [
+        PatchTarget.Method<NCard>(nameof(NCard.UpdateVisuals))
+    ];
+
     [HarmonyPriority(Priority.First)]
-    public static void UpdateVisualsPrefix(NCard __instance)
+    public static void Prefix(NCard __instance)
     {
         CardCustomAncientFramePatch.PrepareForBaseVisuals(__instance);
     }
 
-    [HarmonyPostfix]
     [HarmonyPriority(Priority.Last)]
-    public static void UpdateVisualsPostfix(NCard __instance)
+    public static void Postfix(NCard __instance)
     {
         CardCustomAncientFramePatch.Apply(__instance);
     }
 }
 
-[HarmonyPatch(typeof(NCard), "Reload")]
-public static class CardCustomAncientFrameReloadPatch
+public sealed class CardCustomAncientFrameReloadPatch : IPatchMethod
 {
-    [HarmonyPrefix]
+    public static string PatchId => "meilin_card_custom_ancient_frame_reload";
+    public static bool IsCritical => false;
+    public static string Description => "Refresh MeiLin custom ancient card frame after NCard.Reload";
+
+    public static ModPatchTarget[] GetTargets() =>
+    [
+        PatchTarget.Method<NCard>("Reload")
+    ];
+
     [HarmonyPriority(Priority.First)]
-    public static void ReloadPrefix(NCard __instance)
+    public static void Prefix(NCard __instance)
     {
         CardCustomAncientFramePatch.PrepareForBaseVisuals(__instance);
     }
 
-    [HarmonyPostfix]
     [HarmonyPriority(Priority.Last)]
-    public static void ReloadPostfix(NCard __instance)
+    public static void Postfix(NCard __instance)
     {
         CardCustomAncientFramePatch.Apply(__instance);
     }
 }
 
-[HarmonyPatch(typeof(NCard), "_EnterTree")]
-public static class CardCustomAncientFrameEnterTreePatch
+public sealed class CardCustomAncientFrameEnterTreePatch : IPatchMethod
 {
-    [HarmonyPostfix]
+    public static string PatchId => "meilin_card_custom_ancient_frame_enter_tree";
+    public static bool IsCritical => false;
+    public static string Description => "Apply MeiLin custom ancient card frame when cards enter the tree";
+
+    public static ModPatchTarget[] GetTargets() =>
+    [
+        PatchTarget.Method<NCard>("_EnterTree")
+    ];
+
     [HarmonyPriority(Priority.Last)]
-    public static void EnterTreePostfix(NCard __instance)
+    public static void Postfix(NCard __instance)
     {
         CardCustomAncientFramePatch.Apply(__instance);
     }
 }
 
-[HarmonyPatch(typeof(NCard), "_Ready")]
-public static class CardCustomAncientFrameReadyPatch
+public sealed class CardCustomAncientFrameReadyPatch : IPatchMethod
 {
-    [HarmonyPostfix]
+    public static string PatchId => "meilin_card_custom_ancient_frame_ready";
+    public static bool IsCritical => false;
+    public static string Description => "Deferred MeiLin custom ancient card frame apply when NCard is ready";
+
+    public static ModPatchTarget[] GetTargets() =>
+    [
+        PatchTarget.Method<NCard>("_Ready")
+    ];
+
     [HarmonyPriority(Priority.Last)]
-    public static void ReadyPostfix(NCard __instance)
+    public static void Postfix(NCard __instance)
     {
         Callable.From(() => CardCustomAncientFramePatch.ApplyDeferredIfValid(__instance)).CallDeferred();
     }
 }
 
-[HarmonyPatch(typeof(NCard), nameof(NCard.OnFreedToPool))]
-public static class CardCustomAncientFrameFreedToPoolPatch
+public sealed class CardCustomAncientFrameFreedToPoolPatch : IPatchMethod
 {
-    [HarmonyPostfix]
+    public static string PatchId => "meilin_card_custom_ancient_frame_freed_to_pool";
+    public static bool IsCritical => false;
+    public static string Description => "Clean up MeiLin custom ancient card frame state when cards return to pool";
+
+    public static ModPatchTarget[] GetTargets() =>
+    [
+        PatchTarget.Method<NCard>(nameof(NCard.OnFreedToPool))
+    ];
+
     [HarmonyPriority(Priority.Last)]
-    public static void OnFreedToPoolPostfix(NCard __instance)
+    public static void Postfix(NCard __instance)
     {
         CardCustomAncientFramePatch.CleanupPooledCard(__instance);
     }

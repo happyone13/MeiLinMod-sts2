@@ -1,5 +1,5 @@
-using System.Collections.Generic;
-using BaseLib.Utils;
+﻿using System.Collections.Generic;
+using MeiLinMod.MeiLinModCode.Migration;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
 using MeiLinMod.MeiLinModCode.HoverTips;
@@ -19,7 +19,7 @@ public class LongZhiQiShi() : MeiLinModCard(2, CardType.Power, CardRarity.Uncomm
 
     protected override bool ShouldGlowGoldInternal => AwakeningHelper.CanAwakenNow(this);
     protected override IEnumerable<DynamicVar> CanonicalVars => [new EnergyVar(1), new EnergyVar(BurstEnergyKey, 2)];
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [EnergyHoverTip, MeiLinHoverTipFactory.Awakening, MeiLinHoverTipFactory.Ember];
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => [EnergyHoverTip, MeiLinHoverTipFactory.Awakening, MeiLinHoverTipFactory.Ember];
 
     public override string PortraitPath => IdPortraitPath;
     public override string CustomPortraitPath => IdBigPortraitPath;
