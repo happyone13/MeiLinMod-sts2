@@ -1,5 +1,6 @@
 using MeiLinMod.MeiLinModCode.Mechanics.CardHoldOverlay;
 using MeiLinMod.MeiLinModCode.Mechanics.Settings;
+using MeiLinMod.MeiLinModCode.Encounters;
 using MeiLinMod.MeiLinModCode.Patches;
 using STS2RitsuLib;
 using STS2RitsuLib.Interop;
@@ -70,6 +71,7 @@ internal static class MeiLinRitsuMigration
         cardVisualPatcher.PatchAll();
 
         var contentPatcher = RitsuLibFramework.CreatePatcher(MainFile.ModId, "optional-content", "optional content");
+        contentPatcher.RegisterPatch<GloomyEscapeCardBeforeCombatStartPatch>();
         contentPatcher.RegisterPatch<ArchaicToothAfterObtainedMeiLinPatch>();
         contentPatcher.RegisterPatch<ArchaicToothSetupForPlayerMeiLinPatch>();
         contentPatcher.RegisterPatch<ColorfulPhilosophersMeiLinPatch>();
@@ -192,6 +194,19 @@ internal static class MeiLinRitsuMigration
                         maxValue: 1d,
                         step: 0.05d,
                         valueFormatter: value => $"{value:P0}");
+                });
+
+                page.AddSection("gameplay", section =>
+                {
+                    section.WithTitle(ModSettingsText.Literal("游戏内容"));
+                    section.AddToggle(
+                        "gloomy_encounter",
+                        ModSettingsText.Literal("一位旧识"),
+                        BoolBinding(
+                            "gloomy_encounter",
+                            () => GloomyEncounterSharedSettings.Enabled,
+                            value => GloomyEncounterSharedSettings.SetEnabled(value, persist: true)),
+                        ModSettingsText.Literal("一位旧识，开启后你可能会遇到他"));
                 });
             },
             SettingsPageId);

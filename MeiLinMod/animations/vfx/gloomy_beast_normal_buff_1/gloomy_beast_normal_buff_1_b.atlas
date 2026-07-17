@@ -1,0 +1,69 @@
+
+gloomy_beast_normal_buff_1_b.png
+size: 192,608
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+uni_smoke2_1
+  rotate: false
+  xy: 2, 406
+  size: 69, 200
+  orig: 69, 200
+  offset: 0, 0
+  index: -1
+uni_smoke2_2
+  rotate: false
+  xy: 73, 406
+  size: 69, 200
+  orig: 69, 200
+  offset: 0, 0
+  index: -1
+uni_smoke2_3
+  rotate: false
+  xy: 2, 204
+  size: 69, 200
+  orig: 69, 200
+  offset: 0, 0
+  index: -1
+uni_smoke5_1
+  rotate: true
+  xy: 144, 406
+  size: 200, 46
+  orig: 200, 46
+  offset: 0, 0
+  index: -1
+uni_smoke5_2
+  rotate: true
+  xy: 142, 204
+  size: 200, 46
+  orig: 200, 46
+  offset: 0, 0
+  index: -1
+uni_smoke5_3
+  rotate: true
+  xy: 140, 2
+  size: 200, 46
+  orig: 200, 46
+  offset: 0, 0
+  index: -1
+uni_smoke8_1
+  rotate: true
+  xy: 73, 204
+  size: 200, 67
+  orig: 200, 67
+  offset: 0, 0
+  index: -1
+uni_smoke8_2
+  rotate: true
+  xy: 2, 2
+  size: 200, 67
+  orig: 200, 67
+  offset: 0, 0
+  index: -1
+uni_smoke8_3
+  rotate: true
+  xy: 71, 2
+  size: 200, 67
+  orig: 200, 67
+  offset: 0, 0
+  index: -1

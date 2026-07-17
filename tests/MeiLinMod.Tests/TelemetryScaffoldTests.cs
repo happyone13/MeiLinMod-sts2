@@ -50,6 +50,7 @@ public sealed class TelemetryScaffoldTests : CombatTestSuite
         var entrySource = File.ReadAllText(RepoFile("MeiLinModCode", "Entry", "MeiLinModEntry.cs"));
         var bootstrapSource = File.ReadAllText(RepoFile("MeiLinModCode", "Telemetry", "MeiLinTelemetryBootstrap.cs"));
         var configurationSource = File.ReadAllText(RepoFile("MeiLinModCode", "Telemetry", "MeiLinTelemetryConfiguration.cs"));
+        var cardPickRateQuery = File.ReadAllText(RepoFile("docs", "posthog", "meilin_card_pick_rate.sql"));
         var overviewSource = File.ReadAllText(RepoFile("docs", "project-overview.zh-CN.md"));
         var migrationPlanSource = File.ReadAllText(RepoFile("docs", "ritsulib-migration-plan.zh-CN.md"));
 
@@ -83,6 +84,24 @@ public sealed class TelemetryScaffoldTests : CombatTestSuite
         Assert.Contains("new PostHogTelemetryAdapter(PostHogHost, PostHogProjectApiKey)", configurationSource);
         Assert.DoesNotContain("HttpJsonTelemetryAdapter", configurationSource);
         Assert.DoesNotContain("DisabledTelemetryAdapter", configurationSource);
+
+        Assert.Contains("properties.is_victory", cardPickRateQuery);
+        Assert.Contains("lower(toString(properties.is_victory)) IN ('true', '1')", cardPickRateQuery);
+        Assert.Contains("properties.run_character_ids", cardPickRateQuery);
+        Assert.Contains("payload.applicant_payload.run_history.map_point_history[].player_stats[].card_choices[]", cardPickRateQuery);
+        Assert.Contains("JSONExtractString(card_choice, 'card', 'id')", cardPickRateQuery);
+        Assert.Contains("JSONExtractBool(card_choice, 'was_picked')", cardPickRateQuery);
+        Assert.Contains("properties.applicant_id = 'MeiLinMod'", cardPickRateQuery);
+        Assert.Contains("LIKE '%MEILIN%'", cardPickRateQuery);
+        Assert.Contains("LIKE 'MEILINMOD_%'", cardPickRateQuery);
+        Assert.Contains("'MEILINMOD_LONG_ZHI_JING_SHEN', '龙之精神'", cardPickRateQuery);
+        Assert.Contains("'MEILINMOD_LONG_ZHI_CHUAN_CHENG', '龙之传承'", cardPickRateQuery);
+        Assert.Contains("replaceRegexpOne", cardPickRateQuery);
+        Assert.Contains("^MEILINMOD-", cardPickRateQuery);
+        Assert.DoesNotContain("properties.applicant_id = 'YukiMod'", cardPickRateQuery);
+        Assert.DoesNotContain("LIKE '%YUKI%'", cardPickRateQuery);
+        Assert.DoesNotContain("JSONExtractBool(\n                        ifNull(\n                            JSONExtractRaw", cardPickRateQuery);
+        Assert.DoesNotContain("toBool(ifNull(properties.is_victory", cardPickRateQuery);
 
         Assert.Contains("STSVWB", overviewSource);
         Assert.Contains("STSVLogs", overviewSource);

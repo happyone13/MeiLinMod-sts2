@@ -1,0 +1,79 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="SpineSkeletonDataResource" path="res://MeiLinMod/animations/vfx/gloomy_beast_stance1_m_attack_01/gloomy_beast_stance1_m_attack_01_skel_data.tres" id="spine_0"]
+[ext_resource type="Texture2D" path="res://MeiLinMod/animations/vfx/gloomy_beast_stance1_m_attack_01/pati_03_long2.png" id="tex_1"]
+
+[sub_resource type="CanvasItemMaterial" id="mat_1"]
+blend_mode = 1
+
+[sub_resource type="ParticleProcessMaterial" id="proc_1"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_box_extents = Vector3(40, 20, 1)
+direction = Vector3(-0.374607, -0.927184, 0)
+spread = 90
+initial_velocity_min = 40
+initial_velocity_max = 80
+gravity = Vector3(0, -0, 0)
+scale_min = 0.01
+scale_max = 3.99
+color = Color(0.756863, 0.247059, 0.117647, 1)
+
+[sub_resource type="CanvasItemMaterial" id="mat_2"]
+blend_mode = 1
+
+[sub_resource type="ParticleProcessMaterial" id="proc_2"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_box_extents = Vector3(40, 20, 1)
+direction = Vector3(-0.156434, -0.987688, 0)
+spread = 90
+initial_velocity_min = 40
+initial_velocity_max = 80
+gravity = Vector3(0, -0, 0)
+scale_min = 0.01
+scale_max = 3.99
+color = Color(0.756863, 0.247059, 0.117647, 1)
+
+[node name="gloomy_beast_stance1_m_attack_01" type="Node2D"]
+
+[node name="gloomy_beast_stance1_m_attack_01" type="SpineSprite" parent="."]
+skeleton_data_res = ExtResource("spine_0")
+preview_skin = "Default"
+preview_animation = "animation"
+preview_frame = false
+preview_time = 0.0
+z_index = 1
+position = Vector2(0, -0)
+rotation_degrees = 0
+scale = Vector2(1, 1)
+
+[node name="gloomy_beast_par3_0" type="GPUParticles2D" parent="."]
+z_index = 2
+material = SubResource("mat_1")
+position = Vector2(10, -140)
+rotation_degrees = 62
+scale = Vector2(1, 0.23)
+emitting = false
+amount = 250
+texture = ExtResource("tex_1")
+lifetime = 1.15
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("proc_1")
+metadata/_fei_start_delay_ms = 550
+
+[node name="gloomy_beast_par3_0" type="GPUParticles2D" parent="."]
+z_index = 2
+material = SubResource("mat_2")
+position = Vector2(-80, -130)
+rotation_degrees = 49
+scale = Vector2(1, 0.23)
+emitting = false
+amount = 250
+texture = ExtResource("tex_1")
+lifetime = 1.15
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("proc_2")
+metadata/_fei_start_delay_ms = 550

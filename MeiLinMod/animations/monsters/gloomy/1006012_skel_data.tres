@@ -1,0 +1,9 @@
+[gd_resource type="SpineSkeletonDataResource" load_steps=3 format=3 uid="uid://lm66fub176m0"]
+
+[ext_resource type="SpineAtlasResource" uid="uid://drq2xr4qvpfqg" path="res://MeiLinMod/animations/monsters/gloomy/1006012.atlas" id="1_rjj82"]
+[ext_resource type="SpineSkeletonFileResource" uid="uid://cjf4q5ctd8l7p" path="res://MeiLinMod/animations/monsters/gloomy/1006012.skel" id="2_th212"]
+
+[resource]
+atlas_res = ExtResource("1_rjj82")
+skeleton_file_res = ExtResource("2_th212")
+default_mix = 0.05

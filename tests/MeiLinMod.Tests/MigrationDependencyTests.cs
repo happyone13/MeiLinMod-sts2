@@ -30,7 +30,7 @@ public sealed class MigrationDependencyTests : CombatTestSuite
         var root = manifest.RootElement;
 
         Assert.Equal("MeiLinMod", root.GetProperty("id").GetString());
-        Assert.Equal("v0.3.1", root.GetProperty("version").GetString());
+        Assert.Equal("v0.4.1", root.GetProperty("version").GetString());
         Assert.Equal("v0.108.0", root.GetProperty("min_game_version").GetString());
 
         var dependencies = root.GetProperty("dependencies").EnumerateArray().ToArray();

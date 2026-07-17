@@ -1,0 +1,4155 @@
+{
+    "skeleton": {
+        "spine": "3.8.79",
+        "x": 0.0,
+        "y": 0.0,
+        "hash": "WL7X6MrwSLlCBWEhjtVtepq9LVw"
+    },
+    "bones": [
+        {
+            "name": "root",
+            "scaleX": 0.9728999733924866,
+            "scaleY": 0.9728999733924866,
+            "transform": "normal"
+        },
+        {
+            "name": "pivot",
+            "parent": "root",
+            "transform": "normal"
+        },
+        {
+            "name": "flash",
+            "parent": "pivot",
+            "transform": "normal"
+        },
+        {
+            "name": "global_flash",
+            "parent": "flash",
+            "transform": "normal"
+        },
+        {
+            "name": "aura",
+            "parent": "pivot",
+            "transform": "normal"
+        },
+        {
+            "name": "black_smoke",
+            "parent": "aura",
+            "transform": "normal"
+        },
+        {
+            "name": "black_smoke4",
+            "parent": "black_smoke",
+            "transform": "normal"
+        },
+        {
+            "name": "black_smoke5",
+            "parent": "black_smoke",
+            "transform": "normal"
+        },
+        {
+            "name": "black_smoke6",
+            "parent": "black_smoke",
+            "transform": "normal"
+        },
+        {
+            "name": "black_smoke7",
+            "parent": "black_smoke",
+            "transform": "normal"
+        },
+        {
+            "name": "black_smoke8",
+            "parent": "black_smoke",
+            "transform": "normal"
+        },
+        {
+            "name": "black_smoke9",
+            "parent": "black_smoke",
+            "transform": "normal"
+        },
+        {
+            "name": "black_smoke2",
+            "parent": "aura",
+            "transform": "normal"
+        },
+        {
+            "name": "black_smoke10",
+            "parent": "black_smoke2",
+            "transform": "normal"
+        },
+        {
+            "name": "black_smoke11",
+            "parent": "black_smoke2",
+            "transform": "normal"
+        },
+        {
+            "name": "black_smoke12",
+            "parent": "black_smoke2",
+            "transform": "normal"
+        },
+        {
+            "name": "black_smoke13",
+            "parent": "black_smoke2",
+            "transform": "normal"
+        },
+        {
+            "name": "black_smoke14",
+            "parent": "black_smoke2",
+            "transform": "normal"
+        },
+        {
+            "name": "black_smoke15",
+            "parent": "black_smoke2",
+            "transform": "normal"
+        },
+        {
+            "name": "black_smoke3",
+            "parent": "aura",
+            "transform": "normal"
+        },
+        {
+            "name": "black_smoke16",
+            "parent": "black_smoke3",
+            "transform": "normal"
+        },
+        {
+            "name": "black_smoke17",
+            "parent": "black_smoke3",
+            "transform": "normal"
+        },
+        {
+            "name": "black_smoke18",
+            "parent": "black_smoke3",
+            "transform": "normal"
+        },
+        {
+            "name": "black_smoke19",
+            "parent": "black_smoke3",
+            "transform": "normal"
+        },
+        {
+            "name": "black_smoke20",
+            "parent": "black_smoke3",
+            "transform": "normal"
+        },
+        {
+            "name": "black_smoke21",
+            "parent": "black_smoke3",
+            "transform": "normal"
+        },
+        {
+            "name": "black_smoke22",
+            "parent": "black_smoke2",
+            "transform": "normal"
+        },
+        {
+            "name": "light_smoke",
+            "parent": "aura",
+            "transform": "normal"
+        },
+        {
+            "name": "light_smoke2",
+            "parent": "light_smoke",
+            "transform": "normal"
+        },
+        {
+            "name": "light_smoke3",
+            "parent": "light_smoke",
+            "transform": "normal"
+        },
+        {
+            "name": "light_smoke4",
+            "parent": "light_smoke",
+            "transform": "normal"
+        },
+        {
+            "name": "light_smoke5",
+            "parent": "light_smoke",
+            "transform": "normal"
+        },
+        {
+            "name": "light_smoke6",
+            "parent": "light_smoke",
+            "transform": "normal"
+        },
+        {
+            "name": "light_smoke7",
+            "parent": "aura",
+            "transform": "normal"
+        },
+        {
+            "name": "light_smoke8",
+            "parent": "light_smoke7",
+            "transform": "normal"
+        },
+        {
+            "name": "light_smoke9",
+            "parent": "light_smoke7",
+            "transform": "normal"
+        },
+        {
+            "name": "light_smoke10",
+            "parent": "light_smoke7",
+            "transform": "normal"
+        },
+        {
+            "name": "light_smoke11",
+            "parent": "light_smoke7",
+            "transform": "normal"
+        },
+        {
+            "name": "light_smoke12",
+            "parent": "light_smoke7",
+            "transform": "normal"
+        },
+        {
+            "name": "light_smoke13",
+            "parent": "aura",
+            "transform": "normal"
+        },
+        {
+            "name": "light_smoke14",
+            "parent": "light_smoke13",
+            "transform": "normal"
+        },
+        {
+            "name": "light_smoke15",
+            "parent": "light_smoke13",
+            "transform": "normal"
+        },
+        {
+            "name": "light_smoke16",
+            "parent": "light_smoke13",
+            "transform": "normal"
+        },
+        {
+            "name": "light_smoke17",
+            "parent": "light_smoke13",
+            "transform": "normal"
+        },
+        {
+            "name": "light_smoke18",
+            "parent": "light_smoke13",
+            "transform": "normal"
+        },
+        {
+            "name": "eye_flash1",
+            "parent": "flash",
+            "transform": "normal"
+        }
+    ],
+    "ik": [],
+    "slots": [
+        {
+            "name": "aura2",
+            "bone": "black_smoke4"
+        },
+        {
+            "name": "aura5",
+            "bone": "black_smoke10"
+        },
+        {
+            "name": "aura8",
+            "bone": "black_smoke16"
+        },
+        {
+            "name": "aura4",
+            "bone": "black_smoke9"
+        },
+        {
+            "name": "aura7",
+            "bone": "black_smoke15"
+        },
+        {
+            "name": "aura20",
+            "bone": "black_smoke22"
+        },
+        {
+            "name": "aura19",
+            "bone": "black_smoke21"
+        },
+        {
+            "name": "aura3",
+            "bone": "black_smoke5"
+        },
+        {
+            "name": "aura6",
+            "bone": "black_smoke11"
+        },
+        {
+            "name": "aura9",
+            "bone": "black_smoke17"
+        },
+        {
+            "name": "aura10",
+            "bone": "black_smoke6"
+        },
+        {
+            "name": "aura13",
+            "bone": "black_smoke12"
+        },
+        {
+            "name": "aura16",
+            "bone": "black_smoke18"
+        },
+        {
+            "name": "aura11",
+            "bone": "black_smoke7"
+        },
+        {
+            "name": "aura14",
+            "bone": "black_smoke13"
+        },
+        {
+            "name": "aura17",
+            "bone": "black_smoke19"
+        },
+        {
+            "name": "aura12",
+            "bone": "black_smoke8"
+        },
+        {
+            "name": "aura15",
+            "bone": "black_smoke14"
+        },
+        {
+            "name": "aura18",
+            "bone": "black_smoke20"
+        },
+        {
+            "name": "aura22",
+            "bone": "light_smoke2",
+            "blend": "additive"
+        },
+        {
+            "name": "aura27",
+            "bone": "light_smoke8",
+            "blend": "additive"
+        },
+        {
+            "name": "aura32",
+            "bone": "light_smoke14",
+            "blend": "additive"
+        },
+        {
+            "name": "aura24",
+            "bone": "light_smoke4",
+            "blend": "additive"
+        },
+        {
+            "name": "aura29",
+            "bone": "light_smoke10",
+            "blend": "additive"
+        },
+        {
+            "name": "aura34",
+            "bone": "light_smoke16",
+            "blend": "additive"
+        },
+        {
+            "name": "aura25",
+            "bone": "light_smoke5",
+            "blend": "additive"
+        },
+        {
+            "name": "aura30",
+            "bone": "light_smoke11",
+            "blend": "additive"
+        },
+        {
+            "name": "aura35",
+            "bone": "light_smoke17",
+            "blend": "additive"
+        },
+        {
+            "name": "aura23",
+            "bone": "light_smoke3",
+            "blend": "additive"
+        },
+        {
+            "name": "aura28",
+            "bone": "light_smoke9",
+            "blend": "additive"
+        },
+        {
+            "name": "aura33",
+            "bone": "light_smoke15",
+            "blend": "additive"
+        },
+        {
+            "name": "aura26",
+            "bone": "light_smoke6",
+            "blend": "additive"
+        },
+        {
+            "name": "aura31",
+            "bone": "light_smoke12",
+            "blend": "additive"
+        },
+        {
+            "name": "aura36",
+            "bone": "light_smoke18",
+            "blend": "additive"
+        },
+        {
+            "name": "flash",
+            "bone": "global_flash",
+            "blend": "additive"
+        },
+        {
+            "name": "flash2",
+            "bone": "eye_flash1",
+            "blend": "additive"
+        }
+    ],
+    "transform": [],
+    "path": [],
+    "skins": [
+        {
+            "name": "default",
+            "attachments": {
+                "aura2": {
+                    "aura2": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.0,
+                        "rotation": -177.17999267578125,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 232.0,
+                        "height": 350.0,
+                        "path": "aura2"
+                    }
+                },
+                "aura5": {
+                    "aura2": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.0,
+                        "rotation": -177.17999267578125,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 232.0,
+                        "height": 350.0,
+                        "path": "aura2"
+                    }
+                },
+                "aura8": {
+                    "aura2": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.0,
+                        "rotation": -177.17999267578125,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 232.0,
+                        "height": 350.0,
+                        "path": "aura2"
+                    }
+                },
+                "aura4": {
+                    "aura2": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.0,
+                        "rotation": -177.17999267578125,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 232.0,
+                        "height": 350.0,
+                        "path": "aura2"
+                    }
+                },
+                "aura7": {
+                    "aura2": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.0,
+                        "rotation": -177.17999267578125,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 232.0,
+                        "height": 350.0,
+                        "path": "aura2"
+                    }
+                },
+                "aura20": {
+                    "aura2": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.0,
+                        "rotation": -177.17999267578125,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 232.0,
+                        "height": 350.0,
+                        "path": "aura2"
+                    }
+                },
+                "aura19": {
+                    "aura2": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.0,
+                        "rotation": -177.17999267578125,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 232.0,
+                        "height": 350.0,
+                        "path": "aura2"
+                    }
+                },
+                "aura3": {
+                    "aura2": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.0,
+                        "rotation": -177.17999267578125,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 232.0,
+                        "height": 350.0,
+                        "path": "aura2"
+                    }
+                },
+                "aura6": {
+                    "aura2": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.0,
+                        "rotation": -177.17999267578125,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 232.0,
+                        "height": 350.0,
+                        "path": "aura2"
+                    }
+                },
+                "aura9": {
+                    "aura2": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.0,
+                        "rotation": -177.17999267578125,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 232.0,
+                        "height": 350.0,
+                        "path": "aura2"
+                    }
+                },
+                "aura10": {
+                    "aura10": {
+                        "type": "region",
+                        "x": 0.5,
+                        "y": 0.0,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 393.0,
+                        "height": 400.0,
+                        "path": "aura10"
+                    }
+                },
+                "aura13": {
+                    "aura10": {
+                        "type": "region",
+                        "x": 0.5,
+                        "y": 0.0,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 393.0,
+                        "height": 400.0,
+                        "path": "aura10"
+                    }
+                },
+                "aura16": {
+                    "aura10": {
+                        "type": "region",
+                        "x": 0.5,
+                        "y": 0.0,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 393.0,
+                        "height": 400.0,
+                        "path": "aura10"
+                    }
+                },
+                "aura11": {
+                    "aura10": {
+                        "type": "region",
+                        "x": 0.5,
+                        "y": 0.0,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 393.0,
+                        "height": 400.0,
+                        "path": "aura10"
+                    }
+                },
+                "aura14": {
+                    "aura10": {
+                        "type": "region",
+                        "x": 0.5,
+                        "y": 0.0,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 393.0,
+                        "height": 400.0,
+                        "path": "aura10"
+                    }
+                },
+                "aura17": {
+                    "aura10": {
+                        "type": "region",
+                        "x": 0.5,
+                        "y": 0.0,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 393.0,
+                        "height": 400.0,
+                        "path": "aura10"
+                    }
+                },
+                "aura12": {
+                    "aura10": {
+                        "type": "region",
+                        "x": 0.5,
+                        "y": 0.0,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 393.0,
+                        "height": 400.0,
+                        "path": "aura10"
+                    }
+                },
+                "aura15": {
+                    "aura10": {
+                        "type": "region",
+                        "x": 0.5,
+                        "y": 0.0,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 393.0,
+                        "height": 400.0,
+                        "path": "aura10"
+                    }
+                },
+                "aura18": {
+                    "aura10": {
+                        "type": "region",
+                        "x": 0.5,
+                        "y": 0.0,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 393.0,
+                        "height": 400.0,
+                        "path": "aura10"
+                    }
+                },
+                "aura22": {
+                    "aura2": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.0,
+                        "rotation": -170.66000366210938,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 232.0,
+                        "height": 350.0,
+                        "path": "aura2"
+                    }
+                },
+                "aura27": {
+                    "aura2": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.0,
+                        "rotation": -170.66000366210938,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 232.0,
+                        "height": 350.0,
+                        "path": "aura2"
+                    }
+                },
+                "aura32": {
+                    "aura2": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.0,
+                        "rotation": -170.66000366210938,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 232.0,
+                        "height": 350.0,
+                        "path": "aura2"
+                    }
+                },
+                "aura24": {
+                    "aura2": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.0,
+                        "rotation": -170.66000366210938,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 232.0,
+                        "height": 350.0,
+                        "path": "aura2"
+                    }
+                },
+                "aura29": {
+                    "aura2": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.0,
+                        "rotation": -170.66000366210938,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 232.0,
+                        "height": 350.0,
+                        "path": "aura2"
+                    }
+                },
+                "aura34": {
+                    "aura2": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.0,
+                        "rotation": -170.66000366210938,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 232.0,
+                        "height": 350.0,
+                        "path": "aura2"
+                    }
+                },
+                "aura25": {
+                    "aura2": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.0,
+                        "rotation": -170.66000366210938,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 232.0,
+                        "height": 350.0,
+                        "path": "aura2"
+                    }
+                },
+                "aura30": {
+                    "aura2": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.0,
+                        "rotation": -170.66000366210938,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 232.0,
+                        "height": 350.0,
+                        "path": "aura2"
+                    }
+                },
+                "aura35": {
+                    "aura2": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.0,
+                        "rotation": -170.66000366210938,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 232.0,
+                        "height": 350.0,
+                        "path": "aura2"
+                    }
+                },
+                "aura23": {
+                    "aura2": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.0,
+                        "rotation": -170.66000366210938,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 232.0,
+                        "height": 350.0,
+                        "path": "aura2"
+                    }
+                },
+                "aura28": {
+                    "aura2": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.0,
+                        "rotation": -170.66000366210938,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 232.0,
+                        "height": 350.0,
+                        "path": "aura2"
+                    }
+                },
+                "aura33": {
+                    "aura2": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.0,
+                        "rotation": -170.66000366210938,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 232.0,
+                        "height": 350.0,
+                        "path": "aura2"
+                    }
+                },
+                "aura26": {
+                    "aura2": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.0,
+                        "rotation": -170.66000366210938,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 232.0,
+                        "height": 350.0,
+                        "path": "aura2"
+                    }
+                },
+                "aura31": {
+                    "aura2": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.0,
+                        "rotation": -170.66000366210938,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 232.0,
+                        "height": 350.0,
+                        "path": "aura2"
+                    }
+                },
+                "aura36": {
+                    "aura2": {
+                        "type": "region",
+                        "x": 0.0,
+                        "y": 0.0,
+                        "rotation": -170.66000366210938,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 232.0,
+                        "height": 350.0,
+                        "path": "aura2"
+                    }
+                },
+                "flash": {
+                    "flash": {
+                        "type": "mesh",
+                        "uvs": [
+                            0.75,
+                            1.0,
+                            0.5,
+                            1.0,
+                            0.25,
+                            1.0,
+                            0.0,
+                            0.75,
+                            0.0,
+                            0.5,
+                            0.0,
+                            0.25,
+                            0.25,
+                            0.0,
+                            0.5,
+                            0.0,
+                            0.75,
+                            0.0,
+                            1.0,
+                            0.25,
+                            1.0,
+                            0.5,
+                            1.0,
+                            0.75,
+                            0.6775000095367432,
+                            0.6862499713897705,
+                            0.5,
+                            0.75,
+                            0.3112500011920929,
+                            0.6762499809265137,
+                            0.75,
+                            0.5,
+                            0.5,
+                            0.5,
+                            0.25,
+                            0.5,
+                            0.6747900247573853,
+                            0.33893001079559326,
+                            0.5,
+                            0.25,
+                            0.32249999046325684,
+                            0.3387500047683716
+                        ],
+                        "triangles": [
+                            19,
+                            7,
+                            8,
+                            6,
+                            7,
+                            19,
+                            20,
+                            5,
+                            6,
+                            18,
+                            19,
+                            8,
+                            19,
+                            20,
+                            6,
+                            9,
+                            18,
+                            8,
+                            17,
+                            4,
+                            5,
+                            20,
+                            17,
+                            5,
+                            16,
+                            19,
+                            18,
+                            20,
+                            19,
+                            16,
+                            17,
+                            20,
+                            16,
+                            15,
+                            18,
+                            9,
+                            16,
+                            18,
+                            15,
+                            15,
+                            9,
+                            10,
+                            14,
+                            17,
+                            16,
+                            12,
+                            16,
+                            15,
+                            3,
+                            4,
+                            17,
+                            3,
+                            17,
+                            14,
+                            13,
+                            16,
+                            12,
+                            14,
+                            16,
+                            13,
+                            15,
+                            10,
+                            11,
+                            12,
+                            15,
+                            11,
+                            2,
+                            3,
+                            14,
+                            2,
+                            14,
+                            13,
+                            0,
+                            1,
+                            13,
+                            2,
+                            13,
+                            1,
+                            0,
+                            12,
+                            11,
+                            0,
+                            13,
+                            12
+                        ],
+                        "vertices": [
+                            64.0,
+                            -128.0,
+                            0.0,
+                            -128.0,
+                            -64.0,
+                            -128.0,
+                            -128.0,
+                            -64.0,
+                            -128.0,
+                            0.0,
+                            -128.0,
+                            64.0,
+                            -64.0,
+                            128.0,
+                            0.0,
+                            128.0,
+                            64.0,
+                            128.0,
+                            128.0,
+                            64.0,
+                            128.0,
+                            0.0,
+                            128.0,
+                            -64.0,
+                            45.439998626708984,
+                            -47.68000030517578,
+                            0.0,
+                            -64.0,
+                            -48.31999969482422,
+                            -45.119998931884766,
+                            64.0,
+                            0.0,
+                            0.0,
+                            0.0,
+                            -64.0,
+                            0.0,
+                            44.75,
+                            41.2400016784668,
+                            0.0,
+                            64.0,
+                            -45.439998626708984,
+                            41.279998779296875
+                        ],
+                        "hull": 12,
+                        "edges": [],
+                        "width": 32.0,
+                        "height": 32.0,
+                        "path": "flash"
+                    }
+                },
+                "flash2": {
+                    "flash": {
+                        "type": "mesh",
+                        "uvs": [
+                            0.75,
+                            1.0,
+                            0.5,
+                            1.0,
+                            0.25,
+                            1.0,
+                            0.0,
+                            0.75,
+                            0.0,
+                            0.5,
+                            0.0,
+                            0.25,
+                            0.25,
+                            0.0,
+                            0.5,
+                            0.0,
+                            0.75,
+                            0.0,
+                            1.0,
+                            0.25,
+                            1.0,
+                            0.5,
+                            1.0,
+                            0.75,
+                            0.6775000095367432,
+                            0.6862499713897705,
+                            0.5,
+                            0.75,
+                            0.3112500011920929,
+                            0.6762499809265137,
+                            0.75,
+                            0.5,
+                            0.5,
+                            0.5,
+                            0.25,
+                            0.5,
+                            0.6747900247573853,
+                            0.33893001079559326,
+                            0.5,
+                            0.25,
+                            0.32249999046325684,
+                            0.3387500047683716
+                        ],
+                        "triangles": [
+                            19,
+                            7,
+                            8,
+                            6,
+                            7,
+                            19,
+                            20,
+                            5,
+                            6,
+                            18,
+                            19,
+                            8,
+                            19,
+                            20,
+                            6,
+                            9,
+                            18,
+                            8,
+                            17,
+                            4,
+                            5,
+                            20,
+                            17,
+                            5,
+                            16,
+                            19,
+                            18,
+                            20,
+                            19,
+                            16,
+                            17,
+                            20,
+                            16,
+                            15,
+                            18,
+                            9,
+                            16,
+                            18,
+                            15,
+                            15,
+                            9,
+                            10,
+                            14,
+                            17,
+                            16,
+                            12,
+                            16,
+                            15,
+                            3,
+                            4,
+                            17,
+                            3,
+                            17,
+                            14,
+                            13,
+                            16,
+                            12,
+                            14,
+                            16,
+                            13,
+                            15,
+                            10,
+                            11,
+                            12,
+                            15,
+                            11,
+                            2,
+                            3,
+                            14,
+                            2,
+                            14,
+                            13,
+                            0,
+                            1,
+                            13,
+                            2,
+                            13,
+                            1,
+                            0,
+                            12,
+                            11,
+                            0,
+                            13,
+                            12
+                        ],
+                        "vertices": [
+                            64.0,
+                            -128.0,
+                            0.0,
+                            -128.0,
+                            -64.0,
+                            -128.0,
+                            -128.0,
+                            -64.0,
+                            -128.0,
+                            0.0,
+                            -128.0,
+                            64.0,
+                            -64.0,
+                            128.0,
+                            0.0,
+                            128.0,
+                            64.0,
+                            128.0,
+                            128.0,
+                            64.0,
+                            128.0,
+                            0.0,
+                            128.0,
+                            -64.0,
+                            45.439998626708984,
+                            -47.68000030517578,
+                            0.0,
+                            -64.0,
+                            -48.31999969482422,
+                            -45.119998931884766,
+                            64.0,
+                            0.0,
+                            0.0,
+                            0.0,
+                            -64.0,
+                            0.0,
+                            44.75,
+                            41.2400016784668,
+                            0.0,
+                            64.0,
+                            -45.439998626708984,
+                            41.279998779296875
+                        ],
+                        "hull": 12,
+                        "edges": [],
+                        "width": 32.0,
+                        "height": 32.0,
+                        "path": "flash"
+                    }
+                }
+            }
+        }
+    ],
+    "events": {},
+    "animations": {
+        "animation": {
+            "bones": {
+                "global_flash": {
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.53329998254776,
+                            "x": -5.670000076293945,
+                            "y": 45.630001068115234
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.53329998254776,
+                            "x": 2.490000009536743,
+                            "y": 1.7269999980926514
+                        }
+                    ]
+                },
+                "black_smoke4": {
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.53329998254776,
+                            "x": -21.760000228881836,
+                            "y": 202.1300048828125
+                        },
+                        {
+                            "time": 0.9333000183105469,
+                            "x": -21.760000228881836,
+                            "y": 273.9599914550781
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.53329998254776,
+                            "x": 0.4790000021457672,
+                            "y": 0.4790000021457672
+                        },
+                        {
+                            "time": 0.9333000183105469,
+                            "x": 0.7889999747276306,
+                            "y": 0.8730000257492065
+                        }
+                    ]
+                },
+                "black_smoke5": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 0.0
+                        },
+                        {
+                            "time": 0.53329998254776,
+                            "angle": -151.7899932861328
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.53329998254776,
+                            "x": -68.83000183105469,
+                            "y": 189.52999877929688
+                        },
+                        {
+                            "time": 1.0333000421524048,
+                            "x": -100.6500015258789,
+                            "y": 249.1999969482422
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.53329998254776,
+                            "x": 0.37599998712539673,
+                            "y": 0.37599998712539673
+                        },
+                        {
+                            "time": 1.0333000421524048,
+                            "x": 0.7059999704360962,
+                            "y": 0.7289999723434448
+                        }
+                    ]
+                },
+                "black_smoke6": {
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.53329998254776,
+                            "x": -26.90999984741211,
+                            "y": 199.66000366210938
+                        },
+                        {
+                            "time": 0.8666999936103821,
+                            "x": -15.579999923706055,
+                            "y": 279.54998779296875
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.53329998254776,
+                            "x": 0.4790000021457672,
+                            "y": 0.4790000021457672
+                        },
+                        {
+                            "time": 0.8666999936103821,
+                            "x": 0.7960000038146973,
+                            "y": 0.824999988079071
+                        }
+                    ]
+                },
+                "black_smoke7": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.53329998254776,
+                            "angle": -141.19000244140625
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.53329998254776,
+                            "x": -118.05000305175781,
+                            "y": 199.66000366210938
+                        },
+                        {
+                            "time": 0.9333000183105469,
+                            "x": -128.25,
+                            "y": 241.6300048828125
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.53329998254776,
+                            "x": -0.4580000042915344,
+                            "y": 0.4860000014305115
+                        },
+                        {
+                            "time": 0.9333000183105469,
+                            "x": -0.6940000057220459,
+                            "y": 0.7179999947547913
+                        }
+                    ]
+                },
+                "black_smoke8": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.53329998254776,
+                            "angle": 113.05999755859375
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.53329998254776,
+                            "x": 23.739999771118164,
+                            "y": 156.5500030517578
+                        },
+                        {
+                            "time": 1.0333000421524048,
+                            "x": 65.5999984741211,
+                            "y": 190.1699981689453
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.53329998254776,
+                            "x": -0.3659999966621399,
+                            "y": 0.3889999985694885
+                        },
+                        {
+                            "time": 1.0333000421524048,
+                            "x": -0.5360000133514404,
+                            "y": 0.6930000185966492
+                        }
+                    ]
+                },
+                "black_smoke9": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 0.0
+                        },
+                        {
+                            "time": 0.6000000238418579,
+                            "angle": -44.97999954223633
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.6000000238418579,
+                            "x": 30.700000762939453,
+                            "y": 174.66000366210938
+                        },
+                        {
+                            "time": 1.166700005531311,
+                            "x": 98.11000061035156,
+                            "y": 242.11000061035156
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.6000000238418579,
+                            "x": 0.4790000021457672,
+                            "y": 0.4790000021457672
+                        },
+                        {
+                            "time": 1.166700005531311,
+                            "x": 1.0540000200271606,
+                            "y": 1.0540000200271606
+                        }
+                    ]
+                },
+                "black_smoke10": {
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.0666999816894531,
+                            "x": -21.760000228881836,
+                            "y": 202.1300048828125
+                        },
+                        {
+                            "time": 1.4666999578475952,
+                            "x": -21.760000228881836,
+                            "y": 273.9599914550781
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.0666999816894531,
+                            "x": 0.4790000021457672,
+                            "y": 0.4790000021457672
+                        },
+                        {
+                            "time": 1.4666999578475952,
+                            "x": 0.7889999747276306,
+                            "y": 0.8730000257492065
+                        }
+                    ]
+                },
+                "black_smoke11": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 0.0
+                        },
+                        {
+                            "time": 1.0,
+                            "angle": -151.7899932861328
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.0,
+                            "x": -68.83000183105469,
+                            "y": 189.52999877929688
+                        },
+                        {
+                            "time": 1.5,
+                            "x": -100.6500015258789,
+                            "y": 249.1999969482422
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.0,
+                            "x": 0.37599998712539673,
+                            "y": 0.37599998712539673
+                        },
+                        {
+                            "time": 1.5,
+                            "x": 0.7059999704360962,
+                            "y": 0.7289999723434448
+                        }
+                    ]
+                },
+                "black_smoke12": {
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.0666999816894531,
+                            "x": -26.90999984741211,
+                            "y": 199.66000366210938
+                        },
+                        {
+                            "time": 1.399999976158142,
+                            "x": -15.579999923706055,
+                            "y": 279.54998779296875
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.0666999816894531,
+                            "x": 0.4790000021457672,
+                            "y": 0.4790000021457672
+                        },
+                        {
+                            "time": 1.399999976158142,
+                            "x": 0.7960000038146973,
+                            "y": 0.824999988079071
+                        }
+                    ]
+                },
+                "black_smoke13": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.96670001745224,
+                            "angle": -141.19000244140625
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.96670001745224,
+                            "x": -118.05000305175781,
+                            "y": 199.66000366210938
+                        },
+                        {
+                            "time": 1.3667000532150269,
+                            "x": -128.25,
+                            "y": 241.6300048828125
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.96670001745224,
+                            "x": -0.4580000042915344,
+                            "y": 0.4860000014305115
+                        },
+                        {
+                            "time": 1.3667000532150269,
+                            "x": -0.6940000057220459,
+                            "y": 0.7179999947547913
+                        }
+                    ]
+                },
+                "black_smoke14": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.1332999467849731,
+                            "angle": 113.05999755859375
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.1332999467849731,
+                            "x": 23.739999771118164,
+                            "y": 156.5500030517578
+                        },
+                        {
+                            "time": 1.6332999467849731,
+                            "x": 65.5999984741211,
+                            "y": 190.1699981689453
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.1332999467849731,
+                            "x": -0.3659999966621399,
+                            "y": 0.3889999985694885
+                        },
+                        {
+                            "time": 1.6332999467849731,
+                            "x": -0.5360000133514404,
+                            "y": 0.6930000185966492
+                        }
+                    ]
+                },
+                "black_smoke15": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 0.0
+                        },
+                        {
+                            "time": 1.1332999467849731,
+                            "angle": -44.97999954223633
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.1332999467849731,
+                            "x": 30.700000762939453,
+                            "y": 174.66000366210938
+                        },
+                        {
+                            "time": 1.7000000476837158,
+                            "x": 98.11000061035156,
+                            "y": 242.11000061035156
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.1332999467849731,
+                            "x": 0.4790000021457672,
+                            "y": 0.4790000021457672
+                        },
+                        {
+                            "time": 1.7000000476837158,
+                            "x": 1.0540000200271606,
+                            "y": 1.0540000200271606
+                        }
+                    ]
+                },
+                "black_smoke16": {
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.8666999936103821,
+                            "x": -21.760000228881836,
+                            "y": 202.1300048828125
+                        },
+                        {
+                            "time": 1.266700029373169,
+                            "x": -21.760000228881836,
+                            "y": 273.9599914550781
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.8666999936103821,
+                            "x": 0.4790000021457672,
+                            "y": 0.4790000021457672
+                        },
+                        {
+                            "time": 1.266700029373169,
+                            "x": 0.7889999747276306,
+                            "y": 0.8730000257492065
+                        }
+                    ]
+                },
+                "black_smoke17": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 0.0
+                        },
+                        {
+                            "time": 0.800000011920929,
+                            "angle": -151.7899932861328
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.800000011920929,
+                            "x": -68.83000183105469,
+                            "y": 189.52999877929688
+                        },
+                        {
+                            "time": 1.2999999523162842,
+                            "x": -100.6500015258789,
+                            "y": 249.1999969482422
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.800000011920929,
+                            "x": 0.37599998712539673,
+                            "y": 0.37599998712539673
+                        },
+                        {
+                            "time": 1.2999999523162842,
+                            "x": 0.7059999704360962,
+                            "y": 0.7289999723434448
+                        }
+                    ]
+                },
+                "black_smoke18": {
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.9333000183105469,
+                            "x": -5.889999866485596,
+                            "y": 244.72000122070313
+                        },
+                        {
+                            "time": 1.266700029373169,
+                            "x": -0.8799999952316284,
+                            "y": 302.7799987792969
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.9333000183105469,
+                            "x": 0.4790000021457672,
+                            "y": 0.4790000021457672
+                        },
+                        {
+                            "time": 1.266700029373169,
+                            "x": 0.5889999866485596,
+                            "y": 0.7900000214576721
+                        }
+                    ]
+                },
+                "black_smoke19": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.766700029373169,
+                            "angle": -141.19000244140625
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.766700029373169,
+                            "x": -118.05000305175781,
+                            "y": 199.66000366210938
+                        },
+                        {
+                            "time": 1.166700005531311,
+                            "x": -128.25,
+                            "y": 241.6300048828125
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.766700029373169,
+                            "x": -0.4580000042915344,
+                            "y": 0.4860000014305115
+                        },
+                        {
+                            "time": 1.166700005531311,
+                            "x": -0.6940000057220459,
+                            "y": 0.7179999947547913
+                        }
+                    ]
+                },
+                "black_smoke20": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.8666999936103821,
+                            "angle": 113.05999755859375
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.8666999936103821,
+                            "x": 71.8499984741211,
+                            "y": 178.91000366210938
+                        },
+                        {
+                            "time": 1.3667000532150269,
+                            "x": 99.58000183105469,
+                            "y": 191.22999572753906
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.8666999936103821,
+                            "x": -0.3659999966621399,
+                            "y": 0.3889999985694885
+                        },
+                        {
+                            "time": 1.3667000532150269,
+                            "x": -0.5360000133514404,
+                            "y": 0.6930000185966492
+                        }
+                    ]
+                },
+                "black_smoke21": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 0.0
+                        },
+                        {
+                            "time": 0.9333000183105469,
+                            "angle": -44.97999954223633
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.9333000183105469,
+                            "x": 58.43000030517578,
+                            "y": 186.97999572753906
+                        },
+                        {
+                            "time": 1.5,
+                            "x": 98.11000061035156,
+                            "y": 242.11000061035156
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.9333000183105469,
+                            "x": 0.4790000021457672,
+                            "y": 0.4790000021457672
+                        },
+                        {
+                            "time": 1.5,
+                            "x": 1.0540000200271606,
+                            "y": 1.0540000200271606
+                        }
+                    ]
+                },
+                "black_smoke3": {
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": -53.93000030517578,
+                            "y": -12.329999923706055
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": -1.0,
+                            "y": 1.0
+                        }
+                    ]
+                },
+                "black_smoke22": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.233299970626831,
+                            "angle": 1.159999966621399
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.233299970626831,
+                            "x": -51.540000915527344,
+                            "y": 195.6699981689453
+                        },
+                        {
+                            "time": 1.766700029373169,
+                            "x": -52.459999084472656,
+                            "y": 265.1199951171875
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.233299970626831,
+                            "x": 0.4790000021457672,
+                            "y": 0.4790000021457672
+                        },
+                        {
+                            "time": 1.766700029373169,
+                            "x": 0.6660000085830688,
+                            "y": 0.6660000085830688
+                        }
+                    ]
+                },
+                "light_smoke2": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.53329998254776,
+                            "angle": -13.710000038146973
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.53329998254776,
+                            "x": -13.899999618530273,
+                            "y": 183.57000732421875
+                        },
+                        {
+                            "time": 0.8999999761581421,
+                            "x": 11.380000114440918,
+                            "y": 264.17999267578125
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.53329998254776,
+                            "x": 0.3269999921321869,
+                            "y": 0.3269999921321869
+                        },
+                        {
+                            "time": 0.8999999761581421,
+                            "x": 0.6880000233650208,
+                            "y": 0.8759999871253967
+                        }
+                    ]
+                },
+                "light_smoke3": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.53329998254776,
+                            "angle": 109.30000305175781
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.6000000238418579,
+                            "x": -79.12999725341797,
+                            "y": 161.92999267578125
+                        },
+                        {
+                            "time": 1.100000023841858,
+                            "x": -107.5199966430664,
+                            "y": 229.7100067138672
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.6000000238418579,
+                            "x": 0.609000027179718,
+                            "y": -0.2669999897480011
+                        },
+                        {
+                            "time": 1.100000023841858,
+                            "x": 1.7020000219345093,
+                            "y": -0.43799999356269836
+                        }
+                    ]
+                },
+                "light_smoke4": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.5666999816894531,
+                            "angle": -165.69000244140625
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.5666999816894531,
+                            "x": -62.58000183105469,
+                            "y": 210.9499969482422
+                        },
+                        {
+                            "time": 0.833299994468689,
+                            "x": -77.9800033569336,
+                            "y": 271.30999755859375
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.5666999816894531,
+                            "x": 0.3269999921321869,
+                            "y": 0.4169999957084656
+                        },
+                        {
+                            "time": 0.833299994468689,
+                            "x": 0.47600001096725464,
+                            "y": 0.777999997138977
+                        }
+                    ]
+                },
+                "light_smoke5": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.6000000238418579,
+                            "angle": 71.69999694824219
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.6000000238418579,
+                            "x": -115.41999816894531,
+                            "y": 134.7100067138672
+                        },
+                        {
+                            "time": 1.2000000476837158,
+                            "x": -189.6699981689453,
+                            "y": 162.99000549316406
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.6000000238418579,
+                            "x": 0.43299999833106995,
+                            "y": 0.3050000071525574
+                        },
+                        {
+                            "time": 1.2000000476837158,
+                            "x": 0.531000018119812,
+                            "y": 0.7200000286102295
+                        }
+                    ]
+                },
+                "light_smoke6": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.5666999816894531,
+                            "angle": 29.520000457763672
+                        },
+                        {
+                            "time": 1.1332999467849731,
+                            "angle": 35.65999984741211
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.5666999816894531,
+                            "x": 19.760000228881836,
+                            "y": 154.3300018310547
+                        },
+                        {
+                            "time": 1.1332999467849731,
+                            "x": 59.310001373291016,
+                            "y": 189.32000732421875
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.5666999816894531,
+                            "x": 0.8960000276565552,
+                            "y": 0.4320000112056732
+                        },
+                        {
+                            "time": 1.1332999467849731,
+                            "x": 1.531000018119812,
+                            "y": 0.5299999713897705
+                        }
+                    ]
+                },
+                "light_smoke8": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.0,
+                            "angle": -13.710000038146973
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.0,
+                            "x": -13.899999618530273,
+                            "y": 183.57000732421875
+                        },
+                        {
+                            "time": 1.3667000532150269,
+                            "x": 11.380000114440918,
+                            "y": 264.17999267578125
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.0,
+                            "x": 0.3269999921321869,
+                            "y": 0.3269999921321869
+                        },
+                        {
+                            "time": 1.3667000532150269,
+                            "x": 0.6880000233650208,
+                            "y": 0.8759999871253967
+                        }
+                    ]
+                },
+                "light_smoke9": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.0,
+                            "angle": 109.30000305175781
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.0666999816894531,
+                            "x": -79.12999725341797,
+                            "y": 161.92999267578125
+                        },
+                        {
+                            "time": 1.5666999816894531,
+                            "x": -107.5199966430664,
+                            "y": 229.7100067138672
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.0666999816894531,
+                            "x": 0.609000027179718,
+                            "y": -0.2669999897480011
+                        },
+                        {
+                            "time": 1.5666999816894531,
+                            "x": 1.7020000219345093,
+                            "y": -0.43799999356269836
+                        }
+                    ]
+                },
+                "light_smoke10": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.0333000421524048,
+                            "angle": -165.69000244140625
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.0333000421524048,
+                            "x": -62.58000183105469,
+                            "y": 210.9499969482422
+                        },
+                        {
+                            "time": 1.2999999523162842,
+                            "x": -77.9800033569336,
+                            "y": 271.30999755859375
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.0333000421524048,
+                            "x": 0.3269999921321869,
+                            "y": 0.4169999957084656
+                        },
+                        {
+                            "time": 1.2999999523162842,
+                            "x": 0.47600001096725464,
+                            "y": 0.777999997138977
+                        }
+                    ]
+                },
+                "light_smoke11": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.0666999816894531,
+                            "angle": 71.69999694824219
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.0666999816894531,
+                            "x": -115.41999816894531,
+                            "y": 134.7100067138672
+                        },
+                        {
+                            "time": 1.5333000421524048,
+                            "x": -189.6699981689453,
+                            "y": 162.99000549316406
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.0666999816894531,
+                            "x": 0.43299999833106995,
+                            "y": 0.3050000071525574
+                        },
+                        {
+                            "time": 1.5333000421524048,
+                            "x": 0.531000018119812,
+                            "y": 0.7200000286102295
+                        }
+                    ]
+                },
+                "light_smoke12": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.0333000421524048,
+                            "angle": 29.520000457763672
+                        },
+                        {
+                            "time": 1.600000023841858,
+                            "angle": 35.65999984741211
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.0333000421524048,
+                            "x": 19.760000228881836,
+                            "y": 154.3300018310547
+                        },
+                        {
+                            "time": 1.600000023841858,
+                            "x": 59.310001373291016,
+                            "y": 189.32000732421875
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.0333000421524048,
+                            "x": 0.8960000276565552,
+                            "y": 0.4320000112056732
+                        },
+                        {
+                            "time": 1.600000023841858,
+                            "x": 1.531000018119812,
+                            "y": 0.5299999713897705
+                        }
+                    ]
+                },
+                "light_smoke14": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.800000011920929,
+                            "angle": -13.710000038146973
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.800000011920929,
+                            "x": -13.899999618530273,
+                            "y": 183.57000732421875
+                        },
+                        {
+                            "time": 1.166700005531311,
+                            "x": 11.380000114440918,
+                            "y": 264.17999267578125
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.800000011920929,
+                            "x": 0.3269999921321869,
+                            "y": 0.3269999921321869
+                        },
+                        {
+                            "time": 1.166700005531311,
+                            "x": 0.6880000233650208,
+                            "y": 0.8759999871253967
+                        }
+                    ]
+                },
+                "light_smoke15": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.800000011920929,
+                            "angle": 109.30000305175781
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.8666999936103821,
+                            "x": -79.12999725341797,
+                            "y": 161.92999267578125
+                        },
+                        {
+                            "time": 1.3667000532150269,
+                            "x": -107.5199966430664,
+                            "y": 229.7100067138672
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.8666999936103821,
+                            "x": 0.609000027179718,
+                            "y": -0.2669999897480011
+                        },
+                        {
+                            "time": 1.3667000532150269,
+                            "x": 1.7020000219345093,
+                            "y": -0.43799999356269836
+                        }
+                    ]
+                },
+                "light_smoke16": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.833299994468689,
+                            "angle": -165.69000244140625
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.833299994468689,
+                            "x": -62.58000183105469,
+                            "y": 210.9499969482422
+                        },
+                        {
+                            "time": 1.100000023841858,
+                            "x": -77.9800033569336,
+                            "y": 271.30999755859375
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.833299994468689,
+                            "x": 0.3269999921321869,
+                            "y": 0.4169999957084656
+                        },
+                        {
+                            "time": 1.100000023841858,
+                            "x": 0.47600001096725464,
+                            "y": 0.777999997138977
+                        }
+                    ]
+                },
+                "light_smoke17": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.8666999936103821,
+                            "angle": 71.69999694824219
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.8666999936103821,
+                            "x": -95.02999877929688,
+                            "y": 127.97000122070313
+                        },
+                        {
+                            "time": 1.4666999578475952,
+                            "x": -189.6699981689453,
+                            "y": 162.99000549316406
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.8666999936103821,
+                            "x": 0.3869999945163727,
+                            "y": 0.23499999940395355
+                        },
+                        {
+                            "time": 1.4666999578475952,
+                            "x": 0.531000018119812,
+                            "y": 0.7200000286102295
+                        }
+                    ]
+                },
+                "light_smoke18": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.8666999936103821,
+                            "angle": 29.520000457763672
+                        },
+                        {
+                            "time": 1.399999976158142,
+                            "angle": 35.65999984741211
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.8666999936103821,
+                            "x": 2.7200000286102295,
+                            "y": 144.67999267578125
+                        },
+                        {
+                            "time": 1.399999976158142,
+                            "x": 59.310001373291016,
+                            "y": 189.32000732421875
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.8666999936103821,
+                            "x": 0.6079999804496765,
+                            "y": 0.37599998712539673
+                        },
+                        {
+                            "time": 1.399999976158142,
+                            "x": 1.531000018119812,
+                            "y": 0.5299999713897705
+                        }
+                    ]
+                },
+                "light_smoke13": {
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.800000011920929,
+                            "x": -74.54000091552734,
+                            "y": -4.559999942779541
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.800000011920929,
+                            "x": -1.0,
+                            "y": 1.0
+                        }
+                    ]
+                },
+                "eye_flash1": {
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.53329998254776,
+                            "x": -52.45000076293945,
+                            "y": 109.25,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.399999976158142,
+                            "x": -31.440000534057617,
+                            "y": 158.8000030517578,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.4666999578475952,
+                            "x": -34.130001068115234,
+                            "y": 146.9499969482422,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.5333000421524048,
+                            "x": -35.209999084472656,
+                            "y": 125.41000366210938,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.600000023841858,
+                            "x": -35.209999084472656,
+                            "y": 130.25999450683594,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.666700005531311,
+                            "x": -35.209999084472656,
+                            "y": 132.41000366210938
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.53329998254776,
+                            "x": 1.0429999828338623,
+                            "y": 0.671999990940094
+                        }
+                    ]
+                }
+            },
+            "slots": {
+                "aura2": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.53329998254776,
+                            "color": "06060AFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.766700029373169,
+                            "color": "06060AFF"
+                        },
+                        {
+                            "time": 0.9333000183105469,
+                            "color": "06060A00"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.53329998254776,
+                            "name": "aura2"
+                        }
+                    ]
+                },
+                "aura3": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.53329998254776,
+                            "color": "06060AFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.8666999936103821,
+                            "color": "06060AFF"
+                        },
+                        {
+                            "time": 1.0333000421524048,
+                            "color": "06060A00"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.53329998254776,
+                            "name": "aura2"
+                        }
+                    ]
+                },
+                "aura4": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.6000000238418579,
+                            "color": "06060AFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.833299994468689,
+                            "color": "06060AFF"
+                        },
+                        {
+                            "time": 1.166700005531311,
+                            "color": "06060A00"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.6000000238418579,
+                            "name": "aura2"
+                        }
+                    ]
+                },
+                "aura5": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.0666999816894531,
+                            "color": "06060AFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.2999999523162842,
+                            "color": "06060AFF"
+                        },
+                        {
+                            "time": 1.4666999578475952,
+                            "color": "06060A00"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 1.0666999816894531,
+                            "name": "aura2"
+                        }
+                    ]
+                },
+                "aura6": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.0,
+                            "color": "06060AFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.333299994468689,
+                            "color": "06060AFF"
+                        },
+                        {
+                            "time": 1.5,
+                            "color": "06060A00"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 1.0,
+                            "name": "aura2"
+                        }
+                    ]
+                },
+                "aura7": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.1332999467849731,
+                            "color": "06060AFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.3667000532150269,
+                            "color": "06060AFF"
+                        },
+                        {
+                            "time": 1.7000000476837158,
+                            "color": "06060A00"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 1.1332999467849731,
+                            "name": "aura2"
+                        }
+                    ]
+                },
+                "aura8": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.8666999936103821,
+                            "color": "06060AFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.100000023841858,
+                            "color": "06060AFF"
+                        },
+                        {
+                            "time": 1.266700029373169,
+                            "color": "06060A00"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.8666999936103821,
+                            "name": "aura2"
+                        }
+                    ]
+                },
+                "aura9": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.800000011920929,
+                            "color": "06060AFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.1332999467849731,
+                            "color": "06060AFF"
+                        },
+                        {
+                            "time": 1.2999999523162842,
+                            "color": "06060A00"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.800000011920929,
+                            "name": "aura2"
+                        }
+                    ]
+                },
+                "aura10": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.53329998254776,
+                            "color": "06060AFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.699999988079071,
+                            "color": "06060AFF"
+                        },
+                        {
+                            "time": 0.8666999936103821,
+                            "color": "06060A00"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.53329998254776,
+                            "name": "aura10"
+                        }
+                    ]
+                },
+                "aura11": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.53329998254776,
+                            "color": "06060AFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.766700029373169,
+                            "color": "06060AFF"
+                        },
+                        {
+                            "time": 0.9333000183105469,
+                            "color": "06060A00"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.53329998254776,
+                            "name": "aura10"
+                        }
+                    ]
+                },
+                "aura12": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.53329998254776,
+                            "color": "06060AFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.8666999936103821,
+                            "color": "06060AFF"
+                        },
+                        {
+                            "time": 1.0333000421524048,
+                            "color": "06060A00"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.53329998254776,
+                            "name": "aura10"
+                        }
+                    ]
+                },
+                "aura13": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.0666999816894531,
+                            "color": "06060AFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.233299970626831,
+                            "color": "06060AFF"
+                        },
+                        {
+                            "time": 1.399999976158142,
+                            "color": "06060A00"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 1.0666999816894531,
+                            "name": "aura10"
+                        }
+                    ]
+                },
+                "aura14": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.96670001745224,
+                            "color": "06060AFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.2000000476837158,
+                            "color": "06060AFF"
+                        },
+                        {
+                            "time": 1.3667000532150269,
+                            "color": "06060A00"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.96670001745224,
+                            "name": "aura10"
+                        }
+                    ]
+                },
+                "aura15": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.1332999467849731,
+                            "color": "06060AFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.4666999578475952,
+                            "color": "06060AFF"
+                        },
+                        {
+                            "time": 1.6332999467849731,
+                            "color": "06060A00"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 1.1332999467849731,
+                            "name": "aura10"
+                        }
+                    ]
+                },
+                "aura16": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.9333000183105469,
+                            "color": "06060AFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.100000023841858,
+                            "color": "06060AFF"
+                        },
+                        {
+                            "time": 1.266700029373169,
+                            "color": "06060A00"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.9333000183105469,
+                            "name": "aura10"
+                        }
+                    ]
+                },
+                "aura17": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.766700029373169,
+                            "color": "06060AFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.0,
+                            "color": "06060AFF"
+                        },
+                        {
+                            "time": 1.166700005531311,
+                            "color": "06060A00"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.766700029373169,
+                            "name": "aura10"
+                        }
+                    ]
+                },
+                "aura18": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.8666999936103821,
+                            "color": "06060AFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.2000000476837158,
+                            "color": "06060AFF"
+                        },
+                        {
+                            "time": 1.3667000532150269,
+                            "color": "06060A00"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.8666999936103821,
+                            "name": "aura10"
+                        }
+                    ]
+                },
+                "aura19": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.9333000183105469,
+                            "color": "06060AFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.166700005531311,
+                            "color": "06060AFF"
+                        },
+                        {
+                            "time": 1.5,
+                            "color": "06060A00"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.9333000183105469,
+                            "name": "aura2"
+                        }
+                    ]
+                },
+                "aura20": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.233299970626831,
+                            "color": "06060AFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.5,
+                            "color": "06060AFF"
+                        },
+                        {
+                            "time": 1.766700029373169,
+                            "color": "06060A00"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 1.233299970626831,
+                            "name": "aura2"
+                        }
+                    ]
+                },
+                "aura22": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.53329998254776,
+                            "color": "9084FFB8",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.6000000238418579,
+                            "color": "9084FFB8"
+                        },
+                        {
+                            "time": 0.8999999761581421,
+                            "color": "9084FF00"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.53329998254776,
+                            "name": "aura2"
+                        },
+                        {
+                            "time": 0.8999999761581421,
+                            "name": null
+                        }
+                    ]
+                },
+                "aura23": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.6000000238418579,
+                            "color": "9084FFB8",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.800000011920929,
+                            "color": "9084FFB8"
+                        },
+                        {
+                            "time": 1.100000023841858,
+                            "color": "9084FF00"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.6000000238418579,
+                            "name": "aura2"
+                        },
+                        {
+                            "time": 1.100000023841858,
+                            "name": null
+                        }
+                    ]
+                },
+                "aura24": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.5666999816894531,
+                            "color": "9084FFB8",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.6333000063896179,
+                            "color": "9084FFB8"
+                        },
+                        {
+                            "time": 0.833299994468689,
+                            "color": "9084FF00"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.5666999816894531,
+                            "name": "aura2"
+                        },
+                        {
+                            "time": 0.833299994468689,
+                            "name": null
+                        }
+                    ]
+                },
+                "aura25": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.6000000238418579,
+                            "color": "9084FFB8",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.833299994468689,
+                            "color": "9084FFB8"
+                        },
+                        {
+                            "time": 1.2000000476837158,
+                            "color": "9084FF00"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.6000000238418579,
+                            "name": "aura2"
+                        },
+                        {
+                            "time": 1.2000000476837158,
+                            "name": null
+                        }
+                    ]
+                },
+                "aura26": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.5666999816894531,
+                            "color": "9084FFB8",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.766700029373169,
+                            "color": "9084FFB8"
+                        },
+                        {
+                            "time": 1.1332999467849731,
+                            "color": "9084FF00"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.5666999816894531,
+                            "name": "aura2"
+                        },
+                        {
+                            "time": 1.1332999467849731,
+                            "name": null
+                        }
+                    ]
+                },
+                "aura27": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.0,
+                            "color": "9084FFB8",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.0666999816894531,
+                            "color": "9084FFB8"
+                        },
+                        {
+                            "time": 1.3667000532150269,
+                            "color": "9084FF00"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 1.0,
+                            "name": "aura2"
+                        },
+                        {
+                            "time": 1.3667000532150269,
+                            "name": null
+                        }
+                    ]
+                },
+                "aura28": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.0666999816894531,
+                            "color": "9084FFB8",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.266700029373169,
+                            "color": "9084FFB8"
+                        },
+                        {
+                            "time": 1.5666999816894531,
+                            "color": "9084FF00"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 1.0666999816894531,
+                            "name": "aura2"
+                        },
+                        {
+                            "time": 1.5666999816894531,
+                            "name": null
+                        }
+                    ]
+                },
+                "aura29": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.0333000421524048,
+                            "color": "9084FFB8",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.100000023841858,
+                            "color": "9084FFB8"
+                        },
+                        {
+                            "time": 1.2999999523162842,
+                            "color": "9084FF00"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 1.0333000421524048,
+                            "name": "aura2"
+                        },
+                        {
+                            "time": 1.2999999523162842,
+                            "name": null
+                        }
+                    ]
+                },
+                "aura30": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.0666999816894531,
+                            "color": "9084FFB8",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.233299970626831,
+                            "color": "9084FFB8"
+                        },
+                        {
+                            "time": 1.5333000421524048,
+                            "color": "9084FF00"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 1.0666999816894531,
+                            "name": "aura2"
+                        },
+                        {
+                            "time": 1.5333000421524048,
+                            "name": null
+                        }
+                    ]
+                },
+                "aura31": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.0333000421524048,
+                            "color": "9084FFB8",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.233299970626831,
+                            "color": "9084FFB8"
+                        },
+                        {
+                            "time": 1.600000023841858,
+                            "color": "9084FF00"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 1.0333000421524048,
+                            "name": "aura2"
+                        },
+                        {
+                            "time": 1.600000023841858,
+                            "name": null
+                        }
+                    ]
+                },
+                "aura32": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.800000011920929,
+                            "color": "9084FFB8",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.8666999936103821,
+                            "color": "9084FFB8"
+                        },
+                        {
+                            "time": 1.166700005531311,
+                            "color": "9084FF00"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.800000011920929,
+                            "name": "aura2"
+                        },
+                        {
+                            "time": 1.166700005531311,
+                            "name": null
+                        }
+                    ]
+                },
+                "aura33": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.8666999936103821,
+                            "color": "9084FFB8",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.0666999816894531,
+                            "color": "9084FFB8"
+                        },
+                        {
+                            "time": 1.3667000532150269,
+                            "color": "9084FF00"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.8666999936103821,
+                            "name": "aura2"
+                        },
+                        {
+                            "time": 1.3667000532150269,
+                            "name": null
+                        }
+                    ]
+                },
+                "aura34": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.833299994468689,
+                            "color": "9084FFB8",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.8999999761581421,
+                            "color": "9084FFB8"
+                        },
+                        {
+                            "time": 1.100000023841858,
+                            "color": "9084FF00"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.833299994468689,
+                            "name": "aura2"
+                        },
+                        {
+                            "time": 1.100000023841858,
+                            "name": null
+                        }
+                    ]
+                },
+                "aura35": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.8666999936103821,
+                            "color": "9084FFB8",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.100000023841858,
+                            "color": "9084FFB8"
+                        },
+                        {
+                            "time": 1.4666999578475952,
+                            "color": "9084FF00"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.8666999936103821,
+                            "name": "aura2"
+                        },
+                        {
+                            "time": 1.4666999578475952,
+                            "name": null
+                        }
+                    ]
+                },
+                "aura36": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.8666999936103821,
+                            "color": "9084FFB8",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.0333000421524048,
+                            "color": "9084FFB8"
+                        },
+                        {
+                            "time": 1.399999976158142,
+                            "color": "9084FF00"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.8666999936103821,
+                            "name": "aura2"
+                        },
+                        {
+                            "time": 1.399999976158142,
+                            "name": null
+                        }
+                    ]
+                },
+                "flash": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.53329998254776,
+                            "color": "6587FF87",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.0333000421524048,
+                            "color": "6587FF87"
+                        },
+                        {
+                            "time": 1.833299994468689,
+                            "color": "3F31FF00"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.53329998254776,
+                            "name": "flash"
+                        },
+                        {
+                            "time": 1.833299994468689,
+                            "name": null
+                        }
+                    ]
+                },
+                "flash2": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.53329998254776,
+                            "color": "6587FFA0",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.333299994468689,
+                            "color": "6587FFA0"
+                        },
+                        {
+                            "time": 1.666700005531311,
+                            "color": "463BFF00"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.53329998254776,
+                            "name": "flash"
+                        },
+                        {
+                            "time": 1.666700005531311,
+                            "name": null
+                        }
+                    ]
+                }
+            },
+            "ik": {},
+            "transform": {},
+            "path": {},
+            "deform": {
+                "default": {
+                    "flash": {
+                        "flash": [
+                            {
+                                "time": 0.0,
+                                "curve": "stepped"
+                            },
+                            {
+                                "time": 0.53329998254776,
+                                "vertices": [
+                                    51.86534881591797,
+                                    0.0,
+                                    51.86534881591797,
+                                    0.0,
+                                    51.86534881591797,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    13.04214096069336,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    1.9999999494757503e-05,
+                                    -31.29751968383789
+                                ],
+                                "offset": 1
+                            }
+                        ]
+                    },
+                    "flash2": {
+                        "flash": [
+                            {
+                                "time": 0.0,
+                                "curve": "stepped"
+                            },
+                            {
+                                "time": 0.53329998254776,
+                                "vertices": [
+                                    -23.287429809570313,
+                                    -36.10614013671875,
+                                    -23.287429809570313,
+                                    -36.10614013671875,
+                                    -23.287429809570313,
+                                    -36.10614013671875,
+                                    -27.577423095703125,
+                                    133.88876342773438,
+                                    -31.920166015625,
+                                    148.2213592529297,
+                                    27.5267333984375,
+                                    203.28250122070313,
+                                    27.526729583740234,
+                                    203.28250122070313,
+                                    27.526729583740234,
+                                    203.28250122070313,
+                                    27.5267333984375,
+                                    203.28250122070313,
+                                    27.5267333984375,
+                                    203.28250122070313,
+                                    73.66902160644531,
+                                    177.14657592773438,
+                                    69.04995727539063,
+                                    53.79497146606445,
+                                    38.1616096496582,
+                                    16.165569305419922,
+                                    -1.023460030555725,
+                                    -1.5283432006835938,
+                                    -11.376022338867188,
+                                    32.01824951171875,
+                                    34.49041748046875,
+                                    89.10421752929688,
+                                    -1.1529899835586548,
+                                    3.390779972076416,
+                                    -0.25948333740234375,
+                                    72.89952087402344,
+                                    13.770729064941406,
+                                    103.89230346679688,
+                                    17.957359313964844,
+                                    107.60784912109375,
+                                    14.238700866699219,
+                                    116.1175537109375
+                                ]
+                            }
+                        ]
+                    }
+                }
+            },
+            "duration": 1.833299994468689
+        }
+    }
+}

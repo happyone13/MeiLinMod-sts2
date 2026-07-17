@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://3clii8gl0jsp"]
+
+[ext_resource type="SpineSkeletonDataResource" uid="uid://lm66fub176m0" path="res://MeiLinMod/animations/monsters/gloomy/1006012_skel_data.tres" id="1_p80gx"]
+
+[node name="1006012" type="Node2D"]
+
+[node name="Visuals" type="SpineSprite" parent="."]
+skeleton_data_res = ExtResource("1_p80gx")
+preview_skin = "Default"
+preview_animation = "normal_idle"
+preview_frame = false
+preview_time = 0.0
+unique_name_in_owner = true
+
+[node name="Bounds" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -188.0
+offset_top = -328.0
+offset_right = 176.0
+offset_bottom = 1.0
+mouse_filter = 2
+
+[node name="CenterPos" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -141)
+
+[node name="IntentPos" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -329)

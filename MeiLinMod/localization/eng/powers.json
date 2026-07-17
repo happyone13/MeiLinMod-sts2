@@ -239,4 +239,11 @@
     "MEILINMOD_HUI_GUI_JI_BEN_GONG_POWER.title":  "Back to Basics",
     "MEILINMOD_HUI_GUI_JI_BEN_GONG_POWER.description":  "At the start of your turn, gain 2 Energy and draw 2 cards.",
     "MEILINMOD_HUI_GUI_JI_BEN_GONG_POWER.smartDescription":  "At the start of your turn, gain 2 Energy and draw 2 cards."
+, 
+    "MEI_LIN_MOD_POWER_GLOOMY_WILD_POWER.title": "Wildness",
+    "MEI_LIN_MOD_POWER_GLOOMY_WILD_POWER.description": "Attacks deal additional damage.",
+    "MEI_LIN_MOD_POWER_GLOOMY_WILD_POWER.smartDescription": "Attacks deal {Amount} additional damage.",
+    "MEI_LIN_MOD_POWER_GLOOMY_SUMMON_POWER.title": "Call of the Pack",
+    "MEI_LIN_MOD_POWER_GLOOMY_SUMMON_POWER.description": "Replenishes fallen Gloomy Beasts.",
+    "MEI_LIN_MOD_POWER_GLOOMY_SUMMON_POWER.smartDescription": "Can summon {Amount} more Gloomy Beast(s)."
 }

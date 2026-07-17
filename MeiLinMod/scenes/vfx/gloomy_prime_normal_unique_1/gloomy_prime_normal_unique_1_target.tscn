@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="SpineSkeletonDataResource" path="res://MeiLinMod/animations/vfx/gloomy_prime_normal_unique_1/gloomy_prime_normal_unique_1_target_skel_data.tres" id="spine_0"]
+
+[node name="gloomy_prime_normal_unique_1_target" type="Node2D"]
+
+[node name="gloomy_prime_normal_unique_1_target" type="SpineSprite" parent="."]
+skeleton_data_res = ExtResource("spine_0")
+preview_skin = "Default"
+preview_animation = "animation"
+preview_frame = false
+preview_time = 0.0
+z_index = 1
+position = Vector2(0, -0)
+rotation_degrees = 0
+scale = Vector2(1, 1)

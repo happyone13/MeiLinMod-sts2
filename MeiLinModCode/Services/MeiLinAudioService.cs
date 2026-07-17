@@ -222,6 +222,11 @@ public static class MeiLinAudioService
         return true;
     }
 
+    public static bool TryPlayResource(string resourcePath, float linearVolume = 1f)
+    {
+        return TryPlay(resourcePath, linearVolume);
+    }
+
     private static Node? EnsureHostNode()
     {
         if (_audioHost != null && GodotObject.IsInstanceValid(_audioHost) && _audioHost.IsInsideTree())

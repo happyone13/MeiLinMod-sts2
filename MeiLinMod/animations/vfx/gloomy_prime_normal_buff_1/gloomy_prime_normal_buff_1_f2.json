@@ -1,0 +1,2516 @@
+{
+    "skeleton": {
+        "spine": "3.8.79",
+        "x": 0.0,
+        "y": 0.0,
+        "width": 248.0,
+        "height": 233.0,
+        "hash": "32shYvwbFsMzbCltFNla1OnoKEA"
+    },
+    "bones": [
+        {
+            "name": "root",
+            "transform": "normal"
+        },
+        {
+            "name": "pivot",
+            "parent": "root",
+            "transform": "normal"
+        },
+        {
+            "name": "fire",
+            "parent": "pivot",
+            "transform": "normal"
+        },
+        {
+            "name": "fire1",
+            "parent": "fire",
+            "transform": "normal"
+        },
+        {
+            "name": "fire2",
+            "parent": "fire",
+            "transform": "normal"
+        },
+        {
+            "name": "fire3",
+            "parent": "fire",
+            "transform": "normal"
+        },
+        {
+            "name": "fire4",
+            "parent": "fire",
+            "transform": "normal"
+        },
+        {
+            "name": "fire5",
+            "parent": "fire",
+            "transform": "normal"
+        },
+        {
+            "name": "fire6",
+            "parent": "fire",
+            "transform": "normal"
+        },
+        {
+            "name": "fire7f",
+            "parent": "fire",
+            "transform": "normal"
+        },
+        {
+            "name": "fire7b",
+            "parent": "fire",
+            "transform": "normal"
+        },
+        {
+            "name": "fire8_b",
+            "parent": "fire",
+            "transform": "normal"
+        },
+        {
+            "name": "fire8_f",
+            "parent": "fire",
+            "transform": "normal"
+        },
+        {
+            "name": "fire7b2",
+            "parent": "fire",
+            "transform": "normal"
+        },
+        {
+            "name": "fire7f2",
+            "parent": "fire",
+            "transform": "normal"
+        },
+        {
+            "name": "fire8_f2",
+            "parent": "fire",
+            "transform": "normal"
+        },
+        {
+            "name": "fire8_b2",
+            "parent": "fire",
+            "transform": "normal"
+        },
+        {
+            "name": "fire7f3",
+            "parent": "fire",
+            "transform": "normal"
+        },
+        {
+            "name": "fire7b3",
+            "parent": "fire",
+            "transform": "normal"
+        },
+        {
+            "name": "ring",
+            "parent": "pivot",
+            "transform": "normal"
+        },
+        {
+            "name": "ring2",
+            "parent": "pivot",
+            "transform": "normal"
+        },
+        {
+            "name": "ring3",
+            "parent": "pivot",
+            "transform": "normal"
+        }
+    ],
+    "ik": [],
+    "slots": [
+        {
+            "name": "buff_target_1_1",
+            "bone": "fire1"
+        },
+        {
+            "name": "buff_target_3_3",
+            "bone": "fire3"
+        },
+        {
+            "name": "buff_target_4_2",
+            "bone": "fire4"
+        },
+        {
+            "name": "buff_target_6_1",
+            "bone": "fire6",
+            "attachment": "buff_target_6_6"
+        },
+        {
+            "name": "buff_target_7_1",
+            "bone": "fire7f"
+        },
+        {
+            "name": "buff_target_7_3",
+            "bone": "fire7f3"
+        },
+        {
+            "name": "buff_target_7_2",
+            "bone": "fire7f2"
+        },
+        {
+            "name": "buff_target_9_f1",
+            "bone": "fire8_f"
+        },
+        {
+            "name": "buff_target_9_f2",
+            "bone": "fire8_f2"
+        },
+        {
+            "name": "ring5_f1",
+            "bone": "ring"
+        },
+        {
+            "name": "ring5_f6",
+            "bone": "ring2"
+        },
+        {
+            "name": "ring5_f11",
+            "bone": "ring3"
+        },
+        {
+            "name": "ring5_f2",
+            "bone": "ring"
+        },
+        {
+            "name": "ring5_f7",
+            "bone": "ring2"
+        },
+        {
+            "name": "ring5_f12",
+            "bone": "ring3"
+        },
+        {
+            "name": "ring5_f3",
+            "bone": "ring"
+        },
+        {
+            "name": "ring5_f8",
+            "bone": "ring2"
+        },
+        {
+            "name": "ring5_f13",
+            "bone": "ring3"
+        },
+        {
+            "name": "ring5_f4",
+            "bone": "ring"
+        },
+        {
+            "name": "ring5_f9",
+            "bone": "ring2"
+        },
+        {
+            "name": "ring5_f14",
+            "bone": "ring3"
+        },
+        {
+            "name": "ring5_f5",
+            "bone": "ring"
+        },
+        {
+            "name": "ring5_f10",
+            "bone": "ring2"
+        },
+        {
+            "name": "ring5_f15",
+            "bone": "ring3"
+        }
+    ],
+    "transform": [],
+    "path": [],
+    "skins": [
+        {
+            "name": "default",
+            "attachments": {
+                "buff_target_1_1": {
+                    "buff_target_1_1": {
+                        "type": "region",
+                        "x": 69.05000305175781,
+                        "y": 41.09000015258789,
+                        "rotation": -58.560001373291016,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 157.0,
+                        "height": 329.0,
+                        "path": "buff_target_1_1"
+                    },
+                    "buff_target_1_2": {
+                        "type": "region",
+                        "x": 69.05000305175781,
+                        "y": 41.09000015258789,
+                        "rotation": -58.560001373291016,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 157.0,
+                        "height": 329.0,
+                        "path": "buff_target_1_2"
+                    },
+                    "buff_target_1_3": {
+                        "type": "region",
+                        "x": 69.05000305175781,
+                        "y": 41.09000015258789,
+                        "rotation": -58.560001373291016,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 157.0,
+                        "height": 329.0,
+                        "path": "buff_target_1_3"
+                    },
+                    "buff_target_1_4": {
+                        "type": "region",
+                        "x": 69.05000305175781,
+                        "y": 41.09000015258789,
+                        "rotation": -58.560001373291016,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 157.0,
+                        "height": 329.0,
+                        "path": "buff_target_1_4"
+                    },
+                    "buff_target_1_5": {
+                        "type": "region",
+                        "x": 69.05000305175781,
+                        "y": 41.09000015258789,
+                        "rotation": -58.560001373291016,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 157.0,
+                        "height": 329.0,
+                        "path": "buff_target_1_5"
+                    },
+                    "buff_target_1_6": {
+                        "type": "region",
+                        "x": 69.05000305175781,
+                        "y": 41.09000015258789,
+                        "rotation": -58.560001373291016,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 157.0,
+                        "height": 329.0,
+                        "path": "buff_target_1_6"
+                    }
+                },
+                "buff_target_3_3": {
+                    "buff_target_3_1": {
+                        "type": "region",
+                        "x": -15.329999923706055,
+                        "y": 24.350000381469727,
+                        "rotation": 71.43000030517578,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 132.0,
+                        "height": 266.0,
+                        "path": "buff_target_3_1"
+                    },
+                    "buff_target_3_2": {
+                        "type": "region",
+                        "x": -15.329999923706055,
+                        "y": 24.350000381469727,
+                        "rotation": 71.43000030517578,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 132.0,
+                        "height": 266.0,
+                        "path": "buff_target_3_2"
+                    },
+                    "buff_target_3_3": {
+                        "type": "region",
+                        "x": -15.329999923706055,
+                        "y": 24.350000381469727,
+                        "rotation": 71.43000030517578,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 132.0,
+                        "height": 266.0,
+                        "path": "buff_target_3_3"
+                    },
+                    "buff_target_3_4": {
+                        "type": "region",
+                        "x": -15.329999923706055,
+                        "y": 24.350000381469727,
+                        "rotation": 71.43000030517578,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 132.0,
+                        "height": 266.0,
+                        "path": "buff_target_3_4"
+                    },
+                    "buff_target_3_5": {
+                        "type": "region",
+                        "x": -15.329999923706055,
+                        "y": 24.350000381469727,
+                        "rotation": 71.43000030517578,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 132.0,
+                        "height": 266.0,
+                        "path": "buff_target_3_5"
+                    },
+                    "buff_target_3_6": {
+                        "type": "region",
+                        "x": -15.329999923706055,
+                        "y": 24.350000381469727,
+                        "rotation": 71.43000030517578,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 132.0,
+                        "height": 266.0,
+                        "path": "buff_target_3_6"
+                    }
+                },
+                "buff_target_4_2": {
+                    "buff_target_4_1": {
+                        "type": "region",
+                        "x": -14.430000305175781,
+                        "y": 25.260000228881836,
+                        "rotation": 56.72999954223633,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 128.0,
+                        "height": 246.0,
+                        "path": "buff_target_4_1"
+                    },
+                    "buff_target_4_2": {
+                        "type": "region",
+                        "x": -14.430000305175781,
+                        "y": 25.260000228881836,
+                        "rotation": 56.72999954223633,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 128.0,
+                        "height": 246.0,
+                        "path": "buff_target_4_2"
+                    },
+                    "buff_target_4_3": {
+                        "type": "region",
+                        "x": -14.430000305175781,
+                        "y": 25.260000228881836,
+                        "rotation": 56.72999954223633,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 128.0,
+                        "height": 246.0,
+                        "path": "buff_target_4_3"
+                    },
+                    "buff_target_4_4": {
+                        "type": "region",
+                        "x": -14.430000305175781,
+                        "y": 25.260000228881836,
+                        "rotation": 56.72999954223633,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 128.0,
+                        "height": 246.0,
+                        "path": "buff_target_4_4"
+                    }
+                },
+                "buff_target_6_1": {
+                    "buff_target_6_1": {
+                        "type": "region",
+                        "x": 34.279998779296875,
+                        "y": 76.2699966430664,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 248.0,
+                        "height": 233.0,
+                        "path": "buff_target_6_1"
+                    },
+                    "buff_target_6_2": {
+                        "type": "region",
+                        "x": 34.279998779296875,
+                        "y": 76.2699966430664,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 248.0,
+                        "height": 233.0,
+                        "path": "buff_target_6_2"
+                    },
+                    "buff_target_6_3": {
+                        "type": "region",
+                        "x": 34.279998779296875,
+                        "y": 76.2699966430664,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 248.0,
+                        "height": 233.0,
+                        "path": "buff_target_6_3"
+                    },
+                    "buff_target_6_4": {
+                        "type": "region",
+                        "x": 34.279998779296875,
+                        "y": 76.2699966430664,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 248.0,
+                        "height": 233.0,
+                        "path": "buff_target_6_4"
+                    },
+                    "buff_target_6_5": {
+                        "type": "region",
+                        "x": 34.279998779296875,
+                        "y": 76.2699966430664,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 248.0,
+                        "height": 233.0,
+                        "path": "buff_target_6_5"
+                    },
+                    "buff_target_6_6": {
+                        "type": "region",
+                        "x": 34.279998779296875,
+                        "y": 76.2699966430664,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 248.0,
+                        "height": 233.0,
+                        "path": "buff_target_6_6"
+                    }
+                },
+                "buff_target_7_1": {
+                    "buff_target_7_1": {
+                        "type": "region",
+                        "x": 23.450000762939453,
+                        "y": 87.48999786376953,
+                        "rotation": -10.289999961853027,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 90.0,
+                        "height": 250.0,
+                        "path": "buff_target_7_1"
+                    },
+                    "buff_target_7_2": {
+                        "type": "region",
+                        "x": 23.450000762939453,
+                        "y": 87.48999786376953,
+                        "rotation": -10.289999961853027,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 90.0,
+                        "height": 250.0,
+                        "path": "buff_target_7_2"
+                    },
+                    "buff_target_7_3": {
+                        "type": "region",
+                        "x": 23.450000762939453,
+                        "y": 87.48999786376953,
+                        "rotation": -10.289999961853027,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 90.0,
+                        "height": 250.0,
+                        "path": "buff_target_7_3"
+                    }
+                },
+                "buff_target_7_3": {
+                    "buff_target_7_1": {
+                        "type": "region",
+                        "x": 23.450000762939453,
+                        "y": 87.48999786376953,
+                        "rotation": -10.289999961853027,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 90.0,
+                        "height": 250.0,
+                        "path": "buff_target_7_1"
+                    },
+                    "buff_target_7_2": {
+                        "type": "region",
+                        "x": 23.450000762939453,
+                        "y": 87.48999786376953,
+                        "rotation": -10.289999961853027,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 90.0,
+                        "height": 250.0,
+                        "path": "buff_target_7_2"
+                    },
+                    "buff_target_7_3": {
+                        "type": "region",
+                        "x": 23.450000762939453,
+                        "y": 87.48999786376953,
+                        "rotation": -10.289999961853027,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 90.0,
+                        "height": 250.0,
+                        "path": "buff_target_7_3"
+                    }
+                },
+                "buff_target_7_2": {
+                    "buff_target_7_1": {
+                        "type": "region",
+                        "x": 23.450000762939453,
+                        "y": 87.48999786376953,
+                        "rotation": -10.289999961853027,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 90.0,
+                        "height": 250.0,
+                        "path": "buff_target_7_1"
+                    },
+                    "buff_target_7_2": {
+                        "type": "region",
+                        "x": 23.450000762939453,
+                        "y": 87.48999786376953,
+                        "rotation": -10.289999961853027,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 90.0,
+                        "height": 250.0,
+                        "path": "buff_target_7_2"
+                    },
+                    "buff_target_7_3": {
+                        "type": "region",
+                        "x": 23.450000762939453,
+                        "y": 87.48999786376953,
+                        "rotation": -10.289999961853027,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 90.0,
+                        "height": 250.0,
+                        "path": "buff_target_7_3"
+                    }
+                },
+                "buff_target_9_f1": {
+                    "buff_target_9_f1": {
+                        "type": "region",
+                        "x": -24.350000381469727,
+                        "y": 0.0,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 92.0,
+                        "height": 200.0,
+                        "path": "buff_target_9_f1"
+                    },
+                    "buff_target_9_f2": {
+                        "type": "region",
+                        "x": -24.350000381469727,
+                        "y": 0.0,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 92.0,
+                        "height": 200.0,
+                        "path": "buff_target_9_f2"
+                    }
+                },
+                "buff_target_9_f2": {
+                    "buff_target_9_f1": {
+                        "type": "region",
+                        "x": -24.350000381469727,
+                        "y": 0.0,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 92.0,
+                        "height": 200.0,
+                        "path": "buff_target_9_f1"
+                    },
+                    "buff_target_9_f2": {
+                        "type": "region",
+                        "x": -24.350000381469727,
+                        "y": 0.0,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 92.0,
+                        "height": 200.0,
+                        "path": "buff_target_9_f2"
+                    }
+                },
+                "ring5_f1": {
+                    "ring5_f1": {
+                        "type": "region",
+                        "x": 0.5,
+                        "y": 0.0,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 183.0,
+                        "height": 300.0,
+                        "path": "ring5_f1"
+                    }
+                },
+                "ring5_f6": {
+                    "ring5_f1": {
+                        "type": "region",
+                        "x": 0.5,
+                        "y": 0.0,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 183.0,
+                        "height": 300.0,
+                        "path": "ring5_f1"
+                    }
+                },
+                "ring5_f11": {
+                    "ring5_f1": {
+                        "type": "region",
+                        "x": 0.5,
+                        "y": 0.0,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 183.0,
+                        "height": 300.0,
+                        "path": "ring5_f1"
+                    }
+                },
+                "ring5_f2": {
+                    "ring5_f2": {
+                        "type": "region",
+                        "x": 0.5,
+                        "y": 0.0,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 183.0,
+                        "height": 300.0,
+                        "path": "ring5_f2"
+                    }
+                },
+                "ring5_f7": {
+                    "ring5_f2": {
+                        "type": "region",
+                        "x": 0.5,
+                        "y": 0.0,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 183.0,
+                        "height": 300.0,
+                        "path": "ring5_f2"
+                    }
+                },
+                "ring5_f12": {
+                    "ring5_f2": {
+                        "type": "region",
+                        "x": 0.5,
+                        "y": 0.0,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 183.0,
+                        "height": 300.0,
+                        "path": "ring5_f2"
+                    }
+                },
+                "ring5_f3": {
+                    "ring5_f3": {
+                        "type": "region",
+                        "x": 0.5,
+                        "y": 0.0,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 183.0,
+                        "height": 300.0,
+                        "path": "ring5_f3"
+                    }
+                },
+                "ring5_f8": {
+                    "ring5_f3": {
+                        "type": "region",
+                        "x": 0.5,
+                        "y": 0.0,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 183.0,
+                        "height": 300.0,
+                        "path": "ring5_f3"
+                    }
+                },
+                "ring5_f13": {
+                    "ring5_f3": {
+                        "type": "region",
+                        "x": 0.5,
+                        "y": 0.0,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 183.0,
+                        "height": 300.0,
+                        "path": "ring5_f3"
+                    }
+                },
+                "ring5_f4": {
+                    "ring5_f4": {
+                        "type": "region",
+                        "x": 0.5,
+                        "y": 0.0,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 183.0,
+                        "height": 300.0,
+                        "path": "ring5_f4"
+                    }
+                },
+                "ring5_f9": {
+                    "ring5_f4": {
+                        "type": "region",
+                        "x": 0.5,
+                        "y": 0.0,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 183.0,
+                        "height": 300.0,
+                        "path": "ring5_f4"
+                    }
+                },
+                "ring5_f14": {
+                    "ring5_f4": {
+                        "type": "region",
+                        "x": 0.5,
+                        "y": 0.0,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 183.0,
+                        "height": 300.0,
+                        "path": "ring5_f4"
+                    }
+                },
+                "ring5_f5": {
+                    "ring5_f5": {
+                        "type": "region",
+                        "x": 0.5,
+                        "y": 0.0,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 183.0,
+                        "height": 300.0,
+                        "path": "ring5_f5"
+                    }
+                },
+                "ring5_f10": {
+                    "ring5_f5": {
+                        "type": "region",
+                        "x": 0.5,
+                        "y": 0.0,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 183.0,
+                        "height": 300.0,
+                        "path": "ring5_f5"
+                    }
+                },
+                "ring5_f15": {
+                    "ring5_f5": {
+                        "type": "region",
+                        "x": 0.5,
+                        "y": 0.0,
+                        "rotation": 0.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "width": 183.0,
+                        "height": 300.0,
+                        "path": "ring5_f5"
+                    }
+                }
+            }
+        }
+    ],
+    "events": {},
+    "animations": {
+        "animation": {
+            "bones": {
+                "fire8_f": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.666700005531311,
+                            "angle": -53.650001525878906
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.666700005531311,
+                            "x": 127.88999938964844,
+                            "y": 155.61000061035156
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.666700005531311,
+                            "x": 1.2000000476837158,
+                            "y": 1.2000000476837158
+                        }
+                    ]
+                },
+                "fire8_b": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.666700005531311,
+                            "angle": -37.349998474121094
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.666700005531311,
+                            "x": 133.2100067138672,
+                            "y": 261.2300109863281
+                        }
+                    ]
+                },
+                "fire7f": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.96670001745224,
+                            "angle": 57.130001068115234
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.96670001745224,
+                            "x": -71.25,
+                            "y": -6.210000038146973
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.96670001745224,
+                            "x": 1.5,
+                            "y": 1.5
+                        }
+                    ]
+                },
+                "fire7b": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.699999988079071,
+                            "angle": 48.560001373291016
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.699999988079071,
+                            "x": -157.27000427246094,
+                            "y": 250.66000366210938
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.699999988079071,
+                            "x": 0.9879999756813049,
+                            "y": 0.9879999756813049
+                        }
+                    ]
+                },
+                "fire6": {
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.6000000238418579,
+                            "x": -33.369998931884766,
+                            "y": -9.920000076293945,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.6333000063896179,
+                            "x": -29.770000457763672,
+                            "y": -5.409999847412109
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.6000000238418579,
+                            "x": 0.421999990940094,
+                            "y": 0.421999990940094,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.6333000063896179,
+                            "x": 0.9359999895095825,
+                            "y": 0.9359999895095825
+                        }
+                    ]
+                },
+                "fire5": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.6333000063896179,
+                            "angle": 16.959999084472656
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.6333000063896179,
+                            "x": -130.8000030517578,
+                            "y": 19.219999313354492
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.6333000063896179,
+                            "x": 1.0490000247955322,
+                            "y": 1.0490000247955322
+                        }
+                    ]
+                },
+                "fire4": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.5666999816894531,
+                            "angle": -4.880000114440918
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.5666999816894531,
+                            "x": -111.8499984741211,
+                            "y": 1.7999999523162842
+                        }
+                    ]
+                },
+                "fire3": {
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.8999999761581421,
+                            "x": -80.27999877929688,
+                            "y": -9.920000076293945
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.8999999761581421,
+                            "x": 0.9520000219345093,
+                            "y": 0.9520000219345093
+                        }
+                    ]
+                },
+                "fire2": {
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.6333000063896179,
+                            "x": -4.510000228881836,
+                            "y": 27.059999465942383
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.6333000063896179,
+                            "x": 0.8939999938011169,
+                            "y": 0.8939999938011169
+                        }
+                    ]
+                },
+                "fire1": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.53329998254776,
+                            "angle": 1.7200000286102295
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.53329998254776,
+                            "x": 15.300000190734863,
+                            "y": -7.210000038146973
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.53329998254776,
+                            "x": 0.871999979019165,
+                            "y": 0.871999979019165
+                        }
+                    ]
+                },
+                "fire7b2": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.766700029373169,
+                            "angle": -79.3499984741211
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.766700029373169,
+                            "x": 84.63999938964844,
+                            "y": 225.52999877929688
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.766700029373169,
+                            "x": -0.5920000076293945,
+                            "y": 0.5809999704360962
+                        }
+                    ]
+                },
+                "fire7f2": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.100000023841858,
+                            "angle": -63.560001373291016
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.100000023841858,
+                            "x": -24.829999923706055,
+                            "y": -9.390000343322754
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.100000023841858,
+                            "x": -0.9300000071525574,
+                            "y": 1.149999976158142
+                        }
+                    ]
+                },
+                "fire8_f2": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.733299970626831,
+                            "angle": 59.959999084472656
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.733299970626831,
+                            "x": -160.3699951171875,
+                            "y": 61.45000076293945
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.733299970626831,
+                            "x": -1.2999999523162842,
+                            "y": 1.7000000476837158
+                        }
+                    ]
+                },
+                "fire8_b2": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.733299970626831,
+                            "angle": 30.040000915527344
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.733299970626831,
+                            "x": -120.30000305175781,
+                            "y": 170.0500030517578
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.733299970626831,
+                            "x": -1.2289999723434448,
+                            "y": 1.0
+                        }
+                    ]
+                },
+                "fire7f3": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.96670001745224,
+                            "angle": -37.2400016784668
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.96670001745224,
+                            "x": -128.27000427246094,
+                            "y": 16.309999465942383
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.96670001745224,
+                            "x": 1.3739999532699585,
+                            "y": 1.3739999532699585
+                        }
+                    ]
+                },
+                "fire7b3": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.0,
+                            "angle": -22.719999313354492
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.0,
+                            "x": 76.1500015258789,
+                            "y": 156.30999755859375
+                        }
+                    ]
+                },
+                "pivot": {
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.53329998254776,
+                            "x": 7.349999904632568,
+                            "y": -10.6899995803833
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.53329998254776,
+                            "x": 0.5180000066757202,
+                            "y": 0.40700000524520874
+                        }
+                    ]
+                },
+                "ring": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.53329998254776,
+                            "angle": -88.80999755859375
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.53329998254776,
+                            "x": -16.489999771118164,
+                            "y": 17.479999542236328
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.53329998254776,
+                            "x": 0.46799999475479126,
+                            "y": 1.0520000457763672,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.6000000238418579,
+                            "x": 0.46799999475479126,
+                            "y": 1.0520000457763672,
+                            "curve": 0.148,
+                            "c2": 0.74,
+                            "c3": 0.0,
+                            "c4": 0.92
+                        },
+                        {
+                            "time": 1.1332999467849731,
+                            "x": 0.6959999799728394,
+                            "y": 1.565999984741211
+                        }
+                    ]
+                },
+                "ring2": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.666700005531311,
+                            "angle": -88.80999755859375
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.666700005531311,
+                            "x": -16.489999771118164,
+                            "y": 17.479999542236328
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.666700005531311,
+                            "x": 0.46799999475479126,
+                            "y": -1.0529999732971191,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.733299970626831,
+                            "x": 0.46799999475479126,
+                            "y": -1.0529999732971191,
+                            "curve": 0.148,
+                            "c2": 0.74,
+                            "c3": 0.0,
+                            "c4": 0.92
+                        },
+                        {
+                            "time": 1.266700029373169,
+                            "x": 0.6129999756813049,
+                            "y": -1.378999948501587
+                        }
+                    ]
+                },
+                "ring3": {
+                    "rotate": [
+                        {
+                            "time": 0.0,
+                            "angle": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.800000011920929,
+                            "angle": -88.80999755859375
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.0,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.800000011920929,
+                            "x": -16.489999771118164,
+                            "y": 17.479999542236328
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.0,
+                            "x": 1.0,
+                            "y": 1.0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.800000011920929,
+                            "x": 0.46799999475479126,
+                            "y": 1.0520000457763672,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.8666999936103821,
+                            "x": 0.46799999475479126,
+                            "y": 1.0520000457763672,
+                            "curve": 0.231999,
+                            "c2": 0.63,
+                            "c3": 0.098998,
+                            "c4": 0.879999
+                        },
+                        {
+                            "time": 1.333299994468689,
+                            "x": 0.47999998927116394,
+                            "y": 1.0800000429153442
+                        }
+                    ]
+                }
+            },
+            "slots": {
+                "buff_target_1_1": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.53329998254776,
+                            "color": "060015FF"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.53329998254776,
+                            "name": "buff_target_1_1"
+                        },
+                        {
+                            "time": 0.6000000238418579,
+                            "name": "buff_target_1_2"
+                        },
+                        {
+                            "time": 0.699999988079071,
+                            "name": "buff_target_1_3"
+                        },
+                        {
+                            "time": 0.766700029373169,
+                            "name": "buff_target_1_4"
+                        },
+                        {
+                            "time": 0.833299994468689,
+                            "name": "buff_target_1_5"
+                        },
+                        {
+                            "time": 0.8999999761581421,
+                            "name": "buff_target_1_6"
+                        },
+                        {
+                            "time": 0.96670001745224,
+                            "name": null
+                        }
+                    ]
+                },
+                "buff_target_3_3": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.8999999761581421,
+                            "color": "060015FF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.100000023841858,
+                            "color": "060015FF"
+                        },
+                        {
+                            "time": 1.2999999523162842,
+                            "color": "05001500"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.8999999761581421,
+                            "name": "buff_target_3_1"
+                        },
+                        {
+                            "time": 0.96670001745224,
+                            "name": "buff_target_3_2"
+                        },
+                        {
+                            "time": 1.0333000421524048,
+                            "name": "buff_target_3_3"
+                        },
+                        {
+                            "time": 1.100000023841858,
+                            "name": "buff_target_3_4"
+                        },
+                        {
+                            "time": 1.166700005531311,
+                            "name": "buff_target_3_5"
+                        },
+                        {
+                            "time": 1.233299970626831,
+                            "name": "buff_target_3_6"
+                        },
+                        {
+                            "time": 1.2999999523162842,
+                            "name": null
+                        }
+                    ]
+                },
+                "buff_target_4_2": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.5666999816894531,
+                            "color": "060015FF"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.5666999816894531,
+                            "name": "buff_target_4_1"
+                        },
+                        {
+                            "time": 0.6333000063896179,
+                            "name": "buff_target_4_2"
+                        },
+                        {
+                            "time": 0.699999988079071,
+                            "name": "buff_target_4_3"
+                        },
+                        {
+                            "time": 0.766700029373169,
+                            "name": "buff_target_4_4"
+                        },
+                        {
+                            "time": 0.833299994468689,
+                            "name": null
+                        }
+                    ]
+                },
+                "buff_target_6_1": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.6000000238418579,
+                            "color": "060015FF"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.0,
+                            "name": null
+                        },
+                        {
+                            "time": 0.6000000238418579,
+                            "name": "buff_target_6_1"
+                        },
+                        {
+                            "time": 0.666700005531311,
+                            "name": "buff_target_6_2"
+                        },
+                        {
+                            "time": 0.733299970626831,
+                            "name": "buff_target_6_3"
+                        },
+                        {
+                            "time": 0.800000011920929,
+                            "name": "buff_target_6_4"
+                        },
+                        {
+                            "time": 0.8666999936103821,
+                            "name": "buff_target_6_5"
+                        },
+                        {
+                            "time": 0.9333000183105469,
+                            "name": "buff_target_6_6"
+                        },
+                        {
+                            "time": 1.0,
+                            "name": null
+                        }
+                    ]
+                },
+                "buff_target_7_1": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.96670001745224,
+                            "color": "060015FF"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.96670001745224,
+                            "name": "buff_target_7_1"
+                        },
+                        {
+                            "time": 1.0333000421524048,
+                            "name": "buff_target_7_2"
+                        },
+                        {
+                            "time": 1.100000023841858,
+                            "name": "buff_target_7_3"
+                        },
+                        {
+                            "time": 1.166700005531311,
+                            "name": null
+                        }
+                    ]
+                },
+                "buff_target_7_2": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.100000023841858,
+                            "color": "060015FF"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 1.100000023841858,
+                            "name": "buff_target_7_2"
+                        },
+                        {
+                            "time": 1.166700005531311,
+                            "name": "buff_target_7_3"
+                        },
+                        {
+                            "time": 1.233299970626831,
+                            "name": null
+                        }
+                    ]
+                },
+                "buff_target_7_3": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.96670001745224,
+                            "color": "060015FF"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.96670001745224,
+                            "name": "buff_target_7_1"
+                        },
+                        {
+                            "time": 1.0,
+                            "name": "buff_target_7_2"
+                        },
+                        {
+                            "time": 1.0666999816894531,
+                            "name": "buff_target_7_3"
+                        },
+                        {
+                            "time": 1.1332999467849731,
+                            "name": null
+                        }
+                    ]
+                },
+                "buff_target_9_f1": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.666700005531311,
+                            "color": "060015FF"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.666700005531311,
+                            "name": "buff_target_9_f1"
+                        },
+                        {
+                            "time": 0.733299970626831,
+                            "name": "buff_target_9_f2"
+                        },
+                        {
+                            "time": 0.800000011920929,
+                            "name": null
+                        }
+                    ]
+                },
+                "buff_target_9_f2": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.733299970626831,
+                            "color": "060015FF"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.733299970626831,
+                            "name": "buff_target_9_f1"
+                        },
+                        {
+                            "time": 0.800000011920929,
+                            "name": "buff_target_9_f2"
+                        },
+                        {
+                            "time": 0.8666999936103821,
+                            "name": null
+                        }
+                    ]
+                },
+                "ring5_f1": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.53329998254776,
+                            "color": "05001500"
+                        },
+                        {
+                            "time": 0.6000000238418579,
+                            "color": "050015FF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.666700005531311,
+                            "color": "050015FF"
+                        },
+                        {
+                            "time": 0.733299970626831,
+                            "color": "05001500"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.53329998254776,
+                            "name": "ring5_f1"
+                        },
+                        {
+                            "time": 1.1332999467849731,
+                            "name": null
+                        }
+                    ]
+                },
+                "ring5_f2": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.53329998254776,
+                            "color": "05001500",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.6333000063896179,
+                            "color": "05001500"
+                        },
+                        {
+                            "time": 0.699999988079071,
+                            "color": "050015FF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.766700029373169,
+                            "color": "050015FF"
+                        },
+                        {
+                            "time": 0.833299994468689,
+                            "color": "05001500"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.53329998254776,
+                            "name": "ring5_f2"
+                        },
+                        {
+                            "time": 1.1332999467849731,
+                            "name": null
+                        }
+                    ]
+                },
+                "ring5_f3": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.53329998254776,
+                            "color": "05001500",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.733299970626831,
+                            "color": "05001500"
+                        },
+                        {
+                            "time": 0.800000011920929,
+                            "color": "050015FF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.8666999936103821,
+                            "color": "050015FF"
+                        },
+                        {
+                            "time": 0.9333000183105469,
+                            "color": "05001500"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.53329998254776,
+                            "name": "ring5_f3"
+                        },
+                        {
+                            "time": 1.1332999467849731,
+                            "name": null
+                        }
+                    ]
+                },
+                "ring5_f4": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.53329998254776,
+                            "color": "05001500",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.833299994468689,
+                            "color": "05001500"
+                        },
+                        {
+                            "time": 0.8999999761581421,
+                            "color": "050015FF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.96670001745224,
+                            "color": "050015FF"
+                        },
+                        {
+                            "time": 1.0333000421524048,
+                            "color": "05001500"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.53329998254776,
+                            "name": "ring5_f4"
+                        },
+                        {
+                            "time": 1.1332999467849731,
+                            "name": null
+                        }
+                    ]
+                },
+                "ring5_f5": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.53329998254776,
+                            "color": "05001500",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.9333000183105469,
+                            "color": "05001500"
+                        },
+                        {
+                            "time": 1.0,
+                            "color": "050015FF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.0666999816894531,
+                            "color": "050015FF"
+                        },
+                        {
+                            "time": 1.1332999467849731,
+                            "color": "05001500"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.53329998254776,
+                            "name": "ring5_f5"
+                        },
+                        {
+                            "time": 1.1332999467849731,
+                            "name": null
+                        }
+                    ]
+                },
+                "ring5_f6": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.666700005531311,
+                            "color": "05001500"
+                        },
+                        {
+                            "time": 0.733299970626831,
+                            "color": "050015FF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.800000011920929,
+                            "color": "050015FF"
+                        },
+                        {
+                            "time": 0.8666999936103821,
+                            "color": "05001500"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.666700005531311,
+                            "name": "ring5_f1"
+                        },
+                        {
+                            "time": 1.266700029373169,
+                            "name": null
+                        }
+                    ]
+                },
+                "ring5_f7": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.666700005531311,
+                            "color": "05001500",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.766700029373169,
+                            "color": "05001500"
+                        },
+                        {
+                            "time": 0.833299994468689,
+                            "color": "050015FF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.8999999761581421,
+                            "color": "050015FF"
+                        },
+                        {
+                            "time": 0.96670001745224,
+                            "color": "05001500"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.666700005531311,
+                            "name": "ring5_f2"
+                        },
+                        {
+                            "time": 1.266700029373169,
+                            "name": null
+                        }
+                    ]
+                },
+                "ring5_f8": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.666700005531311,
+                            "color": "05001500",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.8666999936103821,
+                            "color": "05001500"
+                        },
+                        {
+                            "time": 0.9333000183105469,
+                            "color": "050015FF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.0,
+                            "color": "050015FF"
+                        },
+                        {
+                            "time": 1.0666999816894531,
+                            "color": "05001500"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.666700005531311,
+                            "name": "ring5_f3"
+                        },
+                        {
+                            "time": 1.266700029373169,
+                            "name": null
+                        }
+                    ]
+                },
+                "ring5_f9": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.666700005531311,
+                            "color": "05001500",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.96670001745224,
+                            "color": "05001500"
+                        },
+                        {
+                            "time": 1.0333000421524048,
+                            "color": "050015FF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.100000023841858,
+                            "color": "050015FF"
+                        },
+                        {
+                            "time": 1.166700005531311,
+                            "color": "05001500"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.666700005531311,
+                            "name": "ring5_f4"
+                        },
+                        {
+                            "time": 1.266700029373169,
+                            "name": null
+                        }
+                    ]
+                },
+                "ring5_f10": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.666700005531311,
+                            "color": "05001500",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.0666999816894531,
+                            "color": "05001500"
+                        },
+                        {
+                            "time": 1.1332999467849731,
+                            "color": "050015FF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.2000000476837158,
+                            "color": "050015FF"
+                        },
+                        {
+                            "time": 1.266700029373169,
+                            "color": "05001500"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.666700005531311,
+                            "name": "ring5_f5"
+                        },
+                        {
+                            "time": 1.266700029373169,
+                            "name": null
+                        }
+                    ]
+                },
+                "ring5_f11": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.800000011920929,
+                            "color": "05001500"
+                        },
+                        {
+                            "time": 0.8666999936103821,
+                            "color": "050015FF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.9333000183105469,
+                            "color": "050015FF"
+                        },
+                        {
+                            "time": 1.0,
+                            "color": "05001500"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.800000011920929,
+                            "name": "ring5_f1"
+                        },
+                        {
+                            "time": 1.399999976158142,
+                            "name": null
+                        }
+                    ]
+                },
+                "ring5_f12": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.800000011920929,
+                            "color": "05001500",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.8999999761581421,
+                            "color": "05001500"
+                        },
+                        {
+                            "time": 0.96670001745224,
+                            "color": "050015FF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.0333000421524048,
+                            "color": "050015FF"
+                        },
+                        {
+                            "time": 1.100000023841858,
+                            "color": "05001500"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.800000011920929,
+                            "name": "ring5_f2"
+                        },
+                        {
+                            "time": 1.399999976158142,
+                            "name": null
+                        }
+                    ]
+                },
+                "ring5_f13": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.800000011920929,
+                            "color": "05001500",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.0,
+                            "color": "05001500"
+                        },
+                        {
+                            "time": 1.0666999816894531,
+                            "color": "050015FF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.1332999467849731,
+                            "color": "050015FF"
+                        },
+                        {
+                            "time": 1.2000000476837158,
+                            "color": "05001500"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.800000011920929,
+                            "name": "ring5_f3"
+                        },
+                        {
+                            "time": 1.399999976158142,
+                            "name": null
+                        }
+                    ]
+                },
+                "ring5_f14": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.800000011920929,
+                            "color": "05001500",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.100000023841858,
+                            "color": "05001500"
+                        },
+                        {
+                            "time": 1.166700005531311,
+                            "color": "050015FF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.233299970626831,
+                            "color": "050015FF"
+                        },
+                        {
+                            "time": 1.2999999523162842,
+                            "color": "05001500"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.800000011920929,
+                            "name": "ring5_f4"
+                        },
+                        {
+                            "time": 1.399999976158142,
+                            "name": null
+                        }
+                    ]
+                },
+                "ring5_f15": {
+                    "color": [
+                        {
+                            "time": 0.0,
+                            "color": "FFFFFFFF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.800000011920929,
+                            "color": "05001500",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.2000000476837158,
+                            "color": "05001500"
+                        },
+                        {
+                            "time": 1.266700029373169,
+                            "color": "050015FF",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.333299994468689,
+                            "color": "050015FF"
+                        },
+                        {
+                            "time": 1.399999976158142,
+                            "color": "05001500"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "time": 0.800000011920929,
+                            "name": "ring5_f5"
+                        },
+                        {
+                            "time": 1.399999976158142,
+                            "name": null
+                        }
+                    ]
+                }
+            },
+            "ik": {},
+            "transform": {},
+            "path": {},
+            "deform": {},
+            "duration": 1.399999976158142
+        }
+    }
+}

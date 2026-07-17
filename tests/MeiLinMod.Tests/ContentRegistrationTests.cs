@@ -56,10 +56,12 @@ public sealed class ContentRegistrationTests : CombatTestSuite
 
         var mainPoolCards = GetAllCards(ModelDb.CardPool<MeiLinModCardPool>());
         var nonePoolCards = GetAllCards(ModelDb.CardPool<NoneCardPool>());
+        var colorlessPoolCards = GetAllCards(ModelDb.CardPool<ColorlessCardPool>());
         var meilinPools = new Dictionary<Type, CardModel[]>
         {
             [typeof(MeiLinModCardPool)] = mainPoolCards,
-            [typeof(NoneCardPool)] = nonePoolCards
+            [typeof(NoneCardPool)] = nonePoolCards,
+            [typeof(ColorlessCardPool)] = colorlessPoolCards
         };
 
         foreach (var type in GetConcreteModTypes<MeiLinModCard>())
@@ -99,6 +101,9 @@ public sealed class ContentRegistrationTests : CombatTestSuite
         AssertDoesNotContain<RuTao>(mainPoolCards);
 
         AssertContains<TiaoXi>(mainPoolCards);
+        AssertContains<GloomyEscape>(colorlessPoolCards);
+        AssertDoesNotContain<GloomyEscape>(mainPoolCards);
+        AssertDoesNotContain<GloomyEscape>(nonePoolCards);
     }
 
     [Fact]

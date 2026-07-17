@@ -1,0 +1,1042 @@
+{
+    "skeleton": {
+        "spine": "3.8.79",
+        "x": 0.0,
+        "y": 0.0,
+        "hash": "CMYUqZ97/DzDl3rkIz/MHYgnPZo"
+    },
+    "bones": [
+        {
+            "name": "root",
+            "transform": "normal"
+        },
+        {
+            "name": "slash",
+            "parent": "root",
+            "transform": "normal"
+        },
+        {
+            "name": "slash_all",
+            "parent": "slash",
+            "transform": "normal"
+        },
+        {
+            "name": "slash1",
+            "parent": "slash_all",
+            "transform": "normal"
+        },
+        {
+            "name": "glow1",
+            "parent": "slash",
+            "transform": "normal"
+        },
+        {
+            "name": "glow2",
+            "parent": "slash",
+            "transform": "normal"
+        },
+        {
+            "name": "glow3",
+            "parent": "slash",
+            "transform": "normal"
+        },
+        {
+            "name": "slash8",
+            "parent": "slash_all",
+            "transform": "normal"
+        },
+        {
+            "name": "slash9",
+            "parent": "slash_all",
+            "transform": "normal"
+        },
+        {
+            "name": "deco1",
+            "parent": "slash",
+            "transform": "normal"
+        },
+        {
+            "name": "fire",
+            "parent": "slash",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p3_1",
+            "parent": "fire",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p4_1",
+            "parent": "fire",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p_m",
+            "parent": "fire",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p1",
+            "parent": "fire_p_m",
+            "transform": "normal"
+        },
+        {
+            "name": "smoke",
+            "parent": "fire",
+            "transform": "normal"
+        },
+        {
+            "name": "smoke_1",
+            "parent": "smoke",
+            "transform": "normal"
+        },
+        {
+            "name": "smoke_02",
+            "parent": "smoke",
+            "transform": "normal"
+        },
+        {
+            "name": "w_fire_1_7",
+            "parent": "fire",
+            "transform": "normal"
+        },
+        {
+            "name": "smoke_02c1",
+            "parent": "smoke",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p2",
+            "parent": "fire_p_m",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p3",
+            "parent": "fire_p_m",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p4",
+            "parent": "fire_p_m",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p5",
+            "parent": "fire_p_m",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p6",
+            "parent": "fire_p_m",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p7",
+            "parent": "fire_p_m",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p8",
+            "parent": "fire_p_m",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p9",
+            "parent": "fire_p_m",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p3_2",
+            "parent": "fire",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p4_2",
+            "parent": "fire",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p3_3",
+            "parent": "fire",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p3_4",
+            "parent": "fire",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p10",
+            "parent": "fire_p_m",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p11",
+            "parent": "fire_p_m",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p12",
+            "parent": "fire_p_m",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p13",
+            "parent": "fire_p_m",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p14",
+            "parent": "fire_p_m",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p15",
+            "parent": "fire_p_m",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p16",
+            "parent": "fire_p_m",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p4_3",
+            "parent": "fire",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p4_4",
+            "parent": "fire",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p3_5",
+            "parent": "fire",
+            "transform": "normal"
+        },
+        {
+            "name": "smoke_1c1",
+            "parent": "smoke",
+            "transform": "normal"
+        },
+        {
+            "name": "smoke_02c2",
+            "parent": "smoke",
+            "transform": "normal"
+        },
+        {
+            "name": "smoke_02c3",
+            "parent": "smoke",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p4_5",
+            "parent": "fire",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p4_6",
+            "parent": "fire",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p17",
+            "parent": "fire_p_m",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p18",
+            "parent": "fire_p_m",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p19",
+            "parent": "fire_p_m",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p20",
+            "parent": "fire_p_m",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p21",
+            "parent": "fire_p_m",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p22",
+            "parent": "fire_p_m",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p23",
+            "parent": "fire_p_m",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p24",
+            "parent": "fire_p_m",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p25",
+            "parent": "fire_p_m",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p26",
+            "parent": "fire_p_m",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p27",
+            "parent": "fire_p_m",
+            "transform": "normal"
+        },
+        {
+            "name": "w_fire_1_8",
+            "parent": "fire",
+            "transform": "normal"
+        },
+        {
+            "name": "w_fire_1_9",
+            "parent": "fire",
+            "transform": "normal"
+        },
+        {
+            "name": "w_fire_1_10",
+            "parent": "fire",
+            "transform": "normal"
+        },
+        {
+            "name": "w_fire_1_11",
+            "parent": "fire",
+            "transform": "normal"
+        },
+        {
+            "name": "w_fire_1_12",
+            "parent": "fire",
+            "transform": "normal"
+        },
+        {
+            "name": "smoke_02c4a",
+            "parent": "smoke",
+            "transform": "normal"
+        },
+        {
+            "name": "smoke_02c5a",
+            "parent": "smoke",
+            "transform": "normal"
+        },
+        {
+            "name": "smoke_1c2a",
+            "parent": "smoke",
+            "transform": "normal"
+        },
+        {
+            "name": "smoke_1c2a2",
+            "parent": "smoke",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p28",
+            "parent": "fire_p_m",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p29",
+            "parent": "fire_p_m",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p30",
+            "parent": "fire_p_m",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p31",
+            "parent": "fire_p_m",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p32",
+            "parent": "fire_p_m",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p33",
+            "parent": "fire_p_m",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p34",
+            "parent": "fire_p_m",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p35",
+            "parent": "fire_p_m",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p36",
+            "parent": "fire_p_m",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p37",
+            "parent": "fire_p_m",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p38",
+            "parent": "fire_p_m",
+            "transform": "normal"
+        },
+        {
+            "name": "glow4",
+            "parent": "slash",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p39",
+            "parent": "fire_p_m",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p40",
+            "parent": "fire_p_m",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p41",
+            "parent": "fire_p_m",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p42",
+            "parent": "fire_p_m",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p43",
+            "parent": "fire_p_m",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p44",
+            "parent": "fire_p_m",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p45",
+            "parent": "fire_p_m",
+            "transform": "normal"
+        },
+        {
+            "name": "fire_p46",
+            "parent": "fire_p_m",
+            "transform": "normal"
+        }
+    ],
+    "ik": [],
+    "slots": [
+        {
+            "name": "smoke_02",
+            "bone": "smoke_02"
+        },
+        {
+            "name": "smoke_02c1",
+            "bone": "smoke_02c1"
+        },
+        {
+            "name": "smoke_02c2",
+            "bone": "smoke_02c2"
+        },
+        {
+            "name": "smoke_02c3",
+            "bone": "smoke_02c3"
+        },
+        {
+            "name": "smoke_1",
+            "bone": "smoke_1"
+        },
+        {
+            "name": "smoke_1c1",
+            "bone": "smoke_1c1"
+        },
+        {
+            "name": "slash1-4",
+            "bone": "slash1"
+        },
+        {
+            "name": "slash1-3",
+            "bone": "slash1"
+        },
+        {
+            "name": "slash1-2",
+            "bone": "slash1"
+        },
+        {
+            "name": "slash1-1",
+            "bone": "slash1"
+        },
+        {
+            "name": "smoke_02c4a",
+            "bone": "smoke_02c4a",
+            "blend": "additive"
+        },
+        {
+            "name": "smoke_02c5a",
+            "bone": "smoke_02c5a",
+            "blend": "additive"
+        },
+        {
+            "name": "smoke_1c2a",
+            "bone": "smoke_1c2a",
+            "blend": "additive"
+        },
+        {
+            "name": "smoke_1c2a2",
+            "bone": "smoke_1c2a2",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p3_1",
+            "bone": "fire_p3_1",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p3_2",
+            "bone": "fire_p3_2",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p3_3",
+            "bone": "fire_p3_3",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p3_4",
+            "bone": "fire_p3_4",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p3_5",
+            "bone": "fire_p3_5",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p4_1",
+            "bone": "fire_p4_1",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p4_2",
+            "bone": "fire_p4_2",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p4_3",
+            "bone": "fire_p4_3",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p4_4",
+            "bone": "fire_p4_4",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p4_5",
+            "bone": "fire_p4_5",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p4_6",
+            "bone": "fire_p4_6",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p1",
+            "bone": "fire_p1",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p2",
+            "bone": "fire_p2",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p3",
+            "bone": "fire_p3",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p4",
+            "bone": "fire_p4",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p5",
+            "bone": "fire_p5",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p6",
+            "bone": "fire_p6",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p7",
+            "bone": "fire_p7",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p17",
+            "bone": "fire_p17",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p18",
+            "bone": "fire_p18",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p19",
+            "bone": "fire_p19",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p20",
+            "bone": "fire_p20",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p21",
+            "bone": "fire_p21",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p22",
+            "bone": "fire_p22",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p23",
+            "bone": "fire_p23",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p24",
+            "bone": "fire_p24",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p25",
+            "bone": "fire_p25",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p26",
+            "bone": "fire_p26",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p27",
+            "bone": "fire_p27",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p28",
+            "bone": "fire_p28",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p29",
+            "bone": "fire_p29",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p30",
+            "bone": "fire_p30",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p31",
+            "bone": "fire_p31",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p32",
+            "bone": "fire_p32",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p33",
+            "bone": "fire_p33",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p34",
+            "bone": "fire_p34",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p35",
+            "bone": "fire_p35",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p36",
+            "bone": "fire_p36",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p37",
+            "bone": "fire_p37",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p38",
+            "bone": "fire_p38",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p39",
+            "bone": "fire_p39",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p40",
+            "bone": "fire_p40",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p41",
+            "bone": "fire_p41",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p42",
+            "bone": "fire_p42",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p43",
+            "bone": "fire_p43",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p44",
+            "bone": "fire_p44",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p45",
+            "bone": "fire_p45",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p46",
+            "bone": "fire_p46",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p8",
+            "bone": "fire_p8",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p9",
+            "bone": "fire_p9",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p10",
+            "bone": "fire_p10",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p11",
+            "bone": "fire_p11",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p12",
+            "bone": "fire_p12",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p13",
+            "bone": "fire_p13",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p14",
+            "bone": "fire_p14",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p15",
+            "bone": "fire_p15",
+            "blend": "additive"
+        },
+        {
+            "name": "fire_p16",
+            "bone": "fire_p16",
+            "blend": "additive"
+        },
+        {
+            "name": "w_fire_1_7",
+            "bone": "w_fire_1_7",
+            "blend": "additive"
+        },
+        {
+            "name": "w_fire_1_8",
+            "bone": "w_fire_1_8",
+            "blend": "additive"
+        },
+        {
+            "name": "w_fire_1_9",
+            "bone": "w_fire_1_9",
+            "blend": "additive"
+        },
+        {
+            "name": "w_fire_1_10",
+            "bone": "w_fire_1_10",
+            "blend": "additive"
+        },
+        {
+            "name": "w_fire_1_11",
+            "bone": "w_fire_1_11",
+            "blend": "additive"
+        },
+        {
+            "name": "w_fire_1_12",
+            "bone": "w_fire_1_12",
+            "blend": "additive"
+        },
+        {
+            "name": "glow1",
+            "bone": "glow1",
+            "blend": "additive"
+        },
+        {
+            "name": "glow2",
+            "bone": "glow2",
+            "blend": "additive"
+        },
+        {
+            "name": "glow3",
+            "bone": "glow3",
+            "blend": "additive"
+        },
+        {
+            "name": "glow4",
+            "bone": "glow4",
+            "blend": "additive"
+        },
+        {
+            "name": "slash8",
+            "bone": "slash8",
+            "blend": "additive"
+        },
+        {
+            "name": "slash9",
+            "bone": "slash9",
+            "blend": "additive"
+        },
+        {
+            "name": "deco1",
+            "bone": "deco1",
+            "blend": "additive"
+        }
+    ],
+    "transform": [],
+    "path": [],
+    "skins": [
+        {
+            "name": "default",
+            "attachments": {
+                "smoke_02": {
+                    "smoke_02": {
+                        "type": "mesh",
+                        "uvs": [
+                            0.7064599990844727,
+                            0.08500999957323074,
+                            0.9122200012207031,
+                            0.20273999869823456,
+                            1.0,
+                            0.4778299927711487,
+                            0.9672099947929382,
+                            0.7722100019454956,
+                            0.7768099904060364,
+                            0.9427599906921387,
+                            0.43276000022888184,
+                            0.9806299805641174,
+                            0.1874600052833557,
+                            0.9411200284957886,
+                            0.0892999991774559,
+                            0.7668700218200684,
+                            0.03203999996185303,
+                            0.49900999665260315,
+                            0.050370000302791595,
+                            0.21031999588012695,
+                            0.2510499954223633,
+                            0.05169999971985817,
+                            0.5129200220108032,
+                            0.0,
+                            0.46851998567581177,
+                            0.2210099995136261,
+                            0.3827599883079529,
+                            0.29140999913215637,
+                            0.3404400050640106,
+                            0.430649995803833,
+                            0.39664000272750854,
+                            0.5821599960327148,
+                            0.5453900098800659,
+                            0.6586499810218811,
+                            0.6996300220489502,
+                            0.5699499845504761,
+                            0.7286199927330017,
+                            0.435589998960495,
+                            0.5649999976158142,
+                            0.3599799871444702
+                        ],
+                        "triangles": [
+                            12,
+                            10,
+                            11,
+                            12,
+                            11,
+                            0,
+                            13,
+                            10,
+                            12,
+                            9,
+                            10,
+                            13,
+                            19,
+                            12,
+                            0,
+                            14,
+                            9,
+                            13,
+                            18,
+                            0,
+                            1,
+                            19,
+                            0,
+                            18,
+                            18,
+                            1,
+                            2,
+                            8,
+                            9,
+                            14,
+                            17,
+                            19,
+                            18,
+                            13,
+                            19,
+                            14,
+                            19,
+                            13,
+                            12,
+                            16,
+                            15,
+                            19,
+                            15,
+                            14,
+                            19,
+                            17,
+                            16,
+                            19,
+                            15,
+                            7,
+                            8,
+                            15,
+                            8,
+                            14,
+                            2,
+                            17,
+                            18,
+                            3,
+                            17,
+                            2,
+                            6,
+                            7,
+                            15,
+                            4,
+                            17,
+                            3,
+                            16,
+                            17,
+                            4,
+                            5,
+                            15,
+                            16,
+                            5,
+                            16,
+                            4,
+                            6,
+                            15,
+                            5
+                        ],
+                        "vertices": [
+                            84.44000244140625,
+                            75.9000015258789,
+                            135.24000549316406,
+                            38.310001373291016,
+                            147.52999877929688,
+                            -30.649999618530273,
+                            126.3499984741211,
+                            -98.3499984741211,
+                            67.68000030517578,
+                            -129.3300018310547,
+                            -27.059999465942383,
+                            -121.70999908447266,
+                            -91.83000183105469,
+                            -100.62999725341797,
+                            -111.13999938964844,
+                            -54.90999984741211,
+                            -115.44999694824219,
+                            10.869999885559082,
+                            -98.44000244140625,
+                            77.93000030517578,
+                            -37.47999954223633,
+                            105.62000274658203,
+                            35.59000015258789,
+                            105.19999694824219,
+                            14.34000015258789,
+                            55.31999969482422,
+                            -11.819999694824219,
+                            42.880001068115234,
+                            -29.09000015258789,
+                            12.140000343322754,
+                            -20.200000762939453,
+                            -26.209999084472656,
+                            16.8799991607666,
+                            -51.36000061035156,
+                            62.349998474121094,
+                            -37.88999938964844,
+                            75.80999755859375,
+                            -7.670000076293945,
+                            34.65999984741211,
+                            17.989999771118164
+                        ],
+                        "hull": 12,
+                        "edges": [],
+                        "width": 32.0,
+                        "height": 32.0,
+                        "path": "smoke_02"
+                    }
+                }
+            }
+        }
+    ],
+    "events": {},
+    "animations": {}
+}

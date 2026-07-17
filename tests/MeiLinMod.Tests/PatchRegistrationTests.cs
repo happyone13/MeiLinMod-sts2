@@ -69,8 +69,8 @@ public sealed class PatchRegistrationTests : CombatTestSuite
         }
 
         Assert.Empty(unresolvedTargets);
-        Assert.Equal(35, patchTypes.Length);
-        Assert.Equal(37, resolvedTargetCount);
+        Assert.Equal(36, patchTypes.Length);
+        Assert.Equal(38, resolvedTargetCount);
     }
 
     [Fact]
@@ -181,6 +181,7 @@ public sealed class PatchRegistrationTests : CombatTestSuite
                 "ColorfulPhilosophersMeiLinPatch",
                 "DustyTomeAfterObtainedMeiLinPatch",
                 "DustyTomeSetupForPlayerMeiLinPatch",
+                "GloomyEscapeCardBeforeCombatStartPatch",
                 "HuoYongYuXiaCiAfterCombatPatch",
                 "OrobasSeaGlassMeiLinPatch",
                 "PrismaticGemMeiLinPatch",

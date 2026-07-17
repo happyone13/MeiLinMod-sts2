@@ -25,6 +25,7 @@ public sealed class SettingsTests : CombatTestSuite
         var originalOverlay = MeiLinSharedSettings.BattleReadyOverlayEnabled;
         var originalEffects = MeiLinSharedSettings.CombatEffectsEnabled;
         var originalDynamicCards = MeiLinSharedSettings.DynamicCardPortraitsEnabled;
+        var originalGloomyEncounter = GloomyEncounterSharedSettings.Enabled;
         var originalVoice = MeiLinSharedSettings.VoiceVolume;
         var originalScale = MeiLinSharedSettings.BattleReadyScale;
         var originalOffsetX = MeiLinSharedSettings.BattleReadyOffsetX;
@@ -38,6 +39,7 @@ public sealed class SettingsTests : CombatTestSuite
             MeiLinSharedSettings.SetBattleReadyOverlayEnabled(false, persist: false);
             MeiLinSharedSettings.SetCombatEffectsEnabled(false, persist: false);
             MeiLinSharedSettings.SetDynamicCardPortraitsEnabled(false, persist: false);
+            GloomyEncounterSharedSettings.SetEnabled(false, persist: false);
             MeiLinSharedSettings.SetVoiceVolume(0.35f, persist: false);
             MeiLinSharedSettings.SetBattleReadyScale(1.4f, persist: false);
             MeiLinSharedSettings.SetBattleReadyOffsetX(123f, persist: false);
@@ -46,6 +48,7 @@ public sealed class SettingsTests : CombatTestSuite
             Assert.False(MeiLinSharedSettings.BattleReadyOverlayEnabled);
             Assert.False(MeiLinSharedSettings.CombatEffectsEnabled);
             Assert.False(MeiLinSharedSettings.DynamicCardPortraitsEnabled);
+            Assert.False(GloomyEncounterSharedSettings.Enabled);
             AssertNearly(0.35f, MeiLinSharedSettings.VoiceVolume);
             AssertNearly(1.4f, MeiLinSharedSettings.BattleReadyScale);
             AssertNearly(123f, MeiLinSharedSettings.BattleReadyOffsetX);
@@ -66,6 +69,7 @@ public sealed class SettingsTests : CombatTestSuite
             MeiLinSharedSettings.SetBattleReadyOverlayEnabled(originalOverlay, persist: false);
             MeiLinSharedSettings.SetCombatEffectsEnabled(originalEffects, persist: false);
             MeiLinSharedSettings.SetDynamicCardPortraitsEnabled(originalDynamicCards, persist: false);
+            GloomyEncounterSharedSettings.SetEnabled(originalGloomyEncounter, persist: false);
             MeiLinSharedSettings.SetVoiceVolume(originalVoice, persist: false);
             MeiLinSharedSettings.SetBattleReadyScale(originalScale, persist: false);
             MeiLinSharedSettings.SetBattleReadyOffsetX(originalOffsetX, persist: false);
@@ -158,6 +162,7 @@ public sealed class SettingsTests : CombatTestSuite
             ["battle_ready_overlay"] = "MeiLinSharedSettings.BattleReadyOverlayEnabled",
             ["combat_effects"] = "MeiLinSharedSettings.CombatEffectsEnabled",
             ["dynamic_card_portraits"] = "MeiLinSharedSettings.DynamicCardPortraitsEnabled",
+            ["gloomy_encounter"] = "GloomyEncounterSharedSettings.Enabled",
             ["battle_ready_scale"] = "MeiLinSharedSettings.BattleReadyScale",
             ["battle_ready_offset_x"] = "MeiLinSharedSettings.BattleReadyOffsetX",
             ["battle_ready_offset_y"] = "MeiLinSharedSettings.BattleReadyOffsetY",
@@ -176,6 +181,9 @@ public sealed class SettingsTests : CombatTestSuite
         Assert.Contains("MeiLinSharedSettings.SetBattleReadyOverlayEnabled(value, persist: true);", source);
         Assert.Contains("MeiLinSharedSettings.SetCombatEffectsEnabled(value, persist: true)", source);
         Assert.Contains("MeiLinSharedSettings.SetDynamicCardPortraitsEnabled(value, persist: true)", source);
+        Assert.Contains("GloomyEncounterSharedSettings.SetEnabled(value, persist: true)", source);
+        Assert.Contains("ModSettingsText.Literal(\"一位旧识\")", source);
+        Assert.Contains("ModSettingsText.Literal(\"一位旧识，开启后你可能会遇到他\")", source);
         Assert.Contains("MeiLinSharedSettings.SetBattleReadyScale((float)value, persist: true);", source);
         Assert.Contains("MeiLinSharedSettings.SetBattleReadyOffsetX((float)value, persist: true);", source);
         Assert.Contains("MeiLinSharedSettings.SetBattleReadyOffsetY((float)value, persist: true);", source);
@@ -189,6 +197,43 @@ public sealed class SettingsTests : CombatTestSuite
         Assert.Contains("maxValue: 400d", source);
         Assert.Contains("minValue: 0d", source);
         Assert.Contains("maxValue: 1d", source);
+    }
+
+    [Fact]
+    public async Task Gloomy_encounter_shared_contract_elects_one_provider()
+    {
+        var defend = await AddToHand<DefendMeilin>();
+        await Play(defend);
+
+        const string prefix = "CHAOSMOD_GLOOMY_PROVIDER_";
+        string[] providers = ["Fei", "YukiMod", "MeiLinMod"];
+        var previous = providers.ToDictionary(
+            id => id,
+            id => AppDomain.CurrentDomain.GetData(prefix + id),
+            StringComparer.Ordinal);
+
+        try
+        {
+            foreach (string id in providers)
+                AppDomain.CurrentDomain.SetData(prefix + id, false);
+
+            GloomyEncounterSharedSettings.RegisterProvider("MeiLinMod");
+            Assert.True(GloomyEncounterSharedSettings.IsActiveProvider("MeiLinMod"));
+
+            GloomyEncounterSharedSettings.RegisterProvider("YukiMod");
+            Assert.True(GloomyEncounterSharedSettings.IsActiveProvider("YukiMod"));
+            Assert.False(GloomyEncounterSharedSettings.IsActiveProvider("MeiLinMod"));
+
+            GloomyEncounterSharedSettings.RegisterProvider("Fei");
+            Assert.True(GloomyEncounterSharedSettings.IsActiveProvider("Fei"));
+            Assert.False(GloomyEncounterSharedSettings.IsActiveProvider("YukiMod"));
+            Assert.False(GloomyEncounterSharedSettings.IsActiveProvider("MeiLinMod"));
+        }
+        finally
+        {
+            foreach (string id in providers)
+                AppDomain.CurrentDomain.SetData(prefix + id, previous[id]);
+        }
     }
 
     private static void AssertNearly(float expected, float actual)

@@ -25,6 +25,7 @@ public partial class MainFile : Node
         MeiLinTelemetryBootstrap.Initialize();
         ScriptManagerBridge.LookupScriptsInAssembly(assembly);
         MeiLinSharedSettings.EnsureSettingsLoaded();
+        GloomyEncounterSharedSettings.RegisterProvider(ModId);
         CardSpinePortraitPatch.PreloadDynamicPortraitScenes();
         MeiLinCommandVfxCoordinator.PreloadConfiguredScenes();
         MeiLinAttackMovementController.PreloadMovementEffects();

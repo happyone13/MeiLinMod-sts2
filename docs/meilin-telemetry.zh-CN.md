@@ -38,7 +38,7 @@ RitsuLib 仍然负责用户授权、本地队列、公共属性和发送流程�
 
 PostHog 直连阶段可先看：
 
-- `run_history.completed` 按 `is_victory` 计算胜率。
+- `run_history.completed` 按事件属性 `properties.is_victory` 计算胜率；HogQL 中建议使用 `lower(toString(properties.is_victory)) IN ('true', '1')` 判断胜利；完整跑局位于 `properties.payload.applicant_payload.run_history`。
 - `run_history.completed` 按 `run_floor_reached` 看死亡/结束楼层分布。
 - `run_history.completed` 从 payload 中解析最终卡组和选牌记录，统计卡牌选择率、入组率和胜率。
 - `run_history.completed` 按 `run_ascension`、`run_game_mode`、`run_player_count` 过滤。

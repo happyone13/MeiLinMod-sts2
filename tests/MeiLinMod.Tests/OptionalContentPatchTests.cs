@@ -3,6 +3,7 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Monsters;
 using MeiLinMod.MeiLinModCode.Cards;
+using MeiLinMod.MeiLinModCode.Encounters;
 using MeiLinMod.MeiLinModCode.Patches;
 using STS2RitsuLib.Patching.Models;
 using TestTheSpire;
@@ -28,6 +29,7 @@ public sealed class OptionalContentPatchTests : CombatTestSuite
 
         Type[] contentPatchTypes =
         [
+            typeof(GloomyEscapeCardBeforeCombatStartPatch),
             typeof(ArchaicToothAfterObtainedMeiLinPatch),
             typeof(ArchaicToothSetupForPlayerMeiLinPatch),
             typeof(ColorfulPhilosophersMeiLinPatch),

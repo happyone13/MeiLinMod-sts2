@@ -1,0 +1,97 @@
+
+gloomy_beast_normal_buff_1_f.png
+size: 1068,260
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+flash
+  rotate: false
+  xy: 2, 2
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+uni_smoke2_1
+  rotate: true
+  xy: 664, 26
+  size: 69, 200
+  orig: 69, 200
+  offset: 0, 0
+  index: -1
+uni_smoke2_2
+  rotate: true
+  xy: 866, 108
+  size: 69, 200
+  orig: 69, 200
+  offset: 0, 0
+  index: -1
+uni_smoke2_3
+  rotate: true
+  xy: 866, 37
+  size: 69, 200
+  orig: 69, 200
+  offset: 0, 0
+  index: -1
+uni_smoke3_1
+  rotate: false
+  xy: 260, 173
+  size: 200, 85
+  orig: 200, 85
+  offset: 0, 0
+  index: -1
+uni_smoke3_2
+  rotate: false
+  xy: 260, 86
+  size: 200, 85
+  orig: 200, 85
+  offset: 0, 0
+  index: -1
+uni_smoke3_3
+  rotate: false
+  xy: 462, 173
+  size: 200, 85
+  orig: 200, 85
+  offset: 0, 0
+  index: -1
+uni_smoke4_1
+  rotate: false
+  xy: 260, 4
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+uni_smoke4_2
+  rotate: false
+  xy: 462, 91
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+uni_smoke4_3
+  rotate: false
+  xy: 664, 178
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+uni_smoke7_1
+  rotate: false
+  xy: 462, 10
+  size: 200, 79
+  orig: 200, 79
+  offset: 0, 0
+  index: -1
+uni_smoke7_2
+  rotate: false
+  xy: 664, 97
+  size: 200, 79
+  orig: 200, 79
+  offset: 0, 0
+  index: -1
+uni_smoke7_3
+  rotate: false
+  xy: 866, 179
+  size: 200, 79
+  orig: 200, 79
+  offset: 0, 0
+  index: -1

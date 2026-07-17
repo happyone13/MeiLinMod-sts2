@@ -1,0 +1,20 @@
+
+gloomy_prime_normal_buff_1_b2.png
+size: 588,284
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+flash
+  rotate: false
+  xy: 330, 25
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+smoke15
+  rotate: true
+  xy: 2, 2
+  size: 279, 326
+  orig: 279, 326
+  offset: 0, 0
+  index: -1

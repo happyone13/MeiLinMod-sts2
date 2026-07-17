@@ -196,7 +196,7 @@ SettingsTests total=3 passed=3 failed=0 skipped=0
 - `RunHistory` 已启用，但通过 `MeiLinTelemetryBootstrap.IsMeiLinRun` 过滤为包含 MeiLin 角色的跑局。
 - 自定义本地平衡摘要已移除，不再在 mod 端生成二次摘要事件。
 
-平衡看板用途：选择率、胜率、死亡层数和完整卡组分析从 `run_history.completed` 读取。卡牌选择率、入组率、升级率、最终卡组和路线统计应由 PostHog HogQL、ingest 后端或离线 ETL 解析完整 RunHistory 得出。
+平衡看板用途：选择率、胜率、死亡层数和完整卡组分析从 `run_history.completed` 读取。胜负字段使用事件属性 `properties.is_victory`，HogQL 中建议用 `lower(toString(properties.is_victory)) IN ('true', '1')` 判断；完整跑局在 `properties.payload.applicant_payload.run_history`。卡牌选择率、入组率、升级率、最终卡组和路线统计应由 PostHog HogQL、ingest 后端或离线 ETL 解析完整 RunHistory 得出。
 
 隐私边界：不要上传玩家姓名、路径、完整日志或任何本地文件内容。直接 PostHog 会把 project API key 暴露在 mod 包里，后续公开长期收集时建议增加代理做限流、字段过滤和来源校验。
 

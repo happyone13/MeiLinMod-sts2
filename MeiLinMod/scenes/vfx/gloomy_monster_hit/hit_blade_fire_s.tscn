@@ -1,0 +1,111 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="SpineSkeletonDataResource" path="res://MeiLinMod/animations/vfx/gloomy_monster_hit/hit_blade_fire_s_skel_data.tres" id="spine_0"]
+[ext_resource type="Texture2D" path="res://MeiLinMod/animations/vfx/gloomy_monster_hit/ticle_02.png" id="tex_1"]
+[ext_resource type="Texture2D" path="res://MeiLinMod/animations/vfx/gloomy_monster_hit/pati_03.png" id="tex_2"]
+
+[sub_resource type="CanvasItemMaterial" id="mat_1"]
+blend_mode = 1
+
+[sub_resource type="ParticleProcessMaterial" id="proc_1"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_box_extents = Vector3(150, 20, 1)
+direction = Vector3(0.766044, 0.642788, 0)
+spread = 13
+initial_velocity_min = 1
+initial_velocity_max = 2999
+gravity = Vector3(0, -0, 0)
+scale_min = 0.15
+scale_max = 0.45
+color = Color(0.756863, 0.243137, 0.117647, 1)
+
+[sub_resource type="CanvasItemMaterial" id="mat_2"]
+blend_mode = 1
+
+[sub_resource type="ParticleProcessMaterial" id="proc_2"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_box_extents = Vector3(150, 20, 1)
+direction = Vector3(0.766044, 0.642788, 0)
+spread = 15
+initial_velocity_min = 1
+initial_velocity_max = 499
+gravity = Vector3(0, -0, 0)
+scale_min = 0.15
+scale_max = 0.45
+color = Color(0.756863, 0.243137, 0.117647, 1)
+
+[sub_resource type="CanvasItemMaterial" id="mat_3"]
+blend_mode = 1
+
+[sub_resource type="ParticleProcessMaterial" id="proc_3"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_box_extents = Vector3(150, 20, 1)
+direction = Vector3(0.766044, 0.642788, 0)
+spread = 15
+initial_velocity_min = 1
+initial_velocity_max = 499
+gravity = Vector3(0, -0, 0)
+scale_min = 1
+scale_max = 3
+color = Color(0.756863, 0.243137, 0.117647, 1)
+
+[node name="hit_blade_fire_s" type="Node2D"]
+
+[node name="hit_blade_fire_s" type="SpineSprite" parent="."]
+skeleton_data_res = ExtResource("spine_0")
+preview_skin = "Default"
+preview_animation = "animation"
+preview_frame = false
+preview_time = 0.0
+z_index = 20
+position = Vector2(-25, 25)
+rotation_degrees = 0
+scale = Vector2(1.2, 1.2)
+
+[node name="hit_blade_fire_s_pati1_0" type="GPUParticles2D" parent="."]
+z_index = 22
+material = SubResource("mat_1")
+position = Vector2(-25, 25)
+rotation_degrees = -40
+scale = Vector2(1, 1)
+emitting = false
+amount = 250
+texture = ExtResource("tex_1")
+lifetime = 0.25
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("proc_1")
+metadata/_fei_start_delay_ms = 0
+
+[node name="hit_blade_fire_s_pati1_1" type="GPUParticles2D" parent="."]
+z_index = 22
+material = SubResource("mat_2")
+position = Vector2(-25, 25)
+rotation_degrees = -40
+scale = Vector2(1, 1)
+emitting = false
+amount = 250
+texture = ExtResource("tex_1")
+lifetime = 0.7
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("proc_2")
+metadata/_fei_start_delay_ms = 0
+
+[node name="hit_blade_fire_s_pati1_2" type="GPUParticles2D" parent="."]
+z_index = 22
+material = SubResource("mat_3")
+position = Vector2(-25, 25)
+rotation_degrees = -40
+scale = Vector2(1, 1)
+emitting = false
+amount = 250
+texture = ExtResource("tex_2")
+lifetime = 0.7
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("proc_3")
+metadata/_fei_start_delay_ms = 0

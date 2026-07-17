@@ -239,4 +239,11 @@
     "MEILINMOD_HUI_GUI_JI_BEN_GONG_POWER.title":  "回归基本功",
     "MEILINMOD_HUI_GUI_JI_BEN_GONG_POWER.description":  "回合开始时，获得2点能量并抽2张牌。",
     "MEILINMOD_HUI_GUI_JI_BEN_GONG_POWER.smartDescription":  "回合开始时，获得2点能量并抽2张牌。"
+, 
+    "MEI_LIN_MOD_POWER_GLOOMY_WILD_POWER.title": "野性",
+    "MEI_LIN_MOD_POWER_GLOOMY_WILD_POWER.description": "攻击造成额外伤害。",
+    "MEI_LIN_MOD_POWER_GLOOMY_WILD_POWER.smartDescription": "攻击额外造成{Amount}点伤害。",
+    "MEI_LIN_MOD_POWER_GLOOMY_SUMMON_POWER.title": "召唤术",
+    "MEI_LIN_MOD_POWER_GLOOMY_SUMMON_POWER.description": "补充阵亡的阴郁野兽。",
+    "MEI_LIN_MOD_POWER_GLOOMY_SUMMON_POWER.smartDescription": "还可召唤{Amount}只阴郁野兽。"
 }

@@ -1,0 +1,146 @@
+
+gloomy_beast_normal_m_attack_01.png
+size: 1256,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+att1_obake1
+  rotate: false
+  xy: 936, 937
+  size: 300, 82
+  orig: 300, 82
+  offset: 0, 0
+  index: -1
+att1_obake2
+  rotate: false
+  xy: 936, 853
+  size: 300, 82
+  orig: 300, 82
+  offset: 0, 0
+  index: -1
+aura10_1
+  rotate: false
+  xy: 1138, 314
+  size: 105, 133
+  orig: 105, 133
+  offset: 0, 0
+  index: -1
+aura10_2
+  rotate: false
+  xy: 1138, 179
+  size: 105, 133
+  orig: 105, 133
+  offset: 0, 0
+  index: -1
+aura1_1
+  rotate: true
+  xy: 2, 375
+  size: 644, 465
+  orig: 644, 465
+  offset: 0, 0
+  index: -1
+aura1_2
+  rotate: true
+  xy: 469, 375
+  size: 644, 465
+  orig: 644, 465
+  offset: 0, 0
+  index: -1
+flash
+  rotate: false
+  xy: 936, 595
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+obake_smoke1
+  rotate: false
+  xy: 850, 2
+  size: 200, 175
+  orig: 200, 175
+  offset: 0, 0
+  index: -1
+obake_smoke10
+  rotate: false
+  xy: 936, 215
+  size: 200, 188
+  orig: 200, 188
+  offset: 0, 0
+  index: -1
+obake_smoke2
+  rotate: false
+  xy: 1052, 89
+  size: 200, 88
+  orig: 200, 88
+  offset: 0, 0
+  index: -1
+obake_smoke3
+  rotate: false
+  xy: 850, 179
+  size: 200, 34
+  orig: 200, 34
+  offset: 0, 0
+  index: -1
+obake_smoke4
+  rotate: false
+  xy: 1052, 16
+  size: 200, 34
+  orig: 200, 34
+  offset: 0, 0
+  index: -1
+obake_smoke5
+  rotate: true
+  xy: 1194, 651
+  size: 200, 41
+  orig: 200, 41
+  offset: 0, 0
+  index: -1
+obake_smoke6
+  rotate: true
+  xy: 1194, 449
+  size: 200, 41
+  orig: 200, 41
+  offset: 0, 0
+  index: -1
+obake_smoke7
+  rotate: false
+  xy: 1052, 52
+  size: 200, 35
+  orig: 200, 35
+  offset: 0, 0
+  index: -1
+obake_smoke9
+  rotate: false
+  xy: 936, 405
+  size: 200, 188
+  orig: 200, 188
+  offset: 0, 0
+  index: -1
+smoke14
+  rotate: true
+  xy: 2, 4
+  size: 369, 210
+  orig: 369, 210
+  offset: 0, 0
+  index: -1
+smoke14_2
+  rotate: true
+  xy: 214, 4
+  size: 369, 210
+  orig: 369, 210
+  offset: 0, 0
+  index: -1
+smoke14_3
+  rotate: true
+  xy: 426, 4
+  size: 369, 210
+  orig: 369, 210
+  offset: 0, 0
+  index: -1
+smoke14_4
+  rotate: true
+  xy: 638, 4
+  size: 369, 210
+  orig: 369, 210
+  offset: 0, 0
+  index: -1

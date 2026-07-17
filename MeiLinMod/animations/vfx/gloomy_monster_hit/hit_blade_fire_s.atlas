@@ -1,0 +1,181 @@
+
+hit_blade_fire_s.png
+size: 471,1027
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+fire_p1
+  rotate: false
+  xy: 124, 163
+  size: 71, 71
+  orig: 80, 80
+  offset: 4, 4
+  index: -1
+fire_p3_1
+  rotate: true
+  xy: 361, 98
+  size: 89, 96
+  orig: 151, 139
+  offset: 24, 16
+  index: -1
+fire_p3_2
+  rotate: false
+  xy: 134, 236
+  size: 118, 116
+  orig: 151, 139
+  offset: 13, 11
+  index: -1
+fire_p3_3
+  rotate: false
+  xy: 2, 356
+  size: 135, 126
+  orig: 151, 139
+  offset: 6, 6
+  index: -1
+fire_p3_4
+  rotate: false
+  xy: 271, 491
+  size: 137, 115
+  orig: 151, 139
+  offset: 8, 6
+  index: -1
+fire_p3_5
+  rotate: true
+  xy: 139, 354
+  size: 128, 111
+  orig: 151, 139
+  offset: 10, 9
+  index: -1
+fire_p3_6
+  rotate: false
+  xy: 2, 158
+  size: 120, 104
+  orig: 151, 139
+  offset: 13, 13
+  index: -1
+fire_p4_1
+  rotate: true
+  xy: 361, 189
+  size: 88, 97
+  orig: 129, 148
+  offset: 30, 6
+  index: -1
+fire_p4_2
+  rotate: true
+  xy: 254, 182
+  size: 95, 105
+  orig: 129, 148
+  offset: 28, 14
+  index: -1
+fire_p4_3
+  rotate: false
+  xy: 104, 50
+  size: 96, 106
+  orig: 129, 148
+  offset: 26, 19
+  index: -1
+fire_p4_4
+  rotate: false
+  xy: 2, 50
+  size: 100, 106
+  orig: 129, 148
+  offset: 18, 26
+  index: -1
+fire_p4_5
+  rotate: true
+  xy: 368, 929
+  size: 96, 101
+  orig: 129, 148
+  offset: 10, 39
+  index: -1
+fire_p4_6
+  rotate: false
+  xy: 202, 2
+  size: 86, 94
+  orig: 129, 148
+  offset: 7, 45
+  index: -1
+fire_p4_7
+  rotate: true
+  xy: 202, 101
+  size: 79, 93
+  orig: 129, 148
+  offset: 6, 48
+  index: -1
+flash
+  rotate: true
+  xy: 255, 279
+  size: 210, 211
+  orig: 256, 256
+  offset: 23, 23
+  index: -1
+slash1-1
+  rotate: false
+  xy: 2, 976
+  size: 364, 49
+  orig: 373, 53
+  offset: 6, 2
+  index: -1
+slash1-2
+  rotate: false
+  xy: 2, 929
+  size: 337, 45
+  orig: 373, 53
+  offset: 32, 2
+  index: -1
+slash1-3
+  rotate: false
+  xy: 2, 520
+  size: 255, 36
+  orig: 373, 53
+  offset: 117, 8
+  index: -1
+slash1-4
+  rotate: false
+  xy: 2, 484
+  size: 251, 34
+  orig: 373, 53
+  offset: 122, 10
+  index: -1
+smoke_02
+  rotate: false
+  xy: 2, 558
+  size: 267, 235
+  orig: 275, 239
+  offset: 8, 4
+  index: -1
+smoke_1
+  rotate: false
+  xy: 275, 746
+  size: 182, 181
+  orig: 182, 181
+  offset: 0, 0
+  index: -1
+splash6
+  rotate: false
+  xy: 271, 608
+  size: 198, 136
+  orig: 198, 136
+  offset: 0, 0
+  index: -1
+splash7
+  rotate: true
+  xy: 2, 795
+  size: 132, 271
+  orig: 132, 271
+  offset: 0, 0
+  index: -1
+w_fire_1_7
+  rotate: true
+  xy: 2, 264
+  size: 90, 130
+  orig: 90, 130
+  offset: 0, 0
+  index: -1
+water_spray_03
+  rotate: false
+  xy: 290, 3
+  size: 90, 93
+  orig: 92, 95
+  offset: 1, 2
+  index: -1

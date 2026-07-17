@@ -1,0 +1,118 @@
+
+gloomy_prime_normal_unique_1_b.png
+size: 1028,264
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+flash
+  rotate: false
+  xy: 2, 4
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+uni_light7_1
+  rotate: false
+  xy: 260, 2
+  size: 200, 56
+  orig: 200, 56
+  offset: 0, 0
+  index: -1
+uni_light7_2
+  rotate: false
+  xy: 462, 2
+  size: 200, 56
+  orig: 200, 56
+  offset: 0, 0
+  index: -1
+uni_light7_3
+  rotate: false
+  xy: 664, 2
+  size: 200, 56
+  orig: 200, 56
+  offset: 0, 0
+  index: -1
+uni_light7_4
+  rotate: true
+  xy: 710, 60
+  size: 200, 56
+  orig: 200, 56
+  offset: 0, 0
+  index: -1
+uni_light7_5
+  rotate: true
+  xy: 768, 60
+  size: 200, 56
+  orig: 200, 56
+  offset: 0, 0
+  index: -1
+uni_light7_6
+  rotate: true
+  xy: 826, 60
+  size: 200, 56
+  orig: 200, 56
+  offset: 0, 0
+  index: -1
+uni_smoke5_1
+  rotate: true
+  xy: 884, 60
+  size: 200, 46
+  orig: 200, 46
+  offset: 0, 0
+  index: -1
+uni_smoke5_2
+  rotate: true
+  xy: 932, 60
+  size: 200, 46
+  orig: 200, 46
+  offset: 0, 0
+  index: -1
+uni_smoke5_3
+  rotate: true
+  xy: 980, 60
+  size: 200, 46
+  orig: 200, 46
+  offset: 0, 0
+  index: -1
+uni_smoke7_1
+  rotate: true
+  xy: 260, 60
+  size: 200, 79
+  orig: 200, 79
+  offset: 0, 0
+  index: -1
+uni_smoke7_2
+  rotate: true
+  xy: 341, 60
+  size: 200, 79
+  orig: 200, 79
+  offset: 0, 0
+  index: -1
+uni_smoke7_3
+  rotate: true
+  xy: 422, 60
+  size: 200, 79
+  orig: 200, 79
+  offset: 0, 0
+  index: -1
+uni_smoke8_1
+  rotate: true
+  xy: 503, 60
+  size: 200, 67
+  orig: 200, 67
+  offset: 0, 0
+  index: -1
+uni_smoke8_2
+  rotate: true
+  xy: 572, 60
+  size: 200, 67
+  orig: 200, 67
+  offset: 0, 0
+  index: -1
+uni_smoke8_3
+  rotate: true
+  xy: 641, 60
+  size: 200, 67
+  orig: 200, 67
+  offset: 0, 0
+  index: -1

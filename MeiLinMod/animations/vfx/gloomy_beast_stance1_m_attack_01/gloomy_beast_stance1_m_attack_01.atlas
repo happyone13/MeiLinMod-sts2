@@ -1,0 +1,230 @@
+
+gloomy_beast_stance1_m_attack_01.png
+size: 1996,916
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+aura10_1
+  rotate: false
+  xy: 1120, 11
+  size: 105, 133
+  orig: 105, 133
+  offset: 0, 0
+  index: -1
+aura10_2
+  rotate: false
+  xy: 1379, 2
+  size: 105, 133
+  orig: 105, 133
+  offset: 0, 0
+  index: -1
+aura1_1
+  rotate: false
+  xy: 2, 448
+  size: 644, 465
+  orig: 644, 465
+  offset: 0, 0
+  index: -1
+aura1_2
+  rotate: false
+  xy: 648, 448
+  size: 644, 465
+  orig: 644, 465
+  offset: 0, 0
+  index: -1
+flash
+  rotate: false
+  xy: 1250, 173
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+hit_imp1_3
+  rotate: false
+  xy: 2, 48
+  size: 400, 398
+  orig: 400, 398
+  offset: 0, 0
+  index: -1
+hit_imp1_4
+  rotate: false
+  xy: 1294, 515
+  size: 400, 398
+  orig: 400, 398
+  offset: 0, 0
+  index: -1
+horn1
+  rotate: false
+  xy: 1596, 461
+  size: 35, 52
+  orig: 35, 52
+  offset: 0, 0
+  index: -1
+horn2
+  rotate: true
+  xy: 204, 5
+  size: 41, 47
+  orig: 41, 47
+  offset: 0, 0
+  index: -1
+horn3
+  rotate: true
+  xy: 1227, 14
+  size: 121, 150
+  orig: 121, 150
+  offset: 0, 0
+  index: -1
+obake_smoke1
+  rotate: false
+  xy: 1696, 367
+  size: 200, 175
+  orig: 200, 175
+  offset: 0, 0
+  index: -1
+obake_smoke10
+  rotate: false
+  xy: 1794, 177
+  size: 200, 188
+  orig: 200, 188
+  offset: 0, 0
+  index: -1
+obake_smoke2
+  rotate: false
+  xy: 1592, 87
+  size: 200, 88
+  orig: 200, 88
+  offset: 0, 0
+  index: -1
+obake_smoke3
+  rotate: false
+  xy: 1250, 137
+  size: 200, 34
+  orig: 200, 34
+  offset: 0, 0
+  index: -1
+obake_smoke4
+  rotate: false
+  xy: 1794, 70
+  size: 200, 34
+  orig: 200, 34
+  offset: 0, 0
+  index: -1
+obake_smoke5
+  rotate: false
+  xy: 2, 5
+  size: 200, 41
+  orig: 200, 41
+  offset: 0, 0
+  index: -1
+obake_smoke6
+  rotate: true
+  xy: 1077, 34
+  size: 200, 41
+  orig: 200, 41
+  offset: 0, 0
+  index: -1
+obake_smoke7
+  rotate: false
+  xy: 1688, 33
+  size: 200, 35
+  orig: 200, 35
+  offset: 0, 0
+  index: -1
+obake_smoke9
+  rotate: false
+  xy: 1592, 177
+  size: 200, 188
+  orig: 200, 188
+  offset: 0, 0
+  index: -1
+s_att_obake1_1
+  rotate: true
+  xy: 1908, 613
+  size: 300, 82
+  orig: 300, 82
+  offset: 0, 0
+  index: -1
+s_att_obake1_2
+  rotate: false
+  xy: 1294, 431
+  size: 300, 82
+  orig: 300, 82
+  offset: 0, 0
+  index: -1
+s_att_obake1_3
+  rotate: true
+  xy: 1508, 129
+  size: 300, 82
+  orig: 300, 82
+  offset: 0, 0
+  index: -1
+s_att_obake2_1
+  rotate: false
+  xy: 775, 132
+  size: 300, 102
+  orig: 300, 102
+  offset: 0, 0
+  index: -1
+s_att_obake2_2
+  rotate: false
+  xy: 775, 28
+  size: 300, 102
+  orig: 300, 102
+  offset: 0, 0
+  index: -1
+s_att_obake2_3
+  rotate: true
+  xy: 1146, 146
+  size: 300, 102
+  orig: 300, 102
+  offset: 0, 0
+  index: -1
+smoke14
+  rotate: false
+  xy: 404, 236
+  size: 369, 210
+  orig: 369, 210
+  offset: 0, 0
+  index: -1
+smoke14_2
+  rotate: true
+  xy: 1696, 544
+  size: 369, 210
+  orig: 369, 210
+  offset: 0, 0
+  index: -1
+smoke14_3
+  rotate: false
+  xy: 775, 236
+  size: 369, 210
+  orig: 369, 210
+  offset: 0, 0
+  index: -1
+smoke14_4
+  rotate: false
+  xy: 404, 24
+  size: 369, 210
+  orig: 369, 210
+  offset: 0, 0
+  index: -1
+uni_smoke2_1
+  rotate: true
+  xy: 1794, 106
+  size: 69, 200
+  orig: 69, 200
+  offset: 0, 0
+  index: -1
+uni_smoke2_2
+  rotate: true
+  xy: 1486, 16
+  size: 69, 200
+  orig: 69, 200
+  offset: 0, 0
+  index: -1
+uni_smoke2_3
+  rotate: false
+  xy: 1908, 411
+  size: 69, 200
+  orig: 69, 200
+  offset: 0, 0
+  index: -1
