@@ -29,6 +29,19 @@ public class QuanXinQuanLingPower : MeiLinModPower
         return true;
     }
 
+#if STS2_109
+    public override CardLocation ModifyCardPlayResultLocation(
+        CardModel card,
+        bool isAutoPlay,
+        ResourceInfo resources,
+        CardLocation location)
+    {
+        if (card.Owner?.Creature != Owner || !BasicStrikeDefendHelper.IsStrikeOrDefendCard(card))
+            return location;
+
+        return new CardLocation(location.player, PileType.Exhaust, location.position);
+    }
+#else
     public override (PileType, CardPilePosition) ModifyCardPlayResultPileTypeAndPosition(
         CardModel card,
         bool isAutoPlay,
@@ -41,4 +54,5 @@ public class QuanXinQuanLingPower : MeiLinModPower
 
         return (PileType.Exhaust, position);
     }
+#endif
 }

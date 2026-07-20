@@ -30,15 +30,16 @@ public sealed class MigrationDependencyTests : CombatTestSuite
         var root = manifest.RootElement;
 
         Assert.Equal("MeiLinMod", root.GetProperty("id").GetString());
-        Assert.Equal("v0.4.1", root.GetProperty("version").GetString());
-        Assert.Equal("v0.108.0", root.GetProperty("min_game_version").GetString());
+        Assert.Equal("v0.4.2", root.GetProperty("version").GetString());
+        Assert.Equal("v0.109.0", root.GetProperty("min_game_version").GetString());
+        Assert.True(root.GetProperty("affects_gameplay").GetBoolean());
 
         var dependencies = root.GetProperty("dependencies").EnumerateArray().ToArray();
 
         var ritsuDependency = Assert.Single(dependencies);
         Assert.Equal(JsonValueKind.Object, ritsuDependency.ValueKind);
         Assert.Equal("STS2-RitsuLib", ritsuDependency.GetProperty("id").GetString());
-        Assert.Equal("0.4.50", ritsuDependency.GetProperty("min_version").GetString());
+        Assert.Equal("0.4.58", ritsuDependency.GetProperty("min_version").GetString());
         Assert.DoesNotContain(dependencies, dependency =>
             dependency.ValueKind == JsonValueKind.String && dependency.GetString() == "BaseLib" ||
             dependency.ValueKind == JsonValueKind.Object && dependency.TryGetProperty("id", out var id) && id.GetString() == "BaseLib");
@@ -55,6 +56,28 @@ public sealed class MigrationDependencyTests : CombatTestSuite
         Assert.Contains("STS2.RitsuLib", packageReferences);
         Assert.DoesNotContain("Alchyr.Sts2.BaseLib", packageReferences);
         Assert.DoesNotContain("Alchyr.Sts2.ModAnalyzers", packageReferences);
+    }
+
+    [Fact]
+    public async Task Version_109_build_and_hash_participation_are_explicit()
+    {
+        await InitializeBattle();
+
+        var projectText = File.ReadAllText(RepoFile("MeiLinMod.csproj"));
+        Assert.Contains("<Sts2TargetVersion Condition=\"'$(Sts2TargetVersion)' == ''\">109</Sts2TargetVersion>", projectText);
+        Assert.Contains("Sts2Path109", projectText);
+        Assert.Contains("STS2_109", projectText);
+
+        foreach (var relativePath in new[]
+                 {
+                     new[] { "tests", "MeiLinMod.Tests", "mod-deps", "TestTheSpire", "TestTheSpire.json" },
+                     new[] { "tests", "MeiLinMod.Tests", "mod-deps", "xunit.v3.assert", "xunit.v3.assert.json" }
+                 })
+        {
+            using var dependencyManifest = JsonDocument.Parse(File.ReadAllText(RepoFile(relativePath)));
+            Assert.False(dependencyManifest.RootElement.GetProperty("affects_gameplay").GetBoolean());
+            Assert.Equal("v0.109.0", dependencyManifest.RootElement.GetProperty("min_game_version").GetString());
+        }
     }
 
     [Fact]

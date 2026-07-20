@@ -10,6 +10,6 @@
 { "id": "TestTheSpire", "min_version": "0.1.0" },
 { "id": "MeiLinMod", "min_version": "v0.3.1" }
 ],
-"min_game_version": "v0.108.0",
+"min_game_version": "v0.109.0",
 "affects_gameplay": true
 }

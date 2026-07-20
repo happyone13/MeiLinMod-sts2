@@ -20,7 +20,7 @@ public class QiPoBaFang() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommo
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(5m, ValueProp.Move),
+        new DamageVar(6m, ValueProp.Move),
         new DynamicVar(BurstKey, 6m)
     ];
 
@@ -47,6 +47,7 @@ public class QiPoBaFang() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommo
 
     protected override void OnUpgrade()
     {
+        DynamicVars.Damage.UpgradeValueBy(2m);
         DynamicVars[BurstKey].UpgradeValueBy(2m);
     }
 }

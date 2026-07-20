@@ -21,6 +21,7 @@ public class KaiTian() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommon, 
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
+        new DamageVar(1m, ValueProp.Move),
         new DynamicVar("AttackBonus", 12m),
         new DynamicVar("GuardBonus", 9m)
     ];
@@ -40,6 +41,12 @@ public class KaiTian() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommon, 
             return;
 
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
+
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
+            .FromCard(this, cardPlay)
+            .Targeting(cardPlay.Target)
+            .Execute(choiceContext);
+
         await XiangzuCombatState.TryConsumeQi(Owner.Creature, 1, Owner.Creature, this);
 
         if (XiangzuCombatState.IsInAttackStance(Owner.Creature))

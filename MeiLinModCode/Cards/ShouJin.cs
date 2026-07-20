@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using MeiLinMod.MeiLinModCode.Migration;
 using MeiLinMod.MeiLinModCode.Character;
@@ -13,32 +12,38 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace MeiLinMod.MeiLinModCode.Cards;
 
 [Pool(typeof(MeiLinModCardPool))]
-public class ShouJin() : MeiLinModCard(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
+public class ShouJin() : MeiLinModCard(1, CardType.Attack, CardRarity.Common, TargetType.AllEnemies)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(8m, ValueProp.Move)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(9m, ValueProp.Move)];
 
     public override string PortraitPath => IdPortraitPath;
     public override string CustomPortraitPath => IdBigPortraitPath;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this, cardPlay)
-            .Targeting(cardPlay.Target)
-            .WithHitFx("vfx/vfx_attack_slash")
-            .Execute(choiceContext);
+        var combatState = CombatState;
+        if (combatState == null)
+            return;
 
         var selfEmber = Owner.Creature.GetPower<EmberPower>()?.Amount ?? 0m;
         if (selfEmber > 0m)
-        {
             await PowerCmd.Apply<EmberPower>(new BlockingPlayerChoiceContext(), Owner.Creature, -selfEmber, Owner.Creature, this);
-            await PowerCmd.Apply<EmberPower>(new BlockingPlayerChoiceContext(), cardPlay.Target, selfEmber, Owner.Creature, this);
+
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
+            .FromCard(this, cardPlay)
+            .TargetingAllOpponents(combatState)
+            .WithHitFx("vfx/vfx_attack_slash")
+            .Execute(choiceContext);
+
+        if (selfEmber > 0m)
+        {
+            foreach (var enemy in combatState.HittableEnemies)
+                await PowerCmd.Apply<EmberPower>(new BlockingPlayerChoiceContext(), enemy, selfEmber, Owner.Creature, this);
         }
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(2m);
+        DynamicVars.Damage.UpgradeValueBy(3m);
     }
 }
