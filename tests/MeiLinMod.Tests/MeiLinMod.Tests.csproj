@@ -12,11 +12,11 @@
     <Sts2TestModId>MeiLinMod.Tests</Sts2TestModId>
     <Sts2TestModName>MeiLinMod.Tests</Sts2TestModName>
     <Sts2TestModAuthor>lozalia</Sts2TestModAuthor>
-    <Sts2TestMinGameVersion>v0.109.0</Sts2TestMinGameVersion>
+    <Sts2TestMinGameVersion>v0.110.0</Sts2TestMinGameVersion>
     <Sts2TestMainModMinVersion>v0.3.1</Sts2TestMainModMinVersion>
     <Sts2TestTheSpireMinVersion>0.1.0</Sts2TestTheSpireMinVersion>
     <Sts2XunitAssertMinVersion>3.2.2</Sts2XunitAssertMinVersion>
-    <Sts2TestDisabledModIds>BaseLib;Fei;KalipeiMod;KaylaMod;YukiMod;StS2_MeiLinTexturePack</Sts2TestDisabledModIds>
+    <Sts2TestDisabledModIds>BaseLib;Fei;KalipeiMod;KaylaMod;YukiMod;YukiMod.Tests;StS2_MeiLinTexturePack</Sts2TestDisabledModIds>
     <Sts2TestXdgDataHome Condition="'$(Sts2TestXdgDataHome)' == ''">$(MSBuildProjectDirectory)/../../tmp/sts2-combat-tests/$(Sts2TestModId)</Sts2TestXdgDataHome>
     <Sts2TestTempDir Condition="'$(Sts2TestTempDir)' == ''">$(MSBuildProjectDirectory)/../../tmp/sts2-combat-tests/$(Sts2TestModId)/temp</Sts2TestTempDir>
     <Sts2TestEnvironmentVariables Condition="'$(Sts2TestEnvironmentVariables)' == '' and $([MSBuild]::IsOSPlatform('Windows'))">APPDATA=$(Sts2TestXdgDataHome);XDG_DATA_HOME=$(Sts2TestXdgDataHome);TEMP=$(Sts2TestTempDir);TMP=$(Sts2TestTempDir)</Sts2TestEnvironmentVariables>
@@ -38,7 +38,7 @@
     <CompilerVisibleProperty Include="GodotSourceGenerators" />
     <CompilerVisibleProperty Include="IsGodotToolsProject" />
     <ProjectReference Include="../../MeiLinMod.csproj" />
-    <PackageReference Include="STS2.RitsuLib" Version="0.4.57" PrivateAssets="all" />
+    <PackageReference Include="STS2.RitsuLib" Version="0.5.0" PrivateAssets="all" />
     <PackageReference Include="TestTheSpire" Version="0.1.0" />
   </ItemGroup>
 

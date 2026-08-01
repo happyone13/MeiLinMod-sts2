@@ -13,7 +13,7 @@
 
 - Godot 4.5.1
 - C# / .NET 9
-- STS2.RitsuLib 0.4.58（0.109 运行时变体；NuGet 编译期 API 包为 0.4.57）
+- STS2 0.110 / STS2.RitsuLib 0.5.0（0.110 运行时变体与 NuGet 编译期 API）
 - RitsuLib optional patcher
 - TestTheSpire headless 测试
 - Spine Godot GDExtension

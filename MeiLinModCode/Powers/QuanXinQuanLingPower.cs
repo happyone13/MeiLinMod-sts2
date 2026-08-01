@@ -29,7 +29,7 @@ public class QuanXinQuanLingPower : MeiLinModPower
         return true;
     }
 
-#if STS2_109
+#if STS2_109 || STS2_110
     public override CardLocation ModifyCardPlayResultLocation(
         CardModel card,
         bool isAutoPlay,
