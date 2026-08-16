@@ -76,7 +76,7 @@
     "MEILINMOD_JING_YUE.title":  "Silent Peak",
     "MEILINMOD_JING_YUE.description":  "Whenever you switch stance, gain {Progress:diff()} Qi Gauge.",
     "MEILINMOD_LIAN_XIE.title":  "Combo Link",
-    "MEILINMOD_LIAN_XIE.description":  "Attack Stance: Deal {Damage:diff()} damage.\nGuard Stance: Gain {Block:diff()} Block.\nWhen you switch stance, if this is in your discard pile, return it to your hand.",
+    "MEILINMOD_LIAN_XIE.description":  "Deal {Damage:diff()} damage.\nWhen you switch stance, if this is in your discard pile, return it to your hand.",
     "MEILINMOD_KAI_TIAN.title":  "Sky Split",
     "MEILINMOD_KAI_TIAN.description":  "Deal {Damage:diff()} damage.\nLose 1 [gold]Qi[/gold].\nAttack Stance: Deal {AttackBonus:diff()} damage.\nGuard Stance: Gain {GuardBonus:diff()} Block.\nReturn this card to your hand.",
     "MEILINMOD_RU_TAO.title":  "Like a Tide",

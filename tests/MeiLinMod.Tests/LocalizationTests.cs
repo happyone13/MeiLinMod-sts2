@@ -53,6 +53,25 @@ public sealed class LocalizationTests : CombatTestSuite
         LocManager.Instance.SetLanguage("zhs");
     }
 
+    [Fact]
+    public async Task Combo_link_english_text_only_references_registered_dynamic_vars()
+    {
+        var defend = await AddToHand<DefendMeilin>();
+        await Play(defend);
+
+        LocManager.Instance.SetLanguage("eng");
+
+        var card = await AddToHand<LianXie>();
+        var description = new LocString("cards", "MEILINMOD_LIAN_XIE.description").GetRawText();
+
+        Assert.Contains("{Damage:diff()}", description, StringComparison.Ordinal);
+        Assert.DoesNotContain("{Block", description, StringComparison.Ordinal);
+        Assert.True(card.DynamicVars.ContainsKey("Damage"));
+        Assert.False(card.DynamicVars.ContainsKey("Block"));
+
+        LocManager.Instance.SetLanguage("zhs");
+    }
+
     private static void AssertCoreKeysExist(string language)
     {
         AssertLoc(language, "characters", "MEILINMOD_MEI_LIN_MOD.title");
