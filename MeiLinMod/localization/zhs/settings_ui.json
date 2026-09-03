@@ -4,5 +4,20 @@
   "MEILINMOD_USE_CHAOS_CARD_DYNAMIC_PORTRAITS.title": "启用卡厄斯卡牌样式",
   "MEILINMOD_USE_CHAOS_CARD_DYNAMIC_PORTRAITS.hover.desc": "默认开启。开启后，符合条件的卡牌会使用卡厄斯边框与动态 Spine 卡图；关闭时使用普通版本。",
   "MEILINMOD_USE_BATTLE_READY_OVERLAY.title": "启用背身立绘",
-  "MEILINMOD_USE_COMBAT_EFFECTS.title": "启用战斗特效"
+  "MEILINMOD_USE_COMBAT_EFFECTS.title": "启用战斗特效",
+  "MEILINMOD_RITSU_PAGE.title": "梅铃设置",
+  "MEILINMOD_RITSU_PAGE.description": "通过 RitsuLib 注册的 MeiLinMod 设置页。相关设置继续复用 Yuki/Chaos 共享配置。",
+  "MEILINMOD_RITSU_SECTION_VISUALS.title": "显示",
+  "MEILINMOD_RITSU_BATTLE_READY_OVERLAY.title": "背身立绘",
+  "MEILINMOD_RITSU_COMBAT_EFFECTS.title": "战斗特效",
+  "MEILINMOD_RITSU_DYNAMIC_CARD_PORTRAITS.title": "动态卡图",
+  "MEILINMOD_RITSU_SECTION_PORTRAIT_TRANSFORM.title": "背身立绘调整",
+  "MEILINMOD_RITSU_BATTLE_READY_SCALE.title": "立绘缩放",
+  "MEILINMOD_RITSU_BATTLE_READY_OFFSET_X.title": "立绘 X 偏移",
+  "MEILINMOD_RITSU_BATTLE_READY_OFFSET_Y.title": "立绘 Y 偏移",
+  "MEILINMOD_RITSU_SECTION_AUDIO.title": "音频",
+  "MEILINMOD_RITSU_VOICE_VOLUME.title": "语音音量",
+  "MEILINMOD_RITSU_SECTION_GAMEPLAY.title": "游戏内容",
+  "MEILINMOD_RITSU_GLOOMY_ENCOUNTER.title": "一位旧识",
+  "MEILINMOD_RITSU_GLOOMY_ENCOUNTER.description": "一位旧识，开启后你可能会遇到他。"
 }

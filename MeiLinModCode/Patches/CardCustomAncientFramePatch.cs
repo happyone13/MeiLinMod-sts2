@@ -8,7 +8,6 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.Cards;
 using MeiLinMod.MeiLinModCode.Cards;
-using MeiLinMod.MeiLinModCode.Config;
 using STS2RitsuLib.Patching.Models;
 
 namespace MeiLinMod.MeiLinModCode.Patches;
@@ -29,27 +28,70 @@ public static class CardCustomAncientFramePatch
     private const string RarityBaseNodeName = "MeiLinChaosRarityBase";
     private const string RaritySubNodeName = "MeiLinChaosRaritySub";
     private const string EgoBadgeNodeName = "MeiLinChaosEgoBadge";
+    private const string EgoBadge2NodeName = "MeiLinChaosEgoBadge2";
     private const string FrameSparkNodeName = "MeiLinChaosFrameSpark";
     private const string CategoryIconNodeName = "MeiLinChaosCategoryIcon";
     private const string CategoryTextNodeName = "MeiLinChaosCategoryText";
     private const string CostLineNodeName = "MeiLinChaosCostLine";
     private const string CostTextNodeName = "MeiLinChaosCostText";
+    private const string CostTextFallbackNodeName = "MeiLinChaosCostTextFallback";
     private const string CostOverlayRefreshNodeName = "MeiLinChaosCostOverlayRefresh";
     private const string UpgradeIconNodeName = "MeiLinChaosUpgradeIcon";
     private const string DescriptionMaskNodeName = "MeiLinChaosDescriptionMask";
     private static readonly NodeLayout TitleRibbonLayout = new(-146.0f, -214.0f, 292.0f, 82.0f);
-    private static readonly NodeLayout CardTitleLayout = new(-151.0f, -209.0f, 201.0f, 58.0f);
+    private static readonly NodeLayout CardTitleLayout = new(-77.0f, -213.0f, 209.0f, 58.0f);
     private static readonly NodeLayout CostLineLayout = new(-145.0f, -200.0f, 68.0f, 115.0f);
     private static readonly NodeLayout CostTextLayout = new(-138.0f, -235.0f, 55.0f, 90.0f);
-    private static readonly NodeLayout CategoryIconLayout = new(-87.0f, -177.0f, 28.0f, 44.0f);
-    private static readonly NodeLayout CategoryTextLayout = new(-57.0f, -178.0f, 198.0f, 42.0f);
+    private static readonly NodeLayout CategoryIconLayout = new(-69.0f, -160.0f, 28.0f, 28.0f);
+    private static readonly NodeLayout CategoryTextLayout = new(-45.0f, -163.0f, 76.0f, 32.0f);
     private static readonly NodeLayout DescriptionTextLayout = new(-142.0f, 40.0f, 278.0f, 161.0f);
     private static readonly NodeLayout DescriptionMaskLayout = new(-153.0f, -63.0f, 298.0f, 271.0f);
     private static readonly NodeLayout EgoBadgeLayout = new(-202.0f, -216.0f, 96.0f, 427.0f);
+    private static readonly NodeLayout EgoBadge2Layout = new(96.0f, -215.0f, 96.0f, 427.0f, Visible: false);
     private static readonly NodeLayout RarityBaseLayout = new(-174.0f, -194.0f, 35.0f, 78.0f);
     private static readonly NodeLayout RaritySubLayout = new(120.0f, -199.0f, 56.0f, 90.0f);
     private static readonly NodeLayout FrameSparkLayout = new(-91.0f, -83.0f, 157.0f, 218.0f);
     private static readonly NodeLayout UpgradeIconLayout = new(-131.0f, -138.0f, 32.0f, 32.0f, Visible: false);
+    private static readonly Dictionary<char, Rect2> NormalDigitRegions = new()
+    {
+        ['0'] = new Rect2(79.0f, 4.0f, 78.0f, 87.0f),
+        ['1'] = new Rect2(158.0f, 4.0f, 78.0f, 87.0f),
+        ['2'] = new Rect2(237.0f, 4.0f, 78.0f, 87.0f),
+        ['3'] = new Rect2(316.0f, 4.0f, 78.0f, 87.0f),
+        ['4'] = new Rect2(395.0f, 4.0f, 78.0f, 87.0f),
+        ['5'] = new Rect2(0.0f, 96.0f, 78.0f, 87.0f),
+        ['6'] = new Rect2(79.0f, 96.0f, 78.0f, 87.0f),
+        ['7'] = new Rect2(158.0f, 96.0f, 78.0f, 87.0f),
+        ['8'] = new Rect2(237.0f, 96.0f, 78.0f, 87.0f),
+        ['9'] = new Rect2(316.0f, 96.0f, 78.0f, 87.0f),
+        ['X'] = new Rect2(395.0f, 96.0f, 74.0f, 83.0f)
+    };
+    private static readonly Dictionary<char, Rect2> GreenDigitRegions = new()
+    {
+        ['0'] = new Rect2(0.0f, 4.0f, 78.0f, 87.0f),
+        ['1'] = new Rect2(79.0f, 4.0f, 78.0f, 87.0f),
+        ['2'] = new Rect2(158.0f, 4.0f, 78.0f, 87.0f),
+        ['3'] = new Rect2(237.0f, 4.0f, 78.0f, 87.0f),
+        ['4'] = new Rect2(316.0f, 4.0f, 78.0f, 87.0f),
+        ['5'] = new Rect2(395.0f, 4.0f, 78.0f, 87.0f),
+        ['6'] = new Rect2(0.0f, 96.0f, 78.0f, 87.0f),
+        ['7'] = new Rect2(79.0f, 96.0f, 78.0f, 87.0f),
+        ['8'] = new Rect2(158.0f, 96.0f, 78.0f, 87.0f),
+        ['9'] = new Rect2(237.0f, 96.0f, 78.0f, 87.0f)
+    };
+    private static readonly Dictionary<char, Rect2> RedDigitRegions = new()
+    {
+        ['0'] = new Rect2(0.0f, 4.0f, 78.0f, 87.0f),
+        ['1'] = new Rect2(79.0f, 4.0f, 78.0f, 87.0f),
+        ['2'] = new Rect2(158.0f, 4.0f, 78.0f, 87.0f),
+        ['3'] = new Rect2(237.0f, 4.0f, 78.0f, 87.0f),
+        ['4'] = new Rect2(316.0f, 4.0f, 78.0f, 87.0f),
+        ['5'] = new Rect2(395.0f, 4.0f, 78.0f, 87.0f),
+        ['6'] = new Rect2(0.0f, 96.0f, 78.0f, 87.0f),
+        ['7'] = new Rect2(79.0f, 96.0f, 78.0f, 87.0f),
+        ['8'] = new Rect2(158.0f, 96.0f, 78.0f, 87.0f),
+        ['9'] = new Rect2(237.0f, 96.0f, 78.0f, 87.0f)
+    };
 
     private static readonly FieldInfo? FrameField =
         typeof(NCard).GetField("_frame", BindingFlags.Instance | BindingFlags.NonPublic);
@@ -79,6 +121,7 @@ public static class CardCustomAncientFramePatch
         typeof(NCard).GetField("_descriptionLabel", BindingFlags.Instance | BindingFlags.NonPublic);
     private static readonly Dictionary<string, Resource?> ResourceCache = new();
     private static readonly HashSet<string> MissingResourceWarnings = new();
+    private static readonly Dictionary<CostAtlasVariant, Texture2D?> CostAtlasTextures = new();
     private static readonly ConditionalWeakTable<NCard, OriginalCardVisualState> OriginalStates = new();
     private static Control? _templateRoot;
     private static Control? _templateCardContainer;
@@ -106,14 +149,16 @@ public static class CardCustomAncientFramePatch
         var ancientTextBg = Get<TextureRect>(AncientTextBgField, cardNode!);
         var ancientBanner = Get<Control>(AncientBannerField, cardNode!);
         var ancientHighlight = Get<TextureRect>(AncientHighlightField, cardNode!);
-        bool shouldDisplayDynamicOverlays = CardSpinePortraitPatch.ShouldDisplayDynamicOverlays(cardNode);
+        bool hasDynamicSpineScene = CardSpinePortraitPatch.TryGetSpineScenePath(cardNode, out _);
+        bool shouldDisplayDynamicOverlays = !hasDynamicSpineScene ||
+                                            CardSpinePortraitPatch.ShouldDisplayDynamicOverlays(cardNode);
         Material? frameMaterial = LoadResource<Material>(cardModel!.CustomAncientBorderMaterialPath);
         Material? bannerMaterial = LoadResource<Material>(cardModel.CustomAncientBannerMaterialPath);
 
-        if (!CardSpinePortraitPatch.HasActiveSpineOverlay(cardNode))
+        if (hasDynamicSpineScene && !CardSpinePortraitPatch.HasActiveSpineOverlay(cardNode))
             CardSpinePortraitPatch.Apply(cardNode);
 
-        if (!CardSpinePortraitPatch.HasActiveSpineOverlay(cardNode))
+        if (hasDynamicSpineScene && !CardSpinePortraitPatch.HasActiveSpineOverlay(cardNode))
         {
             RemoveChaosEffects(cardNode, restoreOriginalState: true);
             frame?.Show();
@@ -128,7 +173,7 @@ public static class CardCustomAncientFramePatch
             return;
         }
 
-        if (!shouldDisplayDynamicOverlays)
+        if (hasDynamicSpineScene && !shouldDisplayDynamicOverlays)
         {
             ApplyTransitionDynamicPortraitState(cardNode!, cardModel!, frame, portrait, ancientPortrait, portraitBorder, banner,
                 ancientBorder, ancientTextBg, ancientBanner, ancientHighlight, frameMaterial, bannerMaterial);
@@ -142,12 +187,18 @@ public static class CardCustomAncientFramePatch
         banner?.Hide();
 
         if (ancientPortrait != null)
+        {
+            ancientPortrait.Texture = cardNode!.Model?.Portrait;
+            ancientPortrait.ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize;
+            ancientPortrait.StretchMode = TextureRect.StretchModeEnum.Scale;
             ancientPortrait.Show();
+        }
 
         ApplyTextureRect(ancientBorder, AncientBorderPath, frameMaterial, show: true);
-        if (ancientTextBg != null)
-            ancientTextBg.Hide();
+        ancientBorder?.Hide();
+        ApplyTextureRect(ancientTextBg, GetAncientTextBgPath(cardModel.Type), frameMaterial, show: true);
         ApplyTextureRect(ancientHighlight, AncientHighlightPath, material: null, show: true);
+        ancientHighlight?.Hide();
 
         if (ancientBanner != null)
         {
@@ -183,9 +234,10 @@ public static class CardCustomAncientFramePatch
         portraitBorder?.Hide();
         ApplyTextureRect(banner, GetRarityTitlePath(cardModel.Rarity), bannerMaterial, show: true);
         ApplyTextureRect(ancientBorder, AncientBorderPath, frameMaterial, show: true);
+        ancientBorder?.Hide();
         ancientTextBg?.Hide();
         ancientBanner?.Hide();
-        ApplyTextureRect(ancientHighlight, AncientHighlightPath, material: null, show: true);
+        ancientHighlight?.Hide();
 
         if (Get<TextureRect>(EnergyIconField, cardNode) is { } energyIcon)
             ApplyTextureRect(energyIcon, $"{ChaosEffectsBasePath}energy_line_default.png", material: null, show: true);
@@ -210,7 +262,7 @@ public static class CardCustomAncientFramePatch
         if (cardNode == null || !GodotObject.IsInstanceValid(cardNode) || !cardNode.IsNodeReady())
             return;
 
-        if (TryGetCustomFrameCard(cardNode, out _) || !HasMeiLinVisualState(cardNode))
+        if (!TryGetCustomFrameCard(cardNode, out _) && !HasMeiLinVisualState(cardNode))
             return;
 
         RemoveChaosEffects(cardNode, restoreOriginalState: true);
@@ -237,13 +289,7 @@ public static class CardCustomAncientFramePatch
         if (cardNode?.Model is not MeiLinModCard model)
             return false;
 
-        if (!MeiLinModConfig.UseChaosCardDynamicPortraits ||
-            !model.UseCustomAncientFrame ||
-            !model.UsesDynamicChaosFrame)
-            return false;
-
-        string? scenePath = model.CustomSpinePortraitScenePath;
-        if (!string.IsNullOrWhiteSpace(scenePath) && !ResourceLoader.Exists(scenePath))
+        if (!model.UseCustomAncientFrame)
             return false;
 
         cardModel = model;
@@ -258,11 +304,13 @@ public static class CardCustomAncientFramePatch
         return GetOverlayNode(cardNode, RarityBaseNodeName) != null ||
                GetOverlayNode(cardNode, RaritySubNodeName) != null ||
                GetOverlayNode(cardNode, EgoBadgeNodeName) != null ||
+               GetOverlayNode(cardNode, EgoBadge2NodeName) != null ||
                GetOverlayNode(cardNode, FrameSparkNodeName) != null ||
                GetOverlayNode(cardNode, CategoryIconNodeName) != null ||
                GetOverlayNode(cardNode, CategoryTextNodeName) != null ||
                GetOverlayNode(cardNode, CostLineNodeName) != null ||
                GetOverlayNode(cardNode, CostTextNodeName) != null ||
+               GetOverlayNode(cardNode, CostTextFallbackNodeName) != null ||
                GetOverlayNode(cardNode, UpgradeIconNodeName) != null ||
                GetOverlayNode(cardNode, DescriptionMaskNodeName) != null;
     }
@@ -313,6 +361,8 @@ public static class CardCustomAncientFramePatch
         EnsureControlVisible(titleLabel);
         EnsureControlVisible(descriptionLabel);
 
+        if (banner != null)
+            banner.Material = null;
         ApplyTextureRect(banner, GetRarityTitlePath(cardModel.Rarity), material: null, show: true);
         ConfigureCostOverlay(cardNode, cardModel, energyIcon, energyLabel);
 
@@ -342,7 +392,15 @@ public static class CardCustomAncientFramePatch
         {
             ApplyTemplateLayout(control, "EgoBadge", EgoBadgeLayout);
             if (control is TextureRect textureRect)
-                ApplyTextureRect(textureRect, $"{ChaosEffectsBasePath}card_ego_love.png", material: null, show: true);
+                ApplyTextureRect(textureRect, GetEgoBadgePath(cardModel.Rarity), material: null, show: true);
+        });
+
+        EnsureTemplateOverlay(cardNode, EgoBadge2NodeName, "EgoBadge2", () => CreateTextureOverlay(EgoBadge2Layout), configure: control =>
+        {
+            ApplyTemplateLayout(control, "EgoBadge2", EgoBadge2Layout);
+            if (control is TextureRect textureRect)
+                ApplyTextureRect(textureRect, $"{ChaosEffectsBasePath}deco_card_copy.png", material: null, show: false);
+            control.Visible = cardModel.Rarity == CardRarity.Ancient;
         });
 
         EnsureTemplateOverlay(cardNode, RarityBaseNodeName, "RarityBase", () => CreateTextureOverlay(RarityBaseLayout), configure: control =>
@@ -390,29 +448,78 @@ public static class CardCustomAncientFramePatch
         NCard cardNode,
         CardModel cardModel,
         TextureRect? energyIcon,
-        Control? energyLabel)
+        Control? energyLabelControl)
     {
+        CostAtlasVariant costVariant = GetCostAtlasVariant(energyLabelControl);
+
         EnsureTemplateOverlay(cardNode, CostLineNodeName, "CostLine", () => CreateTextureOverlay(CostLineLayout), configure: control =>
         {
             ApplyTemplateLayout(control, "CostLine", CostLineLayout);
             if (control is TextureRect textureRect)
-                ApplyTextureRect(textureRect, $"{ChaosEffectsBasePath}energy_line_default.png", material: null, show: true);
+                ApplyTextureRect(textureRect, GetEnergyLinePath(costVariant), material: null, show: true);
             BringToFront(control);
         });
 
-        string energyText = ResolveCostText(cardModel, energyLabel);
-        EnsureTemplateOverlay(cardNode, CostTextNodeName, "CostText", () => CreateLabelOverlay(CostTextLayout), configure: control =>
+        if (GetOverlayNode(cardNode, CostTextNodeName) is Label)
+            RemoveNode(cardNode, CostTextNodeName);
+
+        EnsureTemplateOverlay(cardNode, CostTextNodeName, "CostTextAtlasPreview", () => new Control
+        {
+            MouseFilter = Control.MouseFilterEnum.Ignore
+        }, configure: control =>
+        {
+            ApplyTemplateLayout(control, "CostTextAtlasPreview", CostTextLayout);
+            BringToFront(control);
+        });
+
+        if (GetOverlayNode(cardNode, CostTextFallbackNodeName) is { } existingFallback && existingFallback is not Label)
+            RemoveNode(cardNode, CostTextFallbackNodeName);
+
+        EnsureTemplateOverlay(cardNode, CostTextFallbackNodeName, "CostText", () => CreateLabelOverlay(CostTextLayout), configure: control =>
         {
             ApplyTemplateLayout(control, "CostText", CostTextLayout);
-            SetOverlayText(control, energyText, !string.IsNullOrWhiteSpace(energyText));
             BringToFront(control);
         });
 
         if (energyIcon != null)
             energyIcon.Hide();
 
-        if (energyLabel != null)
-            energyLabel.Hide();
+        if (energyLabelControl != null)
+            energyLabelControl.Hide();
+
+        string displayText = ResolveCostText(cardModel, energyLabelControl);
+        var preview = GetOverlayNode(cardNode, CostTextNodeName);
+        var fallbackLabel = GetOverlayNode(cardNode, CostTextFallbackNodeName) as Label;
+        if (preview == null || fallbackLabel == null)
+            return;
+
+        if (!string.IsNullOrWhiteSpace(displayText) && IsAtlasCostText(displayText))
+        {
+            // X exists only in the normal BMFont and intentionally does not change color.
+            CostAtlasVariant renderVariant = displayText.Contains('X') ? CostAtlasVariant.Normal : costVariant;
+            if (renderVariant != CostAtlasVariant.Normal && RenderCostDigits(preview, displayText, renderVariant))
+            {
+                preview.Show();
+                fallbackLabel.Hide();
+                return;
+            }
+        }
+
+        ClearCostDigits(preview);
+        preview.Hide();
+
+        if (string.IsNullOrWhiteSpace(displayText))
+        {
+            fallbackLabel.Hide();
+            return;
+        }
+
+        bool isXCost = displayText.Contains('X');
+        fallbackLabel.Text = GetFallbackCostText(displayText);
+        SyncFallbackCostTheme(
+            fallbackLabel,
+            isXCost ? GetTemplateNode<Label>("CostText") : energyLabelControl as Label);
+        fallbackLabel.Show();
     }
 
     private static void RemoveChaosEffects(NCard? cardNode, bool restoreOriginalState)
@@ -423,11 +530,13 @@ public static class CardCustomAncientFramePatch
         RemoveNode(cardNode, RarityBaseNodeName);
         RemoveNode(cardNode, RaritySubNodeName);
         RemoveNode(cardNode, EgoBadgeNodeName);
+        RemoveNode(cardNode, EgoBadge2NodeName);
         RemoveNode(cardNode, FrameSparkNodeName);
         RemoveNode(cardNode, CategoryIconNodeName);
         RemoveNode(cardNode, CategoryTextNodeName);
         RemoveNode(cardNode, CostLineNodeName);
         RemoveNode(cardNode, CostTextNodeName);
+        RemoveNode(cardNode, CostTextFallbackNodeName);
         RemoveNode(cardNode, CostOverlayRefreshNodeName);
         RemoveNode(cardNode, UpgradeIconNodeName);
         RemoveNode(cardNode, DescriptionMaskNodeName);
@@ -442,7 +551,8 @@ public static class CardCustomAncientFramePatch
         Func<Control?> fallbackCreate,
         Action<Control>? configure = null)
     {
-        Control? control = cardNode.GetNodeOrNull<Control>(runtimeNodeName);
+        Node overlayParent = GetOverlayParent(cardNode);
+        Control? control = GetOverlayNode(cardNode, runtimeNodeName);
         if (control == null)
         {
             control = DuplicateTemplateNode(templateNodeName) ?? fallbackCreate();
@@ -450,7 +560,12 @@ public static class CardCustomAncientFramePatch
                 return;
 
             control.Name = runtimeNodeName;
-            cardNode.AddChild(control);
+            overlayParent.AddChild(control);
+        }
+        else if (control.GetParent() != overlayParent)
+        {
+            control.GetParent()?.RemoveChild(control);
+            overlayParent.AddChild(control);
         }
 
         configure?.Invoke(control);
@@ -575,12 +690,59 @@ public static class CardCustomAncientFramePatch
 
     private static void RemoveNode(Node parent, string nodeName)
     {
-        parent.GetNodeOrNull<Node>(nodeName)?.QueueFree();
+        DestroyNodeImmediately(parent.GetNodeOrNull<Node>(nodeName));
+
+        if (parent is NCard cardNode)
+        {
+            Node overlayParent = GetOverlayParent(cardNode);
+            if (overlayParent != parent)
+                DestroyNodeImmediately(overlayParent.GetNodeOrNull<Node>(nodeName));
+        }
     }
 
     private static Control? GetOverlayNode(Node parent, string nodeName)
     {
-        return parent.GetNodeOrNull<Control>(nodeName);
+        Control? control;
+        if (parent is NCard cardNode)
+        {
+            Node overlayParent = GetOverlayParent(cardNode);
+            control = overlayParent.GetNodeOrNull<Control>(nodeName);
+            if (control == null && overlayParent != parent)
+                control = parent.GetNodeOrNull<Control>(nodeName);
+        }
+        else
+        {
+            control = parent.GetNodeOrNull<Control>(nodeName);
+        }
+
+        if (control == null)
+            return null;
+
+        if (!GodotObject.IsInstanceValid(control) || control.IsQueuedForDeletion())
+        {
+            DestroyNodeImmediately(control);
+            return null;
+        }
+
+        return control;
+    }
+
+    private static Node GetOverlayParent(NCard cardNode)
+    {
+        Control? body = cardNode.Body;
+        if (body != null && GodotObject.IsInstanceValid(body) && !body.IsQueuedForDeletion())
+            return body;
+
+        return cardNode;
+    }
+
+    private static void DestroyNodeImmediately(Node? node)
+    {
+        if (node == null || !GodotObject.IsInstanceValid(node))
+            return;
+
+        node.GetParent()?.RemoveChild(node);
+        node.Free();
     }
 
     private static void CaptureOriginalState(NCard cardNode)
@@ -744,6 +906,7 @@ public static class CardCustomAncientFramePatch
     {
         BringToFront(GetOverlayNode(cardNode, CostLineNodeName));
         BringToFront(GetOverlayNode(cardNode, CostTextNodeName));
+        BringToFront(GetOverlayNode(cardNode, CostTextFallbackNodeName));
     }
 
     private static Control? CreateTextureOverlay(NodeLayout layout)
@@ -793,6 +956,168 @@ public static class CardCustomAncientFramePatch
             MainFile.Logger.Warn($"[MeiLinCardFrame] Failed to resolve cost text for {cardModel.Id}: {ex}");
             return string.Empty;
         }
+    }
+
+    private static string GetFallbackCostText(string displayText)
+    {
+        // card_normal.fnt stores the uppercase X artwork in its legacy lowercase-x slot.
+        return displayText.Replace('X', 'x');
+    }
+
+    private static bool IsAtlasCostText(string text)
+    {
+        if (string.IsNullOrWhiteSpace(text))
+            return false;
+
+        foreach (char c in text)
+        {
+            if (!char.IsDigit(c) && c != 'X')
+                return false;
+        }
+
+        return true;
+    }
+
+    private static void SyncFallbackCostTheme(Label target, Label? source)
+    {
+        if (source == null)
+            return;
+
+        target.AddThemeColorOverride("font_color", source.GetThemeColor("font_color"));
+        target.AddThemeColorOverride("font_outline_color", source.GetThemeColor("font_outline_color"));
+        target.AddThemeConstantOverride("outline_size", source.GetThemeConstant("outline_size"));
+    }
+
+    private static CostAtlasVariant GetCostAtlasVariant(Control? energyLabelControl)
+    {
+        if (energyLabelControl is not Label label)
+            return CostAtlasVariant.Normal;
+
+        Color fontColor = label.GetThemeColor("font_color");
+        Color outlineColor = label.GetThemeColor("font_outline_color");
+        if (LooksLikeGreen(fontColor) || LooksLikeGreen(outlineColor))
+            return CostAtlasVariant.Green;
+        if (LooksLikeRed(fontColor) || LooksLikeRed(outlineColor))
+            return CostAtlasVariant.Red;
+
+        return CostAtlasVariant.Normal;
+    }
+
+    private static bool LooksLikeGreen(Color color)
+    {
+        return color.G >= 0.6f && color.G >= color.R + 0.08f && color.G >= color.B + 0.08f;
+    }
+
+    private static bool LooksLikeRed(Color color)
+    {
+        return color.R >= 0.6f && color.R >= color.G + 0.15f && color.R >= color.B + 0.15f;
+    }
+
+    private static bool RenderCostDigits(Control preview, string text, CostAtlasVariant variant)
+    {
+        ClearCostDigits(preview);
+
+        Dictionary<char, Rect2> digitRegions = GetDigitRegions(variant);
+        Texture2D? texture = LoadCostAtlasTexture(variant);
+        if (texture == null)
+        {
+            preview.Hide();
+            return false;
+        }
+
+        var visibleDigits = new List<char>(text.Length);
+        float totalSourceWidth = 0.0f;
+        float maxSourceHeight = 0.0f;
+
+        foreach (char c in text)
+        {
+            if (!digitRegions.TryGetValue(c, out Rect2 region))
+                continue;
+
+            visibleDigits.Add(c);
+            totalSourceWidth += region.Size.X;
+            maxSourceHeight = MathF.Max(maxSourceHeight, region.Size.Y);
+        }
+
+        if (visibleDigits.Count == 0 || totalSourceWidth <= 0.0f || maxSourceHeight <= 0.0f)
+        {
+            preview.Hide();
+            return false;
+        }
+
+        float scale = MathF.Min(preview.Size.Y / maxSourceHeight, preview.Size.X / totalSourceWidth);
+        if (scale <= 0.0f || float.IsNaN(scale) || float.IsInfinity(scale))
+        {
+            preview.Hide();
+            return false;
+        }
+
+        float startX = (preview.Size.X - totalSourceWidth * scale) * 0.5f;
+        float startY = (preview.Size.Y - maxSourceHeight * scale) * 0.5f;
+        float cursorX = startX;
+
+        for (int i = 0; i < visibleDigits.Count; i++)
+        {
+            Rect2 region = digitRegions[visibleDigits[i]];
+            var rect = new TextureRect
+            {
+                Name = $"CostDigit{i}",
+                MouseFilter = Control.MouseFilterEnum.Ignore,
+                Texture = new AtlasTexture
+                {
+                    Atlas = texture,
+                    Region = region
+                },
+                ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
+                StretchMode = TextureRect.StretchModeEnum.Scale,
+                Position = new Vector2(cursorX, startY),
+                Size = region.Size * scale
+            };
+            preview.AddChild(rect);
+            cursorX += region.Size.X * scale;
+        }
+
+        preview.Show();
+        return true;
+    }
+
+    private static void ClearCostDigits(Control preview)
+    {
+        foreach (Node child in preview.GetChildren())
+        {
+            if (child.Name.ToString().StartsWith("CostDigit", StringComparison.Ordinal))
+                DestroyNodeImmediately(child);
+        }
+    }
+
+    private static Texture2D? LoadCostAtlasTexture(CostAtlasVariant variant)
+    {
+        if (CostAtlasTextures.TryGetValue(variant, out Texture2D? cached) &&
+            cached != null && GodotObject.IsInstanceValid(cached))
+        {
+            return cached;
+        }
+
+        string path = variant switch
+        {
+            CostAtlasVariant.Green => $"{ChaosEffectsBasePath}card_green_0.png",
+            CostAtlasVariant.Red => $"{ChaosEffectsBasePath}card_red_0.png",
+            _ => $"{ChaosEffectsBasePath}card_normal_0.png"
+        };
+
+        Texture2D? texture = LoadResource<Texture2D>(path);
+        CostAtlasTextures[variant] = texture;
+        return texture;
+    }
+
+    private static Dictionary<char, Rect2> GetDigitRegions(CostAtlasVariant variant)
+    {
+        return variant switch
+        {
+            CostAtlasVariant.Green => GreenDigitRegions,
+            CostAtlasVariant.Red => RedDigitRegions,
+            _ => NormalDigitRegions
+        };
     }
 
     private static string ResolveTypeText(CardModel cardModel, Control? typeLabel)
@@ -917,6 +1242,34 @@ public static class CardCustomAncientFramePatch
         return $"{ChaosEffectsBasePath}{file}";
     }
 
+    private static string GetEgoBadgePath(CardRarity rarity)
+    {
+        string file = rarity switch
+        {
+            CardRarity.Basic => "card_ego_basic.png",
+            CardRarity.Common => "card_ego_basic.png",
+            CardRarity.Uncommon => "card_ego_narcissism.png",
+            CardRarity.Rare => "card_ego_instinct.png",
+            CardRarity.Ancient => "card_ego_all.png",
+            CardRarity.Token => "card_ego_creed.png",
+            _ => "card_ego_basic.png"
+        };
+
+        return $"{ChaosEffectsBasePath}{file}";
+    }
+
+    private static string GetEnergyLinePath(CostAtlasVariant variant)
+    {
+        string file = variant switch
+        {
+            CostAtlasVariant.Red => "energy_line_up.png",
+            CostAtlasVariant.Green => "energy_line_down.png",
+            _ => "energy_line_default.png"
+        };
+
+        return $"{ChaosEffectsBasePath}{file}";
+    }
+
     private static string GetRarityBasePath(CardRarity rarity)
     {
         string suffix = rarity switch
@@ -1022,6 +1375,13 @@ public static class CardCustomAncientFramePatch
     {
         public Vector2 Position => new(Left, Top);
         public Vector2 Size => new(Width, Height);
+    }
+
+    private enum CostAtlasVariant
+    {
+        Normal,
+        Green,
+        Red
     }
 
     private sealed class OriginalCardVisualState

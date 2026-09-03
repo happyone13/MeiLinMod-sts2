@@ -4,5 +4,20 @@
   "MEILINMOD_USE_CHAOS_CARD_DYNAMIC_PORTRAITS.title": "Enable Chaos Card Style",
   "MEILINMOD_USE_CHAOS_CARD_DYNAMIC_PORTRAITS.hover.desc": "On by default. When enabled, eligible cards use the Chaos frame and dynamic Spine portrait. When disabled, they use the normal version.",
   "MEILINMOD_USE_BATTLE_READY_OVERLAY.title": "Use Back Portrait",
-  "MEILINMOD_USE_COMBAT_EFFECTS.title": "Use Combat Effects"
+  "MEILINMOD_USE_COMBAT_EFFECTS.title": "Use Combat Effects",
+  "MEILINMOD_RITSU_PAGE.title": "Mei Lin Settings",
+  "MEILINMOD_RITSU_PAGE.description": "MeiLinMod settings registered through RitsuLib. These options share their configuration with Yuki/Chaos.",
+  "MEILINMOD_RITSU_SECTION_VISUALS.title": "Visuals",
+  "MEILINMOD_RITSU_BATTLE_READY_OVERLAY.title": "Back-Facing Portrait",
+  "MEILINMOD_RITSU_COMBAT_EFFECTS.title": "Combat Effects",
+  "MEILINMOD_RITSU_DYNAMIC_CARD_PORTRAITS.title": "Dynamic Card Art",
+  "MEILINMOD_RITSU_SECTION_PORTRAIT_TRANSFORM.title": "Back-Facing Portrait Position",
+  "MEILINMOD_RITSU_BATTLE_READY_SCALE.title": "Portrait Scale",
+  "MEILINMOD_RITSU_BATTLE_READY_OFFSET_X.title": "Portrait X Offset",
+  "MEILINMOD_RITSU_BATTLE_READY_OFFSET_Y.title": "Portrait Y Offset",
+  "MEILINMOD_RITSU_SECTION_AUDIO.title": "Audio",
+  "MEILINMOD_RITSU_VOICE_VOLUME.title": "Voice Volume",
+  "MEILINMOD_RITSU_SECTION_GAMEPLAY.title": "Gameplay",
+  "MEILINMOD_RITSU_GLOOMY_ENCOUNTER.title": "An Old Acquaintance",
+  "MEILINMOD_RITSU_GLOOMY_ENCOUNTER.description": "Enable this option and you may encounter an old acquaintance."
 }

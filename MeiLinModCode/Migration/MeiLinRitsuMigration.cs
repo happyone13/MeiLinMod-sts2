@@ -93,16 +93,18 @@ internal static class MeiLinRitsuMigration
             page =>
             {
                 page
-                    .WithTitle(ModSettingsText.Literal("美铃设置"))
+                    .WithTitle(SettingsText("MEILINMOD_RITSU_PAGE.title", "Mei Lin Settings"))
                     .WithModDisplayName(ModSettingsText.Literal("MeiLinMod"))
-                    .WithDescription(ModSettingsText.Literal("通过 RitsuLib 注册的 MeiLinMod 设置页。相关设置继续复用 Yuki/Chaos 共享配置。"));
+                    .WithDescription(SettingsText(
+                        "MEILINMOD_RITSU_PAGE.description",
+                        "MeiLinMod settings registered through RitsuLib. These options share their configuration with Yuki/Chaos."));
 
                 page.AddSection("visuals", section =>
                 {
-                    section.WithTitle(ModSettingsText.Literal("显示"));
+                    section.WithTitle(SettingsText("MEILINMOD_RITSU_SECTION_VISUALS.title", "Visuals"));
                     section.AddToggle(
                         "battle_ready_overlay",
-                        ModSettingsText.Literal("背身立绘"),
+                        SettingsText("MEILINMOD_RITSU_BATTLE_READY_OVERLAY.title", "Back-Facing Portrait"),
                         BoolBinding(
                             "battle_ready_overlay",
                             () => MeiLinSharedSettings.BattleReadyOverlayEnabled,
@@ -116,14 +118,14 @@ internal static class MeiLinRitsuMigration
                             }))
                         .AddToggle(
                             "combat_effects",
-                            ModSettingsText.Literal("战斗特效"),
+                            SettingsText("MEILINMOD_RITSU_COMBAT_EFFECTS.title", "Combat Effects"),
                             BoolBinding(
                                 "combat_effects",
                                 () => MeiLinSharedSettings.CombatEffectsEnabled,
                                 value => MeiLinSharedSettings.SetCombatEffectsEnabled(value, persist: true)))
                         .AddToggle(
                             "dynamic_card_portraits",
-                            ModSettingsText.Literal("动态卡图"),
+                            SettingsText("MEILINMOD_RITSU_DYNAMIC_CARD_PORTRAITS.title", "Dynamic Card Art"),
                             BoolBinding(
                                 "dynamic_card_portraits",
                                 () => MeiLinSharedSettings.DynamicCardPortraitsEnabled,
@@ -132,10 +134,12 @@ internal static class MeiLinRitsuMigration
 
                 page.AddSection("portrait_transform", section =>
                 {
-                    section.WithTitle(ModSettingsText.Literal("背身立绘调整"));
+                    section.WithTitle(SettingsText(
+                        "MEILINMOD_RITSU_SECTION_PORTRAIT_TRANSFORM.title",
+                        "Back-Facing Portrait Position"));
                     section.AddSlider(
                         "battle_ready_scale",
-                        ModSettingsText.Literal("立绘缩放"),
+                        SettingsText("MEILINMOD_RITSU_BATTLE_READY_SCALE.title", "Portrait Scale"),
                         DoubleBinding(
                             "battle_ready_scale",
                             () => MeiLinSharedSettings.BattleReadyScale,
@@ -150,7 +154,7 @@ internal static class MeiLinRitsuMigration
                         valueFormatter: value => value.ToString("0.00"))
                         .AddSlider(
                             "battle_ready_offset_x",
-                            ModSettingsText.Literal("立绘 X 偏移"),
+                            SettingsText("MEILINMOD_RITSU_BATTLE_READY_OFFSET_X.title", "Portrait X Offset"),
                             DoubleBinding(
                                 "battle_ready_offset_x",
                                 () => MeiLinSharedSettings.BattleReadyOffsetX,
@@ -165,7 +169,7 @@ internal static class MeiLinRitsuMigration
                             valueFormatter: value => value.ToString("0"))
                         .AddSlider(
                             "battle_ready_offset_y",
-                            ModSettingsText.Literal("立绘 Y 偏移"),
+                            SettingsText("MEILINMOD_RITSU_BATTLE_READY_OFFSET_Y.title", "Portrait Y Offset"),
                             DoubleBinding(
                                 "battle_ready_offset_y",
                                 () => MeiLinSharedSettings.BattleReadyOffsetY,
@@ -182,10 +186,10 @@ internal static class MeiLinRitsuMigration
 
                 page.AddSection("audio", section =>
                 {
-                    section.WithTitle(ModSettingsText.Literal("音频"));
+                    section.WithTitle(SettingsText("MEILINMOD_RITSU_SECTION_AUDIO.title", "Audio"));
                     section.AddSlider(
                         "voice_volume",
-                        ModSettingsText.Literal("语音音量"),
+                        SettingsText("MEILINMOD_RITSU_VOICE_VOLUME.title", "Voice Volume"),
                         DoubleBinding(
                             "voice_volume",
                             () => MeiLinSharedSettings.VoiceVolume,
@@ -198,18 +202,25 @@ internal static class MeiLinRitsuMigration
 
                 page.AddSection("gameplay", section =>
                 {
-                    section.WithTitle(ModSettingsText.Literal("游戏内容"));
+                    section.WithTitle(SettingsText("MEILINMOD_RITSU_SECTION_GAMEPLAY.title", "Gameplay"));
                     section.AddToggle(
                         "gloomy_encounter",
-                        ModSettingsText.Literal("一位旧识"),
+                        SettingsText("MEILINMOD_RITSU_GLOOMY_ENCOUNTER.title", "An Old Acquaintance"),
                         BoolBinding(
                             "gloomy_encounter",
                             () => GloomyEncounterSharedSettings.Enabled,
                             value => GloomyEncounterSharedSettings.SetEnabled(value, persist: true)),
-                        ModSettingsText.Literal("一位旧识，开启后你可能会遇到他"));
+                        SettingsText(
+                            "MEILINMOD_RITSU_GLOOMY_ENCOUNTER.description",
+                            "Enable this option and you may encounter an old acquaintance."));
                 });
             },
             SettingsPageId);
+    }
+
+    private static ModSettingsText SettingsText(string key, string fallback)
+    {
+        return ModSettingsText.LocString("settings_ui", key, fallback);
     }
 
     private static IModSettingsValueBinding<bool> BoolBinding(

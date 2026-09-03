@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using MeiLinMod.MeiLinModCode.Cards;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Powers;
@@ -29,7 +29,7 @@ public class QuanXinQuanLingPower : MeiLinModPower
         return true;
     }
 
-#if STS2_109 || STS2_110
+#if STS2_109 || STS2_110 || STS2_111
     public override CardLocation ModifyCardPlayResultLocation(
         CardModel card,
         bool isAutoPlay,

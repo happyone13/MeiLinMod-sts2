@@ -74,9 +74,49 @@ public sealed class LocalizationTests : CombatTestSuite
 
     private static void AssertCoreKeysExist(string language)
     {
-        AssertLoc(language, "characters", "MEILINMOD_MEI_LIN_MOD.title");
-        AssertLoc(language, "characters", "MEILINMOD_MEI_LIN_MOD.titleObject");
-        AssertLoc(language, "characters", "MEILINMOD_MEI_LIN_MOD.description");
+        foreach (var suffix in new[]
+                 {
+                     "aromaPrinciple",
+                     "banter.alive.endTurnPing",
+                     "banter.dead.endTurnPing",
+                     "cardsModifierDescription",
+                     "cardsModifierTitle",
+                     "description",
+                     "eventDeathPrevention",
+                     "goldMonologue",
+                     "possessiveAdjective",
+                     "pronounObject",
+                     "pronounPossessive",
+                     "pronounSubject",
+                     "title",
+                     "titleObject",
+                     "unlockText"
+                 })
+        {
+            AssertLoc(language, "characters", $"MEILINMOD_MEI_LIN_MOD.{suffix}");
+        }
+
+        foreach (var key in new[]
+                 {
+                     "MEILINMOD_RITSU_PAGE.title",
+                     "MEILINMOD_RITSU_PAGE.description",
+                     "MEILINMOD_RITSU_SECTION_VISUALS.title",
+                     "MEILINMOD_RITSU_BATTLE_READY_OVERLAY.title",
+                     "MEILINMOD_RITSU_COMBAT_EFFECTS.title",
+                     "MEILINMOD_RITSU_DYNAMIC_CARD_PORTRAITS.title",
+                     "MEILINMOD_RITSU_SECTION_PORTRAIT_TRANSFORM.title",
+                     "MEILINMOD_RITSU_BATTLE_READY_SCALE.title",
+                     "MEILINMOD_RITSU_BATTLE_READY_OFFSET_X.title",
+                     "MEILINMOD_RITSU_BATTLE_READY_OFFSET_Y.title",
+                     "MEILINMOD_RITSU_SECTION_AUDIO.title",
+                     "MEILINMOD_RITSU_VOICE_VOLUME.title",
+                     "MEILINMOD_RITSU_SECTION_GAMEPLAY.title",
+                     "MEILINMOD_RITSU_GLOOMY_ENCOUNTER.title",
+                     "MEILINMOD_RITSU_GLOOMY_ENCOUNTER.description"
+                 })
+        {
+            AssertLoc(language, "settings_ui", key);
+        }
 
         foreach (var type in GetConcreteModTypes<MeiLinModCard>())
         {

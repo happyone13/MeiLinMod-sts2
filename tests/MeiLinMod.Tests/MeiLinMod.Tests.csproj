@@ -12,7 +12,7 @@
     <Sts2TestModId>MeiLinMod.Tests</Sts2TestModId>
     <Sts2TestModName>MeiLinMod.Tests</Sts2TestModName>
     <Sts2TestModAuthor>lozalia</Sts2TestModAuthor>
-    <Sts2TestMinGameVersion>v0.110.0</Sts2TestMinGameVersion>
+    <Sts2TestMinGameVersion>v0.111.0</Sts2TestMinGameVersion>
     <Sts2TestMainModMinVersion>v0.3.1</Sts2TestMainModMinVersion>
     <Sts2TestTheSpireMinVersion>0.1.0</Sts2TestTheSpireMinVersion>
     <Sts2XunitAssertMinVersion>3.2.2</Sts2XunitAssertMinVersion>
@@ -38,7 +38,7 @@
     <CompilerVisibleProperty Include="GodotSourceGenerators" />
     <CompilerVisibleProperty Include="IsGodotToolsProject" />
     <ProjectReference Include="../../MeiLinMod.csproj" />
-    <PackageReference Include="STS2.RitsuLib" Version="0.5.0" PrivateAssets="all" />
+    <PackageReference Include="STS2.RitsuLib" Version="0.5.11" PrivateAssets="all" />
     <PackageReference Include="TestTheSpire" Version="0.1.0" />
   </ItemGroup>
 

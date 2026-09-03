@@ -51,10 +51,21 @@ public sealed class OptionalCardVisualPatchTests : CombatTestSuite
     {
         await InitializeBattle();
 
-        var dynamicCards = GetConcreteCardModels()
-            .Where(card => card.UsesDynamicChaosFrame || card.UseCustomAncientFrame || !string.IsNullOrWhiteSpace(card.CustomSpinePortraitScenePath))
+        var allCards = GetConcreteCardModels()
             .OrderBy(card => card.GetType().Name, StringComparer.Ordinal)
             .ToArray();
+        var dynamicCards = allCards
+            .Where(card => card.UsesDynamicChaosFrame || !string.IsNullOrWhiteSpace(card.CustomSpinePortraitScenePath))
+            .OrderBy(card => card.GetType().Name, StringComparer.Ordinal)
+            .ToArray();
+
+        Assert.All(allCards, card =>
+        {
+            Assert.True(card.UseCustomAncientFrame, $"{card.GetType().Name} must use the unified full-frame presentation.");
+            Assert.Equal(SpinePortraitSlot.Ancient, card.CustomSpinePortraitSlot);
+            AssertResourcePathExists(card.CustomAncientBorderMaterialPath);
+            AssertResourcePathExists(card.CustomAncientBannerMaterialPath);
+        });
 
         Assert.Equal(
             [
@@ -88,7 +99,13 @@ public sealed class OptionalCardVisualPatchTests : CombatTestSuite
 
         Assert.Contains("EnsureTemplateOverlay(cardNode, CostLineNodeName", source);
         Assert.Contains("EnsureTemplateOverlay(cardNode, CostTextNodeName", source);
-        Assert.Contains("SetOverlayText(control, energyText", source);
+        Assert.Contains("EnsureTemplateOverlay(cardNode, CostTextFallbackNodeName", source);
+        Assert.Contains("\"CostTextAtlasPreview\"", source);
+        Assert.Contains("GetCostAtlasVariant(energyLabelControl)", source);
+        Assert.Contains("card_green_0.png", source);
+        Assert.Contains("card_red_0.png", source);
+        Assert.Contains("energy_line_up.png", source);
+        Assert.Contains("energy_line_down.png", source);
         Assert.Contains("BringCostOverlayToFront(cardNode);", source);
         Assert.Contains("EnsureCostOverlayRefresh(cardNode);", source);
         Assert.Contains("return ((Control)cardNode).GetGlobalTransform().Scale.Y > 1.1f;", source);
@@ -96,6 +113,45 @@ public sealed class OptionalCardVisualPatchTests : CombatTestSuite
         Assert.Contains("EnsureTemplateOverlay(cardNode, CategoryTextNodeName", source);
         Assert.Contains("SetOverlayText(control, typeText", source);
         Assert.Contains("typeLabel.Hide();", source);
+        Assert.Contains("ancientPortrait.Texture = cardNode!.Model?.Portrait;", source);
+        Assert.Contains("ancientPortrait.StretchMode = TextureRect.StretchModeEnum.Scale;", source);
+        Assert.Contains("Node overlayParent = GetOverlayParent(cardNode);", source);
+        Assert.Contains("Control? body = cardNode.Body;", source);
+        Assert.Contains("DestroyNodeImmediately(parent.GetNodeOrNull<Node>(nodeName));", source);
+        Assert.Contains("banner.Material = null;", source);
+        Assert.Contains("ApplyTextureRect(ancientTextBg, GetAncientTextBgPath(cardModel.Type), frameMaterial, show: true);", source);
+        Assert.Contains("RemoveNode(cardNode, DescriptionMaskNodeName);", source);
+        Assert.Contains("GetEgoBadgePath(cardModel.Rarity)", source);
+        Assert.Contains("CardRarity.Uncommon => \"card_ego_narcissism.png\"", source);
+        Assert.Contains("CardRarity.Rare => \"card_ego_instinct.png\"", source);
+        Assert.Contains("CardRarity.Ancient => \"card_ego_all.png\"", source);
+        Assert.Contains("EgoBadge2NodeName", source);
+        Assert.Contains("deco_card_copy.png", source);
+        Assert.Contains("control.Visible = cardModel.Rarity == CardRarity.Ancient;", source);
+        Assert.Contains("CardTitleLayout = new(-77.0f, -213.0f, 209.0f, 58.0f);", source);
+        Assert.Contains("CategoryIconLayout = new(-69.0f, -160.0f, 28.0f, 28.0f);", source);
+        Assert.Contains("CategoryTextLayout = new(-45.0f, -163.0f, 76.0f, 32.0f);", source);
+        Assert.Contains("ancientBorder?.Hide();", source);
+        Assert.Contains("ancientHighlight?.Hide();", source);
+
+        var template = File.ReadAllText(RepoFile("MeiLinMod", "scenes", "cards", "chaos_card_effects_frame_template.tscn"));
+        Assert.Contains("[node name=\"CategoryIcon\" type=\"TextureRect\" parent=\"CardContainer\"]", template);
+        Assert.Contains("offset_left = -69.0", template);
+        Assert.Contains("offset_right = -41.0", template);
+        Assert.Contains("offset_bottom = -141.0", template);
+        Assert.Contains("expand_mode = 1", template);
+
+        int titleStart = template.IndexOf("[node name=\"CardTitle\"", StringComparison.Ordinal);
+        int categoryIconStart = template.IndexOf("[node name=\"CategoryIcon\"", titleStart, StringComparison.Ordinal);
+        Assert.True(titleStart >= 0 && categoryIconStart > titleStart);
+        string titleSection = template[titleStart..categoryIconStart];
+        Assert.Contains("offset_left = -77.0", titleSection);
+        Assert.Contains("offset_top = -213.0", titleSection);
+        Assert.DoesNotContain("horizontal_alignment = 1", titleSection);
+
+        var costFont = File.ReadAllText(RepoFile("MeiLinMod", "images", "cards", "card_effects", "card_normal.fnt"));
+        Assert.Contains("char id=49   x=158   y=4     width=78    height=87", costFont);
+        Assert.Contains("yoffset=4", costFont);
     }
 
     private async Task InitializeBattle()

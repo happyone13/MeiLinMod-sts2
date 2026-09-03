@@ -25,11 +25,11 @@ public abstract class MeiLinModCard(int cost, CardType type, CardRarity rarity, 
         "res://MeiLinMod/materials/cards/banners/card_banner_chaos_mat.tres";
 
     protected string IdPortraitPath => $"{GetType().ToSnakeCaseAssetStem()}.png".CardImagePathOrDefault();
-    // The "big portrait" slot now reuses the regular small portrait asset.
+    // Static and full-art slots share the same 606x852 source image, matching YukiMod's
+    // unified full-frame card presentation.
     protected string IdBigPortraitPath => $"{GetType().ToSnakeCaseAssetStem()}.png".BigCardImagePathOrDefault();
 
-    // CustomPortraitPath is still the full-art hook, but it now resolves to the same
-    // small portrait asset as the regular portrait slot.
+    // CustomPortraitPath is the full-art hook and resolves to the same vertical source.
     public override string? CustomPortraitPath => IdBigPortraitPath;
 
     //Smaller variants of card images for efficiency:
@@ -39,11 +39,11 @@ public abstract class MeiLinModCard(int cost, CardType type, CardRarity rarity, 
     //Uses card_portraits/card_name.png as image path. These should be smaller images.
     public override string? CustomBetaPortraitPath => null;
     public virtual string? CustomSpinePortraitScenePath => null;
-    public virtual SpinePortraitSlot CustomSpinePortraitSlot => SpinePortraitSlot.Normal;
-    public virtual bool UseCustomAncientFrame => false;
+    public virtual SpinePortraitSlot CustomSpinePortraitSlot => SpinePortraitSlot.Ancient;
+    public virtual bool UseCustomAncientFrame => true;
     public virtual bool UsesDynamicChaosFrame => false;
-    public override string? CustomAncientBorderMaterialPath => null;
-    public override string? CustomAncientBannerMaterialPath => null;
+    public override string? CustomAncientBorderMaterialPath => ChaosAncientFrameMaterialPath;
+    public override string? CustomAncientBannerMaterialPath => ChaosAncientBannerMaterialPath;
     protected virtual string? CombatTimelineName => Type switch
     {
         CardType.Power => "u4_buff",
