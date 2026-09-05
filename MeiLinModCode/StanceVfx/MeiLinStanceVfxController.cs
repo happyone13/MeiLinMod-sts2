@@ -24,9 +24,9 @@ public sealed class MeiLinStanceVfxController
         yield return GuardAuraScenePath;
     }
 
-    public static void PreloadStanceEffects()
+    public static MeiLinMod.MeiLinModCode.Vfx.MeiLinVfxPrewarmReport PreloadStanceEffects()
     {
-        MeiLinMod.MeiLinModCode.Vfx.MeiLinVfxHelper.Prewarm(GetPreloadScenePaths());
+        return MeiLinMod.MeiLinModCode.Vfx.MeiLinVfxHelper.Prewarm(GetPreloadScenePaths());
     }
 
     public async Task SetAura(Creature owner, string? auraScenePath)

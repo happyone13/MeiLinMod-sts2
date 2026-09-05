@@ -138,7 +138,7 @@ public sealed class OptionalCardVisualPatchTests : CombatTestSuite
         Assert.Contains("[node name=\"CategoryIcon\" type=\"TextureRect\" parent=\"CardContainer\"]", template);
         Assert.Contains("offset_left = -69.0", template);
         Assert.Contains("offset_right = -41.0", template);
-        Assert.Contains("offset_bottom = -141.0", template);
+        Assert.Contains("offset_bottom = -132.0", template);
         Assert.Contains("expand_mode = 1", template);
 
         int titleStart = template.IndexOf("[node name=\"CardTitle\"", StringComparison.Ordinal);

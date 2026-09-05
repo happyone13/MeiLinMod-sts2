@@ -2,6 +2,10 @@ using MeiLinMod.MeiLinModCode.Migration;
 using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.Extensions;
 using MeiLinMod.MeiLinModCode.Vfx;
+using MeiLinMod.MeiLinModCode.Mechanics.Settings;
+using MeiLinMod.MeiLinModCode.Config;
+using MeiLinMod.MeiLinModCode.Services;
+using MeiLinCharacterModel = MeiLinMod.MeiLinModCode.Character.MeiLinMod;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Localization;
@@ -19,6 +23,7 @@ public enum SpinePortraitSlot
 public abstract class MeiLinModCard(int cost, CardType type, CardRarity rarity, TargetType target) :
     ModCardTemplate(cost, type, rarity, target)
 {
+    protected bool UltimateCinematicPlayedForCurrentPlay { get; private set; }
     protected const string ChaosAncientFrameMaterialPath =
         "res://MeiLinMod/materials/cards/frames/card_frame_chaos_mat.tres";
     protected const string ChaosAncientBannerMaterialPath =
@@ -53,6 +58,9 @@ public abstract class MeiLinModCard(int cost, CardType type, CardRarity rarity, 
 
     protected Task PlayPowerCastAnim()
     {
+        if (UltimateCinematicPlayedForCurrentPlay)
+            return Task.CompletedTask;
+
         if (Type != CardType.Power || Owner?.Creature == null || Owner.Character == null)
             return Task.CompletedTask;
 
@@ -66,8 +74,44 @@ public abstract class MeiLinModCard(int cost, CardType type, CardRarity rarity, 
 
     public override async Task BeforeCardPlayed(CardPlay cardPlay)
     {
-        if (cardPlay.Card != this || Owner?.Creature == null)
+        UltimateCinematicPlayedForCurrentPlay = false;
+        if (cardPlay.Card != this || Owner?.Creature == null || Owner.Character is not MeiLinCharacterModel)
             return;
+
+        if (MeiLinModConfig.UseCombatEffects && MeiLinSharedSettings.UltimateCinematicsEnabled && ShouldPlayUxCinematic())
+        {
+            MeiLinAudioService.SuppressNextDefaultCastSfx(Owner);
+            MeiLinAudioService.TryPlayUxVoice(Owner);
+            MeiLinAudioService.TryPlayUxSound(Owner);
+            bool played = false;
+            await MeiLinUxPresentation.PlayAsync(Owner.Creature, [], cinematic =>
+            {
+                played = cinematic;
+                return Task.CompletedTask;
+            });
+            UltimateCinematicPlayedForCurrentPlay = played;
+            if (played)
+                return;
+        }
+
+        if (MeiLinModConfig.UseCombatEffects && MeiLinSharedSettings.UltimateCinematicsEnabled && ShouldPlayUgCinematic())
+        {
+            MeiLinAudioService.SuppressNextDefaultAttackSfx(Owner);
+            MeiLinAudioService.TryPlayUgAttackVoice(Owner);
+            MeiLinAudioService.TryPlayUgAttackSound(Owner);
+            var targets = cardPlay.Target != null
+                ? new[] { cardPlay.Target }
+                : CombatState?.HittableEnemies.ToArray() ?? [];
+            bool played = false;
+            await MeiLinUgPresentation.PlayAsync(Owner.Creature, targets, cinematic =>
+            {
+                played = cinematic;
+                return Task.CompletedTask;
+            });
+            UltimateCinematicPlayedForCurrentPlay = played;
+            if (played)
+                return;
+        }
 
         if (Type == CardType.Attack)
         {
@@ -77,6 +121,33 @@ public abstract class MeiLinModCard(int cost, CardType type, CardRarity rarity, 
 
         if (Type == CardType.Skill)
             await PlayConfiguredTimeline(cardPlay.Target);
+    }
+
+    private bool ShouldPlayUxCinematic()
+    {
+        if (this is ZuiZhongAoYiYanLongJiangLin or ShenGongFangYiTi)
+            return true;
+
+        return Type == CardType.Power
+            && !EnergyCost.CostsX
+            && EnergyCost.GetWithModifiers(CostModifiers.All) >= 3;
+    }
+
+    private bool ShouldPlayUgCinematic()
+    {
+        if (Type != CardType.Attack
+            || !DynamicVars.ContainsKey("Damage")
+            || DynamicVars.Damage.BaseValue <= 100m)
+            return false;
+
+        return this is not LianYun
+            and not ShanDianWuLianBian
+            and not ShengLongJiao
+            and not ShuangLongChuHai
+            and not YanLongJiangLin
+            and not YiQiHeCheng
+            and not KaiTian
+            and not ShanHe;
     }
 
     protected Task PlayConfiguredTimeline()

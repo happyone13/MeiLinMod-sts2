@@ -45,9 +45,9 @@ public static class MeiLinAttackMovementController
         yield return MovementEffectBackScenePath;
     }
 
-    public static void PreloadMovementEffects()
+    public static MeiLinVfxPrewarmReport PreloadMovementEffects()
     {
-        MeiLinVfxHelper.Prewarm(GetPreloadScenePaths());
+        return MeiLinVfxHelper.Prewarm(GetPreloadScenePaths());
     }
 
     public static async Task MoveToTargetIfNeededAsync(Creature caster, Creature? target)

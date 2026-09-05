@@ -716,7 +716,7 @@ large_texture_warning
 - CFX 的 `attach`/骨骼挂点尚未实现，当前所有 layer 都按 CFX 坐标放在复合场景里。
 - `skill_x` 已按约定跳过；因此 `meilin_vfx_commands.json` 中剩余缺失场景只有 `meirin_1027_skill_x_eff_1` 和 `meirin_1027_skill_x_eff_screen`。
 - `1027.srmd` 中存在 `SCREEN`、`FOR_CENTER`、`TARGET` 这类空 `file_name` 的逻辑事件；它们不是资源缺失，当前 coordinator 会跳过空资源事件，后续需要在接大范围屏幕层时按 `type` 解释为屏幕层、中心层或目标锚点。
-- 当前 command coordinator 已能触发角色模型动画、首个 hit 等待和特效播放；实际伤害仍由卡牌/原游戏命令执行，震屏、hitstop 和 close-combat 位移尚未接入。
+- 当前 command coordinator 已能触发角色模型动画、首个 hit 等待和特效播放；实际伤害仍由卡牌/原游戏命令执行，震屏、hitstop 和 close-combat 位移均已接入。
 
 ## 当前从 model_data 拼出的时序结论
 
@@ -741,4 +741,11 @@ large_texture_warning
 1. `MeiLinVfxHelper` 继续只负责播放单个已生成 `.tscn`，处理 delay、Spine、粒子、follow 和自动释放。
 2. `MeiLinCommandVfxCoordinator` 读取 `meilin_vfx_commands.json`，按 command 实例化多个 effect，并按 `ani` 播放角色动画、按 `hit.delay/motion_delay` 对齐卡牌逻辑。
 3. 战斗动画 patch 保留原有攻击动画队列，同时只在旁路播放攻击特效，避免和 `DamageCmd.Attack` 的伤害流程冲突。攻击序列规则为：1 hit = `attack_play1`；2 hit = `attack_play1, attack_play2`；3 hit = `attack_play1, attack_play2, attack_play1`；超过 3 hit = 前面 `1/2` 交替，最后 `u2_attack_play` 收尾。
-4. 后续仍需在动作层补齐震屏、hitstop 和 close-combat 位移。
+4. coordinator 已按配置触发震屏和 hitstop；攻击 patch 通过 `MeiLinAttackMovementController` 处理 close-combat 前移、绘制层快照与回位恢复。
+
+## 运行时硬化约定
+
+- 每条 command set / command sequence 共用一个按施法者区分的 timeline generation。新的时间轴启动后，旧时间轴尚未到达的命中回调、结束动画和回待机操作必须失效；已经生成的纯视觉尾迹可以自然播放完。
+- 攻击伤害仍由原版 `AttackCommand` 执行。`MeiLinTriggerAnimPatch` 只在配置的首个 hit delay 到达后结束 `TriggerAnim` 等待，因此伤害点已经与视觉命中拍对齐，不再额外叠加 `BeforeDamage` 闸门。
+- 启动预热必须输出汇总结果：去重后的请求数、成功加载数和失败数。缺失资源保留逐路径日志，汇总用于判断是否值得对高频场景进一步做战斗上下文深度预热。
+- 高频攻击和位移场景还会在 `NCombatRoom._Ready` 后执行战斗上下文深度预热：先等两帧，再逐场景以 `0.001` 根节点透明度走真实实例化/播放入口，保留两帧用于提交首帧绘制，然后释放并让出一帧。任务绑定房间实例与 generation；切换战斗、关闭战斗特效或容器失效时，旧任务立即停止，避免跨房间异步污染。

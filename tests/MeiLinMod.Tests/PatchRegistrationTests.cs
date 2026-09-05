@@ -69,8 +69,8 @@ public sealed class PatchRegistrationTests : CombatTestSuite
         }
 
         Assert.Empty(unresolvedTargets);
-        Assert.Equal(36, patchTypes.Length);
-        Assert.Equal(38, resolvedTargetCount);
+        Assert.Equal(37, patchTypes.Length);
+        Assert.Equal(39, resolvedTargetCount);
     }
 
     [Fact]
@@ -146,6 +146,7 @@ public sealed class PatchRegistrationTests : CombatTestSuite
             "optional-combat-animation",
             "optional combat animation",
             [
+                "MeiLinBattleVfxWarmPatch",
                 "MeiLinTriggerAnimPatch"
             ]);
         AssertPatchGroup(

@@ -1,0 +1,104 @@
+
+meirin_1027_ug_bg.png
+size: 1904,1168
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bg
+  rotate: true
+  xy: 1550, 108
+  size: 474, 216
+  orig: 474, 216
+  offset: 0, 0
+  index: -1
+speed_04
+  rotate: false
+  xy: 1768, 74
+  size: 92, 508
+  orig: 92, 508
+  offset: 0, 0
+  index: -1
+speed_05
+  rotate: true
+  xy: 1270, 2
+  size: 69, 495
+  orig: 69, 495
+  offset: 0, 0
+  index: -1
+speed_07
+  rotate: false
+  xy: 1270, 73
+  size: 278, 509
+  orig: 278, 509
+  offset: 0, 0
+  index: -1
+speed_liine1_0
+  rotate: false
+  xy: 2, 874
+  size: 632, 288
+  orig: 632, 288
+  offset: 0, 0
+  index: -1
+speed_liine1_1
+  rotate: false
+  xy: 2, 584
+  size: 632, 288
+  orig: 632, 288
+  offset: 0, 0
+  index: -1
+speed_liine1_2
+  rotate: false
+  xy: 636, 874
+  size: 632, 288
+  orig: 632, 288
+  offset: 0, 0
+  index: -1
+speed_liine1_3
+  rotate: false
+  xy: 2, 294
+  size: 632, 288
+  orig: 632, 288
+  offset: 0, 0
+  index: -1
+speed_liine1_4
+  rotate: false
+  xy: 636, 584
+  size: 632, 288
+  orig: 632, 288
+  offset: 0, 0
+  index: -1
+speed_liine2_0
+  rotate: false
+  xy: 1270, 874
+  size: 632, 288
+  orig: 632, 288
+  offset: 0, 0
+  index: -1
+speed_liine2_1
+  rotate: false
+  xy: 2, 4
+  size: 632, 288
+  orig: 632, 288
+  offset: 0, 0
+  index: -1
+speed_liine2_2
+  rotate: false
+  xy: 636, 294
+  size: 632, 288
+  orig: 632, 288
+  offset: 0, 0
+  index: -1
+speed_liine2_3
+  rotate: false
+  xy: 1270, 584
+  size: 632, 288
+  orig: 632, 288
+  offset: 0, 0
+  index: -1
+speed_liine2_4
+  rotate: false
+  xy: 636, 4
+  size: 632, 288
+  orig: 632, 288
+  offset: 0, 0
+  index: -1

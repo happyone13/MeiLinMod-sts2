@@ -27,8 +27,14 @@ public partial class MainFile : Node
         MeiLinSharedSettings.EnsureSettingsLoaded();
         GloomyEncounterSharedSettings.RegisterProvider(ModId);
         CardSpinePortraitPatch.PreloadDynamicPortraitScenes();
-        MeiLinCommandVfxCoordinator.PreloadConfiguredScenes();
-        MeiLinAttackMovementController.PreloadMovementEffects();
-        MeiLinStanceVfxController.PreloadStanceEffects();
+        MeiLinUgPresentation.Preload();
+        MeiLinUxPresentation.Preload();
+        MeiLinVfxPrewarmReport prewarm =
+            MeiLinCommandVfxCoordinator.PreloadConfiguredScenes() +
+            MeiLinAttackMovementController.PreloadMovementEffects() +
+            MeiLinStanceVfxController.PreloadStanceEffects();
+        Logger.Info(
+            $"[MeiLinVfx] Startup prewarm summary. loaded={prewarm.Loaded}/{prewarm.Requested}, " +
+            $"failed={prewarm.Failed}");
     }
 }

@@ -1,0 +1,61 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://MeiLinMod/scenes/vfx/ug/ug_stage.gd" id="script"]
+[ext_resource type="SpineSkeletonDataResource" path="res://MeiLinMod/spine/q/q.tres" id="actor"]
+[ext_resource type="PackedScene" path="res://MeiLinMod/scenes/vfx/generated/ug_attack/meirin_1027_skill_2_ready.tscn" id="fx0"]
+[ext_resource type="PackedScene" path="res://MeiLinMod/scenes/vfx/generated/ug_attack/meirin_1027_skill_2_wing.tscn" id="fx1"]
+[ext_resource type="PackedScene" path="res://MeiLinMod/scenes/vfx/ug/meirin_1027_ug_attack_cutin_eff.tscn" id="fx2"]
+[ext_resource type="PackedScene" path="res://MeiLinMod/scenes/vfx/generated/ug_attack/meirin_1027_skill_2_play.tscn" id="fx3"]
+[ext_resource type="PackedScene" path="res://MeiLinMod/scenes/vfx/generated/ug_attack/meirin_1027_skill_2_screen.tscn" id="fx4"]
+[ext_resource type="PackedScene" path="res://MeiLinMod/scenes/vfx/generated/ug_attack/meirin_1027_skill_2_impact.tscn" id="fx5"]
+[ext_resource type="PackedScene" path="res://MeiLinMod/scenes/vfx/generated/ug_attack/meirin_1027_unique_technical_attack_play_target.tscn" id="fx6"]
+[ext_resource type="PackedScene" path="res://MeiLinMod/scenes/vfx/generated/ug_attack/meirin_1027_unique_technical_attack_play_botglow.tscn" id="fx7"]
+[ext_resource type="PackedScene" path="res://MeiLinMod/scenes/vfx/generated/ug_attack/meirin_1027_skill_2_burst.tscn" id="fx8"]
+[ext_resource type="PackedScene" path="res://MeiLinMod/scenes/vfx/generated/ug_attack/meirin_1027_skill_2_impact2.tscn" id="fx9"]
+[ext_resource type="PackedScene" path="res://MeiLinMod/scenes/vfx/generated/common/meirin_attack_play_target.tscn" id="fx10"]
+[ext_resource type="PackedScene" path="res://MeiLinMod/scenes/vfx/generated/ug_attack/meirin_1027_ug_attack_end_f.tscn" id="fx11"]
+[ext_resource type="PackedScene" path="res://MeiLinMod/scenes/vfx/generated/ug_attack/meirin_1027_ug_attack_end_b.tscn" id="fx12"]
+[node name="UgPresentation" type="CanvasLayer"]
+layer = 4090
+script = ExtResource("script")
+config_path = "res://MeiLinMod/scenes/vfx/ug/timeline.json"
+[node name="Stage" type="Node2D" parent="."]
+[node name="Blackout" type="ColorRect" parent="Stage"]
+offset_left = -4096.0
+offset_top = -4096.0
+offset_right = 4096.0
+offset_bottom = 4096.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+z_index = -4096
+[node name="World" type="Node2D" parent="Stage"]
+[node name="Actor" type="SpineSprite" parent="Stage/World"]
+skeleton_data_res = ExtResource("actor")
+position = Vector2(-320, 175)
+visible = false
+z_index = 0
+[node name="Fx0" parent="Stage/World" instance=ExtResource("fx0")]
+visible = false
+[node name="Fx1" parent="Stage/World" instance=ExtResource("fx1")]
+visible = false
+[node name="Fx2" parent="Stage" instance=ExtResource("fx2")]
+visible = false
+[node name="Fx3" parent="Stage/World" instance=ExtResource("fx3")]
+visible = false
+[node name="Fx4" parent="Stage" instance=ExtResource("fx4")]
+visible = false
+[node name="Fx5" parent="Stage/World" instance=ExtResource("fx5")]
+visible = false
+[node name="Fx6" parent="Stage/World" instance=ExtResource("fx6")]
+visible = false
+[node name="Fx7" parent="Stage/World" instance=ExtResource("fx7")]
+visible = false
+[node name="Fx8" parent="Stage/World" instance=ExtResource("fx8")]
+visible = false
+[node name="Fx9" parent="Stage/World" instance=ExtResource("fx9")]
+visible = false
+[node name="Fx10" parent="Stage/World" instance=ExtResource("fx10")]
+visible = false
+[node name="Fx11" parent="Stage/World" instance=ExtResource("fx11")]
+visible = false
+[node name="Fx12" parent="Stage/World" instance=ExtResource("fx12")]
+visible = false

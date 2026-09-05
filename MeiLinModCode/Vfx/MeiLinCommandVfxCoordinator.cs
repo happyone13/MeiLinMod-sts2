@@ -87,13 +87,13 @@ public static class MeiLinCommandVfxCoordinator
         return config != null && config.Commands.TryGetValue(commandName, out command!);
     }
 
-    public static void PreloadConfiguredScenes()
+    public static MeiLinVfxPrewarmReport PreloadConfiguredScenes()
     {
         try
         {
             var config = LoadConfig();
             if (config == null)
-                return;
+                return MeiLinVfxPrewarmReport.Empty;
 
             var scenePaths = config.Commands.Values
                 .SelectMany(command => command.Effects)
@@ -101,13 +101,32 @@ public static class MeiLinCommandVfxCoordinator
                 .Where(path => !string.IsNullOrWhiteSpace(path))
                 .Distinct(StringComparer.Ordinal);
 
-            MeiLinVfxHelper.Prewarm(scenePaths!);
-            MainFile.Logger.Info($"[MeiLinVfx] Configured VFX scenes preloaded. commands={config.Commands.Count}");
+            MeiLinVfxPrewarmReport report = MeiLinVfxHelper.Prewarm(scenePaths!);
+            MainFile.Logger.Info(
+                $"[MeiLinVfx] Configured VFX scenes preloaded. commands={config.Commands.Count}, " +
+                $"loaded={report.Loaded}/{report.Requested}, failed={report.Failed}");
+            return report;
         }
         catch (Exception ex)
         {
             MainFile.Logger.Info($"[MeiLinVfx] Preload failed. ex={ex.GetType().Name}: {ex.Message}");
+            return MeiLinVfxPrewarmReport.Empty;
         }
+    }
+
+    public static IEnumerable<string> GetBattleWarmScenePaths()
+    {
+        var config = LoadConfig();
+        if (config == null)
+            return [];
+
+        return config.Commands.Values
+            .Where(IsAttackCommand)
+            .SelectMany(command => command.Effects)
+            .Select(effect => effect.ScenePath)
+            .Where(path => !string.IsNullOrWhiteSpace(path))
+            .Distinct(StringComparer.Ordinal)
+            .ToArray()!;
     }
 
     public static async Task PlayCommandSetTimelineAsync(
@@ -118,6 +137,7 @@ public static class MeiLinCommandVfxCoordinator
         MeiLinCommandVfxPlaybackOptions? options = null)
     {
         using var actionScope = MeiLinAnimationSequenceManager.BeginAction($"commandSet:{commandSetName}");
+        MeiLinTimelineLease timeline = MeiLinTimelineGeneration.Begin(caster);
         var config = LoadConfig();
         if (config == null || !config.CommandSets.TryGetValue(commandSetName, out var commandSet))
         {
@@ -131,24 +151,34 @@ public static class MeiLinCommandVfxCoordinator
 
         async Task HitOnce()
         {
-            if (hitFired || onHit == null)
+            if (!timeline.IsCurrent || hitFired || onHit == null)
                 return;
 
             hitFired = true;
             await onHit();
         }
 
-        await PlayCommandTimelineAsync(commandSet.Ready, caster, target, HitOnce, options);
+        await PlayCommandTimelineCoreAsync(commandSet.Ready, caster, target, HitOnce, options, timeline);
+        if (!timeline.IsCurrent)
+            return;
 
         if (!string.IsNullOrWhiteSpace(commandSet.PlayReady))
-        await PlayCommandTimelineAsync(commandSet.PlayReady, caster, target, HitOnce, options);
+            await PlayCommandTimelineCoreAsync(commandSet.PlayReady, caster, target, HitOnce, options, timeline);
+        if (!timeline.IsCurrent)
+            return;
 
         if (commandSet.PlayDelay > 0f)
             await Cmd.CustomScaledWait(commandSet.PlayDelay / 1000f, commandSet.PlayDelay / 1000f);
+        if (!timeline.IsCurrent)
+            return;
 
-        await PlayCommandTimelineAsync(commandSet.Play, caster, target, HitOnce, options);
+        await PlayCommandTimelineCoreAsync(commandSet.Play, caster, target, HitOnce, options, timeline);
+        if (!timeline.IsCurrent)
+            return;
         if (!string.IsNullOrWhiteSpace(commandSet.End) && config.Commands.ContainsKey(commandSet.End))
-            await PlayCommandTimelineAsync(commandSet.End, caster, target, HitOnce, options);
+            await PlayCommandTimelineCoreAsync(commandSet.End, caster, target, HitOnce, options, timeline);
+        if (!timeline.IsCurrent)
+            return;
 
         if (!hitFired && onHit != null)
             await onHit();
@@ -187,11 +217,12 @@ public static class MeiLinCommandVfxCoordinator
         MeiLinCommandVfxPlaybackOptions? options = null)
     {
         using var actionScope = MeiLinAnimationSequenceManager.BeginAction("commandSequence");
+        MeiLinTimelineLease timeline = MeiLinTimelineGeneration.Begin(caster);
         var hitFired = false;
 
         async Task HitOnce()
         {
-            if (hitFired || onHit == null)
+            if (!timeline.IsCurrent || hitFired || onHit == null)
                 return;
 
             hitFired = true;
@@ -199,7 +230,11 @@ public static class MeiLinCommandVfxCoordinator
         }
 
         foreach (var commandName in commandNames)
-            await PlayCommandTimelineAsync(commandName, caster, target, HitOnce, options);
+        {
+            await PlayCommandTimelineCoreAsync(commandName, caster, target, HitOnce, options, timeline);
+            if (!timeline.IsCurrent)
+                return;
+        }
 
         if (!hitFired && onHit != null)
             await onHit();
@@ -305,7 +340,22 @@ public static class MeiLinCommandVfxCoordinator
         Func<Task>? onHit = null,
         MeiLinCommandVfxPlaybackOptions? options = null)
     {
+        MeiLinTimelineLease timeline = MeiLinTimelineGeneration.Begin(caster);
+        await PlayCommandTimelineCoreAsync(commandName, caster, target, onHit, options, timeline);
+    }
+
+    private static async Task PlayCommandTimelineCoreAsync(
+        string? commandName,
+        Creature? caster,
+        Creature? target,
+        Func<Task>? onHit,
+        MeiLinCommandVfxPlaybackOptions? options,
+        MeiLinTimelineLease timeline)
+    {
         if (string.IsNullOrWhiteSpace(commandName))
+            return;
+
+        if (!timeline.IsCurrent)
             return;
 
         var config = LoadConfig();
@@ -342,6 +392,8 @@ public static class MeiLinCommandVfxCoordinator
 
         if (animationDelay > 0f)
             await Cmd.CustomScaledWait(animationDelay, animationDelay);
+        if (!timeline.IsCurrent)
+            return;
 
         if (casterNode != null && GodotObject.IsInstanceValid(casterNode) && !string.IsNullOrWhiteSpace(animation?.AnimationName))
         {
@@ -361,7 +413,7 @@ public static class MeiLinCommandVfxCoordinator
         var hitDelay = GetFirstHitDelaySeconds(command);
         if (onHit != null && hitDelay >= 0f)
         {
-            var hitTask = RunHitAfter(hitDelay, onHit);
+            var hitTask = RunHitAfter(hitDelay, onHit, timeline);
             await Cmd.CustomScaledWait(MathF.Max(animationDuration, hitDelay), MathF.Max(animationDuration, hitDelay));
             await hitTask;
         }
@@ -823,12 +875,16 @@ public static class MeiLinCommandVfxCoordinator
         return MathF.Max(0f, hitMs / 1000f);
     }
 
-    private static async Task RunHitAfter(float seconds, Func<Task> onHit)
+    private static async Task RunHitAfter(
+        float seconds,
+        Func<Task> onHit,
+        MeiLinTimelineLease timeline)
     {
         if (seconds > 0f)
             await Cmd.CustomScaledWait(seconds, seconds);
 
-        await onHit();
+        if (timeline.IsCurrent)
+            await onHit();
     }
 
     private static async Task CompleteHitWhenPlaybackStopsAsync(

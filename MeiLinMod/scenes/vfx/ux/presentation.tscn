@@ -1,0 +1,28 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://MeiLinMod/scenes/vfx/ux/ug_stage.gd" id="script"]
+[ext_resource type="SpineSkeletonDataResource" path="res://MeiLinMod/spine/q/q.tres" id="actor"]
+[ext_resource type="PackedScene" path="res://MeiLinMod/scenes/vfx/generated/skill_x/meirin_1027_skill_x_eff_screen.tscn" id="fx0"]
+[ext_resource type="PackedScene" path="res://MeiLinMod/scenes/vfx/generated/skill_x/meirin_1027_skill_x_eff_1.tscn" id="fx1"]
+[node name="UgPresentation" type="CanvasLayer"]
+layer = 4090
+script = ExtResource("script")
+config_path = "res://MeiLinMod/scenes/vfx/ux/timeline.json"
+[node name="Stage" type="Node2D" parent="."]
+[node name="Blackout" type="ColorRect" parent="Stage"]
+offset_left = -4096.0
+offset_top = -4096.0
+offset_right = 4096.0
+offset_bottom = 4096.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+z_index = -4096
+[node name="World" type="Node2D" parent="Stage"]
+[node name="Actor" type="SpineSprite" parent="Stage/World"]
+skeleton_data_res = ExtResource("actor")
+position = Vector2(-320, 175)
+visible = false
+z_index = 0
+[node name="Fx0" parent="Stage" instance=ExtResource("fx0")]
+visible = false
+[node name="Fx1" parent="Stage/World" instance=ExtResource("fx1")]
+visible = false

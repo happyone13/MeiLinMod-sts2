@@ -45,6 +45,10 @@ public static class MeiLinAudioService
     private const string HuoLongJingTianPath = "res://MeiLinMod/sound/huo_long_jing_tian.mp3";
     private const string ShengLongJiaoPath = "res://MeiLinMod/sound/sheng_long_jiao.mp3";
     private const string ZuiZhongAoYiYanLongJiangLinPath = "res://MeiLinMod/sound/zui_zhong_ao_yi_yan_long_jiang_lin.mp3";
+    private const string UgVoicePath = "res://MeiLinMod/sound/vo_1027_ug.wav";
+    private const string UgSoundPath = "res://MeiLinMod/sound/se_1027_ug_attack.wav";
+    private const string UxVoicePath = "res://MeiLinMod/sound/vo_1027_ux.wav";
+    private const string UxSoundPath = "res://MeiLinMod/sound/se_1027_ux_buff.wav";
 
     private static readonly Dictionary<string, string> CustomCardClipMap = new(StringComparer.OrdinalIgnoreCase)
     {
@@ -121,6 +125,26 @@ public static class MeiLinAudioService
             return false;
 
         return TryPlay(path, linearVolume);
+    }
+
+    public static bool TryPlayUgAttackVoice(Player? player = null, float linearVolume = 1f)
+    {
+        return IsMeiLinPlayer(player) && TryPlay(UgVoicePath, linearVolume);
+    }
+
+    public static bool TryPlayUgAttackSound(Player? player = null, float linearVolume = 0.5f)
+    {
+        return IsMeiLinPlayer(player) && TryPlay(UgSoundPath, linearVolume);
+    }
+
+    public static bool TryPlayUxVoice(Player? player = null, float linearVolume = 1f)
+    {
+        return IsMeiLinPlayer(player) && TryPlay(UxVoicePath, linearVolume);
+    }
+
+    public static bool TryPlayUxSound(Player? player = null, float linearVolume = 0.5f)
+    {
+        return IsMeiLinPlayer(player) && TryPlay(UxSoundPath, linearVolume);
     }
 
     public static void SuppressNextDefaultAttackSfx(Player? player = null)

@@ -5,6 +5,9 @@ using MeiLinMod.MeiLinModCode.Character;
 using MeiLinMod.MeiLinModCode.HoverTips;
 using MeiLinMod.MeiLinModCode.Powers;
 using MeiLinMod.MeiLinModCode.Services;
+using MeiLinMod.MeiLinModCode.Vfx;
+using MeiLinMod.MeiLinModCode.Mechanics.Settings;
+using MeiLinMod.MeiLinModCode.Config;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -37,20 +40,33 @@ public class HuoLongJingTian() : MeiLinModCard(2, CardType.Attack, CardRarity.Ra
     public override string? CustomAncientBorderMaterialPath => ChaosAncientFrameMaterialPath;
     public override string? CustomAncientBannerMaterialPath => ChaosAncientBannerMaterialPath;
 
+    // This card owns its complete UG timeline; do not enqueue a normal attack.
+    public override Task BeforeCardPlayed(CardPlay cardPlay) => Task.CompletedTask;
+
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        MeiLinAudioService.SuppressNextDefaultAttackSfx(Owner);
-        MeiLinAudioService.TryPlayCustomCardClip("huo_long_jing_tian", Owner);
+        if (MeiLinModConfig.UseCombatEffects && MeiLinSharedSettings.UltimateCinematicsEnabled)
+        {
+            MeiLinAudioService.SuppressNextDefaultAttackSfx(Owner);
+            MeiLinAudioService.TryPlayUgAttackVoice(Owner);
+            MeiLinAudioService.TryPlayUgAttackSound(Owner);
+        }
 
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this, cardPlay)
-            .Targeting(cardPlay.Target)
-            .WithHitFx("vfx/vfx_attack_slash")
-            .Execute(choiceContext);
+        await MeiLinUgPresentation.PlayAsync(Owner.Creature, [cardPlay.Target], async cinematic =>
+        {
+            var attack = DamageCmd.Attack(DynamicVars.Damage.BaseValue)
+                .FromCard(this, cardPlay)
+                .Targeting(cardPlay.Target);
+            if (cinematic)
+                attack.WithNoAttackerAnim();
+            else
+                attack.WithHitFx("vfx/vfx_attack_slash");
+            await attack.Execute(choiceContext);
 
-        await PowerCmd.Apply<EmberPower>(new BlockingPlayerChoiceContext(), cardPlay.Target, DynamicVars[EmberKey].BaseValue, Owner.Creature, this);
-        await PowerCmd.Apply<EmberNoExpireThisTurnPower>(new BlockingPlayerChoiceContext(), cardPlay.Target, 1m, Owner.Creature, this, silent: true);
+            await PowerCmd.Apply<EmberPower>(new BlockingPlayerChoiceContext(), cardPlay.Target, DynamicVars[EmberKey].BaseValue, Owner.Creature, this);
+            await PowerCmd.Apply<EmberNoExpireThisTurnPower>(new BlockingPlayerChoiceContext(), cardPlay.Target, 1m, Owner.Creature, this, silent: true);
+        });
     }
 
     protected override void OnUpgrade()

@@ -7,7 +7,7 @@
 "has_pck": false,
 "has_dll": true,
 "dependencies": [
-{ "id": "TestTheSpire", "min_version": "0.1.0" },
+{ "id": "TestTheSpire", "min_version": "0.1.2" },
 { "id": "MeiLinMod", "min_version": "v0.3.1" }
 ],
 "min_game_version": "v0.111.0",

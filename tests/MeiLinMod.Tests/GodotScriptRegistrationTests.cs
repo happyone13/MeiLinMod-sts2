@@ -61,9 +61,9 @@ public sealed class GodotScriptRegistrationTests : CombatTestSuite
             "ScriptManagerBridge.LookupScriptsInAssembly(assembly);",
             "MeiLinSharedSettings.EnsureSettingsLoaded();",
             "CardSpinePortraitPatch.PreloadDynamicPortraitScenes();",
-            "MeiLinCommandVfxCoordinator.PreloadConfiguredScenes();",
-            "MeiLinAttackMovementController.PreloadMovementEffects();",
-            "MeiLinStanceVfxController.PreloadStanceEffects();");
+            "MeiLinCommandVfxCoordinator.PreloadConfiguredScenes()",
+            "MeiLinAttackMovementController.PreloadMovementEffects()",
+            "MeiLinStanceVfxController.PreloadStanceEffects()");
 
         foreach (var scenePath in DynamicPortraitScenePaths())
             AssertResourcePathExists(scenePath);

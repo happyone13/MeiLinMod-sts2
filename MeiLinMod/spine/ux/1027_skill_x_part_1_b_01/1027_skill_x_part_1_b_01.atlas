@@ -1,0 +1,27 @@
+
+1027_skill_x_part_1_b_01.png
+size: 1592,1456
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+1part_body_03_mb
+  rotate: false
+  xy: 2, 3
+  size: 963, 677
+  orig: 963, 677
+  offset: 0, 0
+  index: -1
+1part_body_04_mb
+  rotate: false
+  xy: 2, 581
+  size: 1011, 872
+  orig: 1011, 994
+  offset: 0, 0
+  index: -1
+1part_body_05_mb
+  rotate: 180
+  xy: 865, 83
+  size: 724, 970
+  orig: 724, 970
+  offset: 0, 0
+  index: -1

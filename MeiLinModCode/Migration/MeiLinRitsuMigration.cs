@@ -51,6 +51,7 @@ internal static class MeiLinRitsuMigration
 
         var combatAnimationPatcher = RitsuLibFramework.CreatePatcher(MainFile.ModId, "optional-combat-animation", "optional combat animation");
         combatAnimationPatcher.RegisterPatch<MeiLinTriggerAnimPatch>();
+        combatAnimationPatcher.RegisterPatch<MeiLinBattleVfxWarmPatch>();
         combatAnimationPatcher.PatchAll();
 
         var scenePatcher = RitsuLibFramework.CreatePatcher(MainFile.ModId, "optional-scene", "optional scene");
@@ -123,6 +124,13 @@ internal static class MeiLinRitsuMigration
                                 "combat_effects",
                                 () => MeiLinSharedSettings.CombatEffectsEnabled,
                                 value => MeiLinSharedSettings.SetCombatEffectsEnabled(value, persist: true)))
+                        .AddToggle(
+                            "ultimate_cinematics",
+                            SettingsText("MEILINMOD_RITSU_ULTIMATE_CINEMATICS.title", "UG / UX Cinematics"),
+                            BoolBinding(
+                                "ultimate_cinematics",
+                                () => MeiLinSharedSettings.UltimateCinematicsEnabled,
+                                value => MeiLinSharedSettings.SetUltimateCinematicsEnabled(value, persist: true)))
                         .AddToggle(
                             "dynamic_card_portraits",
                             SettingsText("MEILINMOD_RITSU_DYNAMIC_CARD_PORTRAITS.title", "Dynamic Card Art"),

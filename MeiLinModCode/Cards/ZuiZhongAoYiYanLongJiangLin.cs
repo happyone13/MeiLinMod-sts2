@@ -20,8 +20,11 @@ public class ZuiZhongAoYiYanLongJiangLin() : MeiLinModCard(1, CardType.Power, Ca
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        MeiLinAudioService.SuppressNextDefaultCastSfx(Owner);
-        MeiLinAudioService.TryPlayCustomCardClip("zui_zhong_ao_yi_yan_long_jiang_lin", Owner);
+        if (!UltimateCinematicPlayedForCurrentPlay)
+        {
+            MeiLinAudioService.SuppressNextDefaultCastSfx(Owner);
+            MeiLinAudioService.TryPlayCustomCardClip("zui_zhong_ao_yi_yan_long_jiang_lin", Owner);
+        }
         await PlayPowerCastAnim();
         await PowerCmd.Apply<YanLongJiangLinStrikeEchoPower>(new BlockingPlayerChoiceContext(), Owner.Creature, 1m, Owner.Creature, this);
     }

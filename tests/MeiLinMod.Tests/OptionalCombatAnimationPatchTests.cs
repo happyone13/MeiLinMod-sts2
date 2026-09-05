@@ -2,6 +2,7 @@ using System.Reflection;
 using MegaCrit.Sts2.Core.Models.Monsters;
 using MeiLinMod.MeiLinModCode.Cards;
 using MeiLinMod.MeiLinModCode.Patches;
+using MeiLinMod.MeiLinModCode.Vfx;
 using STS2RitsuLib.Patching.Models;
 using TestTheSpire;
 using Xunit;
@@ -95,6 +96,50 @@ public sealed class OptionalCombatAnimationPatchTests : CombatTestSuite
         Assert.Contains("session.OriginalSiblingIndex", source);
         Assert.Contains("casterNode.ZIndex = Math.Max(casterNode.ZIndex, targetNode.ZIndex + 1);", source);
         Assert.DoesNotContain("CanvasLayer", source, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public async Task Timeline_generation_invalidates_the_previous_lease_for_the_same_caster()
+    {
+        await InitializeBattle();
+
+        MeiLinVfxPrewarmReport prewarm =
+            new MeiLinVfxPrewarmReport(3, 2) + new MeiLinVfxPrewarmReport(4, 4);
+        Assert.Equal(7, prewarm.Requested);
+        Assert.Equal(6, prewarm.Loaded);
+        Assert.Equal(1, prewarm.Failed);
+
+        Type generationType = typeof(MeiLinCommandVfxCoordinator).Assembly.GetType(
+            "MeiLinMod.MeiLinModCode.Vfx.MeiLinTimelineGeneration",
+            throwOnError: true)!;
+        MethodInfo begin = generationType.GetMethod(
+            "Begin",
+            BindingFlags.Public | BindingFlags.Static)!;
+
+        object first = begin.Invoke(null, [Player.Creature])!;
+        PropertyInfo isCurrent = first.GetType().GetProperty("IsCurrent")!;
+        Assert.True(Assert.IsType<bool>(isCurrent.GetValue(first)));
+
+        object second = begin.Invoke(null, [Player.Creature])!;
+        Assert.False(Assert.IsType<bool>(isCurrent.GetValue(first)));
+        Assert.True(Assert.IsType<bool>(isCurrent.GetValue(second)));
+    }
+
+    [Fact]
+    public async Task Battle_vfx_deep_warm_is_staged_and_room_scoped()
+    {
+        await InitializeBattle();
+
+        string source = File.ReadAllText(RepoFile("MeiLinModCode", "Vfx", "MeiLinBattleVfxPrewarmer.cs"));
+        string migration = File.ReadAllText(RepoFile("MeiLinModCode", "Migration", "MeiLinRitsuMigration.cs"));
+
+        Assert.Contains("RegisterPatch<MeiLinBattleVfxWarmPatch>()", migration);
+        Assert.Contains("await NextFrame(room);", source);
+        Assert.Contains("ReferenceEquals(NCombatRoom.Instance, room)", source);
+        Assert.Contains("generation == Volatile.Read(ref _generation)", source);
+        Assert.Contains("MeiLinModConfig.UseCombatEffects", source);
+        Assert.Contains("WarmAlpha = 0.001f", source);
+        Assert.Contains("MeiLinAttackMovementController.GetPreloadScenePaths()", source);
     }
 
     private async Task InitializeBattle()

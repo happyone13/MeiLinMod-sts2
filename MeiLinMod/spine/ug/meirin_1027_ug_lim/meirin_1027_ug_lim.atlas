@@ -1,0 +1,20 @@
+
+meirin_1027_ug_lim.png
+size: 1056,408
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+foot_g
+  rotate: false
+  xy: 2, 76
+  size: 640, 329
+  orig: 640, 329
+  offset: 0, 0
+  index: -1
+glow1
+  rotate: true
+  xy: 644, 2
+  size: 403, 407
+  orig: 403, 407
+  offset: 0, 0
+  index: -1
