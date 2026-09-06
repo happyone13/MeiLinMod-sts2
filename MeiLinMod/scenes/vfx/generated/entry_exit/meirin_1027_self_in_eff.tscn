@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=3 format=3]
 
 [ext_resource type="SpineSkeletonDataResource" path="res://MeiLinMod/spine/effect/generated/meirin_1027_self_in_eff/meirin_1027_self_in_eff_skel_data.tres" id="1_meirin_1027_self_in_eff"]
+[ext_resource type="Material" path="res://MeiLinMod/materials/spine_pma.tres" id="2_spine_pma"]
 
 [node name="Meirin1027SelfInEff" type="Node2D"]
 [node name="meirin_1027_self_in_eff_layer_1" type="Node2D" parent="."]
 z_index = 2
 [node name="meirin_1027_self_in_eff" type="SpineSprite" parent="meirin_1027_self_in_eff_layer_1"]
+normal_material = ExtResource("2_spine_pma")
 skeleton_data_res = ExtResource("1_meirin_1027_self_in_eff")
 preview_skin = "Default"
 preview_animation = ""

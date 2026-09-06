@@ -90,6 +90,11 @@ public sealed class OptionalCombatAnimationPatchTests : CombatTestSuite
         Assert.Contains("duration + AbandonedSegmentReturnPadSeconds", source);
         Assert.Contains("interruptedCommandName: commandName", source);
         Assert.Contains("MeiLinBattleAnimationService.AbortActiveAttack(caster)", source);
+        Assert.Contains("session.Version != version", source);
+        Assert.DoesNotContain("!force && session.Version != version", source);
+        Assert.True(
+            source.IndexOf("if (session.Teleported)", StringComparison.Ordinal) <
+            source.IndexOf("if (target == null ||", StringComparison.Ordinal));
         Assert.Contains("RestoreLayer(casterNode, session);", source);
         Assert.Contains("ResetSession(session);", source);
         Assert.Contains("casterParent.MoveChild(casterNode, desiredIndex);", source);

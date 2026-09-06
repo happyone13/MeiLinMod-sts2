@@ -8,9 +8,11 @@ import argparse
 import json
 import math
 import plistlib
+import re
 import shutil
 import subprocess
 from pathlib import Path
+from PIL import Image
 
 
 def duration(value):
@@ -110,7 +112,8 @@ default_mix = 0.0
             meilin_vfx.generate_cfx_scene(cfx_path, active_layers, texture_map, set())
             return meilin_vfx.scene_path_for_effect(name)
         layers.sort(key=lambda x: float(x.get('z') or 0))
-        lines = [f'[gd_scene load_steps={len(layers)+1} format=3]']
+        lines = [f'[gd_scene load_steps={len(layers)+2} format=3]',
+                 f'[ext_resource type="Material" path="res://{mod}/materials/spine_pma.tres" id="pma"]']
         for i, layer in enumerate(layers):
             assert layer['format'] == 'spine', layer
             lines.append(f'[ext_resource type="SpineSkeletonDataResource" path="{spine(layer["source"])}" id="{i}"]')
@@ -119,6 +122,7 @@ default_mix = 0.0
             anim = layer.get('ani') or 'animation'
             x, y, scale = float(layer.get('x') or 0), -float(layer.get('y') or 0), float(layer.get('scale') or 1)
             lines += [f'[node name="{layer["source"]}" type="SpineSprite" parent="."]',
+                      'normal_material = ExtResource("pma")',
                       f'position = Vector2({x}, {y})', f'scale = Vector2({scale}, {scale})',
                       f'z_index = {max(-2000, min(2000, int(float(layer.get("z") or 0) / 10)))}', f'skeleton_data_res = ExtResource("{i}")',
                       f'preview_animation = "{anim}"', 'preview_frame = false',
@@ -149,12 +153,39 @@ default_mix = 0.0
     total = max([e['at'] + max(0, float(e.get('duration') or 0))/1000 for e in events] +
                 [e['at'] + e['life'] for e in effects]) + 0.1
     data = dict(character=char, presentation=presentation, hit=hit, total=round(total, 4), events=events, effects=effects, tracks=tracks)
+    if presentation == 'ux':
+        candidates = sorted(
+            (p for p in source.glob('*.webp') if re.fullmatch(r'[0-9a-fA-F]{32}\.webp', p.name)),
+            key=lambda p: p.stat().st_mtime,
+            reverse=True)
+        if candidates:
+            webp = candidates[0]
+            frames_dir = root / mod / 'images/vfx/ux_video'
+            frames_dir.mkdir(parents=True, exist_ok=True)
+            for old in frames_dir.glob('frame_*.png'):
+                old.unlink()
+            image = Image.open(webp)
+            cutin_frames = []
+            for index in range(image.n_frames):
+                image.seek(index)
+                frame = image.convert('RGBA')
+                left = max(0, (frame.width - 1280) // 2)
+                top = max(0, (frame.height - 720) // 2)
+                frame = frame.crop((left, top, min(left + 1280, frame.width), min(top + 720, frame.height)))
+                path = frames_dir / f'frame_{index:03d}.png'
+                frame.save(path, compress_level=6)
+                cutin_frames.append({
+                    'path': f'res://{mod}/images/vfx/ux_video/{path.name}',
+                    'duration': round(float(image.info.get('duration', 100)) / 1000.0, 4),
+                })
+            data['cutin'] = {'at': 0.0 if char == 'meilin' else 0.6, 'frames': cutin_frames}
     (out / 'timeline.json').write_text(json.dumps(data, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
     actor_resource = (f'res://{mod}/spine/q/q.tres' if char == 'meilin'
                       else f'res://{mod}/spine/q/{ident}_skel_data.tres')
     lines = ['[gd_scene format=3]',
              f'[ext_resource type="Script" path="res://{mod}/scenes/vfx/{presentation}/ug_stage.gd" id="script"]',
-             f'[ext_resource type="SpineSkeletonDataResource" path="{actor_resource}" id="actor"]']
+             f'[ext_resource type="SpineSkeletonDataResource" path="{actor_resource}" id="actor"]',
+             f'[ext_resource type="Material" path="res://{mod}/materials/spine_pma.tres" id="pma"]']
     for i, e in enumerate(effects):
         lines.append(f'[ext_resource type="PackedScene" path="{e["scene"]}" id="fx{i}"]')
     lines += ['[node name="UgPresentation" type="CanvasLayer"]', 'layer = 4090', 'script = ExtResource("script")',
@@ -165,6 +196,7 @@ default_mix = 0.0
               'mouse_filter = 2', 'color = Color(0, 0, 0, 1)', 'z_index = -4096',
               '[node name="World" type="Node2D" parent="Stage"]',
               '[node name="Actor" type="SpineSprite" parent="Stage/World"]',
+              'normal_material = ExtResource("pma")',
               'skeleton_data_res = ExtResource("actor")', 'position = Vector2(-320, 175)',
               'visible = false', 'z_index = 0']
     for i, e in enumerate(effects):

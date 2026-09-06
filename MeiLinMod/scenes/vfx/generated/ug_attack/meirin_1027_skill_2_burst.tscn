@@ -1,8 +1,9 @@
-[gd_scene load_steps=112 format=3]
+[gd_scene load_steps=113 format=3]
 
 [ext_resource type="SpineSkeletonDataResource" path="res://MeiLinMod/spine/effect/generated/meirin_1027_skill_2_burst/meirin_1027_skill_2_burst_skel_data.tres" id="1_meirin_1027_skill_2_burst"]
-[ext_resource type="Texture2D" path="res://MeiLinMod/images/vfx/particles/ticle_02.png" id="2_ticle_02"]
-[ext_resource type="Texture2D" path="res://MeiLinMod/images/vfx/particles/pati_03.png" id="3_pati_03"]
+[ext_resource type="Material" path="res://MeiLinMod/materials/spine_pma.tres" id="2_spine_pma"]
+[ext_resource type="Texture2D" path="res://MeiLinMod/images/vfx/particles/ticle_02.png" id="3_ticle_02"]
+[ext_resource type="Texture2D" path="res://MeiLinMod/images/vfx/particles/pati_03.png" id="4_pati_03"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1"]
 blend_mode = 1
@@ -116,6 +117,7 @@ angular_velocity_max = 60
 [node name="Meirin1027Skill2Burst" type="Node2D"]
 [node name="meirin_1027_skill_2_burst_layer_1" type="Node2D" parent="."]
 [node name="meirin_1027_skill_2_burst" type="SpineSprite" parent="meirin_1027_skill_2_burst_layer_1"]
+normal_material = ExtResource("2_spine_pma")
 skeleton_data_res = ExtResource("1_meirin_1027_skill_2_burst")
 preview_skin = "Default"
 preview_animation = "animation"
@@ -127,7 +129,7 @@ material = SubResource("CanvasItemMaterial_1")
 position = Vector2(0, 0)
 emitting = false
 amount = 30
-texture = ExtResource("2_ticle_02")
+texture = ExtResource("3_ticle_02")
 lifetime = 0.3
 preprocess = 0
 randomness = 0.6
@@ -140,7 +142,7 @@ material = SubResource("CanvasItemMaterial_7")
 position = Vector2(0, -50)
 emitting = false
 amount = 30
-texture = ExtResource("2_ticle_02")
+texture = ExtResource("3_ticle_02")
 lifetime = 0.5
 preprocess = 0
 randomness = 0.6
@@ -153,7 +155,7 @@ material = SubResource("CanvasItemMaterial_13")
 position = Vector2(0, -50)
 emitting = false
 amount = 30
-texture = ExtResource("3_pati_03")
+texture = ExtResource("4_pati_03")
 lifetime = 0.5
 preprocess = 0
 randomness = 0.6

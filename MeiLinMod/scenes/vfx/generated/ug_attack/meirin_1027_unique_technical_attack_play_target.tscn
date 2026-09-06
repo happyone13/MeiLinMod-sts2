@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="SpineSkeletonDataResource" path="res://MeiLinMod/spine/effect/generated/meirin_unique_technical_attack_play_f/meirin_unique_technical_attack_play_f_skel_data.tres" id="1_meirin_unique_technical_attack_play_f"]
-[ext_resource type="SpineSkeletonDataResource" path="res://MeiLinMod/spine/effect/generated/meirin_unique_technical_attack_play_ff/meirin_unique_technical_attack_play_ff_skel_data.tres" id="2_meirin_unique_technical_attack_play_ff"]
-[ext_resource type="SpineSkeletonDataResource" path="res://MeiLinMod/spine/effect/generated/meirin_unique_technical_attack_play_b/meirin_unique_technical_attack_play_b_skel_data.tres" id="3_meirin_unique_technical_attack_play_b"]
+[ext_resource type="Material" path="res://MeiLinMod/materials/spine_pma.tres" id="2_spine_pma"]
+[ext_resource type="SpineSkeletonDataResource" path="res://MeiLinMod/spine/effect/generated/meirin_unique_technical_attack_play_ff/meirin_unique_technical_attack_play_ff_skel_data.tres" id="3_meirin_unique_technical_attack_play_ff"]
+[ext_resource type="SpineSkeletonDataResource" path="res://MeiLinMod/spine/effect/generated/meirin_unique_technical_attack_play_b/meirin_unique_technical_attack_play_b_skel_data.tres" id="4_meirin_unique_technical_attack_play_b"]
 
 [node name="Meirin1027UniqueTechnicalAttackPlay" type="Node2D"]
 [node name="meirin_unique_technical_attack_play_f_layer_1" type="Node2D" parent="."]
 z_index = 3
 [node name="meirin_unique_technical_attack_play_f" type="SpineSprite" parent="meirin_unique_technical_attack_play_f_layer_1"]
+normal_material = ExtResource("2_spine_pma")
 skeleton_data_res = ExtResource("1_meirin_unique_technical_attack_play_f")
 preview_skin = "Default"
 preview_animation = "animation"
@@ -16,7 +18,8 @@ preview_time = 0.0
 [node name="meirin_unique_technical_attack_play_ff_layer_2" type="Node2D" parent="."]
 z_index = 4
 [node name="meirin_unique_technical_attack_play_ff" type="SpineSprite" parent="meirin_unique_technical_attack_play_ff_layer_2"]
-skeleton_data_res = ExtResource("2_meirin_unique_technical_attack_play_ff")
+normal_material = ExtResource("2_spine_pma")
+skeleton_data_res = ExtResource("3_meirin_unique_technical_attack_play_ff")
 preview_skin = "Default"
 preview_animation = "animation"
 preview_frame = false
@@ -24,7 +27,8 @@ preview_time = 0.0
 [node name="meirin_unique_technical_attack_play_b_layer_3" type="Node2D" parent="."]
 z_index = -2
 [node name="meirin_unique_technical_attack_play_b" type="SpineSprite" parent="meirin_unique_technical_attack_play_b_layer_3"]
-skeleton_data_res = ExtResource("3_meirin_unique_technical_attack_play_b")
+normal_material = ExtResource("2_spine_pma")
+skeleton_data_res = ExtResource("4_meirin_unique_technical_attack_play_b")
 preview_skin = "Default"
 preview_animation = "animation"
 preview_frame = false

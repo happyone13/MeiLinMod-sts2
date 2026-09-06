@@ -52,10 +52,7 @@ public static class MeiLinAttackMovementController
 
     public static async Task MoveToTargetIfNeededAsync(Creature caster, Creature? target)
     {
-        if (!MeiLinModConfig.UseCombatEffects || target == null)
-            return;
-
-        if (!TryGetRoomAndNodes(caster, target, out _, out var casterNode, out var targetNode))
+        if (!MeiLinModConfig.UseCombatEffects)
             return;
 
         var session = Sessions.GetOrCreateValue(caster);
@@ -65,6 +62,9 @@ public static class MeiLinAttackMovementController
             StartPositionLock(caster, session.Version, session.AttackGlobalPosition, 0.8f);
             return;
         }
+
+        if (target == null || !TryGetRoomAndNodes(caster, target, out _, out var casterNode, out var targetNode))
+            return;
 
         if (!session.HasOrigin)
         {
@@ -117,7 +117,7 @@ public static class MeiLinAttackMovementController
         }
 
         session.Version++;
-        _ = ReturnAfterDelayAsync(caster, session.Version, duration + ReturnPadSeconds, force: true);
+        _ = ReturnAfterDelayAsync(caster, session.Version, duration + ReturnPadSeconds);
     }
 
     public static void ForceReturnSoon(Creature caster, float delaySeconds = 0.05f, string? interruptedCommandName = null)
@@ -129,14 +129,13 @@ public static class MeiLinAttackMovementController
             return;
 
         session.Version++;
-        _ = ReturnAfterDelayAsync(caster, session.Version, delaySeconds, force: true, interruptedCommandName: interruptedCommandName);
+        _ = ReturnAfterDelayAsync(caster, session.Version, delaySeconds, interruptedCommandName);
     }
 
     private static async Task ReturnAfterDelayAsync(
         Creature caster,
         int version,
         float seconds,
-        bool force = false,
         string? interruptedCommandName = null)
     {
         MovementSession? session = null;
@@ -146,7 +145,7 @@ public static class MeiLinAttackMovementController
 
             if (!Sessions.TryGetValue(caster, out session) ||
                 !session.Teleported ||
-                (!force && session.Version != version))
+                session.Version != version)
             {
                 return;
             }

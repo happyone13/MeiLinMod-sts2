@@ -1,6 +1,7 @@
 [gd_scene format=3]
 [ext_resource type="Script" path="res://MeiLinMod/scenes/vfx/ux/ug_stage.gd" id="script"]
 [ext_resource type="SpineSkeletonDataResource" path="res://MeiLinMod/spine/q/q.tres" id="actor"]
+[ext_resource type="Material" path="res://MeiLinMod/materials/spine_pma.tres" id="pma"]
 [ext_resource type="PackedScene" path="res://MeiLinMod/scenes/vfx/generated/skill_x/meirin_1027_skill_x_eff_screen.tscn" id="fx0"]
 [ext_resource type="PackedScene" path="res://MeiLinMod/scenes/vfx/generated/skill_x/meirin_1027_skill_x_eff_1.tscn" id="fx1"]
 [node name="UgPresentation" type="CanvasLayer"]
@@ -18,6 +19,7 @@ color = Color(0, 0, 0, 1)
 z_index = -4096
 [node name="World" type="Node2D" parent="Stage"]
 [node name="Actor" type="SpineSprite" parent="Stage/World"]
+normal_material = ExtResource("pma")
 skeleton_data_res = ExtResource("actor")
 position = Vector2(-320, 175)
 visible = false

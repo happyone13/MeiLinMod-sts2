@@ -883,5 +883,106 @@
         }
       }
     }
+  },
+  "cutin": {
+    "at": 0.0,
+    "frames": [
+      {
+        "path": "res://MeiLinMod/images/vfx/ux_video/frame_000.png",
+        "duration": 0.067
+      },
+      {
+        "path": "res://MeiLinMod/images/vfx/ux_video/frame_001.png",
+        "duration": 0.1
+      },
+      {
+        "path": "res://MeiLinMod/images/vfx/ux_video/frame_002.png",
+        "duration": 0.1
+      },
+      {
+        "path": "res://MeiLinMod/images/vfx/ux_video/frame_003.png",
+        "duration": 0.133
+      },
+      {
+        "path": "res://MeiLinMod/images/vfx/ux_video/frame_004.png",
+        "duration": 0.033
+      },
+      {
+        "path": "res://MeiLinMod/images/vfx/ux_video/frame_005.png",
+        "duration": 0.033
+      },
+      {
+        "path": "res://MeiLinMod/images/vfx/ux_video/frame_006.png",
+        "duration": 0.067
+      },
+      {
+        "path": "res://MeiLinMod/images/vfx/ux_video/frame_007.png",
+        "duration": 0.067
+      },
+      {
+        "path": "res://MeiLinMod/images/vfx/ux_video/frame_008.png",
+        "duration": 0.1
+      },
+      {
+        "path": "res://MeiLinMod/images/vfx/ux_video/frame_009.png",
+        "duration": 0.033
+      },
+      {
+        "path": "res://MeiLinMod/images/vfx/ux_video/frame_010.png",
+        "duration": 0.033
+      },
+      {
+        "path": "res://MeiLinMod/images/vfx/ux_video/frame_011.png",
+        "duration": 0.1
+      },
+      {
+        "path": "res://MeiLinMod/images/vfx/ux_video/frame_012.png",
+        "duration": 0.067
+      },
+      {
+        "path": "res://MeiLinMod/images/vfx/ux_video/frame_013.png",
+        "duration": 0.067
+      },
+      {
+        "path": "res://MeiLinMod/images/vfx/ux_video/frame_014.png",
+        "duration": 0.067
+      },
+      {
+        "path": "res://MeiLinMod/images/vfx/ux_video/frame_015.png",
+        "duration": 0.067
+      },
+      {
+        "path": "res://MeiLinMod/images/vfx/ux_video/frame_016.png",
+        "duration": 0.1
+      },
+      {
+        "path": "res://MeiLinMod/images/vfx/ux_video/frame_017.png",
+        "duration": 0.1
+      },
+      {
+        "path": "res://MeiLinMod/images/vfx/ux_video/frame_018.png",
+        "duration": 0.067
+      },
+      {
+        "path": "res://MeiLinMod/images/vfx/ux_video/frame_019.png",
+        "duration": 0.067
+      },
+      {
+        "path": "res://MeiLinMod/images/vfx/ux_video/frame_020.png",
+        "duration": 0.033
+      },
+      {
+        "path": "res://MeiLinMod/images/vfx/ux_video/frame_021.png",
+        "duration": 0.033
+      },
+      {
+        "path": "res://MeiLinMod/images/vfx/ux_video/frame_022.png",
+        "duration": 0.033
+      },
+      {
+        "path": "res://MeiLinMod/images/vfx/ux_video/frame_023.png",
+        "duration": 0.033
+      }
+    ]
   }
 }

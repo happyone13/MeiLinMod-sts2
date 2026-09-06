@@ -269,9 +269,11 @@ def generate_cfx_scene(
         if fmt == "spine":
             skel_res = prepare_spine(source, used_spines)
             rid = ext_id("SpineSkeletonDataResource", skel_res, source)
+            pma_rid = ext_id("Material", "res://MeiLinMod/materials/spine_pma.tres", "spine_pma")
             nodes.extend(
                 [
                     f'[node name="{source}" type="SpineSprite" parent="{layer_name}"]',
+                    f'normal_material = ExtResource("{pma_rid}")',
                     f"skeleton_data_res = ExtResource(\"{rid}\")",
                     'preview_skin = "Default"',
                     f'preview_animation = "{str(layer.get("ani", "animation"))}"',

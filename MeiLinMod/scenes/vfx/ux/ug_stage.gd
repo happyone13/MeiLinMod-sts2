@@ -18,6 +18,8 @@ var enemy_motion: Dictionary = {}
 var started_usec: int
 var restored: bool = false
 var preview_mode: bool = false
+var cutin_sprite: Sprite2D
+var cutin_frames: Array = []
 
 func _ready() -> void:
     config = JSON.parse_string(FileAccess.get_file_as_string(config_path))
@@ -28,6 +30,7 @@ func _ready() -> void:
         var node: Node2D = parent.get_node("Fx%d" % i)
         suspend_spines(node)
         fx.append({"node": node, "event": e, "started": false})
+    prepare_cutin()
     set_process(false)
     if "--ug-preview" in OS.get_cmdline_user_args():
         call_deferred("begin_preview")
@@ -86,6 +89,7 @@ func _process(_delta: float) -> void:
         dispatch(config.events[event_index])
         event_index += 1
     apply_motion()
+    update_cutin()
     for item in fx:
         var e: Dictionary = item.event
         var node: Node2D = item.node
@@ -115,6 +119,36 @@ func _process(_delta: float) -> void:
                     node.position = Vector2(220, 150) + offset(e)
     if elapsed >= config.total:
         finish()
+
+func prepare_cutin() -> void:
+    if not config.has("cutin"):
+        return
+    cutin_sprite = Sprite2D.new()
+    cutin_sprite.name = "UxVideo"
+    cutin_sprite.centered = true
+    cutin_sprite.z_index = 3000
+    cutin_sprite.visible = false
+    $Stage.add_child(cutin_sprite)
+    for frame in config.cutin.frames:
+        var texture: Texture2D = load(str(frame.path))
+        if texture != null:
+            cutin_frames.append({"texture": texture, "duration": float(frame.duration)})
+
+func update_cutin() -> void:
+    if cutin_sprite == null or cutin_frames.is_empty():
+        return
+    var local_time: float = elapsed - float(config.cutin.at)
+    if local_time < 0.0:
+        cutin_sprite.visible = false
+        return
+    var cursor: float = 0.0
+    for frame in cutin_frames:
+        cursor += float(frame.duration)
+        if local_time < cursor:
+            cutin_sprite.texture = frame.texture
+            cutin_sprite.visible = true
+            return
+    cutin_sprite.visible = false
 
 func offset(e: Dictionary) -> Vector2:
     var parts: PackedStringArray = str(e.get("offset_xy", "0,0")).split(",")

@@ -1,10 +1,11 @@
-[gd_scene load_steps=258 format=3]
+[gd_scene load_steps=259 format=3]
 
 [ext_resource type="SpineSkeletonDataResource" path="res://MeiLinMod/spine/effect/generated/meirin_unique_buff_play_target2_b/meirin_unique_buff_play_target2_b_skel_data.tres" id="1_meirin_unique_buff_play_target2_b"]
-[ext_resource type="Texture2D" path="res://MeiLinMod/images/vfx/particles/pati_02.png" id="2_pati_02"]
-[ext_resource type="Texture2D" path="res://MeiLinMod/images/vfx/particles/ticle_02.png" id="3_ticle_02"]
-[ext_resource type="Texture2D" path="res://MeiLinMod/images/vfx/particles/pati_03.png" id="4_pati_03"]
-[ext_resource type="SpineSkeletonDataResource" path="res://MeiLinMod/spine/effect/generated/meirin_unique_buff_play_firework_blue/meirin_unique_buff_play_firework_blue_skel_data.tres" id="5_meirin_unique_buff_play_firework_blue"]
+[ext_resource type="Material" path="res://MeiLinMod/materials/spine_pma.tres" id="2_spine_pma"]
+[ext_resource type="Texture2D" path="res://MeiLinMod/images/vfx/particles/pati_02.png" id="3_pati_02"]
+[ext_resource type="Texture2D" path="res://MeiLinMod/images/vfx/particles/ticle_02.png" id="4_ticle_02"]
+[ext_resource type="Texture2D" path="res://MeiLinMod/images/vfx/particles/pati_03.png" id="5_pati_03"]
+[ext_resource type="SpineSkeletonDataResource" path="res://MeiLinMod/spine/effect/generated/meirin_unique_buff_play_firework_blue/meirin_unique_buff_play_firework_blue_skel_data.tres" id="6_meirin_unique_buff_play_firework_blue"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1"]
 blend_mode = 1
@@ -265,6 +266,7 @@ z_index = -110
 visible = false
 metadata/meilin_vfx_delay_sec = 0.066
 [node name="meirin_unique_buff_play_target2_b" type="SpineSprite" parent="meirin_unique_buff_play_target2_b_layer_1"]
+normal_material = ExtResource("2_spine_pma")
 skeleton_data_res = ExtResource("1_meirin_unique_buff_play_target2_b")
 preview_skin = "Default"
 preview_animation = "animation"
@@ -281,7 +283,7 @@ material = SubResource("CanvasItemMaterial_1")
 position = Vector2(0, 0)
 emitting = false
 amount = 70
-texture = ExtResource("2_pati_02")
+texture = ExtResource("3_pati_02")
 lifetime = 0.2
 preprocess = 0
 randomness = 0.6
@@ -293,7 +295,7 @@ material = SubResource("CanvasItemMaterial_7")
 position = Vector2(0, 0)
 emitting = false
 amount = 30
-texture = ExtResource("3_ticle_02")
+texture = ExtResource("4_ticle_02")
 lifetime = 0.2
 preprocess = 0
 randomness = 0.6
@@ -305,7 +307,7 @@ material = SubResource("CanvasItemMaterial_13")
 position = Vector2(0, 0)
 emitting = false
 amount = 30
-texture = ExtResource("3_ticle_02")
+texture = ExtResource("4_ticle_02")
 lifetime = 0.3
 preprocess = 0
 randomness = 0.6
@@ -317,7 +319,7 @@ material = SubResource("CanvasItemMaterial_19")
 position = Vector2(0, 0)
 emitting = false
 amount = 150
-texture = ExtResource("2_pati_02")
+texture = ExtResource("3_pati_02")
 lifetime = 0.6
 preprocess = 0
 randomness = 0.6
@@ -329,7 +331,7 @@ material = SubResource("CanvasItemMaterial_25")
 position = Vector2(0, 0)
 emitting = false
 amount = 50
-texture = ExtResource("4_pati_03")
+texture = ExtResource("5_pati_03")
 lifetime = 0.6
 preprocess = 0
 randomness = 0.6
@@ -341,7 +343,7 @@ material = SubResource("CanvasItemMaterial_31")
 position = Vector2(0, 0)
 emitting = false
 amount = 50
-texture = ExtResource("2_pati_02")
+texture = ExtResource("3_pati_02")
 lifetime = 0.6
 preprocess = 0
 randomness = 0.6
@@ -353,7 +355,7 @@ material = SubResource("CanvasItemMaterial_37")
 position = Vector2(0, 0)
 emitting = false
 amount = 50
-texture = ExtResource("2_pati_02")
+texture = ExtResource("3_pati_02")
 lifetime = 0.3
 preprocess = 0
 randomness = 0.6
@@ -367,7 +369,8 @@ z_index = -109
 visible = false
 metadata/meilin_vfx_delay_sec = 0.5
 [node name="meirin_unique_buff_play_firework_blue" type="SpineSprite" parent="meirin_unique_buff_play_firework_blue_layer_3"]
-skeleton_data_res = ExtResource("5_meirin_unique_buff_play_firework_blue")
+normal_material = ExtResource("2_spine_pma")
+skeleton_data_res = ExtResource("6_meirin_unique_buff_play_firework_blue")
 preview_skin = "Default"
 preview_animation = "animation"
 preview_frame = false

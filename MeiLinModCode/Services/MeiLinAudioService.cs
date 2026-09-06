@@ -9,6 +9,8 @@ namespace MeiLinMod.MeiLinModCode.Services;
 public static class MeiLinAudioService
 {
     private const float MeiLinVoiceGain = 2f;
+    private const float UltimateVoiceScale = 0.28f;
+    private const float UltimateEffectScale = 0.16f;
 
     private static readonly string[] FmodPrefixes = ["event:/", "snapshot:/", "bus:/", "vca:/", "parameter:/"];
 
@@ -129,22 +131,22 @@ public static class MeiLinAudioService
 
     public static bool TryPlayUgAttackVoice(Player? player = null, float linearVolume = 1f)
     {
-        return IsMeiLinPlayer(player) && TryPlay(UgVoicePath, linearVolume);
+        return IsMeiLinPlayer(player) && TryPlay(UgVoicePath, linearVolume * UltimateVoiceScale);
     }
 
-    public static bool TryPlayUgAttackSound(Player? player = null, float linearVolume = 0.5f)
+    public static bool TryPlayUgAttackSound(Player? player = null, float linearVolume = 1f)
     {
-        return IsMeiLinPlayer(player) && TryPlay(UgSoundPath, linearVolume);
+        return IsMeiLinPlayer(player) && TryPlay(UgSoundPath, linearVolume * UltimateEffectScale);
     }
 
     public static bool TryPlayUxVoice(Player? player = null, float linearVolume = 1f)
     {
-        return IsMeiLinPlayer(player) && TryPlay(UxVoicePath, linearVolume);
+        return IsMeiLinPlayer(player) && TryPlay(UxVoicePath, linearVolume * UltimateVoiceScale);
     }
 
-    public static bool TryPlayUxSound(Player? player = null, float linearVolume = 0.5f)
+    public static bool TryPlayUxSound(Player? player = null, float linearVolume = 1f)
     {
-        return IsMeiLinPlayer(player) && TryPlay(UxSoundPath, linearVolume);
+        return IsMeiLinPlayer(player) && TryPlay(UxSoundPath, linearVolume * UltimateEffectScale);
     }
 
     public static void SuppressNextDefaultAttackSfx(Player? player = null)
