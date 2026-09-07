@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MeiLinMod.MeiLinModCode.Mechanics.Settings;
+using MeiLinMod.MeiLinModCode.Services;
 using MeiLinCharacterModel = MeiLinMod.MeiLinModCode.Character.MeiLinMod;
 
 namespace MeiLinMod.MeiLinModCode.Vfx;
@@ -53,6 +54,12 @@ public static class MeiLinUgPresentation
                         if (node != null) visuals.Add(node);
                     }
                     stage.Call("begin", actor, visuals);
+                    // Bind sound to the presentation epoch. Playing it from the
+                    // card before scene instantiation made first-load audio lead
+                    // the authored timeline by a variable amount.
+                    MeiLinAudioService.SuppressNextDefaultAttackSfx(caster.Player);
+                    MeiLinAudioService.TryPlayUgAttackVoice(caster.Player);
+                    MeiLinAudioService.TryPlayUgAttackSound(caster.Player);
                 }
             }
             catch (Exception ex)

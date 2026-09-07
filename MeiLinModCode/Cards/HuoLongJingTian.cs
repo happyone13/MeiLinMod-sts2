@@ -45,13 +45,6 @@ public class HuoLongJingTian() : MeiLinModCard(2, CardType.Attack, CardRarity.Ra
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        if (MeiLinModConfig.UseCombatEffects && MeiLinSharedSettings.UltimateCinematicsEnabled)
-        {
-            MeiLinAudioService.SuppressNextDefaultAttackSfx(Owner);
-            MeiLinAudioService.TryPlayUgAttackVoice(Owner);
-            MeiLinAudioService.TryPlayUgAttackSound(Owner);
-        }
-
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
         await MeiLinUgPresentation.PlayAsync(Owner.Creature, [cardPlay.Target], async cinematic =>
         {

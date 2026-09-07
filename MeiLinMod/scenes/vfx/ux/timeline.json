@@ -886,6 +886,7 @@
   },
   "cutin": {
     "at": 0.0,
+    "before_timeline": true,
     "frames": [
       {
         "path": "res://MeiLinMod/images/vfx/ux_video/frame_000.png",

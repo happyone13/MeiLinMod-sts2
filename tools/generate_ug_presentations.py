@@ -178,7 +178,9 @@ default_mix = 0.0
                     'path': f'res://{mod}/images/vfx/ux_video/{path.name}',
                     'duration': round(float(image.info.get('duration', 100)) / 1000.0, 4),
                 })
-            data['cutin'] = {'at': 0.0 if char == 'meilin' else 0.6, 'frames': cutin_frames}
+            # The WebP is a blocking opening cut-in. Spine/event time starts only
+            # after its final frame, matching the staged Arabella presentation.
+            data['cutin'] = {'at': 0.0, 'before_timeline': True, 'frames': cutin_frames}
     (out / 'timeline.json').write_text(json.dumps(data, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
     actor_resource = (f'res://{mod}/spine/q/q.tres' if char == 'meilin'
                       else f'res://{mod}/spine/q/{ident}_skel_data.tres')

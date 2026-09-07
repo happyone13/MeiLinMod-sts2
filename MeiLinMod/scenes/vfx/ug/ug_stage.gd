@@ -3,6 +3,8 @@ extends CanvasLayer
 @export var config_path: String
 var config: Dictionary
 var elapsed: float = 0.0
+var presentation_elapsed: float = 0.0
+var cutin_lead_in: float = 0.0
 var running: bool = false
 var event_index: int = 0
 var borrowed: Array = []
@@ -47,6 +49,18 @@ func begin(actor: CanvasItem, enemies: Array) -> void:
         actor_origin = $Stage.to_local(actor.get_global_transform_with_canvas().origin)
         actor.visible = false
     actor_home_scale = $Stage/World/Actor.scale
+    if config.character == "meilin" and is_instance_valid(actor):
+        var source_spine: CanvasItem = find_spine_canvas_item(actor)
+        if source_spine != null:
+            # Match the replacement Spine's final on-screen size to the normal
+            # combat Spine instead of comparing local scales from two canvases.
+            var source_scale: Vector2 = source_spine.get_global_transform_with_canvas().get_scale().abs()
+            var stage_scale: Vector2 = $Stage/World.get_global_transform_with_canvas().get_scale().abs()
+            actor_home_scale = Vector2(
+                source_scale.x / maxf(stage_scale.x, 0.0001),
+                source_scale.y / maxf(stage_scale.y, 0.0001)
+            )
+            $Stage/World/Actor.scale = actor_home_scale
     $Stage/World/Actor.position = actor_origin
     $Stage/World/Actor.visible = false
     for enemy in enemies:
@@ -64,6 +78,15 @@ func begin(actor: CanvasItem, enemies: Array) -> void:
         borrowed.append(snapshot)
     begin_clock()
 
+func find_spine_canvas_item(node: Node) -> CanvasItem:
+    if node is SpineSprite:
+        return node as CanvasItem
+    for child in node.get_children():
+        var found: CanvasItem = find_spine_canvas_item(child)
+        if found != null:
+            return found
+    return null
+
 func begin_preview() -> void:
     # Preview uses the same scene, clock, event routing, and cleanup as combat.
     preview_mode = true
@@ -71,6 +94,8 @@ func begin_preview() -> void:
 
 func begin_clock() -> void:
     running = true
+    elapsed = 0.0
+    presentation_elapsed = 0.0
     started_usec = Time.get_ticks_usec()
     set_process(true)
     _process(0)
@@ -81,15 +106,22 @@ func _process(_delta: float) -> void:
     # Movie Maker can render faster than wall-clock time; previews advance by the
     # recorded frame delta while combat remains tied to real authored seconds.
     if preview_mode:
-        elapsed += _delta
+        presentation_elapsed += _delta
     else:
-        elapsed = (Time.get_ticks_usec() - started_usec) / 1000000.0
+        presentation_elapsed = (Time.get_ticks_usec() - started_usec) / 1000000.0
     fit_viewport()
+    # UX cut-ins are an opening phase. Keep every Spine timeline suspended until
+    # the final sequence frame has completed, then start the authored timeline at T0.
+    if presentation_elapsed < cutin_lead_in:
+        elapsed = 0.0
+        update_cutin(presentation_elapsed)
+        return
+    elapsed = presentation_elapsed - cutin_lead_in
     while event_index < config.events.size() and config.events[event_index].at <= elapsed:
         dispatch(config.events[event_index])
         event_index += 1
     apply_motion()
-    update_cutin()
+    update_cutin(presentation_elapsed if cutin_lead_in > 0.0 else elapsed)
     for item in fx:
         var e: Dictionary = item.event
         var node: Node2D = item.node
@@ -133,11 +165,13 @@ func prepare_cutin() -> void:
         var texture: Texture2D = load(str(frame.path))
         if texture != null:
             cutin_frames.append({"texture": texture, "duration": float(frame.duration)})
+            if bool(config.cutin.get("before_timeline", false)):
+                cutin_lead_in += float(frame.duration)
 
-func update_cutin() -> void:
+func update_cutin(clock: float) -> void:
     if cutin_sprite == null or cutin_frames.is_empty():
         return
-    var local_time: float = elapsed - float(config.cutin.at)
+    var local_time: float = clock - float(config.cutin.at)
     if local_time < 0.0:
         cutin_sprite.visible = false
         return

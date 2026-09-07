@@ -80,9 +80,6 @@ public abstract class MeiLinModCard(int cost, CardType type, CardRarity rarity, 
 
         if (MeiLinModConfig.UseCombatEffects && MeiLinSharedSettings.UltimateCinematicsEnabled && ShouldPlayUxCinematic())
         {
-            MeiLinAudioService.SuppressNextDefaultCastSfx(Owner);
-            MeiLinAudioService.TryPlayUxVoice(Owner);
-            MeiLinAudioService.TryPlayUxSound(Owner);
             bool played = false;
             await MeiLinUxPresentation.PlayAsync(Owner.Creature, [], cinematic =>
             {
@@ -96,9 +93,6 @@ public abstract class MeiLinModCard(int cost, CardType type, CardRarity rarity, 
 
         if (MeiLinModConfig.UseCombatEffects && MeiLinSharedSettings.UltimateCinematicsEnabled && ShouldPlayUgCinematic())
         {
-            MeiLinAudioService.SuppressNextDefaultAttackSfx(Owner);
-            MeiLinAudioService.TryPlayUgAttackVoice(Owner);
-            MeiLinAudioService.TryPlayUgAttackSound(Owner);
             var targets = cardPlay.Target != null
                 ? new[] { cardPlay.Target }
                 : CombatState?.HittableEnemies.ToArray() ?? [];
