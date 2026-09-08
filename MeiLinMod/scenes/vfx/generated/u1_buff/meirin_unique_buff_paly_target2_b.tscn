@@ -1,10 +1,11 @@
-[gd_scene load_steps=258 format=3]
+[gd_scene load_steps=49 format=3 uid="uid://ci3q6jrgmsmib"]
 
 [ext_resource type="SpineSkeletonDataResource" path="res://MeiLinMod/spine/effect/generated/meirin_unique_buff_play_target2_b/meirin_unique_buff_play_target2_b_skel_data.tres" id="1_meirin_unique_buff_play_target2_b"]
-[ext_resource type="Texture2D" path="res://MeiLinMod/images/vfx/particles/pati_02.png" id="2_pati_02"]
-[ext_resource type="Texture2D" path="res://MeiLinMod/images/vfx/particles/ticle_02.png" id="3_ticle_02"]
-[ext_resource type="Texture2D" path="res://MeiLinMod/images/vfx/particles/pati_03.png" id="4_pati_03"]
+[ext_resource type="Texture2D" uid="uid://dwv5shqdip1u6" path="res://MeiLinMod/images/vfx/particles/pati_02.png" id="2_pati_02"]
+[ext_resource type="Texture2D" uid="uid://b1f7bwimnhejk" path="res://MeiLinMod/images/vfx/particles/ticle_02.png" id="3_ticle_02"]
+[ext_resource type="Texture2D" uid="uid://ceqmflgonh1y2" path="res://MeiLinMod/images/vfx/particles/pati_03.png" id="4_pati_03"]
 [ext_resource type="SpineSkeletonDataResource" path="res://MeiLinMod/spine/effect/generated/meirin_unique_buff_play_firework_blue/meirin_unique_buff_play_firework_blue_skel_data.tres" id="5_meirin_unique_buff_play_firework_blue"]
+[ext_resource type="Material" path="res://MeiLinMod/materials/spine_pma.tres" id="spine_pma"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1"]
 blend_mode = 1
@@ -25,22 +26,17 @@ curve = SubResource("Curve_4")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6"]
 particle_flag_disable_z = true
-emission_shape = 3
 emission_shape_scale = Vector3(10, 10, 1)
+emission_shape = 3
 emission_box_extents = Vector3(1, 1, 1)
-direction = Vector3(1, 0, 0)
-spread = 360
-initial_velocity_min = 1
-initial_velocity_max = 999
+spread = 360.0
+initial_velocity_min = 1.0
+initial_velocity_max = 999.0
 gravity = Vector3(0, 0, 0)
 scale_min = 0.5
-scale_max = 2
+scale_max = 2.0
 scale_curve = SubResource("CurveTexture_5")
 color_ramp = SubResource("GradientTexture1D_3")
-angle_min = 0
-angle_max = 0
-angular_velocity_min = 0
-angular_velocity_max = 0
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7"]
 blend_mode = 1
@@ -61,22 +57,17 @@ curve = SubResource("Curve_10")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_12"]
 particle_flag_disable_z = true
-emission_shape = 3
 emission_shape_scale = Vector3(150, 600, 1)
+emission_shape = 3
 emission_box_extents = Vector3(1, 1, 1)
-direction = Vector3(1, 0, 0)
-spread = 360
-initial_velocity_min = 0
-initial_velocity_max = 0
+angle_min = -360.0
+angle_max = 360.0
+spread = 360.0
 gravity = Vector3(0, 0, 0)
 scale_min = 0.294118
 scale_max = 0.882353
 scale_curve = SubResource("CurveTexture_11")
 color_ramp = SubResource("GradientTexture1D_9")
-angle_min = -360
-angle_max = 360
-angular_velocity_min = 0
-angular_velocity_max = 0
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_13"]
 blend_mode = 1
@@ -97,22 +88,19 @@ curve = SubResource("Curve_16")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_18"]
 particle_flag_disable_z = true
-emission_shape = 3
 emission_shape_scale = Vector3(150, 600, 1)
+emission_shape = 3
 emission_box_extents = Vector3(1, 1, 1)
-direction = Vector3(1, 0, 0)
-spread = 360
-initial_velocity_min = 1
-initial_velocity_max = 1999
+angle_min = -360.0
+angle_max = 360.0
+spread = 360.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1999.0
 gravity = Vector3(0, 0, 0)
 scale_min = 0.441176
 scale_max = 1.911765
 scale_curve = SubResource("CurveTexture_17")
 color_ramp = SubResource("GradientTexture1D_15")
-angle_min = -360
-angle_max = 360
-angular_velocity_min = 0
-angular_velocity_max = 0
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_19"]
 blend_mode = 1
@@ -133,22 +121,17 @@ curve = SubResource("Curve_22")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_24"]
 particle_flag_disable_z = true
-emission_shape = 3
 emission_shape_scale = Vector3(0, 0, 1)
+emission_shape = 3
 emission_box_extents = Vector3(1, 1, 1)
-direction = Vector3(1, 0, 0)
-spread = 360
-initial_velocity_min = 50
-initial_velocity_max = 250
+spread = 360.0
+initial_velocity_min = 50.0
+initial_velocity_max = 250.0
 gravity = Vector3(0, 0, 0)
 scale_min = 0.75
 scale_max = 3.25
 scale_curve = SubResource("CurveTexture_23")
 color_ramp = SubResource("GradientTexture1D_21")
-angle_min = 0
-angle_max = 0
-angular_velocity_min = 0
-angular_velocity_max = 0
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_25"]
 blend_mode = 1
@@ -169,22 +152,17 @@ curve = SubResource("Curve_28")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_30"]
 particle_flag_disable_z = true
-emission_shape = 3
 emission_shape_scale = Vector3(0, 0, 1)
+emission_shape = 3
 emission_box_extents = Vector3(1, 1, 1)
-direction = Vector3(1, 0, 0)
-spread = 360
-initial_velocity_min = 50
-initial_velocity_max = 250
+spread = 360.0
+initial_velocity_min = 50.0
+initial_velocity_max = 250.0
 gravity = Vector3(0, 0, 0)
 scale_min = 0.01
 scale_max = 3.99
 scale_curve = SubResource("CurveTexture_29")
 color_ramp = SubResource("GradientTexture1D_27")
-angle_min = 0
-angle_max = 0
-angular_velocity_min = 0
-angular_velocity_max = 0
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_31"]
 blend_mode = 1
@@ -205,22 +183,17 @@ curve = SubResource("Curve_34")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_36"]
 particle_flag_disable_z = true
-emission_shape = 3
 emission_shape_scale = Vector3(300, 300, 1)
+emission_shape = 3
 emission_box_extents = Vector3(1, 1, 1)
-direction = Vector3(1, 0, 0)
-spread = 360
-initial_velocity_min = 1
-initial_velocity_max = 59
+spread = 360.0
+initial_velocity_min = 1.0
+initial_velocity_max = 59.0
 gravity = Vector3(0, -10, 0)
 scale_min = 0.75
 scale_max = 3.25
 scale_curve = SubResource("CurveTexture_35")
 color_ramp = SubResource("GradientTexture1D_33")
-angle_min = 0
-angle_max = 0
-angular_velocity_min = 0
-angular_velocity_max = 0
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_37"]
 blend_mode = 1
@@ -241,133 +214,125 @@ curve = SubResource("Curve_40")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_42"]
 particle_flag_disable_z = true
-emission_shape = 3
 emission_shape_scale = Vector3(300, 300, 1)
+emission_shape = 3
 emission_box_extents = Vector3(1, 1, 1)
-direction = Vector3(1, 0, 0)
-spread = 360
-initial_velocity_min = 1
-initial_velocity_max = 59
+spread = 360.0
+initial_velocity_min = 1.0
+initial_velocity_max = 59.0
 gravity = Vector3(0, -10, 0)
 scale_min = 0.75
 scale_max = 3.25
 scale_curve = SubResource("CurveTexture_41")
 color_ramp = SubResource("GradientTexture1D_39")
-angle_min = 0
-angle_max = 0
-angular_velocity_min = 0
-angular_velocity_max = 0
-
 
 [node name="MeirinUniqueBuffPalyTarget2B" type="Node2D"]
+
 [node name="meirin_unique_buff_play_target2_b_layer_1" type="Node2D" parent="."]
 z_index = -110
-visible = false
 metadata/meilin_vfx_delay_sec = 0.066
+
 [node name="meirin_unique_buff_play_target2_b" type="SpineSprite" parent="meirin_unique_buff_play_target2_b_layer_1"]
 skeleton_data_res = ExtResource("1_meirin_unique_buff_play_target2_b")
 preview_skin = "Default"
 preview_animation = "animation"
 preview_frame = false
 preview_time = 0.0
+
 [node name="meirin_firework_b_layer_2" type="Node2D" parent="."]
+visible = false
+z_index = -109
 position = Vector2(66.744, -280.16)
 scale = Vector2(0.7, 0.7)
-z_index = -109
-visible = false
 metadata/meilin_vfx_delay_sec = 0.5
+
 [node name="meirin_firework_b_firework1_1" type="GPUParticles2D" parent="meirin_firework_b_layer_2"]
 material = SubResource("CanvasItemMaterial_1")
-position = Vector2(0, 0)
 emitting = false
 amount = 70
 texture = ExtResource("2_pati_02")
 lifetime = 0.2
-preprocess = 0
-randomness = 0.6
 one_shot = true
 explosiveness = 1.0
+randomness = 0.6
 process_material = SubResource("ParticleProcessMaterial_6")
+
 [node name="meirin_firework_b_firework2_2" type="GPUParticles2D" parent="meirin_firework_b_layer_2"]
 material = SubResource("CanvasItemMaterial_7")
-position = Vector2(0, 0)
 emitting = false
 amount = 30
 texture = ExtResource("3_ticle_02")
 lifetime = 0.2
-preprocess = 0
-randomness = 0.6
 one_shot = true
 explosiveness = 1.0
+randomness = 0.6
 process_material = SubResource("ParticleProcessMaterial_12")
+
 [node name="meirin_firework_b_firework3_3" type="GPUParticles2D" parent="meirin_firework_b_layer_2"]
 material = SubResource("CanvasItemMaterial_13")
-position = Vector2(0, 0)
 emitting = false
 amount = 30
 texture = ExtResource("3_ticle_02")
 lifetime = 0.3
-preprocess = 0
-randomness = 0.6
 one_shot = true
 explosiveness = 1.0
+randomness = 0.6
 process_material = SubResource("ParticleProcessMaterial_18")
+
 [node name="meirin_firework_b_firework4_4" type="GPUParticles2D" parent="meirin_firework_b_layer_2"]
 material = SubResource("CanvasItemMaterial_19")
-position = Vector2(0, 0)
 emitting = false
 amount = 150
 texture = ExtResource("2_pati_02")
 lifetime = 0.6
-preprocess = 0
-randomness = 0.6
 one_shot = true
 explosiveness = 1.0
+randomness = 0.6
 process_material = SubResource("ParticleProcessMaterial_24")
+
 [node name="meirin_firework_b_firework5_5" type="GPUParticles2D" parent="meirin_firework_b_layer_2"]
 material = SubResource("CanvasItemMaterial_25")
-position = Vector2(0, 0)
 emitting = false
 amount = 50
 texture = ExtResource("4_pati_03")
 lifetime = 0.6
-preprocess = 0
-randomness = 0.6
 one_shot = true
 explosiveness = 1.0
+randomness = 0.6
 process_material = SubResource("ParticleProcessMaterial_30")
+
 [node name="meirin_firework_b_firework4_6" type="GPUParticles2D" parent="meirin_firework_b_layer_2"]
 material = SubResource("CanvasItemMaterial_31")
-position = Vector2(0, 0)
 emitting = false
 amount = 50
 texture = ExtResource("2_pati_02")
 lifetime = 0.6
-preprocess = 0
-randomness = 0.6
 one_shot = true
 explosiveness = 1.0
+randomness = 0.6
 process_material = SubResource("ParticleProcessMaterial_36")
+
 [node name="meirin_firework_b_firework4_7" type="GPUParticles2D" parent="meirin_firework_b_layer_2"]
 material = SubResource("CanvasItemMaterial_37")
-position = Vector2(0, 0)
 emitting = false
 amount = 50
 texture = ExtResource("2_pati_02")
 lifetime = 0.3
-preprocess = 0
-randomness = 0.6
 one_shot = true
 explosiveness = 1.0
+randomness = 0.6
 process_material = SubResource("ParticleProcessMaterial_42")
+
 [node name="meirin_unique_buff_play_firework_blue_layer_3" type="Node2D" parent="."]
+visible = false
+z_index = -109
 position = Vector2(66.744, -280.16)
 scale = Vector2(0.7, 0.7)
-z_index = -109
-visible = false
 metadata/meilin_vfx_delay_sec = 0.5
+
 [node name="meirin_unique_buff_play_firework_blue" type="SpineSprite" parent="meirin_unique_buff_play_firework_blue_layer_3"]
 skeleton_data_res = ExtResource("5_meirin_unique_buff_play_firework_blue")
+normal_material = ExtResource("spine_pma")
 preview_skin = "Default"
 preview_animation = "animation"
 preview_frame = false

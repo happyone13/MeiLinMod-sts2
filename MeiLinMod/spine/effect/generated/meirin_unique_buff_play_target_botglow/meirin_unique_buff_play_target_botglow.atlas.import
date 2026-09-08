@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://bn3ymxjp8rp37"
+path="res://.godot/imported/meirin_unique_buff_play_target_botglow.atlas-7563550b1e9cb8996dc3187035d135c8.spatlas"
+
+[deps]
+
+source_file="res://MeiLinMod/spine/effect/generated/meirin_unique_buff_play_target_botglow/meirin_unique_buff_play_target_botglow.atlas"
+dest_files=["res://.godot/imported/meirin_unique_buff_play_target_botglow.atlas-7563550b1e9cb8996dc3187035d135c8.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

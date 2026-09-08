@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://6etgiq1dvoh8"
+path="res://.godot/imported/meirin_unique_strong_attack_play_flash.atlas-2f6dc46a862a31e251428aed14ce2175.spatlas"
+
+[deps]
+
+source_file="res://MeiLinMod/spine/effect/generated/meirin_unique_strong_attack_play_flash/meirin_unique_strong_attack_play_flash.atlas"
+dest_files=["res://.godot/imported/meirin_unique_strong_attack_play_flash.atlas-2f6dc46a862a31e251428aed14ce2175.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

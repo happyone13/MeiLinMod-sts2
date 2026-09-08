@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://dufeaw2rhll5a"
+path="res://.godot/imported/meirin_debuff_play_target_b.atlas-57523829293dc778ca3453389917961b.spatlas"
+
+[deps]
+
+source_file="res://MeiLinMod/spine/effect/generated/meirin_debuff_play_target_b/meirin_debuff_play_target_b.atlas"
+dest_files=["res://.godot/imported/meirin_debuff_play_target_b.atlas-57523829293dc778ca3453389917961b.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://w0meey6mapf1"
+path="res://.godot/imported/meirin_1027_u4_eff_ready_f4_c.atlas-9d1a6fd4728968c6c2922e36bcb3cf97.spatlas"
+
+[deps]
+
+source_file="res://MeiLinMod/spine/effect/generated/meirin_1027_u4_eff_ready_f4_c/meirin_1027_u4_eff_ready_f4_c.atlas"
+dest_files=["res://.godot/imported/meirin_1027_u4_eff_ready_f4_c.atlas-9d1a6fd4728968c6c2922e36bcb3cf97.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://hk8ijkoe6wil"
+path="res://.godot/imported/meirin_unique_buff_play_target2_m.atlas-789980ad9e65dcc94851e435e77bc679.spatlas"
+
+[deps]
+
+source_file="res://MeiLinMod/spine/effect/generated/meirin_unique_buff_play_target2_m/meirin_unique_buff_play_target2_m.atlas"
+dest_files=["res://.godot/imported/meirin_unique_buff_play_target2_m.atlas-789980ad9e65dcc94851e435e77bc679.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

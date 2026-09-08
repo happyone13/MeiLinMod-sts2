@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://c14vb2ork3f03"
+path="res://.godot/imported/meirin_debuff_play_target_b.skel-5a78631333358e68fc69e1aeaad74d2e.spskel"
+
+[deps]
+
+source_file="res://MeiLinMod/spine/effect/generated/meirin_debuff_play_target_b/meirin_debuff_play_target_b.skel"
+dest_files=["res://.godot/imported/meirin_debuff_play_target_b.skel-5a78631333358e68fc69e1aeaad74d2e.spskel"]
+
+[params]
+

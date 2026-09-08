@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://6ps08kvf8ej1"
+path="res://.godot/imported/meirin_unique_buff_play_firework_blue.atlas-795936f0fda051ddf9de9c586daff086.spatlas"
+
+[deps]
+
+source_file="res://MeiLinMod/spine/effect/generated/meirin_unique_buff_play_firework_blue/meirin_unique_buff_play_firework_blue.atlas"
+dest_files=["res://.godot/imported/meirin_unique_buff_play_firework_blue.atlas-795936f0fda051ddf9de9c586daff086.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

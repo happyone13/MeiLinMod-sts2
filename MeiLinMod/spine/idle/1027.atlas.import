@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://dy0vs2hcdp6c0"
+path="res://.godot/imported/1027.atlas-854e2480dccaf70a9956987564fc3a01.spatlas"
+
+[deps]
+
+source_file="res://MeiLinMod/spine/idle/1027.atlas"
+dest_files=["res://.godot/imported/1027.atlas-854e2480dccaf70a9956987564fc3a01.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

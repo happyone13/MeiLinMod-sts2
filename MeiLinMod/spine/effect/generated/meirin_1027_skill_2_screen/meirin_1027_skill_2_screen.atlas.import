@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://bcn0fvys6gt3m"
+path="res://.godot/imported/meirin_1027_skill_2_screen.atlas-a539b267c63223d46f8b853be924dd0a.spatlas"
+
+[deps]
+
+source_file="res://MeiLinMod/spine/effect/generated/meirin_1027_skill_2_screen/meirin_1027_skill_2_screen.atlas"
+dest_files=["res://.godot/imported/meirin_1027_skill_2_screen.atlas-a539b267c63223d46f8b853be924dd0a.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

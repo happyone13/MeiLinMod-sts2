@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://cta6hkslslfxx"
+path="res://.godot/imported/close_combat_step_player_arrive.atlas-ac1b75c3d4f3e729b5e0005d217ebcca.spatlas"
+
+[deps]
+
+source_file="res://MeiLinMod/spine/effect/generated/close_combat_step_player_arrive/close_combat_step_player_arrive.atlas"
+dest_files=["res://.godot/imported/close_combat_step_player_arrive.atlas-ac1b75c3d4f3e729b5e0005d217ebcca.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

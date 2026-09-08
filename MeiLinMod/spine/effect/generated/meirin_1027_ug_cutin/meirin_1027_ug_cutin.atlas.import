@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://rsxtd2q83ebr"
+path="res://.godot/imported/meirin_1027_ug_cutin.atlas-716063724cee65d750d3f97d43bdab42.spatlas"
+
+[deps]
+
+source_file="res://MeiLinMod/spine/effect/generated/meirin_1027_ug_cutin/meirin_1027_ug_cutin.atlas"
+dest_files=["res://.godot/imported/meirin_1027_ug_cutin.atlas-716063724cee65d750d3f97d43bdab42.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"
