@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://b2182gppvwicj"
+path="res://.godot/imported/1027_skill_x_part_1.atlas-b1eb50a649d229400f050b134cfe03aa.spatlas"
+
+[deps]
+
+source_file="res://MeiLinMod/spine/ux/1027_skill_x_part_1/1027_skill_x_part_1.atlas"
+dest_files=["res://.godot/imported/1027_skill_x_part_1.atlas-b1eb50a649d229400f050b134cfe03aa.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

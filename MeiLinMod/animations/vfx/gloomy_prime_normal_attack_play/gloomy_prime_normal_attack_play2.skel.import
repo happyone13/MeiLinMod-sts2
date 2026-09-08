@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://jdq644e1qpfj"
+path="res://.godot/imported/gloomy_prime_normal_attack_play2.skel-fcf701e41675ce2b6d2c38b3e9cebf86.spskel"
+
+[deps]
+
+source_file="res://MeiLinMod/animations/vfx/gloomy_prime_normal_attack_play/gloomy_prime_normal_attack_play2.skel"
+dest_files=["res://.godot/imported/gloomy_prime_normal_attack_play2.skel-fcf701e41675ce2b6d2c38b3e9cebf86.spskel"]
+
+[params]
+

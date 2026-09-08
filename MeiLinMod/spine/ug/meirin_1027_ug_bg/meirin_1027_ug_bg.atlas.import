@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://crv0homot5lmw"
+path="res://.godot/imported/meirin_1027_ug_bg.atlas-e88813e3663858f79737b8e9639f4111.spatlas"
+
+[deps]
+
+source_file="res://MeiLinMod/spine/ug/meirin_1027_ug_bg/meirin_1027_ug_bg.atlas"
+dest_files=["res://.godot/imported/meirin_1027_ug_bg.atlas-e88813e3663858f79737b8e9639f4111.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

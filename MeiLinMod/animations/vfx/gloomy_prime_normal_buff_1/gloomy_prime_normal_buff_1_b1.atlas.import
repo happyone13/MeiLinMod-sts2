@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://dgqq48ecn3saw"
+path="res://.godot/imported/gloomy_prime_normal_buff_1_b1.atlas-539d8b433762647dfc5bd065a2f5231a.spatlas"
+
+[deps]
+
+source_file="res://MeiLinMod/animations/vfx/gloomy_prime_normal_buff_1/gloomy_prime_normal_buff_1_b1.atlas"
+dest_files=["res://.godot/imported/gloomy_prime_normal_buff_1_b1.atlas-539d8b433762647dfc5bd065a2f5231a.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://d1evt84gk6pdu"
+path="res://.godot/imported/hit_blade_fire_s.skel-f8d9c0e11bb116d2e2cf053a07779ef5.spskel"
+
+[deps]
+
+source_file="res://MeiLinMod/animations/vfx/gloomy_monster_hit/hit_blade_fire_s.skel"
+dest_files=["res://.godot/imported/hit_blade_fire_s.skel-f8d9c0e11bb116d2e2cf053a07779ef5.spskel"]
+
+[params]
+

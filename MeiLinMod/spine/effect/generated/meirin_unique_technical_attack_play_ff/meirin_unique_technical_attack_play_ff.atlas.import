@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://def7jovjkxtug"
+path="res://.godot/imported/meirin_unique_technical_attack_play_ff.atlas-e539826e8ad3d0a6e97d77bd9c151e16.spatlas"
+
+[deps]
+
+source_file="res://MeiLinMod/spine/effect/generated/meirin_unique_technical_attack_play_ff/meirin_unique_technical_attack_play_ff.atlas"
+dest_files=["res://.godot/imported/meirin_unique_technical_attack_play_ff.atlas-e539826e8ad3d0a6e97d77bd9c151e16.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://bw0vky0yvr606"
+path="res://.godot/imported/hit_slash_normal_01.skel-c0a38e196afd682089ddcee09c54015e.spskel"
+
+[deps]
+
+source_file="res://MeiLinMod/animations/vfx/gloomy_monster_hit/hit_slash_normal_01.skel"
+dest_files=["res://.godot/imported/hit_slash_normal_01.skel-c0a38e196afd682089ddcee09c54015e.spskel"]
+
+[params]
+

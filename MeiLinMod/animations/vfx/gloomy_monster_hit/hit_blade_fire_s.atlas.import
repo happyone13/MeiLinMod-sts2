@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://bnch72qfeqyod"
+path="res://.godot/imported/hit_blade_fire_s.atlas-567427d88e1902b9ef2fdd52ab829ef3.spatlas"
+
+[deps]
+
+source_file="res://MeiLinMod/animations/vfx/gloomy_monster_hit/hit_blade_fire_s.atlas"
+dest_files=["res://.godot/imported/hit_blade_fire_s.atlas-567427d88e1902b9ef2fdd52ab829ef3.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

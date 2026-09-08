@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://cnmkqappuvt1v"
+path="res://.godot/imported/gloomy_beast_normal_buff_1_f.skel-05a7a1e498101319769e3fc4274d82d4.spskel"
+
+[deps]
+
+source_file="res://MeiLinMod/animations/vfx/gloomy_beast_normal_buff_1/gloomy_beast_normal_buff_1_f.skel"
+dest_files=["res://.godot/imported/gloomy_beast_normal_buff_1_f.skel-05a7a1e498101319769e3fc4274d82d4.spskel"]
+
+[params]
+

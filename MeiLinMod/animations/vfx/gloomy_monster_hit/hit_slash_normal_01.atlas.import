@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://0a8bd01nqgy4"
+path="res://.godot/imported/hit_slash_normal_01.atlas-e9a5be3848d0b3638dd6ac76a823bb1c.spatlas"
+
+[deps]
+
+source_file="res://MeiLinMod/animations/vfx/gloomy_monster_hit/hit_slash_normal_01.atlas"
+dest_files=["res://.godot/imported/hit_slash_normal_01.atlas-e9a5be3848d0b3638dd6ac76a823bb1c.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

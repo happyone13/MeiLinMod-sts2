@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://b18ma6p0jkr4u"
+path="res://.godot/imported/unique_1027_03.skel-21ec0b743a3ade878b3cc38e2888f84f.spskel"
+
+[deps]
+
+source_file="res://MeiLinMod/newcard/spine/unique_1027_03.skel"
+dest_files=["res://.godot/imported/unique_1027_03.skel-21ec0b743a3ade878b3cc38e2888f84f.spskel"]
+
+[params]
+

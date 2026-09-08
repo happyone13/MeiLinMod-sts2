@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://rhi4r5qnojh"
+path="res://.godot/imported/gloomy_beast_normal_buff_1_f2.atlas-fe0d49aa0a37e1801aa8e7fb0d6ea710.spatlas"
+
+[deps]
+
+source_file="res://MeiLinMod/animations/vfx/gloomy_beast_normal_buff_1/gloomy_beast_normal_buff_1_f2.atlas"
+dest_files=["res://.godot/imported/gloomy_beast_normal_buff_1_f2.atlas-fe0d49aa0a37e1801aa8e7fb0d6ea710.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

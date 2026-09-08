@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://dxk7a72y0q40s"
+path="res://.godot/imported/meirin_unique_buff_ready_b.skel-b348a9ec0af8de8830fc761c0532cc9f.spskel"
+
+[deps]
+
+source_file="res://MeiLinMod/spine/effect/generated/meirin_unique_buff_ready_b/meirin_unique_buff_ready_b.skel"
+dest_files=["res://.godot/imported/meirin_unique_buff_ready_b.skel-b348a9ec0af8de8830fc761c0532cc9f.spskel"]
+
+[params]
+

@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://drq2xr4qvpfqg"
+path="res://.godot/imported/1006012.atlas-ff60da5c8c545151f8b9b70376233791.spatlas"
+
+[deps]
+
+source_file="res://MeiLinMod/animations/monsters/gloomy/1006012.atlas"
+dest_files=["res://.godot/imported/1006012.atlas-ff60da5c8c545151f8b9b70376233791.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

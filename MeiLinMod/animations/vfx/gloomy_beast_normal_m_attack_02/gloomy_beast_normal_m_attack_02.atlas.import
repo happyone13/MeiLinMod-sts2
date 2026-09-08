@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://mv5rynn68ncw"
+path="res://.godot/imported/gloomy_beast_normal_m_attack_02.atlas-992f4a737ad5e359852d13251a34d238.spatlas"
+
+[deps]
+
+source_file="res://MeiLinMod/animations/vfx/gloomy_beast_normal_m_attack_02/gloomy_beast_normal_m_attack_02.atlas"
+dest_files=["res://.godot/imported/gloomy_beast_normal_m_attack_02.atlas-992f4a737ad5e359852d13251a34d238.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

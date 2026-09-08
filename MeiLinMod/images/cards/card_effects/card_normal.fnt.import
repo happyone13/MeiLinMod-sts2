@@ -1,0 +1,17 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://b0mn1fm7anxvw"
+path="res://.godot/imported/card_normal.fnt-6b4113807040d24d23d44f0d71e9c878.fontdata"
+
+[deps]
+
+source_file="res://MeiLinMod/images/cards/card_effects/card_normal.fnt"
+dest_files=["res://.godot/imported/card_normal.fnt-6b4113807040d24d23d44f0d71e9c878.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true
+scaling_mode=2

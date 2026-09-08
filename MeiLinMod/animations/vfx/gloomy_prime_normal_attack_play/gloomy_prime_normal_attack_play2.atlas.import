@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://bj62jo310e8y6"
+path="res://.godot/imported/gloomy_prime_normal_attack_play2.atlas-fd84d92c2151826e658a03aac3b9f2c6.spatlas"
+
+[deps]
+
+source_file="res://MeiLinMod/animations/vfx/gloomy_prime_normal_attack_play/gloomy_prime_normal_attack_play2.atlas"
+dest_files=["res://.godot/imported/gloomy_prime_normal_attack_play2.atlas-fd84d92c2151826e658a03aac3b9f2c6.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://cdiy3u5owx3xm"
+path="res://.godot/imported/meirin_unique_technical_attack_play_botglow.atlas-bbd39a8bf0df9882a44d6447fae06cc5.spatlas"
+
+[deps]
+
+source_file="res://MeiLinMod/spine/effect/generated/meirin_unique_technical_attack_play_botglow/meirin_unique_technical_attack_play_botglow.atlas"
+dest_files=["res://.godot/imported/meirin_unique_technical_attack_play_botglow.atlas-bbd39a8bf0df9882a44d6447fae06cc5.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

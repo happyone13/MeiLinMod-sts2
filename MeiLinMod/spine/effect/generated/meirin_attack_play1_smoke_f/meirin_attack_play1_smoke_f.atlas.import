@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://dimed4md51v30"
+path="res://.godot/imported/meirin_attack_play1_smoke_f.atlas-53275b4bdef901b9c68c7b94c51de6c2.spatlas"
+
+[deps]
+
+source_file="res://MeiLinMod/spine/effect/generated/meirin_attack_play1_smoke_f/meirin_attack_play1_smoke_f.atlas"
+dest_files=["res://.godot/imported/meirin_attack_play1_smoke_f.atlas-53275b4bdef901b9c68c7b94c51de6c2.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

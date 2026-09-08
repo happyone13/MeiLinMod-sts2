@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://mg0cjastd3nk"
+path="res://.godot/imported/1006017.skel-5fb8955b3d73310a86db5b05e3bf5fb2.spskel"
+
+[deps]
+
+source_file="res://MeiLinMod/animations/monsters/gloomy/1006017.skel"
+dest_files=["res://.godot/imported/1006017.skel-5fb8955b3d73310a86db5b05e3bf5fb2.spskel"]
+
+[params]
+

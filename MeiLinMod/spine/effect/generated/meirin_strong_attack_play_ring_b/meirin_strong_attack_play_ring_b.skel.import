@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://bg5ee1neuml8x"
+path="res://.godot/imported/meirin_strong_attack_play_ring_b.skel-facdcf50737a2c4661d12d6d3c08ede9.spskel"
+
+[deps]
+
+source_file="res://MeiLinMod/spine/effect/generated/meirin_strong_attack_play_ring_b/meirin_strong_attack_play_ring_b.skel"
+dest_files=["res://.godot/imported/meirin_strong_attack_play_ring_b.skel-facdcf50737a2c4661d12d6d3c08ede9.spskel"]
+
+[params]
+

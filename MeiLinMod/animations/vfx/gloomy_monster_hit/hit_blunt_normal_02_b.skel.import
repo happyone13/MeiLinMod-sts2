@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://csc640l1tydb8"
+path="res://.godot/imported/hit_blunt_normal_02_b.skel-40dbbd3ebaf65caebdbedfbe73086c04.spskel"
+
+[deps]
+
+source_file="res://MeiLinMod/animations/vfx/gloomy_monster_hit/hit_blunt_normal_02_b.skel"
+dest_files=["res://.godot/imported/hit_blunt_normal_02_b.skel-40dbbd3ebaf65caebdbedfbe73086c04.spskel"]
+
+[params]
+

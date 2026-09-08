@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://c8jmavejhw2us"
+path="res://.godot/imported/meirin_1027_skill_x_eff_1_f2.skel-1b2faf2679fb9402f2b9750ebaa90f01.spskel"
+
+[deps]
+
+source_file="res://MeiLinMod/spine/effect/generated/meirin_1027_skill_x_eff_1_f2/meirin_1027_skill_x_eff_1_f2.skel"
+dest_files=["res://.godot/imported/meirin_1027_skill_x_eff_1_f2.skel-1b2faf2679fb9402f2b9750ebaa90f01.spskel"]
+
+[params]
+

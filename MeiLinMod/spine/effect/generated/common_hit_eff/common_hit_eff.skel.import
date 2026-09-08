@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://b7mup1r7n2qkg"
+path="res://.godot/imported/common_hit_eff.skel-1b8c0aaba38aa628168cfc23fe5f3ba8.spskel"
+
+[deps]
+
+source_file="res://MeiLinMod/spine/effect/generated/common_hit_eff/common_hit_eff.skel"
+dest_files=["res://.godot/imported/common_hit_eff.skel-1b8c0aaba38aa628168cfc23fe5f3ba8.spskel"]
+
+[params]
+

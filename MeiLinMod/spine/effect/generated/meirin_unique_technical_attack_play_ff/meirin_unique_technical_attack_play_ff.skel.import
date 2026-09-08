@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://xstgfo6kcyof"
+path="res://.godot/imported/meirin_unique_technical_attack_play_ff.skel-4dc37686222061899f34048460bd17b9.spskel"
+
+[deps]
+
+source_file="res://MeiLinMod/spine/effect/generated/meirin_unique_technical_attack_play_ff/meirin_unique_technical_attack_play_ff.skel"
+dest_files=["res://.godot/imported/meirin_unique_technical_attack_play_ff.skel-4dc37686222061899f34048460bd17b9.spskel"]
+
+[params]
+
