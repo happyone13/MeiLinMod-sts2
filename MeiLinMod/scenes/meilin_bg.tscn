@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://rbft0a8w0ugq"]
+[gd_scene load_steps=5 format=3 uid="uid://rbft0a8w0ugq"]
 
 [ext_resource type="Texture2D" uid="uid://b4xxdrnhk4xll" path="res://MeiLinMod/images/charui/154056.png" id="1_271ek"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://cp67ocggdvb3j" path="res://MeiLinMod/spine/idle/idle.tres" id="2_3dk15"]
-[ext_resource type="Script" path="res://GodotScripts/Nodes/SpineAutoPlayer.cs" id="3_8x2j5"]
+[ext_resource type="Script" uid="uid://dnwqjs0fcnjsx" path="res://GodotScripts/Nodes/SpineAutoPlayer.cs" id="3_8x2j5"]
+[ext_resource type="Material" uid="uid://cs88ys720nr1b" path="res://MeiLinMod/materials/spine_pma.tres" id="3_so0je"]
 
 [node name="TestBg" type="Control"]
 layout_mode = 3
@@ -92,6 +93,7 @@ color = Color(1, 0.63529414, 0.22352941, 1)
 
 [node name="SpineSprite" type="SpineSprite" parent="."]
 skeleton_data_res = ExtResource("2_3dk15")
+normal_material = ExtResource("3_so0je")
 preview_skin = "normal"
 preview_animation = "idle"
 preview_frame = false
@@ -103,7 +105,6 @@ script = ExtResource("3_8x2j5")
 AnimationName = "touch"
 Loop = false
 FollowUpAnimationName = "idle"
-FollowUpLoop = true
 SkinName = "normal"
 ResetSlotsToSetupPose = true
 ResetSlotsBeforeFollowUp = true
