@@ -20,8 +20,8 @@ public class QiPoBaFang() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommo
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(6m, ValueProp.Move),
-        new DynamicVar(BurstKey, 6m)
+        new DamageVar(8m, ValueProp.Move),
+        new DynamicVar(BurstKey, 8m)
     ];
 
     public override string PortraitPath => IdPortraitPath;

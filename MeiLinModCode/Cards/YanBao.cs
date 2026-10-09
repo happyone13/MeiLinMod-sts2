@@ -20,7 +20,7 @@ public class YanBao() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommon, T
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(8m, ValueProp.Move),
-        new DynamicVar(BonusDamageKey, 3m)
+        new DynamicVar(BonusDamageKey, 4m)
     ];
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
@@ -49,8 +49,7 @@ public class YanBao() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommon, T
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(2m);
-        DynamicVars[BonusDamageKey].UpgradeValueBy(1m);
+        DynamicVars[BonusDamageKey].UpgradeValueBy(2m);
     }
 }
-
 

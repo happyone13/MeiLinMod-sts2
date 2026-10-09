@@ -1,6 +1,8 @@
 using System.Reflection;
+using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Models.Monsters;
 using MeiLinMod.MeiLinModCode.Cards;
+using MeiLinMod.MeiLinModCode.Encounters;
 using MeiLinMod.MeiLinModCode.Mechanics.CardHoldOverlay;
 using STS2RitsuLib.Patching.Models;
 using TestTheSpire;
@@ -153,5 +155,29 @@ public sealed class OptionalOverlayPatchTests : CombatTestSuite
                             ?? throw new InvalidOperationException("CallerFilePath did not provide a source directory.");
 
         return Path.GetFullPath(Path.Combine(testDirectory, "..", ".."));
+    }
+}
+
+public sealed class OptionalOverlayMultiplayerTests : CombatTestSuite
+{
+    protected override void ConfigureBattle(CombatTestBattleBuilder battle)
+    {
+        battle
+            .Player<MeiLinCharacter>()
+            .AddRemotePlayer<MeiLinCharacter>(2)
+            .Encounter<GloomyPackEncounter>()
+            .WithSeed("meilinmod-overlay-local-player-only");
+    }
+
+    [Fact]
+    public void Battle_ready_overlay_accepts_only_the_local_meilin_card()
+    {
+        Assert.Equal(2, Players.Count);
+
+        var localCard = Assert.Single(PileType.Hand.GetPile(Players[0]).Cards.OfType<GloomyEscape>());
+        var remoteCard = Assert.Single(PileType.Hand.GetPile(Players[1]).Cards.OfType<GloomyEscape>());
+
+        Assert.True(MeiLinTarget.IsMineTargetCard(localCard));
+        Assert.False(MeiLinTarget.IsMineTargetCard(remoteCard));
     }
 }

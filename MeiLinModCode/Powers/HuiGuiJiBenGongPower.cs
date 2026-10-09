@@ -15,7 +15,7 @@ public class HuiGuiJiBenGongPower : MeiLinModPower
         if (player.Creature != Owner || player != Owner.Player)
             return;
 
-        await PlayerCmd.GainEnergy(2m * Amount, player);
+        await PlayerCmd.GainEnergy(1m * Amount, player);
         await CardPileCmd.Draw(choiceContext, 2m * Amount, player);
     }
 }

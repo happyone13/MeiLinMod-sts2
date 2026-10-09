@@ -1,7 +1,9 @@
 using MeiLinMod.MeiLinModCode.Cards;
 using MeiLinMod.MeiLinModCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Monsters;
 using TestTheSpire;
 using Xunit;
@@ -25,18 +27,50 @@ public sealed class CardBalanceUpdateTests : CombatTestSuite
     {
         var yanBao = await AddToHand<YanBao>();
         Assert.Equal(8m, yanBao.DynamicVars.Damage.BaseValue);
-        Assert.Equal(3m, yanBao.DynamicVars["BonusDamage"].BaseValue);
+        Assert.Equal(4m, yanBao.DynamicVars["BonusDamage"].BaseValue);
         CardCmd.Upgrade(yanBao);
         Assert.Equal(10m, yanBao.DynamicVars.Damage.BaseValue);
-        Assert.Equal(4m, yanBao.DynamicVars["BonusDamage"].BaseValue);
+        Assert.Equal(6m, yanBao.DynamicVars["BonusDamage"].BaseValue);
         await Play(yanBao, EnemyAt(0));
 
-        var qiPoBaFang = await AddToHand<QiPoBaFang>();
-        Assert.Equal(6m, qiPoBaFang.DynamicVars.Damage.BaseValue);
-        Assert.Equal(6m, qiPoBaFang.DynamicVars["Burst"].BaseValue);
-        CardCmd.Upgrade(qiPoBaFang);
+        var qiPoBaFang = (QiPoBaFang)ModelDb.Card<QiPoBaFang>().ToMutable();
         Assert.Equal(8m, qiPoBaFang.DynamicVars.Damage.BaseValue);
         Assert.Equal(8m, qiPoBaFang.DynamicVars["Burst"].BaseValue);
+        CardCmd.Upgrade(qiPoBaFang);
+        Assert.Equal(10m, qiPoBaFang.DynamicVars.Damage.BaseValue);
+        Assert.Equal(10m, qiPoBaFang.DynamicVars["Burst"].BaseValue);
+
+        var canYing = (CanYing)ModelDb.Card<CanYing>().ToMutable();
+        Assert.Equal(3m, canYing.EnergyCost.GetWithModifiers(CostModifiers.All));
+        Assert.DoesNotContain(CardKeyword.Retain, canYing.Keywords);
+        CardCmd.Upgrade(canYing);
+        Assert.Equal(3m, canYing.EnergyCost.GetWithModifiers(CostModifiers.All));
+        Assert.Contains(CardKeyword.Retain, canYing.Keywords);
+
+        var tuNa = (TuNa)ModelDb.Card<TuNa>().ToMutable();
+        Assert.Equal(1m, tuNa.DynamicVars["Progress"].BaseValue);
+
+        var cunJin = (CunJin)ModelDb.Card<CunJin>().ToMutable();
+        Assert.Equal(20m, cunJin.DynamicVars["DelayedDamage"].BaseValue);
+        CardCmd.Upgrade(cunJin);
+        Assert.Equal(25m, cunJin.DynamicVars["DelayedDamage"].BaseValue);
+
+        var shanHe = (ShanHe)ModelDb.Card<ShanHe>().ToMutable();
+        Assert.Equal(10m, shanHe.DynamicVars.Damage.BaseValue);
+        CardCmd.Upgrade(shanHe);
+        Assert.Equal(12m, shanHe.DynamicVars.Damage.BaseValue);
+
+        var yinYang = (YinYang)ModelDb.Card<YinYang>().ToMutable();
+        Assert.Equal(1m, yinYang.EnergyCost.GetWithModifiers(CostModifiers.All));
+        CardCmd.Upgrade(yinYang);
+        Assert.Equal(0m, yinYang.EnergyCost.GetWithModifiers(CostModifiers.All));
+
+        var xinLiuPower = await ApplyPower<XinLiuPower>(Player.Creature, 1, Player.Creature);
+        Assert.NotNull(xinLiuPower);
+        Assert.Equal(4, xinLiuPower.DisplayAmount);
+        var xinLiuUpgradedPower = await ApplyPower<XinLiuUpgradedPower>(Player.Creature, 1, Player.Creature);
+        Assert.NotNull(xinLiuUpgradedPower);
+        Assert.Equal(3, xinLiuUpgradedPower.DisplayAmount);
 
         var kaiTian = await AddToHand<KaiTian>();
         Assert.Equal(1m, kaiTian.DynamicVars.Damage.BaseValue);

@@ -21,7 +21,7 @@ public class ShanHe() : MeiLinModCard(1, CardType.Attack, CardRarity.Common, Tar
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(8m, ValueProp.Move),
+        new DamageVar(10m, ValueProp.Move),
         new EnergyVar(1),
         new DynamicVar(BurstKey, 10m)
     ];

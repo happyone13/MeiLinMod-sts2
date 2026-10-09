@@ -19,7 +19,7 @@ public class TuNa() : MeiLinModCard(0, CardType.Skill, CardRarity.Uncommon, Targ
         : [CardKeyword.Exhaust];
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DynamicVar(ProgressKey, 2m),
+        new DynamicVar(ProgressKey, 1m),
         new CardsVar(2)
     ];
 

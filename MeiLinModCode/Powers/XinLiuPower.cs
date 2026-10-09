@@ -11,7 +11,7 @@ namespace MeiLinMod.MeiLinModCode.Powers;
 
 public class XinLiuPower : MeiLinModPower
 {
-    private const int TriggerCount = 5;
+    private const int TriggerCount = 4;
     private int _progress;
 
     public override PowerType Type => PowerType.Buff;

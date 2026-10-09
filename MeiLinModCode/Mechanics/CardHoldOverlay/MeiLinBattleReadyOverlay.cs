@@ -90,7 +90,7 @@ public static class MeiLinBattleReadyOverlay
         if (!MeiLinModConfig.UseBattleReadyOverlay)
             return;
 
-        if (!MeiLinTarget.IsTarget(card.Owner?.Character))
+        if (!MeiLinTarget.IsMineTargetCard(card))
             return;
 
         bool wasFocused = IsFocusedEffective;
@@ -124,7 +124,7 @@ public static class MeiLinBattleReadyOverlay
         if (!MeiLinModConfig.UseBattleReadyOverlay)
             return;
 
-        if (!MeiLinTarget.IsTarget(card.Owner?.Character))
+        if (!MeiLinTarget.IsMineTargetCard(card))
             return;
 
         bool wasFocused = IsFocusedEffective;
@@ -159,7 +159,7 @@ public static class MeiLinBattleReadyOverlay
             return;
 
         CardModel? card = cardPlay.Card;
-        if (card == null || !MeiLinTarget.IsTarget(card.Owner?.Character))
+        if (!MeiLinTarget.IsMineTargetCard(card))
             return;
 
         _focusToken++;
@@ -183,7 +183,7 @@ public static class MeiLinBattleReadyOverlay
         if (!MeiLinModConfig.UseBattleReadyOverlay)
             return;
 
-        if (!MeiLinTarget.IsTarget(card.Owner?.Character) || !_busy)
+        if (!MeiLinTarget.IsMineTargetCard(card) || !_busy)
             return;
 
         _isHovered = false;

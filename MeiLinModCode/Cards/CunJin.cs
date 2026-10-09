@@ -20,7 +20,7 @@ public class CunJin() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommon, T
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(1m, ValueProp.Move),
-        new DynamicVar(DelayedDamageKey, 15m)
+        new DynamicVar(DelayedDamageKey, 20m)
     ];
 
     public override string PortraitPath => IdPortraitPath;
@@ -42,6 +42,5 @@ public class CunJin() : MeiLinModCard(1, CardType.Attack, CardRarity.Uncommon, T
         DynamicVars[DelayedDamageKey].UpgradeValueBy(5m);
     }
 }
-
 
 
