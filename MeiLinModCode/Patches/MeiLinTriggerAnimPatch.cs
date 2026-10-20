@@ -36,6 +36,12 @@ public sealed class MeiLinTriggerAnimPatch : IPatchMethod
         if (!isMeiLin)
             return true;
 
+        if (MeiLinReplayVisuals.ShouldSkip(creature))
+        {
+            __result = Task.CompletedTask;
+            return false;
+        }
+
         var segment = MeiLinBattleAnimationService.ConsumeNextAttackSegment(creature);
         MainFile.Logger.Info(
             $"[MeiLinTriggerAnimPatch] Attack trigger intercepted. command={segment.Command}, remaining={segment.RemainingSegments}, hasTarget={segment.Target != null}");

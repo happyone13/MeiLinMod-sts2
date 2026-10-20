@@ -170,7 +170,7 @@ public sealed class OptionalOverlayMultiplayerTests : CombatTestSuite
     }
 
     [Fact]
-    public void Battle_ready_overlay_accepts_only_the_local_meilin_card()
+    public async Task Battle_ready_overlay_accepts_only_the_local_meilin_card()
     {
         Assert.Equal(2, Players.Count);
 
@@ -179,5 +179,7 @@ public sealed class OptionalOverlayMultiplayerTests : CombatTestSuite
 
         Assert.True(MeiLinTarget.IsMineTargetCard(localCard));
         Assert.False(MeiLinTarget.IsMineTargetCard(remoteCard));
+
+        await Play(await AddToHand<DefendMeilin>());
     }
 }

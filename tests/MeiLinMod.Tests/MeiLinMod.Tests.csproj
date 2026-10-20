@@ -42,6 +42,15 @@
     <PackageReference Include="TestTheSpire" Version="0.1.2" />
   </ItemGroup>
 
+  <Target Name="AddReplayTestHarmonyReference" BeforeTargets="ResolveAssemblyReferences">
+    <ItemGroup>
+      <Reference Include="0Harmony">
+        <HintPath>$(Sts2DataDir)/0Harmony.dll</HintPath>
+        <Private>false</Private>
+      </Reference>
+    </ItemGroup>
+  </Target>
+
   <Target Name="PrepareMeiLinSts2TestTemp" BeforeTargets="RunSts2Tests;ListSts2Tests">
     <MakeDir Directories="$(Sts2TestTempDir)" />
   </Target>

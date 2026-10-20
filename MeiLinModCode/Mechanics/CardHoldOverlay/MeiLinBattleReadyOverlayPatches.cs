@@ -333,7 +333,7 @@ public sealed class MeiLinBattleReadyBeforeCardPlayedPatch : IPatchMethod
     {
         try
         {
-            if (MeiLinTarget.IsMineTargetCard(cardPlay.Card))
+            if (cardPlay.IsFirstInSeries && MeiLinTarget.IsMineTargetCard(cardPlay.Card))
             {
                 MeiLinBattleReadyOverlay.NotifyBeforeCardPlayed(cardPlay);
                 MeiLinCharacterHoverAnimation.NotifyCardPlayed(cardPlay.Card!);

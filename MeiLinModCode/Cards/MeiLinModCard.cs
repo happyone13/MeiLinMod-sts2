@@ -58,7 +58,7 @@ public abstract class MeiLinModCard(int cost, CardType type, CardRarity rarity, 
 
     protected Task PlayPowerCastAnim()
     {
-        if (UltimateCinematicPlayedForCurrentPlay)
+        if (UltimateCinematicPlayedForCurrentPlay || MeiLinReplayVisuals.ShouldSkip(Owner?.Creature))
             return Task.CompletedTask;
 
         if (Type != CardType.Power || Owner?.Creature == null || Owner.Character == null)
@@ -69,12 +69,18 @@ public abstract class MeiLinModCard(int cost, CardType type, CardRarity rarity, 
 
     protected void PrepareAttackAnimation(int hitCount = 1)
     {
+        if (MeiLinReplayVisuals.ShouldSkip(Owner?.Creature))
+            return;
+
         MeiLinBattleAnimationService.PrepareNextAttackHits(hitCount);
     }
 
     public override async Task BeforeCardPlayed(CardPlay cardPlay)
     {
         UltimateCinematicPlayedForCurrentPlay = false;
+        if (!cardPlay.IsFirstInSeries)
+            return;
+
         if (cardPlay.Card != this || Owner?.Creature == null || Owner.Character is not MeiLinCharacterModel)
             return;
 
@@ -151,6 +157,9 @@ public abstract class MeiLinModCard(int cost, CardType type, CardRarity rarity, 
 
     private Task PlayConfiguredTimeline(MegaCrit.Sts2.Core.Entities.Creatures.Creature? target)
     {
+        if (MeiLinReplayVisuals.ShouldSkip(Owner?.Creature))
+            return Task.CompletedTask;
+
         if (Owner?.Creature == null || Owner.Character == null || string.IsNullOrWhiteSpace(CombatTimelineName))
             return Task.CompletedTask;
 

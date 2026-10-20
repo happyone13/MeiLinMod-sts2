@@ -26,6 +26,12 @@ public static class MeiLinUgPresentation
 
     public static async Task PlayAsync(Creature caster, IEnumerable<Creature> targets, Func<bool, Task> onHit)
     {
+        if (MeiLinReplayVisuals.ShouldSkip(caster))
+        {
+            await onHit(false);
+            return;
+        }
+
         var room = NCombatRoom.Instance;
         var actor = room?.GetCreatureNode(caster)?.Visuals;
         if (!MeiLinMod.MeiLinModCode.Config.MeiLinModConfig.UseCombatEffects

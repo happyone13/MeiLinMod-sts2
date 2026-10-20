@@ -2,6 +2,7 @@ using MeiLinMod.MeiLinModCode.Mechanics.CardHoldOverlay;
 using MeiLinMod.MeiLinModCode.Mechanics.Settings;
 using MeiLinMod.MeiLinModCode.Encounters;
 using MeiLinMod.MeiLinModCode.Patches;
+using MeiLinMod.MeiLinModCode.Services;
 using STS2RitsuLib;
 using STS2RitsuLib.Interop;
 using STS2RitsuLib.Patching.Core;
@@ -51,6 +52,8 @@ internal static class MeiLinRitsuMigration
 
         var combatAnimationPatcher = RitsuLibFramework.CreatePatcher(MainFile.ModId, "optional-combat-animation", "optional combat animation");
         combatAnimationPatcher.RegisterPatch<MeiLinTriggerAnimPatch>();
+        combatAnimationPatcher.RegisterPatch<MeiLinReplayVisualContextPatch>();
+        combatAnimationPatcher.RegisterPatch<MeiLinReplayAttackAnimationPatch>();
         combatAnimationPatcher.RegisterPatch<MeiLinBattleVfxWarmPatch>();
         combatAnimationPatcher.PatchAll();
 

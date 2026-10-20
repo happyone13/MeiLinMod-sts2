@@ -83,6 +83,9 @@ public static class MeiLinAudioService
         if (!TryResolvePath(lower, out var path))
             return false;
 
+        if (MeiLinReplayVisuals.ShouldSkip() && (lower.Contains("attack") || lower.Contains("cast")))
+            return true;
+
         return TryPlay(path, linearVolume);
     }
 
@@ -120,6 +123,9 @@ public static class MeiLinAudioService
 
     public static bool TryPlayCustomCardClip(string clipKey, Player? player = null, float linearVolume = 1f)
     {
+        if (MeiLinReplayVisuals.ShouldSkip(player?.Creature))
+            return false;
+
         if (!IsMeiLinPlayer(player))
             return false;
 
@@ -151,6 +157,9 @@ public static class MeiLinAudioService
 
     public static void SuppressNextDefaultAttackSfx(Player? player = null)
     {
+        if (MeiLinReplayVisuals.ShouldSkip(player?.Creature))
+            return;
+
         if (!IsMeiLinPlayer(player))
             return;
 
@@ -159,6 +168,9 @@ public static class MeiLinAudioService
 
     public static void SuppressNextDefaultCastSfx(Player? player = null)
     {
+        if (MeiLinReplayVisuals.ShouldSkip(player?.Creature))
+            return;
+
         if (!IsMeiLinPlayer(player))
             return;
 
