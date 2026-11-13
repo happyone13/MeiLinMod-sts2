@@ -29,9 +29,9 @@ internal static class MeiLinTelemetryBootstrap
                 TelemetryRequest.BasicUsage("Session start, framework/game versions, platform, language, and anonymous install id."),
                 TelemetryRequest.ModInventory("Installed mod list, versions, and load states for compatibility analysis."),
                 TelemetryRequest.Diagnostics("Exception reports and runtime diagnostics."),
-                TelemetryRequest.RunHistory(
+                TelemetryRequest.RunHistoryFiltered(
                     "Complete MeiLin run history after each run ends, including final deck, outcome, floor reached, ascension, and run duration for balance analysis.",
-                    captureFilter: IsMeiLinRun)
+                    captureFilter: IsMeiLinCapture)
             ]
         };
     }
@@ -39,6 +39,11 @@ internal static class MeiLinTelemetryBootstrap
     internal static bool IsMeiLinRun(RunEndedEvent evt)
     {
         return evt.Run.Players.Any(player => IsMeiLinCharacterId(player.CharacterId?.ToString()));
+    }
+
+    private static bool IsMeiLinCapture(TelemetryCaptureContext context)
+    {
+        return context.SourceData is RunEndedEvent evt && IsMeiLinRun(evt);
     }
 
     private static bool IsMeiLinCharacterId(string? value)

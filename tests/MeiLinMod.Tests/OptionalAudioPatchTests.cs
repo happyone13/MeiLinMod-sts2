@@ -1,6 +1,8 @@
+using Godot;
 using System.Reflection;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Models.Monsters;
+using MegaCrit.Sts2.Core.Nodes.Audio;
 using MeiLinMod.MeiLinModCode.Cards;
 using MeiLinMod.MeiLinModCode.Patches;
 using MeiLinMod.MeiLinModCode.Services;
@@ -38,12 +40,42 @@ public sealed class OptionalAudioPatchTests : CombatTestSuite
 
         Assert.Equal(
             [
+                "NAudioManager.PlayOneShot(String, Dictionary`2, Single)",
                 "SfxCmd.Play(String, Single)",
                 "SfxCmd.Play(String, String, Single, Single)",
                 "SfxCmd.PlayDeath(Player)"
             ],
             targetDescriptions);
         Assert.DoesNotContain(targetDescriptions, target => target.Contains(nameof(SfxCmd.PlayDeath), StringComparison.Ordinal) && target.Contains("Monster", StringComparison.Ordinal));
+    }
+
+    [Fact]
+    public async Task Audio_manager_routes_selection_key_to_one_custom_player()
+    {
+        await InitializeBattle();
+
+        var root = ((SceneTree)Engine.GetMainLoop()).Root;
+        var before = root.GetNodeOrNull<Node>("MeiLinAudioHost")?
+            .GetChildren().OfType<AudioStreamPlayer>().Select(player => player.Name.ToString()).ToHashSet()
+            ?? [];
+
+        NAudioManager.Instance!.PlayOneShot("meilin_select", new Dictionary<string, float>(), 1f);
+
+        var host = root.GetNodeOrNull<Node>("MeiLinAudioHost");
+        Assert.NotNull(host);
+        var player = Assert.Single(host.GetChildren().OfType<AudioStreamPlayer>()
+            .Where(candidate => !before.Contains(candidate.Name.ToString())));
+        try
+        {
+            Assert.NotNull(player.Stream);
+            Assert.Equal("res://MeiLinMod/sound/meilin_select.mp3", player.Stream.ResourcePath);
+            Assert.True(player.Playing);
+        }
+        finally
+        {
+            player.Stop();
+            player.QueueFree();
+        }
     }
 
     [Fact]

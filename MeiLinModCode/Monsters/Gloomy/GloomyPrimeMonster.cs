@@ -151,7 +151,11 @@ public sealed class GloomyPrimeMonster : ModMonsterTemplate
     ///     死亡检测：当己方阴郁野兽死亡时，通知首领身上的 GloomySummonPower 记录待补充数量。
     ///     若首领尚未获得召唤术，则先在本地累计，等到唤醒野性获得召唤术时一次性转移。
     /// </summary>
+#if STS2_113
+    public override Task AfterDeath(PlayerChoiceContext choiceContext, Creature creature, CardModel? source, bool wasRemovalPrevented, float deathAnimLength)
+#else
     public override Task AfterDeath(PlayerChoiceContext choiceContext, Creature creature, bool wasRemovalPrevented, float deathAnimLength)
+#endif
     {
         GD.Print($"[MeiLinMod.GloomyPrimeMonster] AfterDeath: deadLogName={creature.LogName}, combatId={creature.CombatId}, side={creature.Side}, monsterType={creature.Monster?.GetType().Name}, wasRemovalPrevented={wasRemovalPrevented}");
 

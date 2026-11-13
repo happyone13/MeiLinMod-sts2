@@ -69,8 +69,8 @@ public sealed class PatchRegistrationTests : CombatTestSuite
         }
 
         Assert.Empty(unresolvedTargets);
-        Assert.Equal(37, patchTypes.Length);
-        Assert.Equal(39, resolvedTargetCount);
+        Assert.Equal(39, patchTypes.Length);
+        Assert.Equal(42, resolvedTargetCount);
     }
 
     [Fact]
@@ -147,6 +147,8 @@ public sealed class PatchRegistrationTests : CombatTestSuite
             "optional combat animation",
             [
                 "MeiLinBattleVfxWarmPatch",
+                "MeiLinReplayAttackAnimationPatch",
+                "MeiLinReplayVisualContextPatch",
                 "MeiLinTriggerAnimPatch"
             ]);
         AssertPatchGroup(
@@ -212,7 +214,7 @@ public sealed class PatchRegistrationTests : CombatTestSuite
             .Select(target => target.ToString())
             .ToArray();
 
-        Assert.Equal(3, targetDescriptions.Length);
+        Assert.Equal(4, targetDescriptions.Length);
         Assert.Contains("SfxCmd.Play(String, Single)", targetDescriptions);
         Assert.Contains("SfxCmd.Play(String, String, Single, Single)", targetDescriptions);
         Assert.Contains("SfxCmd.PlayDeath(Player)", targetDescriptions);

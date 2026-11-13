@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ddp4mn4hjuny7"]
 
 [ext_resource type="SpineSkeletonDataResource" path="res://MeiLinMod/spine/effect/generated/meirin_attack_play1_smoke_f/meirin_attack_play1_smoke_f_skel_data.tres" id="1_meirin_attack_play1_smoke_f"]
-[ext_resource type="Material" uid="uid://cs88ys720nr1b" path="res://MeiLinMod/materials/spine_pma.tres" id="2_spine_pma"]
+[ext_resource type="Material" path="res://MeiLinMod/materials/spine_pma.tres" id="2_spine_pma"]
 [ext_resource type="SpineSkeletonDataResource" path="res://MeiLinMod/spine/effect/generated/meirin_attack_play1_smoke_b/meirin_attack_play1_smoke_b_skel_data.tres" id="3_meirin_attack_play1_smoke_b"]
 
 [node name="MeirinAttackPlay1Root" type="Node2D"]

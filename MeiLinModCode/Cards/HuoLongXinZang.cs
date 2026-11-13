@@ -39,7 +39,7 @@ public class HuoLongXinZang() : MeiLinModCard(0, CardType.Skill, CardRarity.Rare
         await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, Owner);
     }
 
-#if STS2_109 || STS2_110 || STS2_111
+#if STS2_109 || STS2_110 || STS2_111 || STS2_113
     protected override CardLocation GetResultLocationForCardPlay()
     {
         var result = base.GetResultLocationForCardPlay();

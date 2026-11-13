@@ -81,7 +81,11 @@ public sealed class MeiLinBattleReadyAfterDeathPatch : IPatchMethod
 
     public static ModPatchTarget[] GetTargets() =>
     [
+#if STS2_113
+        PatchTarget.Method(typeof(Hook), nameof(Hook.AfterDeath), typeof(IRunState), typeof(ICombatState), typeof(Creature), typeof(CardModel), typeof(bool), typeof(float))
+#else
         PatchTarget.Method(typeof(Hook), nameof(Hook.AfterDeath), typeof(IRunState), typeof(ICombatState), typeof(Creature), typeof(bool), typeof(float))
+#endif
     ];
 
     public static void Postfix(IRunState runState, ICombatState? combatState, Creature creature, bool wasRemovalPrevented, float deathAnimLength)

@@ -1,0 +1,4 @@
+interface:
+  display_name: "STS2 0.113 Mod Migration"
+  short_description: "Audit and migrate STS2 character and skin mods to 0.113"
+  default_prompt: "Use $sts2-migrate-to-113 to inspect this mod against the installed STS2 0.113 game and handle the requested migration scope."

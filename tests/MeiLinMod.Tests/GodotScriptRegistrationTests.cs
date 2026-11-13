@@ -1,3 +1,4 @@
+using Godot;
 using System.Reflection;
 using MegaCrit.Sts2.Core.Models.Monsters;
 using MeiLinMod.MeiLinModCode.Cards;
@@ -17,6 +18,28 @@ public sealed class GodotScriptRegistrationTests : CombatTestSuite
             .Player<MeiLinCharacter>()
             .AddEnemy<BigDummy>()
             .WithSeed("meilinmod-godot-script-registration");
+    }
+
+    [Fact]
+    public async Task Presentation_scenes_load_and_instantiate_from_the_exported_pack()
+    {
+        var defend = await AddToHand<DefendMeilin>();
+        await Play(defend);
+
+        string[] paths =
+        [
+            "res://MeiLinMod/scenes/meilin_bg.tscn",
+            "res://MeiLinMod/scenes/meilin_character_camp.tscn",
+            "res://MeiLinMod/scenes/vfx/generated/attack_play1/meirin_attack_play1_root.tscn"
+        ];
+        foreach (string path in paths)
+        {
+            var scene = ResourceLoader.Load<PackedScene>(path);
+            Assert.NotNull(scene);
+            var node = scene.Instantiate();
+            Assert.NotNull(node);
+            node.Free();
+        }
     }
 
     [Fact]

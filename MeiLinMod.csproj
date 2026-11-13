@@ -1,16 +1,15 @@
 <Project Sdk="Godot.NET.Sdk/4.5.1" InitialTargets="CheckDependencyPaths">
     <PropertyGroup>
         <TargetFramework>net9.0</TargetFramework>
-        <Version>0.4.6</Version>
+        <Version>0.4.7</Version>
         <ImplicitUsings>true</ImplicitUsings>
         <Nullable>enable</Nullable> <!--Makes code analysis regarding null values stricter.-->
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <DefaultItemExcludes>packages/**</DefaultItemExcludes>
         <AppOutputBase>$(MSBuildProjectDirectory)\</AppOutputBase>
         <PathMap>$(AppOutputBase)=.\</PathMap>
-        <Sts2TargetVersion Condition="'$(Sts2TargetVersion)' == ''">111</Sts2TargetVersion>
-        <!-- RitsuLib 0.5.11 adds the STS2 0.111 runtime variant and matching compile-time API. -->
-        <RitsuLibVersion Condition="'$(RitsuLibVersion)' == ''">0.5.11</RitsuLibVersion>
+        <Sts2TargetVersion Condition="'$(Sts2TargetVersion)' == ''">113</Sts2TargetVersion>
+        <RitsuLibVersion Condition="'$(RitsuLibVersion)' == ''">0.6.11</RitsuLibVersion>
     </PropertyGroup>
 
     <!-- OS Detection -->
@@ -47,16 +46,19 @@
         <Sts2Path110 Condition="'$(Sts2Path110)' == '' and Exists('$(SteamLibraryPath)/common/Slay the Spire 2')">$(SteamLibraryPath)/common/Slay the Spire 2</Sts2Path110>
         <Sts2Path111 Condition="'$(Sts2Path111)' == '' and '$(STS2_111_PATH)' != ''">$(STS2_111_PATH)</Sts2Path111>
         <Sts2Path111 Condition="'$(Sts2Path111)' == '' and Exists('$(SteamLibraryPath)/common/Slay the Spire 2')">$(SteamLibraryPath)/common/Slay the Spire 2</Sts2Path111>
+        <Sts2Path113 Condition="'$(Sts2Path113)' == '' and '$(STS2_113_PATH)' != ''">$(STS2_113_PATH)</Sts2Path113>
+        <Sts2Path113 Condition="'$(Sts2Path113)' == '' and Exists('$(SteamLibraryPath)/common/Slay the Spire 2')">$(SteamLibraryPath)/common/Slay the Spire 2</Sts2Path113>
         <Sts2Path Condition="'$(Sts2TargetVersion)' == '103'">$(Sts2Path103)</Sts2Path>
         <Sts2Path Condition="'$(Sts2TargetVersion)' == '107'">$(Sts2Path107)</Sts2Path>
         <Sts2Path Condition="'$(Sts2TargetVersion)' == '108'">$(Sts2Path108)</Sts2Path>
         <Sts2Path Condition="'$(Sts2TargetVersion)' == '109'">$(Sts2Path109)</Sts2Path>
         <Sts2Path Condition="'$(Sts2TargetVersion)' == '110'">$(Sts2Path110)</Sts2Path>
         <Sts2Path Condition="'$(Sts2TargetVersion)' == '111'">$(Sts2Path111)</Sts2Path>
+        <Sts2Path Condition="'$(Sts2TargetVersion)' == '113'">$(Sts2Path113)</Sts2Path>
         <LocalModsDirName Condition="'$(LocalModsDirName)' == '' and Exists('$(Sts2Path)/mods2')">mods2</LocalModsDirName>
         <LocalModsDirName Condition="'$(LocalModsDirName)' == ''">mods</LocalModsDirName>
-        <ModsPath>$(Sts2Path)/$(LocalModsDirName)/</ModsPath>
-        <LegacyModsPath>$(Sts2Path)/mods/</LegacyModsPath>
+        <ModsPath Condition="'$(ModsPath)' == ''">$(Sts2Path)/$(LocalModsDirName)/</ModsPath>
+        <LegacyModsPath Condition="'$(LegacyModsPath)' == ''">$(Sts2Path)/mods/</LegacyModsPath>
         <Sts2DataDir>$(Sts2Path)/data_sts2_windows_x86_64</Sts2DataDir>
     </PropertyGroup>
 
@@ -96,6 +98,7 @@
         <DefineConstants Condition="'$(Sts2TargetVersion)' == '109'">$(DefineConstants);STS2_109</DefineConstants>
         <DefineConstants Condition="'$(Sts2TargetVersion)' == '110'">$(DefineConstants);STS2_110</DefineConstants>
         <DefineConstants Condition="'$(Sts2TargetVersion)' == '111'">$(DefineConstants);STS2_111</DefineConstants>
+        <DefineConstants Condition="'$(Sts2TargetVersion)' == '113'">$(DefineConstants);STS2_113</DefineConstants>
     </PropertyGroup>
 
     <ItemGroup Condition="Exists('$(Sts2DataDir)') and '$(Configuration)' == 'Debug'">
@@ -163,16 +166,18 @@
         <GodotExportIgnoreMarker Include="addons\godot_mcp_server\.gdignore" />
         <GodotExportIgnoreMarker Include="addons\spine_speed_inspector\.gdignore" />
         <GodotExportIgnoreMarker Include="tools\.gdignore" />
+        <GodotExportIgnoreMarker Include="tmp\.gdignore" />
     </ItemGroup>
 
     <Target Name="CheckDependencyPaths">
-        <Error Text=" Unsupported Sts2TargetVersion '$(Sts2TargetVersion)'. Use 103, 107, 108, 109, 110, or 111." Condition="'$(Sts2TargetVersion)' != '103' and '$(Sts2TargetVersion)' != '107' and '$(Sts2TargetVersion)' != '108' and '$(Sts2TargetVersion)' != '109' and '$(Sts2TargetVersion)' != '110' and '$(Sts2TargetVersion)' != '111'" />
+        <Error Text=" Unsupported Sts2TargetVersion '$(Sts2TargetVersion)'. Use 103, 107, 108, 109, 110, 111, or 113." Condition="'$(Sts2TargetVersion)' != '103' and '$(Sts2TargetVersion)' != '107' and '$(Sts2TargetVersion)' != '108' and '$(Sts2TargetVersion)' != '109' and '$(Sts2TargetVersion)' != '110' and '$(Sts2TargetVersion)' != '111' and '$(Sts2TargetVersion)' != '113'" />
         <Error Text=" Sts2Path103 is not configured. Pass -p:Sts2Path103=&lt;path&gt; or set STS2_103_PATH when building 103." Condition="'$(Sts2TargetVersion)' == '103' and '$(Sts2Path103)' == ''" />
         <Error Text=" Sts2Path107 is not configured. Pass -p:Sts2Path107=&lt;path&gt; or set STS2_107_PATH when building 107." Condition="'$(Sts2TargetVersion)' == '107' and '$(Sts2Path107)' == ''" />
         <Error Text=" Sts2Path108 is not configured. Pass -p:Sts2Path108=&lt;path&gt; or set STS2_108_PATH when building 108." Condition="'$(Sts2TargetVersion)' == '108' and '$(Sts2Path108)' == ''" />
         <Error Text=" Sts2Path109 is not configured. Pass -p:Sts2Path109=&lt;path&gt; or set STS2_109_PATH when building 109." Condition="'$(Sts2TargetVersion)' == '109' and '$(Sts2Path109)' == ''" />
         <Error Text=" Sts2Path110 is not configured. Pass -p:Sts2Path110=&lt;path&gt; or set STS2_110_PATH when building 110." Condition="'$(Sts2TargetVersion)' == '110' and '$(Sts2Path110)' == ''" />
         <Error Text=" Sts2Path111 is not configured. Pass -p:Sts2Path111=&lt;path&gt; or set STS2_111_PATH when building 111." Condition="'$(Sts2TargetVersion)' == '111' and '$(Sts2Path111)' == ''" />
+        <Error Text=" Sts2Path113 is not configured. Pass -p:Sts2Path113=&lt;path&gt; or set STS2_113_PATH when building 113." Condition="'$(Sts2TargetVersion)' == '113' and '$(Sts2Path113)' == ''" />
         <Error Text=" Slay the Spire 2 $(Sts2TargetVersion) data not found at path '$(Sts2DataDir)'" Condition="'$(Sts2DataDir)' == '' or !Exists('$(Sts2DataDir)')" />
         <Error Text=" Godot not found at path '$(GodotPath)'" Condition="'$(GodotPath)' == '' or !Exists('$(GodotPath)')" />
     </Target>
@@ -200,12 +205,12 @@
 
     <Target Name="GodotPackOnBuild" AfterTargets="Build" Condition="'$(GodotPath)' != '' and Exists('$(GodotPath)') and '$(IsInnerGodotExport)' != 'true'">
         <Message Text="Exporting Godot .pck to mods folder on Build" Importance="high" />
-        <Exec Command="&quot;$(GodotPath)&quot; --headless --export-pack &quot;BasicExport&quot; &quot;$(ModsPath)$(MSBuildProjectName)/$(MSBuildProjectName).pck&quot;" EnvironmentVariables="IsInnerGodotExport=true;MSBUILDDISABLENODEREUSE=1;STS2_103_PATH=$(Sts2Path103);STS2_107_PATH=$(Sts2Path107);STS2_108_PATH=$(Sts2Path108);STS2_109_PATH=$(Sts2Path109);STS2_110_PATH=$(Sts2Path110);STS2_111_PATH=$(Sts2Path111)" ContinueOnError="WarnAndContinue" />
+        <Exec Command="&quot;$(GodotPath)&quot; --headless --export-pack &quot;BasicExport&quot; &quot;$(ModsPath)$(MSBuildProjectName)/$(MSBuildProjectName).pck&quot;" EnvironmentVariables="IsInnerGodotExport=true;MSBUILDDISABLENODEREUSE=1;ModsPath=$(ModsPath);LegacyModsPath=$(LegacyModsPath);Sts2TargetVersion=$(Sts2TargetVersion);STS2_103_PATH=$(Sts2Path103);STS2_107_PATH=$(Sts2Path107);STS2_108_PATH=$(Sts2Path108);STS2_109_PATH=$(Sts2Path109);STS2_110_PATH=$(Sts2Path110);STS2_111_PATH=$(Sts2Path111);STS2_113_PATH=$(Sts2Path113)" ContinueOnError="WarnAndContinue" />
     </Target>
 
     <Target Name="GodotPublish" AfterTargets="Publish" Condition="'$(GodotPath)' != '' and Exists('$(GodotPath)') and '$(IsInnerGodotExport)' != 'true'">
         <Message Text="Exporting Godot .pck to mods folder" Importance="high" />
-        <Exec Command="&quot;$(GodotPath)&quot; --headless --export-pack &quot;BasicExport&quot; &quot;$(ModsPath)$(MSBuildProjectName)/$(MSBuildProjectName).pck&quot;" EnvironmentVariables="IsInnerGodotExport=true;MSBUILDDISABLENODEREUSE=1;STS2_103_PATH=$(Sts2Path103);STS2_107_PATH=$(Sts2Path107);STS2_108_PATH=$(Sts2Path108);STS2_109_PATH=$(Sts2Path109);STS2_110_PATH=$(Sts2Path110);STS2_111_PATH=$(Sts2Path111)" ContinueOnError="WarnAndContinue" />
+        <Exec Command="&quot;$(GodotPath)&quot; --headless --export-pack &quot;BasicExport&quot; &quot;$(ModsPath)$(MSBuildProjectName)/$(MSBuildProjectName).pck&quot;" EnvironmentVariables="IsInnerGodotExport=true;MSBUILDDISABLENODEREUSE=1;ModsPath=$(ModsPath);LegacyModsPath=$(LegacyModsPath);Sts2TargetVersion=$(Sts2TargetVersion);STS2_103_PATH=$(Sts2Path103);STS2_107_PATH=$(Sts2Path107);STS2_108_PATH=$(Sts2Path108);STS2_109_PATH=$(Sts2Path109);STS2_110_PATH=$(Sts2Path110);STS2_111_PATH=$(Sts2Path111);STS2_113_PATH=$(Sts2Path113)" ContinueOnError="WarnAndContinue" />
     </Target>
 
     <Target Name="GodotPublishSkipped" AfterTargets="Publish" Condition="'$(GodotPath)' == '' or !Exists('$(GodotPath)')">

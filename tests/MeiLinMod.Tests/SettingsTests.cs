@@ -95,6 +95,7 @@ public sealed class SettingsTests : CombatTestSuite
             ["SharedBattleReadyOffsetYKey"] = "CHAOSMOD_XCSKIN_BATTLE_READY_OFFSET_Y",
             ["SharedBattleReadyOverlayEnabledKey"] = "CHAOSMOD_XCSKIN_PORTRAITS_ENABLED",
             ["SharedCombatEffectsEnabledKey"] = "CHAOSMOD_XCSKIN_ACTION_VFX_ENABLED",
+            ["SharedUltimateCinematicsEnabledKey"] = "CHAOSMOD_XCSKIN_ULTIMATE_CINEMATICS_ENABLED",
             ["SharedDynamicCardPortraitsKey"] = "CHAOSMOD_XCSKIN_DYNAMIC_CARD_PORTRAITS_ENABLED",
             ["LegacyDynamicCardPortraitsKey"] = "CHAOSMOD_XCSKIN_DYNAMIC_CARD_PORTRAITS"
         };
@@ -118,6 +119,7 @@ public sealed class SettingsTests : CombatTestSuite
                 "BattleReadyScale",
                 "DynamicCardPortraitsEnabled",
                 "PortraitsEnabled",
+                "UltimateCinematicsEnabled",
                 "Volume"
             ],
             jsonProperties);

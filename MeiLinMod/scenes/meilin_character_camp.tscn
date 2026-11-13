@@ -3,7 +3,7 @@
 [ext_resource type="SpineSkeletonDataResource" uid="uid://bron0e5vx401g" path="res://MeiLinMod/spine/q/q.tres" id="1_meilin_spine"]
 [ext_resource type="Script" uid="uid://bb72es2n6nj70" path="res://GodotScripts/Character/MeiLinRestSiteCharacter.cs" id="2_rest_script"]
 [ext_resource type="PackedScene" uid="uid://bgy88bk44xxvk" path="res://MeiLinMod/scenes/selection_reticle.tscn" id="3_cjiy2"]
-[ext_resource type="Material" uid="uid://cs88ys720nr1b" path="res://MeiLinMod/materials/spine_pma.tres" id="3_oqogy"]
+[ext_resource type="Material" path="res://MeiLinMod/materials/spine_pma.tres" id="3_oqogy"]
 
 [node name="MeiLinRestSite" type="Node2D"]
 position = Vector2(-2, 42)

@@ -12,10 +12,11 @@
     <Sts2TestModId>MeiLinMod.Tests</Sts2TestModId>
     <Sts2TestModName>MeiLinMod.Tests</Sts2TestModName>
     <Sts2TestModAuthor>lozalia</Sts2TestModAuthor>
-    <Sts2TestMinGameVersion>v0.111.0</Sts2TestMinGameVersion>
-    <Sts2TestMainModMinVersion>v0.3.1</Sts2TestMainModMinVersion>
+    <Sts2TestMinGameVersion>v0.113.0</Sts2TestMinGameVersion>
+    <Sts2TestMainModMinVersion>v0.4.7</Sts2TestMainModMinVersion>
     <Sts2TestTheSpireMinVersion>0.1.2</Sts2TestTheSpireMinVersion>
     <Sts2XunitAssertMinVersion>3.2.2</Sts2XunitAssertMinVersion>
+    <TestTheSpireAssemblyPath Condition="'$(TestTheSpireAssemblyPath)' == '' and Exists('$(MSBuildProjectDirectory)/../../tmp/testthespire-113/bin/Debug/net9.0/TestTheSpire.dll')">$(MSBuildProjectDirectory)/../../tmp/testthespire-113/bin/Debug/net9.0/TestTheSpire.dll</TestTheSpireAssemblyPath>
     <Sts2TestDisabledModIds>BaseLib;Fei;GoldTransferMod;KalipeiMod;KaylaMod;YukiMod;YukiMod.Tests;StS2_MeiLinTexturePack;arabella</Sts2TestDisabledModIds>
     <Sts2TestXdgDataHome Condition="'$(Sts2TestXdgDataHome)' == ''">$(MSBuildProjectDirectory)/../../tmp/sts2-combat-tests/$(Sts2TestModId)</Sts2TestXdgDataHome>
     <Sts2TestTempDir Condition="'$(Sts2TestTempDir)' == ''">$(MSBuildProjectDirectory)/../../tmp/sts2-combat-tests/$(Sts2TestModId)/temp</Sts2TestTempDir>
@@ -38,8 +39,16 @@
     <CompilerVisibleProperty Include="GodotSourceGenerators" />
     <CompilerVisibleProperty Include="IsGodotToolsProject" />
     <ProjectReference Include="../../MeiLinMod.csproj" />
-    <PackageReference Include="STS2.RitsuLib" Version="0.5.11" PrivateAssets="all" />
-    <PackageReference Include="TestTheSpire" Version="0.1.2" />
+    <PackageReference Include="STS2.RitsuLib" Version="0.6.11" PrivateAssets="all" />
+    <PackageReference Include="TestTheSpire" Version="0.1.2">
+      <ExcludeAssets Condition="'$(TestTheSpireAssemblyPath)' != ''">compile;runtime</ExcludeAssets>
+    </PackageReference>
+    <PackageReference Include="xunit.v3.assert" Version="3.2.2" />
+    <Reference Include="TestTheSpire" Condition="'$(TestTheSpireAssemblyPath)' != ''">
+      <HintPath>$(TestTheSpireAssemblyPath)</HintPath>
+      <Private>true</Private>
+      <NuGetPackageId>TestTheSpire</NuGetPackageId>
+    </Reference>
   </ItemGroup>
 
   <Target Name="AddReplayTestHarmonyReference" BeforeTargets="ResolveAssemblyReferences">
@@ -53,6 +62,11 @@
 
   <Target Name="PrepareMeiLinSts2TestTemp" BeforeTargets="RunSts2Tests;ListSts2Tests">
     <MakeDir Directories="$(Sts2TestTempDir)" />
+  </Target>
+
+  <Target Name="ValidateMeiLinTestFramework113" BeforeTargets="ValidateSts2TestPaths">
+    <Error Condition="'$(TestTheSpireAssemblyPath)' == '' or !Exists('$(TestTheSpireAssemblyPath)')"
+           Text="Build the 0.113 test framework with tools/build_testthespire_113.ps1, or set TestTheSpireAssemblyPath to a compatible DLL." />
   </Target>
 
   <Target Name="MirrorMeiLinSts2Mods2DependenciesForTests" BeforeTargets="RunSts2Tests;ListSts2Tests">
@@ -102,6 +116,9 @@
   </Target>
 
   <Target Name="RewriteMeiLinSts2TestDependencyManifestsWithVersionedDependencies" AfterTargets="CopySts2TestDependencyMods">
+    <Copy SourceFiles="$(TestTheSpireAssemblyPath)"
+          DestinationFiles="$(TestTheSpirePayloadDir)/$(TestTheSpireModId).dll"
+          Condition="'$(TestTheSpireAssemblyPath)' != '' and Exists('$(TestTheSpireAssemblyPath)')" />
     <ItemGroup>
       <_MeiLinSts2XunitManifestLine Include="{" />
       <_MeiLinSts2XunitManifestLine Include="  &quot;id&quot;: &quot;$(Sts2XunitAssertModId)&quot;," />

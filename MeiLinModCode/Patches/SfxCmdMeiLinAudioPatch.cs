@@ -1,6 +1,7 @@
 using MeiLinMod.MeiLinModCode.Services;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Players;
+using MegaCrit.Sts2.Core.Nodes.Audio;
 using System.Linq;
 using System.Reflection;
 using STS2RitsuLib.Patching.Models;
@@ -19,12 +20,14 @@ public sealed class SfxCmdMeiLinAudioPatch : IPatchMethod
     [
         PatchTarget.Method(typeof(SfxCmd), nameof(SfxCmd.Play), typeof(string), typeof(float)),
         PatchTarget.Method(typeof(SfxCmd), nameof(SfxCmd.Play), typeof(string), typeof(string), typeof(float), typeof(float)),
+        PatchTarget.Method(typeof(NAudioManager), nameof(NAudioManager.PlayOneShot), typeof(string), typeof(Dictionary<string, float>), typeof(float)),
         PatchTarget.Method(typeof(SfxCmd), nameof(SfxCmd.PlayDeath), typeof(Player))
     ];
 
     private static bool Prefix(MethodBase __originalMethod, object[] __args)
     {
-        if (__originalMethod.Name == nameof(SfxCmd.Play))
+        if (__originalMethod.Name == nameof(SfxCmd.Play) ||
+            __originalMethod.Name == nameof(NAudioManager.PlayOneShot))
             return HandlePlay(__args);
 
         if (__originalMethod.Name == nameof(SfxCmd.PlayDeath))

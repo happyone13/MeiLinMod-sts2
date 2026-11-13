@@ -67,8 +67,9 @@ public sealed class TelemetryScaffoldTests : CombatTestSuite
         Assert.Contains("TelemetryRequest.BasicUsage", bootstrapSource);
         Assert.Contains("TelemetryRequest.ModInventory", bootstrapSource);
         Assert.Contains("TelemetryRequest.Diagnostics", bootstrapSource);
-        Assert.Contains("TelemetryRequest.RunHistory", bootstrapSource);
-        Assert.Contains("captureFilter: IsMeiLinRun", bootstrapSource);
+        Assert.Contains("TelemetryRequest.RunHistoryFiltered", bootstrapSource);
+        Assert.Contains("captureFilter: IsMeiLinCapture", bootstrapSource);
+        Assert.Contains("context.SourceData is RunEndedEvent evt && IsMeiLinRun(evt)", bootstrapSource);
         Assert.Contains("internal static bool IsMeiLinRun(RunEndedEvent evt)", bootstrapSource);
         Assert.DoesNotContain("TelemetryRequest.Custom", bootstrapSource);
         Assert.DoesNotContain("MeiLinTelemetryRunSummary", bootstrapSource);

@@ -3,15 +3,15 @@
   "name": "MeiLinMod",
   "author": "lozalia",
   "description": "MeiLin playable character mod for Slay the Spire 2.",
-  "version": "v0.4.6",
+  "version": "v0.4.7",
   "has_pck": true,
   "has_dll": true,
   "dependencies": [
     {
       "id": "STS2-RitsuLib",
-      "min_version": "0.5.11"
+      "min_version": "0.6.11"
     }
   ],
-  "min_game_version": "v0.111.0",
+  "min_game_version": "v0.113.0",
   "affects_gameplay": true
 }

@@ -77,7 +77,7 @@ public sealed class OptionalOverlayPatchTests : CombatTestSuite
         Assert.Equal(11, targetDescriptions.Length);
         Assert.Contains("Hook.BeforeCombatStart(IRunState, ICombatState)", targetDescriptions);
         Assert.Contains("Hook.AfterCombatVictory(IRunState, ICombatState, CombatRoom)", targetDescriptions);
-        Assert.Contains("Hook.AfterDeath(IRunState, ICombatState, Creature, Boolean, Single)", targetDescriptions);
+        Assert.Contains("Hook.AfterDeath(IRunState, ICombatState, Creature, CardModel, Boolean, Single)", targetDescriptions);
         Assert.Contains("NHandCardHolder.OnFocus", targetDescriptions);
         Assert.Contains("NHandCardHolder.OnUnfocus", targetDescriptions);
         Assert.Contains("NHandCardHolder.OnMousePressed(InputEvent)", targetDescriptions);
