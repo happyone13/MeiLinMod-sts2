@@ -234,3 +234,13 @@ The background script UID now matches `ulv7r824rm8i`. The invalid material UID w
 Final v0.4.7 verification: single complete run 75/75 passed, no skips, exit zero, empty stderr; D3D12 graphical audio subset 5/5 passed, exit zero, with only the engine's unsupported PSO caching warning. All 42 patch targets applied and VFX prewarm remained 52/52. The installed DLL and PCK hashes matched staging.
 
 Do not treat these checks as visual inspection of all animations, multiplayer testing, or a fix for the separate D3D12 allocation failure observed when system available memory was about 0.39 GiB. An old Mark save referencing an unloaded Mark character also remains separate from MeiLin compatibility; do not delete or rewrite that save as a MeiLin repair.
+
+## Abandonment Death Cue
+
+A subsequent real session logged `Can not find animation: die` immediately after abandoning an in-progress MeiLin run. The stack is `RunManager.AbandonInternal` -> `GuaranteeKillAllPlayers` -> `CreatureCmd.Kill` -> game-over screen -> RitsuLib `CharacterGameOverScreenCompatibilityPatch.TryPlayDeathAnimation` -> `ModCreatureVisualPlayback.TryPlayCue` -> `TryPlaySpine`.
+
+The game-over handler requests `die` directly, bypassing MeiLin's correct combat animator mapping `Dead` -> `death`. `TryPlaySpine` attempts alias names with `SetAnimation` inside a C# try/catch. The native Spine binding logs the missing clip without necessarily throwing, so it can return success before trying `death`. Do not fix this by changing the combat animator or death gameplay.
+
+MeiLin's local `MeiLinDeathAnimationCuePatch` prefixes the public `TryPlayCue(NCreatureVisuals, CharacterModel, string, ReadOnlySpan<string>, bool)` entry point and changes only MeiLin's primary `die` cue to `death`. It preserves normal RitsuLib playback and other characters. Harmony resolves and applies this target with the span argument omitted from the prefix parameters.
+
+For graphical regression tests, the framework enables game `TestMode` even when using D3D12. `Creature.CreateVisuals()` returns null in that mode. Use the character's existing `RitsuGodotNodeFactories.CreateFromScenePath<NCreatureVisuals>` path to construct a fresh model, attach it to the tree, then invoke the real game-over cue API and inspect its Spine track. Do not interpret the test-mode null as an actual game-over model failure.

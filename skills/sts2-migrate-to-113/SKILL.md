@@ -67,6 +67,8 @@ TestTheSpire 0.1.2 and 0.1.4 binaries reference an obsolete `RunState.CreateForT
 
 For skin/animation mods, verify character selection, backgrounds, combat start, card animations, death, cinematic cancellation, and return to menu as applicable.
 
+Check abandonment/game-over death separately from combat `Dead` triggers. RitsuLib's game-over path can call `TryPlayCue(..., "die")` directly; MeiLin's Spine clip is `death`. A native Godot missing-animation error may not throw a C# exception, so an exception-based alias fallback can incorrectly report success on its first invalid name. Prefer a character-scoped cue correction over a global animation rename.
+
 If a custom selection sound reaches the game's missing-SFX logger despite successful `SfxCmd` patches, trace the actual audio-manager entry point. MeiLin needed a scoped `NAudioManager.PlayOneShot` fallback; do not add it indiscriminately to other mods. Verify one custom player per call and normal audio passthrough. For invalid resource UIDs, match existing script `.uid` files or retain a valid text path without a stale UID; load and instantiate the affected exported scenes.
 
 Inspect the new log for the actual host version, zero target-mod patch failures, and complete initialization. Confirm the loader used the newly built artifacts. A trailing `Finished mod initialization` line can follow an exception and is not a success guarantee.

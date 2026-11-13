@@ -58,6 +58,7 @@ internal static class MeiLinRitsuMigration
         combatAnimationPatcher.PatchAll();
 
         var scenePatcher = RitsuLibFramework.CreatePatcher(MainFile.ModId, "optional-scene", "optional scene");
+        scenePatcher.RegisterPatch<MeiLinDeathAnimationCuePatch>();
         scenePatcher.RegisterPatch<MerchantCharacterAnimationFallbackPatch>();
         scenePatcher.RegisterPatch<MerchantCharacterPlayAnimationFallbackPatch>();
         scenePatcher.RegisterPatch<RestSiteCharacterAnimationFallbackPatch>();

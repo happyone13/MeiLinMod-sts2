@@ -4,6 +4,10 @@
 
 ## 更新结果：v0.4.7
 
+后续修复：放弃对局后，结算界面直接调用 RitsuLib 的 `TryPlayCue(..., "die")`，没有经过战斗的 `Dead` -> `death` 映射。原生 Spine 对缺失动画只记录错误，框架的 C# 异常回退未继续尝试正确名称。新增仅限 MeiLin 的 cue 补丁，将主名称 `die` 改为 `death`，保留其他角色和原有死亡逻辑。
+
+该补丁的 D3D12 图形定向测试 1/1 通过，已目验截图中的死亡姿势；注册测试 4/4 通过，补丁总数更新为 43，失败数 0。两次测试退出码均为 0，图形日志仅保留驱动 PSO caching 提示。此轮仅复测受影响路径，未重跑下表中的 75 项完整回归。日志为 `tmp/migration113-fixed/death-graphics-stdout.log`、`death-registration-stdout.log`，截图为同目录 `death-animation.png`。已重新导出并部署三件套，编译和导出均为 0 警告、0 错误。
+
 已完成：
 
 - 默认编译目标改为 113，补齐路径、环境变量、条件编译及嵌套导出传递；manifest 最低游戏版本 v0.113.0，RitsuLib 编译和最低运行依赖统一为已验证的 0.6.11。

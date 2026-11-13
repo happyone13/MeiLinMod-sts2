@@ -69,8 +69,8 @@ public sealed class PatchRegistrationTests : CombatTestSuite
         }
 
         Assert.Empty(unresolvedTargets);
-        Assert.Equal(39, patchTypes.Length);
-        Assert.Equal(42, resolvedTargetCount);
+        Assert.Equal(40, patchTypes.Length);
+        Assert.Equal(43, resolvedTargetCount);
     }
 
     [Fact]
@@ -156,6 +156,7 @@ public sealed class PatchRegistrationTests : CombatTestSuite
             "optional-scene",
             "optional scene",
             [
+                "MeiLinDeathAnimationCuePatch",
                 "MerchantCharacterAnimationFallbackPatch",
                 "MerchantCharacterPlayAnimationFallbackPatch",
                 "RestSiteCharacterAnimationFallbackPatch"
