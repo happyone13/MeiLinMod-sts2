@@ -1,0 +1,302 @@
+[
+  {
+    "frame": 0,
+    "reference_time": 7.403333333333334,
+    "correlation": 0.9680061827703658
+  },
+  {
+    "frame": 1,
+    "reference_time": 7.403333333333334,
+    "correlation": 0.9680093797823973
+  },
+  {
+    "frame": 2,
+    "reference_time": 7.445000000000001,
+    "correlation": 0.9617291193768321
+  },
+  {
+    "frame": 3,
+    "reference_time": 7.486666666666668,
+    "correlation": 0.9632582540924652
+  },
+  {
+    "frame": 4,
+    "reference_time": 7.486666666666668,
+    "correlation": 0.9632608833973669
+  },
+  {
+    "frame": 5,
+    "reference_time": 7.570000000000002,
+    "correlation": 0.9612742198941051
+  },
+  {
+    "frame": 6,
+    "reference_time": 7.695000000000003,
+    "correlation": 0.963115518275564
+  },
+  {
+    "frame": 7,
+    "reference_time": 7.695000000000003,
+    "correlation": 0.963091397847902
+  },
+  {
+    "frame": 8,
+    "reference_time": 7.73666666666667,
+    "correlation": 0.9614969551807497
+  },
+  {
+    "frame": 9,
+    "reference_time": 7.820000000000004,
+    "correlation": 0.9590659416402104
+  },
+  {
+    "frame": 10,
+    "reference_time": 7.820000000000004,
+    "correlation": 0.9590744416046513
+  },
+  {
+    "frame": 11,
+    "reference_time": 7.903333333333338,
+    "correlation": 0.9670559456124883
+  },
+  {
+    "frame": 12,
+    "reference_time": 7.986666666666672,
+    "correlation": 0.9653089370578914
+  },
+  {
+    "frame": 13,
+    "reference_time": 7.986666666666672,
+    "correlation": 0.9653083566426028
+  },
+  {
+    "frame": 14,
+    "reference_time": 8.02833333333334,
+    "correlation": 0.9646484258678085
+  },
+  {
+    "frame": 15,
+    "reference_time": 8.070000000000006,
+    "correlation": 0.9714960546985022
+  },
+  {
+    "frame": 16,
+    "reference_time": 8.070000000000006,
+    "correlation": 0.9714891687931573
+  },
+  {
+    "frame": 17,
+    "reference_time": 8.195000000000007,
+    "correlation": 0.9688216761297302
+  },
+  {
+    "frame": 18,
+    "reference_time": 8.236666666666673,
+    "correlation": 0.9770772280771161
+  },
+  {
+    "frame": 19,
+    "reference_time": 8.236666666666673,
+    "correlation": 0.9770787917686705
+  },
+  {
+    "frame": 20,
+    "reference_time": 8.27833333333334,
+    "correlation": 0.9854921772743628
+  },
+  {
+    "frame": 21,
+    "reference_time": 8.361666666666675,
+    "correlation": 0.9941141660582791
+  },
+  {
+    "frame": 22,
+    "reference_time": 8.361666666666675,
+    "correlation": 0.9941164701458293
+  },
+  {
+    "frame": 23,
+    "reference_time": 8.403333333333341,
+    "correlation": 0.9977316422959438
+  },
+  {
+    "frame": 24,
+    "reference_time": 8.528333333333343,
+    "correlation": 0.9971401786600379
+  },
+  {
+    "frame": 25,
+    "reference_time": 8.528333333333343,
+    "correlation": 0.9971401786600379
+  },
+  {
+    "frame": 26,
+    "reference_time": 8.57000000000001,
+    "correlation": 0.8883992746623823
+  },
+  {
+    "frame": 27,
+    "reference_time": 8.611666666666675,
+    "correlation": 0.9967551009296739
+  },
+  {
+    "frame": 28,
+    "reference_time": 8.611666666666675,
+    "correlation": 0.9967479029560352
+  },
+  {
+    "frame": 29,
+    "reference_time": 8.695000000000011,
+    "correlation": 0.9933930530314268
+  },
+  {
+    "frame": 30,
+    "reference_time": 8.778333333333343,
+    "correlation": 0.9938006520740111
+  },
+  {
+    "frame": 31,
+    "reference_time": 8.778333333333343,
+    "correlation": 0.9938014045617974
+  },
+  {
+    "frame": 32,
+    "reference_time": 8.820000000000011,
+    "correlation": 0.993302115105565
+  },
+  {
+    "frame": 33,
+    "reference_time": 8.903333333333345,
+    "correlation": 0.9919005765864465
+  },
+  {
+    "frame": 34,
+    "reference_time": 8.903333333333345,
+    "correlation": 0.9919060504432555
+  },
+  {
+    "frame": 35,
+    "reference_time": 8.986666666666679,
+    "correlation": 0.9906424188806681
+  },
+  {
+    "frame": 36,
+    "reference_time": 9.028333333333347,
+    "correlation": 0.9884764316225224
+  },
+  {
+    "frame": 37,
+    "reference_time": 9.028333333333347,
+    "correlation": 0.9884758937912124
+  },
+  {
+    "frame": 38,
+    "reference_time": 9.111666666666679,
+    "correlation": 0.9869001903898623
+  },
+  {
+    "frame": 39,
+    "reference_time": 9.153333333333347,
+    "correlation": 0.9893388542601782
+  },
+  {
+    "frame": 40,
+    "reference_time": 9.195000000000014,
+    "correlation": 0.9902099812959855
+  },
+  {
+    "frame": 41,
+    "reference_time": 9.278333333333347,
+    "correlation": 0.9899717211366819
+  },
+  {
+    "frame": 42,
+    "reference_time": 9.320000000000014,
+    "correlation": 0.9893225887597509
+  },
+  {
+    "frame": 43,
+    "reference_time": 9.361666666666682,
+    "correlation": 0.6906769194218817
+  },
+  {
+    "frame": 44,
+    "reference_time": 9.403333333333348,
+    "correlation": 0.9889601988700465
+  },
+  {
+    "frame": 45,
+    "reference_time": 9.445000000000014,
+    "correlation": 0.9907850710731763
+  },
+  {
+    "frame": 46,
+    "reference_time": 9.445000000000014,
+    "correlation": 0.9907864464475694
+  },
+  {
+    "frame": 47,
+    "reference_time": 9.52833333333335,
+    "correlation": 0.989801075335566
+  },
+  {
+    "frame": 48,
+    "reference_time": 9.570000000000016,
+    "correlation": 0.9875303889015031
+  },
+  {
+    "frame": 49,
+    "reference_time": 9.570000000000016,
+    "correlation": 0.9875405565934698
+  },
+  {
+    "frame": 50,
+    "reference_time": 9.611666666666682,
+    "correlation": 0.9873500067316048
+  },
+  {
+    "frame": 51,
+    "reference_time": 9.736666666666684,
+    "correlation": 0.9861769817536802
+  },
+  {
+    "frame": 52,
+    "reference_time": 9.736666666666684,
+    "correlation": 0.9865293088261461
+  },
+  {
+    "frame": 53,
+    "reference_time": 9.77833333333335,
+    "correlation": 0.9854665701013501
+  },
+  {
+    "frame": 54,
+    "reference_time": 9.820000000000018,
+    "correlation": 0.9856125587612378
+  },
+  {
+    "frame": 55,
+    "reference_time": 9.820000000000018,
+    "correlation": 0.9856075325344837
+  },
+  {
+    "frame": 56,
+    "reference_time": 9.903333333333352,
+    "correlation": 0.9861508789576505
+  },
+  {
+    "frame": 57,
+    "reference_time": 10.028333333333354,
+    "correlation": 0.9869594898182714
+  },
+  {
+    "frame": 58,
+    "reference_time": 10.028333333333354,
+    "correlation": 0.9869543109167476
+  },
+  {
+    "frame": 59,
+    "reference_time": 9.986666666666686,
+    "correlation": 0.3358583199317183
+  }
+]
