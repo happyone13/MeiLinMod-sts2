@@ -17,7 +17,7 @@ description: Audit or migrate Slay the Spire 2 C#/Godot mods from 0.111 or 0.112
 Search the active source and tests, excluding generated outputs and packages:
 
 ```powershell
-rg -n 'AfterDeath|SelectCharacter|characterModel|CreatureCmd\.Damage|OnTryPurchaseInternal|STS2_111|STS2_112|Sts2TargetVersion|RitsuLibVersion' MeiLinModCode GodotScripts tests
+rg -n 'AfterDeath|SelectCharacter|characterModel|GetBaseValueForIConvertible|CreatureCmd\.Damage|OnTryPurchaseInternal|STS2_111|STS2_112|Sts2TargetVersion|RitsuLibVersion' MeiLinModCode GodotScripts tests
 ```
 
 Adapt source directories to the target repository.
@@ -54,6 +54,7 @@ It reports unresolved game member references and candidate stale overrides separ
 - Extend existing compatible version branches individually. MeiLin's `HuoLongXinZang` and `QuanXinQuanLingPower` need the `CardLocation` branch on 0.113; adding only a new project symbol would incorrectly select their old fallback APIs.
 - Update the death override and patch target independently. Preserve local-player checks, `wasRemovalPrevented` behavior, summon counts, and cleanup ownership.
 - For character-select patches, derive the character from `charSelectButton.Character`; remove injection of the deleted `characterModel` original argument. Inspect every patch on the method.
+- Custom `DynamicVar` subclasses may override the removed `GetBaseValueForIConvertible`. Inspect their preview updates before replacing it: 0.113 conversions use `ShownValue`, derived from `PreviewValue`. Yuki's `ZhaoJia` already updates its preview, so only the legacy override needs a version guard. Verify preview, numeric conversion, and the resulting card effect together.
 - Match compile-time framework packages to a verified 0.113 runtime. RitsuLib `0.6.11` was verified locally on 2026-11-13; this is not a claim about the latest or minimum compatible release. Preserve the loader and its split runtime assemblies.
 - With RitsuLib 0.6.11, use `RunHistoryFiltered` and filter `TelemetryCaptureContext.SourceData` as `RunEndedEvent` to preserve character-scoped telemetry. See the reference for the old overload trap.
 - Align manifests, generated test manifests, dependency minimums, version assertions, and distribution version with the chosen supported targets.

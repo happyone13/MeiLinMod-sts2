@@ -244,3 +244,23 @@ The game-over handler requests `die` directly, bypassing MeiLin's correct combat
 MeiLin's local `MeiLinDeathAnimationCuePatch` prefixes the public `TryPlayCue(NCreatureVisuals, CharacterModel, string, ReadOnlySpan<string>, bool)` entry point and changes only MeiLin's primary `die` cue to `death`. It preserves normal RitsuLib playback and other characters. Harmony resolves and applies this target with the span argument omitted from the prefix parameters.
 
 For graphical regression tests, the framework enables game `TestMode` even when using D3D12. `Creature.CreateVisuals()` returns null in that mode. Use the character's existing `RitsuGodotNodeFactories.CreateFromScenePath<NCreatureVisuals>` path to construct a fresh model, attach it to the tree, then invoke the real game-over cue API and inspect its Spine track. Do not interpret the test-mode null as an actual game-over model failure.
+
+## Yuki Dynamic Variables and Migration Verification
+
+Yuki's independent compile revealed another removed virtual member: `DynamicVar.GetBaseValueForIConvertible`. Installed 0.113 metadata shows `get_ShownValue` converting `PreviewValue` to an integer, and numeric conversion methods and `GetSourceValue` using `ShownValue`.
+
+`ZhaoJia` already updates `PreviewValue` through its existing card-preview hook. Retain its old conversion override only under `#if !STS2_113`; no substitute override or gameplay rewrite is needed. The new combat regression plays a prior card, then checks preview value 6, `Convert.ToDecimal` value 6, and an actual block gain of 6. All three passed.
+
+Yuki v0.1.8 now targets 113 and RitsuLib 0.6.11. Its fixes include both character-select postfixes, the overlay death target, Gloomy's death override, character-scoped telemetry, the dynamic-variable override, and the scoped game-over `die` -> `death` cue correction. Its selection-reticle scene retained a valid resource text path while dropping a stale texture UID. No custom audio-manager fallback was needed in the actual Yuki selection test.
+
+Verification on the same installed 0.113 host:
+
+- Main build, fresh Godot PCK export, and test build: zero warnings/errors.
+- One complete regression run: 37/37 passed, no skips, process exit zero, empty stderr.
+- D3D12 graphical migration subset: 5/5 passed; actual character selection, both loaded backgrounds, the visible background toggle, and the death animation were exercised. Selection and death screenshots were inspected. The initial graphical run's texture UID warning was repaired before the final export and complete regression.
+- Installed-DLL metadata scan: 361 direct game references resolved and 963 virtual overrides checked with no mismatch or unresolved base assemblies.
+- Optional content/presentation patch groups: 1/1 and 6/6 targets applied. VFX prewarm: 48/48, failed zero.
+
+Use the game's actual selection scene in the graphical selection test: TestTheSpire's test-mode creation path can skip normal UI setup. Invoke the real `SelectCharacter` method and inspect Harmony's registered postfixes as well as the visible result. A compiling postfix alone is insufficient.
+
+Yuki's tests use a workspace-built 0.113 TestTheSpire DLL, isolated test saves, and temporary test-only mod payloads. Remove only those payloads after verification. These checks do not establish a complete manual run, live network multiplayer compatibility, or validation of retained older version routes.
