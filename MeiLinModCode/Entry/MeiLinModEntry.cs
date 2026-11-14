@@ -14,6 +14,7 @@ namespace MeiLinMod;
 public partial class MainFile : Node
 {
     public const string ModId = "MeiLinMod";
+    private static bool _characterEffectsPreloaded;
 
     public static MegaCrit.Sts2.Core.Logging.Logger Logger { get; } =
         new(ModId, MegaCrit.Sts2.Core.Logging.LogType.Generic);
@@ -26,7 +27,15 @@ public partial class MainFile : Node
         ScriptManagerBridge.LookupScriptsInAssembly(assembly);
         MeiLinSharedSettings.EnsureSettingsLoaded();
         GloomyEncounterSharedSettings.RegisterProvider(ModId);
+    }
+
+    internal static void PreloadCharacterEffects()
+    {
+        if (_characterEffectsPreloaded)
+            return;
         CardSpinePortraitPatch.PreloadDynamicPortraitScenes();
+        if (!MeiLinMod.MeiLinModCode.Config.MeiLinModConfig.UseCombatEffects)
+            return;
         MeiLinUgPresentation.Preload();
         MeiLinUxPresentation.Preload();
         MeiLinVfxPrewarmReport prewarm =
@@ -34,7 +43,8 @@ public partial class MainFile : Node
             MeiLinAttackMovementController.PreloadMovementEffects() +
             MeiLinStanceVfxController.PreloadStanceEffects();
         Logger.Info(
-            $"[MeiLinVfx] Startup prewarm summary. loaded={prewarm.Loaded}/{prewarm.Requested}, " +
+            $"[MeiLinVfx] Character prewarm summary. loaded={prewarm.Loaded}/{prewarm.Requested}, " +
             $"failed={prewarm.Failed}");
+        _characterEffectsPreloaded = true;
     }
 }

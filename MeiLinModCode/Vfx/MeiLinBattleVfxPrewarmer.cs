@@ -1,6 +1,7 @@
 using Godot;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MeiLinMod.MeiLinModCode.Config;
+using MeiLinCharacter = MeiLinMod.MeiLinModCode.Character.MeiLinMod;
 
 namespace MeiLinMod.MeiLinModCode.Vfx;
 
@@ -11,26 +12,32 @@ public static class MeiLinBattleVfxPrewarmer
 
     public static void Start(NCombatRoom room)
     {
+        int generation = Interlocked.Increment(ref _generation);
         if (!MeiLinModConfig.UseCombatEffects || room == null || !GodotObject.IsInstanceValid(room))
             return;
-
-        int generation = Interlocked.Increment(ref _generation);
-        string[] scenePaths = MeiLinCommandVfxCoordinator.GetBattleWarmScenePaths()
-            .Concat(MeiLinAttackMovementController.GetPreloadScenePaths())
-            .Where(path => !string.IsNullOrWhiteSpace(path))
-            .Distinct(StringComparer.Ordinal)
-            .ToArray();
-        RunAsync(room, generation, scenePaths);
+        RunAsync(room, generation);
     }
 
-    private static async void RunAsync(NCombatRoom room, int generation, IReadOnlyList<string> scenePaths)
+    private static async void RunAsync(NCombatRoom room, int generation)
     {
         int warmed = 0;
         int failed = 0;
         try
         {
             await NextFrame(room);
+            if (!IsCurrent(room, generation))
+                return;
             await NextFrame(room);
+            if (!IsCurrent(room, generation) ||
+                !room.CreatureNodes.Any(node => node.Entity?.Player?.Character is MeiLinCharacter))
+                return;
+
+            var movementPaths = MeiLinAttackMovementController.GetPreloadScenePaths().ToHashSet(StringComparer.Ordinal);
+            string[] scenePaths = MeiLinCommandVfxCoordinator.GetBattleWarmScenePaths()
+                .Concat(movementPaths)
+                .Where(path => !string.IsNullOrWhiteSpace(path))
+                .Distinct(StringComparer.Ordinal)
+                .ToArray();
 
             foreach (string scenePath in scenePaths)
             {
@@ -48,13 +55,28 @@ public static class MeiLinBattleVfxPrewarmer
                     continue;
                 }
 
-                instance.Modulate = new Color(1f, 1f, 1f, WarmAlpha);
-                warmed++;
-                await NextFrame(room);
-                await NextFrame(room);
-
-                if (GodotObject.IsInstanceValid(instance))
-                    instance.QueueFree();
+                var lease = OneShotVfxPool.Find(instance);
+                int instanceGeneration = lease?.Generation ?? 0;
+                try
+                {
+                    instance.Modulate = new Color(1f, 1f, 1f, WarmAlpha);
+                    warmed++;
+                    await NextFrame(room);
+                    if (!IsCurrent(room, generation))
+                        return;
+                    await NextFrame(room);
+                    if (!IsCurrent(room, generation))
+                        return;
+                }
+                finally
+                {
+                    // Command timelines use temporary parents; retain only movement instances here.
+                    if (lease != null && movementPaths.Contains(scenePath))
+                        lease.Return(instanceGeneration);
+                    else if (GodotObject.IsInstanceValid(instance) &&
+                             (lease == null || lease.Generation == instanceGeneration))
+                        instance.QueueFree();
+                }
 
                 await NextFrame(room);
             }
@@ -62,7 +84,7 @@ public static class MeiLinBattleVfxPrewarmer
             if (IsCurrent(room, generation))
             {
                 MainFile.Logger.Info(
-                    $"[MeiLinVfx] Battle deep prewarm complete. warmed={warmed}/{scenePaths.Count}, failed={failed}.");
+                    $"[MeiLinVfx] Battle deep prewarm complete. warmed={warmed}/{scenePaths.Length}, failed={failed}.");
             }
         }
         catch (Exception ex)

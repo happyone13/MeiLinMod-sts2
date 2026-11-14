@@ -68,7 +68,7 @@ public static class MeiLinVfxHelper
         float uniformScale = 1f,
         int? zIndex = null)
     {
-        if (parent == null || !GodotObject.IsInstanceValid(parent))
+        if (parent == null || !GodotObject.IsInstanceValid(parent) || parent.IsQueuedForDeletion())
             return null;
 
         var scene = GetOrLoadScene(scenePath);
@@ -78,8 +78,7 @@ public static class MeiLinVfxHelper
         Node2D root;
         try
         {
-            root = scene.Instantiate<Node2D>(PackedScene.GenEditState.Disabled);
-            parent.AddChild(root);
+            root = OneShotVfxPool.Rent(parent, scenePath + "|" + animationName, scene).Root;
             root.GlobalPosition = globalPosition;
             root.Scale *= new Vector2(uniformScale, uniformScale);
             if (zIndex.HasValue)
@@ -152,15 +151,19 @@ public static class MeiLinVfxHelper
         if (!GodotObject.IsInstanceValid(root))
             return;
 
-        var nodes = EnumerateNodes(root).ToList();
+        var lease = OneShotVfxPool.Find(root);
+        int generation = lease?.Generation ?? 0;
+        bool IsCurrent() => lease?.IsCurrent(generation) ?? GodotObject.IsInstanceValid(root);
+        var nodes = lease?.Nodes ?? EnumerateNodes(root).ToList();
         HideDelayedNodes(nodes);
 
         var sprites = new List<(Node Node, MegaSprite Sprite, string AnimationName, float Delay)>();
-        foreach (var node in nodes)
+        var spineNodes = lease?.Spines ?? nodes.Where(node => node.IsClass("SpineSprite"))
+            .Select(node => (Node: node, Sprite: new MegaSprite(node))).ToList();
+        foreach (var (node, sprite) in spineNodes)
         {
             try
             {
-                var sprite = new MegaSprite(node);
                 var resolvedAnimationName = ResolveAnimationName(node, sprite, animationName);
                 if (resolvedAnimationName != null)
                     sprites.Add((node, sprite, resolvedAnimationName, GetEffectiveDelay(node)));
@@ -179,6 +182,8 @@ public static class MeiLinVfxHelper
             var delay = GetEffectiveDelay(node);
             StartAfter(root, delay, () =>
             {
+                if (!IsCurrent())
+                    return;
                 ShowDelayedAncestors(node);
                 TriggerParticle(particles);
             });
@@ -190,7 +195,7 @@ public static class MeiLinVfxHelper
 
         void CompleteCondition()
         {
-            if (freed)
+            if (freed || !IsCurrent())
                 return;
 
             pendingConditions--;
@@ -198,12 +203,16 @@ public static class MeiLinVfxHelper
                 return;
 
             freed = true;
-            QueueFree(root);
+            if (lease != null)
+                lease.Return(generation);
+            else
+                QueueFree(root);
         }
 
+        // Set the full count before starting animations: a completion can fire synchronously.
+        pendingConditions = (sprites.Count > 0 ? 1 : 0) + (particleDuration > 0f ? 1 : 0);
         if (sprites.Count > 0)
         {
-            pendingConditions++;
             var remainingSprites = sprites.Count;
 
             foreach (var pair in sprites)
@@ -211,20 +220,28 @@ public static class MeiLinVfxHelper
                 var sprite = pair.Sprite;
                 var node = pair.Node;
 
-                sprite.ConnectAnimationCompleted(Callable.From<GodotObject, GodotObject, GodotObject>((_, _, _) =>
+                bool completed = false;
+                void CompleteSprite()
                 {
-                    if (freed)
+                    if (completed || freed || !IsCurrent())
                         return;
-
+                    completed = true;
                     remainingSprites--;
                     if (remainingSprites > 0)
                         return;
 
                     CompleteCondition();
-                }));
+                }
+                var callback = Callable.From<GodotObject, GodotObject, GodotObject>((_, _, _) => CompleteSprite());
+                if (lease != null)
+                    lease.Connect(sprite, callback);
+                else
+                    sprite.ConnectAnimationCompleted(callback);
 
                 StartAfter(root, pair.Delay, () =>
                 {
+                    if (!IsCurrent())
+                        return;
                     ShowDelayedAncestors(node);
                     try
                     {
@@ -233,9 +250,7 @@ public static class MeiLinVfxHelper
                     catch (Exception ex)
                     {
                         MainFile.Logger.Info($"[MeiLinVfx] Spine play failed. anim={pair.AnimationName}, ex={ex.GetType().Name}: {ex.Message}");
-                        remainingSprites--;
-                        if (remainingSprites <= 0)
-                            CompleteCondition();
+                        CompleteSprite();
                     }
                 });
             }
@@ -243,14 +258,16 @@ public static class MeiLinVfxHelper
 
         if (particleDuration > 0f)
         {
-            pendingConditions++;
             AutoCompleteAfter(root, MathF.Max(0.1f, particleDuration), CompleteCondition);
         }
 
         if (pendingConditions == 0)
         {
             freed = true;
-            QueueFree(root);
+            if (lease != null)
+                lease.Return(generation);
+            else
+                QueueFree(root);
         }
     }
 

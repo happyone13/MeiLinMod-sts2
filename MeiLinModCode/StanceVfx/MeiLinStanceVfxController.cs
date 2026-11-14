@@ -46,8 +46,9 @@ public sealed class MeiLinStanceVfxController
         var visuals = NCombatRoom.Instance?.GetCreatureNode(owner)?.Visuals;
         if (visuals == null)
             return;
+        var model = visuals.GetNodeOrNull<Node2D>("ModelRoot") ?? visuals;
 
-        var container = visuals.GetNodeOrNull<Node2D>(ContainerName);
+        var container = model.GetNodeOrNull<Node2D>(ContainerName);
         if (container == null)
         {
             container = new Node2D
@@ -55,7 +56,7 @@ public sealed class MeiLinStanceVfxController
                 Name = ContainerName,
                 Position = Vector2.Zero
             };
-            visuals.AddChild(container);
+            model.AddChild(container);
         }
 
         if (_currentAura != null &&
@@ -91,9 +92,9 @@ public sealed class MeiLinStanceVfxController
                      .OfType<Node2D>())
         {
             var pos = burst.GlobalPosition;
-            burst.Reparent(visuals);
+            burst.Reparent(model);
             burst.GlobalPosition = pos;
-            visuals.MoveChild(burst, 0);
+            model.MoveChild(burst, 0);
         }
 
         _currentAura = aura;

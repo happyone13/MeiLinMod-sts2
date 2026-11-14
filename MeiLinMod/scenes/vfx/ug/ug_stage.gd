@@ -33,6 +33,7 @@ func _ready() -> void:
         suspend_spines(node)
         fx.append({"node": node, "event": e, "started": false})
     prepare_cutin()
+    $Stage.visible = false
     set_process(false)
     if "--ug-preview" in OS.get_cmdline_user_args():
         call_deferred("begin_preview")
@@ -43,6 +44,7 @@ func fit_viewport() -> void:
     $Stage.scale = Vector2.ONE * maxf(size.x / 1280.0, size.y / 720.0)
 
 func begin(actor: CanvasItem, enemies: Array) -> void:
+    $Stage.visible = true
     actor_original = actor
     if is_instance_valid(actor):
         actor_was_visible = actor.visible
@@ -70,6 +72,7 @@ func begin(actor: CanvasItem, enemies: Array) -> void:
         var snapshot: Dictionary = {"node": enemy, "parent": enemy.get_parent(), "index": enemy.get_index(),
             "transform": enemy.transform, "modulate": enemy.modulate, "visible": enemy.visible,
             "z": enemy.z_index, "relative": enemy.z_as_relative}
+        enemy.visible = false
         enemy.reparent($Stage/World, false)
         enemy.transform = $Stage.global_transform.affine_inverse() * screen
         enemy.z_index = 0
@@ -90,7 +93,36 @@ func find_spine_canvas_item(node: Node) -> CanvasItem:
 func begin_preview() -> void:
     # Preview uses the same scene, clock, event routing, and cleanup as combat.
     preview_mode = true
+    $Stage.visible = true
     begin_clock()
+
+func prepare_first_draw() -> void:
+    # Submit real draw calls before starting sound or the presentation clock.
+    $Stage.visible = true
+    $Stage.modulate.a = 0.001
+    $Stage/Blackout.visible = false
+    for e in config.events:
+        if e.etty == "ANI":
+            play_animation($Stage/World/Actor, e.animation_name)
+            break
+    $Stage/World/Actor.visible = true
+    for item in fx:
+        item.node.visible = true
+        start_spines(item.node)
+    if cutin_sprite != null and not cutin_frames.is_empty():
+        cutin_sprite.texture = cutin_frames[0].texture
+        cutin_sprite.visible = true
+
+func reset_first_draw() -> void:
+    suspend_spines($Stage)
+    $Stage/World/Actor.visible = false
+    for item in fx:
+        item.node.visible = false
+    if cutin_sprite != null:
+        cutin_sprite.visible = false
+    $Stage/Blackout.visible = true
+    $Stage.modulate = Color.WHITE
+    $Stage.visible = false
 
 func begin_clock() -> void:
     running = true

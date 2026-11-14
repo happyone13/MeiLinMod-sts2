@@ -540,7 +540,7 @@ public static class MeiLinCommandVfxCoordinator
             Node2D? visualsRoot = creatureNode.Visuals;
             if (visualsRoot != null && GodotObject.IsInstanceValid(visualsRoot))
             {
-                Marker2D? marker = visualsRoot.GetNodeOrNull<Marker2D>($"Visuals/{markerName}");
+                Marker2D? marker = visualsRoot.GetNodeOrNull<Marker2D>($"ModelRoot/Visuals/{markerName}");
                 if (marker != null && GodotObject.IsInstanceValid(marker))
                     return marker.GlobalPosition;
 

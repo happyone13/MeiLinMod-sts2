@@ -67,6 +67,7 @@ public class MeiLinMod : ModCharacterTemplate<MeiLinModCardPool, MeiLinModRelicP
 
     protected override NCreatureVisuals? TryCreateCreatureVisuals()
     {
+        MainFile.PreloadCharacterEffects();
         return RitsuGodotNodeFactories.CreateFromScenePath<NCreatureVisuals>(CustomVisualsPath!);
     }
 

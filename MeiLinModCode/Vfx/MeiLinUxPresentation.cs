@@ -44,6 +44,7 @@ public static class MeiLinUxPresentation
         }
 
         Node? stage = null;
+        bool prepared = false;
         try
         {
             try
@@ -53,18 +54,26 @@ public static class MeiLinUxPresentation
                 if (stage != null)
                 {
                     room.AddChild(stage);
-                    var visuals = new Godot.Collections.Array<GodotObject>();
-                    foreach (var target in targets.Where(t => t.IsAlive).OrderBy(t => room.GetCreatureNode(t)?.GlobalPosition.X))
+                    prepared = await CinematicFirstDraw.PrepareAsync(stage, () =>
+                            GodotObject.IsInstanceValid(room) && NCombatRoom.Instance == room &&
+                            !CombatManager.Instance.IsOverOrEnding &&
+                            MeiLinMod.MeiLinModCode.Config.MeiLinModConfig.UseCombatEffects &&
+                            MeiLinSharedSettings.UltimateCinematicsEnabled);
+                    if (prepared)
                     {
-                        var node = room.GetCreatureNode(target)?.Visuals;
-                        if (node != null) visuals.Add(node);
+                        var visuals = new Godot.Collections.Array<GodotObject>();
+                        foreach (var target in targets.Where(t => t.IsAlive).OrderBy(t => room.GetCreatureNode(t)?.GlobalPosition.X))
+                        {
+                            var node = room.GetCreatureNode(target)?.Visuals;
+                            if (node != null) visuals.Add(node);
+                        }
+                        stage.Call("begin", actor, visuals);
+                        // Start voice and effects from the same frame and real-time
+                        // epoch used by the visual timeline.
+                        MeiLinAudioService.SuppressNextDefaultCastSfx(caster.Player);
+                        MeiLinAudioService.TryPlayUxVoice(caster.Player);
+                        MeiLinAudioService.TryPlayUxSound(caster.Player);
                     }
-                    stage.Call("begin", actor, visuals);
-                    // Start voice and effects from the same frame and real-time
-                    // epoch used by the visual timeline.
-                    MeiLinAudioService.SuppressNextDefaultCastSfx(caster.Player);
-                    MeiLinAudioService.TryPlayUxVoice(caster.Player);
-                    MeiLinAudioService.TryPlayUxSound(caster.Player);
                 }
             }
             catch (Exception ex)
@@ -74,7 +83,7 @@ public static class MeiLinUxPresentation
                 stage = null;
             }
 
-            if (stage == null)
+            if (stage == null || !prepared)
             {
                 await onHit(false);
                 return;

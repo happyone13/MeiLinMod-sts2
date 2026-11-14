@@ -44,6 +44,7 @@ public static class MeiLinUgPresentation
         }
 
         Node? stage = null;
+        bool prepared = false;
         try
         {
             try
@@ -53,19 +54,27 @@ public static class MeiLinUgPresentation
                 if (stage != null)
                 {
                     room.AddChild(stage);
-                    var visuals = new Godot.Collections.Array<GodotObject>();
-                    foreach (var target in targets.Where(t => t.IsAlive).OrderBy(t => room.GetCreatureNode(t)?.GlobalPosition.X))
+                    prepared = await CinematicFirstDraw.PrepareAsync(stage, () =>
+                            GodotObject.IsInstanceValid(room) && NCombatRoom.Instance == room &&
+                            !CombatManager.Instance.IsOverOrEnding &&
+                            MeiLinMod.MeiLinModCode.Config.MeiLinModConfig.UseCombatEffects &&
+                            MeiLinSharedSettings.UltimateCinematicsEnabled);
+                    if (prepared)
                     {
-                        var node = room.GetCreatureNode(target)?.Visuals;
-                        if (node != null) visuals.Add(node);
+                        var visuals = new Godot.Collections.Array<GodotObject>();
+                        foreach (var target in targets.Where(t => t.IsAlive).OrderBy(t => room.GetCreatureNode(t)?.GlobalPosition.X))
+                        {
+                            var node = room.GetCreatureNode(target)?.Visuals;
+                            if (node != null) visuals.Add(node);
+                        }
+                        stage.Call("begin", actor, visuals);
+                        // Bind sound to the presentation epoch. Playing it from the
+                        // card before scene instantiation made first-load audio lead
+                        // the authored timeline by a variable amount.
+                        MeiLinAudioService.SuppressNextDefaultAttackSfx(caster.Player);
+                        MeiLinAudioService.TryPlayUgAttackVoice(caster.Player);
+                        MeiLinAudioService.TryPlayUgAttackSound(caster.Player);
                     }
-                    stage.Call("begin", actor, visuals);
-                    // Bind sound to the presentation epoch. Playing it from the
-                    // card before scene instantiation made first-load audio lead
-                    // the authored timeline by a variable amount.
-                    MeiLinAudioService.SuppressNextDefaultAttackSfx(caster.Player);
-                    MeiLinAudioService.TryPlayUgAttackVoice(caster.Player);
-                    MeiLinAudioService.TryPlayUgAttackSound(caster.Player);
                 }
             }
             catch (Exception ex)
@@ -75,7 +84,7 @@ public static class MeiLinUgPresentation
                 stage = null;
             }
 
-            if (stage == null)
+            if (stage == null || !prepared)
             {
                 await onHit(false);
                 return;

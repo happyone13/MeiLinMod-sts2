@@ -201,20 +201,16 @@ public static class CardSpinePortraitPatch
             return;
         }
 
-        var parentPortrait = ResolveOverlayTargetPortrait(cardNode, container);
-        if (parentPortrait != null)
-            SyncOverlayLayout(cardNode, parentPortrait, container, subViewport);
-
-        if (framesSinceCreated < WarmUpFrames)
+        bool active = DynamicPortraitActivity.ShouldRender(container);
+        DynamicPortraitActivity.SetActive(subViewport, active);
+        if (!active)
         {
-            if (subViewport.RenderTargetUpdateMode != SubViewport.UpdateMode.Always)
-                subViewport.RenderTargetUpdateMode = SubViewport.UpdateMode.Always;
             return;
         }
 
-        // Keep dynamic card portraits animating continuously once enabled.
-        if (subViewport.RenderTargetUpdateMode != SubViewport.UpdateMode.Always)
-            subViewport.RenderTargetUpdateMode = SubViewport.UpdateMode.Always;
+        var parentPortrait = ResolveOverlayTargetPortrait(cardNode, container);
+        if (parentPortrait != null)
+            SyncOverlayLayout(cardNode, parentPortrait, container, subViewport);
     }
 
     public static bool ShouldDisplayDynamicOverlays(NCard? cardNode)

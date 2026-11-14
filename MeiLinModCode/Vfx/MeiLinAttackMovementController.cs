@@ -30,10 +30,6 @@ public static class MeiLinAttackMovementController
         public bool HasOriginalLayer;
         public int OriginalZIndex;
         public bool OriginalZAsRelative;
-        public Node? OriginalParent;
-        public int OriginalSiblingIndex;
-        public bool ReorderedSibling;
-        public bool ChangedZFallback;
         public int Version;
     }
 
@@ -69,7 +65,7 @@ public static class MeiLinAttackMovementController
         if (!session.HasOrigin)
         {
             session.HasOrigin = true;
-            session.OriginGlobalPosition = casterNode.GlobalPosition;
+            session.OriginGlobalPosition = GetModelRoot(casterNode).GlobalPosition;
         }
 
         var targetFoot = GetCreatureFootAnchor(targetNode);
@@ -77,7 +73,7 @@ public static class MeiLinAttackMovementController
             return;
 
         var planned = ComputeDesiredGlobalPositionByFoot(casterNode, targetFoot, AttackDistance, caster.Side);
-        if (planned.DistanceTo(casterNode.GlobalPosition) < MinimumMoveDistance)
+        if (planned.DistanceTo(GetModelRoot(casterNode).GlobalPosition) < MinimumMoveDistance)
             return;
 
         session.Teleported = true;
@@ -88,8 +84,7 @@ public static class MeiLinAttackMovementController
         MainFile.Logger.Info($"[MeiLinMove] Move to target. origin={session.OriginGlobalPosition}, targetFoot={targetFoot}, planned={planned}, distance={AttackDistance:0.#}");
         PlayMovementEffectPair(casterNode, GetCreatureFootAnchor(casterNode), "leave_origin");
         RaiseAboveEnemies(casterNode, targetNode, session);
-        casterNode.GlobalPosition = planned;
-        casterNode.GlobalPosition = planned;
+        GetModelRoot(casterNode).GlobalPosition = planned;
         PlayMovementEffectPair(casterNode, GetCreatureFootAnchor(casterNode), "arrive_target");
         StartPositionLock(caster, version, planned, 0.8f);
 
@@ -170,14 +165,13 @@ public static class MeiLinAttackMovementController
                 return;
             }
 
-            var origin = session.HasOrigin ? session.OriginGlobalPosition : casterNode.GlobalPosition;
+            var origin = session.HasOrigin ? session.OriginGlobalPosition : GetModelRoot(casterNode).GlobalPosition;
             PlayMovementEffectPair(casterNode, GetCreatureFootAnchor(casterNode), "leave_target");
             RestoreLayer(casterNode, session);
             ResetSession(session);
 
             MainFile.Logger.Info($"[MeiLinMove] Return to origin. origin={origin}");
-            casterNode.GlobalPosition = origin;
-            casterNode.GlobalPosition = origin;
+            GetModelRoot(casterNode).GlobalPosition = origin;
             PlayMovementEffectPair(casterNode, GetCreatureFootAnchor(casterNode), "arrive_origin");
 
             if (!string.IsNullOrWhiteSpace(interruptedCommandName))
@@ -210,7 +204,7 @@ public static class MeiLinAttackMovementController
                 if (casterNode == null || !GodotObject.IsInstanceValid(casterNode))
                     return;
 
-                casterNode.GlobalPosition = position;
+                GetModelRoot(casterNode).GlobalPosition = position;
                 var tree = casterNode.GetTree();
                 if (tree == null || !GodotObject.IsInstanceValid(tree))
                     return;
@@ -312,7 +306,7 @@ public static class MeiLinAttackMovementController
             dir = dir.Normalized();
 
         var desiredFoot = targetFoot - dir * distance;
-        var footOffset = casterFoot - casterNode.GlobalPosition;
+        var footOffset = casterFoot - GetModelRoot(casterNode).GlobalPosition;
         return Snap(desiredFoot - footOffset);
     }
 
@@ -352,7 +346,7 @@ public static class MeiLinAttackMovementController
             Node2D? visualsRoot = creatureNode.Visuals;
             if (visualsRoot != null && GodotObject.IsInstanceValid(visualsRoot))
             {
-                var marker = visualsRoot.GetNodeOrNull<Marker2D>($"Visuals/{markerName}");
+                var marker = visualsRoot.GetNodeOrNull<Marker2D>($"ModelRoot/Visuals/{markerName}");
                 if (marker != null && GodotObject.IsInstanceValid(marker))
                     return marker.GlobalPosition;
 
@@ -382,34 +376,16 @@ public static class MeiLinAttackMovementController
     {
         try
         {
+            var model = GetModelRoot(casterNode);
             if (!session.HasOriginalLayer)
             {
                 session.HasOriginalLayer = true;
-                session.OriginalZIndex = casterNode.ZIndex;
-                session.OriginalZAsRelative = casterNode.ZAsRelative;
-                session.OriginalParent = casterNode.GetParent();
-                session.OriginalSiblingIndex = casterNode.GetIndex();
+                session.OriginalZIndex = model.ZIndex;
+                session.OriginalZAsRelative = model.ZAsRelative;
             }
 
-            var casterParent = casterNode.GetParent();
-            var targetParent = targetNode.GetParent();
-            if (casterParent != null &&
-                targetParent == casterParent &&
-                GodotObject.IsInstanceValid(casterParent))
-            {
-                var desiredIndex = Math.Min(targetNode.GetIndex() + 1, casterParent.GetChildCount() - 1);
-                if (casterNode.GetIndex() != desiredIndex)
-                {
-                    casterParent.MoveChild(casterNode, desiredIndex);
-                    session.ReorderedSibling = true;
-                }
-
-                return;
-            }
-
-            casterNode.ZAsRelative = true;
-            casterNode.ZIndex = Math.Max(casterNode.ZIndex, targetNode.ZIndex + 1);
-            session.ChangedZFallback = true;
+            model.ZAsRelative = false;
+            model.ZIndex = Math.Clamp(Math.Max(casterNode.ZIndex, targetNode.ZIndex) + 1, -4096, 4096);
         }
         catch
         {
@@ -423,20 +399,9 @@ public static class MeiLinAttackMovementController
 
         try
         {
-            if (session.ReorderedSibling &&
-                session.OriginalParent != null &&
-                GodotObject.IsInstanceValid(session.OriginalParent) &&
-                casterNode.GetParent() == session.OriginalParent)
-            {
-                var restoreIndex = Math.Clamp(session.OriginalSiblingIndex, 0, session.OriginalParent.GetChildCount() - 1);
-                session.OriginalParent.MoveChild(casterNode, restoreIndex);
-            }
-
-            if (session.ChangedZFallback)
-            {
-                casterNode.ZAsRelative = session.OriginalZAsRelative;
-                casterNode.ZIndex = session.OriginalZIndex;
-            }
+            var model = GetModelRoot(casterNode);
+            model.ZAsRelative = session.OriginalZAsRelative;
+            model.ZIndex = session.OriginalZIndex;
         }
         catch
         {
@@ -448,6 +413,9 @@ public static class MeiLinAttackMovementController
         return new Vector2(Mathf.Round(pos.X), Mathf.Round(pos.Y));
     }
 
+    internal static Node2D GetModelRoot(NCreature creatureNode) =>
+        creatureNode.Visuals.GetNodeOrNull<Node2D>("ModelRoot") ?? creatureNode.Body;
+
     private static void ResetSession(MovementSession session)
     {
         session.HasOrigin = false;
@@ -457,10 +425,6 @@ public static class MeiLinAttackMovementController
         session.HasOriginalLayer = false;
         session.OriginalZIndex = 0;
         session.OriginalZAsRelative = true;
-        session.OriginalParent = null;
-        session.OriginalSiblingIndex = 0;
-        session.ReorderedSibling = false;
-        session.ChangedZFallback = false;
         session.Version++;
     }
 }
