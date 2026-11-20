@@ -117,7 +117,7 @@ public sealed class OptionalCardVisualPatchTests : CombatTestSuite
         Assert.Contains("ancientPortrait.StretchMode = TextureRect.StretchModeEnum.Scale;", source);
         Assert.Contains("Node overlayParent = GetOverlayParent(cardNode);", source);
         Assert.Contains("Control? body = cardNode.Body;", source);
-        Assert.Contains("DestroyNodeImmediately(parent.GetNodeOrNull<Node>(nodeName));", source);
+        Assert.Contains("state.Nodes.Remove(nodeName, out var owned)", source);
         Assert.Contains("banner.Material = null;", source);
         Assert.Contains("ApplyTextureRect(ancientTextBg, GetAncientTextBgPath(cardModel.Type), frameMaterial, show: true);", source);
         Assert.Contains("RemoveNode(cardNode, DescriptionMaskNodeName);", source);

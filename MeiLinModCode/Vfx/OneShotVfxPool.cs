@@ -4,7 +4,7 @@ using MegaCrit.Sts2.Core.Bindings.MegaSpine;
 
 namespace MeiLinMod.MeiLinModCode.Vfx;
 
-// Instances stay under their original parent, which owns their native lifetime.
+// Command effects play under the command for draw order, but park under their combat room.
 internal static class OneShotVfxPool
 {
     private const int MaxIdlePerEffect = 2;
@@ -16,6 +16,7 @@ internal static class OneShotVfxPool
         internal readonly Node2D Root;
         internal readonly List<Node> Nodes = new();
         internal readonly List<(Node Node, MegaSprite Sprite)> Spines = new();
+        private readonly Node _home;
         private readonly Stack<Lease> _idle;
         private readonly Transform2D _transform;
         private readonly Color _modulate;
@@ -28,9 +29,10 @@ internal static class OneShotVfxPool
         private bool _active;
         internal int Generation { get; private set; }
 
-        internal Lease(Node2D root, Stack<Lease> idle)
+        internal Lease(Node2D root, Node home, Stack<Lease> idle)
         {
             Root = root;
+            _home = home;
             _idle = idle;
             _transform = root.Transform;
             _modulate = root.Modulate;
@@ -62,7 +64,8 @@ internal static class OneShotVfxPool
             Root.ZIndex = _zIndex;
             Root.ZAsRelative = _zAsRelative;
             foreach (var pair in _visibility)
-                pair.Item.Visible = pair.Visible;
+                if (GodotObject.IsInstanceValid(pair.Item))
+                    pair.Item.Visible = pair.Visible;
             Root.ProcessMode = _processMode;
         }
 
@@ -100,28 +103,69 @@ internal static class OneShotVfxPool
             }
             Root.Hide();
             Root.ProcessMode = Node.ProcessModeEnum.Disabled;
-            if (_idle.Count < MaxIdlePerEffect && Root.GetParent() is { } parent &&
-                GodotObject.IsInstanceValid(parent) && !parent.IsQueuedForDeletion())
-                _idle.Push(this);
+            if (Root.GetParent() == _home)
+                Park(generation);
             else
+                // Completion can run inside a native Spine update. Move the subtree after it returns.
+                Callable.From(() => Park(generation)).CallDeferred();
+        }
+
+        private void Park(int generation)
+        {
+            if (generation != Generation || _active || !GodotObject.IsInstanceValid(Root) ||
+                Root.IsQueuedForDeletion())
+                return;
+            var parent = Root.GetParent();
+            if (_idle.Count >= MaxIdlePerEffect || !GodotObject.IsInstanceValid(_home) ||
+                _home.IsQueuedForDeletion() || !GodotObject.IsInstanceValid(parent) || parent.IsQueuedForDeletion())
+            {
                 Root.QueueFree();
+                return;
+            }
+            if (parent != _home)
+            {
+                if (!_home.IsInsideTree() || parent.GetParent() != _home)
+                {
+                    Root.QueueFree();
+                    return;
+                }
+                Root.Reparent(_home, false);
+                if (Root.GetParent() != _home)
+                {
+                    Root.QueueFree();
+                    return;
+                }
+            }
+            _idle.Push(this);
         }
     }
 
-    internal static Lease Rent(Node parent, string key, PackedScene scene)
+    internal static Lease Rent(Node parent, string key, PackedScene scene) =>
+        RentForPlayback(parent, parent, key, scene);
+
+    internal static Lease RentForPlayback(Node home, Node parent, string key, PackedScene scene)
     {
-        var pool = Pools.GetOrCreateValue(parent);
+        var pool = Pools.GetOrCreateValue(home);
         if (!pool.TryGetValue(key, out var idle))
             pool[key] = idle = new Stack<Lease>();
         Lease? lease = null;
         while (idle.Count > 0)
         {
             var candidate = idle.Pop();
-            if (GodotObject.IsInstanceValid(candidate.Root) && !candidate.Root.IsQueuedForDeletion())
+            var root = candidate.Root;
+            if (!GodotObject.IsInstanceValid(root) || root.IsQueuedForDeletion() || root.GetParent() != home)
+                continue;
+            if (home != parent)
             {
-                lease = candidate;
-                break;
+                root.Reparent(parent, false);
+                if (root.GetParent() != parent)
+                {
+                    root.QueueFree();
+                    continue;
+                }
             }
+            lease = candidate;
+            break;
         }
         if (lease == null)
         {
@@ -129,7 +173,9 @@ internal static class OneShotVfxPool
             try
             {
                 parent.AddChild(root);
-                lease = new Lease(root, idle);
+                if (root.GetParent() != parent)
+                    throw new InvalidOperationException("Could not attach VFX to its playback parent.");
+                lease = new Lease(root, home, idle);
                 Leases.Add(root, lease);
             }
             catch

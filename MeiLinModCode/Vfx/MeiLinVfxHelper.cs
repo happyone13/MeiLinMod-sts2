@@ -10,6 +10,7 @@ public static class MeiLinVfxHelper
 {
     private const string DelayMeta = "meilin_vfx_delay_sec";
     private const string PreviewAnimationProperty = "preview_animation";
+    private const string DefaultAnimation = "animation";
     private static readonly object SceneCacheLock = new();
     private static readonly Dictionary<string, PackedScene?> SceneCache = new(StringComparer.Ordinal);
 
@@ -34,7 +35,7 @@ public static class MeiLinVfxHelper
         Creature? creature,
         Vector2 offset = default,
         float uniformScale = 1f,
-        string animationName = "animation",
+        string animationName = DefaultAnimation,
         int? zIndex = null,
         bool followCreature = false)
     {
@@ -64,11 +65,27 @@ public static class MeiLinVfxHelper
         string scenePath,
         Node parent,
         Vector2 globalPosition,
-        string animationName = "animation",
+        string animationName = DefaultAnimation,
         float uniformScale = 1f,
-        int? zIndex = null)
+        int? zIndex = null) =>
+        PlayCompositeInternal(scenePath, parent, parent, globalPosition, animationName, uniformScale, zIndex);
+
+    internal static Node2D? PlayCommandComposite(
+        string scenePath, Node2D commandRoot, Vector2 globalPosition, float uniformScale, int? zIndex)
     {
-        if (parent == null || !GodotObject.IsInstanceValid(parent) || parent.IsQueuedForDeletion())
+        if (!GodotObject.IsInstanceValid(commandRoot) || commandRoot.IsQueuedForDeletion() ||
+            !commandRoot.IsInsideTree() || commandRoot.GetParent() is not { } roomContainer)
+            return null;
+        return PlayCompositeInternal(scenePath, commandRoot, roomContainer, globalPosition,
+            DefaultAnimation, uniformScale, zIndex);
+    }
+
+    private static Node2D? PlayCompositeInternal(
+        string scenePath, Node parent, Node home, Vector2 globalPosition, string animationName,
+        float uniformScale, int? zIndex)
+    {
+        if (!GodotObject.IsInstanceValid(parent) || parent.IsQueuedForDeletion() ||
+            !GodotObject.IsInstanceValid(home) || home.IsQueuedForDeletion())
             return null;
 
         var scene = GetOrLoadScene(scenePath);
@@ -78,7 +95,7 @@ public static class MeiLinVfxHelper
         Node2D root;
         try
         {
-            root = OneShotVfxPool.Rent(parent, scenePath + "|" + animationName, scene).Root;
+            root = OneShotVfxPool.RentForPlayback(home, parent, scenePath + "|" + animationName, scene).Root;
             root.GlobalPosition = globalPosition;
             root.Scale *= new Vector2(uniformScale, uniformScale);
             if (zIndex.HasValue)
@@ -232,12 +249,6 @@ public static class MeiLinVfxHelper
 
                     CompleteCondition();
                 }
-                var callback = Callable.From<GodotObject, GodotObject, GodotObject>((_, _, _) => CompleteSprite());
-                if (lease != null)
-                    lease.Connect(sprite, callback);
-                else
-                    sprite.ConnectAnimationCompleted(callback);
-
                 StartAfter(root, pair.Delay, () =>
                 {
                     if (!IsCurrent())
@@ -245,6 +256,11 @@ public static class MeiLinVfxHelper
                     ShowDelayedAncestors(node);
                     try
                     {
+                        var callback = Callable.From<GodotObject, GodotObject, GodotObject>((_, _, _) => CompleteSprite());
+                        if (lease != null)
+                            lease.Connect(sprite, callback);
+                        else
+                            sprite.ConnectAnimationCompleted(callback);
                         sprite.GetAnimationState().SetAnimation(pair.AnimationName, loop: false);
                     }
                     catch (Exception ex)

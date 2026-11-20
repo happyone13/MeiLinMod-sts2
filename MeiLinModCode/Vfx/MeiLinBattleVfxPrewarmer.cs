@@ -32,9 +32,9 @@ public static class MeiLinBattleVfxPrewarmer
                 !room.CreatureNodes.Any(node => node.Entity?.Player?.Character is MeiLinCharacter))
                 return;
 
-            var movementPaths = MeiLinAttackMovementController.GetPreloadScenePaths().ToHashSet(StringComparer.Ordinal);
+            MeiLinUxPresentation.PrefetchOpening(room);
             string[] scenePaths = MeiLinCommandVfxCoordinator.GetBattleWarmScenePaths()
-                .Concat(movementPaths)
+                .Concat(MeiLinAttackMovementController.GetPreloadScenePaths())
                 .Where(path => !string.IsNullOrWhiteSpace(path))
                 .Distinct(StringComparer.Ordinal)
                 .ToArray();
@@ -70,11 +70,9 @@ public static class MeiLinBattleVfxPrewarmer
                 }
                 finally
                 {
-                    // Command timelines use temporary parents; retain only movement instances here.
-                    if (lease != null && movementPaths.Contains(scenePath))
+                    if (lease != null)
                         lease.Return(instanceGeneration);
-                    else if (GodotObject.IsInstanceValid(instance) &&
-                             (lease == null || lease.Generation == instanceGeneration))
+                    else if (GodotObject.IsInstanceValid(instance))
                         instance.QueueFree();
                 }
 
@@ -98,10 +96,9 @@ public static class MeiLinBattleVfxPrewarmer
     {
         return generation == Volatile.Read(ref _generation) &&
                MeiLinModConfig.UseCombatEffects &&
-               GodotObject.IsInstanceValid(room) &&
+               GodotObject.IsInstanceValid(room) && !room.IsQueuedForDeletion() && room.IsInsideTree() &&
                ReferenceEquals(NCombatRoom.Instance, room) &&
-               room.CombatVfxContainer != null &&
-               GodotObject.IsInstanceValid(room.CombatVfxContainer);
+               GodotObject.IsInstanceValid(room.CombatVfxContainer) && !room.CombatVfxContainer.IsQueuedForDeletion();
     }
 
     private static async Task NextFrame(Node node)

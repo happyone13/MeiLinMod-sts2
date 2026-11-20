@@ -63,6 +63,7 @@ public static class MeiLinCommandVfxCoordinator
 
         var root = new Node2D { Name = $"MeiLinCommandVfx_{SafeNodeName(commandName)}" };
         room.CombatVfxContainer.AddChild(root);
+        bool reuseInRoom = IsAttackCommand(command);
 
         foreach (var effect in command.Effects)
         {
@@ -70,7 +71,7 @@ public static class MeiLinCommandVfxCoordinator
                 continue;
 
             var delay = MathF.Max(0f, effect.DelayMs / 1000f);
-            StartAfter(root, delay, () => PlayEffect(root, room, effect, caster, target, options));
+            StartAfter(root, delay, () => PlayEffect(root, room, effect, caster, target, options, reuseInRoom));
         }
 
         if (options.LogTimelineEvents)
@@ -429,9 +430,12 @@ public static class MeiLinCommandVfxCoordinator
         MeiLinCommandVfxEffect effect,
         Creature? caster,
         Creature? target,
-        MeiLinCommandVfxPlaybackOptions options)
+        MeiLinCommandVfxPlaybackOptions options,
+        bool reuseInRoom)
     {
-        if (!GodotObject.IsInstanceValid(root))
+        if (!GodotObject.IsInstanceValid(root) || root.IsQueuedForDeletion() || !root.IsInsideTree() ||
+            !GodotObject.IsInstanceValid(room) || room.IsQueuedForDeletion() ||
+            !ReferenceEquals(NCombatRoom.Instance, room))
             return;
 
         var anchor = ResolveAnchor(room, effect, caster, target, options, out var followTarget);
@@ -443,12 +447,11 @@ public static class MeiLinCommandVfxCoordinator
 
         var offset = ParseOffset(effect.OffsetXY) * ResolveModelScale(effect);
         var uniformScale = ResolveEffectScale(effect);
-        var instance = MeiLinVfxHelper.PlayComposite(
-            effect.ScenePath,
-            root,
-            anchor.Value + offset,
-            uniformScale: uniformScale,
-            zIndex: ResolveZIndex(effect));
+        var instance = reuseInRoom
+            ? MeiLinVfxHelper.PlayCommandComposite(effect.ScenePath, root, anchor.Value + offset,
+                uniformScale, ResolveZIndex(effect))
+            : MeiLinVfxHelper.PlayComposite(effect.ScenePath, root, anchor.Value + offset,
+                uniformScale: uniformScale, zIndex: ResolveZIndex(effect));
 
         if (instance == null)
             return;
@@ -716,7 +719,7 @@ public static class MeiLinCommandVfxCoordinator
 
         var anticipationDelay = MathF.Max(0f, hitDelaySeconds - TargetGlowLeadSeconds);
         var hitDelay = MathF.Max(0f, hitDelaySeconds);
-        StartAfter(room, anticipationDelay, () => PlayTargetAnticipationGlow(command, target));
+        StartAfter(room, anticipationDelay, () => PlayTargetAnticipationGlow(room, command, target));
         StartAfter(room, hitDelay, () => TriggerTargetHitFeedback(room, target));
     }
 
@@ -726,8 +729,11 @@ public static class MeiLinCommandVfxCoordinator
         return IsAttackAnimation(animationName);
     }
 
-    private static void PlayTargetAnticipationGlow(MeiLinCommandVfxCommand command, Creature target)
+    private static void PlayTargetAnticipationGlow(NCombatRoom room, MeiLinCommandVfxCommand command, Creature target)
     {
+        if (!GodotObject.IsInstanceValid(room) || room.IsQueuedForDeletion() ||
+            !ReferenceEquals(NCombatRoom.Instance, room))
+            return;
         var glow = command.Effects.FirstOrDefault(effect =>
             !string.IsNullOrWhiteSpace(effect.ScenePath) &&
             effect.FileName.Contains("botglow", StringComparison.OrdinalIgnoreCase));
@@ -735,14 +741,10 @@ public static class MeiLinCommandVfxCoordinator
         if (glow == null)
             return;
 
-        var room = NCombatRoom.Instance;
-        if (room == null)
-            return;
-
         var glowCopy = glow.CloneForTargetRoot();
         var root = new Node2D { Name = "MeiLinTargetAnticipationGlow" };
         room.CombatVfxContainer.AddChild(root);
-        PlayEffect(root, room, glowCopy, target, target, new MeiLinCommandVfxPlaybackOptions());
+        PlayEffect(root, room, glowCopy, target, target, new MeiLinCommandVfxPlaybackOptions(), reuseInRoom: true);
         AutoFreeAfter(root, 1.2f);
     }
 

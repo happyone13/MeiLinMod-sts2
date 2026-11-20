@@ -184,8 +184,9 @@ default_mix = 0.0
     (out / 'timeline.json').write_text(json.dumps(data, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
     actor_resource = (f'res://{mod}/spine/q/q.tres' if char == 'meilin'
                       else f'res://{mod}/spine/q/{ident}_skel_data.tres')
+    stage_script = 'ux_cutin_stage.gd' if presentation == 'ux' else 'ug_stage.gd'
     lines = ['[gd_scene format=3]',
-             f'[ext_resource type="Script" path="res://{mod}/scenes/vfx/{presentation}/ug_stage.gd" id="script"]',
+             f'[ext_resource type="Script" path="res://{mod}/scenes/vfx/{presentation}/{stage_script}" id="script"]',
              f'[ext_resource type="SpineSkeletonDataResource" path="{actor_resource}" id="actor"]',
              f'[ext_resource type="Material" path="res://{mod}/materials/spine_pma.tres" id="pma"]']
     for i, e in enumerate(effects):
@@ -205,8 +206,6 @@ default_mix = 0.0
         parent = 'Stage' if e['type'] == 'SCREEN' else 'Stage/World'
         lines += [f'[node name="Fx{i}" parent="{parent}" instance=ExtResource("fx{i}")]', 'visible = false']
     (out / 'presentation.tscn').write_text('\n'.join(lines)+'\n', encoding='utf-8')
-    if presentation == 'ux':
-        shutil.copy2(root / mod / 'scenes/vfx/ug/ug_stage.gd', out / 'ug_stage.gd')
     print(f'{mod} {presentation.upper()}: {len(effects)} effects, {len(resources)} new skeletons, HIT {hit}s, end {total:.4f}s')
 
 

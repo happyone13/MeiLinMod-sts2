@@ -1,5 +1,5 @@
 [gd_scene format=3]
-[ext_resource type="Script" path="res://MeiLinMod/scenes/vfx/ux/ug_stage.gd" id="script"]
+[ext_resource type="Script" path="res://MeiLinMod/scenes/vfx/ux/ux_cutin_stage.gd" id="script"]
 [ext_resource type="SpineSkeletonDataResource" path="res://MeiLinMod/spine/q/q.tres" id="actor"]
 [ext_resource type="Material" path="res://MeiLinMod/materials/spine_pma.tres" id="pma"]
 [ext_resource type="PackedScene" path="res://MeiLinMod/scenes/vfx/generated/skill_x/meirin_1027_skill_x_eff_screen.tscn" id="fx0"]

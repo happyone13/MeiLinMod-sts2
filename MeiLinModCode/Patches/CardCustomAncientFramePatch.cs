@@ -123,6 +123,7 @@ public static class CardCustomAncientFramePatch
     private static readonly HashSet<string> MissingResourceWarnings = new();
     private static readonly Dictionary<CostAtlasVariant, Texture2D?> CostAtlasTextures = new();
     private static readonly ConditionalWeakTable<NCard, OriginalCardVisualState> OriginalStates = new();
+    private static readonly ConditionalWeakTable<Control, CostDigits> DrawnDigits = new();
     private static Control? _templateRoot;
     private static Control? _templateCardContainer;
     private static Texture2D? _descriptionMaskTexture;
@@ -132,14 +133,11 @@ public static class CardCustomAncientFramePatch
         if (cardNode == null || !GodotObject.IsInstanceValid(cardNode) || !cardNode.IsNodeReady())
             return;
 
+        // Foreign postfixes may already have drawn their skin. Only the prefix releases an old owner.
         if (!TryGetCustomFrameCard(cardNode, out MeiLinModCard? cardModel))
-        {
-            if (HasMeiLinVisualState(cardNode))
-                RemoveChaosEffects(cardNode, restoreOriginalState: true);
-
             return;
-        }
 
+        CaptureOriginalState(cardNode);
         var frame = Get<TextureRect>(FrameField, cardNode!);
         var portrait = Get<TextureRect>(CardSpinePortraitPatch.PortraitField, cardNode!);
         var ancientPortrait = Get<TextureRect>(CardSpinePortraitPatch.AncientPortraitField, cardNode!);
@@ -160,7 +158,7 @@ public static class CardCustomAncientFramePatch
 
         if (hasDynamicSpineScene && !CardSpinePortraitPatch.HasActiveSpineOverlay(cardNode))
         {
-            RemoveChaosEffects(cardNode, restoreOriginalState: true);
+            RemoveChaosEffects(cardNode, restoreOriginalState: false);
             frame?.Show();
             portrait?.Show();
             portraitBorder?.Show();
@@ -180,7 +178,6 @@ public static class CardCustomAncientFramePatch
             return;
         }
 
-        CaptureOriginalState(cardNode!);
         frame?.Hide();
         portrait?.Hide();
         portraitBorder?.Hide();
@@ -227,8 +224,8 @@ public static class CardCustomAncientFramePatch
         Material? frameMaterial,
         Material? bannerMaterial)
     {
-        CaptureOriginalState(cardNode);
-        RemoveChaosEffects(cardNode, restoreOriginalState: true);
+        RemoveChaosEffects(cardNode, restoreOriginalState: false);
+        RestoreOriginalState(cardNode, removeState: false);
 
         frame?.Hide();
         portraitBorder?.Hide();
@@ -262,24 +259,28 @@ public static class CardCustomAncientFramePatch
         if (cardNode == null || !GodotObject.IsInstanceValid(cardNode) || !cardNode.IsNodeReady())
             return;
 
-        if (!TryGetCustomFrameCard(cardNode, out _) && !HasMeiLinVisualState(cardNode))
+        if (!OriginalStates.TryGetValue(cardNode, out var state))
             return;
 
+        if (ReferenceEquals(state.CapturedModel, cardNode.Model) && TryGetCustomFrameCard(cardNode, out _))
+        {
+            RestoreOriginalState(cardNode, removeState: false);
+            return;
+        }
+
+        // NCard.Model invokes Reload before the incoming model has drawn anything.
+        CardSpinePortraitPatch.PrepareForBaseVisuals(cardNode);
         RemoveChaosEffects(cardNode, restoreOriginalState: true);
     }
 
     public static void CleanupPooledCard(NCard? cardNode)
     {
-        if (cardNode == null)
+        if (cardNode == null || !GodotObject.IsInstanceValid(cardNode))
             return;
 
-        if (HasMeiLinVisualState(cardNode))
+        CardSpinePortraitPatch.RemoveSpineOverlay(cardNode);
+        if (OriginalStates.TryGetValue(cardNode, out _))
             RemoveChaosEffects(cardNode, restoreOriginalState: true);
-
-        if (CardSpinePortraitPatch.HasActiveSpineOverlay(cardNode))
-            CardSpinePortraitPatch.RemoveSpineOverlay(cardNode);
-
-        OriginalStates.Remove(cardNode);
     }
 
     private static bool TryGetCustomFrameCard(NCard? cardNode, out MeiLinModCard? cardModel)
@@ -296,23 +297,10 @@ public static class CardCustomAncientFramePatch
         return true;
     }
 
-    private static bool HasMeiLinVisualState(NCard cardNode)
+    internal static void CaptureBeforePortrait(NCard cardNode)
     {
-        if (OriginalStates.TryGetValue(cardNode, out OriginalCardVisualState? state) && state.HasSnapshot)
-            return true;
-
-        return GetOverlayNode(cardNode, RarityBaseNodeName) != null ||
-               GetOverlayNode(cardNode, RaritySubNodeName) != null ||
-               GetOverlayNode(cardNode, EgoBadgeNodeName) != null ||
-               GetOverlayNode(cardNode, EgoBadge2NodeName) != null ||
-               GetOverlayNode(cardNode, FrameSparkNodeName) != null ||
-               GetOverlayNode(cardNode, CategoryIconNodeName) != null ||
-               GetOverlayNode(cardNode, CategoryTextNodeName) != null ||
-               GetOverlayNode(cardNode, CostLineNodeName) != null ||
-               GetOverlayNode(cardNode, CostTextNodeName) != null ||
-               GetOverlayNode(cardNode, CostTextFallbackNodeName) != null ||
-               GetOverlayNode(cardNode, UpgradeIconNodeName) != null ||
-               GetOverlayNode(cardNode, DescriptionMaskNodeName) != null;
+        if (TryGetCustomFrameCard(cardNode, out _))
+            CaptureOriginalState(cardNode);
     }
 
     private static void ApplyTextureRect(TextureRect? textureRect, string texturePath, Material? material, bool show)
@@ -561,6 +549,7 @@ public static class CardCustomAncientFramePatch
 
             control.Name = runtimeNodeName;
             overlayParent.AddChild(control);
+            OriginalStates.GetOrCreateValue(cardNode).Nodes[runtimeNodeName] = control;
         }
         else if (control.GetParent() != overlayParent)
         {
@@ -688,39 +677,20 @@ public static class CardCustomAncientFramePatch
             node.GetParent().MoveChild(node, referenceIndex);
     }
 
-    private static void RemoveNode(Node parent, string nodeName)
+    private static void RemoveNode(NCard cardNode, string nodeName)
     {
-        DestroyNodeImmediately(parent.GetNodeOrNull<Node>(nodeName));
-
-        if (parent is NCard cardNode)
-        {
-            Node overlayParent = GetOverlayParent(cardNode);
-            if (overlayParent != parent)
-                DestroyNodeImmediately(overlayParent.GetNodeOrNull<Node>(nodeName));
-        }
+        if (OriginalStates.TryGetValue(cardNode, out var state) && state.Nodes.Remove(nodeName, out var owned))
+            DestroyNodeImmediately(owned);
     }
 
-    private static Control? GetOverlayNode(Node parent, string nodeName)
+    private static Control? GetOverlayNode(NCard cardNode, string nodeName)
     {
-        Control? control;
-        if (parent is NCard cardNode)
-        {
-            Node overlayParent = GetOverlayParent(cardNode);
-            control = overlayParent.GetNodeOrNull<Control>(nodeName);
-            if (control == null && overlayParent != parent)
-                control = parent.GetNodeOrNull<Control>(nodeName);
-        }
-        else
-        {
-            control = parent.GetNodeOrNull<Control>(nodeName);
-        }
-
-        if (control == null)
+        if (!OriginalStates.TryGetValue(cardNode, out var state) ||
+            !state.Nodes.TryGetValue(nodeName, out var node) || node is not Control control)
             return null;
-
         if (!GodotObject.IsInstanceValid(control) || control.IsQueuedForDeletion())
         {
-            DestroyNodeImmediately(control);
+            RemoveNode(cardNode, nodeName);
             return null;
         }
 
@@ -752,6 +722,7 @@ public static class CardCustomAncientFramePatch
             return;
 
         state.CapturedModel = cardNode.Model;
+        state.BodyChildren = GetOverlayParent(cardNode).GetChildren();
         state.Banner = CaptureControlSnapshot(Get<Control>(BannerField, cardNode));
         state.Frame = CaptureControlSnapshot(Get<Control>(FrameField, cardNode));
         state.Portrait = CaptureControlSnapshot(Get<Control>(CardSpinePortraitPatch.PortraitField, cardNode));
@@ -770,12 +741,13 @@ public static class CardCustomAncientFramePatch
         state.HasSnapshot = true;
     }
 
-    private static void RestoreOriginalState(NCard cardNode)
+    private static void RestoreOriginalState(NCard cardNode, bool removeState = true)
     {
         if (!OriginalStates.TryGetValue(cardNode, out OriginalCardVisualState? state) || !state.HasSnapshot)
             return;
 
-        bool restoreTextures = ReferenceEquals(state.CapturedModel, cardNode.Model);
+        // Restoration is restricted to our current card or the prefix before its replacement draws.
+        const bool restoreTextures = true;
         RestoreControlSnapshot(Get<Control>(BannerField, cardNode), state.Banner, restoreTextures);
         RestoreControlSnapshot(Get<Control>(FrameField, cardNode), state.Frame, restoreTextures);
         RestoreControlSnapshot(Get<Control>(CardSpinePortraitPatch.PortraitField, cardNode), state.Portrait, restoreTextures);
@@ -791,7 +763,23 @@ public static class CardCustomAncientFramePatch
         RestoreControlSnapshot(Get<Control>(EnergyLabelField, cardNode), state.EnergyLabel, restoreTextures);
         RestoreControlSnapshot(Get<Control>(TypeLabelField, cardNode), state.TypeLabel, restoreTextures);
         RestoreControlSnapshot(Get<Control>(TypePlaqueField, cardNode), state.TypePlaque, restoreTextures);
-        OriginalStates.Remove(cardNode);
+        if (removeState)
+        {
+            Node body = GetOverlayParent(cardNode);
+            if (state.BodyChildren != null)
+            {
+                int index = 0;
+                foreach (Node child in state.BodyChildren)
+                {
+                    if (!GodotObject.IsInstanceValid(child) || child.GetParent() != body)
+                        continue;
+                    if (child.GetIndex() != index)
+                        body.MoveChild(child, index);
+                    index++;
+                }
+            }
+            OriginalStates.Remove(cardNode);
+        }
     }
 
     private static ControlSnapshot? CaptureControlSnapshot(Control? control)
@@ -1015,6 +1003,9 @@ public static class CardCustomAncientFramePatch
 
     private static bool RenderCostDigits(Control preview, string text, CostAtlasVariant variant)
     {
+        if (DrawnDigits.TryGetValue(preview, out var drawn) &&
+            drawn.Text == text && drawn.Variant == variant && drawn.Size == preview.Size)
+            return true;
         ClearCostDigits(preview);
 
         Dictionary<char, Rect2> digitRegions = GetDigitRegions(variant);
@@ -1077,12 +1068,15 @@ public static class CardCustomAncientFramePatch
             cursorX += region.Size.X * scale;
         }
 
+        DrawnDigits.Add(preview, new CostDigits(text, variant, preview.Size));
         preview.Show();
         return true;
     }
 
     private static void ClearCostDigits(Control preview)
     {
+        if (!DrawnDigits.Remove(preview))
+            return;
         foreach (Node child in preview.GetChildren())
         {
             if (child.Name.ToString().StartsWith("CostDigit", StringComparison.Ordinal))
@@ -1324,8 +1318,9 @@ public static class CardCustomAncientFramePatch
 
     private static void EnsureCostOverlayRefresh(NCard cardNode)
     {
-        if (!IsEnlargedCard(cardNode) ||
-            cardNode.GetNodeOrNull<Node>(CostOverlayRefreshNodeName) != null)
+        var state = OriginalStates.GetOrCreateValue(cardNode);
+        if (!IsEnlargedCard(cardNode) || (state.Nodes.TryGetValue(CostOverlayRefreshNodeName, out var current) &&
+            GodotObject.IsInstanceValid(current)))
         {
             return;
         }
@@ -1336,6 +1331,7 @@ public static class CardCustomAncientFramePatch
             CardNode = cardNode
         };
         cardNode.AddChild(refresh);
+        state.Nodes[CostOverlayRefreshNodeName] = refresh;
     }
 
     private static bool IsEnlargedCard(NCard cardNode)
@@ -1384,8 +1380,12 @@ public static class CardCustomAncientFramePatch
         Red
     }
 
+    private sealed record CostDigits(string Text, CostAtlasVariant Variant, Vector2 Size);
+
     private sealed class OriginalCardVisualState
     {
+        public readonly Dictionary<string, Node> Nodes = new();
+        public Godot.Collections.Array<Node>? BodyChildren;
         public bool HasSnapshot { get; set; }
         public CardModel? CapturedModel { get; set; }
         public ControlSnapshot? Banner { get; set; }
@@ -1555,8 +1555,8 @@ public sealed class CardCustomAncientFrameFreedToPoolPatch : IPatchMethod
         PatchTarget.Method<NCard>(nameof(NCard.OnFreedToPool))
     ];
 
-    [HarmonyPriority(Priority.Last)]
-    public static void Postfix(NCard __instance)
+    [HarmonyPriority(Priority.First)]
+    public static void Prefix(NCard __instance)
     {
         CardCustomAncientFramePatch.CleanupPooledCard(__instance);
     }
