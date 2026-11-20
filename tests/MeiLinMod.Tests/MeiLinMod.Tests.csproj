@@ -13,7 +13,7 @@
     <Sts2TestModName>MeiLinMod.Tests</Sts2TestModName>
     <Sts2TestModAuthor>lozalia</Sts2TestModAuthor>
     <Sts2TestMinGameVersion>v0.113.0</Sts2TestMinGameVersion>
-    <Sts2TestMainModMinVersion>v0.4.8</Sts2TestMainModMinVersion>
+    <Sts2TestMainModMinVersion>v0.4.9</Sts2TestMainModMinVersion>
     <Sts2TestTheSpireMinVersion>0.1.2</Sts2TestTheSpireMinVersion>
     <Sts2XunitAssertMinVersion>3.2.2</Sts2XunitAssertMinVersion>
     <TestTheSpireAssemblyPath Condition="'$(TestTheSpireAssemblyPath)' == '' and Exists('$(MSBuildProjectDirectory)/../../tmp/testthespire-113/bin/Debug/net9.0/TestTheSpire.dll')">$(MSBuildProjectDirectory)/../../tmp/testthespire-113/bin/Debug/net9.0/TestTheSpire.dll</TestTheSpireAssemblyPath>
